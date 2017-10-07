@@ -6,7 +6,12 @@ public abstract class ProductoDTO implements Serializable
 {
 	
 	protected Integer numero;
+	protected String tipo;
+	protected String calidad;
 	protected String descripcion;
+	protected PlanDeProduccionDTO pdp;
+	protected Integer cantidad;
+	protected
 	
 	public ProductoDTO(){}
 
