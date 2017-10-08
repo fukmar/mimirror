@@ -20,3 +20,7 @@ y luego se hace el commit normal
 
 o mejor borrar un archivo especifico con "git rm"
 
+Para actualizar el repo local con los cambios de otro es:
+
+git pull
+
