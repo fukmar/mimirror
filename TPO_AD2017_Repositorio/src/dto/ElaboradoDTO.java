@@ -5,8 +5,11 @@ import java.util.List;
 
 public class ElaboradoDTO extends ProductoDTO implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private float precioVenta;
-	private int porcentajeGanancia;
 	private UnidadDTO unidad;
 	private List<ProductoDTO>componentes;
 	
@@ -15,7 +18,6 @@ public class ElaboradoDTO extends ProductoDTO implements Serializable{
 	public ElaboradoDTO(float precioVenta, int porcentajeGanancia, UnidadDTO unidad, List<ProductoDTO> componentes) {
 		super();
 		this.precioVenta = precioVenta;
-		this.porcentajeGanancia = porcentajeGanancia;
 		this.unidad = unidad;
 		this.componentes = componentes;
 	}
@@ -28,13 +30,7 @@ public class ElaboradoDTO extends ProductoDTO implements Serializable{
 		this.precioVenta = precioVenta;
 	}
 
-	public int getPorcentajeGanancia() {
-		return porcentajeGanancia;
-	}
-
-	public void setPorcentajeGanancia(int porcentajeGanancia) {
-		this.porcentajeGanancia = porcentajeGanancia;
-	}
+	
 
 	public UnidadDTO getUnidad() {
 		return unidad;
@@ -54,7 +50,7 @@ public class ElaboradoDTO extends ProductoDTO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "ElaboradoDTO [precioVenta=" + precioVenta + ", porcentajeGanancia=" + porcentajeGanancia + ", unidad="
+		return "ElaboradoDTO [precioVenta=" + precioVenta + ", porcentajeGanancia=" + ", unidad="
 				+ unidad + ", componentes=" + componentes + "]";
 	}
 	

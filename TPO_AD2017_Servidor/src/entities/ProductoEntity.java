@@ -1,4 +1,8 @@
 package entities;
+import java.util.Date;
+
+import javax.persistence.*;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,15 +13,31 @@ public abstract class ProductoEntity
 	@Column(name="codProducto")
 	private Integer numero;
 	
+	protected String tipo;
+	protected String calidad;
 	protected String descripcion;
+	
+	@ManyToOne
+	protected PlanDeProduccionEntity pdp;
+	
+	protected Integer cantidad;
+	protected Date caducidad;
 	
 	public ProductoEntity(){}
 	
 	
-	public ProductoEntity(Integer numero, String descripcion) {
+
+
+	public ProductoEntity(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
+			Integer cantidad, Date caducidad) {
 		super();
 		this.numero = numero;
+		this.tipo = tipo;
+		this.calidad = calidad;
 		this.descripcion = descripcion;
+		this.pdp = pdp;
+		this.cantidad = cantidad;
+		this.caducidad = caducidad;
 	}
 
 
@@ -34,6 +54,77 @@ public abstract class ProductoEntity
 		this.descripcion = descripcion;
 	}
 	
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+
+
+	public String getCalidad() {
+		return calidad;
+	}
+
+
+
+
+	public void setCalidad(String calidad) {
+		this.calidad = calidad;
+	}
+
+
+
+
+	public PlanDeProduccionEntity getPdp() {
+		return pdp;
+	}
+
+
+
+
+	public void setPdp(PlanDeProduccionEntity pdp) {
+		this.pdp = pdp;
+	}
+
+
+
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+
+
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
+
+
+	public Date getCaducidad() {
+		return caducidad;
+	}
+
+
+
+
+	public void setCaducidad(Date caducidad) {
+		this.caducidad = caducidad;
+	}
+
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

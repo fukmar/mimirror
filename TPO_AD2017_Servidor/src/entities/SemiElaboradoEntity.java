@@ -8,9 +8,6 @@ import javax.persistence.*;
 @Table(name="semiElaborados")
 public class SemiElaboradoEntity extends ProductoEntity 
 {
-	@Column(name="costo")
-	private double costoProduccion;
-	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="almacenadoComo", nullable = false)
@@ -29,20 +26,13 @@ public class SemiElaboradoEntity extends ProductoEntity
 	public SemiElaboradoEntity (){}
 	
 	
-	public SemiElaboradoEntity(double costoProduccion, UnidadEntity unidad, List<MateriaPrimaEntity> materiales) {
+	public SemiElaboradoEntity(UnidadEntity unidad, List<MateriaPrimaEntity> materiales) {
 		super();
-		this.costoProduccion = costoProduccion;
 		this.unidad = unidad;
 		this.materiales = materiales;
 	}
 
 
-	public double getCostoProduccion() {
-		return costoProduccion;
-	}
-	public void setCostoProduccion(double costoProduccion) {
-		this.costoProduccion = costoProduccion;
-	}
 	public UnidadEntity getUnidad() {
 		return unidad;
 	}
@@ -56,7 +46,7 @@ public class SemiElaboradoEntity extends ProductoEntity
 		this.materiales = materiales;
 	}
 	
-	@Override
+	/*@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
@@ -79,5 +69,5 @@ public class SemiElaboradoEntity extends ProductoEntity
 				.doubleToLongBits(other.costoProduccion))
 			return false;
 		return true;
-	}
+	}*/
 }

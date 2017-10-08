@@ -2,22 +2,18 @@ package negocio;
 
 import java.util.List;
 
-import dto.ProductoDTO;
-import dto.UnidadDTO;
 
-public class Elaborado 
+public class Elaborado extends Producto
 {
 	private float precioVenta;
-	private int porcentajeGanancia;
 	private Unidad unidad;
 	private List<Producto>componentes;
 	
 	public Elaborado(){}
 
-	public Elaborado(float precioVenta, int porcentajeGanancia, Unidad unidad, List<Producto> componentes) {
+	public Elaborado(float precioVenta,Unidad unidad, List<Producto> componentes) {
 		super();
 		this.precioVenta = precioVenta;
-		this.porcentajeGanancia = porcentajeGanancia;
 		this.unidad = unidad;
 		this.componentes = componentes;
 	}
@@ -30,13 +26,7 @@ public class Elaborado
 		this.precioVenta = precioVenta;
 	}
 
-	public int getPorcentajeGanancia() {
-		return porcentajeGanancia;
-	}
-
-	public void setPorcentajeGanancia(int porcentajeGanancia) {
-		this.porcentajeGanancia = porcentajeGanancia;
-	}
+	
 
 	public Unidad getUnidad() {
 		return unidad;
