@@ -6,33 +6,25 @@ import java.util.List;
 
 public class SemiElaboradoDTO extends ProductoDTO implements Serializable{
 
-	private double costoProduccion;
-	private UnidadDTO unidad;
+	private UnidadDTO unidadAlmacenamiento;
 	private List<MateriaPrimaDTO> materiales;
 
 	public SemiElaboradoDTO(){}
 
-	public SemiElaboradoDTO(double costoProduccion, UnidadDTO unidad, List<MateriaPrimaDTO> materiales) {
+	public SemiElaboradoDTO(UnidadDTO unidad, List<MateriaPrimaDTO> materiales) {
 		super();
-		this.costoProduccion = costoProduccion;
-		this.unidad = unidad;
+		this.unidadAlmacenamiento = unidad;
 		this.materiales = materiales;
 	}
 
-	public double getCostoProduccion() {
-		return costoProduccion;
-	}
 
-	public void setCostoProduccion(double costoProduccion) {
-		this.costoProduccion = costoProduccion;
-	}
 
 	public UnidadDTO getUnidad() {
-		return unidad;
+		return unidadAlmacenamiento;
 	}
 
 	public void setUnidad(UnidadDTO unidad) {
-		this.unidad = unidad;
+		this.unidadAlmacenamiento = unidad;
 	}
 
 	public List<MateriaPrimaDTO> getMateriales() {
@@ -45,7 +37,7 @@ public class SemiElaboradoDTO extends ProductoDTO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "SemiElaboradoDTO [costoProduccion=" + costoProduccion + ", unidad=" + unidad + ", materiales="
+		return "SemiElaboradoDTO [ unidad=" + unidadAlmacenamiento + ", materiales="
 				+ materiales + "]";
 	}
 	
