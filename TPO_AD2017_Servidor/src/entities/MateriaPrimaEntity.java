@@ -14,9 +14,9 @@ public class MateriaPrimaEntity
 	
 	private String descripcion;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	/*@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="uniCompra")
-	private UnidadEntity unidadCompra;
+	private UnidadEntity unidadCompra;*/
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="uniUso")
@@ -26,11 +26,11 @@ public class MateriaPrimaEntity
 	public MateriaPrimaEntity() {}
 	
 	
-	public MateriaPrimaEntity(Integer codigo, String descripcion, UnidadEntity unidadCompra, UnidadEntity unidadUso) {
+	public MateriaPrimaEntity(Integer codigo, String descripcion/*, UnidadEntity unidadCompra*/, UnidadEntity unidadUso) {
 		super();
 		this.codigo = codigo;
 		this.descripcion = descripcion;
-		this.unidadCompra = unidadCompra;
+		/*this.unidadCompra = unidadCompra;*/
 		this.unidadUso = unidadUso;
 	}
 
@@ -47,12 +47,12 @@ public class MateriaPrimaEntity
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public UnidadEntity getUnidadCompra() {
+	/*public UnidadEntity getUnidadCompra() {
 		return unidadCompra;
 	}
 	public void setUnidadCompra(UnidadEntity unidadCompra) {
 		this.unidadCompra = unidadCompra;
-	}
+	}*/
 	public UnidadEntity getUnidadUso() {
 		return unidadUso;
 	}
@@ -97,7 +97,7 @@ public class MateriaPrimaEntity
 		MateriaPrima m=new MateriaPrima();
 		m.setCodigo(codigo);
 		m.setDescripcion(descripcion);
-		m.setUnidadCompra(unidadCompra.toNegocio());
+		//m.setUnidadCompra(unidadCompra.toNegocio());
 		m.setUnidadUso(unidadUso.toNegocio());
 		return m;
 	}

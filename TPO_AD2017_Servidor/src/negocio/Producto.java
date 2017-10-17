@@ -6,7 +6,7 @@ import java.util.Date;
 
 public abstract class Producto
 {
-	protected Integer numero;
+	protected Integer codigoProd;
 	protected String tipo;
 	protected String calidad;
 	protected String descripcion;
@@ -21,7 +21,7 @@ public abstract class Producto
 	public Producto(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccion pdp,
 			Integer cantidad, Date caducidad) {
 		super();
-		this.numero = numero;
+		this.codigoProd = numero;
 		this.tipo = tipo;
 		this.calidad = calidad;
 		this.descripcion = descripcion;
@@ -33,11 +33,11 @@ public abstract class Producto
 
 
 	public Integer getNumero() {
-		return numero;
+		return codigoProd;
 	}
 
 	public void setNumero(Integer numero) {
-		this.numero = numero;
+		this.codigoProd = numero;
 	}
 
 	public String getDescripcion() {

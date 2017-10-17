@@ -8,23 +8,23 @@ import java.io.Serializable;
 
 public class UnidadDTO implements Serializable{
 
-	private Integer codigo;
+	private Integer codigoUni;
 	private String descripcion;
 
 	public UnidadDTO(){}
 
 	public UnidadDTO(Integer codigo, String descripcion) {
 		super();
-		this.codigo = codigo;
+		this.codigoUni = codigo;
 		this.descripcion = descripcion;
 	}
 
 	public Integer getCodigo() {
-		return codigo;
+		return codigoUni;
 	}
 
 	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+		this.codigoUni = codigo;
 	}
 
 	public String getDescripcion() {
@@ -37,7 +37,7 @@ public class UnidadDTO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "UnidadDTO [codigo=" + codigo + ", descripcion=" + descripcion + "]";
+		return "UnidadDTO [codigo=" + codigoUni + ", descripcion=" + descripcion + "]";
 	}
 
 	

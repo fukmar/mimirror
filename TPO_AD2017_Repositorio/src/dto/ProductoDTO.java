@@ -5,12 +5,8 @@ import java.util.Date;
 
 public abstract class ProductoDTO implements Serializable
 {
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	protected Integer numero;
+	protected Integer codigoProd;
 	protected String tipo;
 	protected String calidad;
 	protected String descripcion;
@@ -25,7 +21,7 @@ public abstract class ProductoDTO implements Serializable
 	public ProductoDTO(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccionDTO pdp,
 			Integer cantidad, Date caducidad) {
 		super();
-		this.numero = numero;
+		this.codigoProd = numero;
 		this.tipo = tipo;
 		this.calidad = calidad;
 		this.descripcion = descripcion;
@@ -37,13 +33,13 @@ public abstract class ProductoDTO implements Serializable
 
 
 	public Integer getNumero() {
-		return numero;
+		return codigoProd;
 	}
 
 
 
 	public void setNumero(Integer numero) {
-		this.numero = numero;
+		this.codigoProd = numero;
 	}
 
 
@@ -122,7 +118,7 @@ public abstract class ProductoDTO implements Serializable
 
 	@Override
 	public String toString() {
-		return "ProductoDTO [numero=" + numero + ", tipo=" + tipo + ", calidad=" + calidad + ", descripcion="
+		return "ProductoDTO [numero=" + codigoProd + ", tipo=" + tipo + ", calidad=" + calidad + ", descripcion="
 				+ descripcion + ", pdp=" + pdp + ", cantidad=" + cantidad + ", caducidad=" + caducidad + "]";
 	}
 

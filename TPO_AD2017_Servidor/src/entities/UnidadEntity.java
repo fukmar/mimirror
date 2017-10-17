@@ -11,22 +11,22 @@ public class UnidadEntity
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codUnidad")
-	private Integer codigo;
+	private Integer codigoUni;
 	private String descripcion;
 	
 	public UnidadEntity() {}
 	
 	public UnidadEntity(Integer codigo, String descripcion) {
 		super();
-		this.codigo = codigo;
+		this.codigoUni = codigo;
 		this.descripcion = descripcion;
 	}
 
 	public Integer getCodigo() {
-		return codigo;
+		return codigoUni;
 	}
 	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+		this.codigoUni = codigo;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -41,7 +41,7 @@ public class UnidadEntity
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((codigoUni == null) ? 0 : codigoUni.hashCode());
 		result = prime * result
 				+ ((descripcion == null) ? 0 : descripcion.hashCode());
 		return result;
@@ -56,10 +56,10 @@ public class UnidadEntity
 		if (getClass() != obj.getClass())
 			return false;
 		UnidadEntity other = (UnidadEntity) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
+		if (codigoUni == null) {
+			if (other.codigoUni != null)
 				return false;
-		} else if (!codigo.equals(other.codigo))
+		} else if (!codigoUni.equals(other.codigoUni))
 			return false;
 		if (descripcion == null) {
 			if (other.descripcion != null)
@@ -72,7 +72,7 @@ public class UnidadEntity
 	public Unidad toNegocio() 
 	{
 		Unidad u=new Unidad();
-		u.setCodigo(codigo);
+		u.setCodigo(codigoUni);
 		u.setDescripcion(descripcion);
 		return u;
 	}

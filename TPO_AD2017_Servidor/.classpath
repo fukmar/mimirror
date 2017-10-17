@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/FACU/4º/LV/parciales y finales/Recuparatorio_9999999/lib/jtds-1.2.5.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/FACU/4º/LV/parciales y finales/Recuparatorio_9999999/lib/slf4j-api-1.5.6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/FACU/4º/LV/parciales y finales/Recuparatorio_9999999/lib/slf4j-simple-1.5.6.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/TPO_AD2017_Repositorio"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

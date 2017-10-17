@@ -8,11 +8,6 @@ import javax.persistence.*;
 @Table(name="semiElaborados")
 public class SemiElaboradoEntity extends ProductoEntity 
 {
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="almacenadoComo", nullable = false)
-	private UnidadEntity unidad;
-	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="materialSemi",
 	joinColumns=@JoinColumn(name="codProducto",referencedColumnName="codProducto"),
@@ -20,17 +15,54 @@ public class SemiElaboradoEntity extends ProductoEntity
 	)
 	private List<MateriaPrimaEntity> materiales;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="almacenadoComo", nullable = false)
+	private UnidadEntity unidad;
+	
+
 	@ManyToMany(mappedBy="componentes")
 	private List<ElaboradoEntity> productos;
 	
 	public SemiElaboradoEntity (){}
 	
 	
-	public SemiElaboradoEntity(UnidadEntity unidad, List<MateriaPrimaEntity> materiales) {
+	
+
+
+	public SemiElaboradoEntity(List<MateriaPrimaEntity> materiales, UnidadEntity unidad,
+			List<ElaboradoEntity> productos) {
 		super();
+		this.materiales = materiales;
 		this.unidad = unidad;
+		this.productos = productos;
+	}
+
+
+
+
+
+	public List<ElaboradoEntity> getProductos() {
+		return productos;
+	}
+
+
+
+
+
+	public void setProductos(List<ElaboradoEntity> productos) {
+		this.productos = productos;
+	}
+
+
+
+
+
+	public void setMateriales(List<MateriaPrimaEntity> materiales) {
 		this.materiales = materiales;
 	}
+
+
+
 
 
 	public UnidadEntity getUnidad() {

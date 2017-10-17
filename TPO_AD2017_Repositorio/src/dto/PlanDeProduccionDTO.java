@@ -6,6 +6,10 @@ import enumns.Estado;
 
 public class PlanDeProduccionDTO implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer codigoPDP;
 	private Estado estado;
 	

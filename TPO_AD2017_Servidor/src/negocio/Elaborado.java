@@ -3,30 +3,22 @@ package negocio;
 import java.util.List;
 
 
+
 public class Elaborado extends Producto
 {
-	private float precioVenta;
-	private Unidad unidad;
+	private static final long serialVersionUID = 1L;
 	private List<Producto>componentes;
+
+	private Unidad unidad;
+	
 	
 	public Elaborado(){}
 
-	public Elaborado(float precioVenta,Unidad unidad, List<Producto> componentes) {
+	public Elaborado(List<Producto> componentes,Unidad unidad) {
 		super();
-		this.precioVenta = precioVenta;
-		this.unidad = unidad;
 		this.componentes = componentes;
+		this.unidad = unidad;
 	}
-
-	public float getPrecioVenta() {
-		return precioVenta;
-	}
-
-	public void setPrecioVenta(float precioVenta) {
-		this.precioVenta = precioVenta;
-	}
-
-	
 
 	public Unidad getUnidad() {
 		return unidad;

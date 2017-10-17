@@ -7,16 +7,14 @@ public class MateriaPrima
 {
 	private Integer codigo;
 	private String descripcion;
-	private Unidad unidadCompra;
 	private Unidad unidadUso;
 
 	public MateriaPrima(){}
 
-	public MateriaPrima(Integer codigo, String descripcion, Unidad unidadCompra, Unidad unidadUso) {
+	public MateriaPrima(Integer codigo, String descripcion, Unidad unidadUso) {
 		super();
 		this.codigo = codigo;
 		this.descripcion = descripcion;
-		this.unidadCompra = unidadCompra;
 		this.unidadUso = unidadUso;
 	}
 
@@ -36,13 +34,6 @@ public class MateriaPrima
 		this.descripcion = descripcion;
 	}
 
-	public Unidad getUnidadCompra() {
-		return unidadCompra;
-	}
-
-	public void setUnidadCompra(Unidad unidadCompra) {
-		this.unidadCompra = unidadCompra;
-	}
 
 	public Unidad getUnidadUso() {
 		return unidadUso;
@@ -57,7 +48,6 @@ public class MateriaPrima
 		MateriaPrimaDTO m=new MateriaPrimaDTO();
 		m.setCodigo(codigo);
 		m.setDescripcion(descripcion);
-		m.setUnidadCompra(unidadCompra.toDTO());
 		m.setUnidadUso(unidadUso.toDTO());
 		return m;
 	}

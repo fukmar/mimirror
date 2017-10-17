@@ -11,7 +11,7 @@ public abstract class ProductoEntity
 {
 	@Id
 	@Column(name="codProducto")
-	private Integer numero;
+	private Integer codigoProd;
 	
 	protected String tipo;
 	protected String calidad;
@@ -31,7 +31,7 @@ public abstract class ProductoEntity
 	public ProductoEntity(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
 			Integer cantidad, Date caducidad) {
 		super();
-		this.numero = numero;
+		this.codigoProd = numero;
 		this.tipo = tipo;
 		this.calidad = calidad;
 		this.descripcion = descripcion;
@@ -42,10 +42,10 @@ public abstract class ProductoEntity
 
 
 	public Integer getNumero() {
-		return numero;
+		return codigoProd;
 	}
 	public void setNumero(Integer numero) {
-		this.numero = numero;
+		this.codigoProd = numero;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -131,7 +131,7 @@ public abstract class ProductoEntity
 		int result = 1;
 		result = prime * result
 				+ ((descripcion == null) ? 0 : descripcion.hashCode());
-		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result + ((codigoProd == null) ? 0 : codigoProd.hashCode());
 		return result;
 	}
 	
@@ -149,10 +149,10 @@ public abstract class ProductoEntity
 				return false;
 		} else if (!descripcion.equals(other.descripcion))
 			return false;
-		if (numero == null) {
-			if (other.numero != null)
+		if (codigoProd == null) {
+			if (other.codigoProd != null)
 				return false;
-		} else if (!numero.equals(other.numero))
+		} else if (!codigoProd.equals(other.codigoProd))
 			return false;
 		return true;
 	}

@@ -5,23 +5,23 @@ import entities.UnidadEntity;
 
 public class Unidad 
 {
-	private Integer codigo;
+	private Integer codigoUni;
 	private String descripcion;
 
 	public Unidad(){}
 
 	public Unidad(Integer codigo, String descripcion) {
 		super();
-		this.codigo = codigo;
+		this.codigoUni = codigo;
 		this.descripcion = descripcion;
 	}
 
 	public Integer getCodigo() {
-		return codigo;
+		return codigoUni;
 	}
 
 	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+		this.codigoUni = codigo;
 	}
 
 	public String getDescripcion() {
@@ -34,7 +34,7 @@ public class Unidad
 
 	public UnidadEntity toEntity() {
 		UnidadEntity u=new UnidadEntity();
-		u.setCodigo(codigo);
+		u.setCodigo(codigoUni);
 		u.setDescripcion(descripcion);
 		return u;
 	}
@@ -42,7 +42,7 @@ public class Unidad
 	public UnidadDTO toDTO() 
 	{
 		UnidadDTO u=new UnidadDTO();
-		u.setCodigo(codigo);
+		u.setCodigo(codigoUni);
 		u.setDescripcion(descripcion);
 		return u;
 	}

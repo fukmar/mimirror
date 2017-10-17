@@ -4,12 +4,8 @@ import java.io.Serializable;
 
 public class MateriaPrimaDTO implements Serializable
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private Integer codigo;
+	private Integer codigoMP;
 	private String descripcion;
 	private UnidadDTO unidadUso;
 
@@ -17,17 +13,17 @@ public class MateriaPrimaDTO implements Serializable
 
 	public MateriaPrimaDTO(Integer codigo, String descripcion,UnidadDTO unidadUso) {
 		super();
-		this.codigo = codigo;
+		this.codigoMP = codigo;
 		this.descripcion = descripcion;
 		this.unidadUso = unidadUso;
 	}
 
 	public Integer getCodigo() {
-		return codigo;
+		return codigoMP;
 	}
 
 	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+		this.codigoMP = codigo;
 	}
 
 	public String getDescripcion() {
@@ -49,7 +45,7 @@ public class MateriaPrimaDTO implements Serializable
 
 	@Override
 	public String toString() {
-		return "MateriaPrimaDTO [codigo=" + codigo + ", descripcion=" + descripcion + ", unidadCompra="
+		return "MateriaPrimaDTO [codigo=" + codigoMP + ", descripcion=" + descripcion + ", unidadCompra="
 				+ ", unidadUso=" + unidadUso + "]";
 	}
 	

@@ -6,12 +6,13 @@ import java.util.List;
 
 public class SemiElaboradoDTO extends ProductoDTO implements Serializable{
 
-	private UnidadDTO unidadAlmacenamiento;
 	private List<MateriaPrimaDTO> materiales;
+	private UnidadDTO unidadAlmacenamiento;
+	
 
 	public SemiElaboradoDTO(){}
 
-	public SemiElaboradoDTO(UnidadDTO unidad, List<MateriaPrimaDTO> materiales) {
+	public SemiElaboradoDTO(List<MateriaPrimaDTO> materiales,UnidadDTO unidad ) {
 		super();
 		this.unidadAlmacenamiento = unidad;
 		this.materiales = materiales;

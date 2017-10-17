@@ -6,12 +6,13 @@ import java.util.List;
 
 public class SemiElaborado extends Producto
 {
-		private Unidad unidad;
 		private List<MateriaPrima> materiales;
+		private Unidad unidad;
+		
 
 		public SemiElaborado(){}
 
-		public SemiElaborado(Unidad unidad, List<MateriaPrima> materiales) {
+		public SemiElaborado(List<MateriaPrima> materiales,Unidad unidad ) {
 			super();
 			this.unidad = unidad;
 			this.materiales = materiales;
