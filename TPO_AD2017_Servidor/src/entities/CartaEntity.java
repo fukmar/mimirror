@@ -11,6 +11,7 @@ import enumns.Temporada;
 @Table(name="cartas")
 public class CartaEntity 
 {
+	@Column(name="codCarta")
 	private Integer codigoCarta;
 	private Date vigencia;
 	private Temporada temporada;
