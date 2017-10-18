@@ -7,8 +7,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
-
-import dto.UnidadDTO;
 import interfazRemota.manejoNegocio;
 import remoto.ObjetoRemoto;
 
