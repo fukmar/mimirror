@@ -7,17 +7,16 @@ public class Mozo {
 	private Integer dni;
 	private String nombre, apellido;
 	private Float procentajeComision;
-	private List<Comanda> comandas;
 	
 	public Mozo(){}
 	
-	public Mozo(Integer dni, String nombre, String apellido, Float procentajeComision, List<Comanda> comandas) {
+	public Mozo(Integer dni, String nombre, String apellido, Float procentajeComision) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.procentajeComision = procentajeComision;
-		this.comandas = comandas;
+	
 	}
 
 	public Integer getDni() {
@@ -52,13 +51,6 @@ public class Mozo {
 		this.procentajeComision = procentajeComision;
 	}
 
-	public List<Comanda> getComandas() {
-		return comandas;
-	}
 
-	public void setComandas(List<Comanda> comandas) {
-		this.comandas = comandas;
-	}
-		
 
 }
