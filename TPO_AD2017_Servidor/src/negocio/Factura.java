@@ -16,14 +16,14 @@ public class Factura
 	private Date fecha;
 	private float importe;
 	private MedioDePago medioPago;
-	private List<itemFactura> itemFactura;
+	private List<ItemFactura> itemFactura;
 	private Mesa mesa;
 	private Mozo mozo;
 	
 	public Factura(){}
 
 	public Factura(Integer codFactura, Comanda comanda, Date fecha, float importe, MedioDePago medioPago,
-			List<itemFactura> itemFactura, Mesa mesa, Mozo mozo) {
+			List<ItemFactura> itemFactura, Mesa mesa, Mozo mozo) {
 		super();
 		this.codFactura = codFactura;
 		this.comanda = comanda;
@@ -75,11 +75,11 @@ public class Factura
 		this.medioPago = medioPago;
 	}
 
-	public List<itemFactura> getItemFactura() {
+	public List<ItemFactura> getItemFactura() {
 		return itemFactura;
 	}
 
-	public void setItemFactura(List<itemFactura> itemFactura) {
+	public void setItemFactura(List<ItemFactura> itemFactura) {
 		this.itemFactura = itemFactura;
 	}
 
