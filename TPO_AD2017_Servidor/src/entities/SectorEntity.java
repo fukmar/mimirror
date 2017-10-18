@@ -4,15 +4,15 @@ import java.util.List;
 
 import negocio.Mozo;
 
-public class SecotrEntity 
+public class SectorEntity 
 {
 	private Integer codSector;
 	private String descripcion;
 	private List<MozoEntity> mozo;
 	
-	public SecotrEntity(){}
+	public SectorEntity(){}
 
-	public SecotrEntity(Integer codSector, String descripcion, List<MozoEntity> mozo) {
+	public SectorEntity(Integer codSector, String descripcion, List<MozoEntity> mozo) {
 		super();
 		this.codSector = codSector;
 		this.descripcion = descripcion;
