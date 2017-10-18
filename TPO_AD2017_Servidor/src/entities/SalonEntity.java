@@ -3,11 +3,17 @@ package entities;
 import java.util.List;
 
 import negocio.Sector;
-
+import javax.persistence.*;
+@Entity
+@Table(name="salones")
 public class SalonEntity 
 {
+	@Id
+	@Column(name="codSalon")
 	private Integer codSalon;
 	private String nombreSalon;
+	@OneToMany
+	@JoinColumn(name="codSector")
 	private List<Sector> sectores;
 	
 	public SalonEntity(){}

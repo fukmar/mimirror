@@ -15,6 +15,8 @@ import enumns.MedioDePago;
 @Table(name="facturas")
 public class FacturaEntity 
 {
+	@Id
+	@Column(name="codFactura")
 	private Integer codFactura;
 	private ComandaDTO comanda;
 	private Date fecha;

@@ -1,7 +1,12 @@
 package entities;
 
+import javax.persistence.*;
+@Entity
+@Table(name="locales")
 public class LocalEntity 
 {
+	@Id
+	@Column(name="codLocal")
 	private Integer codigoLocal;
 	private String direccion;
 	private String barrio;

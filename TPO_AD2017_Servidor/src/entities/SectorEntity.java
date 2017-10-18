@@ -3,11 +3,18 @@ package entities;
 import java.util.List;
 
 import negocio.Mozo;
+import javax.persistence.*;
+@Entity
+@Table(name="sectores")
 
 public class SectorEntity 
 {
+	@Id
+	@Column(name="codSector")
 	private Integer codSector;
 	private String descripcion;
+	@OneToMany
+	@JoinColumn(name="codMozo")
 	private List<MozoEntity> mozo;
 	
 	public SectorEntity(){}
