@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 
@@ -16,13 +17,13 @@ public class SemiElaboradoDTO extends ProductoDTO implements Serializable{
 
 	public SemiElaboradoDTO(){}
 
-	public SemiElaboradoDTO(List<MateriaPrimaDTO> materiales,UnidadDTO unidad ) {
-		super();
-		this.unidadAlmacenamiento = unidad;
+	
+	public SemiElaboradoDTO(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccionDTO pdp,
+			Integer cantidad, Date caducidad, List<MateriaPrimaDTO> materiales, UnidadDTO unidadAlmacenamiento) {
+		super(numero, tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.materiales = materiales;
+		this.unidadAlmacenamiento = unidadAlmacenamiento;
 	}
-
-
 
 	public UnidadDTO getUnidad() {
 		return unidadAlmacenamiento;

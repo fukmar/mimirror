@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class ElaboradoDTO extends ProductoDTO implements Serializable{
@@ -16,13 +17,15 @@ public class ElaboradoDTO extends ProductoDTO implements Serializable{
 	
 	public ElaboradoDTO(){}
 
-	public ElaboradoDTO(List<ProductoDTO> componentes,UnidadDTO unidad) {
-		super();
+	
+	public ElaboradoDTO(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccionDTO pdp,
+			Integer cantidad, Date caducidad, List<ProductoDTO> componentes, UnidadDTO unidad) {
+		super(numero, tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.componentes = componentes;
 		this.unidad = unidad;
 	}
 
-	
+
 	public UnidadDTO getUnidad() {
 		return unidad;
 	}

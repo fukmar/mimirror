@@ -4,6 +4,7 @@ import java.util.List;
 
 import dto.ComandaDTO;
 import dto.FacturaDTO;
+import enumns.AreaRest;
 
 public class Caja extends AreaRestaurant
 {
@@ -11,6 +12,14 @@ public class Caja extends AreaRestaurant
 	private List<Factura> facturas;
 	
 	public Caja(){}
+
+	
+	
+	public Caja(Integer codArea, AreaRest area, List<Comanda> comandas, List<Factura> facturas) {
+		super(codArea, area);
+		this.comandas = comandas;
+		this.facturas = facturas;
+	}
 
 	public Caja(List<Comanda> comandas, List<Factura> facturas) {
 		super();

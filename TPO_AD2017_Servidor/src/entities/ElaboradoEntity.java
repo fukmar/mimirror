@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
@@ -20,9 +21,10 @@ public class ElaboradoEntity extends ProductoEntity
 	
 	public ElaboradoEntity(){}
 	
-	
-	public ElaboradoEntity(UnidadEntity unidad,List<ProductoEntity> componentes) {
-		super();
+
+	public ElaboradoEntity(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
+			Integer cantidad, Date caducidad, UnidadEntity unidad, List<ProductoEntity> componentes) {
+		super(numero, tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.unidad = unidad;
 		this.componentes = componentes;
 	}

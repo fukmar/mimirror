@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
@@ -26,19 +27,14 @@ public class SemiElaboradoEntity extends ProductoEntity
 	public SemiElaboradoEntity (){}
 	
 	
-	
-
-
-	public SemiElaboradoEntity(List<MateriaPrimaEntity> materiales, UnidadEntity unidad,
-			List<ElaboradoEntity> productos) {
-		super();
+	public SemiElaboradoEntity(Integer numero, String tipo, String calidad, String descripcion,
+			PlanDeProduccionEntity pdp, Integer cantidad, Date caducidad, List<MateriaPrimaEntity> materiales,
+			UnidadEntity unidad, List<ElaboradoEntity> productos) {
+		super(numero, tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.materiales = materiales;
 		this.unidad = unidad;
 		this.productos = productos;
 	}
-
-
-
 
 
 	public List<ElaboradoEntity> getProductos() {
@@ -46,15 +42,9 @@ public class SemiElaboradoEntity extends ProductoEntity
 	}
 
 
-
-
-
 	public void setProductos(List<ElaboradoEntity> productos) {
 		this.productos = productos;
 	}
-
-
-
 
 
 	public void setMateriales(List<MateriaPrimaEntity> materiales) {
