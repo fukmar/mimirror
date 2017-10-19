@@ -1,36 +1,25 @@
-package entities;
+package negocio;
 
-import java.util.Date;
-
-import javax.persistence.*;
-
-import negocio.AreaRestaurant;
+import java.util.*;
 //FALTAN METODOS DE NEGOCIO
 
-@Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class SolicitudInsumoEntity {
+public abstract class SolicitudInsumo {
 	
-	@Id
-	@Column(name="codArt",nullable=false)//confirmar si esta seria la PK
 	protected Integer codigoArt;
 	protected Integer cantidad;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	protected AreaRestaurantEntity area;
+	protected AreaRestaurant area;
 	protected String responsable;
 	protected Integer lote;
 	protected Date fechaCompra;
 	protected Date fechaVencimiento;
 	protected String motivo;
 	
-	public SolicitudInsumoEntity(){
+	public SolicitudInsumo(){
 		
 	}
 
-	public SolicitudInsumoEntity(Integer codigoArt, Integer cantidad,
-			AreaRestaurantEntity area, String responsable, Integer lote,
+	public SolicitudInsumo(Integer codigoArt, Integer cantidad,
+			AreaRestaurant area, String responsable, Integer lote,
 			Date fechaCompra, Date fechaVencimiento, String motivo) {
 		super();
 		this.codigoArt = codigoArt;
@@ -59,11 +48,11 @@ public abstract class SolicitudInsumoEntity {
 		this.cantidad = cantidad;
 	}
 
-	public AreaRestaurantEntity getArea() {
+	public AreaRestaurant getArea() {
 		return area;
 	}
 
-	public void setArea(AreaRestaurantEntity area) {
+	public void setArea(AreaRestaurant area) {
 		this.area = area;
 	}
 
@@ -106,8 +95,8 @@ public abstract class SolicitudInsumoEntity {
 	public void setMotivo(String motivo) {
 		this.motivo = motivo;
 	}
-
-	// Agregar hashCode e equals ? opcionale de momento,revisar ProductoEntity como ejemplo
+	
+	
 	
 	
 	
