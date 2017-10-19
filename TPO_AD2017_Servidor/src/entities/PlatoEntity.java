@@ -12,6 +12,7 @@ public class PlatoEntity
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="codPlato")
 	private Integer codigo;
 	private String nombre;
 	private float precio;

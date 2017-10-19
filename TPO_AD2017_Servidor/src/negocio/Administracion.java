@@ -8,14 +8,14 @@ public class Administracion extends AreaRestaurant {
 
 	private List<PlanDeProduccion> planesProd;
 
-	public Administracion(List<PlanDeProduccion> planesProd,Integer codArea,
-	 AreaRest area) {
-	
-		this.codArea=codArea;
-		this.area=area;
+
+	public Administracion(Integer codArea, AreaRest area,
+			List<PlanDeProduccion> planesProd) {
+		super(codArea, area);
 		this.planesProd = planesProd;
 	}
 
+	
 	public Administracion(){
 		
 	}
