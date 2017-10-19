@@ -5,7 +5,11 @@ import java.util.Date;
 
 public abstract class ProductoDTO implements Serializable
 {
-	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2350516590558835345L;
 	protected Integer codigoProd;
 	protected String tipo;
 	protected String calidad;

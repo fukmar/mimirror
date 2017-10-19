@@ -8,6 +8,10 @@ import java.io.Serializable;
 
 public class UnidadDTO implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -997895407044949042L;
 	private Integer codigoUni;
 	private String descripcion;
 

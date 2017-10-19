@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class LocalDTO implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2178847006516954658L;
 	private Integer codigoLocal;
 	private String direccion;
 	private String barrio;

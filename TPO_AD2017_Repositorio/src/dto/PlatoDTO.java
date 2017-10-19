@@ -5,10 +5,11 @@ import java.util.List;
 
 public class PlatoDTO implements Serializable
 {
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8286502951304784350L;
 	private Integer codigo;
 	private String nombre;
 	private float precio;

@@ -6,6 +6,10 @@ import java.util.List;
 
 public class SemiElaboradoDTO extends ProductoDTO implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5026854482006058537L;
 	private List<MateriaPrimaDTO> materiales;
 	private UnidadDTO unidadAlmacenamiento;
 	

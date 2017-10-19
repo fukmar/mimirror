@@ -5,6 +5,10 @@ import java.util.List;
 
 public class CajaDTO extends AreaRestaurantDTO implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7533188648630417748L;
 	private List<ComandaDTO> comandas;
 	private List<FacturaDTO> facturas;
 	

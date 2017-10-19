@@ -5,6 +5,10 @@ import java.util.List;
 
 public class DepositoDTO implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4076114728695091338L;
 	private List<ProductoDTO> productos;
 	private List<SolicitudInsumoDTO> solicitudes;
 	private List<RemitoDTO> remitos;

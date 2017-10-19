@@ -6,6 +6,10 @@ import enumns.AreaRest;
 
 public abstract class AreaRestaurantDTO implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6623710247569860514L;
 	private Integer codArea;
 	private AreaRest area;
 	

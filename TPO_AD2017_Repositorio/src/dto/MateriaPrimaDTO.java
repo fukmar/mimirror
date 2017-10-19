@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 public class MateriaPrimaDTO implements Serializable
 {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4471742092208214438L;
 	private Integer codigoMP;
 	private String descripcion;
 	private UnidadDTO unidadUso;

@@ -8,6 +8,11 @@ import enumns.Temporada;
 
 public class CartaDTO implements Serializable
 {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1891945402043915702L;
 	private Integer codigoCarta;
 	private Date vigencia;
 	private Temporada temporada;

@@ -8,6 +8,10 @@ import enumns.MedioDePago;
 
 public class FacturaDTO implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5318288962272522660L;
 	private Integer codFactura;
 	private ComandaDTO comanda;
 	private Date fecha;

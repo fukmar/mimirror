@@ -5,10 +5,11 @@ import java.util.List;
 
 public class ElaboradoDTO extends ProductoDTO implements Serializable{
 	
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5892097441474909853L;
 	private List<ProductoDTO>componentes;
 	private UnidadDTO unidad;
 	

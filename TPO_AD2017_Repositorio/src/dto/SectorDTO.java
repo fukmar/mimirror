@@ -5,6 +5,10 @@ import java.util.List;
 
 public class SectorDTO implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -152834421019023307L;
 	private Integer codSector;
 	private String descripcion;
 	private List<MozoDTO> mozo;

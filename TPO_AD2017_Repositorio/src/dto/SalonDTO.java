@@ -5,10 +5,11 @@ import java.util.List;
 
 public class SalonDTO extends AreaRestaurantDTO implements Serializable
 {
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -2498558339407867837L;
 	private Integer codSalon;
 	private String nombreSalon;
 	private List<SectorDTO> sectores;
