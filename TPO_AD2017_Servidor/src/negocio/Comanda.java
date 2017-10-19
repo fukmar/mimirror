@@ -17,23 +17,6 @@ public class Comanda {
 		this.itemsComanda = itemsComanda;
 	}
 	
-	public Factura getFactura() {
-		return factura;
-	}
-
-	public void setFactura(Factura factura) {
-		this.factura = factura;
-	}
-
-	public Comanda(Integer codComanda, Mozo mozo, Mesa mesa, Factura factura, List<ItemComanda> itemsComanda) {
-		super();
-		this.codComanda = codComanda;
-		this.mozo = mozo;
-		this.mesa = mesa;
-		this.factura = factura;
-		this.itemsComanda = itemsComanda;
-	}
-
 	public Comanda(){}
 
 	public Integer getCodComanda() {

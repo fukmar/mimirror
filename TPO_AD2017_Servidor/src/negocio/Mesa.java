@@ -1,5 +1,5 @@
 package negocio;
 
 public class Mesa {
-	private codMesa
+	private  Integer codMesa;
 }

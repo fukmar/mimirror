@@ -38,11 +38,13 @@ public class FacturaEntity
 	
 	public FacturaEntity(){}
 
-	public FacturaEntity(Integer codFactura, ComandaDTO comanda, Date fecha, float importe, MedioDePago medioPago,
-			List<itemFacturaEntity> itemFactura, MesaEntity mesa, MozoEntity mozo) {
+	
+
+	public FacturaEntity(Integer codFactura, List<ComandaEntity> comandas, Date fecha, float importe,
+			MedioDePago medioPago, List<itemFacturaEntity> itemFactura, MesaEntity mesa, MozoEntity mozo) {
 		super();
 		this.codFactura = codFactura;
-		this.comanda = comanda;
+		this.comandas = comandas;
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;
