@@ -5,7 +5,7 @@ import java.util.List;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
 
-public class Caja 
+public class Caja extends AreaRestaurant
 {
 	private List<Comanda> comandas;
 	private List<Factura> facturas;
