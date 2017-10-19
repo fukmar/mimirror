@@ -3,10 +3,13 @@ package entities;
 import java.util.List;
 
 import negocio.Sector;
+
 import javax.persistence.*;
+
+import enumns.AreaRest;
 @Entity
 @Table(name="salones")
-public class SalonEntity 
+public class SalonEntity extends AreaRestaurantEntity
 {
 	@Id
 	@Column(name="codSalon")
@@ -18,8 +21,10 @@ public class SalonEntity
 	
 	public SalonEntity(){}
 
-	public SalonEntity(Integer codSalon, String nombreSalon, List<Sector> sectores) {
-		super();
+
+	public SalonEntity(Integer codArea, AreaRest area, Integer codSalon,
+			String nombreSalon, List<Sector> sectores) {
+		super(codArea, area);
 		this.codSalon = codSalon;
 		this.nombreSalon = nombreSalon;
 		this.sectores = sectores;

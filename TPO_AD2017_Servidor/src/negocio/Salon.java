@@ -3,17 +3,19 @@ package negocio;
 import java.util.List;
 
 import dto.SectorDTO;
+import enumns.AreaRest;
 
-public class Salon 
+public class Salon extends AreaRestaurant
 {
 	private Integer codSalon;
 	private String nombreSalon;
 	private List<Sector> sectores;
 	
 	public Salon(){}
-
-	public Salon(Integer codSalon, String nombreSalon, List<Sector> sectores) {
-		super();
+	
+	public Salon(Integer codArea, AreaRest area, Integer codSalon,
+			String nombreSalon, List<Sector> sectores) {
+		super(codArea, area);
 		this.codSalon = codSalon;
 		this.nombreSalon = nombreSalon;
 		this.sectores = sectores;
