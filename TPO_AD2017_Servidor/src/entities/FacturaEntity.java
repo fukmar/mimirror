@@ -24,7 +24,7 @@ public class FacturaEntity
 	private List<ComandaEntity> comandas;
 	private Date fecha;
 	private float importe;
-	@Enumerated(EnumType.String)
+	@Enumerated(EnumType.STRING)
 	private MedioDePago medioPago;
 	@OneToMany(cascade= CascadeType.ALL)
 	@JoinColumn(name="") // verificar ID de JOIN
