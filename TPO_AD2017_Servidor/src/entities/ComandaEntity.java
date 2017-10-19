@@ -10,7 +10,6 @@ import negocio.Mesa;
 import negocio.Mozo;
 import entities.FacturaEntity;
 
-
 @Entity
 @Table(name="comandas")
 public class ComandaEntity {

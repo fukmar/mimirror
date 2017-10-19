@@ -1,5 +1,6 @@
 package entities;
 
+
 public class itemFacturaEntity {
 	@OneToOne 
 	@JoinColumn(name="") // Verificar varios puntos.  No deberìa tener atributo cantidad si lo trae de la comanda que ya lo tiene. esta bien que el subtotal provenga desde la comanda? si es asì no tiene sentido el atrib cantidad.  No tiene sentido incluirlo

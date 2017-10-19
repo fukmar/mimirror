@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import negocio.Plato;
 
+
 @Entity
 @Table(name="itemcomanda")
 public class ItemComandaEntity {
