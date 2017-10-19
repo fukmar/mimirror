@@ -10,6 +10,8 @@ import negocio.Plato;
 public class ItemComandaEntity {
 	@Id
 	private Integer codItemComanda;
+	@OneToOne
+	@JoinColumn(name="codPlato")
 	private Plato plato;
 	private Integer cantidad;
 	

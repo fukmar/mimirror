@@ -9,6 +9,7 @@ public class DepositoDTO implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 4076114728695091338L;
+	private Integer codDeposito;
 	private List<ProductoDTO> productos;
 	private List<SolicitudInsumoDTO> solicitudes;
 	private List<RemitoDTO> remitos;
@@ -49,6 +50,14 @@ public class DepositoDTO implements Serializable
 	@Override
 	public String toString() {
 		return "DepositoDTO [productos=" + productos + ", solicitudes=" + solicitudes + ", remitos=" + remitos + "]";
+	}
+
+	public Integer getCodDeposito() {
+		return codDeposito;
+	}
+
+	public void setCodDeposito(Integer codDeposito) {
+		this.codDeposito = codDeposito;
 	}
 	
 	

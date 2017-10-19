@@ -27,8 +27,8 @@ public class FacturaEntity
 	@Enumerated(EnumType.STRING)
 	private MedioDePago medioPago;
 	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="") // verificar ID de JOIN
-	private List<itemFacturaEntity> itemFactura;
+	@JoinColumn(name="codItemFactura")
+	private List<ItemFacturaEntity> itemFactura;
 	@OneToOne
 	@JoinColumn(name="codMesa")
 	private MesaEntity mesa;
@@ -41,7 +41,7 @@ public class FacturaEntity
 	
 
 	public FacturaEntity(Integer codFactura, List<ComandaEntity> comandas, Date fecha, float importe,
-			MedioDePago medioPago, List<itemFacturaEntity> itemFactura, MesaEntity mesa, MozoEntity mozo) {
+			MedioDePago medioPago, List<ItemFacturaEntity> itemFactura, MesaEntity mesa, MozoEntity mozo) {
 		super();
 		this.codFactura = codFactura;
 		this.comandas = comandas;
@@ -93,11 +93,11 @@ public class FacturaEntity
 		this.medioPago = medioPago;
 	}
 
-	public List<itemFacturaEntity> getItemFactura() {
+	public List<ItemFacturaEntity> getItemFactura() {
 		return itemFactura;
 	}
 
-	public void setItemFactura(List<itemFacturaEntity> itemFactura) {
+	public void setItemFactura(List<ItemFacturaEntity> itemFactura) {
 		this.itemFactura = itemFactura;
 	}
 

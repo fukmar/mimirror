@@ -12,7 +12,6 @@ import enumns.MedioDePago;
 public class Factura 
 {
 	private Integer codFactura;
-	private List<Comanda> comandas;
 	private Date fecha;
 	private float importe;
 	private MedioDePago medioPago;
@@ -24,19 +23,12 @@ public class Factura
 
 
 
-	public List<Comanda> getComandas() {
-		return comandas;
-	}
 
-	public void setComandas(List<Comanda> comandas) {
-		this.comandas = comandas;
-	}
 
-	public Factura(Integer codFactura, List<Comanda> comandas, Date fecha, float importe, MedioDePago medioPago,
+	public Factura(Integer codFactura, Date fecha, float importe, MedioDePago medioPago,
 			List<ItemFactura> itemFactura, Mesa mesa, Mozo mozo) {
 		super();
 		this.codFactura = codFactura;
-		this.comandas = comandas;
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;
