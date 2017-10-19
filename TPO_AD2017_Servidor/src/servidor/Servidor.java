@@ -23,7 +23,7 @@ public class Servidor extends UnicastRemoteObject implements Serializable, inter
 	try {
 		remoteObject = new ObjetoRemoto();
 		LocateRegistry.createRegistry(1099);
-		Naming.rebind("//localhost/Controlador", remoteObject);
+		Naming.rebind("//localhost/manejoNegocio", remoteObject);
 	} catch (RemoteException e) {
 		// TODO Auto-generated catch block
 	
