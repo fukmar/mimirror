@@ -18,12 +18,21 @@ public class FacturaEntity
 	@Id
 	@Column(name="codFactura")
 	private Integer codFactura;
-	private ComandaDTO comanda;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="codComanda")
+	private List<ComandaEntity> comandas;
 	private Date fecha;
 	private float importe;
+	@Enumerated(EnumType.String)
 	private MedioDePago medioPago;
+	@OneToMany(cascade= CascadeType.ALL)
+	@JoinColumn(name="") // verificar ID de JOIN
 	private List<itemFacturaEntity> itemFactura;
+	@OneToOne
+	@JoinColumn(name="codMesa")
 	private MesaEntity mesa;
+	@OneToOne
+	@JoinColumn(name="dni")
 	private MozoEntity mozo;
 	
 	public FacturaEntity(){}
@@ -49,12 +58,12 @@ public class FacturaEntity
 		this.codFactura = codFactura;
 	}
 
-	public ComandaDTO getComanda() {
-		return comanda;
+	public List<ComandaEntity> getComandas() {
+		return comandas;
 	}
 
-	public void setComanda(ComandaDTO comanda) {
-		this.comanda = comanda;
+	public void setComandas(List<ComandaEntity> comandas) {
+		this.comandas = comandas;
 	}
 
 	public Date getFecha() {

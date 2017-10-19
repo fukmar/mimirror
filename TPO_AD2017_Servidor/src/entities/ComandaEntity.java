@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import negocio.Factura;
 import negocio.ItemComanda;
 import negocio.Mesa;
 import negocio.Mozo;
+import entities.FacturaEntity;
+
 
 @Entity
 @Table(name="comandas")
@@ -14,20 +17,27 @@ public class ComandaEntity {
 	
 	@Id
 	private Integer codComanda;
-	private Mozo mozo;
-	private Mesa mesa;
+	@OneToOne
+	@JoinColumn(name="dni")
+	private MozoEntity mozo;
+	@OneToOne
+	@JoinColumn(name="codMesa")
+	private MesaEntity mesa;
 	@OneToMany
 	@JoinColumn(name="codItemComanda")
 	private List<ItemComandaEntity> itemsComandaEntity;
 	
-	public ComandaEntity(Integer codComanda, Mozo mozo, Mesa mesa, List<ItemComandaEntity> itemsComandaEntity) {
+
+	
+	public ComandaEntity(Integer codComanda, MozoEntity mozo, MesaEntity mesa,
+			List<ItemComandaEntity> itemsComandaEntity) {
 		super();
 		this.codComanda = codComanda;
 		this.mozo = mozo;
 		this.mesa = mesa;
 		this.itemsComandaEntity = itemsComandaEntity;
 	}
-	
+
 	public ComandaEntity(){}
 
 	public Integer getCodComanda() {
@@ -38,19 +48,20 @@ public class ComandaEntity {
 		this.codComanda = codComanda;
 	}
 
-	public Mozo getMozo() {
+	
+	public MozoEntity getMozo() {
 		return mozo;
 	}
 
-	public void setMozo(Mozo mozo) {
+	public void setMozo(MozoEntity mozo) {
 		this.mozo = mozo;
 	}
 
-	public Mesa getMesa() {
+	public MesaEntity getMesa() {
 		return mesa;
 	}
 
-	public void setMesa(Mesa mesa) {
+	public void setMesa(MesaEntity mesa) {
 		this.mesa = mesa;
 	}
 
