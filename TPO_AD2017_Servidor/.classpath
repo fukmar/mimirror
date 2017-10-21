@@ -16,5 +16,18 @@
 	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/slf4j-api-1.5.6.jar"/>
 	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/slf4j-simple-1.5.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/jtds-1.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/slf4j-api-1.5.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Vero/Documents/lib/slf4j-simple-1.5.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
