@@ -10,14 +10,14 @@ public class RemitoDTO implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = -3189135135137783008L;
-	private List<itemRemitoDTO> itemsRemito;
+	private List<ItemRemitoDTO> itemsRemito;
 	private Integer codigoProveedor;
 	private OrdenDeCompraDTO ordenesDeCompra;
 	private Date fecha;
 	
 	public RemitoDTO(){}
 	
-	public RemitoDTO(List<itemRemitoDTO> itemsRemito, Integer codigoProveedor, OrdenDeCompraDTO ordenesDeCompra,
+	public RemitoDTO(List<ItemRemitoDTO> itemsRemito, Integer codigoProveedor, OrdenDeCompraDTO ordenesDeCompra,
 			Date fecha) {
 		super();
 		this.itemsRemito = itemsRemito;
@@ -26,11 +26,11 @@ public class RemitoDTO implements Serializable
 		this.fecha = fecha;
 	}
 
-	public List<itemRemitoDTO> getItemsRemito() {
+	public List<ItemRemitoDTO> getItemsRemito() {
 		return itemsRemito;
 	}
 
-	public void setItemsRemito(List<itemRemitoDTO> itemsRemito) {
+	public void setItemsRemito(List<ItemRemitoDTO> itemsRemito) {
 		this.itemsRemito = itemsRemito;
 	}
 

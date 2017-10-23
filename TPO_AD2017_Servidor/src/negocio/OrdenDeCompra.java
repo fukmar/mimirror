@@ -12,7 +12,7 @@ public class OrdenDeCompra {
 	private AreaRestaurant areaRestaurant;
 	private List<ItemOrdenDeCompra> productos;
 	private Integer minimoDiasVencim;
-	private String caldiadEsperada;
+	private String calidadEsperada;
 	
 	public OrdenDeCompra(){}
 
@@ -28,7 +28,7 @@ public class OrdenDeCompra {
 		this.areaRestaurant = areaRestaurant;
 		this.productos = productos;
 		this.minimoDiasVencim = minimoDiasVencim;
-		this.caldiadEsperada = caldiadEsperada;
+		this.calidadEsperada = caldiadEsperada;
 	}
 
 	public Integer getCodOrdenDeCompra() {
@@ -87,12 +87,12 @@ public class OrdenDeCompra {
 		this.minimoDiasVencim = minimoDiasVencim;
 	}
 
-	public String getCaldiadEsperada() {
-		return caldiadEsperada;
+	public String getCalidadEsperada() {
+		return calidadEsperada;
 	}
 
-	public void setCaldiadEsperada(String caldiadEsperada) {
-		this.caldiadEsperada = caldiadEsperada;
+	public void setCalidadEsperada(String caldiadEsperada) {
+		this.calidadEsperada = caldiadEsperada;
 	}
 	
 	
