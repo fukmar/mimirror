@@ -3,7 +3,6 @@ import javax.persistence.*;
 
 import negocio.PlanDeProduccion;
 import enumns.AreaRest;
-
 import java.util.*;
 
 @Entity
