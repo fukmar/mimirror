@@ -48,5 +48,4 @@ local.properties
 .scala_dependencies
 .worksheet/bin/
 .classpath
-.project
 hibernate.properties
