@@ -1,6 +1,10 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import enumns.AreaRest;
 
 public class CocinaDTO extends AreaRestaurantDTO implements Serializable
 {
@@ -9,5 +13,56 @@ public class CocinaDTO extends AreaRestaurantDTO implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = -8320744667260918809L;
+	
+	
+	private List<PlatoDTO> platos;
+	private Date horasPrepInternas;
+	private List<SemiElaboradoDTO> semiElaborados;
+	private List<ProductoDTO> estimadoDiario;
+	
+	
+	public CocinaDTO(Integer codArea, AreaRest area, List<PlatoDTO> platos,
+			Date horasPrepInternas, List<SemiElaboradoDTO> semiElaborados,
+			List<ProductoDTO> estimadoDiario) {
+		super(codArea, area);
+		this.platos = platos;
+		this.horasPrepInternas = horasPrepInternas;
+		this.semiElaborados = semiElaborados;
+		this.estimadoDiario = estimadoDiario;
+	}
+	
+	public List<PlatoDTO> getPlatos() {
+		return platos;
+	}
 
+	public void setPlatos(List<PlatoDTO> platos) {
+		this.platos = platos;
+	}
+
+	public Date getHorasPrepInternas() {
+		return horasPrepInternas;
+	}
+
+	public void setHorasPrepInternas(Date horasPrepInternas) {
+		this.horasPrepInternas = horasPrepInternas;
+	}
+
+	public List<SemiElaboradoDTO> getSemiElaborados() {
+		return semiElaborados;
+	}
+
+	public void setSemiElaborados(List<SemiElaboradoDTO> semiElaborados) {
+		this.semiElaborados = semiElaborados;
+	}
+
+	public List<ProductoDTO> getEstimadoDiario() {
+		return estimadoDiario;
+	}
+
+	public void setEstimadoDiario(List<ProductoDTO> estimadoDiario) {
+		this.estimadoDiario = estimadoDiario;
+	}
+
+	public CocinaDTO(){
+	}
 }
