@@ -17,14 +17,14 @@ public class FacturaDTO implements Serializable
 	private Date fecha;
 	private float importe;
 	private MedioDePago medioPago;
-	private List<itemFacturaDTO> itemFactura;
+	private List<ItemFacturaDTO> itemFactura;
 	private MesaDTO mesa;
 	private MozoDTO mozo;
 	
 	public FacturaDTO(){}
 
 	public FacturaDTO(Integer codFactura, ComandaDTO comanda, Date fecha, float importe, MedioDePago medioPago,
-			List<itemFacturaDTO> itemFactura, MesaDTO mesa, MozoDTO mozo) {
+			List<ItemFacturaDTO> itemFactura, MesaDTO mesa, MozoDTO mozo) {
 		super();
 		this.codFactura = codFactura;
 		this.comanda = comanda;
@@ -76,11 +76,11 @@ public class FacturaDTO implements Serializable
 		this.medioPago = medioPago;
 	}
 
-	public List<itemFacturaDTO> getItemFactura() {
+	public List<ItemFacturaDTO> getItemFactura() {
 		return itemFactura;
 	}
 
-	public void setItemFactura(List<itemFacturaDTO> itemFactura) {
+	public void setItemFactura(List<ItemFacturaDTO> itemFactura) {
 		this.itemFactura = itemFactura;
 	}
 

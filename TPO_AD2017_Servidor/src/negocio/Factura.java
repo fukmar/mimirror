@@ -6,7 +6,7 @@ import java.util.List;
 import dto.ComandaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
-import dto.itemFacturaDTO;
+import dto.ItemFacturaDTO;
 import enumns.MedioDePago;
 
 public class Factura 

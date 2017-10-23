@@ -8,7 +8,7 @@ import javax.persistence.*;
 import dto.ComandaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
-import dto.itemFacturaDTO;
+import dto.ItemFacturaDTO;
 import enumns.MedioDePago;
 
 

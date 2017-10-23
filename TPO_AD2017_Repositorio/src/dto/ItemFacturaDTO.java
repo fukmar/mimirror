@@ -2,7 +2,7 @@ package dto;
 
 import java.io.Serializable;
 
-public class itemFacturaDTO implements Serializable{
+public class ItemFacturaDTO implements Serializable{
 
 	/**
 	 * 
