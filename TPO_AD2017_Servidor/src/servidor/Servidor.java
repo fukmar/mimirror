@@ -29,9 +29,12 @@ public class Servidor extends UnicastRemoteObject implements Serializable, inter
 	
 		}
 	
+	
+	
 		System.out.print("OK"); 		
 }
 
+	
 
 /*
  	public List<DTO> funcion() throws RemoteException {
