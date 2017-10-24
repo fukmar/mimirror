@@ -8,36 +8,32 @@ import negocio.Plato;
 @Entity
 @Table(name="itemcomanda")
 public class ItemComandaEntity {
-	@Id
-	private Integer codItemComanda;
-	@OneToOne
-	@JoinColumn(name="codPlato")
-	private Plato plato;
+	@EmbeddedId
+	private ItemComandaId id;
 	private Integer cantidad;
 	
 	public ItemComandaEntity(){
 		
 	}
 	
-	public ItemComandaEntity(Integer codItemComanda, Plato plato, Integer cantidad) {
+
+	public ItemComandaEntity(ItemComandaId id, Integer cantidad) {
 		super();
-		this.codItemComanda = codItemComanda;
-		this.plato = plato;
+		this.id = id;
 		this.cantidad = cantidad;
 	}
-	
-	public Integer getCodItemComanda() {
-		return codItemComanda;
+
+
+	public ItemComandaId getId() {
+		return id;
 	}
-	public void setCodItemComanda(Integer codItemComanda) {
-		this.codItemComanda = codItemComanda;
+
+
+	public void setId(ItemComandaId id) {
+		this.id = id;
 	}
-	public Plato getPlato() {
-		return plato;
-	}
-	public void setPlato(Plato plato) {
-		this.plato = plato;
-	}
+
+
 	public Integer getCantidad() {
 		return cantidad;
 	}

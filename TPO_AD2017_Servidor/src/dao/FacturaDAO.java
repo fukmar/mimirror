@@ -20,9 +20,9 @@ private static FacturaDAO instancia;
 		return instancia;
 	}
 	
-	public void save(FacturaDAO itemcomanda){
+	public void save(FacturaDAO factura){
 
-	FacturaEntity fact = this.toEntity(itemcomanda);
+	FacturaEntity fact = this.toEntity(factura);
 	SessionFactory sf = hbt.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
@@ -32,9 +32,19 @@ private static FacturaDAO instancia;
 	}
 
 	//FALTA
-	private FacturaEntity toEntity(FacturaDAO itemcomanda) {	
+	private FacturaEntity toEntity(FacturaDAO factura) {	
 		return null;
 
 	}
 	
+	public void calcularTotal(FacturaEntity factura, float precio) {
+			SessionFactory t = hbt.getSessionFactory();
+			Session session = t.openSession();
+			session.beginTransaction();
+			String senten = "UPDATE Factura SET precioTotal = ? WHERE nroFactura = ?";
+			session.beginTransaction();
+			session.createQuery(senten).setFloat(0, precio).setInteger(1, factura.getCodFactura()).executeUpdate();;
+			session.getTransaction().commit();
+			session.close();
+	}
 }

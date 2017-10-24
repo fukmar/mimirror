@@ -30,7 +30,7 @@ private static PlatoDAO instancia;
 	session.getTransaction().commit();
 	session.close();
 	}
-
+	
 	//FALTA
 	private PlatoEntity toEntity(Plato plato) {	
 		return null;

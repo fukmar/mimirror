@@ -1,9 +1,12 @@
 package dao;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.ComandaEntity;
 import entities.ElaboradoEntity;
+import entities.ItemComandaEntity;
 import hibernate.hbt;
 
 public class ComandaDAO {
@@ -19,9 +22,9 @@ private static ComandaDAO instancia;
 		return instancia;
 	}
 	
-	public void save(ComandaDAO itemcomanda){
+	public void save(ComandaDAO comanda){
 
-	ComandaEntity ee = this.toEntity(itemcomanda);
+	ComandaEntity ee = this.toEntity(comanda);
 	SessionFactory sf = hbt.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
@@ -31,9 +34,19 @@ private static ComandaDAO instancia;
 	}
 
 	//FALTA
-	private ComandaEntity toEntity(ComandaDAO itemcomanda) {	
+	private ComandaEntity toEntity(ComandaDAO comanda) {	
 		return null;
 
+	}
+	
+	public List <ItemComandaEntity> OtenerItemComanda(int codigoComanda) {
+		SessionFactory sf = hbt.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		String senten = " FROM ItemComanda WHERE id.codigoComanda = ?";
+		List <ItemComandaEntity> items = session.createQuery(senten).setInteger(0, codigoComanda).list();
+		session.getTransaction().commit();
+		return items;
 	}
 	
 }
