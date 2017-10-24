@@ -4,14 +4,17 @@ import javax.persistence.*;
 
 import negocio.Producto;
 
+@Entity
+@Table(name="itemRemitos")
 public class ItemRemitoEntity {
 
 	@Id
 	@Column(name="codItemRemito")
 	private Integer codItemRemito;
 	private Integer cantidad;
-	@JoinColumn(name="codProducto")
-	private ProductoEntity producto;  /*CONSULTAR*/
+	@OneToOne
+	@JoinColumn(name="codProducto")  
+	private ProductoEntity producto;  
 		
 	public ItemRemitoEntity(){}
 

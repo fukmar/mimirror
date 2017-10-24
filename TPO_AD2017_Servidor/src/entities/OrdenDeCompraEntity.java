@@ -5,7 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
-
+@Entity
+@Table(name="ordenesDeCompra")
 public class OrdenDeCompraEntity {
 	@Id
 	@Column(name="codOrdenDeCompra")
@@ -27,7 +28,7 @@ public class OrdenDeCompraEntity {
 	public OrdenDeCompraEntity(Integer codOrdenDeCompra, Integer codigoProveedor,
 			String nombreProv, Date fecha, AreaRestaurantEntity areaRestaurant,
 			List<ItemOrdenDeCompraEntity> productos, Integer minimoDiasVencim,
-			String caldiadEsperada) {
+			String calidadEsperada) {
 		super();
 		this.codOrdenDeCompra = codOrdenDeCompra;
 		this.codigoProveedor = codigoProveedor;
@@ -99,8 +100,8 @@ public class OrdenDeCompraEntity {
 		return calidadEsperada;
 	}
 
-	public void setCalidadEsperada(String caldiadEsperada) {
-		this.calidadEsperada = caldiadEsperada;
+	public void setCalidadEsperada(String calidadEsperada) {
+		this.calidadEsperada = calidadEsperada;
 	}
 	
 	
