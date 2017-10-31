@@ -39,6 +39,7 @@ private static ComandaDAO instancia;
 
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List <ItemComandaEntity> OtenerItemComanda(int codigoComanda) {
 		SessionFactory sf = hbt.getSessionFactory();
 		Session session = sf.openSession();
@@ -48,5 +49,13 @@ private static ComandaDAO instancia;
 		session.getTransaction().commit();
 		return items;
 	}
-	
+	public ComandaEntity obtenerComanda(int codComanda){
+		SessionFactory sf = hbt.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		String senten = " FROM Cotizacion WHERE codComanda = ?";
+		ComandaEntity comanda = (ComandaEntity) session.createQuery(senten).setInteger(0, codComanda).uniqueResult();
+		session.getTransaction().commit();
+		return comanda;
+	}
 }
