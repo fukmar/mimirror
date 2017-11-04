@@ -18,10 +18,10 @@ public abstract class Producto
 
 	
 
-	public Producto(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccion pdp,
+	public Producto(String tipo, String calidad, String descripcion, PlanDeProduccion pdp,
 			Integer cantidad, Date caducidad) {
 		super();
-		this.codigoProd = numero;
+		
 		this.tipo = tipo;
 		this.calidad = calidad;
 		this.descripcion = descripcion;
@@ -29,6 +29,7 @@ public abstract class Producto
 		this.cantidad = cantidad;
 		this.caducidad = caducidad;
 	}
+
 
 
 

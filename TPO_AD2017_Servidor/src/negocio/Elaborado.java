@@ -15,9 +15,9 @@ public class Elaborado extends Producto
 	
 	public Elaborado(){}
 
-	public Elaborado(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccion pdp,
+	public Elaborado(String tipo, String calidad, String descripcion, PlanDeProduccion pdp,
 			Integer cantidad, Date caducidad, List<Producto> componentes, Unidad unidad) {
-		super(numero, tipo, calidad, descripcion, pdp, cantidad, caducidad);
+		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.componentes = componentes;
 		this.unidad = unidad;
 	}

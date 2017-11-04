@@ -23,10 +23,10 @@ public class SemiElaboradoEntity extends ProductoEntity
 	public SemiElaboradoEntity (){}
 	
 	
-	public SemiElaboradoEntity(Integer numero, String tipo, String calidad, String descripcion,
+	public SemiElaboradoEntity(String tipo, String calidad, String descripcion,
 			PlanDeProduccionEntity pdp, Integer cantidad, Date caducidad, List<MateriaPrimaEntity> materiales,
 			UnidadEntity unidad) {
-		super(numero, tipo, calidad, descripcion, pdp, cantidad, caducidad);
+		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.materiales = materiales;
 		this.unidad = unidad;
 	

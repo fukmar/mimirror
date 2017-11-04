@@ -20,7 +20,8 @@ public class hbt
              .addAnnotatedClass(ProductoEntity.class)
              .addAnnotatedClass(MateriaPrimaEntity.class)
              .addAnnotatedClass(SemiElaboradoEntity.class)
-             .addAnnotatedClass(ElaboradoEntity.class);
+             .addAnnotatedClass(ElaboradoEntity.class)
+             .addAnnotatedClass(PlatoEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)

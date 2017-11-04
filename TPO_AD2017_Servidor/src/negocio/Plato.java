@@ -9,11 +9,11 @@ public class Plato
 	private Integer codigo;
 	private String nombre;
 	private float precio;
-	private List<Producto> productoPlato;
+	private List<Elaborado> productoPlato;
 	
 	public Plato(){}
 
-	public Plato(Integer codigo, String nombre, float precio, List<Producto> productoPlato) {
+	public Plato(String nombre, float precio, List<Elaborado> productoPlato) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
@@ -45,11 +45,11 @@ public class Plato
 		this.precio = precio;
 	}
 
-	public List<Producto> getProductoPlato() {
+	public List<Elaborado> getProductoPlato() {
 		return productoPlato;
 	}
 
-	public void setProductoPlato(List<Producto> productoPlato) {
+	public void setProductoPlato(List<Elaborado> productoPlato) {
 		this.productoPlato = productoPlato;
 	}
 

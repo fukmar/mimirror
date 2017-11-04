@@ -51,7 +51,7 @@ public class Servidor extends UnicastRemoteObject implements Serializable, inter
 		*/
 		/*
 		Estado est = null;
-		PlanDeProduccionEntity test = new PlanDeProduccionEntity(1,est.EnProceso);
+		PlanDeProduccionEntity test = new PlanDeProduccionEntity(est.EnProceso);
 		SessionFactory sf = hbt.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -60,7 +60,7 @@ public class Servidor extends UnicastRemoteObject implements Serializable, inter
 		session.close();
 		*/
 		/*
-		UnidadEntity test = new UnidadEntity(1,"unidad uno");
+		UnidadEntity test = new UnidadEntity("unidad uno");
 		SessionFactory sf = hbt.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -84,27 +84,31 @@ public class Servidor extends UnicastRemoteObject implements Serializable, inter
 		Estado est = null;
 		PlanDeProduccionEntity pdpe = new PlanDeProduccionEntity(est.EnProceso);
 		Date fecha = new Date("10/10/2020");
-		Integer i = new Integer("1345");
-	
 		
-		MateriaPrimaEntity mpe = new MateriaPrimaEntity(1,"desc",ue);
+		MateriaPrimaEntity mpe = new MateriaPrimaEntity("desc",ue);
 	
 		List<MateriaPrimaEntity> materiales = new ArrayList<MateriaPrimaEntity>();
 		materiales.add(mpe);
-		SemiElaboradoEntity see = new SemiElaboradoEntity(1,"tipo","calidad","desc",pdpe,i,fecha,materiales,ue);
+		SemiElaboradoEntity see = new SemiElaboradoEntity("tipo","calidad","desc",pdpe,1,fecha,materiales,ue);
 		
 		List<SemiElaboradoEntity> componentes = new ArrayList<SemiElaboradoEntity>();
 		componentes.add(see);
 		
-		ElaboradoEntity test = new ElaboradoEntity(i,"tipo","calidad","pizza",pdpe,i,fecha, ue, componentes);
+		ElaboradoEntity ee = new ElaboradoEntity("tipo","calidad","pizza",pdpe,1,fecha, ue, componentes);
+			
 		
+		List<ElaboradoEntity> elabs = new ArrayList<ElaboradoEntity>();
+		elabs.add(ee);
+		
+		PlatoEntity test = new PlatoEntity("platito",13f,elabs);
+
 		SessionFactory sf = hbt.getSessionFactory();
 		Session session = sf.openSession();
+		
 		session.beginTransaction();
 		session.save(test);
 		session.getTransaction().commit();
 		session.close();
-		
 		
 		//aca terminan pruebas de DB
 		

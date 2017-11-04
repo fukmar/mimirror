@@ -17,15 +17,22 @@ public class PlatoEntity
 	private String nombre;
 	private float precio;
 	
-	@OneToMany
-	@JoinColumn(name="codProducto")
-	private List<ProductoEntity> productoPlato;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="platoCompuestoDe",
+	joinColumns=@JoinColumn(name="codPlato",referencedColumnName="codPlato"),
+	inverseJoinColumns=@JoinColumn(name="codProducto",referencedColumnName="codProducto"))
+	private List<ElaboradoEntity> productoPlato;
 	
+	/*
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="codProducto")
+	private ElaboradoEntity productoPlato;
+	*/
 	public PlatoEntity(){}
 
-	public PlatoEntity(Integer codigo, String nombre, float precio, List<ProductoEntity> productoPlato) {
+	public PlatoEntity(String nombre, float precio, List<ElaboradoEntity> productoPlato) {
 		super();
-		this.codigo = codigo;
+	
 		this.nombre = nombre;
 		this.precio = precio;
 		this.productoPlato = productoPlato;
@@ -55,11 +62,11 @@ public class PlatoEntity
 		this.precio = precio;
 	}
 
-	public List<ProductoEntity> getProductoPlato() {
+	public List<ElaboradoEntity> getProductoPlato() {
 		return productoPlato;
 	}
 
-	public void setProductoPlato(List<ProductoEntity> productoPlato) {
+	public void setProductoPlato(List<ElaboradoEntity> productoPlato) {
 		this.productoPlato = productoPlato;
 	}
 

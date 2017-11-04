@@ -26,9 +26,9 @@ public class MateriaPrimaEntity
 	public MateriaPrimaEntity() {}
 	
 	
-	public MateriaPrimaEntity(Integer codigo, String descripcion/*, UnidadEntity unidadCompra*/, UnidadEntity unidadUso) {
+	public MateriaPrimaEntity(String descripcion, UnidadEntity unidadUso) {
 		super();
-		this.codigo = codigo;
+	
 		this.descripcion = descripcion;
 		/*this.unidadCompra = unidadCompra;*/
 		this.unidadUso = unidadUso;

@@ -10,6 +10,7 @@ import javax.persistence.*;
 public abstract class ProductoEntity 
 {
 	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	@Column(name="codProducto")
 	private Integer codigoProd;
 	
@@ -28,10 +29,10 @@ public abstract class ProductoEntity
 	
 
 
-	public ProductoEntity(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
+	public ProductoEntity(String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
 			Integer cantidad, Date caducidad) {
 		super();
-		this.codigoProd = numero;
+		
 		this.tipo = tipo;
 		this.calidad = calidad;
 		this.descripcion = descripcion;

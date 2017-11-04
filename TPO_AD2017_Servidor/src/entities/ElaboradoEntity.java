@@ -22,9 +22,9 @@ public class ElaboradoEntity extends ProductoEntity
 	public ElaboradoEntity(){}
 	
 
-	public ElaboradoEntity(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
+	public ElaboradoEntity(String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
 			Integer cantidad, Date caducidad, UnidadEntity unidad, List<SemiElaboradoEntity> componentes) {
-		super(numero, tipo, calidad, descripcion, pdp, cantidad, caducidad);
+		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.unidad = unidad;
 		this.componentes = componentes;
 	}

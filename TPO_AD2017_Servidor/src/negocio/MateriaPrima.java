@@ -11,9 +11,9 @@ public class MateriaPrima
 
 	public MateriaPrima(){}
 
-	public MateriaPrima(Integer codigo, String descripcion, Unidad unidadUso) {
+	public MateriaPrima(String descripcion, Unidad unidadUso) {
 		super();
-		this.codigo = codigo;
+		
 		this.descripcion = descripcion;
 		this.unidadUso = unidadUso;
 	}
