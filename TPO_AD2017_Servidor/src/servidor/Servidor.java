@@ -19,7 +19,7 @@ import interfazRemota.manejoNegocio;
 import negocio.PlanDeProduccion;
 import remoto.ObjetoRemoto;
 
-public class Servidor extends UnicastRemoteObject implements Serializable, interfazRemota.manejoNegocio{
+public class Servidor {
 
 	protected Servidor() throws RemoteException {
 		super();
