@@ -3,7 +3,7 @@ package hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-import entities.CartaEntity;
+import entities.*;
  
 public class hbt
 {
@@ -13,7 +13,8 @@ public class hbt
         try
         {
         	 AnnotationConfiguration config = new AnnotationConfiguration();
-             config.addAnnotatedClass(CartaEntity.class);
+             config.addAnnotatedClass(LocalEntity.class)
+             .addAnnotatedClass(PlanDeProduccionEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)

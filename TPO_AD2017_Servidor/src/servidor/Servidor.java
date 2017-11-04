@@ -7,7 +7,14 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import entities.*;
+import enumns.Estado;
+import hibernate.hbt;
 import interfazRemota.manejoNegocio;
+import negocio.PlanDeProduccion;
 import remoto.ObjetoRemoto;
 
 public class Servidor extends UnicastRemoteObject implements Serializable, interfazRemota.manejoNegocio{
@@ -29,9 +36,34 @@ public class Servidor extends UnicastRemoteObject implements Serializable, inter
 	
 		}
 	
-	
-	
-		System.out.print("OK"); 		
+		System.out.print("OK");
+		
+		//aca van pruebas de DB
+	/*	LocalEntity test = new LocalEntity(1,"aca","alla");
+		SessionFactory sf = hbt.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.save(test);
+		session.getTransaction().commit();
+		session.close();
+		*/
+		/*
+		Estado est = null;
+		PlanDeProduccionEntity test = new PlanDeProduccionEntity(1,est.EnProceso);
+		SessionFactory sf = hbt.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.save(test);
+		session.getTransaction().commit();
+		session.close();
+		*/
+		
+		
+		
+		//aca terminan pruebas de DB
+		
+		
+		
 }
 
 	
