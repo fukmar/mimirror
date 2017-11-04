@@ -17,13 +17,13 @@ public class ElaboradoEntity extends ProductoEntity
 	@JoinTable(name="compuestoDe",
 	joinColumns=@JoinColumn(name="codProductoE",referencedColumnName="codProducto"),
 	inverseJoinColumns=@JoinColumn(name="codProductoSM",referencedColumnName="codProducto"))
-	private List<ProductoEntity>componentes;
+	private List<SemiElaboradoEntity> componentes;
 	
 	public ElaboradoEntity(){}
 	
 
 	public ElaboradoEntity(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
-			Integer cantidad, Date caducidad, UnidadEntity unidad, List<ProductoEntity> componentes) {
+			Integer cantidad, Date caducidad, UnidadEntity unidad, List<SemiElaboradoEntity> componentes) {
 		super(numero, tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.unidad = unidad;
 		this.componentes = componentes;
@@ -36,10 +36,10 @@ public class ElaboradoEntity extends ProductoEntity
 	public void setUnidad(UnidadEntity unidad) {
 		this.unidad = unidad;
 	}
-	public List<ProductoEntity> getComponentes() {
+	public List<SemiElaboradoEntity> getComponentes() {
 		return componentes;
 	}
-	public void setComponentes(List<ProductoEntity> componentes) {
+	public void setComponentes(List<SemiElaboradoEntity> componentes) {
 		this.componentes = componentes;
 	}
 }

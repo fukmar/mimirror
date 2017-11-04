@@ -14,7 +14,13 @@ public class hbt
         {
         	 AnnotationConfiguration config = new AnnotationConfiguration();
              config.addAnnotatedClass(LocalEntity.class)
-             .addAnnotatedClass(PlanDeProduccionEntity.class);
+             .addAnnotatedClass(PlanDeProduccionEntity.class)
+             .addAnnotatedClass(UnidadEntity.class)
+             .addAnnotatedClass(MozoEntity.class)
+             .addAnnotatedClass(ProductoEntity.class)
+             .addAnnotatedClass(MateriaPrimaEntity.class)
+             .addAnnotatedClass(SemiElaboradoEntity.class)
+             .addAnnotatedClass(ElaboradoEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)

@@ -10,9 +10,9 @@ public class Unidad
 
 	public Unidad(){}
 
-	public Unidad(Integer codigo, String descripcion) {
+	public Unidad(String descripcion) {
 		super();
-		this.codigoUni = codigo;
+	
 		this.descripcion = descripcion;
 	}
 

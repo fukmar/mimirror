@@ -16,9 +16,9 @@ public class UnidadEntity
 	
 	public UnidadEntity() {}
 	
-	public UnidadEntity(Integer codigo, String descripcion) {
+	public UnidadEntity(String descripcion) {
 		super();
-		this.codigoUni = codigo;
+	
 		this.descripcion = descripcion;
 	}
 

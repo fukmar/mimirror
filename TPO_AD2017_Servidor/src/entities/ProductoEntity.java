@@ -17,7 +17,7 @@ public abstract class ProductoEntity
 	protected String calidad;
 	protected String descripcion;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	protected PlanDeProduccionEntity pdp;
 	
 	protected Integer cantidad;

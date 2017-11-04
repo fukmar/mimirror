@@ -9,9 +9,9 @@ public class PlanDeProduccion
 	
 	public PlanDeProduccion(){}
 	
-	public PlanDeProduccion(Integer codigoPDP, Estado estado) {
+	public PlanDeProduccion(Estado estado) {
 		super();
-		this.codigoPDP = codigoPDP;
+		
 		this.estado = estado;
 	}
 	public Integer getCodigoPDP() {

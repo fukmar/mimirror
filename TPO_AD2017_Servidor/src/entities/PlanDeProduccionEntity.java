@@ -14,9 +14,8 @@ public class PlanDeProduccionEntity
 	
 	public PlanDeProduccionEntity(){}
 	
-	public PlanDeProduccionEntity(Integer codigoPDP, Estado estado) {
+	public PlanDeProduccionEntity(Estado estado) {
 		super();
-		this.codigoPDP = codigoPDP;
 		this.estado = estado;
 	}
 	public Integer getCodigoPDP() {

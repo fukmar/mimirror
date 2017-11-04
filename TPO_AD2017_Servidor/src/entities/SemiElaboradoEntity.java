@@ -16,44 +16,29 @@ public class SemiElaboradoEntity extends ProductoEntity
 	)
 	private List<MateriaPrimaEntity> materiales;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="almacenadoComo", nullable = false)
 	private UnidadEntity unidad;
-	
-
-	@ManyToMany(mappedBy="componentes")
-	private List<ElaboradoEntity> productos;
-	
+		
 	public SemiElaboradoEntity (){}
 	
 	
 	public SemiElaboradoEntity(Integer numero, String tipo, String calidad, String descripcion,
 			PlanDeProduccionEntity pdp, Integer cantidad, Date caducidad, List<MateriaPrimaEntity> materiales,
-			UnidadEntity unidad, List<ElaboradoEntity> productos) {
+			UnidadEntity unidad) {
 		super(numero, tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.materiales = materiales;
 		this.unidad = unidad;
-		this.productos = productos;
+	
 	}
 
 
-	public List<ElaboradoEntity> getProductos() {
-		return productos;
-	}
-
-
-	public void setProductos(List<ElaboradoEntity> productos) {
-		this.productos = productos;
-	}
+	
 
 
 	public void setMateriales(List<MateriaPrimaEntity> materiales) {
 		this.materiales = materiales;
 	}
-
-
-
-
 
 	public UnidadEntity getUnidad() {
 		return unidad;
