@@ -4,7 +4,7 @@ import org.hibernate.SessionFactory;
 
 import entities.ElaboradoEntity;
 import entities.FacturaEntity;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 
 
 public class FacturaDAO {
@@ -23,7 +23,7 @@ private static FacturaDAO instancia;
 	public void save(FacturaDAO factura){
 
 	FacturaEntity fact = this.toEntity(factura);
-	SessionFactory sf = hbt.getSessionFactory();
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
 	session.save(fact);
@@ -38,7 +38,7 @@ private static FacturaDAO instancia;
 	}
 	
 	public void calcularTotal(FacturaEntity factura, float precio) {
-			SessionFactory t = hbt.getSessionFactory();
+			SessionFactory t = HibernateUtil.getSessionFactory();
 			Session session = t.openSession();
 			session.beginTransaction();
 			String senten = "UPDATE Factura SET precioTotal = ? WHERE nroFactura = ?";

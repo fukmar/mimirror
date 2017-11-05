@@ -7,7 +7,9 @@ import negocio.Plato;
 
 @Entity
 @Table(name="itemcomanda")
-public class ItemComandaEntity {
+
+public class ItemComandaEntity 
+{
 	@EmbeddedId
 	private ItemComandaId id;
 	private Integer cantidad;

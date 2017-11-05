@@ -6,11 +6,14 @@ import negocio.Comanda;
 @Entity
 @Table(name="itemsfactura")
 public class ItemFacturaEntity {
-	@Id
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer codItemFactura; 
+	
 	@OneToOne
 	@JoinColumn(name="codComanda")
-	private ComandaEntity comanda;  //segun diagrama de clases item factura se relaciona con itemcomanda.  Me parece más logico que relacionarlo con toda la comanda. 
+	private ComandaEntity comanda;  //segun diagrama de clases item factura se relaciona con itemcomanda.  Me parece más logico que relacionarlo con toda la comanda.
+	
 	@OneToOne
 	@JoinColumn(name="codItemComanda")
 	private ItemComandaEntity itemcomanda; //añadiendo esto obtendríamos la cantidad y el plato para despues hacer el subtotal

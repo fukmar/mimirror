@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 import entities.ComandaEntity;
 import entities.ElaboradoEntity;
 import entities.ItemComandaEntity;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 
 public class ComandaDAO {
 
@@ -25,7 +25,7 @@ private static ComandaDAO instancia;
 	public void save(ComandaDAO comanda){
 
 	ComandaEntity ee = this.toEntity(comanda);
-	SessionFactory sf = hbt.getSessionFactory();
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
 	session.save(ee);
@@ -41,7 +41,7 @@ private static ComandaDAO instancia;
 	
 	@SuppressWarnings("unchecked")
 	public List <ItemComandaEntity> OtenerItemComanda(int codigoComanda) {
-		SessionFactory sf = hbt.getSessionFactory();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
 		String senten = " FROM ItemComanda WHERE id.codigoComanda = ?";
@@ -50,7 +50,7 @@ private static ComandaDAO instancia;
 		return items;
 	}
 	public ComandaEntity obtenerComanda(int codComanda){
-		SessionFactory sf = hbt.getSessionFactory();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
 		String senten = " FROM Cotizacion WHERE codComanda = ?";

@@ -10,9 +10,12 @@ import javax.persistence.*;
 public class SectorEntity 
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codSector")
 	private Integer codSector;
+	
 	private String descripcion;
+	
 	@OneToMany
 	@JoinColumn(name="codMozo")
 	private List<MozoEntity> mozo;

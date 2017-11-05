@@ -14,7 +14,7 @@ import entities.PlatoEntity;
 import entities.SemiElaboradoEntity;
 import entities.UnidadEntity;
 import enumns.Estado;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 
 public class testHibernate {
 
@@ -87,7 +87,7 @@ public class testHibernate {
 		
 		PlatoEntity test = new PlatoEntity("platito",13f,elabs);
 
-		SessionFactory sf = hbt.getSessionFactory();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		
 		session.beginTransaction();

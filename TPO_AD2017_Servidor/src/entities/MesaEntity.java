@@ -3,14 +3,25 @@ package entities;
 import negocio.Comanda;
 import negocio.Mozo;
 import negocio.Sector;
+import javax.persistence.*;
 
-public class MesaEntity {
+@Entity
+@Table(name="mesas")
+public class MesaEntity 
+{
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private  Integer codMesa;
 	private  Integer cantidadPersonas;
 	private  Integer capacidad;
 	private  Integer estado;
 	private  Comanda comanda;
+	
+	@ManyToOne
 	private Mozo mozo;
+	
+	@OneToOne
+	@JoinColumn(name="codSector")
 	private Sector sector;
 	
 	public MesaEntity(){}

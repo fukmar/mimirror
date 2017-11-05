@@ -4,7 +4,7 @@ import org.hibernate.SessionFactory;
 
 import entities.PlatoEntity;
 import entities.UnidadEntity;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 import negocio.Plato;
 
 public class PlatoDAO {
@@ -23,7 +23,7 @@ private static PlatoDAO instancia;
 	public void save(Plato plato){
 
 	PlatoEntity pe = this.toEntity(plato);
-	SessionFactory sf = hbt.getSessionFactory();
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
 	session.save(pe);

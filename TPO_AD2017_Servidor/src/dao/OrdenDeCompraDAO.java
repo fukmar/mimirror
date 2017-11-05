@@ -3,7 +3,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.OrdenDeCompraEntity;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 import negocio.OrdenDeCompra;
 
 public class OrdenDeCompraDAO {
@@ -21,7 +21,7 @@ public class OrdenDeCompraDAO {
 	public void save(OrdenDeCompraDAO ordenDeCompra){
 
 	OrdenDeCompraDAO orDeCom = this.toEntity(ordenDeCompra);
-	SessionFactory sf = hbt.getSessionFactory();
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
 	session.save(orDeCom);

@@ -14,7 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import entities.*;
 import enumns.Estado;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 import interfazRemota.manejoNegocio;
 import negocio.PlanDeProduccion;
 import remoto.ObjetoRemoto;

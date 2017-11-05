@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.RemitoEntity;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 import negocio.Remito;
 
 
@@ -23,7 +23,7 @@ public class RemitoDAO {
 	public void save(RemitoDAO remito){
 
 	RemitoDAO rem = this.toEntity(remito);
-	SessionFactory sf = hbt.getSessionFactory();
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
 	session.save(rem);

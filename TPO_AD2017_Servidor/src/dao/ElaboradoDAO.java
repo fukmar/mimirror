@@ -6,7 +6,7 @@ import entities.ElaboradoEntity;
 import entities.PlatoEntity;
 import entities.SemiElaboradoEntity;
 import entities.UnidadEntity;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 import negocio.Elaborado;
 import negocio.Plato;
 import negocio.SemiElaborado;
@@ -27,7 +27,7 @@ private static ElaboradoDAO instancia;
 	public void save(Elaborado elab){
 
 	ElaboradoEntity ee = this.toEntity(elab);
-	SessionFactory sf = hbt.getSessionFactory();
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
 	session.save(ee);

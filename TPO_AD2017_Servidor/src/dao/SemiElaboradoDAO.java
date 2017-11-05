@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import entities.PlatoEntity;
 import entities.SemiElaboradoEntity;
 import entities.UnidadEntity;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 import negocio.Plato;
 import negocio.SemiElaborado;
 
@@ -25,7 +25,7 @@ private static SemiElaboradoDAO instancia;
 	public void save(SemiElaborado semielab){
 
 	SemiElaboradoEntity see = this.toEntity(semielab);
-	SessionFactory sf = hbt.getSessionFactory();
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
 	session.save(see);

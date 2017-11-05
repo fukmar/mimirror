@@ -5,7 +5,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 import entities.*;
  
-public class hbt
+public class HibernateUtil
 {
     private static final SessionFactory sessionFactory;
     static
@@ -13,15 +13,16 @@ public class hbt
         try
         {
         	 AnnotationConfiguration config = new AnnotationConfiguration();
-             config.addAnnotatedClass(LocalEntity.class)
-             .addAnnotatedClass(PlanDeProduccionEntity.class)
-             .addAnnotatedClass(UnidadEntity.class)
-             .addAnnotatedClass(MozoEntity.class)
-             .addAnnotatedClass(ProductoEntity.class)
-             .addAnnotatedClass(MateriaPrimaEntity.class)
-             .addAnnotatedClass(SemiElaboradoEntity.class)
-             .addAnnotatedClass(ElaboradoEntity.class)
-             .addAnnotatedClass(PlatoEntity.class);
+             config.addAnnotatedClass(LocalEntity.class);
+             config.addAnnotatedClass(PlanDeProduccionEntity.class);
+             config.addAnnotatedClass(UnidadEntity.class);
+             config.addAnnotatedClass(MozoEntity.class);
+             config.addAnnotatedClass(ProductoEntity.class);
+             config.addAnnotatedClass(MateriaPrimaEntity.class);
+             config.addAnnotatedClass(SemiElaboradoEntity.class);
+             config.addAnnotatedClass(ElaboradoEntity.class);
+             config.addAnnotatedClass(PlatoEntity.class);
+             config.addAnnotatedClass(SectorEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)

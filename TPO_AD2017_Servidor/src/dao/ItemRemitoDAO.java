@@ -3,7 +3,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.ItemRemitoEntity;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 import negocio.ItemRemito;
 
 public class ItemRemitoDAO {
@@ -21,7 +21,7 @@ public class ItemRemitoDAO {
 	public void save(ItemRemitoDAO itemRemito){
 
 	ItemRemitoDAO ir = this.toEntity(itemRemito);
-	SessionFactory sf = hbt.getSessionFactory();
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
 	session.save(ir);

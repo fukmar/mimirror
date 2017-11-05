@@ -7,7 +7,7 @@ import entities.ItemComandaEntity;
 import entities.PlatoEntity;
 import entities.SemiElaboradoEntity;
 import entities.UnidadEntity;
-import hibernate.hbt;
+import hibernate.HibernateUtil;
 import negocio.Elaborado;
 import negocio.Plato;
 import negocio.SemiElaborado;
@@ -28,7 +28,7 @@ private static ItemComandaDAO instancia;
 	public void save(ItemComandaDAO itemcomanda){
 
 	ItemComandaEntity ic = this.toEntity(itemcomanda);
-	SessionFactory sf = hbt.getSessionFactory();
+	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
 	session.save(ic);
