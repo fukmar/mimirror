@@ -22,7 +22,7 @@ public class testHibernate {
 	public static void main(String[] args) 
 	{
 		
-		hbt.getSessionFactory();
+		
 		
 		/*
 		 * 	//aca van pruebas de DB
@@ -61,7 +61,7 @@ public class testHibernate {
 		session.save(test);
 		session.getTransaction().commit();
 		session.close();
-		
+		*/
 		
 		
 		UnidadEntity ue = new UnidadEntity("gramos");
@@ -96,8 +96,8 @@ public class testHibernate {
 		session.close();
 		
 		//aca terminan pruebas de DB
-		 * 
-		 * /*
+		  
+		  /*
  	public List<DTO> funcion() throws RemoteException {
 		// TODO Auto-generated method stub
 		return manejoNegocio.getInstance().getUnidades();
@@ -105,7 +105,7 @@ public class testHibernate {
  
  */
 		
-		 **/
+		
 	}
 
 }
