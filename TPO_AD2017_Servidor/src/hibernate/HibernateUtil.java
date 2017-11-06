@@ -13,7 +13,6 @@ public class HibernateUtil
         try
         {
         	 AnnotationConfiguration config = new AnnotationConfiguration();
-             config.addAnnotatedClass(LocalEntity.class);
              config.addAnnotatedClass(PlanDeProduccionEntity.class);
              config.addAnnotatedClass(UnidadEntity.class);
              config.addAnnotatedClass(MozoEntity.class);
@@ -22,14 +21,7 @@ public class HibernateUtil
              config.addAnnotatedClass(SemiElaboradoEntity.class);
              config.addAnnotatedClass(ElaboradoEntity.class);
              config.addAnnotatedClass(PlatoEntity.class);
-             config.addAnnotatedClass(SectorEntity.class);
-             config.addAnnotatedClass(MesaEntity.class);
-             config.addAnnotatedClass(ComandaEntity.class);
              config.addAnnotatedClass(ItemComandaEntity.class);
-             config.addAnnotatedClass(ItemFacturaEntity.class);
-             config.addAnnotatedClass(FacturaEntity.class);
-             config.addAnnotatedClass(AreaRestaurantEntity.class);
-             config.addAnnotatedClass(CajaEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)
