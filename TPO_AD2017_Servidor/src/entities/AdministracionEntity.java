@@ -2,7 +2,7 @@ package entities;
 import javax.persistence.*;
 
 import negocio.PlanDeProduccion;
-import enumns.AreaRest;
+import enumns.*;
 import java.util.*;
 
 @Entity

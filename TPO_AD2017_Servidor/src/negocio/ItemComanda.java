@@ -15,9 +15,9 @@ public class ItemComanda {
 		
 	}
 	
-	public ItemComanda(Integer codItemComanda, Plato plato, Integer cantidad) {
+	public ItemComanda(Plato plato, Integer cantidad) {
 		super();
-		this.codItemComanda = codItemComanda;
+
 		this.plato = plato;
 		this.cantidad = cantidad;
 	}

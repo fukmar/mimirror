@@ -19,17 +19,16 @@ public class ItemComandaEntity
 	private Integer coditemComanda;
 	private Integer cantidad;
 	
-	@OneToOne
-	@PrimaryKeyJoinColumn
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="codPlato")
 	private PlatoEntity plato;
 	
 	public ItemComandaEntity()
 	{	
 	}
 
-	public ItemComandaEntity(Integer coditemComanda, Integer cantidad, PlatoEntity plato) {
+	public ItemComandaEntity(Integer cantidad, PlatoEntity plato) {
 		super();
-		this.coditemComanda = coditemComanda;
 		this.cantidad = cantidad;
 		this.plato = plato;
 	}

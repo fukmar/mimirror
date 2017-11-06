@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.ElaboradoEntity;
+import entities.ItemComandaEntity;
 import entities.MateriaPrimaEntity;
 import entities.PlanDeProduccionEntity;
 import entities.PlatoEntity;
@@ -85,13 +86,14 @@ public class testHibernate {
 		List<ElaboradoEntity> elabs = new ArrayList<ElaboradoEntity>();
 		elabs.add(ee);
 		
-		PlatoEntity test = new PlatoEntity("platito",13f,elabs);
+		PlatoEntity plato = new PlatoEntity("platito",13f,elabs);
 
+		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato);
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		
 		session.beginTransaction();
-		session.save(test);
+		session.save(itemCom);
 		session.getTransaction().commit();
 		session.close();
 		
