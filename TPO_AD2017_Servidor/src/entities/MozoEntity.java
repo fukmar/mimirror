@@ -13,6 +13,9 @@ public class MozoEntity {
 	private Integer dni;
 	private String nombre, apellido;
 	private Float procentajeComision;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "codSector", nullable = false)
+	private SectorEntity sector;
 	
 	public MozoEntity(){}
 	

@@ -14,10 +14,6 @@ public class MateriaPrimaEntity
 	
 	private String descripcion;
 	
-	/*@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="uniCompra")
-	private UnidadEntity unidadCompra;*/
-	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="uniUso")
 	private UnidadEntity unidadUso;

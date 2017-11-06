@@ -23,11 +23,6 @@ public class PlatoEntity
 	inverseJoinColumns=@JoinColumn(name="codProducto",referencedColumnName="codProducto"))
 	private List<ElaboradoEntity> productoPlato;
 	
-	/*
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="codProducto")
-	private ElaboradoEntity productoPlato;
-	*/
 	public PlatoEntity(){}
 
 	public PlatoEntity(String nombre, float precio, List<ElaboradoEntity> productoPlato) {

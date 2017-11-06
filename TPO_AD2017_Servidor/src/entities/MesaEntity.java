@@ -1,6 +1,7 @@
 package entities;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,6 +28,10 @@ public class MesaEntity
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codMozo")
 	private MozoEntity mozo;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "codSector", nullable = false)
+	private SectorEntity sector;
 	
 	public MesaEntity(){}
 	

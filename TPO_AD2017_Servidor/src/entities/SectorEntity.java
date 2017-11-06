@@ -14,10 +14,10 @@ public class SectorEntity
 	@Column(name="codSector")
 	private Integer codSector;
 	private String descripcion;
-	@OneToMany
+	@OneToMany(mappedBy="sector")
 	@JoinColumn(name="codMozo")
 	private List<MozoEntity> mozo;
-	@OneToMany
+	@OneToMany(mappedBy="sector")
 	@JoinColumn(name="codMesa")
 	private List<MesaEntity> mesa;
 	
