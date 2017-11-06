@@ -15,13 +15,19 @@ public class HibernateUtil
         	 AnnotationConfiguration config = new AnnotationConfiguration();
              config.addAnnotatedClass(PlanDeProduccionEntity.class);
              config.addAnnotatedClass(UnidadEntity.class);
-             config.addAnnotatedClass(MozoEntity.class);
              config.addAnnotatedClass(ProductoEntity.class);
              config.addAnnotatedClass(MateriaPrimaEntity.class);
              config.addAnnotatedClass(SemiElaboradoEntity.class);
              config.addAnnotatedClass(ElaboradoEntity.class);
              config.addAnnotatedClass(PlatoEntity.class);
-             config.addAnnotatedClass(ItemComandaEntity.class);
+           //  config.addAnnotatedClass(ItemComandaEntity.class);
+           //  config.addAnnotatedClass(ComandaEntity.class);
+             config.addAnnotatedClass(MesaEntity.class);
+             config.addAnnotatedClass(MozoEntity.class);
+            config.addAnnotatedClass(SectorEntity.class);
+             
+            
+             
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)

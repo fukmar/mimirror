@@ -25,10 +25,6 @@ public class MesaEntity
 	private  Integer estado;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="codComanda")
-	private  ComandaEntity comanda;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codMozo")
 	private MozoEntity mozo;
 	
@@ -39,14 +35,13 @@ public class MesaEntity
 	public MesaEntity(){}
 	
 
-	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado,
-			ComandaEntity comanda, MozoEntity mozo, SectorEntity sector) {
+	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo, SectorEntity sector) {
 		super();
 		
 		this.cantidadPersonas = cantidadPersonas;
 		this.capacidad = capacidad;
 		this.estado = estado;
-		this.comanda = comanda;
+		
 		this.mozo = mozo;
 		this.sector = sector;
 	}
@@ -91,23 +86,6 @@ public class MesaEntity
 	public void setEstado(Integer estado) {
 		this.estado = estado;
 	}
-
-
-
-
-
-	public ComandaEntity getComanda() {
-		return comanda;
-	}
-
-
-
-
-
-	public void setComanda(ComandaEntity comanda) {
-		this.comanda = comanda;
-	}
-
 
 
 

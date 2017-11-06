@@ -12,8 +12,6 @@ import negocio.Plato;
 
 public class ItemComandaEntity 
 {
-	//@EmbeddedId
-	//private ItemComandaId id;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer coditemComanda;

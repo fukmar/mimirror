@@ -12,9 +12,9 @@ public class Sector
 	
 	public Sector(){}
 
-	public Sector(Integer codSector, String descripcion, List<Mozo> mozo) {
+	public Sector(String descripcion, List<Mozo> mozo) {
 		super();
-		this.codSector = codSector;
+	
 		this.descripcion = descripcion;
 		this.mozo = mozo;
 	}

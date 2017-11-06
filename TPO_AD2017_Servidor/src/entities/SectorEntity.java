@@ -16,15 +16,15 @@ public class SectorEntity
 	
 	private String descripcion;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="codMozo")
 	private List<MozoEntity> mozo;
 	
 	public SectorEntity(){}
 
-	public SectorEntity(Integer codSector, String descripcion, List<MozoEntity> mozo) {
+	public SectorEntity(String descripcion, List<MozoEntity> mozo) {
 		super();
-		this.codSector = codSector;
+		
 		this.descripcion = descripcion;
 		this.mozo = mozo;
 	}

@@ -9,7 +9,6 @@ import negocio.Comanda;
 public class MozoEntity {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codMozo")
 	private Integer dni;
 	private String nombre, apellido;

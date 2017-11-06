@@ -5,20 +5,20 @@ public class Mesa {
 	private  Integer cantidadPersonas;
 	private  Integer capacidad;
 	private  Integer estado;
-	private  Comanda comanda;
+
 	private Mozo mozo;
 	private Sector sector;
 	
 	public Mesa(){}
 	
-	public Mesa(Integer cantidadPersonas, Integer capacidad, Integer estado, Comanda comanda,
+	public Mesa(Integer cantidadPersonas, Integer capacidad, Integer estado,
 			Mozo mozo, Sector sector) {
 		super();
 		
 		this.cantidadPersonas = cantidadPersonas;
 		this.capacidad = capacidad;
 		this.estado = estado;
-		this.comanda = comanda;
+		
 		this.mozo = mozo;
 		this.sector = sector;
 	}
@@ -55,14 +55,7 @@ public class Mesa {
 		this.estado = estado;
 	}
 
-	public Comanda getComanda() {
-		return comanda;
-	}
-
-	public void setComanda(Comanda comanda) {
-		this.comanda = comanda;
-	}
-
+	
 	public Mozo getMozo() {
 		return mozo;
 	}

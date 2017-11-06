@@ -7,13 +7,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import entities.ElaboradoEntity;
-import entities.ItemComandaEntity;
-import entities.MateriaPrimaEntity;
-import entities.PlanDeProduccionEntity;
-import entities.PlatoEntity;
-import entities.SemiElaboradoEntity;
-import entities.UnidadEntity;
+import entities.*;
+
 import enumns.Estado;
 import hibernate.HibernateUtil;
 
@@ -81,7 +76,6 @@ public class testHibernate {
 		componentes.add(see);
 		
 		ElaboradoEntity ee = new ElaboradoEntity("tipo","calidad","pizza",pdpe,1,fecha, ue, componentes);
-			
 		
 		List<ElaboradoEntity> elabs = new ArrayList<ElaboradoEntity>();
 		elabs.add(ee);
@@ -89,11 +83,26 @@ public class testHibernate {
 		PlatoEntity plato = new PlatoEntity("platito",13f,elabs);
 
 		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato);
+		
+		List<ItemComandaEntity> itemcomanditas = new ArrayList<ItemComandaEntity>();
+		itemcomanditas.add(itemCom);
+		
+		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",80.4f);
+		
+		List<MozoEntity> mocitos = new ArrayList<MozoEntity>();
+		mocitos.add(mozo);
+	
+		SectorEntity sector = new SectorEntity("sectorcito",mocitos);
+		
+		MesaEntity mesita = new MesaEntity(0,15,0,mozo,sector);
+		
+		ComandaEntity comandita = new ComandaEntity(mozo, mesita, itemcomanditas);
+		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		
 		session.beginTransaction();
-		session.save(itemCom);
+		session.save(mesita);
 		session.getTransaction().commit();
 		session.close();
 		
