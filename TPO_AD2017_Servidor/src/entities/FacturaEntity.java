@@ -35,7 +35,7 @@ public class FacturaEntity
 	private List<ItemFacturaEntity> itemFactura;
 	
 	@OneToOne
-	@JoinColumn(name="codMesa")
+	@PrimaryKeyJoinColumn(name="codMesa")
 	private MesaEntity mesa;
 	
 	@OneToOne
