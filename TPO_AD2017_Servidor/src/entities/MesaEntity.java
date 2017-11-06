@@ -28,14 +28,10 @@ public class MesaEntity
 	@JoinColumn(name="codMozo")
 	private MozoEntity mozo;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="codSector")
-	private SectorEntity sector;
-	
 	public MesaEntity(){}
 	
 
-	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo, SectorEntity sector) {
+	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo) {
 		super();
 		
 		this.cantidadPersonas = cantidadPersonas;
@@ -43,7 +39,7 @@ public class MesaEntity
 		this.estado = estado;
 		
 		this.mozo = mozo;
-		this.sector = sector;
+		
 	}
 
 
@@ -102,21 +98,6 @@ public class MesaEntity
 		this.mozo = mozo;
 	}
 
-
-
-
-
-	public SectorEntity getSector() {
-		return sector;
-	}
-
-
-
-
-
-	public void setSector(SectorEntity sector) {
-		this.sector = sector;
-	}
 
 
 	

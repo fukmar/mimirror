@@ -17,16 +17,22 @@ public class SectorEntity
 	private String descripcion;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="codMozo")
+	@JoinColumn(name="codMozo", insertable=false,updatable=false)
 	private List<MozoEntity> mozo;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="codMesa")
+	private List<MesaEntity> mesa;
+	
 	
 	public SectorEntity(){}
 
-	public SectorEntity(String descripcion, List<MozoEntity> mozo) {
+	public SectorEntity(String descripcion, List<MozoEntity> mozo, List<MesaEntity> mesas) {
 		super();
 		
 		this.descripcion = descripcion;
 		this.mozo = mozo;
+		this.mesa = mesas;
 	}
 
 	public Integer getCodSector() {

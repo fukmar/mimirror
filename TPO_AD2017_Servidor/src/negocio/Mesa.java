@@ -7,12 +7,12 @@ public class Mesa {
 	private  Integer estado;
 
 	private Mozo mozo;
-	private Sector sector;
+
 	
 	public Mesa(){}
 	
 	public Mesa(Integer cantidadPersonas, Integer capacidad, Integer estado,
-			Mozo mozo, Sector sector) {
+			Mozo mozo) {
 		super();
 		
 		this.cantidadPersonas = cantidadPersonas;
@@ -20,7 +20,7 @@ public class Mesa {
 		this.estado = estado;
 		
 		this.mozo = mozo;
-		this.sector = sector;
+	
 	}
 
 	public Integer getCodMesa() {
@@ -64,13 +64,7 @@ public class Mesa {
 		this.mozo = mozo;
 	}
 
-	public Sector getSector() {
-		return sector;
-	}
-
-	public void setSector(Sector sector) {
-		this.sector = sector;
-	}
+	
 	
 	
 	

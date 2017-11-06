@@ -22,7 +22,7 @@ public class HibernateUtil
              config.addAnnotatedClass(PlatoEntity.class);
            //  config.addAnnotatedClass(ItemComandaEntity.class);
            //  config.addAnnotatedClass(ComandaEntity.class);
-             config.addAnnotatedClass(MesaEntity.class);
+            config.addAnnotatedClass(MesaEntity.class);
              config.addAnnotatedClass(MozoEntity.class);
             config.addAnnotatedClass(SectorEntity.class);
              
