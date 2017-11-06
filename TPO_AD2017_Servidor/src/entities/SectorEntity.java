@@ -2,7 +2,7 @@ package entities;
 
 import java.util.List;
 
-import negocio.Mozo;
+
 import javax.persistence.*;
 @Entity
 @Table(name="sectores")

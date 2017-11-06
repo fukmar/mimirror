@@ -1,9 +1,16 @@
 package entities;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import negocio.Comanda;
-import negocio.Mozo;
-import negocio.Sector;
-import javax.persistence.*;
+
+
 
 @Entity
 @Table(name="mesas")
@@ -15,19 +22,23 @@ public class MesaEntity
 	private  Integer cantidadPersonas;
 	private  Integer capacidad;
 	private  Integer estado;
-	private  Comanda comanda;
+	
 	
 	@ManyToOne
-	private Mozo mozo;
+	private  ComandaEntity comanda;
+	
+	@ManyToOne
+	private MozoEntity mozo;
 	
 	@OneToOne
 	@JoinColumn(name="codSector")
-	private Sector sector;
+	private SectorEntity sector;
 	
 	public MesaEntity(){}
 	
-	public MesaEntity(Integer codMesa, Integer cantidadPersonas, Integer capacidad, Integer estado, Comanda comanda,
-			Mozo mozo, Sector sector) {
+
+	public MesaEntity(Integer codMesa, Integer cantidadPersonas, Integer capacidad, Integer estado,
+			ComandaEntity comanda, MozoEntity mozo, SectorEntity sector) {
 		super();
 		this.codMesa = codMesa;
 		this.cantidadPersonas = cantidadPersonas;
@@ -38,29 +49,38 @@ public class MesaEntity
 		this.sector = sector;
 	}
 
+
 	public Integer getCodMesa() {
 		return codMesa;
 	}
+
 
 	public void setCodMesa(Integer codMesa) {
 		this.codMesa = codMesa;
 	}
 
+
+
 	public Integer getCantidadPersonas() {
 		return cantidadPersonas;
 	}
+
 
 	public void setCantidadPersonas(Integer cantidadPersonas) {
 		this.cantidadPersonas = cantidadPersonas;
 	}
 
+
 	public Integer getCapacidad() {
 		return capacidad;
 	}
 
+
 	public void setCapacidad(Integer capacidad) {
 		this.capacidad = capacidad;
 	}
+
+
 
 	public Integer getEstado() {
 		return estado;
@@ -70,32 +90,55 @@ public class MesaEntity
 		this.estado = estado;
 	}
 
-	public Comanda getComanda() {
+
+
+
+
+	public ComandaEntity getComanda() {
 		return comanda;
 	}
 
-	public void setComanda(Comanda comanda) {
+
+
+
+
+	public void setComanda(ComandaEntity comanda) {
 		this.comanda = comanda;
 	}
 
-	public Mozo getMozo() {
+
+
+
+
+	public MozoEntity getMozo() {
 		return mozo;
 	}
 
-	public void setMozo(Mozo mozo) {
+
+
+
+
+	public void setMozo(MozoEntity mozo) {
 		this.mozo = mozo;
 	}
 
-	public Sector getSector() {
+
+
+
+
+	public SectorEntity getSector() {
 		return sector;
 	}
 
-	public void setSector(Sector sector) {
+
+
+
+
+	public void setSector(SectorEntity sector) {
 		this.sector = sector;
 	}
-	
-	
-	
+
+
 	
 }
 

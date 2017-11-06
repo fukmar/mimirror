@@ -16,12 +16,15 @@ public class ComandaEntity {
 	
 	@Id
 	private Integer codComanda;
+	
 	@OneToOne
 	@JoinColumn(name="dni")
 	private MozoEntity mozo;
+	
 	@OneToOne
 	@JoinColumn(name="codMesa")
 	private MesaEntity mesa;
+	
 	@OneToMany
 	@JoinColumn(name="codItemComanda")
 	private List<ItemComandaEntity> itemsComandaEntity;

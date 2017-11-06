@@ -1,5 +1,7 @@
 package entities;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 import negocio.Plato;
@@ -10,38 +12,53 @@ import negocio.Plato;
 
 public class ItemComandaEntity 
 {
-	@EmbeddedId
-	private ItemComandaId id;
+	//@EmbeddedId
+	//private ItemComandaId id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer coditemComanda;
 	private Integer cantidad;
 	
-	public ItemComandaEntity(){
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private PlatoEntity plato;
+	
+	public ItemComandaEntity()
+	{
 		
 	}
-	
 
-	public ItemComandaEntity(ItemComandaId id, Integer cantidad) {
+	public ItemComandaEntity(Integer coditemComanda, Integer cantidad, PlatoEntity plato) {
 		super();
-		this.id = id;
+		this.coditemComanda = coditemComanda;
 		this.cantidad = cantidad;
+		this.plato = plato;
 	}
 
-
-	public ItemComandaId getId() {
-		return id;
+	public Integer getCoditemComanda() {
+		return coditemComanda;
 	}
 
-
-	public void setId(ItemComandaId id) {
-		this.id = id;
+	public void setCoditemComanda(Integer coditemComanda) {
+		this.coditemComanda = coditemComanda;
 	}
-
 
 	public Integer getCantidad() {
 		return cantidad;
 	}
+
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
 	}
 
+	public PlatoEntity getPlato() {
+		return plato;
+	}
+
+	public void setPlato(PlatoEntity plato) {
+		this.plato = plato;
+	}
+	
+	
 	
 }

@@ -23,6 +23,9 @@ public class HibernateUtil
              config.addAnnotatedClass(ElaboradoEntity.class);
              config.addAnnotatedClass(PlatoEntity.class);
              config.addAnnotatedClass(SectorEntity.class);
+             config.addAnnotatedClass(MesaEntity.class);
+             config.addAnnotatedClass(ComandaEntity.class);
+             config.addAnnotatedClass(ItemComandaEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)

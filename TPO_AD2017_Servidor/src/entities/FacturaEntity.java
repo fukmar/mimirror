@@ -19,19 +19,25 @@ public class FacturaEntity
 	@Id
 	@Column(name="codFactura")
 	private Integer codFactura;
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="codComanda")
 	private List<ComandaEntity> comandas;
+	
 	private Date fecha;
 	private float importe;
+	
 	@Enumerated(EnumType.STRING)
 	private MedioDePago medioPago;
+	
 	@OneToMany(cascade= CascadeType.ALL)
 	@JoinColumn(name="codItemFactura")
 	private List<ItemFacturaEntity> itemFactura;
+	
 	@OneToOne
 	@JoinColumn(name="codMesa")
 	private MesaEntity mesa;
+	
 	@OneToOne
 	@JoinColumn(name="dni")
 	private MozoEntity mozo;
