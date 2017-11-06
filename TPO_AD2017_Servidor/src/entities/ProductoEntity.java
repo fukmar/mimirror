@@ -123,7 +123,7 @@ public abstract class ProductoEntity
 		this.caducidad = caducidad;
 	}
 
-
+/*
 
 
 	@Override
@@ -156,5 +156,5 @@ public abstract class ProductoEntity
 		} else if (!codigoProd.equals(other.codigoProd))
 			return false;
 		return true;
-	}
+	}*/
 }

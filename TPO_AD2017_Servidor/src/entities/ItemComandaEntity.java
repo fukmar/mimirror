@@ -24,8 +24,7 @@ public class ItemComandaEntity
 	private PlatoEntity plato;
 	
 	public ItemComandaEntity()
-	{
-		
+	{	
 	}
 
 	public ItemComandaEntity(Integer coditemComanda, Integer cantidad, PlatoEntity plato) {

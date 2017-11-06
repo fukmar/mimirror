@@ -28,6 +28,8 @@ public class HibernateUtil
              config.addAnnotatedClass(ItemComandaEntity.class);
              config.addAnnotatedClass(ItemFacturaEntity.class);
              config.addAnnotatedClass(FacturaEntity.class);
+             config.addAnnotatedClass(AreaRestaurantEntity.class);
+             config.addAnnotatedClass(CajaEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)

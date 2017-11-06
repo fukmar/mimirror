@@ -103,6 +103,26 @@ public class testHibernate {
 		return manejoNegocio.getInstance().getUnidades();
 	}
  
+ *****************
+ *Mapeadas
+ *sector
+ *Mesa
+ *Factura
+ *itemFactura
+ *Comanda
+ *ItemComanda
+ *cajas
+ *arearestaurant
+ *
+ *
+ *Hay que revisar varias cosas:
+ *Comanda es un OneToMany pero lo mapeao como un one to one con item comanda, no se por que
+ *revisar mesa factura (tiene que ser 1:1) y no sale asi
+ *item facutra item comanda (para mi es 1:1 pero vos pusiste otra cosa en el codigo)
+ *e item comanda con plato que tambien es 1:1 pero no lo dibuja asi
+ *hay algo rarisimo en arearestaurant pero ma;ana lo veo
+ 
+ 
  */
 		
 		
