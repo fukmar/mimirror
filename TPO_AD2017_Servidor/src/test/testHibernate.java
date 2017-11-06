@@ -97,7 +97,7 @@ public class testHibernate {
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
 	
-		SectorEntity sector = new SectorEntity("sectorcito",mocitos, mesitas);
+		SectorEntity sector = new SectorEntity("sectorcitooooo",mocitos, mesitas);
 			
 		//ComandaEntity comandita = new ComandaEntity(mozo, mesita, itemcomanditas);
 		
@@ -106,6 +106,7 @@ public class testHibernate {
 		
 		session.beginTransaction();
 		session.save(sector);
+		
 		session.getTransaction().commit();
 		session.close();
 		

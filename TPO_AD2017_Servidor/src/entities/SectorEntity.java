@@ -13,17 +13,13 @@ public class SectorEntity
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codSector")
 	private Integer codSector;
-	
 	private String descripcion;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="codMozo", insertable=false,updatable=false)
+	@OneToMany
+	@JoinColumn(name="codMozo")
 	private List<MozoEntity> mozo;
-	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	@JoinColumn(name="codMesa")
 	private List<MesaEntity> mesa;
-	
 	
 	public SectorEntity(){}
 
@@ -58,4 +54,6 @@ public class SectorEntity
 	public void setMozo(List<MozoEntity> mozo) {
 		this.mozo = mozo;
 	}
+	
+
 }
