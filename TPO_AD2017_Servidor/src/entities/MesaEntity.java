@@ -1,4 +1,5 @@
 package entities;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,24 +24,25 @@ public class MesaEntity
 	private  Integer capacidad;
 	private  Integer estado;
 	
-	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="codComanda")
 	private  ComandaEntity comanda;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="codMozo")
 	private MozoEntity mozo;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codSector")
 	private SectorEntity sector;
 	
 	public MesaEntity(){}
 	
 
-	public MesaEntity(Integer codMesa, Integer cantidadPersonas, Integer capacidad, Integer estado,
+	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado,
 			ComandaEntity comanda, MozoEntity mozo, SectorEntity sector) {
 		super();
-		this.codMesa = codMesa;
+		
 		this.cantidadPersonas = cantidadPersonas;
 		this.capacidad = capacidad;
 		this.estado = estado;

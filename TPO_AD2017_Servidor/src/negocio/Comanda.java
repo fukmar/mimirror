@@ -9,9 +9,8 @@ public class Comanda {
 	private Mesa mesa;
 	private List<ItemComanda> itemsComanda;
 	
-	public Comanda(Integer codComanda, Mozo mozo, Mesa mesa, List<ItemComanda> itemsComanda) {
+	public Comanda(Mozo mozo, Mesa mesa, List<ItemComanda> itemsComanda) {
 		super();
-		this.codComanda = codComanda;
 		this.mozo = mozo;
 		this.mesa = mesa;
 		this.itemsComanda = itemsComanda;

@@ -11,10 +11,10 @@ public class Mesa {
 	
 	public Mesa(){}
 	
-	public Mesa(Integer codMesa, Integer cantidadPersonas, Integer capacidad, Integer estado, Comanda comanda,
+	public Mesa(Integer cantidadPersonas, Integer capacidad, Integer estado, Comanda comanda,
 			Mozo mozo, Sector sector) {
 		super();
-		this.codMesa = codMesa;
+		
 		this.cantidadPersonas = cantidadPersonas;
 		this.capacidad = capacidad;
 		this.estado = estado;

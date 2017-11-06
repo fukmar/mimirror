@@ -15,26 +15,26 @@ import entities.FacturaEntity;
 public class ComandaEntity {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer codComanda;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="dni")
 	private MozoEntity mozo;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codMesa")
 	private MesaEntity mesa;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="codItemComanda")
 	private List<ItemComandaEntity> itemsComandaEntity;
 	
 
 	
-	public ComandaEntity(Integer codComanda, MozoEntity mozo, MesaEntity mesa,
+	public ComandaEntity(MozoEntity mozo, MesaEntity mesa,
 			List<ItemComandaEntity> itemsComandaEntity) {
 		super();
-		this.codComanda = codComanda;
 		this.mozo = mozo;
 		this.mesa = mesa;
 		this.itemsComandaEntity = itemsComandaEntity;
