@@ -105,7 +105,9 @@ public class testHibernate {
 	
 		MedioDePago mpago = null;
 		
-		FacturaEntity facturita = new FacturaEntity(comanditas,fecha,12f,mpago.Credito,ITEMFACTURA,mesita,mozo)
+		//ItemFacturaEntity itemfacturita = new ItemFacturaEntity()
+		
+		//FacturaEntity facturita = new FacturaEntity(comanditas,fecha,12f,mpago.Credito,ITEMFACTURA,mesita,mozo)
 		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
