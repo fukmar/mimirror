@@ -29,7 +29,7 @@ public class MesaEntity
 	@JoinColumn(name="codMozo")
 	private MozoEntity mozo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "codSector", nullable = false)
 	private SectorEntity sector;
 	

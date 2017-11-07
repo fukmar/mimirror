@@ -13,19 +13,19 @@ public class MozoEntity {
 	private Integer dni;
 	private String nombre, apellido;
 	private Float procentajeComision;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "codSector", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "codSector")
 	private SectorEntity sector;
 	
 	public MozoEntity(){}
 	
-	public MozoEntity(Integer dni, String nombre, String apellido, Float procentajeComision) {
+	public MozoEntity(Integer dni, String nombre, String apellido, Float procentajeComision, SectorEntity sector) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.procentajeComision = procentajeComision;
-		
+		this.sector = sector;
 	}
 
 	public Integer getDni() {

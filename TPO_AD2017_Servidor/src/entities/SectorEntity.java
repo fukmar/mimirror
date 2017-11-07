@@ -23,12 +23,12 @@ public class SectorEntity
 	
 	public SectorEntity(){}
 
-	public SectorEntity(String descripcion, List<MozoEntity> mozo, List<MesaEntity> mesas) {
+	public SectorEntity(String descripcion) {
 		super();
 		
 		this.descripcion = descripcion;
-		this.mozo = mozo;
-		this.mesa = mesas;
+		//this.mozo = mozo;
+		//this.mesa = mesas;
 	}
 
 	public Integer getCodSector() {

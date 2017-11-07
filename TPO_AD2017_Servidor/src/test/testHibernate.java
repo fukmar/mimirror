@@ -87,7 +87,10 @@ public class testHibernate {
 		List<ItemComandaEntity> itemcomanditas = new ArrayList<ItemComandaEntity>();
 		itemcomanditas.add(itemCom);
 		
-		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",80.4f);
+		SectorEntity sector = new SectorEntity("sectorcitooosjkdhefkehoo");
+		
+		
+		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",80.4f, sector);
 		
 		List<MozoEntity> mocitos = new ArrayList<MozoEntity>();
 		mocitos.add(mozo);
@@ -97,15 +100,15 @@ public class testHibernate {
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
 	
-		SectorEntity sector = new SectorEntity("sectorcitooooo",mocitos, mesitas);
 			
-		//ComandaEntity comandita = new ComandaEntity(mozo, mesita, itemcomanditas);
+		ComandaEntity comandita = new ComandaEntity(mozo, mesita, itemcomanditas);
 		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		
 		session.beginTransaction();
-		session.save(sector);
+	    session.save(sector);
+		session.save(mozo);
 		
 		session.getTransaction().commit();
 		session.close();
