@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import entities.*;
 
 import enumns.Estado;
+import enumns.MedioDePago;
 import hibernate.HibernateUtil;
 
 public class testHibernate {
@@ -59,7 +60,7 @@ public class testHibernate {
 		session.close();
 		*/
 		
-	/*	
+
 		UnidadEntity ue = new UnidadEntity("gramos");
 	
 		Estado est = null;
@@ -81,11 +82,6 @@ public class testHibernate {
 		elabs.add(ee);
 		
 		PlatoEntity plato = new PlatoEntity("platito",13f,elabs);
-
-		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato);
-		
-		List<ItemComandaEntity> itemcomanditas = new ArrayList<ItemComandaEntity>();
-		itemcomanditas.add(itemCom);*/
 		
 		SectorEntity sector = new SectorEntity("sectorcitooosjkdhefkehoo");
 		
@@ -100,17 +96,27 @@ public class testHibernate {
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
 	
-		//ComandaEntity comandita = new ComandaEntity(mozo, mesita, itemcomanditas);
+		ComandaEntity comandita = new ComandaEntity(mozo, mesita);
+		
+		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato, comandita);
+		
+		List<ComandaEntity> comanditas = new ArrayList<ComandaEntity>();
+		comanditas.add(comandita);
+	
+		MedioDePago mpago = null;
+		
+		FacturaEntity facturita = new FacturaEntity(comanditas,fecha,12f,mpago.Credito,ITEMFACTURA,mesita,mozo)
 		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		
 		session.beginTransaction();
 
-		session.save(mesita);
+		session.save(itemCom);
 		
 		session.getTransaction().commit();
 		session.close();
+		
 		
 		//aca terminan pruebas de DB
 		  

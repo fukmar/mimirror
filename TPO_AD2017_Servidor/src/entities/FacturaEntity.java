@@ -17,6 +17,7 @@ import enumns.MedioDePago;
 public class FacturaEntity 
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codFactura")
 	private Integer codFactura;
 	
@@ -46,10 +47,10 @@ public class FacturaEntity
 
 	
 
-	public FacturaEntity(Integer codFactura, List<ComandaEntity> comandas, Date fecha, float importe,
+	public FacturaEntity(List<ComandaEntity> comandas, Date fecha, float importe,
 			MedioDePago medioPago, List<ItemFacturaEntity> itemFactura, MesaEntity mesa, MozoEntity mozo) {
 		super();
-		this.codFactura = codFactura;
+	
 		this.comandas = comandas;
 		this.fecha = fecha;
 		this.importe = importe;

@@ -21,14 +21,21 @@ public class ItemComandaEntity
 	@JoinColumn(name="codPlato")
 	private PlatoEntity plato;
 	
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="codComanda")
+	private ComandaEntity comanda;
+	
+	
 	public ItemComandaEntity()
 	{	
 	}
 
-	public ItemComandaEntity(Integer cantidad, PlatoEntity plato) {
+	public ItemComandaEntity(Integer cantidad, PlatoEntity plato,ComandaEntity comanda) {
 		super();
 		this.cantidad = cantidad;
 		this.plato = plato;
+		this.comanda=comanda;
 	}
 
 	public Integer getCoditemComanda() {

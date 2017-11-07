@@ -26,18 +26,14 @@ public class ComandaEntity {
 	@JoinColumn(name="codMesa")
 	private MesaEntity mesa;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="codItemComanda")
-	private List<ItemComandaEntity> itemsComandaEntity;
+
 	
 
 	
-	public ComandaEntity(MozoEntity mozo, MesaEntity mesa,
-			List<ItemComandaEntity> itemsComandaEntity) {
+	public ComandaEntity(MozoEntity mozo, MesaEntity mesa) {
 		super();
 		this.mozo = mozo;
 		this.mesa = mesa;
-		this.itemsComandaEntity = itemsComandaEntity;
 	}
 
 	public ComandaEntity(){}
@@ -66,15 +62,6 @@ public class ComandaEntity {
 	public void setMesa(MesaEntity mesa) {
 		this.mesa = mesa;
 	}
-
-	public List<ItemComandaEntity> getItemsComandaEntity() {
-		return itemsComandaEntity;
-	}
-
-	public void setItemsComandaEntity(List<ItemComandaEntity> itemsComandaEntity) {
-		this.itemsComandaEntity = itemsComandaEntity;
-	}
-
 
 
 }
