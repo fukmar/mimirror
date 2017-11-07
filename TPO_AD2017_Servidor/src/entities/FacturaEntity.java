@@ -9,7 +9,7 @@ import dto.ComandaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.ItemFacturaDTO;
-import enumns.MedioDePago;
+import enumns.*;
 
 
 @Entity
@@ -21,9 +21,6 @@ public class FacturaEntity
 	@Column(name="codFactura")
 	private Integer codFactura;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="codComanda")
-	private List<ComandaEntity> comandas;
 	
 	private Date fecha;
 	private float importe;
@@ -31,15 +28,12 @@ public class FacturaEntity
 	@Enumerated(EnumType.STRING)
 	private MedioDePago medioPago;
 	
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="codItemFactura")
-	private List<ItemFacturaEntity> itemFactura;
 	
-	@OneToOne
+	@OneToOne(cascade= CascadeType.ALL)
 	@PrimaryKeyJoinColumn(name="codMesa")
 	private MesaEntity mesa;
 	
-	@OneToOne
+	@OneToOne(cascade= CascadeType.ALL)
 	@JoinColumn(name="dni")
 	private MozoEntity mozo;
 	
@@ -47,15 +41,12 @@ public class FacturaEntity
 
 	
 
-	public FacturaEntity(List<ComandaEntity> comandas, Date fecha, float importe,
-			MedioDePago medioPago, List<ItemFacturaEntity> itemFactura, MesaEntity mesa, MozoEntity mozo) {
+	public FacturaEntity(Date fecha, float importe,
+			MedioDePago medioPago, MesaEntity mesa, MozoEntity mozo) {
 		super();
-	
-		this.comandas = comandas;
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;
-		this.itemFactura = itemFactura;
 		this.mesa = mesa;
 		this.mozo = mozo;
 	}
@@ -68,13 +59,6 @@ public class FacturaEntity
 		this.codFactura = codFactura;
 	}
 
-	public List<ComandaEntity> getComandas() {
-		return comandas;
-	}
-
-	public void setComandas(List<ComandaEntity> comandas) {
-		this.comandas = comandas;
-	}
 
 	public Date getFecha() {
 		return fecha;
@@ -100,13 +84,6 @@ public class FacturaEntity
 		this.medioPago = medioPago;
 	}
 
-	public List<ItemFacturaEntity> getItemFactura() {
-		return itemFactura;
-	}
-
-	public void setItemFactura(List<ItemFacturaEntity> itemFactura) {
-		this.itemFactura = itemFactura;
-	}
 
 	public MesaEntity getMesa() {
 		return mesa;

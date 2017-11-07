@@ -25,6 +25,8 @@ public class HibernateUtil
              config.addAnnotatedClass(SectorEntity.class);
              config.addAnnotatedClass(MesaEntity.class);
              config.addAnnotatedClass(MozoEntity.class);
+             config.addAnnotatedClass(ItemFacturaEntity.class);
+             config.addAnnotatedClass(FacturaEntity.class);
             
              sessionFactory = config.buildSessionFactory();
         }

@@ -26,6 +26,8 @@ public class ComandaEntity {
 	@JoinColumn(name="codMesa")
 	private MesaEntity mesa;
 	
+	
+	
 
 	
 

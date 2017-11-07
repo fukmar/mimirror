@@ -103,9 +103,13 @@ public class testHibernate {
 		List<ComandaEntity> comanditas = new ArrayList<ComandaEntity>();
 		comanditas.add(comandita);
 	
-		MedioDePago mpago = null;
 		
-		//ItemFacturaEntity itemfacturita = new ItemFacturaEntity()
+		
+		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo);
+				
+		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
+		
+		
 		
 		//FacturaEntity facturita = new FacturaEntity(comanditas,fecha,12f,mpago.Credito,ITEMFACTURA,mesita,mozo)
 		
@@ -114,7 +118,7 @@ public class testHibernate {
 		
 		session.beginTransaction();
 
-		session.save(itemCom);
+		session.save(itemfacturita);
 		
 		session.getTransaction().commit();
 		session.close();

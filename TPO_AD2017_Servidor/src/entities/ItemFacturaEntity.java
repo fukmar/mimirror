@@ -10,26 +10,23 @@ public class ItemFacturaEntity {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer codItemFactura; 
 	
-	@OneToOne
-	@JoinColumn(name="codComanda")
-	private ComandaEntity comanda;  //segun diagrama de clases item factura se relaciona con itemcomanda.  Me parece más logico que relacionarlo con toda la comanda.
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codItemComanda")
 	private ItemComandaEntity itemcomanda; //añadiendo esto obtendríamos la cantidad y el plato para despues hacer el subtotal
 	
-	public ItemFacturaEntity(Integer codItemFactura, ComandaEntity comanda, ItemComandaEntity itemcomanda) {
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="codFactura")
+	private FacturaEntity factura;
+	
+	
+	public ItemFacturaEntity(ItemComandaEntity itemcomanda, FacturaEntity factura) {
 		super();
-		this.codItemFactura = codItemFactura;
-		this.comanda = comanda;
 		this.itemcomanda = itemcomanda;
+		this.factura=factura;
 	}
 
-	public ItemFacturaEntity(Integer codItemFactura, ComandaEntity comanda) {
-		super();
-		this.codItemFactura = codItemFactura;
-		this.comanda = comanda;
-	}
+
 
 	public Integer getCodItemFactura() {
 		return codItemFactura;
@@ -39,13 +36,7 @@ public class ItemFacturaEntity {
 		this.codItemFactura = codItemFactura;
 	}
 
-	public ComandaEntity getComanda() {
-		return comanda;
-	}
 
-	public void setComanda(ComandaEntity comanda) {
-		this.comanda = comanda;
-	}
 
 	public ItemComandaEntity getItemcomanda() {
 		return itemcomanda;
@@ -55,6 +46,20 @@ public class ItemFacturaEntity {
 		this.itemcomanda = itemcomanda;
 	}
 
+
+
+	public FacturaEntity getFactura() {
+		return factura;
+	}
+
+
+
+	public void setFactura(FacturaEntity factura) {
+		this.factura = factura;
+	}
+
+	
+	
 	
 	
 }
