@@ -100,7 +100,6 @@ public class testHibernate {
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
 	
-			
 		ComandaEntity comandita = new ComandaEntity(mozo, mesita, itemcomanditas);
 		
 		SessionFactory sf = HibernateUtil.getSessionFactory();

@@ -13,7 +13,7 @@ public class MozoEntity {
 	private Integer dni;
 	private String nombre, apellido;
 	private Float procentajeComision;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "codSector")
 	private SectorEntity sector;
 	
