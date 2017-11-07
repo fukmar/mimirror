@@ -14,12 +14,7 @@ public class SectorEntity
 	@Column(name="codSector")
 	private Integer codSector;
 	private String descripcion;
-	@OneToMany(mappedBy="sector")
-	@JoinColumn(name="codMozo")
-	private List<MozoEntity> mozo;
-	@OneToMany(mappedBy="sector")
-	@JoinColumn(name="codMesa")
-	private List<MesaEntity> mesa;
+	
 	
 	public SectorEntity(){}
 
@@ -47,13 +42,7 @@ public class SectorEntity
 		this.descripcion = descripcion;
 	}
 
-	public List<MozoEntity> getMozo() {
-		return mozo;
-	}
 
-	public void setMozo(List<MozoEntity> mozo) {
-		this.mozo = mozo;
-	}
 	
 
 }

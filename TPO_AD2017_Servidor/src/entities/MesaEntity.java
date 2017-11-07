@@ -30,19 +30,19 @@ public class MesaEntity
 	private MozoEntity mozo;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "codSector", nullable = false)
+	@JoinColumn(name = "codSector")
 	private SectorEntity sector;
 	
 	public MesaEntity(){}
 	
 
-	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo) {
+	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo,SectorEntity sector) {
 		super();
 		
 		this.cantidadPersonas = cantidadPersonas;
 		this.capacidad = capacidad;
 		this.estado = estado;
-		
+		this.sector=sector;
 		this.mozo = mozo;
 		
 	}
