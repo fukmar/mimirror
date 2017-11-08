@@ -1,9 +1,13 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 import javax.persistence.*;
+
+import negocio.Elaborado;
+import negocio.Plato;
 
 
 @Entity
@@ -63,6 +67,21 @@ public class PlatoEntity
 
 	public void setProductoPlato(List<ElaboradoEntity> productoPlato) {
 		this.productoPlato = productoPlato;
+	}
+
+	public Plato toNegocio() 
+	{
+		Plato p=new Plato();
+		p.setCodigo(codigo);
+		p.setNombre(nombre);
+		p.setPrecio(precio);
+		List<Elaborado> elab=new ArrayList<Elaborado>();
+		for(ElaboradoEntity pp: productoPlato )
+		{
+			elab.add(pp.toNegocio());
+		}
+		p.setProductoPlato(elab);
+		return p;
 	}
 
 }

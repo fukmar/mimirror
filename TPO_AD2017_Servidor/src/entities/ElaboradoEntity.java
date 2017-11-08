@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
+import negocio.Elaborado;
+
 @Entity
 @Table(name="elaborados")
 public class ElaboradoEntity extends ProductoEntity 
@@ -41,5 +43,14 @@ public class ElaboradoEntity extends ProductoEntity
 	}
 	public void setComponentes(List<SemiElaboradoEntity> componentes) {
 		this.componentes = componentes;
+	}
+
+
+	public Elaborado toNegocio() 
+	{
+		Elaborado e=new Elaborado();
+		e.setUnidad(unidad.toNegocio());
+		//componentes
+		return null;
 	}
 }
