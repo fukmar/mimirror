@@ -34,7 +34,7 @@ public class CocinaEntity extends AreaRestaurantEntity{
 	public CocinaEntity(Integer codArea, AreaRest area, List<PlatoEntity> platos,
 			Date horasPrepInternas, List<SemiElaboradoEntity> semiElaborados,
 			List<ProductoEntity> estimadoDiario) {
-		super(codArea, area);
+		super(area);
 		this.platos = platos;
 		this.horasPrepInternas = horasPrepInternas;
 		this.semiElaborados = semiElaborados;

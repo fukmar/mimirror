@@ -29,7 +29,7 @@ public class testHibernate {
 		List<AreaRestaurantEntity> areas = new ArrayList<AreaRestaurantEntity>();
 		AreaRest a = null;
 		
-		SalonEntity salon =  new SalonEntity(1,a.salon,"salon",sectores);	
+		SalonEntity salon =  new SalonEntity(a.salon,"salon",sectores);	
 		
 		areas.add(salon);
 		

@@ -10,7 +10,8 @@ import enumns.AreaRest;
 public abstract class AreaRestaurantEntity {
 
 	@Id
-	@Column(name="codAreaRestaurant",nullable=false)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="codAreaRestaurant")
 	protected Integer codArea;
 	
 	@Enumerated(EnumType.STRING)
@@ -20,9 +21,9 @@ public abstract class AreaRestaurantEntity {
 		
 	}
 
-	public AreaRestaurantEntity(Integer codArea, AreaRest area) {
+	public AreaRestaurantEntity(AreaRest area) {
 		super();
-		this.codArea = codArea;
+		
 		this.area = area;
 	}
 

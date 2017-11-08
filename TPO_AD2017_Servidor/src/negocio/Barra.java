@@ -13,7 +13,7 @@ public class Barra extends AreaRestaurant {
 	}
 
 	public Barra(Integer codArea, AreaRest area, List<Producto> estimadoDiario) {
-		super(codArea, area);
+		super(area);
 		this.estimadoDiario = estimadoDiario;
 	}
 

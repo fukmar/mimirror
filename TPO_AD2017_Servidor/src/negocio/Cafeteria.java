@@ -9,7 +9,7 @@ public class Cafeteria extends AreaRestaurant {
 
 	public Cafeteria(Integer codArea, AreaRest area,
 			List<Producto> estimadoDiario) {
-		super(codArea, area);
+		super(area);
 		this.estimadoDiario = estimadoDiario;
 	}
 

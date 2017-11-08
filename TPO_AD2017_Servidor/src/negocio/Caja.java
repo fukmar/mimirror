@@ -16,7 +16,7 @@ public class Caja extends AreaRestaurant
 	
 	
 	public Caja(Integer codArea, AreaRest area, List<Comanda> comandas, List<Factura> facturas) {
-		super(codArea, area);
+		super(area);
 		this.comandas = comandas;
 		this.facturas = facturas;
 	}

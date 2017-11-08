@@ -16,7 +16,7 @@ public class Cocina extends AreaRestaurant {
 	public Cocina(Integer codArea, AreaRest area, List<Plato> platos,
 			Date horasPrepInternas, List<SemiElaborado> semiElaborados,
 			List<Producto> estimadoDiario) {
-		super(codArea, area);
+		super(area);
 		this.platos = platos;
 		this.horasPrepInternas = horasPrepInternas;
 		this.semiElaborados = semiElaborados;

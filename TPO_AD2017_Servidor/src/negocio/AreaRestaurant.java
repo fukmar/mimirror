@@ -12,9 +12,9 @@ public abstract class AreaRestaurant {
 		
 	}
 
-	public AreaRestaurant(Integer codArea, AreaRest area) {
+	public AreaRestaurant(AreaRest area) {
 		super();
-		this.codArea = codArea;
+		
 		this.area = area;
 	}
 

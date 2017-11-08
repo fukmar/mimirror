@@ -15,7 +15,7 @@ public class Salon extends AreaRestaurant
 	
 	public Salon(Integer codArea, AreaRest area,
 			String nombreSalon, List<Sector> sectores) {
-		super(codArea, area);
+		super(area);
 		
 		this.nombreSalon = nombreSalon;
 		this.sectores = sectores;

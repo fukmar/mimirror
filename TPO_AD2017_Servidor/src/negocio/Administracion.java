@@ -11,7 +11,7 @@ public class Administracion extends AreaRestaurant {
 
 	public Administracion(Integer codArea, AreaRest area,
 			List<PlanDeProduccion> planesProd) {
-		super(codArea, area);
+		super(area);
 		this.planesProd = planesProd;
 	}
 
