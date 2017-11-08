@@ -17,7 +17,7 @@ public class BarraEntity extends AreaRestaurantEntity {
 
 	public BarraEntity(Integer codArea, AreaRest area,
 			List<ProductoEntity> estimadoDiario) {
-		super(area);
+		super(codArea, area);
 		this.estimadoDiario = estimadoDiario;
 	}
 

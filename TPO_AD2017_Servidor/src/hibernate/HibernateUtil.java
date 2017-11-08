@@ -29,6 +29,10 @@ public class HibernateUtil
              config.addAnnotatedClass(FacturaEntity.class);
              config.addAnnotatedClass(LocalEntity.class);
              config.addAnnotatedClass(AreaRestaurantEntity.class);
+             config.addAnnotatedClass(CajaEntity.class);
+             config.addAnnotatedClass(SalonEntity.class);
+
+             
              
              
             

@@ -10,7 +10,7 @@ import enumns.AreaRest;
 public abstract class AreaRestaurantEntity {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codAreaRestaurant")
 	protected Integer codArea;
 	
@@ -21,9 +21,9 @@ public abstract class AreaRestaurantEntity {
 		
 	}
 
-	public AreaRestaurantEntity(AreaRest area) {
+	public AreaRestaurantEntity(Integer codArea,AreaRest area) {
 		super();
-		
+		this.codArea=codArea;
 		this.area = area;
 	}
 

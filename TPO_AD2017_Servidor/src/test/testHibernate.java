@@ -15,17 +15,14 @@ import hibernate.HibernateUtil;
 
 public class testHibernate {
 
-	//Hagan sus pruebas relacionadas a HIBERNATE ACA
+	//----------------------->Hagan sus pruebas relacionadas a HIBERNATE aqui <-----------------------------
 	public static void main(String[] args) 
 	{
 		
 		
 		
 		//aca van pruebas de DB
-		SectorEntity sector = new SectorEntity("sectorcito");
-		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
-		sectores.add(sector);
-		
+	/*	
 		List<AreaRestaurantEntity> areas = new ArrayList<AreaRestaurantEntity>();
 		AreaRest a = null;
 		
@@ -40,10 +37,17 @@ public class testHibernate {
 		session.save(local);
 		session.getTransaction().commit();
 		session.close();
-		
+		*/
 
+		SalonEntity salon=new SalonEntity(1,AreaRest.salon, "salon3");
 		UnidadEntity ue = new UnidadEntity("gramos");
 	
+		SectorEntity sector = new SectorEntity("sectorcito", salon);
+		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
+		sectores.add(sector);
+		
+		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon);
+		
 		Estado est = null;
 		PlanDeProduccionEntity pdpe = new PlanDeProduccionEntity(est.EnProceso);
 		Date fecha = new Date("10/10/2020");
@@ -73,21 +77,23 @@ public class testHibernate {
 		
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
-	
-		ComandaEntity comandita = new ComandaEntity(mozo, mesita);
+				
+		
+		ComandaEntity comandita = new ComandaEntity(mozo, mesita,caja);
 		
 		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato, comandita);
 		
 		List<ComandaEntity> comanditas = new ArrayList<ComandaEntity>();
 		comanditas.add(comandita);
 		
-		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo);
+		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo,caja);
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
-		//SessionFactory sf = HibernateUtil.getSessionFactory();
-		//Session session = sf.openSession();
+	
 		
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
 		session.beginTransaction();
 
 		session.save(itemfacturita);
@@ -97,7 +103,7 @@ public class testHibernate {
 		
 		
 		//aca terminan pruebas de DB
-		  
+		/*--------------->----------->separador de bajo presupuesto<------------------<------------------------*/				  
 		  /*
  	public List<DTO> funcion() throws RemoteException {
 		// TODO Auto-generated method stub
@@ -125,11 +131,14 @@ public class testHibernate {
  
  
  */
-		
-		
+/*--------------->----------->separador de bajo presupuesto<------------------<------------------------*/		
+	/*ABAJO SCRIPT PARA BORRAR TABLAS EN BASE DE DATOS,LO CORRES APUNTANDO A LA BASE Y LISTO*/	
 		
 		/*
-		 * DECLARE @Sql NVARCHAR(500) DECLARE @Cursor CURSOR
+		 * 
+		 * 
+
+ DECLARE @Sql NVARCHAR(500) DECLARE @Cursor CURSOR
 
 SET @Cursor = CURSOR FAST_FORWARD FOR
 SELECT DISTINCT sql = 'ALTER TABLE [' + tc2.TABLE_NAME + '] DROP [' + rc1.CONSTRAINT_NAME + ']'
@@ -155,6 +164,8 @@ GO
 		 * 
 		 * 
 		 */
+		
+		/*--------------->----------->separador de bajo presupuesto<------------------<------------------------*/				
 	}
 
 }

@@ -15,13 +15,18 @@ public class SectorEntity
 	private Integer codSector;
 	private String descripcion;
 	
+	@ManyToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name="codSalon")
+	private SalonEntity salon;
+	
 	
 	public SectorEntity(){}
 
-	public SectorEntity(String descripcion) {
+	public SectorEntity(String descripcion,SalonEntity salon) {
 		super();
 		
 		this.descripcion = descripcion;
+		this.salon=salon;
 		//this.mozo = mozo;
 		//this.mesa = mesas;
 	}
@@ -42,7 +47,15 @@ public class SectorEntity
 		this.descripcion = descripcion;
 	}
 
+	public SalonEntity getSalon() {
+		return salon;
+	}
 
+	public void setSalon(SalonEntity salon) {
+		this.salon = salon;
+	}
+
+	
 	
 
 }

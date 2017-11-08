@@ -3,35 +3,36 @@ package entities;
 import java.util.List;
 import javax.persistence.*;
 
+import enumns.AreaRest;
+
 @Entity
 @Table(name="cajas")
 public class CajaEntity extends AreaRestaurantEntity
 {
-	@OneToMany
-	@JoinColumn(name="codComanda")
-	private List<ComandaEntity> comandas;
-	
-	@OneToMany
-	@JoinColumn(name="codFactura")
-	private List<FacturaEntity> facturas;
+
 	
 	public CajaEntity(){}
 
-
-	public List<ComandaEntity> getComandas() {
-		return comandas;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="codSalon")
+	private SalonEntity salon;
+	
+	public CajaEntity(Integer codArea,AreaRest area,SalonEntity salon) {
+		super(codArea, area);
+		this.salon=salon;
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setComandas(List<ComandaEntity> comandas) {
-		this.comandas = comandas;
+	public SalonEntity getSalon() {
+		return salon;
 	}
 
-	public List<FacturaEntity> getFacturas() {
-		return facturas;
+	public void setSalon(SalonEntity salon) {
+		this.salon = salon;
 	}
+	
+	
+	
 
-	public void setFacturas(List<FacturaEntity> facturas) {
-		this.facturas = facturas;
-	}
-
+	
 }
