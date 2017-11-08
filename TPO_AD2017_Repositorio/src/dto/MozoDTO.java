@@ -2,27 +2,24 @@ package dto;
 
 import java.io.Serializable;
 
-public class MozoDTO implements Serializable{
 
-	/**
-	 * 
-	 */
+public class MozoDTO implements Serializable
+{
 	private static final long serialVersionUID = 1999050924715622562L;
-	
-	
 	private Integer dni;
 	private String nombre, apellido;
 	private Float procentajeComision;
+	private SectorDTO sector;
 	
 	public MozoDTO(){}
 	
-	public MozoDTO(Integer dni, String nombre, String apellido, Float procentajeComision) {
+	public MozoDTO(Integer dni, String nombre, String apellido, Float procentajeComision, SectorDTO sector) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.procentajeComision = procentajeComision;
-	
+		this.sector = sector;
 	}
 
 	public Integer getDni() {
@@ -57,8 +54,12 @@ public class MozoDTO implements Serializable{
 		this.procentajeComision = procentajeComision;
 	}
 
+	@Override
+	public String toString() {
+		return "MozoDTO [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", procentajeComision="
+				+ procentajeComision + ", sector=" + sector + "]";
+	}
 
-	
 	
 	
 }

@@ -5,7 +5,8 @@ import negocio.Comanda;
 
 @Entity
 @Table(name="itemsfactura")
-public class ItemFacturaEntity {
+public class ItemFacturaEntity 
+{
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer codItemFactura; 

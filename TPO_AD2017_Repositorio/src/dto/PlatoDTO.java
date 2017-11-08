@@ -3,23 +3,22 @@ package dto;
 import java.io.Serializable;
 import java.util.List;
 
+
+
 public class PlatoDTO implements Serializable
 {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8286502951304784350L;
 	private Integer codigo;
 	private String nombre;
 	private float precio;
-	private List<ProductoDTO> productoPlato;
+	
+
+	private List<ElaboradoDTO> productoPlato;
 	
 	public PlatoDTO(){}
 
-	public PlatoDTO(Integer codigo, String nombre, float precio, List<ProductoDTO> productoPlato) {
+	public PlatoDTO(String nombre, float precio, List<ElaboradoDTO> productoPlato) {
 		super();
-		this.codigo = codigo;
+	
 		this.nombre = nombre;
 		this.precio = precio;
 		this.productoPlato = productoPlato;
@@ -49,11 +48,11 @@ public class PlatoDTO implements Serializable
 		this.precio = precio;
 	}
 
-	public List<ProductoDTO> getProductoPlato() {
+	public List<ElaboradoDTO> getProductoPlato() {
 		return productoPlato;
 	}
 
-	public void setProductoPlato(List<ProductoDTO> productoPlato) {
+	public void setProductoPlato(List<ElaboradoDTO> productoPlato) {
 		this.productoPlato = productoPlato;
 	}
 
@@ -62,6 +61,7 @@ public class PlatoDTO implements Serializable
 		return "PlatoDTO [codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", productoPlato="
 				+ productoPlato + "]";
 	}
-	
+
+
 	
 }

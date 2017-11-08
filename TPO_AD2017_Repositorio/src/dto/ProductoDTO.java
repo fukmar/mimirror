@@ -3,29 +3,31 @@ package dto;
 import java.io.Serializable;
 import java.util.Date;
 
+
+
 public abstract class ProductoDTO implements Serializable
 {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2350516590558835345L;
-	protected Integer codigoProd;
+	private Integer codigoProd;
 	protected String tipo;
 	protected String calidad;
 	protected String descripcion;
+	
+
 	protected PlanDeProduccionDTO pdp;
+	
 	protected Integer cantidad;
 	protected Date caducidad;
 	
 	public ProductoDTO(){}
+	
+	
 
 
-
-	public ProductoDTO(Integer numero, String tipo, String calidad, String descripcion, PlanDeProduccionDTO pdp,
+	public ProductoDTO(String tipo, String calidad, String descripcion, PlanDeProduccionDTO pdp,
 			Integer cantidad, Date caducidad) {
 		super();
-		this.codigoProd = numero;
+		
 		this.tipo = tipo;
 		this.calidad = calidad;
 		this.descripcion = descripcion;
@@ -35,22 +37,24 @@ public abstract class ProductoDTO implements Serializable
 	}
 
 
-
 	public Integer getNumero() {
 		return codigoProd;
 	}
-
-
-
 	public void setNumero(Integer numero) {
 		this.codigoProd = numero;
 	}
-
-
-
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	
 	public String getTipo() {
 		return tipo;
 	}
+
 
 
 
@@ -60,9 +64,11 @@ public abstract class ProductoDTO implements Serializable
 
 
 
+
 	public String getCalidad() {
 		return calidad;
 	}
+
 
 
 
@@ -72,21 +78,11 @@ public abstract class ProductoDTO implements Serializable
 
 
 
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-
 
 	public PlanDeProduccionDTO getPdp() {
 		return pdp;
 	}
+
 
 
 
@@ -96,9 +92,11 @@ public abstract class ProductoDTO implements Serializable
 
 
 
+
 	public Integer getCantidad() {
 		return cantidad;
 	}
+
 
 
 
@@ -108,17 +106,17 @@ public abstract class ProductoDTO implements Serializable
 
 
 
+
 	public Date getCaducidad() {
 		return caducidad;
 	}
 
 
 
+
 	public void setCaducidad(Date caducidad) {
 		this.caducidad = caducidad;
 	}
-
-
 
 	@Override
 	public String toString() {
