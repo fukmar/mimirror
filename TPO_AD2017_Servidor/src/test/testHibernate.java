@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.*;
-
+import enumns.AreaRest;
 import enumns.Estado;
 import enumns.MedioDePago;
 import hibernate.HibernateUtil;
@@ -21,44 +21,25 @@ public class testHibernate {
 		
 		
 		
-		/*
-		 * 	//aca van pruebas de DB
-	/*	LocalEntity test = new LocalEntity(1,"aca","alla");
-		SessionFactory sf = hbt.getSessionFactory();
+		//aca van pruebas de DB
+		SectorEntity sector = new SectorEntity("sectorcito");
+		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
+		sectores.add(sector);
+		
+		List<AreaRestaurantEntity> areas = new ArrayList<AreaRestaurantEntity>();
+		AreaRest a = null;
+		
+		SalonEntity salon =  new SalonEntity(1,a.salon,"salon",sectores);	
+		
+		areas.add(salon);
+		
+		LocalEntity local = new LocalEntity("dir","barrio",areas);
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.save(test);
+		session.save(local);
 		session.getTransaction().commit();
 		session.close();
-		*/
-		/*
-		Estado est = null;
-		PlanDeProduccionEntity test = new PlanDeProduccionEntity(est.EnProceso);
-		SessionFactory sf = hbt.getSessionFactory();
-		Session session = sf.openSession();
-		session.beginTransaction();
-		session.save(test);
-		session.getTransaction().commit();
-		session.close();
-		*/
-		/*
-		UnidadEntity test = new UnidadEntity("unidad uno");
-		SessionFactory sf = hbt.getSessionFactory();
-		Session session = sf.openSession();
-		session.beginTransaction();
-		session.save(test);
-		session.getTransaction().commit();
-		session.close();
-		*/
-		/*
-		MozoEntity test = new MozoEntity(31575032,"Nahuelito","Grisoluble",80.4f);
-		SessionFactory sf = hbt.getSessionFactory();
-		Session session = sf.openSession();
-		session.beginTransaction();
-		session.save(test);
-		session.getTransaction().commit();
-		session.close();
-		*/
 		
 
 		UnidadEntity ue = new UnidadEntity("gramos");
@@ -82,10 +63,7 @@ public class testHibernate {
 		elabs.add(ee);
 		
 		PlatoEntity plato = new PlatoEntity("platito",13f,elabs);
-		
-		SectorEntity sector = new SectorEntity("sectorcitooosjkdhefkehoo");
-		
-		
+			
 		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",80.4f, sector);
 		
 		List<MozoEntity> mocitos = new ArrayList<MozoEntity>();
@@ -102,19 +80,13 @@ public class testHibernate {
 		
 		List<ComandaEntity> comanditas = new ArrayList<ComandaEntity>();
 		comanditas.add(comandita);
-	
-		
 		
 		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo);
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
-		
-		
-		//FacturaEntity facturita = new FacturaEntity(comanditas,fecha,12f,mpago.Credito,ITEMFACTURA,mesita,mozo)
-		
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
+		//SessionFactory sf = HibernateUtil.getSessionFactory();
+		//Session session = sf.openSession();
 		
 		session.beginTransaction();
 

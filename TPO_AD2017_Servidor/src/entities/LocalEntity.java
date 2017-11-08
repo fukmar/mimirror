@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class LocalEntity 
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codLocal")
 	private Integer codigoLocal;
 	private String direccion;
@@ -22,9 +23,9 @@ public class LocalEntity
 	public LocalEntity(){}
 
 
-	public LocalEntity(Integer codigoLocal, String direccion, String barrio, List<AreaRestaurantEntity> areas) {
+	public LocalEntity(String direccion, String barrio, List<AreaRestaurantEntity> areas) {
 		super();
-		this.codigoLocal = codigoLocal;
+	
 		this.direccion = direccion;
 		this.barrio = barrio;
 		this.areas = areas;

@@ -8,9 +8,9 @@ public class Local
 	
 	public Local(){}
 
-	public Local(Integer codigoLocal, String direccion, String barrio) {
+	public Local(String direccion, String barrio) {
 		super();
-		this.codigoLocal = codigoLocal;
+	
 		this.direccion = direccion;
 		this.barrio = barrio;
 	}

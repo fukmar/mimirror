@@ -27,6 +27,10 @@ public class HibernateUtil
              config.addAnnotatedClass(MozoEntity.class);
              config.addAnnotatedClass(ItemFacturaEntity.class);
              config.addAnnotatedClass(FacturaEntity.class);
+             config.addAnnotatedClass(LocalEntity.class);
+             config.addAnnotatedClass(AreaRestaurantEntity.class);
+             
+             
             
              sessionFactory = config.buildSessionFactory();
         }

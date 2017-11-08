@@ -13,10 +13,10 @@ public class Salon extends AreaRestaurant
 	
 	public Salon(){}
 	
-	public Salon(Integer codArea, AreaRest area, Integer codSalon,
+	public Salon(Integer codArea, AreaRest area,
 			String nombreSalon, List<Sector> sectores) {
 		super(codArea, area);
-		this.codSalon = codSalon;
+		
 		this.nombreSalon = nombreSalon;
 		this.sectores = sectores;
 	}

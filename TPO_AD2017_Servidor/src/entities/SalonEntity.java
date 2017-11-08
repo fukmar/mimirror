@@ -12,20 +12,20 @@ import enumns.AreaRest;
 public class SalonEntity extends AreaRestaurantEntity
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codSalon")
 	private Integer codSalon;
 	private String nombreSalon;
 	@OneToMany
 	@JoinColumn(name="codSector")
-	private List<Sector> sectores;
+	private List<SectorEntity> sectores;
 	
 	public SalonEntity(){}
 
 
-	public SalonEntity(Integer codArea, AreaRest area, Integer codSalon,
-			String nombreSalon, List<Sector> sectores) {
+	public SalonEntity(Integer codArea, AreaRest area,
+			String nombreSalon, List<SectorEntity> sectores) {
 		super(codArea, area);
-		this.codSalon = codSalon;
 		this.nombreSalon = nombreSalon;
 		this.sectores = sectores;
 	}
@@ -46,11 +46,11 @@ public class SalonEntity extends AreaRestaurantEntity
 		this.nombreSalon = nombreSalon;
 	}
 
-	public List<Sector> getSectores() {
+	public List<SectorEntity> getSectores() {
 		return sectores;
 	}
 
-	public void setSectores(List<Sector> sectores) {
+	public void setSectores(List<SectorEntity> sectores) {
 		this.sectores = sectores;
 	}
 }
