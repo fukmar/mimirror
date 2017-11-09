@@ -32,6 +32,9 @@ public class HibernateUtil
              config.addAnnotatedClass(CajaEntity.class);
              config.addAnnotatedClass(SalonEntity.class);
              config.addAnnotatedClass(LocalEntity.class);
+             config.addAnnotatedClass(RemitoEntity.class);
+             config.addAnnotatedClass(ItemRemitoEntity.class);
+             
 
              
 

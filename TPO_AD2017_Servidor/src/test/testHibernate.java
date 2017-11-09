@@ -93,6 +93,8 @@ public class testHibernate {
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
+		/*
+		
 		//TEST  DAO COMANDA - BUSCAR COMANDA POR CODIGO   --FUNCIONA
 		ComandaEntity resultado =new ComandaEntity();
 		resultado = ComandaDAO.getInstance().obtenerComanda(1); //FUNCIONA DAO obtener comanda
@@ -111,12 +113,23 @@ public class testHibernate {
 		platoelegido=PlatoDAO.getInstance().getPlatoPorId(8);
 		System.out.println("EL PLATO BUSCADO ES: "+platoelegido.getNombre());
 		
-		
 		// 
+		
+		*/
+		List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
+		ItemRemitoEntity itemremito = new ItemRemitoEntity(1);
+		itemsremito.add(itemremito);
+		
+		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);
+		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.save(itemfacturita);
+		session.save(remito);
+		
+		itemremito.setRemito(remito);
+		session.save(itemremito);
+		
 		session.getTransaction().commit();
 		session.close();
 		

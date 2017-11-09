@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import entities.ElaboradoEntity;
 import entities.FacturaEntity;
 import hibernate.HibernateUtil;
+import negocio.Factura;
+import negocio.ItemFactura;
 
 
 public class FacturaDAO {
@@ -38,12 +40,14 @@ private static FacturaDAO instancia;
 	}
 	
 	public Double calcularMonto(int nroFact){
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		Double monto = (Double)session.createQuery("SELECT SUM(itc.precio_monto*itp.cantidad) FROM ItemFactura itf JOIN itf.factura fac JOIN itf.item_pedido itp JOIN itp.item_carta itc WHERE fac.factura_id=? AND itp.item_no_facturar_ind=false").setInteger(0,nroFact).setFirstResult(0).setMaxResults(1).uniqueResult();
 		return monto;
 	}
 	
-	public void addItemsFactura(Item_Factura item){
+	public void addItemsFactura(ItemFactura item){
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
 		session.save(item);
@@ -54,6 +58,7 @@ private static FacturaDAO instancia;
 	
 
 	public void actualizarFactura(Factura fac){
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
 		session.save(fac);
@@ -64,6 +69,7 @@ private static FacturaDAO instancia;
 	
 
 	public Double getMontoPagos(int nroFact){
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		Double monto = (Double)session.createQuery("SELECT SUM(p.monto_total) FROM Factura f JOIN f.pagos p WHERE f.factura_id=?").setInteger(0,nroFact).setFirstResult(0).setMaxResults(1).uniqueResult();
 		return monto;
@@ -72,7 +78,7 @@ private static FacturaDAO instancia;
 	public FacturaEntity getFacturaxComanda(int idComanda){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		FacturaEntity factura= (FacturaEntity)session.createQuery("FROM ItemComandaEntity if where if.).setInteger(0,pedidoID).setFirstResult(0).setMaxResults(1).uniqueResult();
+		//FacturaEntity factura= (FacturaEntity)session.createQuery("FROM ItemComandaEntity if where if.).setInteger(0,pedidoID).setFirstResult(0).setMaxResults(1).uniqueResult();"
 		return factura;
 	} 
 	

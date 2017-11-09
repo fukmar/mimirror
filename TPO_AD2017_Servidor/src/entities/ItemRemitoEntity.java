@@ -9,20 +9,31 @@ import negocio.Producto;
 public class ItemRemitoEntity {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codItemRemito")
 	private Integer codItemRemito;
 	private Integer cantidad;
-	@OneToOne
-	@JoinColumn(name="codProducto")  
-	private ProductoEntity producto;  
+	
+	
+	public RemitoEntity getRemito() {
+		return remito;
+	}
+
+	public void setRemito(RemitoEntity remito) {
+		this.remito = remito;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="codRemito", nullable=false)
+    private RemitoEntity remito;
 		
 	public ItemRemitoEntity(){}
 
-	public ItemRemitoEntity(Integer cantidad, ProductoEntity producto, Integer codItemRemito) {
+	public ItemRemitoEntity(Integer cantidad) {
 		super();
 		this.cantidad = cantidad;
-		this.producto = producto;
-		this.codItemRemito = codItemRemito;
+	
+		//this.codItemRemito = codItemRemito;
 	}
 
 	public Integer getCantidad() {
@@ -33,14 +44,7 @@ public class ItemRemitoEntity {
 		this.cantidad = cantidad;
 	}
 
-	public ProductoEntity getProducto() {
-		return producto;
-	}
-
-	public void setProducto(ProductoEntity producto) {
-		this.producto = producto;
-	}
-
+	
 	public Integer getCodItemRemito() {
 		return codItemRemito;
 	}
@@ -48,4 +52,6 @@ public class ItemRemitoEntity {
 	public void setCodItemRemito(Integer codItemRemito) {
 		this.codItemRemito = codItemRemito;
 	}
+
+	
 }

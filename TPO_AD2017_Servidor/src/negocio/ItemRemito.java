@@ -8,11 +8,11 @@ public class ItemRemito {
 	
 	public ItemRemito(){}
 
-	public ItemRemito(Integer cantidad, Producto producto, Integer codItemRemito) {
+	public ItemRemito(Integer cantidad, Producto producto) {
 		super();
 		this.cantidad = cantidad;
 		this.producto = producto;
-		this.codItemRemito = codItemRemito;
+		
 	}
 
 	public Integer getCantidad() {
