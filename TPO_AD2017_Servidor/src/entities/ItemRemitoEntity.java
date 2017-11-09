@@ -2,6 +2,10 @@ package entities;
 
 import javax.persistence.*;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import hibernate.HibernateUtil;
 import negocio.Producto;
 
 @Entity
@@ -53,5 +57,6 @@ public class ItemRemitoEntity {
 		this.codItemRemito = codItemRemito;
 	}
 
+	
 	
 }

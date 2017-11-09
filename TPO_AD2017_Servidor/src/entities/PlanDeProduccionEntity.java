@@ -12,12 +12,23 @@ public class PlanDeProduccionEntity
 	private Integer codigoPDP;
 	private Estado estado;
 	
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="codAdministracion",nullable=false)
+	private AdministracionEntity administracion;
+	
+	
 	public PlanDeProduccionEntity(){}
 	
 	public PlanDeProduccionEntity(Estado estado) {
 		super();
 		this.estado = estado;
 	}
+	
+	public void setAdministracion(AdministracionEntity ad) {
+		this.administracion=ad;
+	}
+	
 	public Integer getCodigoPDP() {
 		return codigoPDP;
 	}

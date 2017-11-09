@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import dao.*;
 import dao.ComandaDAO;
 import dao.PlatoDAO;
 import entities.*;
@@ -116,23 +117,28 @@ public class testHibernate {
 		// 
 		
 		*/
-		List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
+		/*List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
 		ItemRemitoEntity itemremito = new ItemRemitoEntity(1);
 		itemsremito.add(itemremito);
 		
-		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);
+		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);*/
+		
+		LocalEntity local2=new LocalEntity("cerca 123", "fuerte apache");
+		
+		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(Estado.EnProceso);
+		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
+		planes.add(pdp);
+		
+		AdministracionEntity admi= new AdministracionEntity(5, AreaRest.Administracion, planes, local2);
 		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.save(remito);
-		
-		itemremito.setRemito(remito);
-		session.save(itemremito);
-		
+		AdministracionDAO.getDAO().save(admi);
+		pdp.setAdministracion(admi);
+		PlanDeProduccionDAO.getDAO().save(pdp);
 		session.getTransaction().commit();
 		session.close();
-		
 		
 		//aca terminan pruebas de DB
 		/*--------------->----------->separador de bajo presupuesto<------------------<------------------------*/				  
@@ -170,26 +176,26 @@ public class testHibernate {
 		 * 
 		 * 
 
-DECLARE @Sql NVARCHAR(500) DECLARE @Cursor CURSOR
-
-SET @Cursor = CURSOR FAST_FORWARD FOR
-SELECT DISTINCT sql = 'ALTER TABLE [' + tc2.TABLE_NAME + '] DROP [' + rc1.CONSTRAINT_NAME + ']'
-FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS rc1
-LEFT JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc2 ON tc2.CONSTRAINT_NAME =rc1.CONSTRAINT_NAME
-
-OPEN @Cursor FETCH NEXT FROM @Cursor INTO @Sql
-
-WHILE (@@FETCH_STATUS = 0)
-BEGIN
-Exec sp_executesql @Sql
-FETCH NEXT FROM @Cursor INTO @Sql
-END
-
-CLOSE @Cursor DEALLOCATE @Cursor
-GO
-
-EXEC sp_MSforeachtable 'DROP TABLE ?'
-GO
+	DECLARE @Sql NVARCHAR(500) DECLARE @Cursor CURSOR
+	
+	SET @Cursor = CURSOR FAST_FORWARD FOR
+	SELECT DISTINCT sql = 'ALTER TABLE [' + tc2.TABLE_NAME + '] DROP [' + rc1.CONSTRAINT_NAME + ']'
+	FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS rc1
+	LEFT JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc2 ON tc2.CONSTRAINT_NAME =rc1.CONSTRAINT_NAME
+	
+	OPEN @Cursor FETCH NEXT FROM @Cursor INTO @Sql
+	
+	WHILE (@@FETCH_STATUS = 0)
+	BEGIN
+	Exec sp_executesql @Sql
+	FETCH NEXT FROM @Cursor INTO @Sql
+	END
+	
+	CLOSE @Cursor DEALLOCATE @Cursor
+	GO
+	
+	EXEC sp_MSforeachtable 'DROP TABLE ?'
+	GO
 		 * 
 		 * 
 		 * 

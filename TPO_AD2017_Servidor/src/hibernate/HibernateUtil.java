@@ -34,13 +34,9 @@ public class HibernateUtil
              config.addAnnotatedClass(LocalEntity.class);
              config.addAnnotatedClass(RemitoEntity.class);
              config.addAnnotatedClass(ItemRemitoEntity.class);
-             
-
-             
-
-             
-             
-             
+             config.addAnnotatedClass(AdministracionEntity.class);
+     
+           
             
              sessionFactory = config.buildSessionFactory();
         }

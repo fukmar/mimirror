@@ -74,7 +74,7 @@ private static FacturaDAO instancia;
 		Double monto = (Double)session.createQuery("SELECT SUM(p.monto_total) FROM Factura f JOIN f.pagos p WHERE f.factura_id=?").setInteger(0,nroFact).setFirstResult(0).setMaxResults(1).uniqueResult();
 		return monto;
 	}
-	
+	/*
 	public FacturaEntity getFacturaxComanda(int idComanda){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
@@ -99,7 +99,7 @@ private static FacturaDAO instancia;
 		session.close();
 
 		return liq;
-	}
+	}*/
 	
 	/*public List <Liquidacion_Comision_Mozo> getLiquidacionDiaComisiones(Date d){
 		//liquidacion de todos los mozos
@@ -109,7 +109,7 @@ private static FacturaDAO instancia;
 		
 		return null;
 	}*/
-
+/*
 	public void grabarLiquidaciones(Liquidacion_Comision_Mozo liqui){				
 		Session session = sf.openSession();
 		
@@ -126,8 +126,8 @@ private static FacturaDAO instancia;
 		return items;
 	}
 	
-		
+	*/	
 }
 
 	
-}
+

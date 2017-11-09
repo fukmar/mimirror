@@ -9,11 +9,11 @@ import java.util.*;
 @Table(name="administraciones")
 public class AdministracionEntity extends AreaRestaurantEntity {
 
-	@OneToMany
-	@JoinColumn(name="codigoPDP")
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="administracion")
 	private List<PlanDeProduccionEntity> planesProd;
 
 
+	
 	public AdministracionEntity(Integer codArea,AreaRest area,List<PlanDeProduccionEntity> planesProd,LocalEntity local) {
 		super(codArea, area,local);
 		this.planesProd = planesProd;
@@ -23,6 +23,7 @@ public class AdministracionEntity extends AreaRestaurantEntity {
 		
 	}
 
+	
 	public List<PlanDeProduccionEntity> getPlanesProd() {
 		return planesProd;
 	}
