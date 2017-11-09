@@ -102,7 +102,7 @@ public class testHibernate {
 		List <ComandaEntity> resultados =new ArrayList<ComandaEntity>();
 		resultados=ComandaDAO.getInstance().obtenerComandasAbiertasxMesa(1); //Busco comandas abiertas de la mesa 1
 		for (ComandaEntity comanda:resultados)
-		{
+		{ 
 			System.out.println("COMANDA ABIERTA de la MESA 1: " + comanda.getCodComanda());
 		}
 		//

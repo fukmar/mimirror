@@ -41,7 +41,7 @@ public class PlatoDAO
 	{
 		Session session=sf.openSession();
 		List<Plato> listaPlatos=new ArrayList<Plato>();
-		List<PlatoEntity> resu=session.createCriteria("from PlatoEntity").list();
+ 		List<PlatoEntity> resu=session.createCriteria("from PlatoEntity").list();
 		for(PlatoEntity p:resu)
 		{
 			listaPlatos.add(p.toNegocio());

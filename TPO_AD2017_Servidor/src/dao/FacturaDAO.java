@@ -72,7 +72,7 @@ private static FacturaDAO instancia;
 	public FacturaEntity getFacturaxComanda(int idComanda){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		FacturaEntity factura= (FacturaEntity)session.createQuery("SELECT f FROM Factura f where f.).setInteger(0,pedidoID).setFirstResult(0).setMaxResults(1).uniqueResult();
+		FacturaEntity factura= (FacturaEntity)session.createQuery("FROM ItemComandaEntity if where if.).setInteger(0,pedidoID).setFirstResult(0).setMaxResults(1).uniqueResult();
 		return factura;
 	}
 	
