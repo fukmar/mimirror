@@ -7,6 +7,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import dao.ComandaDAO;
+import dao.PlatoDAO;
 import entities.*;
 import enumns.AreaRest;
 import enumns.Estado;
@@ -91,9 +93,26 @@ public class testHibernate {
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
-	
+		//TEST  DAO COMANDA - BUSCAR COMANDA POR CODIGO   --FUNCIONA
+		ComandaEntity resultado =new ComandaEntity();
+		resultado = ComandaDAO.getInstance().obtenerComanda(1); //FUNCIONA DAO obtener comanda
+		System.out.println("HOLA "+resultado.getCaja().getCodArea());
+		
+		//TEST DAO COMANDAS ACTIVAS POR MESA MESA --FUNCIONA
+		List <ComandaEntity> resultados =new ArrayList<ComandaEntity>();
+		resultados=ComandaDAO.getInstance().obtenerComandasAbiertasxMesa(1); //Busco comandas abiertas de la mesa 1
+		for (ComandaEntity comanda:resultados)
+		{
+			System.out.println("COMANDA ABIERTA de la MESA 1: " + comanda.getCodComanda());
+		}
+		//
+		//TEST DAO OBTENER PLATO POR ID  --FUNCIONA
+		PlatoEntity platoelegido=new PlatoEntity();
+		platoelegido=PlatoDAO.getInstance().getPlatoPorId(8);
+		System.out.println("EL PLATO BUSCADO ES: "+platoelegido.getNombre());
 		
 		
+		// 
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();

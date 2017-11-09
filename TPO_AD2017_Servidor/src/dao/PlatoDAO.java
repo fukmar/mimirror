@@ -49,6 +49,13 @@ public class PlatoDAO
 		session.close();
 		return listaPlatos;
 	}
+	public PlatoEntity getPlatoPorId(Integer plato_id) {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		PlatoEntity elPlato =(PlatoEntity) session.get(PlatoEntity.class,plato_id); 
+		session.close();
+		return elPlato;
+	}
 	//FALTA
 	private PlatoEntity toEntity(Plato plato) {	
 		return null;
