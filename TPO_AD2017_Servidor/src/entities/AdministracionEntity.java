@@ -14,9 +14,8 @@ public class AdministracionEntity extends AreaRestaurantEntity {
 	private List<PlanDeProduccionEntity> planesProd;
 
 
-	public AdministracionEntity(Integer codArea,AreaRest area,
-			List<PlanDeProduccionEntity> planesProd) {
-		super(codArea, area);
+	public AdministracionEntity(Integer codArea,AreaRest area,List<PlanDeProduccionEntity> planesProd,LocalEntity local) {
+		super(codArea, area,local);
 		this.planesProd = planesProd;
 	}
 

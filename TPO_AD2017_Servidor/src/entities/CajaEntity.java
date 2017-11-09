@@ -17,8 +17,8 @@ public class CajaEntity extends AreaRestaurantEntity
 	@JoinColumn(name="codSalon")
 	private SalonEntity salon;
 	
-	public CajaEntity(Integer codArea,AreaRest area,SalonEntity salon) {
-		super(codArea, area);
+	public CajaEntity(Integer codArea,AreaRest area,SalonEntity salon,LocalEntity local) {
+		super(codArea, area,local);
 		this.salon=salon;
 		// TODO Auto-generated constructor stub
 	}

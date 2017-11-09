@@ -3,6 +3,9 @@ package entities;
 import java.util.List;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 @Table(name="locales")
 public class LocalEntity 
@@ -16,19 +19,23 @@ public class LocalEntity
 	
 	//Un local tiene varias areas
 	
-	@OneToMany
+	/*@OneToMany(cascade= CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@JoinColumn(name="areasResto")
 	private List<AreaRestaurantEntity> areas;
+	NO funciona ya que la tabla AreaRestaurante
+	 no existe en base por ser interface
 	
-	
+	*/
 	public LocalEntity(){}
 
 
-	public LocalEntity(String direccion, String barrio, List<AreaRestaurantEntity> areas) {
+	public LocalEntity(String direccion, String barrio) {
 		super();
 	
 		this.direccion = direccion;
 		this.barrio = barrio;
-		this.areas = areas;
+
 	}
 
 
@@ -62,14 +69,7 @@ public class LocalEntity
 	}
 
 
-	public List<AreaRestaurantEntity> getAreas() {
-		return areas;
-	}
-
-
-	public void setAreas(List<AreaRestaurantEntity> areas) {
-		this.areas = areas;
-	}
+	
 
 	
 }

@@ -38,15 +38,16 @@ public class testHibernate {
 		session.getTransaction().commit();
 		session.close();
 		*/
-
-		SalonEntity salon=new SalonEntity(1,AreaRest.salon, "salon3");
+		LocalEntity local=new LocalEntity("lejos 123", "villa 1-11-14");
+		
+		SalonEntity salon=new SalonEntity(1,AreaRest.salon, "salon3",local);
 		UnidadEntity ue = new UnidadEntity("gramos");
 	
 		SectorEntity sector = new SectorEntity("sectorcito", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
 		sectores.add(sector);
 		
-		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon);
+		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
 		
 		Estado est = null;
 		PlanDeProduccionEntity pdpe = new PlanDeProduccionEntity(est.EnProceso);
@@ -92,12 +93,11 @@ public class testHibernate {
 		
 	
 		
+		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-
 		session.save(itemfacturita);
-		
 		session.getTransaction().commit();
 		session.close();
 		
@@ -138,7 +138,7 @@ public class testHibernate {
 		 * 
 		 * 
 
- DECLARE @Sql NVARCHAR(500) DECLARE @Cursor CURSOR
+DECLARE @Sql NVARCHAR(500) DECLARE @Cursor CURSOR
 
 SET @Cursor = CURSOR FAST_FORWARD FOR
 SELECT DISTINCT sql = 'ALTER TABLE [' + tc2.TABLE_NAME + '] DROP [' + rc1.CONSTRAINT_NAME + ']'

@@ -17,14 +17,21 @@ public abstract class AreaRestaurantEntity {
 	@Enumerated(EnumType.STRING)
 	protected AreaRest area;
 	
+	
+	@ManyToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name="codLocal")
+	private LocalEntity local;
+	
+	
 	public AreaRestaurantEntity(){
 		
 	}
 
-	public AreaRestaurantEntity(Integer codArea,AreaRest area) {
+	public AreaRestaurantEntity(Integer codArea,AreaRest area,LocalEntity local) {
 		super();
 		this.codArea=codArea;
 		this.area = area;
+		this.local=local;
 	}
 
 	public Integer getCodArea() {
@@ -42,7 +49,17 @@ public abstract class AreaRestaurantEntity {
 	public void setArea(AreaRest area) {
 		this.area = area;
 	}
+
+	public LocalEntity getLocal() {
+		return local;
+	}
+
+	public void setLocal(LocalEntity local) {
+		this.local = local;
+	}
 		
+	
+	
 	//hashCode e equals? revisar ejemplo ProductoEntity
 
 }

@@ -17,8 +17,8 @@ public class CafeteriaEntity extends AreaRestaurantEntity {
 	private List<ProductoEntity> estimadoDiario;
 
 	public CafeteriaEntity(Integer codArea, AreaRest area,
-			List<ProductoEntity> estimadoDiario) {
-		super(codArea, area);
+			List<ProductoEntity> estimadoDiario,LocalEntity local) {
+		super(codArea, area,local);
 		this.estimadoDiario = estimadoDiario;
 	}
 
