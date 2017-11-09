@@ -74,7 +74,7 @@ private static FacturaDAO instancia;
 		Session session = sf.openSession();
 		FacturaEntity factura= (FacturaEntity)session.createQuery("FROM ItemComandaEntity if where if.).setInteger(0,pedidoID).setFirstResult(0).setMaxResults(1).uniqueResult();
 		return factura;
-	}
+	} 
 	
 	public float getLiquidacionesUnMozoDia(Date d, int idMozo){
 		//liquidacion de un mozo
