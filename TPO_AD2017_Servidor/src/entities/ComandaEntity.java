@@ -17,7 +17,7 @@ public class ComandaEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer codComanda;
-	
+	private String estado;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="dni")
 	private MozoEntity mozo;
@@ -32,11 +32,12 @@ public class ComandaEntity {
 	private CajaEntity caja;
 	
 	
-	public ComandaEntity(MozoEntity mozo, MesaEntity mesa,CajaEntity caja) {
+	public ComandaEntity(MozoEntity mozo, MesaEntity mesa,CajaEntity caja,String estado) {
 		super();
 		this.mozo = mozo;
 		this.mesa = mesa;
 		this.caja=caja;
+		this.estado=estado;
 	}
 
 	public ComandaEntity(){}

@@ -80,7 +80,7 @@ public class testHibernate {
 		mesitas.add(mesita);
 				
 		
-		ComandaEntity comandita = new ComandaEntity(mozo, mesita,caja);
+		ComandaEntity comandita = new ComandaEntity(mozo, mesita,caja,"activo");
 		
 		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato, comandita);
 		
