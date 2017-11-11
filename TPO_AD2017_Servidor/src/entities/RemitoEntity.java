@@ -17,7 +17,7 @@ public class RemitoEntity {
 	private Date fecha;
 	
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="remito")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="remito", cascade = CascadeType.ALL)
 	private List<ItemRemitoEntity> itemsRemito;
 /*	@OneToOne
 	@JoinColumn(name="codOrdenDeCompra")

@@ -4,7 +4,7 @@ import enumns.Estado;
 import javax.persistence.*;
 
 @Entity
-@Table(name="PlanesDeProduccion")
+@Table(name="planesdeproduccion")
 public class PlanDeProduccionEntity 
 {
 	@Id
@@ -12,8 +12,14 @@ public class PlanDeProduccionEntity
 	private Integer codigoPDP;
 	private Estado estado;
 	
+	public AdministracionEntity getAdministracion() {
+		return administracion;
+	}
+	public void setAdministracion(AdministracionEntity ad) {
+		this.administracion=ad;
+	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="codAdministracion",nullable=false)
 	private AdministracionEntity administracion;
 	
@@ -25,10 +31,7 @@ public class PlanDeProduccionEntity
 		this.estado = estado;
 	}
 	
-	public void setAdministracion(AdministracionEntity ad) {
-		this.administracion=ad;
-	}
-	
+		
 	public Integer getCodigoPDP() {
 		return codigoPDP;
 	}

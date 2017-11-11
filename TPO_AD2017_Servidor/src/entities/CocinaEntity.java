@@ -15,7 +15,7 @@ import java.util.*;
 public class CocinaEntity extends AreaRestaurantEntity{
 	
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="codPlato")
 	private List<PlatoEntity> platos;
 	

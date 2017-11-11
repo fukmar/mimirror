@@ -14,6 +14,7 @@ import entities.*;
 import enumns.AreaRest;
 import enumns.Estado;
 import enumns.MedioDePago;
+import enumns.Temporada;
 import hibernate.HibernateUtil;
 
 public class testHibernate {
@@ -25,52 +26,45 @@ public class testHibernate {
 		
 		
 		//aca van pruebas de DB
-	/*	
-		List<AreaRestaurantEntity> areas = new ArrayList<AreaRestaurantEntity>();
-		AreaRest a = null;
+	
+		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano");
 		
-		SalonEntity salon =  new SalonEntity(a.salon,"salon",sectores);	
-		
-		areas.add(salon);
-		
-		LocalEntity local = new LocalEntity("dir","barrio",areas);
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		session.beginTransaction();
-		session.save(local);
-		session.getTransaction().commit();
-		session.close();
-		*/
-		LocalEntity local=new LocalEntity("lejos 123", "villa 1-11-14");
-		
-		SalonEntity salon=new SalonEntity(1,AreaRest.salon, "salon3",local);
+		SalonEntity salon=new SalonEntity(1,AreaRest.salon, "Salon",local);
 		UnidadEntity ue = new UnidadEntity("gramos");
 	
-		SectorEntity sector = new SectorEntity("sectorcito", salon);
+		SectorEntity sector = new SectorEntity("Sector", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
 		sectores.add(sector);
 		
 		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
 		
+		
+		
 		Estado est = null;
-		PlanDeProduccionEntity pdpe = new PlanDeProduccionEntity(est.EnProceso);
+		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
+		AdministracionEntity admi= new AdministracionEntity(5, AreaRest.Administracion, planes, local);
+		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(Estado.EnProceso);
+		pdp.setAdministracion(admi);
+		planes.add(pdp);
+	
+		
 		Date fecha = new Date("10/10/2020");
 		
-		MateriaPrimaEntity mpe = new MateriaPrimaEntity("desc",ue);
+		MateriaPrimaEntity mpe = new MateriaPrimaEntity("Descripcion",ue);
 	
 		List<MateriaPrimaEntity> materiales = new ArrayList<MateriaPrimaEntity>();
 		materiales.add(mpe);
-		SemiElaboradoEntity see = new SemiElaboradoEntity("tipo","calidad","desc",pdpe,1,fecha,materiales,ue);
+		SemiElaboradoEntity see = new SemiElaboradoEntity("Tipo","Calidad","Descripcion",pdp,1,fecha,materiales,ue);
 		
 		List<SemiElaboradoEntity> componentes = new ArrayList<SemiElaboradoEntity>();
 		componentes.add(see);
 		
-		ElaboradoEntity ee = new ElaboradoEntity("tipo","calidad","pizza",pdpe,1,fecha, ue, componentes);
+		ElaboradoEntity ee = new ElaboradoEntity("Tipo","Calidad","Pizza",pdp,1,fecha, ue, componentes);
 		
 		List<ElaboradoEntity> elabs = new ArrayList<ElaboradoEntity>();
 		elabs.add(ee);
 		
-		PlatoEntity plato = new PlatoEntity("platito",13f,elabs);
+		PlatoEntity plato = new PlatoEntity("Plato",13f,elabs);
 			
 		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",80.4f, sector);
 		
@@ -82,8 +76,7 @@ public class testHibernate {
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
 				
-		
-		ComandaEntity comandita = new ComandaEntity(mozo, mesita,caja,"activo");
+		ComandaEntity comandita = new ComandaEntity(mozo, mesita,caja,"Activo");
 		
 		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato, comandita);
 		
@@ -94,7 +87,35 @@ public class testHibernate {
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
-		/*
+		
+		List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
+		ItemRemitoEntity itemremito = new ItemRemitoEntity(1);
+		itemsremito.add(itemremito);
+		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);
+		itemremito.setRemito(remito);
+		
+			
+		Temporada temp = null;
+		List<PlatoEntity> itemCarta= new ArrayList<PlatoEntity>();
+		itemCarta.add(plato);
+		CartaEntity carta = new CartaEntity(fecha,temp.Primavera,itemCarta);
+		plato.setCarta(carta);
+		
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.save(remito);
+		session.save(admi);
+		session.save(plato);
+		session.save(carta);
+		
+		session.getTransaction().commit();
+		session.close();
+		
+		//aca terminan pruebas de DB
+		
+		
+/*
 		
 		//TEST  DAO COMANDA - BUSCAR COMANDA POR CODIGO   --FUNCIONA
 		ComandaEntity resultado =new ComandaEntity();
@@ -117,30 +138,9 @@ public class testHibernate {
 		// 
 		
 		*/
-		/*List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
-		ItemRemitoEntity itemremito = new ItemRemitoEntity(1);
-		itemsremito.add(itemremito);
 		
-		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);*/
 		
-		LocalEntity local2=new LocalEntity("cerca 123", "fuerte apache");
 		
-		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(Estado.EnProceso);
-		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
-		planes.add(pdp);
-		
-		AdministracionEntity admi= new AdministracionEntity(5, AreaRest.Administracion, planes, local2);
-		
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		session.beginTransaction();
-		AdministracionDAO.getDAO().save(admi);
-		pdp.setAdministracion(admi);
-		PlanDeProduccionDAO.getDAO().save(pdp);
-		session.getTransaction().commit();
-		session.close();
-		
-		//aca terminan pruebas de DB
 		/*--------------->----------->separador de bajo presupuesto<------------------<------------------------*/				  
 		  /*
  	public List<DTO> funcion() throws RemoteException {
@@ -148,29 +148,7 @@ public class testHibernate {
 		return manejoNegocio.getInstance().getUnidades();
 	}
  
- *****************
- *Mapeadas
- *sector
- *Mesa
- *Factura
- *itemFactura
- *Comanda
- *ItemComanda
- *cajas
- *arearestaurant
- *
- *
- *Hay que revisar varias cosas:
- *Comanda es un OneToMany pero lo mapeao como un one to one con item comanda, no se por que
- *revisar mesa factura (tiene que ser 1:1) y no sale asi
- *item facutra item comanda (para mi es 1:1 pero vos pusiste otra cosa en el codigo)
- *e item comanda con plato que tambien es 1:1 pero no lo dibuja asi
- *hay algo rarisimo en arearestaurant pero ma;ana lo veo
- 
- 
- */
-/*--------------->----------->separador de bajo presupuesto<------------------<------------------------*/		
-	/*ABAJO SCRIPT PARA BORRAR TABLAS EN BASE DE DATOS,LO CORRES APUNTANDO A LA BASE Y LISTO*/	
+ 	/*ABAJO SCRIPT PARA BORRAR TABLAS EN BASE DE DATOS,LO CORRES APUNTANDO A LA BASE Y LISTO*/	
 		
 		/*
 		 * 

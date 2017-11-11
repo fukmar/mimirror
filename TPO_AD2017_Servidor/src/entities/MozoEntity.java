@@ -5,7 +5,7 @@ import javax.persistence.*;
 import negocio.Comanda;
 
 @Entity
-@Table(name="Mozos")
+@Table(name="mozos")
 public class MozoEntity {
 	
 	@Id

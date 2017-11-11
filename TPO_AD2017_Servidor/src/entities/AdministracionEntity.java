@@ -9,7 +9,7 @@ import java.util.*;
 @Table(name="administraciones")
 public class AdministracionEntity extends AreaRestaurantEntity {
 
-	@OneToMany(fetch=FetchType.LAZY,mappedBy="administracion")
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="administracion", cascade = CascadeType.ALL)
 	private List<PlanDeProduccionEntity> planesProd;
 
 

@@ -16,7 +16,7 @@ public class ElaboradoEntity extends ProductoEntity
 	private UnidadEntity unidad;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="compuestoDe",
+	@JoinTable(name="compuestode",
 	joinColumns=@JoinColumn(name="codProductoE",referencedColumnName="codProducto"),
 	inverseJoinColumns=@JoinColumn(name="codProductoSM",referencedColumnName="codProducto"))
 	private List<SemiElaboradoEntity> componentes;

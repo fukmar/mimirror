@@ -14,7 +14,7 @@ public class OrdenDeCompraEntity {
 	private Integer codigoProveedor;
 	private String nombreProv;
 	private Date fecha;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="areaRestaurant")
 	private AreaRestaurantEntity areaRestaurant;
 	@OneToMany

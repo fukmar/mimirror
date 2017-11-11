@@ -12,7 +12,7 @@ import java.util.*;
 @Table(name="cafeterias")
 public class CafeteriaEntity extends AreaRestaurantEntity {
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="codEstimadoDiario")
 	private List<ProductoEntity> estimadoDiario;
 

@@ -11,13 +11,13 @@ public class DepositoEntity
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codDeposito;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="codProducto")
 	private List<ProductoEntity> productos;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="codSolicitud")
 	private List<SolicitudInsumoEntity> solicitudes;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="codRemito")
 	private List<RemitoEntity> remitos;
 	

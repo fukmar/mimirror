@@ -6,11 +6,11 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="semiElaborados")
+@Table(name="semielaborados")
 public class SemiElaboradoEntity extends ProductoEntity 
 {
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="materialSemi",
+	@JoinTable(name="materialsemi",
 	joinColumns=@JoinColumn(name="codProducto",referencedColumnName="codProducto"),
 	inverseJoinColumns=@JoinColumn(name="codMaterial",referencedColumnName="codMaterial")
 	)

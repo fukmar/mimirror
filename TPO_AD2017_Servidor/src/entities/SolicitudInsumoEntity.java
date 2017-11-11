@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 import negocio.AreaRestaurant;
-//FALTAN METODOS DE NEGOCIO
+
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)

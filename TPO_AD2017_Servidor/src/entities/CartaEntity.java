@@ -12,20 +12,19 @@ import enumns.Temporada;
 public class CartaEntity 
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codCarta")
 	private Integer codigoCarta;
 	private Date vigencia;
 	private Temporada temporada;
 	
-	@OneToMany
-	@JoinColumn(name="codigo")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="carta", cascade=CascadeType.ALL)
 	private List<PlatoEntity> itemCarta;
 	
 	public CartaEntity(){}
 
-	public CartaEntity(Integer codigoCarta, Date vigencia, Temporada temporada, List<PlatoEntity> itemCarta) {
+	public CartaEntity(Date vigencia, Temporada temporada, List<PlatoEntity> itemCarta) {
 		super();
-		this.codigoCarta = codigoCarta;
 		this.vigencia = vigencia;
 		this.temporada = temporada;
 		this.itemCarta = itemCarta;

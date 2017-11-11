@@ -14,7 +14,7 @@ public class ItemFacturaEntity
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codItemComanda")
-	private ItemComandaEntity itemcomanda; //añadiendo esto obtendríamos la cantidad y el plato para despues hacer el subtotal
+	private ItemComandaEntity itemcomanda; 
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codFactura")

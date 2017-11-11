@@ -21,11 +21,24 @@ public class PlatoEntity
 	private String nombre;
 	private float precio;
 	
+	public CartaEntity getCarta() {
+		return carta;
+	}
+
+	public void setCarta(CartaEntity carta) {
+		this.carta = carta;
+	}
+
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="platoCompuestoDe",
+	@JoinTable(name="platocompuestode",
 	joinColumns=@JoinColumn(name="codPlato",referencedColumnName="codPlato"),
 	inverseJoinColumns=@JoinColumn(name="codProducto",referencedColumnName="codProducto"))
 	private List<ElaboradoEntity> productoPlato;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn(name="codCarta", nullable=false)
+    private CartaEntity carta;
+	
 	
 	public PlatoEntity(){}
 

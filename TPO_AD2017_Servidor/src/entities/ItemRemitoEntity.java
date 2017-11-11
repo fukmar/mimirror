@@ -9,7 +9,7 @@ import hibernate.HibernateUtil;
 import negocio.Producto;
 
 @Entity
-@Table(name="itemRemitos")
+@Table(name="itemsRemito")
 public class ItemRemitoEntity {
 
 	@Id
@@ -27,7 +27,7 @@ public class ItemRemitoEntity {
 		this.remito = remito;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="codRemito", nullable=false)
     private RemitoEntity remito;
 		

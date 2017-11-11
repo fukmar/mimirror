@@ -11,7 +11,7 @@ import java.util.*;
 @Table(name="barras")
 public class BarraEntity extends AreaRestaurantEntity {
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="codEstimadoDiario")
 	List<ProductoEntity> estimadoDiario;
 
