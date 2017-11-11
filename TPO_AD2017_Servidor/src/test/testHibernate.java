@@ -63,13 +63,10 @@ public class testHibernate {
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
 		sectores.add(sector);
 		
-		
 		SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
-		
 		
 		materia.setDeposito(deposito);
 		solicitud.setDeposito(deposito);
-		
 		
 		solicitudes.add(solicitud);
 			
@@ -118,8 +115,7 @@ public class testHibernate {
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
-		
-			
+				
 		Temporada temp = null;
 		List<PlatoEntity> itemCarta= new ArrayList<PlatoEntity>();
 		itemCarta.add(plato);
@@ -130,6 +126,12 @@ public class testHibernate {
 		Session session = sf.openSession();
 		session.beginTransaction();
 		
+		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
+		
+		session.save(deposito);
+		session.save(remito);
+		session.save(solicitud);
+		session.save(materia);
 		
 		session.save(local);
 		session.save(salon);
@@ -142,14 +144,7 @@ public class testHibernate {
 		session.save(comandita);
 		session.save(factura);
 		
-		
-		session.save(deposito);
-		session.save(remito);
-		session.save(solicitud);
-		session.save(materia);
-		
-		
-		
+		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
 		session.getTransaction().commit();
 		session.close();
