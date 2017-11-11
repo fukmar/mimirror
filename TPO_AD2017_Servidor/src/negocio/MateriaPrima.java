@@ -8,14 +8,16 @@ public class MateriaPrima
 	private Integer codigo;
 	private String descripcion;
 	private Unidad unidadUso;
+	private Float cantidad;
 
 	public MateriaPrima(){}
 
-	public MateriaPrima(String descripcion, Unidad unidadUso) {
+	public MateriaPrima(String descripcion, Unidad unidadUso, Float cantidad) {
 		super();
 		
 		this.descripcion = descripcion;
 		this.unidadUso = unidadUso;
+		this.setCantidad(cantidad);
 	}
 
 	public Integer getCodigo() {
@@ -50,5 +52,13 @@ public class MateriaPrima
 		m.setDescripcion(descripcion);
 		m.setUnidadUso(unidadUso.toDTO());
 		return m;
+	}
+
+	public Float getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Float cantidad) {
+		this.cantidad = cantidad;
 	}
 }

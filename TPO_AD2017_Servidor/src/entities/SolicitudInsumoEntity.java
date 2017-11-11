@@ -8,33 +8,55 @@ import negocio.AreaRestaurant;
 
 
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class SolicitudInsumoEntity {
+@Table(name="solicitudinsumo")
+public class SolicitudInsumoEntity {
 	
 	@Id
-	@Column(name="codArt",nullable=false)//confirmar si esta seria la PK
-	protected Integer codigoArt;
-	protected Integer cantidad;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer codSolicitudInsumo;
+	private Integer cantidadAPedir;
+	
+	@OneToOne
+	@JoinColumn(name="codMaterial")
+	private MateriaPrimaEntity materiaPrima; 
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	protected AreaRestaurantEntity area;
-	protected String responsable;
-	protected Integer lote;
-	protected Date fechaCompra;
-	protected Date fechaVencimiento;
-	protected String motivo;
+	@JoinColumn(name="codarea")
+	private AreaRestaurantEntity area;
+	private String responsable;
+	private Integer lote;
+	private Date fechaCompra;
+	private Date fechaVencimiento;
+	private String motivo;
 	
-	public SolicitudInsumoEntity(){
-		
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="codDeposito", nullable=false)
+    private DepositoEntity deposito;
+
+	
+	public DepositoEntity getDeposito() {
+		return deposito;
 	}
 
-	public SolicitudInsumoEntity(Integer codigoArt, Integer cantidad,
-			AreaRestaurantEntity area, String responsable, Integer lote,
-			Date fechaCompra, Date fechaVencimiento, String motivo) {
-		super();
-		this.codigoArt = codigoArt;
-		this.cantidad = cantidad;
+
+
+	public void setDeposito(DepositoEntity deposito) {
+		this.deposito = deposito;
+	}
+
+
+
+	public SolicitudInsumoEntity(){
+	}
+	
+	
+
+	public SolicitudInsumoEntity(Integer cantidadAPedir, MateriaPrimaEntity materiaPrima,
+			AreaRestaurantEntity area, String responsable, Integer lote, Date fechaCompra, Date fechaVencimiento,
+			String motivo) {
+	
+		this.cantidadAPedir = cantidadAPedir;
+		this.materiaPrima = materiaPrima;
 		this.area = area;
 		this.responsable = responsable;
 		this.lote = lote;
@@ -43,20 +65,30 @@ public abstract class SolicitudInsumoEntity {
 		this.motivo = motivo;
 	}
 
-	public Integer getCodigoArt() {
-		return codigoArt;
+
+
+	public Integer getCodSolicitudInsumo() {
+		return codSolicitudInsumo;
 	}
 
-	public void setCodigoArt(Integer codigoArt) {
-		this.codigoArt = codigoArt;
+	public void setCodSolicitudInsumo(Integer codSolicitudInsumo) {
+		this.codSolicitudInsumo = codSolicitudInsumo;
 	}
 
-	public Integer getCantidad() {
-		return cantidad;
+	public Integer getCantidadAPedir() {
+		return cantidadAPedir;
 	}
 
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+	public void setCantidadAPedir(Integer cantidadAPedir) {
+		this.cantidadAPedir = cantidadAPedir;
+	}
+
+	public MateriaPrimaEntity getMateriaPrima() {
+		return materiaPrima;
+	}
+
+	public void setMateriaPrima(MateriaPrimaEntity materiaPrima) {
+		this.materiaPrima = materiaPrima;
 	}
 
 	public AreaRestaurantEntity getArea() {
@@ -107,8 +139,6 @@ public abstract class SolicitudInsumoEntity {
 		this.motivo = motivo;
 	}
 
-	// Agregar hashCode e equals ? opcionale de momento,revisar ProductoEntity como ejemplo
-	
 	
 	
 }

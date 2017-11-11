@@ -16,6 +16,7 @@ import enumns.Estado;
 import enumns.MedioDePago;
 import enumns.Temporada;
 import hibernate.HibernateUtil;
+import negocio.Deposito;
 
 public class testHibernate {
 
@@ -26,40 +27,70 @@ public class testHibernate {
 		
 		
 		//aca van pruebas de DB
+		UnidadEntity ue = new UnidadEntity("gramos");
+		
+		Date fecha = new Date("10/10/2020");
+		
+		
+		MateriaPrimaEntity materia = new MateriaPrimaEntity("PapasAlDeposito",ue, 1000f);
+		List<MateriaPrimaEntity> materiapedido = new ArrayList<MateriaPrimaEntity>();
+		materiapedido.add(materia);
 	
-		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano");
+		List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
+		ItemRemitoEntity itemremito = new ItemRemitoEntity(1);
+		itemsremito.add(itemremito);
+		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);
+		itemremito.setRemito(remito);
+		
+		List<RemitoEntity> remitos = new ArrayList<RemitoEntity>();
+		remitos.add(remito);
+		
+		List<SolicitudInsumoEntity> solicitudes = new ArrayList<SolicitudInsumoEntity>();
+	
+		
+		
+		DepositoEntity deposito = new DepositoEntity(materiapedido,solicitudes,remitos);
+		
+		remito.setDeposito(deposito);
+		
+		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
 		
 		SalonEntity salon=new SalonEntity(1,AreaRest.salon, "Salon",local);
-		UnidadEntity ue = new UnidadEntity("gramos");
 	
+		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
+			
 		SectorEntity sector = new SectorEntity("Sector", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
 		sectores.add(sector);
 		
-		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
+		
+		SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
 		
 		
+		materia.setDeposito(deposito);
+		solicitud.setDeposito(deposito);
 		
-		Estado est = null;
+		
+		solicitudes.add(solicitud);
+			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
 		AdministracionEntity admi= new AdministracionEntity(5, AreaRest.Administracion, planes, local);
 		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(Estado.EnProceso);
 		pdp.setAdministracion(admi);
 		planes.add(pdp);
 	
-		
-		Date fecha = new Date("10/10/2020");
-		
-		MateriaPrimaEntity mpe = new MateriaPrimaEntity("Descripcion",ue);
-	
+		MateriaPrimaEntity mpe = new MateriaPrimaEntity("Papas",ue, 1000f);
+		mpe.setDeposito(deposito);
 		List<MateriaPrimaEntity> materiales = new ArrayList<MateriaPrimaEntity>();
 		materiales.add(mpe);
+			
 		SemiElaboradoEntity see = new SemiElaboradoEntity("Tipo","Calidad","Descripcion",pdp,1,fecha,materiales,ue);
 		
 		List<SemiElaboradoEntity> componentes = new ArrayList<SemiElaboradoEntity>();
 		componentes.add(see);
 		
 		ElaboradoEntity ee = new ElaboradoEntity("Tipo","Calidad","Pizza",pdp,1,fecha, ue, componentes);
+		
 		
 		List<ElaboradoEntity> elabs = new ArrayList<ElaboradoEntity>();
 		elabs.add(ee);
@@ -76,7 +107,7 @@ public class testHibernate {
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
 				
-		ComandaEntity comandita = new ComandaEntity(mozo, mesita,caja,"Activo");
+		ComandaEntity comandita = new ComandaEntity(mozo, mesita,caja,Estado.Terminado);
 		
 		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato, comandita);
 		
@@ -88,12 +119,6 @@ public class testHibernate {
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
 		
-		List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
-		ItemRemitoEntity itemremito = new ItemRemitoEntity(1);
-		itemsremito.add(itemremito);
-		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);
-		itemremito.setRemito(remito);
-		
 			
 		Temporada temp = null;
 		List<PlatoEntity> itemCarta= new ArrayList<PlatoEntity>();
@@ -104,10 +129,27 @@ public class testHibernate {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.save(remito);
+		
+		
+		session.save(local);
+		session.save(salon);
+		session.save(sector);
 		session.save(admi);
+		session.save(mozo);
 		session.save(plato);
 		session.save(carta);
+		session.save(mesita);
+		session.save(comandita);
+		session.save(factura);
+		
+		
+		session.save(deposito);
+		session.save(remito);
+		session.save(solicitud);
+		session.save(materia);
+		
+		
+		
 		
 		session.getTransaction().commit();
 		session.close();

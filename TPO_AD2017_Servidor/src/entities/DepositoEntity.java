@@ -11,33 +11,33 @@ public class DepositoEntity
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codDeposito;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="codProducto")
-	private List<ProductoEntity> productos;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="codSolicitud")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="deposito", cascade = CascadeType.ALL)
+	private List<MateriaPrimaEntity> materiaprima;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
 	private List<SolicitudInsumoEntity> solicitudes;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="codRemito")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
 	private List<RemitoEntity> remitos;
+	
+	
+	public List<MateriaPrimaEntity> getMateriaprima() {
+		return materiaprima;
+	}
+
+	public void setMateriaprima(List<MateriaPrimaEntity> materiaprima) {
+		this.materiaprima = materiaprima;
+	}
+
 	
 	public DepositoEntity(){}
 	
-	public DepositoEntity(List<ProductoEntity> productos, List<SolicitudInsumoEntity> solicitudes,
+	public DepositoEntity(List<MateriaPrimaEntity> materiaprima, List<SolicitudInsumoEntity> solicitudes,
 			List<RemitoEntity> remitos) {
 		super();
-		this.productos = productos;
+		this.materiaprima = materiaprima;
 		this.solicitudes = solicitudes;
 		this.remitos = remitos;
 	}
 
-	public List<ProductoEntity> getProductos() {
-		return productos;
-	}
-
-	public void setProductos(List<ProductoEntity> productos) {
-		this.productos = productos;
-	}
 
 	public List<SolicitudInsumoEntity> getSolicitudes() {
 		return solicitudes;

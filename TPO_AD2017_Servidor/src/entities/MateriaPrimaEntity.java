@@ -17,17 +17,35 @@ public class MateriaPrimaEntity
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="uniUso")
 	private UnidadEntity unidadUso;
+	private Float cantidad;
 	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="codDeposito", nullable=false)
+    private DepositoEntity deposito;
 	
+
+	
+
+
+	public DepositoEntity getDeposito() {
+		return deposito;
+	}
+
+
+	public void setDeposito(DepositoEntity deposito) {
+		this.deposito = deposito;
+	}
+
+
 	public MateriaPrimaEntity() {}
 	
 	
-	public MateriaPrimaEntity(String descripcion, UnidadEntity unidadUso) {
+	public MateriaPrimaEntity(String descripcion, UnidadEntity unidadUso, Float cantidad) {
 		super();
 	
 		this.descripcion = descripcion;
-		/*this.unidadCompra = unidadCompra;*/
 		this.unidadUso = unidadUso;
+		this.setCantidad(cantidad);
 	}
 
 
@@ -96,5 +114,15 @@ public class MateriaPrimaEntity
 		//m.setUnidadCompra(unidadCompra.toNegocio());
 		m.setUnidadUso(unidadUso.toNegocio());
 		return m;
+	}
+
+
+	public Float getCantidad() {
+		return cantidad;
+	}
+
+
+	public void setCantidad(Float cantidad) {
+		this.cantidad = cantidad;
 	}
 }

@@ -36,7 +36,10 @@ public class HibernateUtil
              config.addAnnotatedClass(ItemRemitoEntity.class);
              config.addAnnotatedClass(AdministracionEntity.class);
              config.addAnnotatedClass(CartaEntity.class);
-           
+             config.addAnnotatedClass(DepositoEntity.class);
+             config.addAnnotatedClass(SolicitudInsumoEntity.class);
+             
+             
             
              sessionFactory = config.buildSessionFactory();
         }

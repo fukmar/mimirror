@@ -9,6 +9,7 @@ import negocio.ItemComanda;
 import negocio.Mesa;
 import negocio.Mozo;
 import entities.FacturaEntity;
+import enumns.Estado;
 
 @Entity
 @Table(name="comandas")
@@ -17,7 +18,7 @@ public class ComandaEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer codComanda;
-	private String estado;
+	private Estado estado;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="dni")
 	private MozoEntity mozo;
@@ -32,7 +33,7 @@ public class ComandaEntity {
 	private CajaEntity caja;
 	
 	
-	public ComandaEntity(MozoEntity mozo, MesaEntity mesa,CajaEntity caja,String estado) {
+	public ComandaEntity(MozoEntity mozo, MesaEntity mesa,CajaEntity caja,Estado estado) {
 		super();
 		this.mozo = mozo;
 		this.mesa = mesa;

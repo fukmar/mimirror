@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name="locales")
 public class LocalEntity 
@@ -16,6 +17,9 @@ public class LocalEntity
 	private Integer codigoLocal;
 	private String direccion;
 	private String barrio;
+	@OneToOne
+	@JoinColumn(name="codDeposito")
+	private DepositoEntity deposito;
 	
 	//Un local tiene varias areas
 	
@@ -30,9 +34,10 @@ public class LocalEntity
 	public LocalEntity(){}
 
 
-	public LocalEntity(String direccion, String barrio) {
+	public LocalEntity(String direccion, String barrio, DepositoEntity deposito) {
 		super();
-	
+		
+		this.deposito = deposito;
 		this.direccion = direccion;
 		this.barrio = barrio;
 

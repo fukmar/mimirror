@@ -16,6 +16,18 @@ public class RemitoEntity {
 	private Integer codigoProveedor;
 	private Date fecha;
 	
+	public DepositoEntity getDeposito() {
+		return deposito;
+	}
+
+	public void setDeposito(DepositoEntity deposito) {
+		this.deposito = deposito;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="codDeposito", nullable=false)
+    private DepositoEntity deposito;
+
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="remito", cascade = CascadeType.ALL)
 	private List<ItemRemitoEntity> itemsRemito;
