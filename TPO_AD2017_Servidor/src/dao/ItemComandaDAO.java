@@ -1,7 +1,10 @@
 package dao;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import entities.ComandaEntity;
 import entities.ElaboradoEntity;
 import entities.ItemComandaEntity;
 import entities.PlatoEntity;
@@ -35,7 +38,14 @@ private static ItemComandaDAO instancia;
 	session.getTransaction().commit();
 	session.close();
 	}
-
+	public List <ItemComandaEntity> obtenerItemComandasAbiertasxMesa(int codComanda){
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		List<ItemComandaEntity> itemscomanda = session.createQuery("from ItemComandaEntity c where c.comanda.codComanda=?").setInteger(0, codComanda).list();
+		session.getTransaction().commit();
+		return itemscomanda;
+	}
 	//FALTA
 	private ItemComandaEntity toEntity(ItemComandaDAO itemcomanda) {	
 		return null;

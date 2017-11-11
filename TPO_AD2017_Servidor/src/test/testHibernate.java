@@ -105,11 +105,16 @@ public class testHibernate {
 		mesitas.add(mesita);
 				
 		ComandaEntity comandita = new ComandaEntity(mozo, mesita,caja,Estado.Terminado);
-		
+		ComandaEntity comandita2 = new ComandaEntity(mozo, mesita,caja,Estado.EnProceso);
+		ComandaEntity comandita3 = new ComandaEntity(mozo, mesita,caja,Estado.EnProceso);
+		ItemComandaEntity itemCom2= new ItemComandaEntity(2, plato, comandita2);
+		ItemComandaEntity itemCom3= new ItemComandaEntity(5, plato, comandita3);
 		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato, comandita);
 		
 		List<ComandaEntity> comanditas = new ArrayList<ComandaEntity>();
 		comanditas.add(comandita);
+		comanditas.add(comandita2);
+		comanditas.add(comandita3);
 		
 		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo,caja);
 				
@@ -141,7 +146,13 @@ public class testHibernate {
 		session.save(plato);
 		session.save(carta);
 		session.save(mesita);
+		session.save(itemCom);
+		session.save(itemCom2);
+		
 		session.save(comandita);
+		session.save(comandita2);
+		session.save(itemCom3);
+		session.save(comandita3);
 		session.save(factura);
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
@@ -152,21 +163,30 @@ public class testHibernate {
 		//aca terminan pruebas de DB
 		
 		
-/*
+
 		
-		//TEST  DAO COMANDA - BUSCAR COMANDA POR CODIGO   --FUNCIONA
+		/* //TEST  DAO COMANDA - BUSCAR COMANDA POR CODIGO   --FUNCIONA
 		ComandaEntity resultado =new ComandaEntity();
 		resultado = ComandaDAO.getInstance().obtenerComanda(1); //FUNCIONA DAO obtener comanda
-		System.out.println("HOLA "+resultado.getCaja().getCodArea());
+		System.out.println("HOLA "+resultado.getCaja().getCodArea());*/
 		
 		//TEST DAO COMANDAS ACTIVAS POR MESA MESA --FUNCIONA
 		List <ComandaEntity> resultados =new ArrayList<ComandaEntity>();
-		resultados=ComandaDAO.getInstance().obtenerComandasAbiertasxMesa(1); //Busco comandas abiertas de la mesa 1
+		int codigomesaelegida=1;
+		resultados=ComandaDAO.getInstance().obtenerComandasAbiertasxMesa(codigomesaelegida); //Busco comandas abiertas de la mesa 1
+		System.out.println(" MESA" +codigomesaelegida);
 		for (ComandaEntity comanda:resultados)
 		{  
-			System.out.println("COMANDA ABIERTA de la MESA 1: " + comanda.getCodComanda());
+			System.out.println("Codigo Comanda: "+comanda.getCodComanda());
+			List <ItemComandaEntity> items =new ArrayList<ItemComandaEntity>();
+			items=ItemComandaDAO.getInstance().obtenerItemComandasAbiertasxMesa(comanda.getCodComanda());
+			for (ItemComandaEntity item:items)
+			{
+			System.out.println("Plato: "+item.getPlato().getNombre()+" y la cantidad es :"+item.getCantidad());
+			}
 		}
 		//
+		/*
 		//TEST DAO OBTENER PLATO POR ID  --FUNCIONA
 		PlatoEntity platoelegido=new PlatoEntity();
 		platoelegido=PlatoDAO.getInstance().getPlatoPorId(8);

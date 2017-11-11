@@ -65,7 +65,7 @@ private static ComandaDAO instancia;
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		List<ComandaEntity> comandas = session.createQuery("from ComandaEntity c where c.mesa.codMesa=? and c.estado='activo'").setInteger(0, codMesa).list();
+		List<ComandaEntity> comandas = session.createQuery("from ComandaEntity c where c.mesa.codMesa=? and c.estado=0").setInteger(0, codMesa).list();
 		session.getTransaction().commit();
 		return comandas;
 	}
