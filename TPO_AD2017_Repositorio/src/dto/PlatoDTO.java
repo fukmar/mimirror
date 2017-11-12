@@ -3,18 +3,27 @@ package dto;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+
 
 
 public class PlatoDTO implements Serializable
 {
+
 	private Integer codigo;
 	private String nombre;
 	private float precio;
-	
-
 	private List<ElaboradoDTO> productoPlato;
+	private CartaDTO carta;
 	
-	public PlatoDTO(){}
+	
+	public PlatoDTO() {}
 
 	public PlatoDTO(String nombre, float precio, List<ElaboradoDTO> productoPlato) {
 		super();
@@ -56,10 +65,18 @@ public class PlatoDTO implements Serializable
 		this.productoPlato = productoPlato;
 	}
 
+	public CartaDTO getCarta() {
+		return carta;
+	}
+
+	public void setCarta(CartaDTO carta) {
+		this.carta = carta;
+	}
+
 	@Override
 	public String toString() {
 		return "PlatoDTO [codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", productoPlato="
-				+ productoPlato + "]";
+				+ productoPlato + ", carta=" + carta + "]";
 	}
 
 

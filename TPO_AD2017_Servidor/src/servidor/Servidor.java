@@ -21,7 +21,7 @@ import remoto.ObjetoRemoto;
 
 public class Servidor {
 
-	public void main (String args[])
+	public static void main (String args[])
 	{
 		new Servidor();
 	}
@@ -32,7 +32,7 @@ public class Servidor {
 			LocateRegistry.createRegistry(1099);
 			manejoNegocio objetoRemoto=new ObjetoRemoto();
 			Naming.rebind("//localhost/ObjetoRemoto",objetoRemoto);
-			System.out.println("Fijado en //localhost/ObjetoRemoto ");
+			System.out.println("Fijado en //localhost/ObjetoRemoto");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

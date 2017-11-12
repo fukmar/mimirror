@@ -4,30 +4,40 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import dto.*;
-import interfazRemota.manejoNegocio;;
+import exceptions.PlatoException;
+import interfazRemota.manejoNegocio;
 
-public class BusinessDelegate {
+
+public class BusinessDelegate extends UnicastRemoteObject
+{
 
 	private static BusinessDelegate instance;
 	private manejoNegocio remoteObject;
 	
-	public static BusinessDelegate getInstance() {
+	public BusinessDelegate() throws RemoteException {
+		super();
+		try {
+			remoteObject=(manejoNegocio) Naming.lookup("//localhost/ObjetoRemoto");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static BusinessDelegate getInstance() throws RemoteException {
 		if(instance == null) {
 			instance = new BusinessDelegate();
 		}
 		return instance;
 	}
 	
-	private BusinessDelegate() {
-			try {
-				this.remoteObject = (manejoNegocio) Naming.lookup("//localhost/manejoNegocio");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-	}
 	
 
 /*	
@@ -35,5 +45,9 @@ public class BusinessDelegate {
 		this.remoteObject.insertarRubro(rubro);		
 	}*/
 	
+	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
+	{
+		return remoteObject.listarPlatos();
+	}
 	
 }

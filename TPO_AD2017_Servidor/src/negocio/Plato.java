@@ -1,6 +1,10 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import dto.PlatoDTO;
+import entities.ElaboradoEntity;
 
 
 
@@ -51,6 +55,21 @@ public class Plato
 
 	public void setProductoPlato(List<Elaborado> productoPlato) {
 		this.productoPlato = productoPlato;
+	}
+
+	public PlatoDTO toDTO()
+	{
+		PlatoDTO p=new PlatoDTO();
+		p.setCodigo(codigo);
+		p.setNombre(nombre);
+		p.setPrecio(precio);
+		List<Elaborado> elab=new ArrayList<Elaborado>();
+		/*for(Elaborado pp: productoPlato )
+		{
+			elab.add(pp.toDTO());
+		}
+		p.setProductoPlato(elab);*/
+		return p;
 	}
 
 }

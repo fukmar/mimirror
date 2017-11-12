@@ -1,5 +1,9 @@
 package exceptions;
 
-public class PlatoException {
-
+public class PlatoException extends Exception
+{
+	public PlatoException (String message)
+	{
+		super(message);
+	}
 }

@@ -41,7 +41,9 @@ public class PlatoDAO
 	{
 		Session session=sf.openSession();
 		List<Plato> listaPlatos=new ArrayList<Plato>();
- 		List<PlatoEntity> resu=session.createCriteria("from PlatoEntity").list();
+ 		//List<PlatoEntity> resu=session.createCriteria("from PlatoEntity").list();
+ 		@SuppressWarnings("unchecked")
+		List<PlatoEntity> resu=session.createQuery("from PlatoEntity").list();
 		for(PlatoEntity p:resu) 
 		{
 			listaPlatos.add(p.toNegocio());
@@ -56,6 +58,8 @@ public class PlatoDAO
 		session.close();
 		return elPlato;
 	}
+	
+	
 	//FALTA
 	private PlatoEntity toEntity(Plato plato) {	
 		return null;

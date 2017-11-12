@@ -3,6 +3,8 @@ package negocio;
 import java.util.Date;
 import java.util.List;
 
+import dto.ElaboradoDTO;
+
 
 
 public class Elaborado extends Producto
@@ -37,5 +39,12 @@ public class Elaborado extends Producto
 	public void setComponentes(List<Producto> componentes) {
 		this.componentes = componentes;
 	}
+
+	/*public Elaborado toDTO() 
+	{
+		ElaboradoDTO e=new ElaboradoDTO();
+		e.set
+		return null;
+	}*/
 
 }
