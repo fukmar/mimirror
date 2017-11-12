@@ -9,16 +9,13 @@ import dto.PlatoDTO;
 import exceptions.PlatoException;
 import interfazRemota.manejoNegocio;
 
-public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio{
-
-	/**
-	 * 
-	 */
+public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
+{
 	private static final long serialVersionUID = -5248202885298860470L;
 
-	public ObjetoRemoto() throws RemoteException {
+	public ObjetoRemoto() throws RemoteException 
+	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -27,12 +24,6 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio{
 		return Controlador.getInstance().listarPlatos();
 	}
 	
-	
-/*	public List<DTO> funcion() throws RemoteException {
-		// TODO Auto-generated method stub
-		return manejoNegocio.getInstance().get();
-	}
-*/
 	
 	
 }

@@ -38,6 +38,7 @@ public class Controlador {
 			listaDTO.add(p.toDTO());
 		}
 		return listaDTO;
+		
 	}
 		
 }

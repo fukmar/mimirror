@@ -85,9 +85,9 @@ public class PlatoEntity
 	public Plato toNegocio() 
 	{
 		Plato p=new Plato();
-		p.setCodigo(1);
-		p.setNombre("pp");
-		p.setPrecio(1f);
+		p.setCodigo(codigo);
+		p.setNombre(nombre);
+		p.setPrecio(precio);
 		List<Elaborado> elab=new ArrayList<Elaborado>();
 		/*for(ElaboradoEntity pp: productoPlato )
 		{

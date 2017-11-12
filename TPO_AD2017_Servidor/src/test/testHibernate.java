@@ -7,7 +7,9 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import bd.BusinessDelegate;
 import dao.*;
+import dto.PlatoDTO;
 import entities.*;
 import enumns.AreaRest;
 import enumns.Estado;
@@ -15,6 +17,7 @@ import enumns.MedioDePago;
 import enumns.Temporada;
 import hibernate.HibernateUtil;
 import negocio.Deposito;
+import negocio.Plato;
 
 public class testHibernate {
 
@@ -161,8 +164,17 @@ public class testHibernate {
 		//aca terminan pruebas de DB
 		
 		
-
+		//test ceci
 		
+		/*List<Plato> listaPlatos=PlatoDAO.getInstance().getPlatos();
+		for(Plato p:listaPlatos) 
+		{
+			System.out.print(p.getNombre());
+			
+		}
+		//EL DAO funciona ok
+		
+		*/
 		/* //TEST  DAO COMANDA - BUSCAR COMANDA POR CODIGO   --FUNCIONA
 		ComandaEntity resultado =new ComandaEntity();
 		resultado = ComandaDAO.getInstance().obtenerComanda(1); //FUNCIONA DAO obtener comanda
