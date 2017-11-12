@@ -8,8 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import dao.*;
-import dao.ComandaDAO;
-import dao.PlatoDAO;
 import entities.*;
 import enumns.AreaRest;
 import enumns.Estado;
@@ -148,7 +146,7 @@ public class testHibernate {
 		session.save(mesita);
 		session.save(itemCom);
 		session.save(itemCom2);
-		
+		session.save(itemfacturita);
 		session.save(comandita);
 		session.save(comandita2);
 		session.save(itemCom3);
@@ -182,9 +180,18 @@ public class testHibernate {
 			items=ItemComandaDAO.getInstance().obtenerItemComandasAbiertasxMesa(comanda.getCodComanda());
 			for (ItemComandaEntity item:items)
 			{
+			
 			System.out.println("Plato: "+item.getPlato().getNombre()+" y la cantidad es :"+item.getCantidad());
+			
 			}
 		}
+
+		Double subtotal=ItemFacturaDAO.getInstance().calcularSubTotalItemFactura(1);
+		System.out.println("El subtotal es: "+subtotal+"y lo insertamos dentro del item factura");
+		ItemFacturaEntity item=new ItemFacturaEntity();
+		ItemFacturaDAO.getInstance().actualizarsubtotalItemFactura(1);
+		
+		
 		//
 		/*
 		//TEST DAO OBTENER PLATO POR ID  --FUNCIONA
