@@ -146,7 +146,6 @@ public class testHibernate {
 		session.save(mesita);
 		session.save(itemCom);
 		session.save(itemCom2);
-	//	session.save(itemfacturita);
 		session.save(comandita);
 		session.save(comandita2);
 		session.save(itemCom3);
