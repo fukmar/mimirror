@@ -45,11 +45,25 @@ private static FacturaDAO instancia;
 
 	}
 	
-	public Double calcularTotalFactura(int nroFact){
+	public void actualizarTotalFactura(int nroFact){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		Double monto = (Double)session.createQuery("SELECT SUM(itc.precio_monto*itp.cantidad) FROM ItemFacturaEntity itf JOIN itf.factura fac JOIN itf.item_pedido itp JOIN itp.item_carta itc WHERE fac.factura_id=? AND itp.item_no_facturar_ind=false").setInteger(0,nroFact).setFirstResult(0).setMaxResults(1).uniqueResult();
-		return monto;
+		session.beginTransaction();
+		Double totalfactura = (Double)session.createQuery("SELECT SUM(itf.subtotal) FROM ItemFacturaEntity itf join itf.factura fac WHERE fac.codFactura=?").setInteger(0,nroFact).setFirstResult(0).setMaxResults(1).uniqueResult();
+		FacturaEntity factura=new FacturaEntity();
+		factura=FacturaDAO.getInstance().obtenerFactura(nroFact);
+		factura.setImporte(totalfactura);
+		session.merge(factura);
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	public FacturaEntity obtenerFactura(int nroFact){
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		FacturaEntity factura=new FacturaEntity();
+		factura = (FacturaEntity)session.createQuery("FROM FacturaEntity fac WHERE fac.codFactura=?").setInteger(0,nroFact).setFirstResult(0).setMaxResults(1).uniqueResult();
+		return factura;
 	}
 	
 	public void addItemsFactura(ItemFactura item){

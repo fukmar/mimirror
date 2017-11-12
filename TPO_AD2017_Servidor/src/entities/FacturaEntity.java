@@ -23,7 +23,7 @@ public class FacturaEntity
 	
 	
 	private Date fecha;
-	private float importe;
+	private double importe;
 	
 	@Enumerated(EnumType.STRING)
 	private MedioDePago medioPago;
@@ -47,7 +47,7 @@ public class FacturaEntity
 
 	
 
-	public FacturaEntity(Date fecha, float importe,
+	public FacturaEntity(Date fecha, double importe,
 			MedioDePago medioPago, MesaEntity mesa, MozoEntity mozo,CajaEntity caja) {
 		super();
 		this.fecha = fecha;
@@ -75,11 +75,11 @@ public class FacturaEntity
 		this.fecha = fecha;
 	}
 
-	public float getImporte() {
+	public double getImporte() {
 		return importe;
 	}
 
-	public void setImporte(float importe) {
+	public void setImporte(double importe) {
 		this.importe = importe;
 	}
 

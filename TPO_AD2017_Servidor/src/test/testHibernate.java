@@ -190,7 +190,10 @@ public class testHibernate {
 		System.out.println("El subtotal es: "+subtotal+"y lo insertamos dentro del item factura");
 		ItemFacturaEntity item=new ItemFacturaEntity();
 		ItemFacturaDAO.getInstance().actualizarsubtotalItemFactura(1);
-		
+		FacturaDAO.getInstance().actualizarTotalFactura(1);
+		FacturaEntity factura1=new FacturaEntity();
+		factura1=FacturaDAO.getInstance().obtenerFactura(1);
+		System.out.println("La factura 1 tiene el total de " + factura1.getImporte());
 		
 		//
 		/*
