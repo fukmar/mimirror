@@ -10,6 +10,7 @@ import entities.ComandaEntity;
 import entities.ElaboradoEntity;
 import entities.ItemComandaEntity;
 import entities.PlatoEntity;
+import enumns.Estado;
 import hibernate.HibernateUtil;
 
 public class ComandaDAO {
@@ -50,6 +51,7 @@ private static ComandaDAO instancia;
 		String senten = " FROM ItemComanda WHERE codComanda = ?";
 		List <ItemComandaEntity> items = session.createQuery(senten).setInteger(0, codigoComanda).list();
 		session.getTransaction().commit();
+		session.close();
 		return items;
 	}
 	public ComandaEntity obtenerComanda(int codComanda){
@@ -59,6 +61,7 @@ private static ComandaDAO instancia;
 		String senten = " FROM ComandaEntity WHERE codComanda = ?";
 		ComandaEntity comanda = (ComandaEntity) session.createQuery(senten).setInteger(0, codComanda).uniqueResult();
 		session.getTransaction().commit();
+		session.close();
 		return comanda;
 	}
 	public List <ComandaEntity> obtenerComandasAbiertasxMesa(int codMesa){
@@ -67,7 +70,19 @@ private static ComandaDAO instancia;
 		session.beginTransaction();
 		List<ComandaEntity> comandas = session.createQuery("from ComandaEntity c where c.mesa.codMesa=? and c.estado=0").setInteger(0, codMesa).list();
 		session.getTransaction().commit();
+		session.close();
 		return comandas;
+	}
+	public ComandaEntity cerrarComanda(int codComanda){
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		String senten = " FROM ComandaEntity WHERE codComanda = ?";
+		ComandaEntity comanda = (ComandaEntity) session.createQuery(senten).setInteger(0, codComanda).uniqueResult();
+		comanda.setEstado(Estado.Terminado);
+		session.getTransaction().commit();
+		session.close();
+		return comanda;
 	}
 	
   

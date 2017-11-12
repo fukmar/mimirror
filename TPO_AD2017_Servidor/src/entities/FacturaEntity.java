@@ -29,8 +29,8 @@ public class FacturaEntity
 	private MedioDePago medioPago;
 	
 	
-	@OneToOne(cascade= CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name="codMesa")
+	@OneToOne
+	@JoinColumn(name="codMesa")
 	private MesaEntity mesa;
 	
 	@OneToOne(cascade= CascadeType.ALL)

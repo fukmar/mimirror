@@ -113,7 +113,7 @@ public class testHibernate {
 		comanditas.add(comandita);
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
-		
+		FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita, mozo,caja);
 		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo,caja);
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
@@ -146,11 +146,12 @@ public class testHibernate {
 		session.save(mesita);
 		session.save(itemCom);
 		session.save(itemCom2);
-		session.save(itemfacturita);
+	//	session.save(itemfacturita);
 		session.save(comandita);
 		session.save(comandita2);
 		session.save(itemCom3);
 		session.save(comandita3);
+		session.save(factura2);
 		session.save(factura);
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
@@ -169,32 +170,15 @@ public class testHibernate {
 		System.out.println("HOLA "+resultado.getCaja().getCodArea());*/
 		
 		//TEST DAO COMANDAS ACTIVAS POR MESA MESA --FUNCIONA
-		List <ComandaEntity> resultados =new ArrayList<ComandaEntity>();
-		int codigomesaelegida=1;
-		resultados=ComandaDAO.getInstance().obtenerComandasAbiertasxMesa(codigomesaelegida); //Busco comandas abiertas de la mesa 1
-		System.out.println(" MESA" +codigomesaelegida);
-		for (ComandaEntity comanda:resultados)
-		{  
-			System.out.println("Codigo Comanda: "+comanda.getCodComanda());
-			List <ItemComandaEntity> items =new ArrayList<ItemComandaEntity>();
-			items=ItemComandaDAO.getInstance().obtenerItemComandasAbiertasxMesa(comanda.getCodComanda());
-			for (ItemComandaEntity item:items)
-			{
-			
-			System.out.println("Plato: "+item.getPlato().getNombre()+" y la cantidad es :"+item.getCantidad());
-			
-			}
-		}
+		FacturaDAO.getInstance().CerrarFactura(factura);
+		factura=FacturaDAO.getInstance().obtenerFactura(factura.getCodFactura());
+	    System.out.println("El total de la factura nro "+factura.getCodFactura()+" es de ARS "+ factura.getImporte());
 
-		Double subtotal=ItemFacturaDAO.getInstance().calcularSubTotalItemFactura(1);
-		System.out.println("El subtotal es: "+subtotal+"y lo insertamos dentro del item factura");
-		ItemFacturaEntity item=new ItemFacturaEntity();
-		ItemFacturaDAO.getInstance().actualizarsubtotalItemFactura(1);
-		FacturaDAO.getInstance().actualizarTotalFactura(1);
-		FacturaEntity factura1=new FacturaEntity();
-		factura1=FacturaDAO.getInstance().obtenerFactura(1);
-		System.out.println("La factura 1 tiene el total de " + factura1.getImporte());
+
 		
+		/* AHORA PROBAMOS PASAR TODOS LOS ITEMS DE LAS COMANDAS ACTIVAS SIN FACTURAR EN UNA MESA DETERMINADA, USAMOS MESA 1 y DEBERIA
+		 * PASARNOS LOS ITEMCOMANDAS DE LA COMANDA 2 y 3. ADEMAS CREARNOS LOS ITEM FACTURA y ASOCIARLOS A LA FACTURA QUE CREEMOS
+
 		//
 		/*
 		//TEST DAO OBTENER PLATO POR ID  --FUNCIONA

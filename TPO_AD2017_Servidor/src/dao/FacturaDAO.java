@@ -10,6 +10,7 @@ import entities.ElaboradoEntity;
 import entities.FacturaEntity;
 import entities.ItemComandaEntity;
 import entities.ItemFacturaEntity;
+import enumns.Estado;
 import hibernate.HibernateUtil;
 import negocio.Factura;
 import negocio.ItemFactura;
@@ -63,6 +64,7 @@ private static FacturaDAO instancia;
 		Session session = sf.openSession();
 		FacturaEntity factura=new FacturaEntity();
 		factura = (FacturaEntity)session.createQuery("FROM FacturaEntity fac WHERE fac.codFactura=?").setInteger(0,nroFact).setFirstResult(0).setMaxResults(1).uniqueResult();
+		session.close();
 		return factura;
 	}
 	
@@ -76,35 +78,35 @@ private static FacturaDAO instancia;
 		session.close();
 	}
 	
-
-	/*public void actualizarFactura(FacturaEntity fac){
+	public void CerrarFactura(FacturaEntity factura){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		List <ItemFacturaEntity> items=new ArrayList <ItemFacturaEntity>();
-		items=ItemFacturaDAO.getInstance().
-		for (ItemFacturaEntity item:fac.get)
+		List<ComandaEntity> comandasdemesa=ComandaDAO.getInstance().obtenerComandasAbiertasxMesa(factura.getMesa().getCodMesa());
+		for (ComandaEntity comanda:comandasdemesa)
 		{  
-			System.out.println("Codigo Comanda: "+comanda.getCodComanda());
-			List <ItemComandaEntity> items =new ArrayList<ItemComandaEntity>();
-			items=ItemComandaDAO.getInstance().obtenerItemComandasAbiertasxMesa(comanda.getCodComanda());
-			for (ItemComandaEntity item:items)
+			List <ItemComandaEntity> itemscomanda =new ArrayList<ItemComandaEntity>();
+			itemscomanda =ItemComandaDAO.getInstance().obtenerItemComandasAbiertasxMesa(comanda.getCodComanda());
+			for (ItemComandaEntity itemcom:itemscomanda )
 			{
-			System.out.println("Plato: "+item.getPlato().getNombre()+" y la cantidad es :"+item.getCantidad());
+			ItemFacturaDAO.getInstance().itemComandatoitemFactura(factura.getCodFactura(), itemcom.getCoditemComanda());
+			ItemFacturaEntity itemfactura=ItemFacturaDAO.getInstance().obtenerItemFacturaxcodItemComanda(itemcom.getCoditemComanda());
+			ItemFacturaDAO.getInstance().actualizarsubtotalItemFactura(itemfactura.getCodItemFactura());
 			}
-		for(ItemFacturaEntity item: )
-		ItemComandaDAO.getInstance().obtenerItemComandasAbiertasxMesa(fac.getItemFactura().get(index));
-		session.save(fac);
+			ComandaDAO.getInstance().cerrarComanda(comanda.getCodComanda());
+		}
+		FacturaDAO.getInstance().actualizarTotalFactura(factura.getCodFactura());
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
 	}
-	*/
+	
 
 	public Double getMontoPagos(int nroFact){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		Double monto = (Double)session.createQuery("SELECT SUM(p.monto_total) FROM Factura f JOIN f.pagos p WHERE f.factura_id=?").setInteger(0,nroFact).setFirstResult(0).setMaxResults(1).uniqueResult();
+		session.close();
 		return monto;
 	}
 	/*

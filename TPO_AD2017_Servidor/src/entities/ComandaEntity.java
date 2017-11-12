@@ -75,6 +75,14 @@ public class ComandaEntity {
 	public void setCaja(CajaEntity caja) {
 		this.caja = caja;
 	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 	
 	
 

@@ -44,7 +44,18 @@ private static ItemComandaDAO instancia;
 		session.beginTransaction();
 		List<ItemComandaEntity> itemscomanda = session.createQuery("from ItemComandaEntity c where c.comanda.codComanda=?").setInteger(0, codComanda).list();
 		session.getTransaction().commit();
+		session.close();
 		return itemscomanda;
+	}
+	
+	public ItemComandaEntity obtenerItemComanda(int coditemComanda){
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		ItemComandaEntity itemcomanda = (ItemComandaEntity)session.createQuery("from ItemComandaEntity c where c.coditemComanda=?").setInteger(0, coditemComanda).uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		return itemcomanda;
 	}
 	//FALTA
 	private ItemComandaEntity toEntity(ItemComandaDAO itemcomanda) {	
