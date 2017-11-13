@@ -75,8 +75,7 @@ public class PlatoDTO implements Serializable
 
 	@Override
 	public String toString() {
-		return "PlatoDTO [codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", productoPlato="
-				+ productoPlato + ", carta=" + carta + "]";
+		return "PlatoDTO [codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio +"]";
 	}
 
 
