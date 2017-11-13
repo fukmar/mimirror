@@ -18,25 +18,12 @@
 			 submmenus.put("Abrir Mesa", "Form_AbrirMesa.jsp");
 			 menus.put("Mesas", submmenus);
                                    
-            submmenus = new HashMap<String,String>();
-            submmenus.put("Agregar Plato a Pedido", "Form_AgregarPlato.jsp?mesa=0");
-            menus.put("Pedidos", submmenus);
-                             
-        	submmenus = new HashMap<String,String>();
-            submmenus.put("Platos Comandas", "Form_PanelPlatos.jsp");            
-            menus.put("Comandas", submmenus);
-            
-            submmenus = new HashMap<String,String>();
-            submmenus.put("Pedido Stock", "Form_StockTransfer.jsp");            
-            menus.put("Stock ", submmenus);
-            
-        	submmenus = new HashMap<String,String>();
+             
+        		submmenus = new HashMap<String,String>();
             submmenus.put("Solicitar factura", "Form_SolicitarFactura.jsp");            
             menus.put("Facturas", submmenus);
               
-            submmenus = new HashMap<String,String>();
-            submmenus.put("Nuevo Plan", "FormPlanProd.jsp");
-            menus.put("Plan Produccion", submmenus);
+            
                 
         for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
             String menuName = (String)itMenu.next();
@@ -59,7 +46,7 @@
  <%        
         }
  %>
-        <li><a href="./Login.jsp">Salir</a></li>
+       
  
     </ul>
 
