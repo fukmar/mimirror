@@ -2,16 +2,21 @@ package negocio;
 
 import java.util.*;
 
+import entities.LocalEntity;
+import entities.ProductoEntity;
 import enumns.AreaRest;
 public class Cafeteria extends AreaRestaurant {
 
 	private List<Producto> estimadoDiario;
 
+	
+
 	public Cafeteria(Integer codArea, AreaRest area,
-			List<Producto> estimadoDiario) {
-		super(area);
+			List<Producto> estimadoDiario,Local local) {
+		super(codArea, area,local);
 		this.estimadoDiario = estimadoDiario;
 	}
+
 
 	public List<Producto> getEstimadoDiario() {
 		return estimadoDiario;

@@ -24,7 +24,13 @@ public class MateriaPrimaEntity
     private DepositoEntity deposito;
 	
 
+		public MateriaPrimaEntity(String descripcion, UnidadEntity unidadUso, Float cantidad) {
+		super();
 	
+		this.descripcion = descripcion;
+		this.unidadUso = unidadUso;
+		this.setCantidad(cantidad);
+	}
 
 
 	public DepositoEntity getDeposito() {
@@ -40,13 +46,7 @@ public class MateriaPrimaEntity
 	public MateriaPrimaEntity() {}
 	
 	
-	public MateriaPrimaEntity(String descripcion, UnidadEntity unidadUso, Float cantidad) {
-		super();
-	
-		this.descripcion = descripcion;
-		this.unidadUso = unidadUso;
-		this.setCantidad(cantidad);
-	}
+
 
 
 	public Integer getCodigo() {

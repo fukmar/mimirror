@@ -12,13 +12,6 @@ public class PlanDeProduccionEntity
 	private Integer codigoPDP;
 	private Estado estado;
 	
-	public AdministracionEntity getAdministracion() {
-		return administracion;
-	}
-	public void setAdministracion(AdministracionEntity ad) {
-		this.administracion=ad;
-	}
-	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="codAdministracion",nullable=false)
 	private AdministracionEntity administracion;
@@ -43,5 +36,12 @@ public class PlanDeProduccionEntity
 	}
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+	
+	public AdministracionEntity getAdministracion() {
+		return administracion;
+	}
+	public void setAdministracion(AdministracionEntity ad) {
+		this.administracion=ad;
 	}
 }

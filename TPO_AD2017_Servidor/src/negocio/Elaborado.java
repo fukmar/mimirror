@@ -4,24 +4,26 @@ import java.util.Date;
 import java.util.List;
 
 import dto.ElaboradoDTO;
+import entities.PlanDeProduccionEntity;
+import entities.SemiElaboradoEntity;
+import entities.UnidadEntity;
 
 
 
 public class Elaborado extends Producto
 {
 	private static final long serialVersionUID = 1L;
-	private List<Producto>componentes;
-
 	private Unidad unidad;
-	
+	private List<SemiElaborado> componentes;
+
 	
 	public Elaborado(){}
 
 	public Elaborado(String tipo, String calidad, String descripcion, PlanDeProduccion pdp,
-			Integer cantidad, Date caducidad, List<Producto> componentes, Unidad unidad) {
+			Integer cantidad, Date caducidad, Unidad unidad, List<SemiElaborado> componentes) {
 		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
-		this.componentes = componentes;
 		this.unidad = unidad;
+		this.componentes = componentes;
 	}
 
 	public Unidad getUnidad() {
@@ -32,13 +34,15 @@ public class Elaborado extends Producto
 		this.unidad = unidad;
 	}
 
-	public List<Producto> getComponentes() {
+	public List<SemiElaborado> getComponentes() {
 		return componentes;
 	}
 
-	public void setComponentes(List<Producto> componentes) {
+	public void setComponentes(List<SemiElaborado> componentes) {
 		this.componentes = componentes;
 	}
+
+	
 
 	/*public Elaborado toDTO() 
 	{

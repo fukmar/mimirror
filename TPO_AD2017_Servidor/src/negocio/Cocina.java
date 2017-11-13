@@ -2,6 +2,10 @@ package negocio;
 
 import java.util.*;
 
+import entities.LocalEntity;
+import entities.PlatoEntity;
+import entities.ProductoEntity;
+import entities.SemiElaboradoEntity;
 import enumns.AreaRest;
 
 
@@ -15,8 +19,8 @@ public class Cocina extends AreaRestaurant {
 	
 	public Cocina(Integer codArea, AreaRest area, List<Plato> platos,
 			Date horasPrepInternas, List<SemiElaborado> semiElaborados,
-			List<Producto> estimadoDiario) {
-		super(area);
+			List<Producto> estimadoDiario,Local local) {
+		super(codArea, area,local);
 		this.platos = platos;
 		this.horasPrepInternas = horasPrepInternas;
 		this.semiElaborados = semiElaborados;

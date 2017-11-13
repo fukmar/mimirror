@@ -2,6 +2,8 @@ package negocio;
 
 import java.util.*;
 
+import entities.LocalEntity;
+import entities.ProductoEntity;
 import enumns.AreaRest;
 
 public class Barra extends AreaRestaurant {
@@ -12,8 +14,10 @@ public class Barra extends AreaRestaurant {
 		
 	}
 
-	public Barra(Integer codArea, AreaRest area, List<Producto> estimadoDiario) {
-		super(area);
+	
+	public Barra(Integer codArea, AreaRest area,
+			List<Producto> estimadoDiario,Local local) {
+		super(codArea, area,local);
 		this.estimadoDiario = estimadoDiario;
 	}
 

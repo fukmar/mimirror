@@ -12,6 +12,7 @@ import entities.ItemComandaEntity;
 import entities.PlatoEntity;
 import enumns.Estado;
 import hibernate.HibernateUtil;
+import negocio.Comanda;
 
 public class ComandaDAO {
 
@@ -26,9 +27,9 @@ private static ComandaDAO instancia;
 		return instancia;
 	}
 	
-	public void save(ComandaDAO comanda){
+	public void save(Comanda comanda){
 
-	ComandaEntity ee = this.toEntity(comanda);
+	ComandaEntity ee = comanda.toEntity();
 	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
@@ -36,9 +37,11 @@ private static ComandaDAO instancia;
 	session.getTransaction().commit();
 	session.close();
 	}
+	
 
 	//FALTA
-	private ComandaEntity toEntity(ComandaDAO comanda) {	
+	private ComandaEntity toEntity(ComandaDAO comanda) 
+	{	
 		return null;
 
 	}

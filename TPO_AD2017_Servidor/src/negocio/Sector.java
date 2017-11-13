@@ -2,24 +2,23 @@ package negocio;
 
 import java.util.List;
 
-import dto.MozoDTO;
-import entities.MesaEntity;
 
 public class Sector 
 {
 	private Integer codSector;
 	private String descripcion;
-	private List<Mozo> mozo;
-	private List<Mesa> mesa;
-
+	private Salon salon;
+	
+	
 	public Sector(){}
 
-	public Sector(String descripcion, List<Mozo> mozo, List<Mesa> mesa) {
+	public Sector(String descripcion,Salon salon) {
 		super();
-	
+		
 		this.descripcion = descripcion;
-		this.mozo = mozo;
-		this.mesa = mesa;
+		this.salon=salon;
+		//this.mozo = mozo;
+		//this.mesa = mesas;
 	}
 
 	public Integer getCodSector() {
@@ -38,19 +37,11 @@ public class Sector
 		this.descripcion = descripcion;
 	}
 
-	public List<Mozo> getMozo() {
-		return mozo;
+	public Salon getSalon() {
+		return salon;
 	}
 
-	public void setMozo(List<Mozo> mozo) {
-		this.mozo = mozo;
-	}
-	
-	public List<Mesa> getMesa() {
-		return mesa;
-	}
-
-	public void setMesa(List<Mesa> mesa) {
-		this.mesa = mesa;
+	public void setSalon(Salon salon) {
+		this.salon = salon;
 	}
 }

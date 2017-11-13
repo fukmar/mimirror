@@ -2,20 +2,34 @@ package negocio;
 
 import java.util.List;
 
-public class Comanda {
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import entities.CajaEntity;
+import entities.ComandaEntity;
+import entities.MesaEntity;
+import entities.MozoEntity;
+import enumns.Estado;
+
+public class Comanda 
+{
 	
 	private Integer codComanda;
+	private Estado estado;
 	private Mozo mozo;
 	private Mesa mesa;
-	private List<ItemComanda> itemsComanda;
+	private Caja caja;
 	
-	public Comanda(Mozo mozo, Mesa mesa, List<ItemComanda> itemsComanda) {
+	public Comanda(Mozo mozo, Mesa mesa,Caja caja,Estado estado) {
 		super();
 		this.mozo = mozo;
 		this.mesa = mesa;
-		this.itemsComanda = itemsComanda;
+		this.caja=caja;
+		this.estado=estado;
 	}
-	
+
 	public Comanda(){}
 
 	public Integer getCodComanda() {
@@ -26,6 +40,7 @@ public class Comanda {
 		this.codComanda = codComanda;
 	}
 
+	
 	public Mozo getMozo() {
 		return mozo;
 	}
@@ -42,12 +57,31 @@ public class Comanda {
 		this.mesa = mesa;
 	}
 
-	public List<ItemComanda> getItemsComanda() {
-		return itemsComanda;
+	public Caja getCaja() {
+		return caja;
 	}
 
-	public void setItemsComanda(List<ItemComanda> itemsComanda) {
-		this.itemsComanda = itemsComanda;
+	public void setCaja(Caja caja) {
+		this.caja = caja;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
+	public ComandaEntity toEntity() 
+	{
+		ComandaEntity c=new ComandaEntity();
+		c.setCodComanda(codComanda);
+		c.setEstado(estado);
+		c.setCaja(caja.toNegocio());
+		//c.setMesa(mesa.toNegocio());
+		//c.setMesa(mesa.toNegocio());
+		return c;
 	}
 	
 	

@@ -3,9 +3,19 @@ package negocio;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import dto.ComandaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
+import entities.CajaEntity;
+import entities.MesaEntity;
+import entities.MozoEntity;
 import dto.ItemFacturaDTO;
 import enumns.MedioDePago;
 
@@ -13,31 +23,26 @@ public class Factura
 {
 	private Integer codFactura;
 	private Date fecha;
-	private float importe;
+	private double importe;
 	private MedioDePago medioPago;
-	private List<ItemFactura> itemFactura;
 	private Mesa mesa;
 	private Mozo mozo;
+	private Caja caja;
+	
 	
 	public Factura(){}
 
 
-
-
-
-	public Factura(Integer codFactura, Date fecha, float importe, MedioDePago medioPago,
-			List<ItemFactura> itemFactura, Mesa mesa, Mozo mozo) {
+	public Factura(Date fecha, double importe,
+			MedioDePago medioPago, Mesa mesa, Mozo mozo,Caja caja) {
 		super();
-		this.codFactura = codFactura;
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;
-		this.itemFactura = itemFactura;
 		this.mesa = mesa;
 		this.mozo = mozo;
+		this.caja=caja;
 	}
-
-
 
 	public Integer getCodFactura() {
 		return codFactura;
@@ -56,11 +61,11 @@ public class Factura
 		this.fecha = fecha;
 	}
 
-	public float getImporte() {
+	public double getImporte() {
 		return importe;
 	}
 
-	public void setImporte(float importe) {
+	public void setImporte(double importe) {
 		this.importe = importe;
 	}
 
@@ -72,13 +77,6 @@ public class Factura
 		this.medioPago = medioPago;
 	}
 
-	public List<ItemFactura> getItemFactura() {
-		return itemFactura;
-	}
-
-	public void setItemFactura(List<ItemFactura> itemFactura) {
-		this.itemFactura = itemFactura;
-	}
 
 	public Mesa getMesa() {
 		return mesa;
@@ -95,4 +93,17 @@ public class Factura
 	public void setMozo(Mozo mozo) {
 		this.mozo = mozo;
 	}
+
+
+
+	public Caja getCaja() {
+		return caja;
+	}
+
+
+
+	public void setCaja(Caja caja) {
+		this.caja = caja;
+	}
+	
 }

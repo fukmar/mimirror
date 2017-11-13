@@ -2,45 +2,45 @@ package negocio;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import dto.ComandaDTO;
 import dto.FacturaDTO;
+import entities.CajaEntity;
+import entities.LocalEntity;
+import entities.SalonEntity;
 import enumns.AreaRest;
 
 public class Caja extends AreaRestaurant
 {
-	private List<Comanda> comandas;
-	private List<Factura> facturas;
+	private SalonEntity salon;
 	
 	public Caja(){}
-
 	
+	public Caja(Integer codArea,AreaRest area,SalonEntity salon,Local local) {
+	super(codArea, area,local);
+		this.salon=salon;
+		// TODO Auto-generated constructor stub
+	}
+
+	public SalonEntity getSalon() {
+		return salon;
+	}
+
+	public void setSalon(SalonEntity salon) {
+		this.salon = salon;
+	}
 	
-	public Caja(Integer codArea, AreaRest area, List<Comanda> comandas, List<Factura> facturas) {
-		super(area);
-		this.comandas = comandas;
-		this.facturas = facturas;
-	}
-
-	public Caja(List<Comanda> comandas, List<Factura> facturas) {
-		super();
-		this.comandas = comandas;
-		this.facturas = facturas;
-	}
-
-	public List<Comanda> getComandas() {
-		return comandas;
-	}
-
-	public void setComandas(List<Comanda> comandas) {
-		this.comandas = comandas;
-	}
-
-	public List<Factura> getFacturas() {
-		return facturas;
-	}
-
-	public void setFacturas(List<Factura> facturas) {
-		this.facturas = facturas;
+	public CajaEntity toNegocio() 
+	{
+		CajaEntity c=new CajaEntity();
+		c.setCodArea(codArea);
+		c.setArea(area);
+		//c.setLocal(local.toNegocio);
+		//c.setSalon(salon.toNegocio());
+		return c;
 	}
 
 }

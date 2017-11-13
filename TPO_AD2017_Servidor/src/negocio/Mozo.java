@@ -2,20 +2,25 @@ package negocio;
 
 import java.util.List;
 
+import entities.SectorEntity;
+
 public class Mozo {
 	
 	private Integer dni;
 	private String nombre, apellido;
 	private Float procentajeComision;
+	private Sector sector;
 	
 	public Mozo(){}
 	
-	public Mozo(Integer dni, String nombre, String apellido, Float procentajeComision) {
+	public Mozo(Integer dni, String nombre, String apellido, Float procentajeComision,Sector sector)
+	{
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.procentajeComision = procentajeComision;
+		this.sector = sector;
 	
 	}
 
@@ -51,6 +56,14 @@ public class Mozo {
 		this.procentajeComision = procentajeComision;
 	}
 
+	public Sector getSector() {
+		return sector;
+	}
 
+	public void setSector(Sector sector) {
+		this.sector = sector;
+	}
+
+	
 
 }

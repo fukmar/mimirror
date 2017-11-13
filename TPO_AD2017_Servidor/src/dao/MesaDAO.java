@@ -35,6 +35,7 @@ private static MesaDAO instancia;
 		mesa = (MesaEntity)session.createQuery("FROM MesaEntity m WHERE m.codMesa=?").setInteger(0,nromesa).setFirstResult(0).setMaxResults(1).uniqueResult();
 		return mesa;
 	}
+	
 	{
 		}
 	}

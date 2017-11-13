@@ -15,9 +15,8 @@ public class Carta
 	
 	public Carta(){}
 
-	public Carta(Integer codigoCarta, Date vigencia, Temporada temporada, List<Plato> itemCarta) {
+	public Carta(Date vigencia, Temporada temporada, List<Plato> itemCarta) {
 		super();
-		this.codigoCarta = codigoCarta;
 		this.vigencia = vigencia;
 		this.temporada = temporada;
 		this.itemCarta = itemCarta;

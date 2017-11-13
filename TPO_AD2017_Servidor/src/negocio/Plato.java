@@ -3,7 +3,15 @@ package negocio;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
 import dto.PlatoDTO;
+import entities.CartaEntity;
 import entities.ElaboradoEntity;
 
 
@@ -14,12 +22,14 @@ public class Plato
 	private String nombre;
 	private float precio;
 	private List<Elaborado> productoPlato;
+    private Carta carta;
+	
 	
 	public Plato(){}
 
 	public Plato(String nombre, float precio, List<Elaborado> productoPlato) {
 		super();
-		this.codigo = codigo;
+	
 		this.nombre = nombre;
 		this.precio = precio;
 		this.productoPlato = productoPlato;
@@ -57,6 +67,14 @@ public class Plato
 		this.productoPlato = productoPlato;
 	}
 
+	public Carta getCarta() {
+		return carta;
+	}
+
+	public void setCarta(Carta carta) {
+		this.carta = carta;
+	}
+	
 	public PlatoDTO toDTO()
 	{
 		PlatoDTO p=new PlatoDTO();

@@ -1,19 +1,29 @@
 package negocio;
 
+
+
 public class ItemRemito {
 	
-	private Integer cantidad;
-	private Producto producto;  /*CONSULTAR*/
 	private Integer codItemRemito;
-	
-	public ItemRemito(){}
+	private Integer cantidad;
+	private Remito remito;
+	 
+	 public ItemRemito(){}
 
-	public ItemRemito(Integer cantidad, Producto producto) {
-		super();
-		this.cantidad = cantidad;
-		this.producto = producto;
-		
+		public ItemRemito(Integer cantidad) 
+		{
+			super();
+			this.cantidad = cantidad;
+			//this.codItemRemito = codItemRemito;
+		}
+	public Remito getRemito() {
+		return remito;
 	}
+
+	public void setRemito(Remito remito) {
+		this.remito = remito;
+	}
+
 
 	public Integer getCantidad() {
 		return cantidad;
@@ -23,14 +33,7 @@ public class ItemRemito {
 		this.cantidad = cantidad;
 	}
 
-	public Producto getProducto() {
-		return producto;
-	}
-
-	public void setProducto(Producto producto) {
-		this.producto = producto;
-	}
-
+	
 	public Integer getCodItemRemito() {
 		return codItemRemito;
 	}
@@ -38,7 +41,6 @@ public class ItemRemito {
 	public void setCodItemRemito(Integer codItemRemito) {
 		this.codItemRemito = codItemRemito;
 	}
-	
 	
 	
 	

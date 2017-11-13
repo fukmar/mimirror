@@ -2,45 +2,48 @@ package negocio;
 
 import java.util.List;
 
-import dto.ProductoDTO;
-import entities.RemitoEntity;
-import entities.SolicitudInsumoEntity;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-public class Deposito {
 
+
+public class Deposito 
+{
 	private Integer codDeposito;
-	private List<ProductoDTO> productos;
-	private List<SolicitudInsumoEntity> solicitudes;
-	private List<RemitoEntity> remitos;
+	private List<MateriaPrima> materiaprima;
+	private List<SolicitudInsumo> solicitudes;
+	private List<Remito> remitos;
 	
-	public Deposito(List<ProductoDTO> productos, List<SolicitudInsumoEntity> solicitudes, List<RemitoEntity> remitos) {
+	
+
+	public Deposito(){}
+	
+	public Deposito(List<MateriaPrima> materiaprima, List<SolicitudInsumo> solicitudes,
+			List<Remito> remitos) {
 		super();
-		this.productos = productos;
+		this.materiaprima = materiaprima;
 		this.solicitudes = solicitudes;
 		this.remitos = remitos;
 	}
 
-	public List<ProductoDTO> getProductos() {
-		return productos;
-	}
 
-	public void setProductos(List<ProductoDTO> productos) {
-		this.productos = productos;
-	}
-
-	public List<SolicitudInsumoEntity> getSolicitudes() {
+	public List<SolicitudInsumo> getSolicitudes() {
 		return solicitudes;
 	}
 
-	public void setSolicitudes(List<SolicitudInsumoEntity> solicitudes) {
+	public void setSolicitudes(List<SolicitudInsumo> solicitudes) {
 		this.solicitudes = solicitudes;
 	}
 
-	public List<RemitoEntity> getRemitos() {
+	public List<Remito> getRemitos() {
 		return remitos;
 	}
 
-	public void setRemitos(List<RemitoEntity> remitos) {
+	public void setRemitos(List<Remito> remitos) {
 		this.remitos = remitos;
 	}
 
@@ -53,6 +56,14 @@ public class Deposito {
 	}
 	
 	
+	public List<MateriaPrima> getMateriaprima() {
+		return materiaprima;
+	}
+
+	public void setMateriaprima(List<MateriaPrima> materiaprima) {
+		this.materiaprima = materiaprima;
+	}
+
 	
 	
 }

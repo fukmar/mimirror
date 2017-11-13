@@ -9,13 +9,13 @@ import enumns.AreaRest;
 @Table(name="cajas")
 public class CajaEntity extends AreaRestaurantEntity
 {
-
 	
-	public CajaEntity(){}
-
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codSalon")
 	private SalonEntity salon;
+	
+	public CajaEntity(){}
+
 	
 	public CajaEntity(Integer codArea,AreaRest area,SalonEntity salon,LocalEntity local) {
 		super(codArea, area,local);

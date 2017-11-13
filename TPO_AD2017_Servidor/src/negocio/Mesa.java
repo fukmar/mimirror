@@ -1,24 +1,27 @@
 package negocio;
 
+import entities.SectorEntity;
+
 public class Mesa {
 	private  Integer codMesa;
 	private  Integer cantidadPersonas;
 	private  Integer capacidad;
 	private  Integer estado;
-
 	private Mozo mozo;
+	private Sector sector;
 
 	
 	public Mesa(){}
 	
 	public Mesa(Integer cantidadPersonas, Integer capacidad, Integer estado,
-			Mozo mozo) {
+			Mozo mozo,Sector sector) 
+	{
 		super();
 		
 		this.cantidadPersonas = cantidadPersonas;
 		this.capacidad = capacidad;
 		this.estado = estado;
-		
+		this.sector=sector;
 		this.mozo = mozo;
 	
 	}
@@ -62,6 +65,14 @@ public class Mesa {
 
 	public void setMozo(Mozo mozo) {
 		this.mozo = mozo;
+	}
+
+	public Sector getSector() {
+		return sector;
+	}
+
+	public void setSector(Sector sector) {
+		this.sector = sector;
 	}
 
 	

@@ -6,7 +6,8 @@ import java.util.Date;
 
 public abstract class Producto
 {
-	protected Integer codigoProd;
+private Integer codigoProd;
+	
 	protected String tipo;
 	protected String calidad;
 	protected String descripcion;
@@ -15,8 +16,9 @@ public abstract class Producto
 	protected Date caducidad;
 	
 	public Producto(){}
-
 	
+	
+
 
 	public Producto(String tipo, String calidad, String descripcion, PlanDeProduccion pdp,
 			Integer cantidad, Date caducidad) {
@@ -31,29 +33,24 @@ public abstract class Producto
 	}
 
 
-
-
 	public Integer getNumero() {
 		return codigoProd;
 	}
-
 	public void setNumero(Integer numero) {
 		this.codigoProd = numero;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
-
-
+	
+	
 	public String getTipo() {
 		return tipo;
 	}
+
 
 
 
@@ -63,9 +60,11 @@ public abstract class Producto
 
 
 
+
 	public String getCalidad() {
 		return calidad;
 	}
+
 
 
 
@@ -75,9 +74,11 @@ public abstract class Producto
 
 
 
+
 	public PlanDeProduccion getPdp() {
 		return pdp;
 	}
+
 
 
 
@@ -87,9 +88,11 @@ public abstract class Producto
 
 
 
+
 	public Integer getCantidad() {
 		return cantidad;
 	}
+
 
 
 
@@ -99,14 +102,15 @@ public abstract class Producto
 
 
 
+
 	public Date getCaducidad() {
 		return caducidad;
 	}
 
 
 
+
 	public void setCaducidad(Date caducidad) {
 		this.caducidad = caducidad;
 	}
-	
 }

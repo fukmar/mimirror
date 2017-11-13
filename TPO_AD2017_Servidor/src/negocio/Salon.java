@@ -3,31 +3,23 @@ package negocio;
 import java.util.List;
 
 import dto.SectorDTO;
+import entities.LocalEntity;
 import enumns.AreaRest;
 
 public class Salon extends AreaRestaurant
 {
-	private Integer codSalon;
 	private String nombreSalon;
-	private List<Sector> sectores;
 	
 	public Salon(){}
-	
-	public Salon(Integer codArea, AreaRest area,
-			String nombreSalon, List<Sector> sectores) {
-		super(area);
-		
+
+
+	public Salon(Integer codArea,AreaRest area,String nombreSalon,Local local) {
+		super(codArea, area,local);
 		this.nombreSalon = nombreSalon;
-		this.sectores = sectores;
+
 	}
 
-	public Integer getCodSalon() {
-		return codSalon;
-	}
-
-	public void setCodSalon(Integer codSalon) {
-		this.codSalon = codSalon;
-	}
+	
 
 	public String getNombreSalon() {
 		return nombreSalon;
@@ -37,11 +29,4 @@ public class Salon extends AreaRestaurant
 		this.nombreSalon = nombreSalon;
 	}
 
-	public List<Sector> getSectores() {
-		return sectores;
-	}
-
-	public void setSectores(List<Sector> sectores) {
-		this.sectores = sectores;
-	}
 }

@@ -2,24 +2,30 @@ package negocio;
 
 import java.util.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+
+import entities.LocalEntity;
+import entities.PlanDeProduccionEntity;
 import enumns.AreaRest;
 
-public class Administracion extends AreaRestaurant {
-
+public class Administracion extends AreaRestaurant 
+{
 	private List<PlanDeProduccion> planesProd;
 
-
-	public Administracion(Integer codArea, AreaRest area,
-			List<PlanDeProduccion> planesProd) {
-		super(area);
+	public Administracion(){
+		
+	}
+	
+	public Administracion(Integer codArea,AreaRest area,List<PlanDeProduccion> planesProd,Local local) {
+		super(codArea, area,local);
 		this.planesProd = planesProd;
 	}
 
 	
-	public Administracion(){
-		
-	}
 
+	
 	public List<PlanDeProduccion> getPlanesProd() {
 		return planesProd;
 	}

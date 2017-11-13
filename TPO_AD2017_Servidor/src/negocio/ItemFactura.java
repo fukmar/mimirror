@@ -1,32 +1,68 @@
 package negocio;
 
-public class ItemFactura {
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
-		private Integer codItemFactura;
-		private Comanda comanda;
-		
-		public ItemFactura(Integer codItemFactura, Comanda comanda) {
-			super();
-			this.codItemFactura = codItemFactura;
-			this.comanda = comanda;
-		}
 
-		public Integer getCodItemFactura() {
-			return codItemFactura;
-		}
+public class ItemFactura 
+{
+	private Integer codItemFactura; 
+	private ItemComanda itemcomanda; 
+	private Factura factura;
+	private double subtotal;
+	
+	public ItemFactura() {
+		super();
+	}
+	
 
-		public void setCodItemFactura(Integer codItemFactura) {
-			this.codItemFactura = codItemFactura;
-		}
 
-		public Comanda getComanda() {
-			return comanda;
-		}
+	public ItemFactura(ItemComanda itemcomanda, Factura factura) {
+		super();
+		this.itemcomanda = itemcomanda;
+		this.factura=factura;
+	}
 
-		public void setComanda(Comanda comanda) {
-			this.comanda = comanda;
-		}
-		
-		
-		
+
+	public double getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(Double subtotal) {
+		this.subtotal = subtotal;
+	}
+
+
+
+	public Integer getCodItemFactura() {
+		return codItemFactura;
+	}
+
+	public void setCodItemFactura(Integer codItemFactura) {
+		this.codItemFactura = codItemFactura;
+	}
+
+
+
+	public ItemComanda getItemcomanda() {
+		return itemcomanda;
+	}
+
+	public void setItemcomanda(ItemComanda itemcomanda) {
+		this.itemcomanda = itemcomanda;
+	}
+
+
+
+	public Factura getFactura() {
+		return factura;
+	}
+
+
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
 }

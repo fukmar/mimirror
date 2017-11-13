@@ -3,27 +3,32 @@ package negocio;
 import java.util.*;
 //FALTAN METODOS DE NEGOCIO
 
+
+
 public abstract class SolicitudInsumo {
 	
-	protected Integer codigoArt;
-	protected Integer cantidad;
-	protected AreaRestaurant area;
-	protected String responsable;
-	protected Integer lote;
-	protected Date fechaCompra;
-	protected Date fechaVencimiento;
-	protected String motivo;
-	
-	public SolicitudInsumo(){
-		
-	}
+	private Integer codSolicitudInsumo;
+	private Integer cantidadAPedir;
+	private MateriaPrima materiaPrima; 
+	private AreaRestaurant area;
+	private String responsable;
+	private Integer lote;
+	private Date fechaCompra;
+	private Date fechaVencimiento;
+	private String motivo;
+    private Deposito deposito;
 
-	public SolicitudInsumo(Integer codigoArt, Integer cantidad,
-			AreaRestaurant area, String responsable, Integer lote,
-			Date fechaCompra, Date fechaVencimiento, String motivo) {
-		super();
-		this.codigoArt = codigoArt;
-		this.cantidad = cantidad;
+    public SolicitudInsumo(){
+	}
+	
+	
+
+	public SolicitudInsumo(Integer cantidadAPedir, MateriaPrima materiaPrima,
+			AreaRestaurant area, String responsable, Integer lote, Date fechaCompra, Date fechaVencimiento,
+			String motivo) {
+	
+		this.cantidadAPedir = cantidadAPedir;
+		this.materiaPrima = materiaPrima;
 		this.area = area;
 		this.responsable = responsable;
 		this.lote = lote;
@@ -32,20 +37,30 @@ public abstract class SolicitudInsumo {
 		this.motivo = motivo;
 	}
 
-	public Integer getCodigoArt() {
-		return codigoArt;
+
+
+	public Integer getCodSolicitudInsumo() {
+		return codSolicitudInsumo;
 	}
 
-	public void setCodigoArt(Integer codigoArt) {
-		this.codigoArt = codigoArt;
+	public void setCodSolicitudInsumo(Integer codSolicitudInsumo) {
+		this.codSolicitudInsumo = codSolicitudInsumo;
 	}
 
-	public Integer getCantidad() {
-		return cantidad;
+	public Integer getCantidadAPedir() {
+		return cantidadAPedir;
 	}
 
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+	public void setCantidadAPedir(Integer cantidadAPedir) {
+		this.cantidadAPedir = cantidadAPedir;
+	}
+
+	public MateriaPrima getMateriaPrima() {
+		return materiaPrima;
+	}
+
+	public void setMateriaPrima(MateriaPrima materiaPrima) {
+		this.materiaPrima = materiaPrima;
 	}
 
 	public AreaRestaurant getArea() {
@@ -95,7 +110,22 @@ public abstract class SolicitudInsumo {
 	public void setMotivo(String motivo) {
 		this.motivo = motivo;
 	}
+
 	
+	
+
+	public Deposito getDeposito() {
+		return deposito;
+	}
+
+
+
+	public void setDeposito(Deposito deposito) {
+		this.deposito = deposito;
+	}
+
+
+
 	
 	
 	

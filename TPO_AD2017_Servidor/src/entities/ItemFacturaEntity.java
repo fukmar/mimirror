@@ -12,12 +12,6 @@ public class ItemFacturaEntity
 	private Integer codItemFactura; 
 	
 	
-	public ItemFacturaEntity() {
-		super();
-	}
-
-
-
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codItemComanda")
 	private ItemComandaEntity itemcomanda; 
@@ -26,6 +20,10 @@ public class ItemFacturaEntity
 	@JoinColumn(name="codFactura")
 	private FacturaEntity factura;
 	private double subtotal;
+	
+	public ItemFacturaEntity() {
+		super();
+	}
 	
 	public double getSubtotal() {
 		return subtotal;

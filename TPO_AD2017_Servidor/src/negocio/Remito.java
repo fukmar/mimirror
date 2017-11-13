@@ -3,27 +3,35 @@ package negocio;
 import java.util.Date;
 import java.util.List;
 
-public class Remito {
-	
-	private List<ItemRemito> itemsRemito;
+
+public class Remito 
+{
+	private Integer codRemito;
 	private Integer codigoProveedor;
 	private Date fecha;
-	private OrdenDeCompra ordendeCompra;
-	private Integer codRemito;
+    private Deposito deposito;
+	private List<ItemRemito> itemsRemito;
 	
-	
+		
 	public Remito(){}
-	
-	public Remito(List<ItemRemito> itemsRemito, Integer codigoProveedor,
-			Date fecha, OrdenDeCompra ordendeCompra, Integer codRemito) {
+		
+	public Remito(Integer codigoProveedor, Date fecha,
+			List<ItemRemito> itemsRemito
+			) {
 		super();
-		this.itemsRemito = itemsRemito;
 		this.codigoProveedor = codigoProveedor;
 		this.fecha = fecha;
-		this.ordendeCompra = ordendeCompra;
-		this.codRemito= codRemito;
+		this.itemsRemito = itemsRemito;
+		//this.ordendeCompra = ordendeCompra;
+	}
+	
+	public Deposito getDeposito() {
+		return deposito;
 	}
 
+	public void setDeposito(Deposito deposito) {
+		this.deposito = deposito;
+	}
 	public List<ItemRemito> getItemsRemito() {
 		return itemsRemito;
 	}
@@ -43,17 +51,8 @@ public class Remito {
 	public Date getFecha() {
 		return fecha;
 	}
-
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
-	}
-
-	public OrdenDeCompra getOrdendeCompra() {
-		return ordendeCompra;
-	}
-
-	public void setOrdendeCompra(OrdenDeCompra ordendeCompra) {
-		this.ordendeCompra = ordendeCompra;
 	}
 
 	public Integer getCodRemito() {
@@ -62,7 +61,6 @@ public class Remito {
 
 	public void setCodRemito(Integer codRemito) {
 		this.codRemito = codRemito;
-	}
-	
+	}	
 	
 }

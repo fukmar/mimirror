@@ -2,6 +2,8 @@ package negocio;
 
 import dto.MateriaPrimaDTO;
 import dto.UnidadDTO;
+import entities.DepositoEntity;
+import entities.UnidadEntity;
 
 public class MateriaPrima 
 {
@@ -9,16 +11,17 @@ public class MateriaPrima
 	private String descripcion;
 	private Unidad unidadUso;
 	private Float cantidad;
+	private Deposito deposito;
 
 	public MateriaPrima(){}
 
 	public MateriaPrima(String descripcion, Unidad unidadUso, Float cantidad) {
-		super();
-		
-		this.descripcion = descripcion;
-		this.unidadUso = unidadUso;
-		this.setCantidad(cantidad);
-	}
+	super();
+
+	this.descripcion = descripcion;
+	this.unidadUso = unidadUso;
+	this.setCantidad(cantidad);
+}
 
 	public Integer getCodigo() {
 		return codigo;
@@ -60,5 +63,13 @@ public class MateriaPrima
 
 	public void setCantidad(Float cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	public Deposito getDeposito() {
+		return deposito;
+	}
+
+	public void setDeposito(Deposito deposito) {
+		this.deposito = deposito;
 	}
 }

@@ -1,21 +1,25 @@
 package negocio;
 
+
 import enumns.AreaRest;
 //FALTAN METODOS DE NEGOCIO
 
-public abstract class AreaRestaurant {
+public abstract class AreaRestaurant 
+{
 	
 	protected Integer codArea;
 	protected AreaRest area;
+	private Local local;
 	
-	public AreaRestaurant(){
-		
-	}
+	
+	public AreaRestaurant(){}
 
-	public AreaRestaurant(AreaRest area) {
+	public AreaRestaurant(Integer codArea,AreaRest area,Local local) 
+	{
 		super();
-		
+		this.codArea=codArea;
 		this.area = area;
+		this.local=local;
 	}
 
 	public Integer getCodArea() {
@@ -32,6 +36,14 @@ public abstract class AreaRestaurant {
 
 	public void setArea(AreaRest area) {
 		this.area = area;
+	}
+
+	public Local getLocal() {
+		return local;
+	}
+
+	public void setLocal(Local local) {
+		this.local = local;
 	}
 	
 	
