@@ -1,6 +1,6 @@
 <%@page import="interfazRemota.*"%>
-<%@page import="dto.*"%>
 <%@page import="bd.*"%>
+<%@page import="dto.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Platos a preparar</title>
+<title>Platos Disponibles</title>
 
 </head>
 <body>
@@ -21,6 +21,17 @@
 <% //	List<DTO.Semielaborado> semis=  BusinessDelegate.getInstancia().getSemielaborados();%>
 <% // List<DTO.Item_Pedido> losItemsPedidoPendientesDTO = BusinessDelegate.getInstancia().getItemPedidosPendientesDTO(1,1);%>
 
+<%
+
+List<dto.PlatoDTO> listaPlatos = BusinessDelegate.getInstance().listarPlatos();
+for(dto.PlatoDTO p:listaPlatos) 
+{
+	
+	System.out.print(p.toString());
+}
+
+%>
+<!--
 <table border="1">
 <thead>
 <tr bgcolor="yellow">
@@ -30,6 +41,7 @@
 	</tr>
 </thead>
 </table>	
+-->
 	<P>
 	<p>
 	 <a href="index.jsp" target="_self">volver</a> 
