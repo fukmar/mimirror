@@ -3,6 +3,7 @@
 	<name>TPO_AD2017_ClienteWeb</name>
 	<comment></comment>
 	<projects>
+		<project>TPO_AD2017_Repositorio</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

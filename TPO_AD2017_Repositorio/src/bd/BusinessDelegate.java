@@ -12,7 +12,7 @@ import exceptions.PlatoException;
 import interfazRemota.manejoNegocio;
 
 
-public class BusinessDelegate extends UnicastRemoteObject
+public class BusinessDelegate
 {
 
 	private static BusinessDelegate instance;
@@ -47,7 +47,12 @@ public class BusinessDelegate extends UnicastRemoteObject
 	
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
 	{
-		return remoteObject.listarPlatos();
+		try {
+			return remoteObject.listarPlatos();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new PlatoException("Error! no hay plato");
+		}
 	}
 	
 }
