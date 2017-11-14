@@ -2,5 +2,5 @@ package enumns;
 
 public enum Estado {
 	
-	EnProceso,Terminado
+	EnProceso,Terminado,Reservado
 }
