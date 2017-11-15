@@ -1,12 +1,20 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import enumns.EstadoItemRemito;
 import hibernate.HibernateUtil;
+import negocio.Elaborado;
+import negocio.ItemRemito;
+import negocio.Plato;
 import negocio.Producto;
+import negocio.Remito;
 
 @Entity
 @Table(name="itemsRemito")
@@ -17,8 +25,25 @@ public class ItemRemitoEntity {
 	@Column(name="codItemRemito")
 	private Integer codItemRemito;
 	private Integer cantidad;
+	public ItemRemitoEntity(Integer codItemRemito, Integer cantidad, EstadoItemRemito estadoremito,
+			RemitoEntity remito) {
+		super();
+		this.codItemRemito = codItemRemito;
+		this.cantidad = cantidad;
+		this.estadoremito = estadoremito;
+		this.remito = remito;
+	}
+
+	private EstadoItemRemito estadoremito;
 	
-	
+	public EstadoItemRemito getEstadoremito() {
+		return estadoremito;
+	}
+
+	public void setEstadoremito(EstadoItemRemito estadoremito) {
+		this.estadoremito = estadoremito;
+	}
+
 	public RemitoEntity getRemito() {
 		return remito;
 	}
@@ -55,6 +80,18 @@ public class ItemRemitoEntity {
 
 	public void setCodItemRemito(Integer codItemRemito) {
 		this.codItemRemito = codItemRemito;
+	}
+
+
+	public ItemRemito toNegocio() 
+	{
+		ItemRemito item=new ItemRemito();
+		item.setCodItemRemito(codItemRemito);
+		item.setCantidad(cantidad);
+		item.setEstadoremito(estadoremito);
+		Remito remito=new Remito();
+		item.setRemito(remito);
+		return item;
 	}
 
 	

@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import dto.PlatoDTO;
 import entities.CartaEntity;
 import entities.ElaboradoEntity;
+import enumns.CategoriaPlato;
 
 
 
@@ -23,17 +24,33 @@ public class Plato
 	private float precio;
 	private List<Elaborado> productoPlato;
     private Carta carta;
+    private CategoriaPlato categoria;
 	
 	
 	public Plato(){}
 
-	public Plato(String nombre, float precio, List<Elaborado> productoPlato) {
+
+	public CategoriaPlato getCategoria() {
+		return categoria;
+	}
+
+
+	public void setCategoria(CategoriaPlato categoria) {
+		this.categoria = categoria;
+	}
+
+
+	public Plato(Integer codigo, String nombre, float precio, List<Elaborado> productoPlato, Carta carta,
+			CategoriaPlato categoria) {
 		super();
-	
+		this.codigo = codigo;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.productoPlato = productoPlato;
+		this.carta = carta;
+		this.categoria = categoria;
 	}
+
 
 	public Integer getCodigo() {
 		return codigo;

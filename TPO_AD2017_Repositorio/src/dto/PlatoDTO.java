@@ -10,6 +10,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import enumns.CategoriaPlato;
+
 
 
 
@@ -21,9 +23,28 @@ public class PlatoDTO implements Serializable
 	private float precio;
 	private List<ElaboradoDTO> productoPlato;
 	private CartaDTO carta;
-	
+	private CategoriaPlato categoria;
 	
 	public PlatoDTO() {}
+
+	public PlatoDTO(Integer codigo, String nombre, float precio, List<ElaboradoDTO> productoPlato, CartaDTO carta,
+			CategoriaPlato categoria) {
+		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.productoPlato = productoPlato;
+		this.carta = carta;
+		this.categoria = categoria;
+	}
+
+	public CategoriaPlato getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(CategoriaPlato categoria) {
+		this.categoria = categoria;
+	}
 
 	public PlatoDTO(String nombre, float precio, List<ElaboradoDTO> productoPlato) {
 		super();

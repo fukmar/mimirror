@@ -3,8 +3,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.ItemRemitoEntity;
+import entities.RemitoEntity;
 import hibernate.HibernateUtil;
 import negocio.ItemRemito;
+import negocio.Remito;
 
 public class ItemRemitoDAO {
 	
@@ -18,21 +20,20 @@ public class ItemRemitoDAO {
 		return instancia;
 	}
 	
-	public void save(ItemRemitoDAO itemRemito){
+	public void save(ItemRemito itemRemito){
 
-	ItemRemitoDAO ir = this.toEntity(itemRemito);
+	ItemRemitoEntity item = this.toEntity(itemRemito);
 	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
-	session.save(ir);
+	session.save(item);
 	session.getTransaction().commit();
 	session.close();
 	}
 
-	//FALTA
-	private ItemRemitoDAO toEntity(ItemRemitoDAO itemRemito) {
-		// TODO Auto-generated method stub
-		return null;
+	public ItemRemitoEntity toEntity(ItemRemito itemremito){
+		ItemRemitoEntity item=new ItemRemitoEntity();
+		return item;
 	}
 	
 	

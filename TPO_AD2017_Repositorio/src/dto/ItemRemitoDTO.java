@@ -2,6 +2,8 @@ package dto;
 
 import java.io.Serializable;
 
+import enumns.EstadoItemRemito;
+
 
 public class ItemRemitoDTO implements Serializable{
 
@@ -14,7 +16,24 @@ public class ItemRemitoDTO implements Serializable{
 	private Integer cantidad;
 	private ProductoDTO producto;  /*CONSULTAR*/
 	private Integer codItemRemito;
+	private EstadoItemRemito estadoremito;
 	
+	public ItemRemitoDTO(Integer cantidad, ProductoDTO producto, Integer codItemRemito, EstadoItemRemito estadoremito) {
+		super();
+		this.cantidad = cantidad;
+		this.producto = producto;
+		this.codItemRemito = codItemRemito;
+		this.estadoremito = estadoremito;
+	}
+
+	public EstadoItemRemito getEstadoremito() {
+		return estadoremito;
+	}
+
+	public void setEstadoremito(EstadoItemRemito estadoremito) {
+		this.estadoremito = estadoremito;
+	}
+
 	public ItemRemitoDTO(){}
 
 	public ItemRemitoDTO(Integer cantidad, ProductoDTO producto, Integer codItemRemito) {

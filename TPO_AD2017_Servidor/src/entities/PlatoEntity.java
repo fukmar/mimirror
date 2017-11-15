@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import enumns.CategoriaPlato;
 import negocio.Elaborado;
 import negocio.Plato;
 
@@ -20,7 +21,27 @@ public class PlatoEntity
 	private Integer codigo;
 	private String nombre;
 	private float precio;
+	private CategoriaPlato categoria;
 	
+	public PlatoEntity(Integer codigo, String nombre, float precio, CategoriaPlato categoria,
+			List<ElaboradoEntity> productoPlato, CartaEntity carta) {
+		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.categoria = categoria;
+		this.productoPlato = productoPlato;
+		this.carta = carta;
+	}
+
+	public CategoriaPlato getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(CategoriaPlato categoria) {
+		this.categoria = categoria;
+	}
+
 	public CartaEntity getCarta() {
 		return carta;
 	}
