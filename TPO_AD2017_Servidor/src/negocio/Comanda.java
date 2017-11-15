@@ -7,6 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import dao.ComandaDAO;
 import entities.CajaEntity;
 import entities.ComandaEntity;
 import entities.MesaEntity;
@@ -73,14 +74,22 @@ public class Comanda
 		this.estado = estado;
 	}
 
+	
+	//grabar comanda
+	public void save() 
+	{
+		ComandaDAO.getInstance().save(this);
+	}
+	
+	
 	public ComandaEntity toEntity() 
 	{
 		ComandaEntity c=new ComandaEntity();
 		c.setCodComanda(codComanda);
 		c.setEstado(estado);
 		c.setCaja(caja.toNegocio());
-		//c.setMesa(mesa.toNegocio());
-		//c.setMesa(mesa.toNegocio());
+		c.setMesa(mesa.toNegocio());
+		c.setMesa(mesa.toNegocio());
 		return c;
 	}
 	

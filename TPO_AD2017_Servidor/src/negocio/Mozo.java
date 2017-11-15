@@ -2,6 +2,7 @@ package negocio;
 
 import java.util.List;
 
+import entities.MozoEntity;
 import entities.SectorEntity;
 
 public class Mozo {
@@ -62,6 +63,16 @@ public class Mozo {
 
 	public void setSector(Sector sector) {
 		this.sector = sector;
+	}
+
+	public MozoEntity toEntity() 
+	{
+		MozoEntity m=new MozoEntity();
+		m.setDni(dni);
+		m.setNombre(nombre);
+		m.setApellido(apellido);
+		m.setProcentajeComision(procentajeComision);
+		return m;
 	}
 
 	

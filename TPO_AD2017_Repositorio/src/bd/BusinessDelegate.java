@@ -8,6 +8,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import dto.*;
+import exceptions.ComandaException;
 import exceptions.PlatoException;
 import interfazRemota.manejoNegocio;
 
@@ -52,6 +53,16 @@ public class BusinessDelegate
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			throw new PlatoException("Error! no hay plato");
+		}
+	}
+	
+	
+	public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
+	{
+		try {
+			remoteObject.grabarComanda(comanda);
+		} catch (Exception e) {
+			throw new ComandaException("Error no hay comanda!");
 		}
 	}
 	

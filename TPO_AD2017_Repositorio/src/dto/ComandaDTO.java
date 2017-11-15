@@ -2,28 +2,29 @@ package dto;
 
 import java.io.Serializable;
 
+import enumns.Estado;
+
 
 
 public class ComandaDTO implements Serializable
 {
 	private static final long serialVersionUID = -4258073980581482034L;
 	private Integer codComanda;
-	
+
+	private Estado estado;
 	private MozoDTO mozo;
 	private MesaDTO mesa;
+	private CajaDTO caja;
 	
-	public ComandaDTO(){}
-	
-	
-
-	public ComandaDTO(Integer codComanda, MozoDTO mozo, MesaDTO mesa) {
+	public ComandaDTO(MozoDTO mozo, MesaDTO mesa,CajaDTO caja,Estado estado) {
 		super();
-		this.codComanda = codComanda;
 		this.mozo = mozo;
 		this.mesa = mesa;
+		this.caja=caja;
+		this.estado=estado;
 	}
 
-
+	public ComandaDTO(){}
 
 	public Integer getCodComanda() {
 		return codComanda;
@@ -33,6 +34,7 @@ public class ComandaDTO implements Serializable
 		this.codComanda = codComanda;
 	}
 
+	
 	public MozoDTO getMozo() {
 		return mozo;
 	}
@@ -49,17 +51,21 @@ public class ComandaDTO implements Serializable
 		this.mesa = mesa;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public CajaDTO getCaja() {
+		return caja;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "ComandaDTO [codComanda=" + codComanda + ", mozo=" + mozo + ", mesa=" + mesa + "]";
+	public void setCaja(CajaDTO caja) {
+		this.caja = caja;
 	}
-	
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 	
 
 }

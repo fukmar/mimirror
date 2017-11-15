@@ -1,5 +1,6 @@
 package negocio;
 
+import entities.MesaEntity;
 import entities.SectorEntity;
 
 public class Mesa {
@@ -73,6 +74,18 @@ public class Mesa {
 
 	public void setSector(Sector sector) {
 		this.sector = sector;
+	}
+
+	public MesaEntity toNegocio() 
+	{
+		MesaEntity m=new MesaEntity();
+		m.setCodMesa(codMesa);
+		m.setEstado(estado);
+		m.setCantidadPersonas(cantidadPersonas);
+		m.setCapacidad(capacidad);
+		m.setMozo(mozo.toEntity());
+		//aca mp falta el sector?
+		return m;
 	}
 
 	

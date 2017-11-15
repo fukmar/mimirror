@@ -40,11 +40,11 @@ private static ComandaDAO instancia;
 	
 
 	//FALTA
-	private ComandaEntity toEntity(ComandaDAO comanda) 
+	/*private ComandaEntity toEntity(ComandaDAO comanda) 
 	{	
 		return null;
 
-	}
+	}*/
 	
 	@SuppressWarnings("unchecked")
 	public List <ItemComandaEntity> OtenerItemComanda(int codigoComanda) {

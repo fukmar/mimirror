@@ -5,7 +5,9 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import controlador.Controlador;
+import dto.ComandaDTO;
 import dto.PlatoDTO;
+import exceptions.ComandaException;
 import exceptions.PlatoException;
 import interfazRemota.manejoNegocio;
 
@@ -22,6 +24,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
 	{
 		return Controlador.getInstance().listarPlatos();
+	}
+
+	@Override
+	public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
+	{
+		Controlador.getInstance().guardarComanda(comanda);
+		
 	}
 	
 	

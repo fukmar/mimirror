@@ -2,8 +2,16 @@ package controlador;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.corba.se.spi.protocol.CorbaMessageMediator;
+
 import dao.PlatoDAO;
+import dto.ComandaDTO;
 import dto.PlatoDTO;
+import enumns.Estado;
+import negocio.Caja;
+import negocio.Comanda;
+import negocio.Mesa;
+import negocio.Mozo;
 import negocio.Plato;
 
 
@@ -40,5 +48,15 @@ public class Controlador {
 		return listaDTO;
 		
 	}
-		 
+	
+	
+	public void guardarComanda(ComandaDTO comanda)
+	{
+		Comanda comandaN=new Comanda();
+		//comandaN.setMozo(comanda.getMozo()); //tengo que pasar comandaDTO a comandaNegocio
+		comandaN.setEstado(comanda.getEstado());
+		//(Mozo mozo, Mesa mesa,Caja caja,Estado estado) 
+		comandaN.save() ; //no estoy segura si no va a pinchar porque falta el id,pero en la bd es autonumerico
+	}
+	
 }
