@@ -34,6 +34,16 @@ public class PlatoEntity
 		this.carta = carta;
 	}
 
+	public PlatoEntity(String nombre, float precio, CategoriaPlato categoria, List<ElaboradoEntity> productoPlato,
+			CartaEntity carta) {
+		super();
+		this.nombre = nombre;
+		this.precio = precio;
+		this.categoria = categoria;
+		this.productoPlato = productoPlato;
+		this.carta = carta;
+	}
+
 	public CategoriaPlato getCategoria() {
 		return categoria;
 	}

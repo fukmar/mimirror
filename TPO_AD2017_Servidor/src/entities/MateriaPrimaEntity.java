@@ -2,6 +2,7 @@ package entities;
 import javax.persistence.*;
 
 import negocio.MateriaPrima;
+import negocio.Plato;
 
 @Entity
 @Table(name="materiales")
