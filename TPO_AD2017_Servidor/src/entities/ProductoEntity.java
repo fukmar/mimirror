@@ -24,6 +24,7 @@ public abstract class ProductoEntity
 	protected Integer cantidad;
 	protected Date caducidad;
 	
+	
 	public ProductoEntity(){}
 	
 	

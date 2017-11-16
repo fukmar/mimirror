@@ -6,24 +6,40 @@ import javax.persistence.*;
 @Entity
 @Table(name="itemsOrdenDeCompra")
 public class ItemOrdenDeCompraEntity {
+	
 	@Id
-	@Column(name="codItemOrdenDeCompra")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer codItemOrdenDeCompra;
+	
+	
 	private Integer cantidad;
-	@OneToOne
+	
+	
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="productos")
 	private ProductoEntity producto;
 	
 	
-	public ItemOrdenDeCompraEntity (){}
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="ordenDeCompra")
+	private OrdenDeCompraEntity ordenDeCompra;
 
+	
+	
+	public ItemOrdenDeCompraEntity(){
+		super();
+	}
+	
+	
 
 	public ItemOrdenDeCompraEntity(Integer codItemOrdenDeCompra,
-			Integer cantidad, ProductoEntity producto) {
+			Integer cantidad, ProductoEntity producto,
+			OrdenDeCompraEntity ordenDeCompra) {
 		super();
 		this.codItemOrdenDeCompra = codItemOrdenDeCompra;
 		this.cantidad = cantidad;
 		this.producto = producto;
+		this.ordenDeCompra = ordenDeCompra;
 	}
 
 
@@ -55,4 +71,18 @@ public class ItemOrdenDeCompraEntity {
 	public void setProducto(ProductoEntity producto) {
 		this.producto = producto;
 	}
+
+
+	public OrdenDeCompraEntity getordenDeCompra() {
+		return ordenDeCompra;
+	}
+
+
+	public void setordenDeCompra(OrdenDeCompraEntity ordenDeCompra) {
+		this.ordenDeCompra = ordenDeCompra;
+	}
+	
+
+
+	
 }

@@ -39,6 +39,9 @@ public class HibernateUtil
              config.addAnnotatedClass(DepositoEntity.class);
              config.addAnnotatedClass(SolicitudInsumoEntity.class);
              
+             /*PROBANDO*/
+             config.addAnnotatedClass(OrdenDeCompraEntity.class);
+             config.addAnnotatedClass(ItemOrdenDeCompraEntity.class);
              
             
              sessionFactory = config.buildSessionFactory();

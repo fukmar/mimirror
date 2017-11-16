@@ -134,7 +134,7 @@ public class testHibernate {
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
-		session.save(deposito);
+		/*session.save(deposito);
 		session.save(remito);
 		session.save(solicitud);
 		session.save(materia);
@@ -154,7 +154,7 @@ public class testHibernate {
 		session.save(itemCom3);
 		session.save(comandita3);
 		session.save(factura2);
-		session.save(factura);
+		session.save(factura);*/
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
@@ -181,9 +181,9 @@ public class testHibernate {
 		System.out.println("HOLA "+resultado.getCaja().getCodArea());*/
 		
 		//TEST DAO COMANDAS ACTIVAS POR MESA MESA --FUNCIONA
-		FacturaDAO.getInstance().CerrarFactura(factura);
+		/*FacturaDAO.getInstance().CerrarFactura(factura);
 		factura=FacturaDAO.getInstance().obtenerFactura(factura.getCodFactura());
-	    System.out.println("El total de la factura nro "+factura.getCodFactura()+" es de ARS "+ factura.getImporte());
+	    System.out.println("El total de la factura nro "+factura.getCodFactura()+" es de ARS "+ factura.getImporte());*/
 
 
 		

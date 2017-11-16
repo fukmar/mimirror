@@ -18,6 +18,8 @@ public class DepositoEntity
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
 	private List<RemitoEntity> remitos;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
+	private List<OrdenDeCompraEntity> ordenDeCompra;
 	
 	public List<MateriaPrimaEntity> getMateriaprima() {
 		return materiaprima;

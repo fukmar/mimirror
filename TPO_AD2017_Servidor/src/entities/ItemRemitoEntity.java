@@ -24,7 +24,20 @@ public class ItemRemitoEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codItemRemito")
 	private Integer codItemRemito;
+	
+	
 	private Integer cantidad;
+	private EstadoItemRemito estadoremito;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="codRemito", nullable=false)
+    private RemitoEntity remito;
+	
+	
+	
+	public ItemRemitoEntity(){}
+	
+	
 	public ItemRemitoEntity(Integer codItemRemito, Integer cantidad, EstadoItemRemito estadoremito,
 			RemitoEntity remito) {
 		super();
@@ -34,7 +47,7 @@ public class ItemRemitoEntity {
 		this.remito = remito;
 	}
 
-	private EstadoItemRemito estadoremito;
+	
 	
 	public EstadoItemRemito getEstadoremito() {
 		return estadoremito;
@@ -50,19 +63,6 @@ public class ItemRemitoEntity {
 
 	public void setRemito(RemitoEntity remito) {
 		this.remito = remito;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="codRemito", nullable=false)
-    private RemitoEntity remito;
-		
-	public ItemRemitoEntity(){}
-
-	public ItemRemitoEntity(Integer cantidad) {
-		super();
-		this.cantidad = cantidad;
-	
-		//this.codItemRemito = codItemRemito;
 	}
 
 	public Integer getCantidad() {
@@ -82,6 +82,15 @@ public class ItemRemitoEntity {
 		this.codItemRemito = codItemRemito;
 	}
 
+	
+	public ItemRemitoEntity(Integer cantidad) {
+		super();
+		this.cantidad = cantidad;
+	
+		//this.codItemRemito = codItemRemito;
+	}
+	
+	
 
 	public ItemRemito toNegocio() 
 	{

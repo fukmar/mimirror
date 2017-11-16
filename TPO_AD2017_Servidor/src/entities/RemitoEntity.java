@@ -13,16 +13,11 @@ public class RemitoEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codRemito")
 	private Integer codRemito;
+	
 	private Integer codigoProveedor;
 	private Date fecha;
 	
-	public DepositoEntity getDeposito() {
-		return deposito;
-	}
-
-	public void setDeposito(DepositoEntity deposito) {
-		this.deposito = deposito;
-	}
+	
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="codDeposito", nullable=false)
@@ -31,21 +26,22 @@ public class RemitoEntity {
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="remito", cascade = CascadeType.ALL)
 	private List<ItemRemitoEntity> itemsRemito;
-/*	@OneToOne
+	
+	
+	@OneToOne
 	@JoinColumn(name="codOrdenDeCompra")
 	private OrdenDeCompraEntity ordendeCompra;
-	para probar el onetomany la saco un rato*/	
+	/*para probar el onetomany la saco un rato*/	
 		
 	public RemitoEntity(){}
 		
 	public RemitoEntity(Integer codigoProveedor, Date fecha,
-			List<ItemRemitoEntity> itemsRemito
-			) {
+			List<ItemRemitoEntity> itemsRemito) {
 		super();
 		this.codigoProveedor = codigoProveedor;
 		this.fecha = fecha;
 		this.itemsRemito = itemsRemito;
-		//this.ordendeCompra = ordendeCompra;
+		this.ordendeCompra = ordendeCompra;
 	}
 	
 	
@@ -71,7 +67,8 @@ public class RemitoEntity {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-/*
+	
+
 	public OrdenDeCompraEntity getOrdendeCompra() {
 		return ordendeCompra;
 	}
@@ -79,7 +76,8 @@ public class RemitoEntity {
 	public void setOrdendeCompra(OrdenDeCompraEntity ordendeCompra) {
 		this.ordendeCompra = ordendeCompra;
 	}
-	*/	
+	
+	
 	public Integer getCodRemito() {
 		return codRemito;
 	}
@@ -88,4 +86,12 @@ public class RemitoEntity {
 		this.codRemito = codRemito;
 	}	
 
+	
+	public DepositoEntity getDeposito() {
+		return deposito;
+	}
+
+	public void setDeposito(DepositoEntity deposito) {
+		this.deposito = deposito;
+	}
 }
