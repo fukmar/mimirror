@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.sun.corba.se.spi.protocol.CorbaMessageMediator;
 
+import dao.MesaDAO;
+import dao.MozoDAO;
 import dao.PlatoDAO;
 import dto.ComandaDTO;
 import dto.PlatoDTO;
@@ -50,13 +52,22 @@ public class Controlador {
 	}
 	
 	
-	public void guardarComanda(ComandaDTO comanda)
+	/*public void guardarComanda(Integer codMozo,Integer codMesa,Estado estado)
 	{
-		Comanda comandaN=new Comanda();
-		//comandaN.setMozo(comanda.getMozo()); //tengo que pasar comandaDTO a comandaNegocio
-		comandaN.setEstado(comanda.getEstado());
-		//(Mozo mozo, Mesa mesa,Caja caja,Estado estado) 
+		Mozo mozo=MozoDAO.getInstancia().getMozosByCod(codMozo);
+		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
+		Comanda comandaN=new Comanda(mozo,mesa,estado);
 		comandaN.save() ; //no estoy segura si no va a pinchar porque falta el id,pero en la bd es autonumerico
+	}*/
+	
+	public void guardarComanda(ComandaDTO comanda) 
+	{
+		Integer codMozo=comanda.getMozo().getDni();
+		Mozo mozo=MozoDAO.getInstancia().getMozosByCod(codMozo);
+		Integer codMesa=comanda.getMesa().getCodMesa();
+		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
+		Estado estado=comanda.getEstado();
+		new Comanda(mozo,mesa,estado).save();
 	}
 	
 }

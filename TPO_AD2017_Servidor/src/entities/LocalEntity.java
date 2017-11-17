@@ -7,6 +7,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import negocio.Local;
+
 @Entity
 @Table(name="locales")
 public class LocalEntity 
@@ -71,6 +73,16 @@ public class LocalEntity
 
 	public void setBarrio(String barrio) {
 		this.barrio = barrio;
+	}
+
+
+	public Local toNegocio() 
+	{
+		Local l=new Local();
+		l.setCodigoLocal(codigoLocal);
+		l.setBarrio(barrio);
+		l.setDireccion(direccion);
+		return l;
 	}
 
 

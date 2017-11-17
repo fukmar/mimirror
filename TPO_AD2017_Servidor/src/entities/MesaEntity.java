@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import negocio.Comanda;
+import negocio.Mesa;
 
 
 
@@ -101,6 +102,19 @@ public class MesaEntity
 
 	public void setMozo(MozoEntity mozo) {
 		this.mozo = mozo;
+	}
+
+
+	public Mesa toNegocio() 
+	{
+		Mesa m=new Mesa();
+		m.setCodMesa(codMesa);
+		m.setCantidadPersonas(cantidadPersonas);
+		m.setCapacidad(capacidad);
+		m.setEstado(estado);
+		m.setSector(sector.toNegocio());
+		m.setMozo(mozo.toNegocio());
+		return m;
 	}
 
 

@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import negocio.Salon;
 import negocio.Sector;
 
 import javax.persistence.*;
@@ -31,6 +32,17 @@ public class SalonEntity extends AreaRestaurantEntity
 
 	public void setNombreSalon(String nombreSalon) {
 		this.nombreSalon = nombreSalon;
+	}
+
+
+	public Salon toNegocio() 
+	{
+		Salon s=new Salon();
+		s.setCodArea(codArea);
+		s.setArea(area);
+		s.setNombreSalon(nombreSalon);
+		s.setLocal(local.toNegocio());
+		return s;
 	}
 
 

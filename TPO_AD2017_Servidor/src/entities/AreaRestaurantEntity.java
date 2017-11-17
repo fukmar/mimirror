@@ -20,7 +20,7 @@ public abstract class AreaRestaurantEntity {
 	
 	@ManyToOne(cascade= CascadeType.ALL)
 	@JoinColumn(name="codLocal")
-	private LocalEntity local;
+	protected LocalEntity local;
 	
 	
 	public AreaRestaurantEntity(){}

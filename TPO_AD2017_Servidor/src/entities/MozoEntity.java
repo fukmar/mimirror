@@ -3,6 +3,7 @@ package entities;
 import java.util.List;
 import javax.persistence.*;
 import negocio.Comanda;
+import negocio.Mozo;
 
 @Entity
 @Table(name="mozos")
@@ -11,7 +12,8 @@ public class MozoEntity {
 	@Id
 	@Column(name="codMozo")
 	private Integer dni;
-	private String nombre, apellido;
+	private String nombre;
+	private String apellido;
 	private Float procentajeComision;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "codSector")
@@ -58,6 +60,17 @@ public class MozoEntity {
 
 	public void setProcentajeComision(Float procentajeComision) {
 		this.procentajeComision = procentajeComision;
+	}
+
+	public Mozo toNegocio() 
+	{
+		Mozo m=new Mozo();
+		m.setDni(dni);
+		m.setNombre(nombre);
+		m.setApellido(apellido);
+		m.setProcentajeComision(procentajeComision);
+		m.setSector(sector.toNegocio());
+		return m;
 	}
 
 

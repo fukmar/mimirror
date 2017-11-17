@@ -28,16 +28,16 @@ public class ComandaEntity {
 	private MesaEntity mesa;
 	
 	
-	@ManyToOne(cascade= CascadeType.ALL)
-	@JoinColumn(name="codCaja")
-	private CajaEntity caja;
+	//@ManyToOne(cascade= CascadeType.ALL)
+//	@JoinColumn(name="codCaja")
+//	private CajaEntity caja;
 	
 	
-	public ComandaEntity(MozoEntity mozo, MesaEntity mesa,CajaEntity caja,Estado estado) {
+	public ComandaEntity(MozoEntity mozo, MesaEntity mesa,/*,CajaEntity caja,*/Estado estado) {
 		super();
 		this.mozo = mozo;
 		this.mesa = mesa;
-		this.caja=caja;
+		//this.caja=caja;
 		this.estado=estado;
 	}
 
@@ -68,13 +68,13 @@ public class ComandaEntity {
 		this.mesa = mesa;
 	}
 
-	public CajaEntity getCaja() {
+	/*public CajaEntity getCaja() {
 		return caja;
 	}
 
 	public void setCaja(CajaEntity caja) {
 		this.caja = caja;
-	}
+	}*/
 
 	public Estado getEstado() {
 		return estado;

@@ -21,13 +21,13 @@ public class Comanda
 	private Estado estado;
 	private Mozo mozo;
 	private Mesa mesa;
-	private Caja caja;
+	//private Caja caja;
 	
-	public Comanda(Mozo mozo, Mesa mesa,Caja caja,Estado estado) {
-		super();
+	public Comanda(Mozo mozo, Mesa mesa,/*Caja caja,*/Estado estado) 
+	{
 		this.mozo = mozo;
 		this.mesa = mesa;
-		this.caja=caja;
+		//this.caja=caja;
 		this.estado=estado;
 	}
 
@@ -58,13 +58,13 @@ public class Comanda
 		this.mesa = mesa;
 	}
 
-	public Caja getCaja() {
+	/*public Caja getCaja() {
 		return caja;
 	}
 
 	public void setCaja(Caja caja) {
 		this.caja = caja;
-	}
+	}*/
 
 	public Estado getEstado() {
 		return estado;
@@ -87,7 +87,7 @@ public class Comanda
 		ComandaEntity c=new ComandaEntity();
 		c.setCodComanda(codComanda);
 		c.setEstado(estado);
-		c.setCaja(caja.toNegocio());
+		//c.setCaja(caja.toNegocio());
 		c.setMesa(mesa.toNegocio());
 		c.setMesa(mesa.toNegocio());
 		return c;

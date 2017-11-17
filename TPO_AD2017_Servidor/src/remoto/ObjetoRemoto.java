@@ -27,12 +27,16 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	}
 
 	@Override
+	/*public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
+	{
+		Controlador.getInstance().guardarComanda(comanda.getMozo(),comanda.getMesa(),comanda.getEstado());
+		
+	}*/
+	
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
 	{
 		Controlador.getInstance().guardarComanda(comanda);
 		
 	}
-	
-	
 	
 }

@@ -105,9 +105,9 @@ public class testHibernate {
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
 				
-		ComandaEntity comandita = new ComandaEntity(mozo, mesita,caja,Estado.Terminado);
-		ComandaEntity comandita2 = new ComandaEntity(mozo, mesita,caja,Estado.EnProceso);
-		ComandaEntity comandita3 = new ComandaEntity(mozo, mesita,caja,Estado.EnProceso);
+		ComandaEntity comandita = new ComandaEntity(mozo, mesita/*,caja,*/,Estado.Terminado); //de aca solo comente caja porque tambien lo comente en el cosntuctor
+		ComandaEntity comandita2 = new ComandaEntity(mozo, mesita/*,caja*/,Estado.EnProceso);
+		ComandaEntity comandita3 = new ComandaEntity(mozo, mesita,/*caja,*/Estado.EnProceso);
 		ItemComandaEntity itemCom2= new ItemComandaEntity(2, plato, comandita2);
 		ItemComandaEntity itemCom3= new ItemComandaEntity(5, plato, comandita3);
 		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato, comandita);

@@ -4,6 +4,8 @@ import java.util.List;
 
 
 import javax.persistence.*;
+
+import negocio.Sector;
 @Entity
 @Table(name="sectores")
 
@@ -53,6 +55,14 @@ public class SectorEntity
 
 	public void setSalon(SalonEntity salon) {
 		this.salon = salon;
+	}
+
+	public Sector toNegocio() 
+	{
+		Sector s=new Sector();
+		s.setDescripcion(descripcion);
+		s.setSalon(salon.toNegocio());
+		return s;
 	}
 
 	

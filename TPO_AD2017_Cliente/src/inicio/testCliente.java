@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bd.BusinessDelegate;
+import dto.ComandaDTO;
 import dto.PlatoDTO;
+import exceptions.ComandaException;
 import exceptions.PlatoException;
 
 public class testCliente 
@@ -20,6 +22,16 @@ public class testCliente
 				{
 					//System.out.println(p.getNombre());
 					System.out.print(p.toString());
+				}
+				
+				
+				//Guardar Comanda
+				ComandaDTO comanda=new ComandaDTO(); //me faltan los parametros
+				try {
+					BusinessDelegate.getInstance().grabarComanda(comanda);
+				} catch (ComandaException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
