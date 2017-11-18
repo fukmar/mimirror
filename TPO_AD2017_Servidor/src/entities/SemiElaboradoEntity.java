@@ -9,12 +9,10 @@ import javax.persistence.*;
 @Table(name="semielaborados")
 public class SemiElaboradoEntity extends ProductoEntity 
 {
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="materialsemi",
-	joinColumns=@JoinColumn(name="codProducto",referencedColumnName="codProducto"),
-	inverseJoinColumns=@JoinColumn(name="codMaterial",referencedColumnName="codMaterial")
-	)
-	private List<MateriaPrimaEntity> materiales;
+
+	@OneToMany
+	@JoinColumn(name="codItemReceta")
+	private List<IngredienteEntity> receta;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="almacenadoComo", nullable = false)
@@ -27,18 +25,19 @@ public class SemiElaboradoEntity extends ProductoEntity
 			PlanDeProduccionEntity pdp, Integer cantidad, Date caducidad, List<MateriaPrimaEntity> materiales,
 			UnidadEntity unidad) {
 		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
-		this.materiales = materiales;
 		this.unidad = unidad;
 	
 	}
 
-
-	
-
-
-	public void setMateriales(List<MateriaPrimaEntity> materiales) {
-		this.materiales = materiales;
+	public List<IngredienteEntity> getReceta() {
+		return receta;
 	}
+
+
+	public void setReceta(List<IngredienteEntity> receta) {
+		this.receta = receta;
+	}
+
 
 	public UnidadEntity getUnidad() {
 		return unidad;
@@ -46,12 +45,7 @@ public class SemiElaboradoEntity extends ProductoEntity
 	public void setUnidad(UnidadEntity unidad) {
 		this.unidad = unidad;
 	}
-	public List<MateriaPrimaEntity> getMateriales() {
-		return materiales;
-	}
-	public void setMateriales(ArrayList<MateriaPrimaEntity> materiales) {
-		this.materiales = materiales;
-	}
+	
 	
 	/*@Override
 	public int hashCode() {

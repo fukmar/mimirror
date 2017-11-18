@@ -42,7 +42,7 @@ public class HibernateUtil
              /*PROBANDO*/
              config.addAnnotatedClass(OrdenDeCompraEntity.class);
              config.addAnnotatedClass(ItemOrdenDeCompraEntity.class);
-             
+             config.addAnnotatedClass(IngredienteEntity.class);
             
              sessionFactory = config.buildSessionFactory();
         }
