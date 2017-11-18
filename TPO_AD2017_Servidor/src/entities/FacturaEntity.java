@@ -38,8 +38,8 @@ public class FacturaEntity
 	private MozoEntity mozo;
 	
 	
-	@ManyToOne(cascade= CascadeType.ALL)
-	@JoinColumn(name="codCaja")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="codCaja",nullable=false)
 	private CajaEntity caja;
 	
 	

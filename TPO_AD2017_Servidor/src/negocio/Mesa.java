@@ -88,6 +88,16 @@ public class Mesa {
 		return m;
 	}
 
+	public MesaEntity toEntity()
+{
+		MesaEntity m=new MesaEntity();
+		m.setEstado(estado);
+		m.setCantidadPersonas(cantidadPersonas);
+		m.setCapacidad(capacidad);
+		m.setMozo(mozo.toEntity());
+		return m;
+	}
+
 	
 	
 	

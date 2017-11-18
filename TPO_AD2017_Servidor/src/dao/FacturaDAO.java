@@ -29,9 +29,10 @@ private static FacturaDAO instancia;
 		return instancia;
 	}
 	
-	public void save(FacturaDAO factura){
+	public void save(Factura factura)
+	{
 
-	FacturaEntity fact = this.toEntity(factura);
+	FacturaEntity fact = factura.toEntity();
 	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
@@ -40,11 +41,12 @@ private static FacturaDAO instancia;
 	session.close();
 	}
 
+	
 	//FALTA
-	private FacturaEntity toEntity(FacturaDAO factura) {	
+/*	private FacturaEntity toEntity(FacturaDAO factura) {	
 		return null;
 
-	}
+	}*/
 	
 	public void actualizarTotalFactura(int nroFact){
 		SessionFactory sf = HibernateUtil.getSessionFactory();

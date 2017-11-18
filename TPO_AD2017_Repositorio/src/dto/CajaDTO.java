@@ -3,43 +3,40 @@ package dto;
 import java.io.Serializable;
 import java.util.List;
 
+
+import enumns.AreaRest;
+
+
 public class CajaDTO extends AreaRestaurantDTO implements Serializable
 {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7533188648630417748L;
-	private List<ComandaDTO> comandas;
-	private List<FacturaDTO> facturas;
 	
-	public CajaDTO(){}
+private SalonDTO salon;
+	
+	public CajaDTO()
+	{}
+	
+	
+	
 
-	public CajaDTO(List<ComandaDTO> comandas, List<FacturaDTO> facturas) {
-		super();
-		this.comandas = comandas;
-		this.facturas = facturas;
+
+	public CajaDTO(Integer codArea, AreaRest area,SalonDTO salon) {
+		super(codArea, area);
+		this.salon=salon;
 	}
 
-	public List<ComandaDTO> getComandas() {
-		return comandas;
+
+
+
+
+	public SalonDTO getSalon() {
+		return salon;
 	}
 
-	public void setComandas(List<ComandaDTO> comandas) {
-		this.comandas = comandas;
+	public void setSalon(SalonDTO salon) {
+		this.salon = salon;
 	}
+	
 
-	public List<FacturaDTO> getFacturas() {
-		return facturas;
-	}
-
-	public void setFacturas(List<FacturaDTO> facturas) {
-		this.facturas = facturas;
-	}
-
-	@Override
-	public String toString() {
-		return "CajaDTO [comandas=" + comandas + ", facturas=" + facturas + "]";
-	}
 	
 	
 }
