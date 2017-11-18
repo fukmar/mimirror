@@ -18,8 +18,8 @@ public class IngredienteEntity {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codItemReceta")
 	private Integer codigocomponente;
-	@OneToOne
-	@JoinColumn(name="codigomaterial")
+	@ManyToOne
+	@JoinColumn(name="codMaterial")
 	private MateriaPrimaEntity materiaprima;
 	private Integer cantidad;
 	@ManyToOne
@@ -39,8 +39,15 @@ public class IngredienteEntity {
 		this.cantidad = cantidad;
 		this.platosemielaborado = platosemielaborado;
 	}
+	public IngredienteEntity(MateriaPrimaEntity materiaprima, Integer cantidad) {
+		super();
+		this.materiaprima = materiaprima;
+		this.cantidad = cantidad;
+	}
 
 	//Getters y Setters
+
+
 
 	public MateriaPrimaEntity getMateriaprima() {
 		return materiaprima;

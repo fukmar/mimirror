@@ -83,8 +83,10 @@ public class testHibernate {
 		mpe.setDeposito(deposito);
 		List<MateriaPrimaEntity> materiales = new ArrayList<MateriaPrimaEntity>();
 		materiales.add(mpe);
-			
-		SemiElaboradoEntity see = new SemiElaboradoEntity("Tipo","Calidad","Descripcion",pdp,1,fecha,materiales,ue);
+		
+		SemiElaboradoEntity see = new SemiElaboradoEntity("Tipo","Calidad","Descripcion",pdp,1,fecha,ue);
+		IngredienteEntity ingrediente1=new IngredienteEntity (mpe,1000);
+		ingrediente1.setPlatosemielaborado(see);
 		
 		List<SemiElaboradoEntity> componentes = new ArrayList<SemiElaboradoEntity>();
 		componentes.add(see);
@@ -160,6 +162,21 @@ public class testHibernate {
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
+		session.save(admi);
+		session.save(deposito);
+		//session.save(pdp);
+		//session.save(ue);
+	//	session.getTransaction().commit();
+		
+		session.save(see);
+		session.save(mpe);
+		session.save(ingrediente1);
+		
+		//session.save(ingrediente1);
+		//session.save(deposito);
+		//session.getTransaction().commit();
+		//session.save(mozo);
+		//session.save(plato);
 		session.getTransaction().commit();
 		session.close();
 		

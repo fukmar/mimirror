@@ -9,10 +9,6 @@ import javax.persistence.*;
 @Table(name="semielaborados")
 public class SemiElaboradoEntity extends ProductoEntity 
 {
-
-	@OneToMany
-	@JoinColumn(name="codItemReceta")
-	private List<IngredienteEntity> receta;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="almacenadoComo", nullable = false)
@@ -20,22 +16,10 @@ public class SemiElaboradoEntity extends ProductoEntity
 		
 	public SemiElaboradoEntity (){}
 	
-	
-	public SemiElaboradoEntity(String tipo, String calidad, String descripcion,
-			PlanDeProduccionEntity pdp, Integer cantidad, Date caducidad, List<MateriaPrimaEntity> materiales,
-			UnidadEntity unidad) {
+	public SemiElaboradoEntity(String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
+			Integer cantidad, Date caducidad, UnidadEntity unidad) {
 		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.unidad = unidad;
-	
-	}
-
-	public List<IngredienteEntity> getReceta() {
-		return receta;
-	}
-
-
-	public void setReceta(List<IngredienteEntity> receta) {
-		this.receta = receta;
 	}
 
 
