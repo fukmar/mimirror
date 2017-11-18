@@ -2,6 +2,7 @@ package dto;
 
 import java.io.Serializable;
 
+
 public class LocalDTO implements Serializable
 {
 	/**
@@ -11,15 +12,21 @@ public class LocalDTO implements Serializable
 	private Integer codigoLocal;
 	private String direccion;
 	private String barrio;
+	private DepositoDTO deposito;
 	
 	public LocalDTO(){}
 
-	public LocalDTO(Integer codigoLocal, String direccion, String barrio) {
+
+
+	public LocalDTO(Integer codigoLocal, String direccion, String barrio, DepositoDTO deposito) {
 		super();
 		this.codigoLocal = codigoLocal;
 		this.direccion = direccion;
 		this.barrio = barrio;
+		this.deposito = deposito;
 	}
+
+
 
 	public Integer getCodigoLocal() {
 		return codigoLocal;
@@ -44,6 +51,19 @@ public class LocalDTO implements Serializable
 	public void setBarrio(String barrio) {
 		this.barrio = barrio;
 	}
+	
+
+	public DepositoDTO getDeposito() {
+		return deposito;
+	}
+
+
+
+	public void setDeposito(DepositoDTO deposito) {
+		this.deposito = deposito;
+	}
+
+
 
 	@Override
 	public String toString() {

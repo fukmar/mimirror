@@ -4,28 +4,39 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+
 public class RemitoDTO implements Serializable
 {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3189135135137783008L;
-	private List<ItemRemitoDTO> itemsRemito;
+	private Integer codRemito;
 	private Integer codigoProveedor;
-	private OrdenDeCompraDTO ordenesDeCompra;
 	private Date fecha;
+    private DepositoDTO deposito;
+	private List<ItemRemitoDTO> itemsRemito;
 	
+		
 	public RemitoDTO(){}
-	
-	public RemitoDTO(List<ItemRemitoDTO> itemsRemito, Integer codigoProveedor, OrdenDeCompraDTO ordenesDeCompra,
-			Date fecha) {
+		
+	public RemitoDTO(Integer codigoProveedor, Date fecha,
+			List<ItemRemitoDTO> itemsRemito
+			) {
 		super();
-		this.itemsRemito = itemsRemito;
 		this.codigoProveedor = codigoProveedor;
-		this.ordenesDeCompra = ordenesDeCompra;
 		this.fecha = fecha;
+		this.itemsRemito = itemsRemito;
+		//this.ordendeCompra = ordendeCompra;
+	}
+	
+	public DepositoDTO getDeposito() {
+		return deposito;
 	}
 
+	public void setDeposito(DepositoDTO deposito) {
+		this.deposito = deposito;
+	}
 	public List<ItemRemitoDTO> getItemsRemito() {
 		return itemsRemito;
 	}
@@ -42,25 +53,21 @@ public class RemitoDTO implements Serializable
 		this.codigoProveedor = codigoProveedor;
 	}
 
-	public OrdenDeCompraDTO getOrdenesDeCompra() {
-		return ordenesDeCompra;
-	}
-
-	public void setOrdenesDeCompra(OrdenDeCompraDTO ordenesDeCompra) {
-		this.ordenesDeCompra = ordenesDeCompra;
-	}
-
 	public Date getFecha() {
 		return fecha;
 	}
-
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Integer getCodRemito() {
+		return codRemito;
 	}
+
+	public void setCodRemito(Integer codRemito) {
+		this.codRemito = codRemito;
+	}	
+	
 	
 	
 	

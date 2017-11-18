@@ -14,13 +14,12 @@ public class ComandaDTO implements Serializable
 	private Estado estado;
 	private MozoDTO mozo;
 	private MesaDTO mesa;
-	private CajaDTO caja;
 	
-	public ComandaDTO(MozoDTO mozo, MesaDTO mesa,CajaDTO caja,Estado estado) {
+	
+	public ComandaDTO(MozoDTO mozo, MesaDTO mesa,Estado estado) {
 		super();
 		this.mozo = mozo;
 		this.mesa = mesa;
-		this.caja=caja;
 		this.estado=estado;
 	}
 
@@ -51,13 +50,6 @@ public class ComandaDTO implements Serializable
 		this.mesa = mesa;
 	}
 
-	public CajaDTO getCaja() {
-		return caja;
-	}
-
-	public void setCaja(CajaDTO caja) {
-		this.caja = caja;
-	}
 
 	public Estado getEstado() {
 		return estado;

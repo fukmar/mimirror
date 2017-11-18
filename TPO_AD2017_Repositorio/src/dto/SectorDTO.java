@@ -3,18 +3,21 @@ package dto;
 import java.io.Serializable;
 import java.util.List;
 
+
 public class SectorDTO implements Serializable
 {
 	private Integer codSector;
 	private String descripcion;
+	private SalonDTO salon;
 	
 	
 	public SectorDTO(){}
 
-	public SectorDTO(String descripcion) {
+	public SectorDTO(String descripcion,SalonDTO salon) {
 		super();
 		
 		this.descripcion = descripcion;
+		this.salon=salon;
 		//this.mozo = mozo;
 		//this.mesa = mesas;
 	}
@@ -35,12 +38,13 @@ public class SectorDTO implements Serializable
 		this.descripcion = descripcion;
 	}
 
-	@Override
-	public String toString() {
-		return "SectorDTO [codSector=" + codSector + ", descripcion=" + descripcion + "]";
+	public SalonDTO getSalon() {
+		return salon;
 	}
 
-
+	public void setSalon(SalonDTO salon) {
+		this.salon = salon;
+	}
 	
 	
 	

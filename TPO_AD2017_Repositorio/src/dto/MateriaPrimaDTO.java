@@ -2,32 +2,32 @@ package dto;
 
 import java.io.Serializable;
 
+
+
 public class MateriaPrimaDTO implements Serializable
 {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4471742092208214438L;
-	private Integer codigoMP;
+	private Integer codigo;
 	private String descripcion;
 	private UnidadDTO unidadUso;
+	private Float cantidad;
+	private DepositoDTO deposito;
 
 	public MateriaPrimaDTO(){}
 
-	public MateriaPrimaDTO(Integer codigo, String descripcion,UnidadDTO unidadUso) {
-		super();
-		this.codigoMP = codigo;
-		this.descripcion = descripcion;
-		this.unidadUso = unidadUso;
-	}
+	public MateriaPrimaDTO(String descripcion, UnidadDTO unidadUso, Float cantidad) {
+	super();
+
+	this.descripcion = descripcion;
+	this.unidadUso = unidadUso;
+	this.setCantidad(cantidad);
+}
 
 	public Integer getCodigo() {
-		return codigoMP;
+		return codigo;
 	}
 
 	public void setCodigo(Integer codigo) {
-		this.codigoMP = codigo;
+		this.codigo = codigo;
 	}
 
 	public String getDescripcion() {
@@ -47,10 +47,21 @@ public class MateriaPrimaDTO implements Serializable
 		this.unidadUso = unidadUso;
 	}
 
-	@Override
-	public String toString() {
-		return "MateriaPrimaDTO [codigo=" + codigoMP + ", descripcion=" + descripcion + ", unidadCompra="
-				+ ", unidadUso=" + unidadUso + "]";
+
+	public Float getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Float cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public DepositoDTO getDeposito() {
+		return deposito;
+	}
+
+	public void setDeposito(DepositoDTO deposito) {
+		this.deposito = deposito;
 	}
 	
 	

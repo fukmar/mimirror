@@ -5,43 +5,44 @@ import java.io.Serializable;
 import enumns.EstadoItemRemito;
 
 
+
 public class ItemRemitoDTO implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8398478230128292011L;
-
-	
-	private Integer cantidad;
-	private ProductoDTO producto;  /*CONSULTAR*/
 	private Integer codItemRemito;
+	private Integer cantidad;
+	private RemitoDTO remito;
 	private EstadoItemRemito estadoremito;
-	
-	public ItemRemitoDTO(Integer cantidad, ProductoDTO producto, Integer codItemRemito, EstadoItemRemito estadoremito) {
+	 
+	 public ItemRemitoDTO(Integer codItemRemito, Integer cantidad, RemitoDTO remito, EstadoItemRemito estadoremito) {
 		super();
-		this.cantidad = cantidad;
-		this.producto = producto;
 		this.codItemRemito = codItemRemito;
+		this.cantidad = cantidad;
+		this.remito = remito;
 		this.estadoremito = estadoremito;
 	}
 
-	public EstadoItemRemito getEstadoremito() {
-		return estadoremito;
-	}
-
-	public void setEstadoremito(EstadoItemRemito estadoremito) {
-		this.estadoremito = estadoremito;
-	}
-
+	
 	public ItemRemitoDTO(){}
 
-	public ItemRemitoDTO(Integer cantidad, ProductoDTO producto, Integer codItemRemito) {
-		super();
-		this.cantidad = cantidad;
-		this.producto = producto;
-		this.codItemRemito = codItemRemito;
+		public ItemRemitoDTO(Integer cantidad) 
+		{
+			super();
+			this.cantidad = cantidad;
+			//this.codItemRemito = codItemRemito;
+		}
+		
+	public RemitoDTO getRemito() {
+		return remito;
 	}
+
+	public void setRemito(RemitoDTO remito) {
+		this.remito = remito;
+	}
+
 
 	public Integer getCantidad() {
 		return cantidad;
@@ -51,14 +52,7 @@ public class ItemRemitoDTO implements Serializable{
 		this.cantidad = cantidad;
 	}
 
-	public ProductoDTO getProducto() {
-		return producto;
-	}
-
-	public void setProducto(ProductoDTO producto) {
-		this.producto = producto;
-	}
-
+	
 	public Integer getCodItemRemito() {
 		return codItemRemito;
 	}
@@ -66,8 +60,15 @@ public class ItemRemitoDTO implements Serializable{
 	public void setCodItemRemito(Integer codItemRemito) {
 		this.codItemRemito = codItemRemito;
 	}
+
 	
-	
-	
+	public EstadoItemRemito getEstadoremito() {
+		return estadoremito;
+	}
+
+	public void setEstadoremito(EstadoItemRemito estadoremito) {
+		this.estadoremito = estadoremito;
+	}
+
 	
 }

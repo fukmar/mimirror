@@ -3,33 +3,24 @@ package dto;
 import java.io.Serializable;
 import java.util.List;
 
+import enumns.AreaRest;
+
+
 public class SalonDTO extends AreaRestaurantDTO implements Serializable
 {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2498558339407867837L;
-	private Integer codSalon;
-	private String nombreSalon;
-	private List<SectorDTO> sectores;
+private String nombreSalon;
 	
 	public SalonDTO(){}
 
-	public SalonDTO(Integer codSalon, String nombreSalon, List<SectorDTO> sectores) {
+
+	
+	public SalonDTO(String nombreSalon) {
 		super();
-		this.codSalon = codSalon;
 		this.nombreSalon = nombreSalon;
-		this.sectores = sectores;
 	}
 
-	public Integer getCodSalon() {
-		return codSalon;
-	}
 
-	public void setCodSalon(Integer codSalon) {
-		this.codSalon = codSalon;
-	}
 
 	public String getNombreSalon() {
 		return nombreSalon;
@@ -39,18 +30,13 @@ public class SalonDTO extends AreaRestaurantDTO implements Serializable
 		this.nombreSalon = nombreSalon;
 	}
 
-	public List<SectorDTO> getSectores() {
-		return sectores;
-	}
 
-	public void setSectores(List<SectorDTO> sectores) {
-		this.sectores = sectores;
-	}
 
 	@Override
 	public String toString() {
-		return "SalonDTO [codSalon=" + codSalon + ", nombreSalon=" + nombreSalon + ", sectores=" + sectores + "]";
+		return "SalonDTO [nombreSalon=" + nombreSalon + "]";
 	}
-	
+
+
 	
 }

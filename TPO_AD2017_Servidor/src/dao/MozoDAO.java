@@ -54,7 +54,7 @@ public class MozoDAO
 	{
 		Mozo mozo=new Mozo();
 		Session session=sf.openSession();
-		MozoEntity resu=(MozoEntity) session.createQuery("from MozoEntity m where m.codMozo=?").setInteger(0, codMozo).uniqueResult();
+		MozoEntity resu=(MozoEntity) session.createQuery("from MozoEntity m where m.dni=?").setInteger(0, codMozo).uniqueResult();
 		session.close();
 		mozo=resu.toNegocio();
 		return mozo;

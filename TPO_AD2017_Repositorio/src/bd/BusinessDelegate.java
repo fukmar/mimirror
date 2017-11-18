@@ -62,7 +62,7 @@ public class BusinessDelegate
 		try {
 			remoteObject.grabarComanda(comanda);
 		} catch (Exception e) {
-			throw new ComandaException("Error no hay comanda!");
+			throw new ComandaException("No se pudo grabar la comanda!");
 		}
 	}
 	
