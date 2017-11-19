@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import negocio.Comanda;
 import negocio.Factura;
 import negocio.ItemComanda;
 import negocio.Mesa;
@@ -82,6 +83,16 @@ public class ComandaEntity {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	public Comanda toNegocio() 
+	{
+		Comanda c=new Comanda();
+		c.setCodComanda(codComanda);
+		c.setMozo(mozo.toNegocio());
+		c.setMozo(mozo.toNegocio());
+		c.setEstado(estado);
+		return c;
 	}
 	
 	

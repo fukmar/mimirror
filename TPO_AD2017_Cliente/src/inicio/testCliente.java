@@ -77,7 +77,7 @@ public class testCliente
 					for(PlatoDTO p:listaPlatos) 
 					{
 						//System.out.println(p.getNombre());
-						System.out.print(p.toString());
+						System.out.print(p.toString()  );
 				
 					}
 				} catch (RemoteException e) {
@@ -91,10 +91,8 @@ public class testCliente
 		try {
 			BusinessDelegate.getInstance().grabarComanda(comanda);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ComandaException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		///GUARDAR FACTURA

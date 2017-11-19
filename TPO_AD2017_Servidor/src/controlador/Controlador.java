@@ -57,13 +57,7 @@ public class Controlador {
 	}
 	
 	
-	/*public void guardarComanda(Integer codMozo,Integer codMesa,Estado estado)
-	{
-		Mozo mozo=MozoDAO.getInstancia().getMozosByCod(codMozo);
-		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
-		Comanda comandaN=new Comanda(mozo,mesa,estado);
-		comandaN.save() ; //no estoy segura si no va a pinchar porque falta el id,pero en la bd es autonumerico
-	}*/
+
 	
 	public void guardarComanda(ComandaDTO comanda) 
 	{

@@ -85,11 +85,10 @@ public class Comanda
 	public ComandaEntity toEntity() 
 	{
 		ComandaEntity c=new ComandaEntity();
-		c.setCodComanda(codComanda);
 		c.setEstado(estado);
-		//c.setCaja(caja.toNegocio());
-		c.setMesa(mesa.toNegocio());
-		c.setMesa(mesa.toNegocio());
+		//c.setCodComanda(codComanda);
+		c.setMozo(mozo.toEntity());
+		c.setMesa(mesa.toEntity());
 		return c;
 	}
 	
