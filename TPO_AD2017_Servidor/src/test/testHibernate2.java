@@ -74,7 +74,7 @@ public class testHibernate2 {
 		solicitudes.add(solicitud);
 			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
-		AdministracionEntity admi= new AdministracionEntity(5, AreaRest.Administracion, planes, local);
+		AdministracionEntity admi= new AdministracionEntity(7, AreaRest.Administracion, planes, local);
 		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(Estado.EnProceso);
 		pdp.setAdministracion(admi);
 		planes.add(pdp);
@@ -100,6 +100,7 @@ public class testHibernate2 {
 		PlatoEntity plato = new PlatoEntity("Plato",13f,elabs);
 			
 		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",80.4f, sector);
+		MozoEntity mozo2 = new MozoEntity(31604579,"Pepe","Tam",80.4f, sector);
 		
 		List<MozoEntity> mocitos = new ArrayList<MozoEntity>();
 		mocitos.add(mozo);
@@ -163,23 +164,23 @@ public class testHibernate2 {
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		   
 		 session.save(admi);
-		session.save(deposito);
-		session.save(mozo);
+		/*session.save(deposito);
+		session.save(mozo2);
 		session.save(mesita);
 		session.save(comandita2);
-		//session.save(pdp);
-		//session.save(ue);
-	//	session.getTransaction().commit();
+		session.save(pdp);
+		session.save(ue);
+		session.getTransaction().commit();*/
 		
 		session.save(see);
 		session.save(mpe);
 		session.save(ingrediente1);
 		
-		//session.save(ingrediente1);
-		//session.save(deposito);
-		//session.getTransaction().commit();
-		//session.save(mozo);
-		//session.save(plato);
+		session.save(ingrediente1);
+		session.save(deposito);
+		session.getTransaction().commit();
+		session.save(mozo);
+		session.save(plato);
 		session.getTransaction().commit();
 		session.close();
 		

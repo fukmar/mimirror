@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import dao.ComandaDAO;
+import dto.ComandaDTO;
 import entities.CajaEntity;
 import entities.ComandaEntity;
 import entities.MesaEntity;
@@ -89,6 +90,16 @@ public class Comanda
 		//c.setCodComanda(codComanda);
 		c.setMozo(mozo.toEntity());
 		c.setMesa(mesa.toEntity());
+		return c;
+	}
+
+	public ComandaDTO toDTO()
+	{
+		ComandaDTO c=new ComandaDTO();
+		c.setCodComanda(codComanda);
+		c.setEstado(estado);
+		c.setMesa(mesa.toDTO());
+		c.setMozo(mozo.toDTO());
 		return c;
 	}
 	

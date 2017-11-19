@@ -1,5 +1,6 @@
 package negocio;
 
+import dto.MesaDTO;
 import entities.MesaEntity;
 import entities.SectorEntity;
 
@@ -93,7 +94,18 @@ public class Mesa {
 		m.setCantidadPersonas(cantidadPersonas);
 		m.setCapacidad(capacidad);
 		m.setEstado(estado);
-		m.setMozo(mozo.toEntity());
+		//m.setMozo(mozo.toEntity());
+		return m;
+	}
+
+	public MesaDTO toDTO() 
+	{
+		MesaDTO m=new MesaDTO();
+		m.setCodMesa(codMesa);
+		m.setEstado(estado);
+		m.setCantidadPersonas(cantidadPersonas);
+		m.setCapacidad(capacidad);
+		m.setMozo(mozo.toDTO());
 		return m;
 	}
 

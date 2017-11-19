@@ -1,4 +1,5 @@
 package dao;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -18,12 +19,17 @@ public class ComandaDAO {
 
 	
 private static ComandaDAO instancia;
+private static SessionFactory sf=null;
 	
 	private ComandaDAO(){}
 	
-	public static ComandaDAO getInstance(){
+	public static ComandaDAO getInstance()
+	{
 		if(instancia == null)
+		{
 			instancia = new ComandaDAO();
+			sf=HibernateUtil.getSessionFactory();
+		}
 		return instancia;
 	}
 	
@@ -46,6 +52,22 @@ private static ComandaDAO instancia;
 
 	}*/
 	
+	//LISTAR TODAS LAS COMANDAS
+	
+	public List<Comanda> getComandas()
+	{
+		Session session=sf.openSession();
+		List<Comanda> listaCom=new ArrayList<>();
+		List<ComandaEntity> resu=session.createQuery("from ComandaEntity").list();
+		for(ComandaEntity c:resu) 
+		{
+			listaCom.add(c.toNegocio());
+		}
+		session.close();
+		return listaCom;
+	}
+	
+	
 	@SuppressWarnings("unchecked")
 	public List <ItemComandaEntity> OtenerItemComanda(int codigoComanda) {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -57,6 +79,7 @@ private static ComandaDAO instancia;
 		session.close();
 		return items;
 	}
+	
 	public ComandaEntity obtenerComanda(int codComanda){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
@@ -67,6 +90,7 @@ private static ComandaDAO instancia;
 		session.close();
 		return comanda;
 	}
+	
 	public List <ComandaEntity> obtenerComandasAbiertasxMesa(int codMesa){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();

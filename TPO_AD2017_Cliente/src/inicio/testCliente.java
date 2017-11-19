@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import bd.BusinessDelegate;
+import dto.AdministracionDTO;
 import dto.CajaDTO;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
@@ -50,7 +51,7 @@ public class testCliente
 		
 		List<SolicitudInsumoDTO> solicitudes = new ArrayList<SolicitudInsumoDTO>();
 		
-		
+		//AdministracionDTO admi= new AdministracionDTO(6, AreaRest.Administracion, planes, local);
 		
 		DepositoDTO deposito = new DepositoDTO(materiapedido,solicitudes,remitos);
 		LocalDTO local=new LocalDTO(1,"Sucre 123", "Belgrano", deposito);

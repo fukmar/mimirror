@@ -1,24 +1,21 @@
-package entities;
+package negocio;
 
 import java.util.Date;
-import javax.persistence.*;
 
-import negocio.Reserva;
+import dao.ReservaDAO;
+import dto.ReservaDTO;
+import entities.ReservaEntity;
 
-@Entity
-@Table(name="reservas")
-public class ReservaEntity 
+public class Reserva 
 {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer codReserva;
 	private String nombre;
 	private Date fechayHora;
 	//private List<MesaDTO> mesas;
 	
-	public ReservaEntity() {}
+	public Reserva() {}
 	
-	public ReservaEntity(Integer codReserva, String nombre, Date fechayHora) {
+	public Reserva(Integer codReserva, String nombre, Date fechayHora) {
 		super();
 		this.codReserva = codReserva;
 		this.nombre = nombre;
@@ -49,12 +46,28 @@ public class ReservaEntity
 		this.fechayHora = fechayHora;
 	}
 
-	public Reserva toNegocio() 
+	
+	//GRABAR RESERVA
+	
+	public void save() 
 	{
-		Reserva r=new Reserva();
+		ReservaDAO.getInstancia().save(this);
+	}
+	public ReservaEntity toEntity() 
+	{
+		ReservaEntity r=new ReservaEntity();
 		r.setCodReserva(codReserva);
 		r.setFechayHora(fechayHora);
 		r.setNombre(nombre);
+		return r;
+	}
+
+	public ReservaDTO toDTO() 
+	{
+		ReservaDTO r=new ReservaDTO();
+		r.setCodReserva(codReserva);
+		r.setNombre(nombre);
+		r.setFechayHora(fechayHora);
 		return r;
 	}
 }

@@ -18,9 +18,11 @@ public class IngredienteEntity {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codItemReceta")
 	private Integer codigocomponente;
+	
 	@ManyToOne
-	@JoinColumn(name="codMaterial")
+	@JoinColumn(name="codigo")
 	private MateriaPrimaEntity materiaprima;
+	
 	private Integer cantidad;
 	@ManyToOne
 	@JoinColumn(name="codigoSemielaborado")

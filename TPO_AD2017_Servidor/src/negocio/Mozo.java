@@ -2,13 +2,15 @@ package negocio;
 
 import java.util.List;
 
+import dto.MozoDTO;
 import entities.MozoEntity;
 import entities.SectorEntity;
 
 public class Mozo {
 	
 	private Integer dni;
-	private String nombre, apellido;
+	private String nombre;
+	private String apellido;
 	private Float procentajeComision;
 	private Sector sector;
 	
@@ -68,6 +70,16 @@ public class Mozo {
 	public MozoEntity toEntity() 
 	{
 		MozoEntity m=new MozoEntity();
+		m.setDni(dni);
+		m.setNombre(nombre);
+		m.setApellido(apellido);
+		m.setProcentajeComision(procentajeComision);
+		return m;
+	}
+
+	public MozoDTO toDTO() 
+	{
+		MozoDTO m=new MozoDTO();
 		m.setDni(dni);
 		m.setNombre(nombre);
 		m.setApellido(apellido);

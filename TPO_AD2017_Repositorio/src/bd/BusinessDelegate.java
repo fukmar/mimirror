@@ -11,6 +11,7 @@ import dto.*;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
 import exceptions.PlatoException;
+import exceptions.ReservaException;
 import interfazRemota.manejoNegocio;
 
 
@@ -46,7 +47,7 @@ public class BusinessDelegate
 	public void insertarRubro(RubroDto rubro) throws RemoteException {
 		this.remoteObject.insertarRubro(rubro);		
 	}*/
-	
+	//---------------------------------------PLATOS------------------------------------------------------------
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
 	{
 		try {
@@ -57,7 +58,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	
+	//---------------------------------------COMANDAS------------------------------------------------------------
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
 	{
 		try {
@@ -67,7 +68,13 @@ public class BusinessDelegate
 		}
 	}
 	
+	public List<ComandaDTO> mostrarComandas() throws RemoteException, ComandaException 
+	{
+		return remoteObject.mostrarComandas();
+	}
 	
+	
+	//---------------------------------------FACTURAS------------------------------------------------------------
 	public void grabarFactura(FacturaDTO factura) throws RemoteException, FacturaException 
 	{
 		try {
@@ -76,4 +83,27 @@ public class BusinessDelegate
 			throw new FacturaException("No se pudo grabar la FACTURA!");
 		}
 	}
+	
+	//---------------------------------------RESERVAS------------------------------------------------------------
+	
+	public void grabarReserva(ReservaDTO reserva) throws RemoteException, ReservaException 
+	{
+		try {
+			remoteObject.grabarReserva(reserva);
+		} catch (Exception e) {
+			throw new ReservaException("No se pudo GRABAR la RESERVA");
+		}
+	}
+	
+	public List<ReservaDTO> mostrarReservas()throws RemoteException,ReservaException
+	{
+		try {
+			return remoteObject.mostrarReservas();
+		} catch (Exception e) {
+			throw new ReservaException("No se pudo LISTAR las RESERVAS");
+		}
+	}
+	
+	
+	
 }

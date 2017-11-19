@@ -30,16 +30,6 @@ public class Plato
 	public Plato(){}
 
 
-	public CategoriaPlato getCategoria() {
-		return categoria;
-	}
-
-
-	public void setCategoria(CategoriaPlato categoria) {
-		this.categoria = categoria;
-	}
-
-
 	public Plato(Integer codigo, String nombre, float precio, List<Elaborado> productoPlato, Carta carta,
 			CategoriaPlato categoria) {
 		super();
@@ -91,6 +81,18 @@ public class Plato
 	public void setCarta(Carta carta) {
 		this.carta = carta;
 	}
+	
+	
+
+	public CategoriaPlato getCategoria() {
+		return categoria;
+	}
+
+
+	public void setCategoria(CategoriaPlato categoria) {
+		this.categoria = categoria;
+	}
+
 	
 	public PlatoDTO toDTO()
 	{
