@@ -16,6 +16,7 @@ import enumns.Estado;
 import enumns.MedioDePago;
 import enumns.Temporada;
 import hibernate.HibernateUtil;
+import negocio.Comanda;
 import negocio.Deposito;
 import negocio.Mesa;
 import negocio.Mozo;
@@ -179,11 +180,16 @@ public class testHibernate {
 		
 		*/
 		
-		//Mozo mozob=MozoDAO.getInstancia().getMozosByCod(31575032);
-		//System.out.println("El mozo buscado es "+mozob.getNombre());
-		//Mesa mesab=MesaDAO.getInstance().getMesaN(1);
-		//System.out.println("La mesa buscada es "+mesab.getCodMesa());
+		Mozo mozob=MozoDAO.getInstancia().getMozosByCod(31575032);
+		System.out.println("El mozo buscado es "+mozob.getNombre());
+		Mesa mesab=MesaDAO.getInstance().getMesaN(1);
+		System.out.println("La mesa buscada es "+mesab.getCodMesa());
 		//ambos buscar funcionan OK
+		
+		//grabar comanda
+		//ComandaEntity comandita = new ComandaEntity(mozo, mesita/*,caja,*/,Estado.Terminado);
+		Comanda coman=comandita.toNegocio();
+		ComandaDAO.getInstance().save(coman);
 		
 		
 		/* //TEST  DAO COMANDA - BUSCAR COMANDA POR CODIGO   --FUNCIONA

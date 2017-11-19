@@ -14,8 +14,7 @@ public class Mesa {
 	
 	public Mesa(){}
 	
-	public Mesa(Integer cantidadPersonas, Integer capacidad, Integer estado,
-			Mozo mozo,Sector sector) 
+	public Mesa(Integer cantidadPersonas, Integer capacidad, Integer estado,Mozo mozo,Sector sector) 
 	{
 		super();
 		
@@ -91,9 +90,9 @@ public class Mesa {
 	public MesaEntity toEntity()
 {
 		MesaEntity m=new MesaEntity();
-		m.setEstado(estado);
 		m.setCantidadPersonas(cantidadPersonas);
 		m.setCapacidad(capacidad);
+		m.setEstado(estado);
 		m.setMozo(mozo.toEntity());
 		return m;
 	}

@@ -105,6 +105,17 @@ public class MesaEntity
 	}
 
 
+	
+	public SectorEntity getSector() {
+		return sector;
+	}
+
+
+	public void setSector(SectorEntity sector) {
+		this.sector = sector;
+	}
+
+
 	public Mesa toNegocio() 
 	{
 		Mesa m=new Mesa();
