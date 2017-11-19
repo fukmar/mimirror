@@ -6,8 +6,10 @@ import java.util.List;
 
 import controlador.Controlador;
 import dto.ComandaDTO;
+import dto.FacturaDTO;
 import dto.PlatoDTO;
 import exceptions.ComandaException;
+import exceptions.FacturaException;
 import exceptions.PlatoException;
 import interfazRemota.manejoNegocio;
 
@@ -36,6 +38,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
 	{
 		Controlador.getInstance().guardarComanda(comanda);
+		
+	}
+
+	@Override
+	public void grabarFactura(FacturaDTO factura) throws RemoteException, FacturaException 
+	{
+		Controlador.getInstance().guardarFactura(factura);
 		
 	}
 	

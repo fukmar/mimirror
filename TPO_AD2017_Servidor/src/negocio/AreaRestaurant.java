@@ -9,7 +9,7 @@ public abstract class AreaRestaurant
 	
 	protected Integer codArea;
 	protected AreaRest area;
-	private Local local;
+	protected Local local;
 	
 	
 	public AreaRestaurant(){}

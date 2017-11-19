@@ -1,6 +1,6 @@
 package negocio;
 
-
+import entities.LocalEntity;
 
 public class Local 
 {
@@ -51,6 +51,17 @@ public class Local
 
 	public void setBarrio(String barrio) {
 		this.barrio = barrio;
+	}
+
+
+	public LocalEntity toEntity()
+{
+		LocalEntity l=new LocalEntity();
+		//l.setCodigoLocal(codigoLocal);
+		l.setDireccion(direccion);
+		l.setBarrio(barrio);
+		//l.setDepostio
+		return l;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import dto.SectorDTO;
 import entities.LocalEntity;
+import entities.SalonEntity;
 import enumns.AreaRest;
 
 public class Salon extends AreaRestaurant
@@ -27,6 +28,14 @@ public class Salon extends AreaRestaurant
 
 	public void setNombreSalon(String nombreSalon) {
 		this.nombreSalon = nombreSalon;
+	}
+
+
+	public SalonEntity toEntity() 
+	{
+		SalonEntity s=new SalonEntity();
+		s.setNombreSalon(nombreSalon);
+		return s;
 	}
 
 }

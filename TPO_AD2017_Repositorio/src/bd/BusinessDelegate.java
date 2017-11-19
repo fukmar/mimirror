@@ -9,6 +9,7 @@ import java.util.List;
 
 import dto.*;
 import exceptions.ComandaException;
+import exceptions.FacturaException;
 import exceptions.PlatoException;
 import interfazRemota.manejoNegocio;
 
@@ -66,4 +67,13 @@ public class BusinessDelegate
 		}
 	}
 	
+	
+	public void grabarFactura(FacturaDTO factura) throws RemoteException, FacturaException 
+	{
+		try {
+			remoteObject.grabarFactura(factura);
+		} catch (Exception e) {
+			throw new FacturaException("No se pudo grabar la FACTURA!");
+		}
+	}
 }

@@ -1,17 +1,22 @@
 package controlador;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.sun.corba.se.spi.protocol.CorbaMessageMediator;
 
+import dao.CajaDAO;
 import dao.MesaDAO;
 import dao.MozoDAO;
 import dao.PlatoDAO;
 import dto.ComandaDTO;
+import dto.FacturaDTO;
 import dto.PlatoDTO;
 import enumns.Estado;
+import enumns.MedioDePago;
 import negocio.Caja;
 import negocio.Comanda;
+import negocio.Factura;
 import negocio.Mesa;
 import negocio.Mozo;
 import negocio.Plato;
@@ -68,6 +73,19 @@ public class Controlador {
 		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
 		Estado estado=comanda.getEstado();
 		new Comanda(mozo,mesa,estado).save();
+	}
+	
+	public  void guardarFactura(FacturaDTO factura) 
+	{
+		Integer codMesa=factura.getMesa().getCodMesa();
+		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
+		Integer codMozo=factura.getMozo().getDni();
+		Mozo mozo=MozoDAO.getInstancia().getMozosByCod(codMozo);
+		Integer codArea=factura.getCaja().getCodArea();
+		Caja caja=CajaDAO.getInstancia().getCajaByCod(codArea);
+		//(Date fecha, double importe,MedioDePago medioPago, Mesa mesa, Mozo mozo,Caja caja)
+		new Factura(factura.getFecha(),factura.getImporte(),factura.getMedioPago(),mesa,mozo,caja);
+		
 	}
 	
 }

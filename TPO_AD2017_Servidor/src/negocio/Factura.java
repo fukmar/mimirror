@@ -10,10 +10,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import dao.FacturaDAO;
 import dto.ComandaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import entities.CajaEntity;
+import entities.FacturaEntity;
 import entities.MesaEntity;
 import entities.MozoEntity;
 import dto.ItemFacturaDTO;
@@ -33,8 +35,7 @@ public class Factura
 	public Factura(){}
 
 
-	public Factura(Date fecha, double importe,
-			MedioDePago medioPago, Mesa mesa, Mozo mozo,Caja caja) {
+	public Factura(Date fecha, double importe,MedioDePago medioPago, Mesa mesa, Mozo mozo,Caja caja) {
 		super();
 		this.fecha = fecha;
 		this.importe = importe;
@@ -104,6 +105,26 @@ public class Factura
 
 	public void setCaja(Caja caja) {
 		this.caja = caja;
+	}
+
+	//GUARDAR Factura
+	public void save() 
+	{
+		FacturaDAO.getInstance().save(this);
+	}
+
+	public FacturaEntity toEntity() 
+	
+	{
+		FacturaEntity f=new FacturaEntity();
+		f.setCodFactura(codFactura);
+		f.setFecha(fecha);
+		f.setImporte(importe);
+		f.setMedioPago(medioPago);
+		f.setMesa(mesa.toEntity());
+		f.setMozo(mozo.toEntity());
+		f.setCaja(caja.toEntity());
+		return f;
 	}
 	
 }
