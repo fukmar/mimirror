@@ -161,8 +161,8 @@ public class testHibernate2 {
 		session.save(factura);*/
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
-		
-		session.save(admi);
+		   
+		 session.save(admi);
 		session.save(deposito);
 		session.save(mozo);
 		session.save(mesita);
