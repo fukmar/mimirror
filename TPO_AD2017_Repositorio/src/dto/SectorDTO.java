@@ -18,8 +18,6 @@ public class SectorDTO implements Serializable
 		
 		this.descripcion = descripcion;
 		this.salon=salon;
-		//this.mozo = mozo;
-		//this.mesa = mesas;
 	}
 
 	public Integer getCodSector() {
@@ -44,6 +42,11 @@ public class SectorDTO implements Serializable
 
 	public void setSalon(SalonDTO salon) {
 		this.salon = salon;
+	}
+
+	@Override
+	public String toString() {
+		return "SectorDTO [codSector=" + codSector + ", descripcion=" + descripcion + ", salon=" + salon + "]";
 	}
 	
 	

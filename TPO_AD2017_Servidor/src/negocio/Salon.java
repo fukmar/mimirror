@@ -44,9 +44,10 @@ public class Salon extends AreaRestaurant
 	{
 		SalonDTO s=new SalonDTO();
 		s.setCodArea(codArea);
-		s.setNombreSalon(nombreSalon);
 		s.setArea(area);
-		s.setLocal(local.toDTO());
+		s.setNombreSalon(nombreSalon);
+		
+		//s.setLocal(local.toDTO());
 		return s;
 	}
 

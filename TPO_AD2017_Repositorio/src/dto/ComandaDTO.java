@@ -58,6 +58,13 @@ public class ComandaDTO implements Serializable
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
+
+	@Override
+	public String toString() {
+		return "ComandaDTO [codComanda=" + codComanda + ", estado=" + estado + ", mozo=" + mozo + ", mesa=" + mesa
+				+ "]";
+	}
 	
 
+	
 }

@@ -139,7 +139,7 @@ public class testHibernate {
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
-		/*session.save(deposito);
+		session.save(deposito);
 		session.save(remito);
 		session.save(solicitud);
 		session.save(materia);
@@ -159,7 +159,7 @@ public class testHibernate {
 		session.save(itemCom3);
 		session.save(comandita3);
 		session.save(factura2);
-		session.save(factura);*/
+		session.save(factura);
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		

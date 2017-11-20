@@ -32,12 +32,19 @@ public void setNombreSalon(String nombreSalon) {
 }
 
 
+@Override
+public String toString() {
+	return "SalonDTO [nombreSalon=" + nombreSalon + "]";
+}
+
+
 /*public SalonEntity toEntity() 
 {
 	SalonEntity s=new SalonEntity();
 	s.setNombreSalon(nombreSalon);
 	return s;
 }*/
+
 
 
 	
