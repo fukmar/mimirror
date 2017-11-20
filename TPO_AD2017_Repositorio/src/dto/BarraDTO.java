@@ -14,14 +14,16 @@ public class BarraDTO extends AreaRestaurantDTO implements Serializable
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4385868703455307705L;
-	private List<ProductoDTO> estimadoDiario;
+private List<ProductoDTO> estimadoDiario;
+	
 	public BarraDTO(){
 		
 	}
 
-	public BarraDTO(Integer codArea, AreaRest area, List<ProductoDTO> estimadoDiario) {
-		super(codArea, area);
+	
+	public BarraDTO(Integer codArea, AreaRest area,
+			List<ProductoDTO> estimadoDiario,LocalDTO local) {
+		super(codArea, area,local);
 		this.estimadoDiario = estimadoDiario;
 	}
 

@@ -6,7 +6,8 @@ import entities.LocalEntity;
 import entities.ProductoEntity;
 import enumns.AreaRest;
 
-public class Barra extends AreaRestaurant {
+public class Barra extends AreaRestaurant
+{
 
 	private List<Producto> estimadoDiario;
 	

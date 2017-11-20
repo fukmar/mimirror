@@ -31,7 +31,7 @@ import exceptions.PlatoException;
 
 public class testCliente 
 {
-	public static void main (String args[]) 
+	/*public static void main (String args[]) 
 	{
 		UnidadDTO ue = new UnidadDTO("gramos");
 		Date fecha = new Date("10/10/2020");
@@ -108,5 +108,5 @@ public class testCliente
 		}
 	
 	}
-	
+	*/
 }

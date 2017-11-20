@@ -83,6 +83,7 @@ public class Controlador {
 		for(Comanda c:listaComN)
 		{
 			listaCom.add(c.toDTO());
+			
 		}
 		return listaCom;
 	}
