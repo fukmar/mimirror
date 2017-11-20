@@ -48,6 +48,7 @@ public class SectorDTO implements Serializable
 	public String toString() {
 		return "SectorDTO [codSector=" + codSector + ", descripcion=" + descripcion + ", salon=" + salon + "]";
 	}
+
 	
 	
 	

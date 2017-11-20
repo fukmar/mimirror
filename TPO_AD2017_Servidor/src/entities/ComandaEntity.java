@@ -90,7 +90,7 @@ public class ComandaEntity {
 		Comanda c=new Comanda();
 		c.setCodComanda(codComanda);
 		c.setMozo(mozo.toNegocio());
-		c.setMozo(mozo.toNegocio());
+		c.setMesa(mesa.toNegocio());
 		c.setEstado(estado);
 		return c;
 	}
