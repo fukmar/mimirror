@@ -84,6 +84,17 @@ public class MesaDTO implements Serializable
 		this.mozo = mozo;
 	}
 
+	
+
+	public SectorDTO getSector() {
+		return sector;
+	}
+
+
+	public void setSector(SectorDTO sector) {
+		this.sector = sector;
+	}
+
 
 	@Override
 	public String toString() {

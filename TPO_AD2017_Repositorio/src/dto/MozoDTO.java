@@ -54,6 +54,15 @@ public class MozoDTO implements Serializable
 		this.procentajeComision = procentajeComision;
 	}
 
+	
+	public SectorDTO getSector() {
+		return sector;
+	}
+
+	public void setSector(SectorDTO sector) {
+		this.sector = sector;
+	}
+
 	@Override
 	public String toString() {
 		return "MozoDTO [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", procentajeComision="

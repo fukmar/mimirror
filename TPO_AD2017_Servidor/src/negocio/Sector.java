@@ -2,6 +2,8 @@ package negocio;
 
 import java.util.List;
 
+import dto.SectorDTO;
+
 
 public class Sector 
 {
@@ -43,5 +45,14 @@ public class Sector
 
 	public void setSalon(Salon salon) {
 		this.salon = salon;
+	}
+
+	public SectorDTO toDTO() 
+	{
+		SectorDTO s=new SectorDTO();
+		s.setCodSector(codSector);
+		s.setDescripcion(descripcion);
+		s.setSalon(salon.toDTO());
+		return s;
 	}
 }

@@ -2,6 +2,7 @@ package negocio;
 
 import java.util.List;
 
+import dto.SalonDTO;
 import dto.SectorDTO;
 import entities.LocalEntity;
 import entities.SalonEntity;
@@ -38,4 +39,16 @@ public class Salon extends AreaRestaurant
 		return s;
 	}
 
+
+	public SalonDTO toDTO() 
+	{
+		SalonDTO s=new SalonDTO();
+		s.setCodArea(codArea);
+		s.setNombreSalon(nombreSalon);
+		s.setArea(area);
+		return s;
+	}
+
+
+	
 }

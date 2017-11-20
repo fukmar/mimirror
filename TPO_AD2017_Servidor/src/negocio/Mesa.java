@@ -94,7 +94,7 @@ public class Mesa {
 		m.setCantidadPersonas(cantidadPersonas);
 		m.setCapacidad(capacidad);
 		m.setEstado(estado);
-		//m.setMozo(mozo.toEntity());
+		m.setMozo(mozo.toEntity());
 		return m;
 	}
 
@@ -104,8 +104,10 @@ public class Mesa {
 		m.setCodMesa(codMesa);
 		m.setEstado(estado);
 		m.setCantidadPersonas(cantidadPersonas);
+		System.out.println(capacidad);
 		m.setCapacidad(capacidad);
 		m.setMozo(mozo.toDTO());
+		m.setSector(sector.toDTO());
 		return m;
 	}
 

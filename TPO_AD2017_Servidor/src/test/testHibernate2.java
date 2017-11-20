@@ -16,6 +16,7 @@ import enumns.Estado;
 import enumns.MedioDePago;
 import enumns.Temporada;
 import hibernate.HibernateUtil;
+import negocio.Comanda;
 import negocio.Deposito;
 import negocio.Mesa;
 import negocio.Mozo;
@@ -172,7 +173,7 @@ public class testHibernate2 {
 		session.save(ue);
 		session.getTransaction().commit();*/
 		
-		session.save(see);
+		/*session.save(see);
 		session.save(mpe);
 		session.save(ingrediente1);
 		
@@ -182,7 +183,7 @@ public class testHibernate2 {
 		session.save(mozo);
 		session.save(plato);
 		session.getTransaction().commit();
-		session.close();
+		session.close();*/
 		
 		//aca terminan pruebas de DB
 		
@@ -199,6 +200,14 @@ public class testHibernate2 {
 		//EL DAO funciona ok
 		
 		*/
+		
+		/*List<Comanda> listaComandas=ComandaDAO.getInstance().getComandas();
+		for(Comanda c:listaComandas)
+		{
+			System.out.println(c.toString());
+		}*/
+		 
+		 
 		
 		//Mozo mozob=MozoDAO.getInstancia().getMozosByCod(31575032);
 		//System.out.println("El mozo buscado es "+mozob.getNombre());

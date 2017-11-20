@@ -87,7 +87,7 @@ public class Comanda
 	{
 		ComandaEntity c=new ComandaEntity();
 		c.setEstado(estado);
-		//c.setCodComanda(codComanda);
+		c.setCodComanda(codComanda);
 		c.setMozo(mozo.toEntity());
 		c.setMesa(mesa.toEntity());
 		return c;
