@@ -4,21 +4,22 @@ import java.io.Serializable;
 
 import enumns.AreaRest;
 
+
 public abstract class AreaRestaurantDTO implements Serializable
 {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6623710247569860514L;
-	private Integer codArea;
-	private AreaRest area;
+	protected Integer codArea;
+	protected AreaRest area;
+	protected LocalDTO local;
+	
 	
 	public AreaRestaurantDTO(){}
 
-	public AreaRestaurantDTO(Integer codArea, AreaRest area) {
+	public AreaRestaurantDTO(Integer codArea,AreaRest area,LocalDTO local) 
+	{
 		super();
-		this.codArea = codArea;
+		this.codArea=codArea;
 		this.area = area;
+		this.local=local;
 	}
 
 	public Integer getCodArea() {
@@ -37,10 +38,14 @@ public abstract class AreaRestaurantDTO implements Serializable
 		this.area = area;
 	}
 
-	@Override
-	public String toString() {
-		return "AreaRestaurantDTO [codArea=" + codArea + ", area=" + area + "]";
+	public LocalDTO getLocal() {
+		return local;
 	}
+
+	public void setLocal(LocalDTO local) {
+		this.local = local;
+	}
+	
 	
 	
 }

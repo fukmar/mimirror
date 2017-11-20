@@ -57,7 +57,7 @@ private static SessionFactory sf=null;
 	public List<Comanda> getComandas()
 	{
 		Session session=sf.openSession();
-		List<Comanda> listaCom=new ArrayList<>();
+		List<Comanda> listaCom=new ArrayList<Comanda>();
 		List<ComandaEntity> resu=session.createQuery("from ComandaEntity").list();
 		for(ComandaEntity c:resu) 
 		{

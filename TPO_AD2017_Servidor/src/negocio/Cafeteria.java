@@ -5,11 +5,14 @@ import java.util.*;
 import entities.LocalEntity;
 import entities.ProductoEntity;
 import enumns.AreaRest;
-public class Cafeteria extends AreaRestaurant {
+public class Cafeteria extends AreaRestaurant 
+{
 
 	private List<Producto> estimadoDiario;
 
-	
+	private Cafeteria(){
+		
+	}
 
 	public Cafeteria(Integer codArea, AreaRest area,
 			List<Producto> estimadoDiario,Local local) {
@@ -26,8 +29,6 @@ public class Cafeteria extends AreaRestaurant {
 		this.estimadoDiario = estimadoDiario;
 	}
 	
-	private Cafeteria(){
-		
-	}
+	
 	
 }

@@ -14,13 +14,12 @@ public class Sector
 	
 	public Sector(){}
 
-	public Sector(String descripcion,Salon salon) {
+	public Sector(String descripcion,Salon salon)
+	{
 		super();
 		
 		this.descripcion = descripcion;
 		this.salon=salon;
-		//this.mozo = mozo;
-		//this.mesa = mesas;
 	}
 
 	public Integer getCodSector() {

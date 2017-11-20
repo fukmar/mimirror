@@ -201,11 +201,11 @@ public class testHibernate2 {
 		
 		*/
 		
-		/*List<Comanda> listaComandas=ComandaDAO.getInstance().getComandas();
+		List<Comanda> listaComandas=ComandaDAO.getInstance().getComandas();
 		for(Comanda c:listaComandas)
 		{
-			System.out.println(c.toString());
-		}*/
+			System.out.println(c.getMozo().getNombre());
+		}
 		 
 		 
 		

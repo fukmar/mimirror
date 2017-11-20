@@ -5,6 +5,7 @@ import java.util.List;
 
 import enumns.AreaRest;
 
+
 public class CafeteriaDTO extends AreaRestaurantDTO implements Serializable{
 
 	/**
@@ -14,11 +15,16 @@ public class CafeteriaDTO extends AreaRestaurantDTO implements Serializable{
 
 	private List<ProductoDTO> estimadoDiario;
 
+	private CafeteriaDTO(){
+		
+	}
+
 	public CafeteriaDTO(Integer codArea, AreaRest area,
-			List<ProductoDTO> estimadoDiario) {
-		super(codArea, area);
+			List<ProductoDTO> estimadoDiario,LocalDTO local) {
+		super(codArea, area,local);
 		this.estimadoDiario = estimadoDiario;
 	}
+
 
 	public List<ProductoDTO> getEstimadoDiario() {
 		return estimadoDiario;
@@ -26,10 +32,6 @@ public class CafeteriaDTO extends AreaRestaurantDTO implements Serializable{
 
 	public void setEstimadoDiario(List<ProductoDTO> estimadoDiario) {
 		this.estimadoDiario = estimadoDiario;
-	}
-	
-	private CafeteriaDTO(){
-		
 	}
 
 }

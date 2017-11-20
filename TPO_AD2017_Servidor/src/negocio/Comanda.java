@@ -99,7 +99,7 @@ public class Comanda
 		c.setCodComanda(codComanda);
 		c.setEstado(estado);
 		c.setMesa(mesa.toDTO());
-		c.setMozo(mozo.toDTO());
+		//c.setMozo(mozo.toDTO());
 		return c;
 	}
 	

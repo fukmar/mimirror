@@ -1,5 +1,6 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import dto.DepositoDTO;
+import dto.MateriaPrimaDTO;
 
 
 
@@ -62,6 +66,18 @@ public class Deposito
 
 	public void setMateriaprima(List<MateriaPrima> materiaprima) {
 		this.materiaprima = materiaprima;
+	}
+
+	public DepositoDTO toDTO() 
+	{
+		DepositoDTO d=new DepositoDTO();
+		d.setCodDeposito(codDeposito);
+		List<MateriaPrima> listaMP=new ArrayList<MateriaPrima>();
+		/*for(MateriaPrima m:listaMP) 
+		{
+			listaMP.add(m.toDTO());
+		}*/
+		return d;
 	}
 
 	

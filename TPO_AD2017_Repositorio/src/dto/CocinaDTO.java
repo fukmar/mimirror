@@ -6,25 +6,23 @@ import java.util.List;
 
 import enumns.AreaRest;
 
+
 public class CocinaDTO extends AreaRestaurantDTO implements Serializable
 {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8320744667260918809L;
-	
-	
 	private List<PlatoDTO> platos;
 	private Date horasPrepInternas;
 	private List<SemiElaboradoDTO> semiElaborados;
 	private List<ProductoDTO> estimadoDiario;
 	
+	public CocinaDTO(){
+	}
+	
 	
 	public CocinaDTO(Integer codArea, AreaRest area, List<PlatoDTO> platos,
 			Date horasPrepInternas, List<SemiElaboradoDTO> semiElaborados,
-			List<ProductoDTO> estimadoDiario) {
-		super(codArea, area);
+			List<ProductoDTO> estimadoDiario,LocalDTO local) {
+		super(codArea, area,local);
 		this.platos = platos;
 		this.horasPrepInternas = horasPrepInternas;
 		this.semiElaborados = semiElaborados;
@@ -63,6 +61,4 @@ public class CocinaDTO extends AreaRestaurantDTO implements Serializable
 		this.estimadoDiario = estimadoDiario;
 	}
 
-	public CocinaDTO(){
-	}
 }

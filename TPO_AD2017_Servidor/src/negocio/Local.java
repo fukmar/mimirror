@@ -1,5 +1,6 @@
 package negocio;
 
+import dto.LocalDTO;
 import entities.LocalEntity;
 
 public class Local 
@@ -61,6 +62,17 @@ public class Local
 		l.setDireccion(direccion);
 		l.setBarrio(barrio);
 		//l.setDepostio
+		return l;
+	}
+
+
+	public LocalDTO toDTO() 
+	{
+		LocalDTO l=new LocalDTO();
+		l.setCodigoLocal(codigoLocal);
+		l.setBarrio(barrio);
+		l.setDireccion(direccion);
+		l.setDeposito(deposito.toDTO());
 		return l;
 	}
 

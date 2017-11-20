@@ -16,6 +16,9 @@ public class Cocina extends AreaRestaurant {
 	private List<SemiElaborado> semiElaborados;
 	private List<Producto> estimadoDiario;
 	
+	public Cocina(){
+	}
+	
 	
 	public Cocina(Integer codArea, AreaRest area, List<Plato> platos,
 			Date horasPrepInternas, List<SemiElaborado> semiElaborados,
@@ -59,10 +62,5 @@ public class Cocina extends AreaRestaurant {
 		this.estimadoDiario = estimadoDiario;
 	}
 
-	public Cocina(){
-	}
-	
-	
-	
-	
+		
 }
