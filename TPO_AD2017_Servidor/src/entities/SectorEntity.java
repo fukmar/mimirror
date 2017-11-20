@@ -60,6 +60,7 @@ public class SectorEntity
 	public Sector toNegocio() 
 	{
 		Sector s=new Sector();
+		s.setCodSector(codSector);
 		s.setDescripcion(descripcion);
 		s.setSalon(salon.toNegocio());
 		return s;
