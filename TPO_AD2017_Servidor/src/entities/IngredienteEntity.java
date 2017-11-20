@@ -1,5 +1,8 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import negocio.Elaborado;
+import negocio.Ingrediente;
+import negocio.Plato;
 
 @Entity
 @Table(name="ingredientes")
@@ -82,7 +89,14 @@ public class IngredienteEntity {
 	public void setPlatosemielaborado(SemiElaboradoEntity platosemielaborado) {
 		this.platosemielaborado = platosemielaborado;
 	}
-	
-	
 
+	public Ingrediente toNegocio() {
+		Ingrediente i=new Ingrediente();
+		i.setCantidad(cantidad);
+		i.setCodigocomponente(codigocomponente);
+		i.setMateriaprima(materiaprima.toNegocio());
+		i.setPlatosemielaborado(platosemielaborado.toNegocio());
+		return i;
+	}
+	
 }

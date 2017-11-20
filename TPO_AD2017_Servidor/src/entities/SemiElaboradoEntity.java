@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
+import negocio.Elaborado;
+import negocio.Plato;
+import negocio.SemiElaborado;
+
 @Entity
 @Table(name="semielaborados")
 public class SemiElaboradoEntity extends ProductoEntity 
@@ -29,7 +33,19 @@ public class SemiElaboradoEntity extends ProductoEntity
 	public void setUnidad(UnidadEntity unidad) {
 		this.unidad = unidad;
 	}
-	
+	public SemiElaborado toNegocio() 
+	{
+		SemiElaborado s=new SemiElaborado();
+		s.setCaducidad(caducidad);
+		s.setCalidad(calidad);
+		s.setCantidad(cantidad);
+		s.setDescripcion(descripcion);
+		s.setNumero(getNumero());
+		s.setPdp(pdp.toNegocio());
+		s.setTipo(tipo);
+		s.setUnidad(unidad.toNegocio());
+		return s;
+	}
 	
 	/*@Override
 	public int hashCode() {

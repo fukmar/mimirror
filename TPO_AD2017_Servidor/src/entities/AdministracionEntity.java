@@ -1,6 +1,8 @@
 package entities;
 import javax.persistence.*;
 
+import negocio.Administracion;
+import negocio.Elaborado;
 import negocio.PlanDeProduccion;
 import enumns.*;
 import java.util.*;
@@ -32,5 +34,19 @@ public class AdministracionEntity extends AreaRestaurantEntity {
 		this.planesProd = planesProd;
 	}
 	
-	
+	public Administracion toNegocio() 
+	{
+		Administracion a=new Administracion();
+		a.setArea(area);
+		a.setCodArea(codArea);
+		a.setLocal(local.toNegocio());
+		List <PlanDeProduccionEntity> planes=getPlanesProd();
+		List <PlanDeProduccion> plannegocio= new ArrayList <PlanDeProduccion>();
+		for(PlanDeProduccionEntity pp: planes )
+		{
+			plannegocio.add(pp.toNegocio());
+		}
+		a.setPlanesProd(plannegocio);
+		return a;
+	}
 }

@@ -1,6 +1,13 @@
 package entities;
 
 import enumns.Estado;
+import negocio.Elaborado;
+import negocio.PlanDeProduccion;
+import negocio.Plato;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -43,5 +50,13 @@ public class PlanDeProduccionEntity
 	}
 	public void setAdministracion(AdministracionEntity ad) {
 		this.administracion=ad;
+	}
+	public PlanDeProduccion toNegocio() 
+	{
+		PlanDeProduccion p=new PlanDeProduccion();
+		p.setAdministracion(administracion.toNegocio());
+		p.setCodigoPDP(codigoPDP);
+		p.setEstado(estado);
+		return p;
 	}
 }
