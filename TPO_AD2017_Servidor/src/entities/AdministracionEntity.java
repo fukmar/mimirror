@@ -40,13 +40,6 @@ public class AdministracionEntity extends AreaRestaurantEntity {
 		a.setArea(area);
 		a.setCodArea(codArea);
 		a.setLocal(local.toNegocio());
-		List <PlanDeProduccionEntity> planes=getPlanesProd();
-		List <PlanDeProduccion> plannegocio= new ArrayList <PlanDeProduccion>();
-		for(PlanDeProduccionEntity pp: planes )
-		{
-			plannegocio.add(pp.toNegocio());
-		}
-		a.setPlanesProd(plannegocio);
 		return a;
 	}
 }

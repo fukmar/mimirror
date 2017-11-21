@@ -1,10 +1,12 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
 import negocio.Elaborado;
+import negocio.SemiElaborado;
 
 @Entity
 @Table(name="elaborados")
@@ -49,8 +51,20 @@ public class ElaboradoEntity extends ProductoEntity
 	public Elaborado toNegocio() 
 	{
 		Elaborado e=new Elaborado();
+		e.setNumero(getNumero());
+		e.setCaducidad(caducidad);
+		e.setCalidad(calidad);
+		e.setDescripcion(descripcion);
+		e.setTipo(tipo);
+		e.setPdp(pdp.toNegocio());
 		e.setUnidad(unidad.toNegocio());
+		List <SemiElaborado> semisnegocio=new ArrayList <SemiElaborado>();
+		for(SemiElaboradoEntity semi:this.getComponentes())
+		{
+			semisnegocio.add(semi.toNegocio());
+		}
+		e.setComponentes(semisnegocio);
 		//componentes
-		return null;
+		return e;
 	}
 }

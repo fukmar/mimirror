@@ -37,9 +37,8 @@ public class IngredienteDAO {
 		Session session=sf.openSession();
 		List<Ingrediente> receta=new ArrayList<Ingrediente>();
 
-		Query query=session.createQuery("from IngredienteEntity i where i.codigoSemielaborado=?");
+		Query query=session.createQuery("from IngredienteEntity i where i.platosemielaborado.codigoProd=?");
  		query.setInteger(0,codsemielab);
- 		session.getTransaction().commit();
  		@SuppressWarnings("unchecked")
 		List<IngredienteEntity> resultado=query.list();
 		for(IngredienteEntity p:resultado) 
@@ -57,7 +56,7 @@ public class IngredienteDAO {
 		{
 			MateriaPrimaEntity mp= new MateriaPrimaEntity();
 			Session session=sf.openSession();
-			mp=(MateriaPrimaEntity) session.createQuery("from MateriaPrimaEntity mp where m.codigo=?").setInteger(0,i.getMateriaprima().getCodigo()).uniqueResult();
+			mp=(MateriaPrimaEntity) session.createQuery("from MateriaPrimaEntity mp where mp.codigo=?").setInteger(0,i.getMateriaprima().getCodigo()).uniqueResult();
 	 		if (mp.getCantidad()<i.getCantidad())
 	 			sepuede++;
 	 		session.close();
