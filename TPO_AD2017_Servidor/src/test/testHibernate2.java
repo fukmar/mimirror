@@ -86,7 +86,7 @@ public class testHibernate2 {
 		materiales.add(mpe);
 		
 		SemiElaboradoEntity see = new SemiElaboradoEntity("Tipo","Calidad","Descripcion",pdp,1,fecha,ue);
-		IngredienteEntity ingrediente1=new IngredienteEntity (mpe,1000);
+		IngredienteEntity ingrediente1=new IngredienteEntity (mpe,1500);
 		ingrediente1.setPlatosemielaborado(see);
 		
 		List<SemiElaboradoEntity> componentes = new ArrayList<SemiElaboradoEntity>();
@@ -173,11 +173,11 @@ public class testHibernate2 {
 		session.save(ue);
 		session.getTransaction().commit();*/
 		
-		/*session.save(see);
+		session.save(see);
 		session.save(mpe);
 		session.save(ingrediente1);
 		
-		session.save(ingrediente1);
+		/*session.save(ingrediente1);
 		session.save(deposito);
 		session.getTransaction().commit();
 		session.save(mozo);
