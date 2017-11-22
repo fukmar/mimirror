@@ -16,14 +16,18 @@
 
 
 <%
-
+if (request.getAttribute("reservas") !=null){
 List<ReservaDTO> reservas = (List<ReservaDTO>)request.getAttribute("reservas");
 %>
 
 <Select name = "Reservas">
 <% for(ReservaDTO reserva :  reservas) {%>
 	<option value= <%= reserva.getNombre()  %>><%= reserva.toString()%></option> 
-<%} %>
+<%}}else{
+	RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verReservas");
+	rd.forward(request, response);
+	
+} %>
 </select>
 
 	<P>

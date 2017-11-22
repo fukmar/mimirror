@@ -16,7 +16,10 @@
 
 
 <%
-
+if (request.getAttribute("platos") ==null){
+RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verPlatos");
+rd.forward(request, response);
+}
 List<PlatoDTO> platos = (List<PlatoDTO>)request.getAttribute("platos");
 %>
 
