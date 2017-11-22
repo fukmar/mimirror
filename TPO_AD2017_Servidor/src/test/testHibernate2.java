@@ -165,7 +165,7 @@ public class testHibernate2 {
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		   
-		 session.save(admi);
+		 //session.save(admi);
 		/*session.save(deposito);
 		session.save(mozo2);
 		session.save(mesita);
@@ -174,9 +174,9 @@ public class testHibernate2 {
 		session.save(ue);
 		session.getTransaction().commit();*/
 		
-		session.save(see);
-		session.save(mpe);
-		session.save(ingrediente1);
+		//session.save(see);
+		//session.save(mpe);
+		//session.save(ingrediente1);
 		
 		/*session.save(ingrediente1);
 		session.save(deposito);
@@ -201,13 +201,13 @@ public class testHibernate2 {
 		//EL DAO funciona ok
 		
 		*/
-		
+		/*
 		List<Comanda> listaComandas=ComandaDAO.getInstance().getComandas();
 		for(Comanda c:listaComandas)
 		{
 			System.out.println(c.getMozo().getNombre());
 		}
-		 
+		 */
 		 
 		
 		//Mozo mozob=MozoDAO.getInstancia().getMozosByCod(31575032);
@@ -243,6 +243,12 @@ public class testHibernate2 {
 		
 		*/
 		
+		ReservaEntity res = new ReservaEntity("Nahu",fecha,8);
+		SessionFactory sf2 = HibernateUtil.getSessionFactory();
+		Session session2 = sf2.openSession();
+		session2.beginTransaction();
+		session2.save(res);
+		session2.getTransaction().commit();
 		
 		
 		/*--------------->----------->separador de bajo presupuesto<------------------<------------------------*/				  

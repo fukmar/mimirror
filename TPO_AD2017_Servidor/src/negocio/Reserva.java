@@ -67,6 +67,7 @@ public class Reserva
 		r.setCodReserva(codReserva);
 		r.setFechayHora(fechayHora);
 		r.setNombre(nombre);
+		r.setCantidadComensales(cantidadComensales);
 		return r;
 	}
 
@@ -76,6 +77,7 @@ public class Reserva
 		r.setCodReserva(codReserva);
 		r.setNombre(nombre);
 		r.setFechayHora(fechayHora);
+		r.setCantidadComensales(cantidadComensales);
 		return r;
 	}
 }

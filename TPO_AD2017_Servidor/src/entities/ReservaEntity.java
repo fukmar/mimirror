@@ -66,6 +66,7 @@ public class ReservaEntity
 		r.setCodReserva(codReserva);
 		r.setFechayHora(fechayHora);
 		r.setNombre(nombre);
+		r.setCantidadComensales(cantidadComensales);
 		return r;
 	}
 }

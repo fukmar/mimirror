@@ -106,7 +106,7 @@ public class Controlador {
 	
 	public void guardarReserva(ReservaDTO reserva)
 	{
-		new Reserva(reserva.getCodReserva(),reserva.getNombre(),reserva.getFechayHora()).save();
+		new Reserva(reserva.getNombre(),reserva.getFechayHora(),reserva.getCantidadComensales()).save();
 	}
 	
 	public List<ReservaDTO> listarReservas()

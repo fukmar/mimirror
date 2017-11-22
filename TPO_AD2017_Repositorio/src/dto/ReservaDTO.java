@@ -56,11 +56,14 @@ public class ReservaDTO implements Serializable
 		this.cantidadComensales = cantidadComensales;
 	}
 
-
 	@Override
 	public String toString() {
-		return "ReservaDTO [codReserva=" + codReserva + ", nombre=" + nombre + ", fechayHora=" + fechayHora + "]";
+		return "ReservaDTO [codReserva=" + codReserva + ", nombre=" + nombre + ", fechayHora=" + fechayHora
+				+ ", cantidadComensales=" + cantidadComensales + "]";
 	}
+
+
+	
 
 	
 }
