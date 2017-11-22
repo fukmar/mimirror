@@ -43,10 +43,10 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String opcion = request.getParameter("opcion");
 		if(opcion == null){
-			RequestDispatcher rd = request.getRequestDispatcher("/Menu.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
 			rd.forward(request, response);
 		}
-		else
+		else {
 			if(opcion.equals("verPlatos")){
 				
 				List<PlatoDTO> platos = new ArrayList<PlatoDTO>();
@@ -99,7 +99,7 @@ public class Controller extends HttpServlet {
 			}
 			RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verReservas");
 			rd.forward(request, response);
-		}
+		}}
 	}
 
 	/**
