@@ -31,7 +31,7 @@ import exceptions.PlatoException;
 
 public class testCliente 
 {
-	/*public static void main (String args[]) 
+	public static void main (String args[]) 
 	{
 		UnidadDTO ue = new UnidadDTO("gramos");
 		Date fecha = new Date("10/10/2020");
@@ -56,7 +56,7 @@ public class testCliente
 		DepositoDTO deposito = new DepositoDTO(materiapedido,solicitudes,remitos);
 		LocalDTO local=new LocalDTO(1,"Sucre 123", "Belgrano", deposito);
 		
-		SalonDTO salon=new SalonDTO("Salon");
+		SalonDTO salon=new SalonDTO(2,AreaRest.salon, "Salon", local);
 		SectorDTO sector = new SectorDTO("Sector", salon);
 		MozoDTO mozo = new MozoDTO(31575032,"Nahuelito","Grisoluble",80.4f, sector);
 		//MozoDTO mozo, MesaDTO mesa,CajaDTO caja,Estado estado
@@ -66,7 +66,7 @@ public class testCliente
 		ComandaDTO comanda=new ComandaDTO(mozo, mesa,Estado.EnProceso);
 		
 		//(Date fecha, float importe,MedioDePago medioPago, MesaDTO mesa, MozoDTO mozo,CajaDTO caja)
-		CajaDTO caja=new CajaDTO(2,AreaRest.Caja,salon);
+		CajaDTO caja=new CajaDTO(2,AreaRest.Caja,salon, local);
 		FacturaDTO fact=new FacturaDTO(fecha,new Float(652),MedioDePago.Contado,mesa,mozo,caja);
 		
 		//HASTA ACA DECLARACION DE VARIABLES
@@ -108,5 +108,5 @@ public class testCliente
 		}
 	
 	}
-	*/
+	
 }

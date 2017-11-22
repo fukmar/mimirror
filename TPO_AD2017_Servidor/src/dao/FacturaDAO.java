@@ -80,6 +80,8 @@ private static FacturaDAO instancia;
 		session.close();
 	}
 	
+	
+	//esto tiene que recibir Factura (negocio)
 	public void CerrarFactura(FacturaEntity factura){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();

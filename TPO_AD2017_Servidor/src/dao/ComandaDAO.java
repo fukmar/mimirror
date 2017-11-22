@@ -14,6 +14,7 @@ import entities.PlatoEntity;
 import enumns.Estado;
 import hibernate.HibernateUtil;
 import negocio.Comanda;
+import negocio.ItemComanda;
 
 public class ComandaDAO {
 
@@ -69,46 +70,65 @@ private static SessionFactory sf=null;
 	
 	
 	@SuppressWarnings("unchecked")
-	public List <ItemComandaEntity> OtenerItemComanda(int codigoComanda) {
+	public List <ItemComanda> OtenerItemComanda(int codigoComanda) 
+	{
+		List<ItemComanda> items=new ArrayList<ItemComanda>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
 		String senten = " FROM ItemComanda WHERE codComanda = ?";
-		List <ItemComandaEntity> items = session.createQuery(senten).setInteger(0, codigoComanda).list();
+		List <ItemComandaEntity> resu = session.createQuery(senten).setInteger(0, codigoComanda).list();
 		session.getTransaction().commit();
 		session.close();
+		for(ItemComandaEntity i: resu) 
+		{
+			items.add(i.toNegocio());
+		}
 		return items;
 	}
 	
-	public ComandaEntity obtenerComanda(int codComanda){
+	public Comanda obtenerComanda(int codComanda)
+	{
+		Comanda comanda=new Comanda();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
 		String senten = " FROM ComandaEntity WHERE codComanda = ?";
-		ComandaEntity comanda = (ComandaEntity) session.createQuery(senten).setInteger(0, codComanda).uniqueResult();
+		ComandaEntity resu = (ComandaEntity) session.createQuery(senten).setInteger(0, codComanda).uniqueResult();
 		session.getTransaction().commit();
 		session.close();
+		comanda=resu.toNegocio();
 		return comanda;
 	}
 	
-	public List <ComandaEntity> obtenerComandasAbiertasxMesa(int codMesa){
+	public List <Comanda> obtenerComandasAbiertasxMesa(int codMesa)
+	{
+		List<Comanda> comandas=new ArrayList<Comanda>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		List<ComandaEntity> comandas = session.createQuery("from ComandaEntity c where c.mesa.codMesa=? and c.estado=0").setInteger(0, codMesa).list();
+		List<ComandaEntity> resu = session.createQuery("from ComandaEntity c where c.mesa.codMesa=? and c.estado=0").setInteger(0, codMesa).list();
 		session.getTransaction().commit();
 		session.close();
+		for(ComandaEntity c:resu) 
+		{
+			comandas.add(c.toNegocio());
+		}
 		return comandas;
 	}
-	public ComandaEntity cerrarComanda(int codComanda){
+	
+	public Comanda cerrarComanda(int codComanda)
+	{
+		Comanda comanda=new Comanda();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
 		String senten = " FROM ComandaEntity WHERE codComanda = ?";
-		ComandaEntity comanda = (ComandaEntity) session.createQuery(senten).setInteger(0, codComanda).uniqueResult();
-		comanda.setEstado(Estado.Terminado);
+		ComandaEntity resu = (ComandaEntity) session.createQuery(senten).setInteger(0, codComanda).uniqueResult();
+		resu.setEstado(Estado.Terminado);
 		session.getTransaction().commit();
 		session.close();
+		comanda=resu.toNegocio();
 		return comanda;
 	}
 	

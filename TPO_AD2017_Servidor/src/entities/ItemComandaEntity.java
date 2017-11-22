@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import negocio.ItemComanda;
 import negocio.Plato;
 
 
@@ -62,6 +63,13 @@ public class ItemComandaEntity
 		this.plato = plato;
 	}
 	
-	
+	public ItemComanda toNegocio() 
+	{
+		ItemComanda i=new ItemComanda();
+		i.setCoditemComanda(coditemComanda);
+		i.setPlato(plato.toNegocio());
+		i.setCantidad(cantidad);
+		return i;
+	}
 	
 }
