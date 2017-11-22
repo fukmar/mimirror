@@ -14,13 +14,15 @@ public class ReservaEntity
 	private Integer codReserva;
 	private String nombre;
 	private Date fechayHora;
+	private Integer cantidadComensales;
 	//private List<MesaDTO> mesas;
+	
 	
 	public ReservaEntity() {}
 	
-	public ReservaEntity(Integer codReserva, String nombre, Date fechayHora) {
+	public ReservaEntity(String nombre, Date fechayHora, Integer cantidad) {
 		super();
-		this.codReserva = codReserva;
+		this.cantidadComensales = cantidad;
 		this.nombre = nombre;
 		this.fechayHora = fechayHora;
 	}
@@ -49,6 +51,15 @@ public class ReservaEntity
 		this.fechayHora = fechayHora;
 	}
 
+	public Integer getCantidadComensales() {
+		return cantidadComensales;
+	}
+
+	public void setCantidadComensales(Integer cantidadComensales) {
+		this.cantidadComensales = cantidadComensales;
+	}
+
+	
 	public Reserva toNegocio() 
 	{
 		Reserva r=new Reserva();

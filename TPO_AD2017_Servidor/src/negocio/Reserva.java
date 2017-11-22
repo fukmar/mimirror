@@ -11,13 +11,14 @@ public class Reserva
 	private Integer codReserva;
 	private String nombre;
 	private Date fechayHora;
+	private Integer cantidadComensales;
 	//private List<MesaDTO> mesas;
-	
+
 	public Reserva() {}
 	
-	public Reserva(Integer codReserva, String nombre, Date fechayHora) {
+	public Reserva(String nombre, Date fechayHora, Integer cantidad) {
 		super();
-		this.codReserva = codReserva;
+		this.cantidadComensales = cantidad;
 		this.nombre = nombre;
 		this.fechayHora = fechayHora;
 	}
@@ -46,6 +47,13 @@ public class Reserva
 		this.fechayHora = fechayHora;
 	}
 
+	public Integer getCantidadComensales() {
+		return cantidadComensales;
+	}
+
+	public void setCantidadComensales(Integer cantidadComensales) {
+		this.cantidadComensales = cantidadComensales;
+	}
 	
 	//GRABAR RESERVA
 	

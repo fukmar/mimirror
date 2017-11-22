@@ -12,17 +12,16 @@
         <li><a href="index.jsp">Inicio</a></li>
  <%          
         
- 
-			 
-			 submmenus = new HashMap<String,String>();
-			 submmenus.put("Ver Platos", "Form_PanelPlatos.jsp");
+ 		 submmenus = new HashMap<String,String>();
+			 submmenus.put("Ver Platos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPlatos");
 			 menus.put("Platos", submmenus);
-                                   
-             
-        		
-              
             
-                
+			 submmenus = new HashMap<String,String>();
+			 submmenus.put("Ver Reservas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verReservas");
+			 submmenus.put("Cargar Reservas", "/TPO_AD2017_ClienteWeb/cargarReserva.jsp");
+			 menus.put("Reservas", submmenus);   
+			 
+			 
         for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
             String menuName = (String)itMenu.next();
             HashMap sub = (HashMap)menus.get(menuName);            

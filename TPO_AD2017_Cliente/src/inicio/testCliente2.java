@@ -17,7 +17,7 @@ public class testCliente2 {
 	public static void main(String[] args) 
 	{
 		Date fecha = new Date("10/10/2020");
-		ReservaDTO reserva=new ReservaDTO(1,"Ceci",fecha);
+		ReservaDTO reserva=new ReservaDTO("Ceci",fecha,8);
 		try {
 			BusinessDelegate.getInstance().grabarReserva(reserva);
 		} catch (RemoteException e) {

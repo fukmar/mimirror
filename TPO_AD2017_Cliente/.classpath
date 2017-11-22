@@ -3,24 +3,21 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/TPO_AD2017_Repositorio"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/hibernate3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/javassist-3.4.GA.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/jtds-1.2.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/slf4j-api-1.5.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/slf4j-simple-1.5.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/lib/jgoodies-common-1.8.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/lib/jgoodies-forms-1.8.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/lib/jgoodies-forms-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/lib/miglayout15-swing.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/lib/slf4j-api-1.5.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ceci/Desktop/lib/lib/slf4j-simple-1.5.6.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/jtds-1.2.5.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/slf4j-api-1.5.6.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/workspace/Practica/lib/slf4j-simple-1.5.6.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/eclipse_jars/jgoodies-common-1.8.1.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/eclipse_jars/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="/Users/moebius/Documents/eclipse_jars/miglayout-4.0-swing.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

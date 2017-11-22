@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import bd.BusinessDelegate;
 
 import dto.PlatoDTO;
+import dto.ReservaDTO;
 import exceptions.PlatoException;
+import exceptions.ReservaException;
 
 
 /**
@@ -42,19 +44,33 @@ public class Controller extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else
-			if(opcion.equals("platos")){
+			if(opcion.equals("verPlatos")){
 				
 				List<PlatoDTO> platos = new ArrayList<PlatoDTO>();
 				try {
 					platos = BusinessDelegate.getInstance().listarPlatos();
 					request.setAttribute("platos", platos);
-					RequestDispatcher rd = request.getRequestDispatcher("/Form_PanelPlatos.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/verPlatos.jsp");
 					rd.forward(request, response);
 				} catch (PlatoException e) {
 					System.out.println(e.getMessage());
 				}
 
-			} 
+			}
+		
+		if(opcion.equals("verReservas")){
+			
+			List<ReservaDTO> reservas = new ArrayList<ReservaDTO>();
+			try {
+				reservas = BusinessDelegate.getInstance().mostrarReservas();
+				request.setAttribute("reservas", reservas);
+				RequestDispatcher rd = request.getRequestDispatcher("/verReservas.jsp");
+				rd.forward(request, response);
+			} catch (ReservaException e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
 	}
 
 	/**

@@ -13,15 +13,15 @@ public class ReservaDTO implements Serializable
 	private Integer codReserva;
 	private String nombre;
 	private Date fechayHora;
-	//private List<MesaDTO> mesas;
+	private Integer cantidadComensales;
 	
 	public ReservaDTO() {}
 	
-	public ReservaDTO(Integer codReserva, String nombre, Date fechayHora) {
+	public ReservaDTO(String nombre, Date fechayHora, Integer cantidad) {
 		super();
-		this.codReserva = codReserva;
 		this.nombre = nombre;
 		this.fechayHora = fechayHora;
+		this.cantidadComensales = cantidad;
 	}
 
 	public Integer getCodReserva() {
@@ -47,6 +47,15 @@ public class ReservaDTO implements Serializable
 	public void setFechayHora(Date fechayHora) {
 		this.fechayHora = fechayHora;
 	}
+	
+	public Integer getCantidadComensales() {
+		return cantidadComensales;
+	}
+
+	public void setCantidadComensales(Integer cantidadComensales) {
+		this.cantidadComensales = cantidadComensales;
+	}
+
 
 	@Override
 	public String toString() {
