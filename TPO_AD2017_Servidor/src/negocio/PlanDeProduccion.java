@@ -1,6 +1,7 @@
 package negocio;
 
-import entities.AdministracionEntity;
+import entities.*;
+import entities.PlanDeProduccionEntity;
 import enumns.Estado;
 
 public class PlanDeProduccion 
@@ -35,6 +36,11 @@ public class PlanDeProduccion
 
 	public void setAdministracion(Administracion administracion) {
 		this.administracion = administracion;
+	}
+	
+	public PlanDeProduccionEntity toEntity() {
+		PlanDeProduccionEntity plan=new PlanDeProduccionEntity(this.estado);
+		return plan;
 	}
 	
 }

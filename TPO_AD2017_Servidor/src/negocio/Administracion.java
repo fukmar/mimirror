@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
+import entities.AreaRestaurantEntity;
 import entities.LocalEntity;
 import entities.PlanDeProduccionEntity;
 import enumns.AreaRest;
@@ -32,6 +33,12 @@ public class Administracion extends AreaRestaurant
 
 	public void setPlanesProd(List<PlanDeProduccion> planesProd) {
 		this.planesProd = planesProd;
+	}
+
+	@Override
+	public AreaRestaurantEntity toEntity() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

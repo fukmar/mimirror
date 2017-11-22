@@ -67,6 +67,7 @@ public class testHibernate2 {
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
 		sectores.add(sector);
 		
+		/* el error de abajo es porque es una clase abstracta, no puedes instanciarla*/
 		SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
 		
 		materia.setDeposito(deposito);

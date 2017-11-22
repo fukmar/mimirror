@@ -25,7 +25,7 @@ public class MateriaPrimaEntity
     private DepositoEntity deposito;
 	
 
-		public MateriaPrimaEntity(String descripcion, UnidadEntity unidadUso, Float cantidad) {
+	public MateriaPrimaEntity(String descripcion, UnidadEntity unidadUso, Float cantidad) {
 		super();
 	
 		this.descripcion = descripcion;
@@ -126,4 +126,6 @@ public class MateriaPrimaEntity
 	public void setCantidad(Float cantidad) {
 		this.cantidad = cantidad;
 	}
+	
+
 }

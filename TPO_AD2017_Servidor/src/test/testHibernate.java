@@ -277,7 +277,9 @@ public class testHibernate {
 		 * test push
 		 */
 		
-		/*--------------->----------->separador de bajo presupuesto<------------------<------------------------*/				
+		/*--------------->----------->separador de bajo presupuesto<------------------<------------------------*/	
+		
+		/*Deposito,Elaborado,OrdendeCompra,Plato y remito no estan*/
 	}
 
 }

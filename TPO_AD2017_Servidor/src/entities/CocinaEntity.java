@@ -2,6 +2,7 @@ package entities;
 
 import javax.persistence.*;
 
+import negocio.AreaRestaurant;
 import negocio.Plato;
 import negocio.Producto;
 import negocio.SemiElaborado;
@@ -73,6 +74,12 @@ public class CocinaEntity extends AreaRestaurantEntity{
 
 	public void setEstimadoDiario(List<ProductoEntity> estimadoDiario) {
 		this.estimadoDiario = estimadoDiario;
+	}
+
+	@Override
+	public AreaRestaurant toNegocio() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

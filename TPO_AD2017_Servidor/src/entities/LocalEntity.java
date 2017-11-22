@@ -75,6 +75,14 @@ public class LocalEntity
 		this.barrio = barrio;
 	}
 
+	public DepositoEntity getDeposito() {
+		return deposito;
+	}
+
+
+	public void setDeposito(DepositoEntity deposito) {
+		this.deposito = deposito;
+	}
 
 	public Local toNegocio() 
 	{
@@ -85,6 +93,8 @@ public class LocalEntity
 		return l;
 	}
 
+
+	
 
 	
 

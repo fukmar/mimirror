@@ -3,6 +3,7 @@ package negocio;
 import dto.MateriaPrimaDTO;
 import dto.UnidadDTO;
 import entities.DepositoEntity;
+import entities.MateriaPrimaEntity;
 import entities.UnidadEntity;
 
 public class MateriaPrima 
@@ -72,4 +73,12 @@ public class MateriaPrima
 	public void setDeposito(Deposito deposito) {
 		this.deposito = deposito;
 	}
+	
+	public MateriaPrimaEntity toEntity() {
+		
+		MateriaPrimaEntity materia= new MateriaPrimaEntity(this.descripcion, this.unidadUso.toEntity(), this.cantidad);
+		return materia;
+		
+	}
+	
 }

@@ -3,27 +3,29 @@ package negocio;
 import java.util.*;
 //FALTAN METODOS DE NEGOCIO
 
+import entities.SolicitudInsumoEntity;
+
 
 
 public abstract class SolicitudInsumo {
 	
-	private Integer codSolicitudInsumo;
-	private Integer cantidadAPedir;
-	private MateriaPrima materiaPrima; 
-	private AreaRestaurant area;
-	private String responsable;
-	private Integer lote;
-	private Date fechaCompra;
-	private Date fechaVencimiento;
-	private String motivo;
-    private Deposito deposito;
+	protected Integer codSolicitudInsumo;
+	protected Integer cantidadAPedir;
+	protected MateriaPrima materiaPrima; 
+	protected AreaRestaurant area;
+	protected String responsable;
+	protected Integer lote;
+	protected Date fechaCompra;
+	protected Date fechaVencimiento;
+	protected String motivo;
+	protected Deposito deposito;
 
     public SolicitudInsumo(){
 	}
 	
 	
 
-	public SolicitudInsumo(Integer cantidadAPedir, MateriaPrima materiaPrima,
+	public SolicitudInsumo(Integer codSolicitudInsumo,Integer cantidadAPedir, MateriaPrima materiaPrima,
 			AreaRestaurant area, String responsable, Integer lote, Date fechaCompra, Date fechaVencimiento,
 			String motivo) {
 	
@@ -35,6 +37,7 @@ public abstract class SolicitudInsumo {
 		this.fechaCompra = fechaCompra;
 		this.fechaVencimiento = fechaVencimiento;
 		this.motivo = motivo;
+		this.codSolicitudInsumo=codSolicitudInsumo;
 	}
 
 
@@ -124,7 +127,7 @@ public abstract class SolicitudInsumo {
 		this.deposito = deposito;
 	}
 
-
+	public abstract SolicitudInsumoEntity toEntity();
 
 	
 	

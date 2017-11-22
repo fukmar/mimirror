@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import entities.*;
+
 
 public class SemiElaborado extends Producto
 {
@@ -24,9 +26,6 @@ public class SemiElaborado extends Producto
 	}
 
 
-	
-
-
 	public void setMateriales(List<MateriaPrima> materiales) {
 		this.materiales = materiales;
 	}
@@ -42,6 +41,14 @@ public class SemiElaborado extends Producto
 	}
 	public void setMateriales(ArrayList<MateriaPrima> materiales) {
 		this.materiales = materiales;
+	}
+	
+	/* ya que tambien puede existir un toEntity heredado del padre ,
+	 * a la funcion que viene le pongo otro nombre*/
+	 
+	public SemiElaboradoEntity toEntitySemi() {
+		SemiElaboradoEntity semi=new SemiElaboradoEntity(this.tipo, this.calidad, this.descripcion, this.pdp.toEntity(), this.cantidad, this.caducidad, this.unidad.toEntity());
+		return semi;
 	}
 
 }

@@ -2,6 +2,7 @@ package negocio;
 
 import java.util.*;
 
+import entities.AreaRestaurantEntity;
 import entities.LocalEntity;
 import entities.ProductoEntity;
 import enumns.AreaRest;
@@ -27,6 +28,12 @@ public class Cafeteria extends AreaRestaurant
 
 	public void setEstimadoDiario(List<Producto> estimadoDiario) {
 		this.estimadoDiario = estimadoDiario;
+	}
+
+	@Override
+	public AreaRestaurantEntity toEntity() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

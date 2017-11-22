@@ -61,7 +61,7 @@ public class Local
 		//l.setCodigoLocal(codigoLocal);
 		l.setDireccion(direccion);
 		l.setBarrio(barrio);
-		//l.setDepostio
+		l.setDeposito(this.deposito.toEntity());
 		return l;
 	}
 

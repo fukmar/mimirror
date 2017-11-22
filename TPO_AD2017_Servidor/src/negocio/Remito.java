@@ -1,7 +1,10 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import entities.*;
 
 
 public class Remito 
@@ -62,5 +65,15 @@ public class Remito
 	public void setCodRemito(Integer codRemito) {
 		this.codRemito = codRemito;
 	}	
+	
+	public RemitoEntity toEntity() {
+		List<ItemRemitoEntity> items = new ArrayList<ItemRemitoEntity>();
+		
+		for(ItemRemito itemsNegocio: this.itemsRemito) {
+			items.add(itemsNegocio.toEntity());
+		}
+		RemitoEntity remit= new RemitoEntity(this.codigoProveedor, this.fecha, items);
+		return remit;
+	}
 	
 }

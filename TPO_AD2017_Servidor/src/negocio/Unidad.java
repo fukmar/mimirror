@@ -37,5 +37,10 @@ public class Unidad
 		u.setDescripcion(descripcion);
 		return u;
 	}
+	
+	public UnidadEntity toEntity() {
+		UnidadEntity uni=new UnidadEntity(this.descripcion);
+		return uni;
+	}
 
 }

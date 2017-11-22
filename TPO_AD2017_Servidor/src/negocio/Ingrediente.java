@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import entities.*;
+
 public class Ingrediente {
 
 	private Integer codigocomponente;
@@ -61,5 +63,13 @@ public class Ingrediente {
 		this.platosemielaborado = platosemielaborado;
 	}
 
+	public IngredienteEntity toEntity() {
+		IngredienteEntity i=new IngredienteEntity();
+		i.setCantidad(cantidad);
+		i.setCodigocomponente(codigocomponente);
+		i.setMateriaprima(materiaprima.toEntity());
+		i.setPlatosemielaborado(platosemielaborado.toEntitySemi());
+		return i;
+	}
 
 }

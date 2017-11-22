@@ -3,8 +3,10 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,6 +37,9 @@ public class IngredienteEntity {
 	@JoinColumn(name="codigoSemielaborado")
 	private SemiElaboradoEntity platosemielaborado;
 	
+	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	@JoinColumn(name="codSolicitud",nullable=false)
+	private SolicitudDiariaEntity solicitud;
 	
 	//Constructores
 	public IngredienteEntity() {
@@ -55,7 +60,6 @@ public class IngredienteEntity {
 	}
 
 	//Getters y Setters
-
 
 
 	public MateriaPrimaEntity getMateriaprima() {
@@ -88,6 +92,15 @@ public class IngredienteEntity {
 
 	public void setPlatosemielaborado(SemiElaboradoEntity platosemielaborado) {
 		this.platosemielaborado = platosemielaborado;
+	}
+
+	
+	public SolicitudDiariaEntity getSolicitud() {
+		return solicitud;
+	}
+
+	public void setSolicitud(SolicitudDiariaEntity solicitud) {
+		this.solicitud = solicitud;
 	}
 
 	public Ingrediente toNegocio() {

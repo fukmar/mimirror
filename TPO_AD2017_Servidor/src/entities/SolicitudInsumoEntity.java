@@ -5,56 +5,49 @@ import java.util.Date;
 import javax.persistence.*;
 
 import negocio.AreaRestaurant;
+import negocio.*;
 
 
 @Entity
-@Table(name="solicitudinsumo")
-public class SolicitudInsumoEntity {
+//@Table(name="solicitudinsumo")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public abstract class SolicitudInsumoEntity {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer codSolicitudInsumo;
-	private Integer cantidadAPedir;
+	//@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="codSolicitud")
+	protected Integer codSolicitudInsumo;
+	protected Integer cantidadAPedir;
 	
 	@OneToOne
 	@JoinColumn(name="codMaterial")
-	private MateriaPrimaEntity materiaPrima; 
+	protected MateriaPrimaEntity materiaPrima; 
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codarea")
-	private AreaRestaurantEntity area;
-	private String responsable;
-	private Integer lote;
-	private Date fechaCompra;
-	private Date fechaVencimiento;
-	private String motivo;
+	protected AreaRestaurantEntity area;
+	protected String responsable;
+	protected Integer lote;
+	protected Date fechaCompra;
+	protected Date fechaVencimiento;
+	protected String motivo;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="codDeposito", nullable=false)
-    private DepositoEntity deposito;
+	protected DepositoEntity deposito;
 
 	
-	public DepositoEntity getDeposito() {
-		return deposito;
-	}
-
-
-
-	public void setDeposito(DepositoEntity deposito) {
-		this.deposito = deposito;
-	}
-
-
 
 	public SolicitudInsumoEntity(){
 	}
 	
 	
 
-	public SolicitudInsumoEntity(Integer cantidadAPedir, MateriaPrimaEntity materiaPrima,
+	public SolicitudInsumoEntity(Integer codSolicitudInsumo,Integer cantidadAPedir, MateriaPrimaEntity materiaPrima,
 			AreaRestaurantEntity area, String responsable, Integer lote, Date fechaCompra, Date fechaVencimiento,
 			String motivo) {
 	
+		this.codSolicitudInsumo=codSolicitudInsumo;
 		this.cantidadAPedir = cantidadAPedir;
 		this.materiaPrima = materiaPrima;
 		this.area = area;
@@ -66,7 +59,8 @@ public class SolicitudInsumoEntity {
 	}
 
 
-
+	
+	
 	public Integer getCodSolicitudInsumo() {
 		return codSolicitudInsumo;
 	}
@@ -138,7 +132,17 @@ public class SolicitudInsumoEntity {
 	public void setMotivo(String motivo) {
 		this.motivo = motivo;
 	}
-
 	
+	public DepositoEntity getDeposito() {
+		return deposito;
+	}
+
+
+
+	public void setDeposito(DepositoEntity deposito) {
+		this.deposito = deposito;
+	}
+
+	public abstract SolicitudInsumo toNegocio();
 	
 }

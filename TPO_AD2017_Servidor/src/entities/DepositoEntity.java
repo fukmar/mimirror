@@ -1,7 +1,8 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
-
+import negocio.*;
 import javax.persistence.*;
 
 @Entity
@@ -63,6 +64,27 @@ public class DepositoEntity
 
 	public void setCodDeposito(Integer codDeposito) {
 		this.codDeposito = codDeposito;
+	}
+	
+	public Deposito toNegocio() {
+		
+		List<MateriaPrima> materias = new ArrayList<MateriaPrima>();
+		for(MateriaPrimaEntity materiaprima:this.materiaprima ) {
+			materias.add(materiaprima.toNegocio());
+		}
+		
+		List<Remito> remitos = new ArrayList<Remito>();
+		for(RemitoEntity remitEn: this.remitos) {
+			remitos.add(remitEn.toNegocio());
+		}
+		
+		List<SolicitudInsumo> solicitudes=new ArrayList<SolicitudInsumo>();
+		for(SolicitudInsumoEntity solEn: this.getSolicitudes()) {
+			solicitudes.add(solEn.toNegocio());
+		}
+		
+		Deposito deposito =new Deposito(materias, solicitudes, remitos);
+		return deposito;
 	}
 	
 	

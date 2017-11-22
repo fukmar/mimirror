@@ -1,5 +1,6 @@
 package negocio;
 
+import entities.ItemRemitoEntity;
 import enumns.EstadoItemRemito;
 
 public class ItemRemito {
@@ -62,6 +63,16 @@ public class ItemRemito {
 	public ItemRemito toNegocio() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public ItemRemitoEntity toEntity() {
+		ItemRemitoEntity item=new ItemRemitoEntity();
+		item.setCodItemRemito(codItemRemito);
+		item.setCantidad(cantidad);
+		item.setEstadoremito(estadoremito);
+		item.setRemito(remito.toEntity());
+		return item;
+		
 	}
 	
 	

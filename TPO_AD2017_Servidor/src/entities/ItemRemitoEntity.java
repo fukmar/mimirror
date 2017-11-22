@@ -21,7 +21,6 @@ import negocio.Remito;
 public class ItemRemitoEntity {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codItemRemito")
 	private Integer codItemRemito;
 	
@@ -98,8 +97,7 @@ public class ItemRemitoEntity {
 		item.setCodItemRemito(codItemRemito);
 		item.setCantidad(cantidad);
 		item.setEstadoremito(estadoremito);
-		Remito remito=new Remito();
-		item.setRemito(remito);
+		item.setRemito(remito.toNegocio());
 		return item;
 	}
 

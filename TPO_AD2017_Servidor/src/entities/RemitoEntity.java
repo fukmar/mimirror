@@ -1,8 +1,11 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
+
+import negocio.*;
 
 
 @Entity
@@ -93,5 +96,15 @@ public class RemitoEntity {
 
 	public void setDeposito(DepositoEntity deposito) {
 		this.deposito = deposito;
+	}
+	
+	
+	public Remito toNegocio() {
+		List<ItemRemito> items = new ArrayList<ItemRemito>();
+		for(ItemRemitoEntity itemEn: this.getItemsRemito()) {
+			items.add(itemEn.toNegocio());
+		}
+		Remito remito = new Remito(this.getCodigoProveedor(), this.getFecha(), items);
+		return remito;
 	}
 }

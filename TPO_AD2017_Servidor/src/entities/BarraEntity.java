@@ -3,6 +3,7 @@ package entities;
 import javax.persistence.*;
 
 import enumns.AreaRest;
+import negocio.AreaRestaurant;
 
 import java.util.*;
 
@@ -31,6 +32,12 @@ public class BarraEntity extends AreaRestaurantEntity {
 	
 	public BarraEntity(){
 		
+	}
+
+	@Override
+	public AreaRestaurant toNegocio() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

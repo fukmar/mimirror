@@ -12,6 +12,10 @@ import javax.persistence.OneToMany;
 
 import dto.DepositoDTO;
 import dto.MateriaPrimaDTO;
+import entities.DepositoEntity;
+import entities.MateriaPrimaEntity;
+import entities.RemitoEntity;
+import entities.SolicitudInsumoEntity;
 
 
 
@@ -80,6 +84,29 @@ public class Deposito
 		return d;
 	}
 
+	public DepositoEntity toEntity() {
+		
+		
+		List<MateriaPrimaEntity> materias = new ArrayList<MateriaPrimaEntity>();
+		for(MateriaPrima materiaprima:this.materiaprima ) {
+			materias.add(materiaprima.toEntity());
+		}
+		
+		List<RemitoEntity> remitos = new ArrayList<RemitoEntity>();
+		for(Remito remitEn: this.remitos) {
+			remitos.add(remitEn.toEntity());
+		}
+		
+		List<SolicitudInsumoEntity> solicitudes=new ArrayList<SolicitudInsumoEntity>();
+		for(SolicitudInsumo solEn: this.getSolicitudes()) {
+			solicitudes.add(solEn.toEntity());
+		}
+		
+		
+		DepositoEntity depEn=new DepositoEntity(materias, solicitudes, remitos);
+			
+		return depEn;
+	}
 	
 	
 }

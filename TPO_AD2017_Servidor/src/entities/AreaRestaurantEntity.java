@@ -2,6 +2,7 @@ package entities;
 import javax.persistence.*;
 
 import enumns.AreaRest;
+import negocio.AreaRestaurant;
 //FALTAN METODOS DE NEGOCIO
 
 @Entity
@@ -56,7 +57,7 @@ public abstract class AreaRestaurantEntity {
 		this.local = local;
 	}
 		
-	
+	public abstract AreaRestaurant toNegocio();
 	
 	//hashCode e equals? revisar ejemplo ProductoEntity
 

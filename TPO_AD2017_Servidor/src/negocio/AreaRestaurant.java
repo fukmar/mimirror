@@ -1,6 +1,7 @@
 package negocio;
 
 
+import entities.AreaRestaurantEntity;
 import enumns.AreaRest;
 //FALTAN METODOS DE NEGOCIO
 
@@ -45,6 +46,7 @@ public abstract class AreaRestaurant
 	public void setLocal(Local local) {
 		this.local = local;
 	}
+	public abstract AreaRestaurantEntity toEntity();
 	
 	
 }
