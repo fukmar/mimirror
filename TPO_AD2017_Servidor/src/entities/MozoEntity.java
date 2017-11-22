@@ -14,7 +14,7 @@ public class MozoEntity {
 	private Integer dni;
 	private String nombre;
 	private String apellido;
-	private Float procentajeComision;
+	private Float porcentajeComision;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "codSector")
 	private SectorEntity sector;
@@ -26,7 +26,7 @@ public class MozoEntity {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.procentajeComision = procentajeComision;
+		this.porcentajeComision = procentajeComision;
 		this.sector = sector;
 	}
 
@@ -55,11 +55,11 @@ public class MozoEntity {
 	}
 
 	public Float getProcentajeComision() {
-		return procentajeComision;
+		return porcentajeComision;
 	}
 
 	public void setProcentajeComision(Float procentajeComision) {
-		this.procentajeComision = procentajeComision;
+		this.porcentajeComision = procentajeComision;
 	}
 
 	public Mozo toNegocio() 
@@ -68,7 +68,7 @@ public class MozoEntity {
 		m.setDni(dni);
 		m.setNombre(nombre);
 		m.setApellido(apellido);
-		m.setProcentajeComision(procentajeComision);
+		m.setProcentajeComision(porcentajeComision);
 		m.setSector(sector.toNegocio());
 		return m;
 	}

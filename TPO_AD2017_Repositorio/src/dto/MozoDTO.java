@@ -8,7 +8,7 @@ public class MozoDTO implements Serializable
 	private static final long serialVersionUID = 1999050924715622562L;
 	private Integer dni;
 	private String nombre, apellido;
-	private Float procentajeComision;
+	private Float porcentajeComision;
 	private SectorDTO sector;
 	
 	public MozoDTO(){}
@@ -18,7 +18,7 @@ public class MozoDTO implements Serializable
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.procentajeComision = procentajeComision;
+		this.porcentajeComision = procentajeComision;
 		this.sector = sector;
 	}
 
@@ -47,11 +47,11 @@ public class MozoDTO implements Serializable
 	}
 
 	public Float getProcentajeComision() {
-		return procentajeComision;
+		return porcentajeComision;
 	}
 
 	public void setProcentajeComision(Float procentajeComision) {
-		this.procentajeComision = procentajeComision;
+		this.porcentajeComision = procentajeComision;
 	}
 
 	
@@ -66,7 +66,7 @@ public class MozoDTO implements Serializable
 	@Override
 	public String toString() {
 		return "MozoDTO [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", procentajeComision="
-				+ procentajeComision + ", sector=" + sector + "]";
+				+ porcentajeComision + ", sector=" + sector + "]";
 	}
 
 	

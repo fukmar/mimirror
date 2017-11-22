@@ -11,7 +11,7 @@ public class Mozo {
 	private Integer dni;
 	private String nombre;
 	private String apellido;
-	private Float procentajeComision;
+	private Float porcentajeComision;
 	private Sector sector;
 	
 	public Mozo(){}
@@ -22,7 +22,7 @@ public class Mozo {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.procentajeComision = procentajeComision;
+		this.porcentajeComision = procentajeComision;
 		this.sector = sector;
 	
 	}
@@ -52,11 +52,11 @@ public class Mozo {
 	}
 
 	public Float getProcentajeComision() {
-		return procentajeComision;
+		return porcentajeComision;
 	}
 
 	public void setProcentajeComision(Float procentajeComision) {
-		this.procentajeComision = procentajeComision;
+		this.porcentajeComision = procentajeComision;
 	}
 
 	public Sector getSector() {
@@ -73,7 +73,7 @@ public class Mozo {
 		m.setDni(dni);
 		m.setNombre(nombre);
 		m.setApellido(apellido);
-		m.setProcentajeComision(procentajeComision);
+		m.setProcentajeComision(porcentajeComision);
 		return m;
 	}
 
@@ -83,7 +83,7 @@ public class Mozo {
 		m.setDni(dni);
 		m.setNombre(nombre);
 		m.setApellido(apellido);
-		m.setProcentajeComision(procentajeComision);
+		m.setProcentajeComision(porcentajeComision);
 		m.setSector(sector.toDTO());
 		return m;
 	}

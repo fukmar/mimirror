@@ -1,11 +1,15 @@
 package dao;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import entities.MozoEntity;
 import hibernate.HibernateUtil;
@@ -68,5 +72,48 @@ public class MozoDAO
 		session.close();
 		mozo=resu.toNegocio();
 		return mozo;
+	}
+	
+	public List<String[]> ResultadoComisiones (/*Date FechaDesde,Date FechaHasta*/)
+	{
+		List<String[]> rta = new ArrayList<String[]>();
+		try{
+			Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+			s.beginTransaction();
+			List<Object[]> objetos = s.createQuery("select m.dni, "
+					+ "m.nombre,m.apellido, m.porcentajeComision * f.importe/100 "
+					+ "from FacturaEntity f join f.mozo m "
+					).list();
+			s.getTransaction().commit();
+			for (Object[] aux : objetos)
+				rta.add(new String[]{aux[0].toString(), aux[1].toString(), aux[2].toString(),aux[3].toString()});
+		} catch (Exception e){
+			System.out.println("error en ResultadoDAO: " + e.getMessage());
+		}
+		return rta;
+	}
+	public List<String[]> ResultadoComisiones (Date FechaDesde,Date FechaHasta)
+	{
+		SimpleDateFormat sf=new SimpleDateFormat("dd-MM-YYYY");
+		String fromDate=null;
+		String toDate=null;
+		fromDate=sf.format(FechaDesde);
+		toDate=sf.format(FechaHasta);
+		List<String[]> rta = new ArrayList<String[]>();
+		try{
+			Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+			s.beginTransaction();
+			List<Object[]> objetos = s.createQuery("select m.dni, "
+					+ "m.nombre,m.apellido, m.porcentajeComision * f.importe/100 "
+					+ "from FacturaEntity f join f.mozo m where f.fecha between ? and ?"
+					).setString(0, fromDate).setString(1, toDate).list();
+			
+			s.getTransaction().commit();
+			for (Object[] aux : objetos)
+				rta.add(new String[]{aux[0].toString(), aux[1].toString(), aux[2].toString(),aux[3].toString()});
+		} catch (Exception e){
+			System.out.println("error en ResultadoDAO: " + e.getMessage());
+		}
+		return rta;
 	}
 }

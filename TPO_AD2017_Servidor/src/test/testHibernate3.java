@@ -112,7 +112,7 @@ public class testHibernate3 {
 		
 		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,elabs);
 			
-		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",80.4f, sector);
+		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",5.4f, sector);
 		
 		List<MozoEntity> mocitos = new ArrayList<MozoEntity>();
 		mocitos.add(mozo);
@@ -133,8 +133,8 @@ public class testHibernate3 {
 		comanditas.add(comandita);
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
-		FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita, mozo,caja);
-		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo,caja);
+		FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita, mozo);
+		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo);
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
@@ -171,7 +171,7 @@ public class testHibernate3 {
 		session.save(itemCom3);
 		session.save(comandita3);
 		//session.save(factura2);
-		//session.save(factura);
+		session.save(factura);
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		   
@@ -235,11 +235,7 @@ public class testHibernate3 {
 		resultado = ComandaDAO.getInstance().obtenerComanda(1); //FUNCIONA DAO obtener comanda
 		System.out.println("HOLA "+resultado.getCaja().getCodArea());*/
 		
-		//TEST DAO COMANDAS ACTIVAS POR MESA MESA --FUNCIONA
-		/*FacturaDAO.getInstance().CerrarFactura(factura);
-		factura=FacturaDAO.getInstance().obtenerFactura(factura.getCodFactura());
-	    System.out.println("El total de la factura nro "+factura.getCodFactura()+" es de ARS "+ factura.getImporte());*/
-
+	
 
 		
 		/* AHORA PROBAMOS PASAR TODOS LOS ITEMS DE LAS COMANDAS ACTIVAS SIN FACTURAR EN UNA MESA DETERMINADA, USAMOS MESA 1 y DEBERIA
@@ -358,7 +354,35 @@ public class testHibernate3 {
 			System.out.println("Quedan :"+MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(i.getMateriaprima())+" "+i.getMateriaprima().getUnidadUso().getDescripcion()+" de "+i.getMateriaprima().getDescripcion());
 		}
 		
-		
-		
+		//TEST DAO FACTURACION FUNCIONA OK LUEGO DE PASAR A NEGOCIO! TODO EN ORDEN.  CAMBIOS..FACTURA COMO DIJO ZUKI NO TIENE ASOCIADA CAJA - NO TIENE SENTIDO y LE SUMAMOS COMPLEJIDAD. NO LLEGAMOS
+		// VERIFICAR QUE PREVIO A LA EJECUCION CREO LA FACTURA CON LO IMPORTANTE y LUEGO EJECUTO PARA EL CALCULO y SE ME CREAN LOS ITEMFACTURA A PARTIR DE ITEMCOMANDA. LA FACTURA TENDRA LA MESA y EL DAO
+		// BUSCA LAS COMANDAS ABIERTAS PARA ESA MESA Y LAS FACTURA.  LUEGO PASA A COMANDA CERRADA ESTOS ITEMS
+		FacturaDAO.getInstance().CerrarFactura(factura);
+		factura=FacturaDAO.getInstance().obtenerFactura(factura.getCodFactura());
+	    System.out.println("El total de la factura nro "+factura.getCodFactura()+" es de ARS "+ factura.getImporte());
+
+	    //VER COMISIONES MOZO POR LISTADO FUNCIONA YESS!  Habria que hacer un view pero va...
+	    List<String[]> resultado=MozoDAO.getInstancia().ResultadoComisiones();
+	    
+	    for(String[] resultadoitem:resultado)
+	    	{
+	    	for (String resultadoaux:resultadoitem)
+	    	{
+	    		System.out.println(resultadoaux);
+	    	}
+	    }
+	    
+	   // /DAO para ver Comision segun fecha desde y HASTA FUNCIONA YESSSS Habria que hacer un view pero va... //
+	    Date fechadesde = new Date("10/10/2019");
+	    Date fechahasta = new Date("10/10/2020");
+	    List<String[]> resultado2=MozoDAO.getInstancia().ResultadoComisiones(fechadesde,fechahasta);
+	    
+	    for(String[] resultadoitem:resultado2)
+	    	{
+	    	for (String resultadoaux:resultadoitem)
+	    	{
+	    		System.out.println(resultadoaux);
+	    	}
+	    }
 }
 }

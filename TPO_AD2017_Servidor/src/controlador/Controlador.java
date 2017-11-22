@@ -95,11 +95,9 @@ public class Controlador {
 		Integer codMesa=factura.getMesa().getCodMesa();
 		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
 		Integer codMozo=factura.getMozo().getDni();
-		Mozo mozo=MozoDAO.getInstancia().getMozosByCod(codMozo);
-		Integer codArea=factura.getCaja().getCodArea();
-		Caja caja=CajaDAO.getInstancia().getCajaByCod(codArea);
+		Mozo mozo=MozoDAO.getInstancia().getMozosByCod(codMozo); //FM: Saque la CAJA
 		//(Date fecha, double importe,MedioDePago medioPago, Mesa mesa, Mozo mozo,Caja caja)
-		new Factura(factura.getFecha(),factura.getImporte(),factura.getMedioPago(),mesa,mozo,caja).save();
+		new Factura(factura.getFecha(),factura.getImporte(),factura.getMedioPago(),mesa,mozo).save();
 		
 	}
 	

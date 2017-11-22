@@ -38,24 +38,18 @@ public class FacturaEntity
 	private MozoEntity mozo;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="codCaja",nullable=false)
-	private CajaEntity caja;
-	
-	
 	public FacturaEntity(){}
 
 	
 
 	public FacturaEntity(Date fecha, double importe,
-			MedioDePago medioPago, MesaEntity mesa, MozoEntity mozo,CajaEntity caja) {
+			MedioDePago medioPago, MesaEntity mesa, MozoEntity mozo) {
 		super();
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;
 		this.mesa = mesa;
 		this.mozo = mozo;
-		this.caja=caja;
 	}
 
 	public Integer getCodFactura() {
@@ -108,17 +102,5 @@ public class FacturaEntity
 		this.mozo = mozo;
 	}
 
-
-
-	public CajaEntity getCaja() {
-		return caja;
-	}
-
-
-
-	public void setCaja(CajaEntity caja) {
-		this.caja = caja;
-	}
-	
 	
 }

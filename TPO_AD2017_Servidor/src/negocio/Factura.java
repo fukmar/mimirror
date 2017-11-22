@@ -29,20 +29,18 @@ public class Factura
 	private MedioDePago medioPago;
 	private Mesa mesa;
 	private Mozo mozo;
-	private Caja caja;
 	
 	
 	public Factura(){}
 
 
-	public Factura(Date fecha, double importe,MedioDePago medioPago, Mesa mesa, Mozo mozo,Caja caja) {
+	public Factura(Date fecha, double importe,MedioDePago medioPago, Mesa mesa, Mozo mozo) {
 		super();
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;
 		this.mesa = mesa;
 		this.mozo = mozo;
-		this.caja=caja;
 	}
 
 	public Integer getCodFactura() {
@@ -96,17 +94,6 @@ public class Factura
 	}
 
 
-
-	public Caja getCaja() {
-		return caja;
-	}
-
-
-
-	public void setCaja(Caja caja) {
-		this.caja = caja;
-	}
-
 	//GUARDAR Factura
 	public void save() 
 	{
@@ -123,7 +110,6 @@ public class Factura
 		f.setMedioPago(medioPago);
 		f.setMesa(mesa.toEntity());
 		f.setMozo(mozo.toEntity());
-		f.setCaja(caja.toEntity());
 		return f;
 	}
 	
