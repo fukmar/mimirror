@@ -1,7 +1,10 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -70,6 +73,32 @@ public class Controller extends HttpServlet {
 				System.out.println(e.getMessage());
 			}
 
+		}
+		
+
+		if(opcion.equals("cargarReserva")){
+			String nombre = request.getParameter("nombre");
+			String startDateStr = request.getParameter("fecha");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			//surround below line with try catch block as below code throws checked exception
+			Date startDate = null;
+			try {
+				startDate = sdf.parse(startDateStr);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Integer cantidad = Integer.parseInt(request.getParameter("cantidad"));
+			ReservaDTO reserva = new ReservaDTO(nombre,startDate,cantidad);
+			try {
+			
+				BusinessDelegate.getInstance().grabarReserva(reserva);
+				
+			} catch (ReservaException e) {
+				System.out.println(e.getMessage());
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verReservas");
+			rd.forward(request, response);
 		}
 	}
 
