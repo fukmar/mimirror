@@ -12,6 +12,7 @@ public class DepositoEntity
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codDeposito;
+	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="deposito", cascade = CascadeType.ALL)
 	private List<MateriaPrimaEntity> materiaprima;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
@@ -33,12 +34,17 @@ public class DepositoEntity
 	
 	public DepositoEntity(){}
 	
+	public DepositoEntity(Integer codDeposito) {
+		super();
+		this.codDeposito = codDeposito;
+	}
+
 	public DepositoEntity(List<MateriaPrimaEntity> materiaprima, List<SolicitudInsumoEntity> solicitudes,
 			List<RemitoEntity> remitos) {
 		super();
-		this.materiaprima = materiaprima;
-		this.solicitudes = solicitudes;
-		this.remitos = remitos;
+	this.materiaprima = materiaprima;
+	this.solicitudes = solicitudes;
+	this.remitos = remitos;
 	}
 
 
@@ -68,18 +74,21 @@ public class DepositoEntity
 	
 	public Deposito toNegocio() {
 		
-		List<MateriaPrima> materias = new ArrayList<MateriaPrima>();
-		for(MateriaPrimaEntity materiaprima:this.materiaprima ) {
+	List<MateriaPrima> materias = new ArrayList<MateriaPrima>();
+		for(MateriaPrimaEntity materiaprima:this.materiaprima ) 
+		{
 			materias.add(materiaprima.toNegocio());
 		}
 		
 		List<Remito> remitos = new ArrayList<Remito>();
-		for(RemitoEntity remitEn: this.remitos) {
+		for(RemitoEntity remitEn: this.remitos) 
+		{
 			remitos.add(remitEn.toNegocio());
 		}
 		
 		List<SolicitudInsumo> solicitudes=new ArrayList<SolicitudInsumo>();
-		for(SolicitudInsumoEntity solEn: this.getSolicitudes()) {
+		for(SolicitudInsumoEntity solEn: this.getSolicitudes()) 
+		{
 			solicitudes.add(solEn.toNegocio());
 		}
 		

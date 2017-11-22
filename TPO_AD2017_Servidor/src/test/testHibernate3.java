@@ -62,8 +62,8 @@ public class testHibernate3 {
 	
 		
 		
-		DepositoEntity deposito = new DepositoEntity(materiapedido,solicitudes,remitos);
-		
+		//DepositoEntity deposito = new DepositoEntity(materiapedido,solicitudes,remitos);
+		DepositoEntity deposito = new DepositoEntity();
 		remito.setDeposito(deposito);
 		
 		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
@@ -76,12 +76,12 @@ public class testHibernate3 {
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
 		sectores.add(sector);
 		
-		SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
+		//SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
 		
 		materia.setDeposito(deposito);
-		solicitud.setDeposito(deposito);
+		//solicitud.setDeposito(deposito);
 		
-		solicitudes.add(solicitud);
+		//solicitudes.add(solicitud);
 			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
 		AdministracionEntity admi= new AdministracionEntity(5, AreaRest.Administracion, planes, local);
@@ -89,15 +89,15 @@ public class testHibernate3 {
 		pdp.setAdministracion(admi);
 		planes.add(pdp);
 	
-		MateriaPrimaEntity mpe = new MateriaPrimaEntity("Papas",ue, 1000f);
+		MateriaPrimaEntity mpe = new MateriaPrimaEntity("Papas",ue, 3000f);
 		mpe.setDeposito(deposito);
 		List<MateriaPrimaEntity> materiales = new ArrayList<MateriaPrimaEntity>();
 		materiales.add(mpe);
 		
 		SemiElaboradoEntity see = new SemiElaboradoEntity("Guarnicion","Extrema","Papas Fritas",pdp,1,fecha,ue);
 		SemiElaboradoEntity see2 = new SemiElaboradoEntity("Guarnicion","Extrema","Milanesa",pdp,1,fecha,ue);
-		IngredienteEntity ingrediente1=new IngredienteEntity (mpe,1500);
-		IngredienteEntity ingrediente2=new IngredienteEntity (mpe,1000);
+		IngredienteEntity ingrediente1=new IngredienteEntity (mpe,500);
+		IngredienteEntity ingrediente2=new IngredienteEntity (mpe,700);
 		ingrediente1.setPlatosemielaborado(see);
 		ingrediente2.setPlatosemielaborado(see2);
 		List<SemiElaboradoEntity> componentes = new ArrayList<SemiElaboradoEntity>();
@@ -125,7 +125,7 @@ public class testHibernate3 {
 		ComandaEntity comandita = new ComandaEntity(mozo, mesita/*,caja,*/,Estado.Terminado); //de aca solo comente caja porque tambien lo comente en el cosntuctor
 		ComandaEntity comandita2 = new ComandaEntity(mozo, mesita/*,caja*/,Estado.EnProceso);
 		ComandaEntity comandita3 = new ComandaEntity(mozo, mesita,/*caja,*/Estado.EnProceso);
-		ItemComandaEntity itemCom2= new ItemComandaEntity(2, plato, comandita2);
+		ItemComandaEntity itemCom2= new ItemComandaEntity(1, plato, comandita2);
 		ItemComandaEntity itemCom3= new ItemComandaEntity(5, plato, comandita3);
 		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato, comandita);
 		
@@ -155,7 +155,7 @@ public class testHibernate3 {
 		session.save(remito);
 		session.save(solicitud);
 		session.save(materia);
-		
+		*/
 		session.save(local);
 		session.save(salon);
 		session.save(sector);
@@ -170,12 +170,12 @@ public class testHibernate3 {
 		session.save(comandita2);
 		session.save(itemCom3);
 		session.save(comandita3);
-		session.save(factura2);
-		session.save(factura);*/
+		//session.save(factura2);
+		//session.save(factura);
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		   
-		 session.save(admi);
+		session.save(admi);
 		session.save(deposito);
 		session.save(mesita);
 		session.save(comandita2);
@@ -329,8 +329,36 @@ public class testHibernate3 {
 		System.out.println(test);
 		//
 		
-		//PRUEBO DAO PARA COMPOSICION DE ELABORADO//
-
-	
+		//PRUEBO DAO PARA COMPOSICION DE PLATO FUNCIONA //
+		List<Ingrediente>composicion=PlatoDAO.getInstance().getIngredientes(plato.toNegocio());
+		System.out.println(composicion.get(0).getMateriaprima().getDescripcion());
+		for(Ingrediente i:composicion) 
+		{
+			System.out.println("Materia Prima: "+ i.getMateriaprima().getDescripcion() + " Cantidad: "+ i.getCantidad()+" "+i.getMateriaprima().getUnidadUso().getDescripcion());
+		}
+		//DAO VERIFICA SI SE PUEDE HACER EL PLATO O NO FUNCIONA
+		boolean sepuedehacer=PlatoDAO.getInstance().HaySuficiente(composicion);
+		System.out.println(sepuedehacer);
+		//DAO verifica Cantidad en existencia de una materiaprima//
+		float cantidad=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(mpe.toNegocio());
+		System.out.println("Quedan "+cantidad+" de "+mpe.getDescripcion());
+		
+		//DAO REDUCCION STOCK FUNCIONA :) VAMOS!!
+		System.out.println(itemCom2.getPlato().getNombre());
+		System.out.println("Necesita para hacerse:");
+		List <Ingrediente> recetaplato=PlatoDAO.getInstance().getIngredientes(itemCom2.getPlato().toNegocio());
+		for (Ingrediente i: recetaplato)
+		{
+			System.out.println(i.getCantidad()+" "+i.getMateriaprima().getUnidadUso().getDescripcion()+" "+i.getMateriaprima().getDescripcion());
+		}
+		ItemComandaDAO.getInstance().reducirstockxItemComanda(itemCom2.toNegocio());
+		System.out.println("Ahora quedan:");
+		for (Ingrediente i: recetaplato)
+		{
+			System.out.println("Quedan :"+MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(i.getMateriaprima())+" "+i.getMateriaprima().getUnidadUso().getDescripcion()+" de "+i.getMateriaprima().getDescripcion());
+		}
+		
+		
+		
 }
 }

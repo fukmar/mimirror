@@ -64,7 +64,6 @@ public class ElaboradoEntity extends ProductoEntity
 			semisnegocio.add(semi.toNegocio());
 		}
 		e.setComponentes(semisnegocio);
-		//componentes
 		return e;
 	}
 }

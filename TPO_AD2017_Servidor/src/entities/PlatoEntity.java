@@ -9,6 +9,7 @@ import javax.persistence.*;
 import enumns.CategoriaPlato;
 import negocio.Elaborado;
 import negocio.Plato;
+import negocio.SemiElaborado;
 
 
 @Entity
@@ -120,11 +121,11 @@ public class PlatoEntity
 		p.setNombre(nombre);
 		p.setPrecio(precio);
 		List<Elaborado> elab=new ArrayList<Elaborado>();
-		/*for(ElaboradoEntity pp: productoPlato )
+		for(ElaboradoEntity e: this.getProductoPlato() )
 		{
-			elab.add(pp.toNegocio());
+			elab.add(e.toNegocio());
 		}
-		p.setProductoPlato(elab);*/
+		p.setProductoPlato(elab);
 		return p;
 	}
 

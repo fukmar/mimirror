@@ -70,6 +70,16 @@ public class MateriaPrimaDAO
 		session.close();
 		return resu.toNegocio();
 	}
+	public float getCantidadMateriaPrima(MateriaPrima mp)
+	{
+		Session session=sf.openSession();
+		Query query=session.createQuery("select mp.cantidad from MateriaPrimaEntity mp where mp.codigo= ? ");
+ 		query.setFloat(0,mp.getCodigo());
+ 		float cantidad=0;
+		cantidad=(Float) query.uniqueResult();
+		session.close();
+		return cantidad;
+	}
 	
 
 	//FALTA

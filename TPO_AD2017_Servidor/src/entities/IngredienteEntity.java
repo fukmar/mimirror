@@ -37,10 +37,7 @@ public class IngredienteEntity {
 	@JoinColumn(name="codigoSemielaborado")
 	private SemiElaboradoEntity platosemielaborado;
 	
-	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-	@JoinColumn(name="codSolicitud",nullable=false)
-	private SolicitudDiariaEntity solicitud;
-	
+
 	//Constructores
 	public IngredienteEntity() {
 		super();
@@ -95,13 +92,6 @@ public class IngredienteEntity {
 	}
 
 	
-	public SolicitudDiariaEntity getSolicitud() {
-		return solicitud;
-	}
-
-	public void setSolicitud(SolicitudDiariaEntity solicitud) {
-		this.solicitud = solicitud;
-	}
 
 	public Ingrediente toNegocio() {
 		Ingrediente i=new Ingrediente();

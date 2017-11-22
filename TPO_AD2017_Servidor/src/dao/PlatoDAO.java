@@ -6,11 +6,15 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import entities.MateriaPrimaEntity;
 import entities.PlatoEntity;
 import entities.UnidadEntity;
 import enumns.CategoriaPlato;
 import hibernate.HibernateUtil;
+import negocio.Elaborado;
+import negocio.Ingrediente;
 import negocio.Plato;
+import negocio.SemiElaborado;
 
 public class PlatoDAO
 {
@@ -78,6 +82,60 @@ public class PlatoDAO
 		}
 		session.close();
 		return listaPlatos;
+	}
+	public List<Ingrediente> getIngredientes (Plato p)
+	{
+		List <Ingrediente> ingredientesFinal=new ArrayList <Ingrediente>();
+		List <Elaborado> elaborados=p.getProductoPlato();
+		for(Elaborado elab:elaborados)
+		{
+			List <SemiElaborado> semielab=new ArrayList <SemiElaborado>();
+			semielab=elab.getComponentes();
+			for(SemiElaborado s:semielab)
+			{
+			    List<Ingrediente> ingredientesdereceta=new ArrayList <Ingrediente>();
+				ingredientesdereceta=IngredienteDAO.getInstance().getIngredientesdeSemi(s);
+				for (Ingrediente idereceta:ingredientesdereceta)
+				{
+					int codigoabuscar=idereceta.getMateriaprima().getCodigo();
+					if (ingredientesFinal.isEmpty())	
+						ingredientesFinal.add(idereceta);
+					else
+					{
+						for (Ingrediente ifinal:ingredientesFinal)
+						{
+							if(ifinal.getMateriaprima().getCodigo()==codigoabuscar)
+							{
+								int subcantidad=ifinal.getCantidad()+idereceta.getCantidad();
+								ifinal.setCantidad(subcantidad);
+							}
+							else
+							{
+								ingredientesFinal.add(idereceta);
+							}
+					}
+					}
+				}
+				 
+			}
+			
+		}
+		return ingredientesFinal;
+	}
+	public boolean HaySuficiente (List<Ingrediente> ingredientesnecesarios)
+	{
+		int sepuede=0;
+		for(Ingrediente i:ingredientesnecesarios) 
+		{
+			MateriaPrimaEntity mp= new MateriaPrimaEntity();
+			Session session=sf.openSession();
+			mp=(MateriaPrimaEntity) session.createQuery("from MateriaPrimaEntity mp where mp.codigo=?").setInteger(0,i.getMateriaprima().getCodigo()).uniqueResult();
+	 		if (mp.getCantidad()<i.getCantidad())
+	 			sepuede++;
+	 		session.close();
+		}
+		if (sepuede==0) return true;
+		else return false;
 	}
 	
 	private CategoriaPlato categoriafromString(String categoria)

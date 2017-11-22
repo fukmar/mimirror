@@ -12,7 +12,9 @@ import entities.ItemComandaEntity;
 import entities.ItemFacturaEntity;
 import enumns.Estado;
 import hibernate.HibernateUtil;
+import negocio.Comanda;
 import negocio.Factura;
+import negocio.ItemComanda;
 import negocio.ItemFactura;
 
 
@@ -86,12 +88,12 @@ private static FacturaDAO instancia;
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		List<ComandaEntity> comandasdemesa=ComandaDAO.getInstance().obtenerComandasAbiertasxMesa(factura.getMesa().getCodMesa());
-		for (ComandaEntity comanda:comandasdemesa)
+		List<Comanda> comandasdemesa=ComandaDAO.getInstance().obtenerComandasAbiertasxMesa(factura.getMesa().getCodMesa());
+		for (Comanda comanda:comandasdemesa)
 		{  
-			List <ItemComandaEntity> itemscomanda =new ArrayList<ItemComandaEntity>();
+			List <ItemComanda> itemscomanda =new ArrayList<ItemComanda>();
 			itemscomanda =ItemComandaDAO.getInstance().obtenerItemComandasAbiertasxMesa(comanda.getCodComanda());
-			for (ItemComandaEntity itemcom:itemscomanda )
+			for (ItemComanda itemcom:itemscomanda )
 			{
 			ItemFacturaDAO.getInstance().itemComandatoitemFactura(factura.getCodFactura(), itemcom.getCoditemComanda());
 			ItemFacturaEntity itemfactura=ItemFacturaDAO.getInstance().obtenerItemFacturaxcodItemComanda(itemcom.getCoditemComanda());

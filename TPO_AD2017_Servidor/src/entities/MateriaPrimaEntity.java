@@ -21,7 +21,7 @@ public class MateriaPrimaEntity
 	private Float cantidad;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="codDeposito", nullable=false)
+    @JoinColumn(name="codDeposito")
     private DepositoEntity deposito;
 	
 
@@ -31,6 +31,16 @@ public class MateriaPrimaEntity
 		this.descripcion = descripcion;
 		this.unidadUso = unidadUso;
 		this.setCantidad(cantidad);
+	}
+
+
+	public MateriaPrimaEntity( String descripcion, UnidadEntity unidadUso, Float cantidad,
+			DepositoEntity deposito) {
+		super();
+		this.descripcion = descripcion;
+		this.unidadUso = unidadUso;
+		this.cantidad = cantidad;
+		this.deposito = deposito;
 	}
 
 

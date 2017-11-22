@@ -53,26 +53,26 @@ public class testHibernate {
 	
 		
 		
-		DepositoEntity deposito = new DepositoEntity(materiapedido,solicitudes,remitos);
+		//DepositoEntity deposito = new DepositoEntity(materiapedido,solicitudes,remitos);
 		
-		remito.setDeposito(deposito);
+		//remito.setDeposito(deposito);
 		
-		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
+		//LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
 		
-		SalonEntity salon=new SalonEntity(1,AreaRest.salon, "Salon",local);
+		//SalonEntity salon=new SalonEntity(1,AreaRest.salon, "Salon",local);
 	
-		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
+		//CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
 			
 		SectorEntity sector = new SectorEntity("Sector", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
 		sectores.add(sector);
 		
-		SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
+		//SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
 		
 		materia.setDeposito(deposito);
-		solicitud.setDeposito(deposito);
+		//solicitud.setDeposito(deposito);
 		
-		solicitudes.add(solicitud);
+		//solicitudes.add(solicitud);
 			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
 		AdministracionEntity admi= new AdministracionEntity(5, AreaRest.Administracion, planes, local);
@@ -141,7 +141,7 @@ public class testHibernate {
 		
 		session.save(deposito);
 		session.save(remito);
-		session.save(solicitud);
+		//session.save(solicitud);
 		session.save(materia);
 		
 		session.save(local);
