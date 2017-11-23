@@ -9,11 +9,13 @@ import java.util.List;
 
 import dto.*;
 import exceptions.ComandaException;
+import exceptions.DepositoException;
 import exceptions.FacturaException;
 import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
+import exceptions.SalonException;
 import exceptions.SectorException;
 import interfazRemota.manejoNegocio;
 
@@ -127,5 +129,17 @@ public class BusinessDelegate
 	public List<SectorDTO> mostrarSectores() throws RemoteException, SectorException
 	{
 		return remoteObject.mostrarSectores();
+	}
+	
+	//-----------------------------------SALONES-------------------------------------------------------------------------
+	public List<SalonDTO> mostrarSalones() throws RemoteException, SalonException 
+	{
+		return remoteObject.mostrarSalones();
+	}
+	
+	//-----------------------------------DEPOSITOS-------------------------------------------------------------------------
+	public List<DepositoDTO> mostrarDepositos() throws RemoteException, DepositoException
+	{
+		return remoteObject.mostrarDepositos();
 	}
 }

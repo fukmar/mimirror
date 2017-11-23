@@ -5,18 +5,22 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import dto.ComandaDTO;
+import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
+import dto.SalonDTO;
 import dto.SectorDTO;
 import exceptions.ComandaException;
+import exceptions.DepositoException;
 import exceptions.FacturaException;
 import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
+import exceptions.SalonException;
 import exceptions.SectorException;
 
 
@@ -40,5 +44,9 @@ public interface manejoNegocio extends Remote
 	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException;
 	//SECTORES
 	public List<SectorDTO> mostrarSectores() throws RemoteException,SectorException;
+	//SALONES
+	public List<SalonDTO> mostrarSalones() throws RemoteException,SalonException;
+	//DEPOSITOS
+	public List<DepositoDTO> mostrarDepositos() throws RemoteException,DepositoException;
 	
 }

@@ -9,28 +9,34 @@ import com.sun.corba.se.spi.protocol.CorbaMessageMediator;
 
 import dao.CajaDAO;
 import dao.ComandaDAO;
+import dao.DepositoDAO;
 import dao.MesaDAO;
 import dao.MozoDAO;
 import dao.PlatoDAO;
 import dao.ReservaDAO;
+import dao.SalonDAO;
 import dao.SectorDAO;
 import dto.ComandaDTO;
+import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
+import dto.SalonDTO;
 import dto.SectorDTO;
 import entities.SectorEntity;
 import enumns.Estado;
 import enumns.MedioDePago;
 import negocio.Caja;
 import negocio.Comanda;
+import negocio.Deposito;
 import negocio.Factura;
 import negocio.Mesa;
 import negocio.Mozo;
 import negocio.Plato;
 import negocio.Reserva;
+import negocio.Salon;
 import negocio.Sector;
 
 
@@ -145,7 +151,7 @@ public class Controlador {
 	//LISTAR MESAS
 	public List<MesaDTO> listarMesas() 
 	{
-		List<MesaDTO> mesas=new ArrayList<>();
+		List<MesaDTO> mesas=new ArrayList<MesaDTO>();
 		List<Mesa> listaM=MesaDAO.getInstance().getMesas();
 		for(Mesa m:listaM) 
 		{
@@ -159,12 +165,38 @@ public class Controlador {
 	
 	public List<SectorDTO> listarSectores()
 	{
-		List<SectorDTO> sectores=new ArrayList<>();
+		List<SectorDTO> sectores=new ArrayList<SectorDTO>();
 		List<Sector> listaS=SectorDAO.getInstancia().getSectores();
 		for(Sector s:listaS)
 		{
 			sectores.add(s.toDTO());
 		}
 		return sectores;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+    //LISTAR SALONES
+	
+	public List<SalonDTO> listarSalones()
+	{
+		List<SalonDTO> salones=new ArrayList<SalonDTO>();
+		List<Salon> listaS=SalonDAO.getInstancia().getSalones();
+		for(Salon s:listaS)
+		{
+			salones.add(s.toDTO());
+		}
+		return salones;
+	}
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+    //LISTAR DEPOSITOS
+	public List<DepositoDTO> listarDepositos()
+	{
+		List<DepositoDTO> depositos=new ArrayList<DepositoDTO>();
+		List<Deposito> listaS=DepositoDAO.getInstancia().getDepositos();
+		for(Deposito s:listaS)
+		{
+			depositos.add(s.toDTO());
+		}
+		return depositos;
 	}
 }
