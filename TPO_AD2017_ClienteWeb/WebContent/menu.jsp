@@ -15,6 +15,10 @@
  		 submmenus = new HashMap<String,String>();
 			 submmenus.put("Ver Platos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPlatos");
 			 menus.put("Platos", submmenus);
+			 
+		submmenus = new HashMap<String,String>();		
+			 submmenus.put("Ver Comandas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verComandas");
+			 menus.put("Comandas", submmenus);
             
 			 submmenus = new HashMap<String,String>();
 			 submmenus.put("Ver Reservas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verReservas");

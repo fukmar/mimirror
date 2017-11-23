@@ -15,9 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bd.BusinessDelegate;
-
+import dto.ComandaDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
+import exceptions.ComandaException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
 
@@ -99,7 +100,23 @@ public class Controller extends HttpServlet {
 			}
 			RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verReservas");
 			rd.forward(request, response);
-		}}
+		}
+		
+		if(opcion.equals("verComandas")){
+			
+			List<ComandaDTO> comandas = new ArrayList<ComandaDTO>();
+			try {
+				comandas = BusinessDelegate.getInstance().mostrarComandas();
+				request.setAttribute("comandas", comandas);
+				RequestDispatcher rd = request.getRequestDispatcher("/verComandas.jsp");
+				rd.forward(request, response);
+			} catch (ComandaException e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
+		
+		}
 	}
 
 	/**

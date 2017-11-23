@@ -70,7 +70,7 @@ private static SessionFactory sf=null;
 	
 	
 	@SuppressWarnings("unchecked")
-	public List <ItemComanda> OtenerItemComanda(int codigoComanda) 
+	public List <ItemComanda> ObtenerItemComanda(int codigoComanda) 
 	{
 		List<ItemComanda> items=new ArrayList<ItemComanda>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
