@@ -2,8 +2,8 @@ package entities;
 import javax.persistence.*;
 
 import enumns.AreaRest;
-import negocio.AreaRestaurant;
 //FALTAN METODOS DE NEGOCIO
+import negocio.AreaRestaurant;
 
 @Entity
 //@Table(name="AreasRestaurant")
@@ -56,8 +56,13 @@ public abstract class AreaRestaurantEntity {
 	public void setLocal(LocalEntity local) {
 		this.local = local;
 	}
+
+	public AreaRestaurant toNegocio() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 		
-	public abstract AreaRestaurant toNegocio();
+	
 	
 	//hashCode e equals? revisar ejemplo ProductoEntity
 

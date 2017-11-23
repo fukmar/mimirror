@@ -67,9 +67,7 @@ public class testHibernate3 {
 		remito.setDeposito(deposito);
 		
 		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
-		
 		SalonEntity salon=new SalonEntity(1,AreaRest.salon, "Salon",local);
-	
 		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
 			
 		SectorEntity sector = new SectorEntity("Sector", salon);
@@ -156,7 +154,7 @@ public class testHibernate3 {
 		session.save(solicitud);
 		session.save(materia);
 		*/
-		session.save(local);
+		//session.save(local);
 		session.save(salon);
 		session.save(sector);
 		session.save(admi);
