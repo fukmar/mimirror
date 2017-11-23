@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -15,7 +16,7 @@ public class SectorDAO
 	private static SectorDAO instancia=null;
 	private static SessionFactory sf=null;
 	
-	private static SectorDAO getInstancia() 
+	public static SectorDAO getInstancia() 
 	{
 		if(instancia==null)
 		{
@@ -36,5 +37,16 @@ public class SectorDAO
 		return sector;
 	}
 	
-	
+	public List<Sector> getSectores()
+	{
+		Session session=sf.openSession();
+		List<Sector> sectores=new ArrayList<Sector>();
+		List<SectorEntity>resu=session.createQuery("from SectorEntity").list();
+		for(SectorEntity s:resu)
+		{
+			sectores.add(s.toNegocio());
+		}
+		session.close();
+		return sectores;
+	}
 }

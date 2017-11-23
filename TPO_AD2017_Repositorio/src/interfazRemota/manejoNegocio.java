@@ -6,14 +6,18 @@ import java.util.List;
 
 import dto.ComandaDTO;
 import dto.FacturaDTO;
+import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
+import dto.SectorDTO;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
+import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
+import exceptions.SectorException;
 
 
 public interface manejoNegocio extends Remote 
@@ -32,5 +36,9 @@ public interface manejoNegocio extends Remote
 	public List<ReservaDTO> mostrarReservas()throws RemoteException,ReservaException;
 	//MOZOS
 	public List<MozoDTO> mostrarMozos() throws RemoteException,MozoException; 
+	//MESAS
+	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException;
+	//SECTORES
+	public List<SectorDTO> mostrarSectores() throws RemoteException,SectorException;
 	
 }

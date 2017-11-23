@@ -13,11 +13,14 @@ import dao.MesaDAO;
 import dao.MozoDAO;
 import dao.PlatoDAO;
 import dao.ReservaDAO;
+import dao.SectorDAO;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
+import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
+import dto.SectorDTO;
 import entities.SectorEntity;
 import enumns.Estado;
 import enumns.MedioDePago;
@@ -28,6 +31,7 @@ import negocio.Mesa;
 import negocio.Mozo;
 import negocio.Plato;
 import negocio.Reserva;
+import negocio.Sector;
 
 
 public class Controlador {
@@ -139,6 +143,28 @@ public class Controlador {
 	}
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
 	//LISTAR MESAS
+	public List<MesaDTO> listarMesas() 
+	{
+		List<MesaDTO> mesas=new ArrayList<>();
+		List<Mesa> listaM=MesaDAO.getInstance().getMesas();
+		for(Mesa m:listaM) 
+		{
+			mesas.add(m.toDTO());
+		}
+		return mesas;
+	}
 	
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+    //LISTAR SECTORES
 	
+	public List<SectorDTO> listarSectores()
+	{
+		List<SectorDTO> sectores=new ArrayList<>();
+		List<Sector> listaS=SectorDAO.getInstancia().getSectores();
+		for(Sector s:listaS)
+		{
+			sectores.add(s.toDTO());
+		}
+		return sectores;
+	}
 }

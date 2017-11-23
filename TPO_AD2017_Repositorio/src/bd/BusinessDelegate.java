@@ -10,9 +10,11 @@ import java.util.List;
 import dto.*;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
+import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
+import exceptions.SectorException;
 import interfazRemota.manejoNegocio;
 
 
@@ -113,5 +115,17 @@ public class BusinessDelegate
 	public List<MozoDTO> mostrarMozos() throws RemoteException,MozoException
 	{
 		return remoteObject.mostrarMozos();
+	}
+	
+	//-----------------------------------MESAS-------------------------------------------------------------------------
+	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException
+	{
+		return remoteObject.mostrarMesas();
+	}
+	
+	//-----------------------------------SECTORES-------------------------------------------------------------------------
+	public List<SectorDTO> mostrarSectores() throws RemoteException, SectorException
+	{
+		return remoteObject.mostrarSectores();
 	}
 }

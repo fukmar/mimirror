@@ -7,14 +7,18 @@ import java.util.List;
 import controlador.Controlador;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
+import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
+import dto.SectorDTO;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
+import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
+import exceptions.SectorException;
 import interfazRemota.manejoNegocio;
 
 public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
@@ -78,6 +82,20 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	@Override
 	public List<MozoDTO> mostrarMozos() throws RemoteException, MozoException {
 		return Controlador.getInstance().listarMozos();
+	}
+
+	//----------------------------------MESAS---------------------------------------------------------------------------------
+	@Override
+	public List<MesaDTO> mostrarMesas() throws RemoteException, MesaException {
+		return Controlador.getInstance().listarMesas();
+	}
+
+	//----------------------------------SECTORES---------------------------------------------------------------------------------
+	@Override
+	public List<SectorDTO> mostrarSectores() throws RemoteException, SectorException 
+	{
+
+		return Controlador.getInstance().listarSectores();
 	}
 
 	
