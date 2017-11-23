@@ -68,12 +68,12 @@ public class testHibernate2 {
 		sectores.add(sector);
 		
 		/* el error de abajo es porque es una clase abstracta, no puedes instanciarla*/
-		//SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
+		/*SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
 		
 		materia.setDeposito(deposito);
-		//solicitud.setDeposito(deposito);
+		solicitud.setDeposito(deposito);
 		
-		//solicitudes.add(solicitud);
+		solicitudes.add(solicitud);*/
 			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
 		AdministracionEntity admi= new AdministracionEntity(7, AreaRest.Administracion, planes, local);
@@ -141,9 +141,9 @@ public class testHibernate2 {
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
-		/*session.save(deposito);
+		session.save(deposito);
 		session.save(remito);
-		session.save(solicitud);
+		//session.save(solicitud);
 		session.save(materia);
 		
 		session.save(local);
@@ -161,30 +161,30 @@ public class testHibernate2 {
 		session.save(itemCom3);
 		session.save(comandita3);
 		session.save(factura2);
-		session.save(factura);*/
+		session.save(factura);
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		   
-		 //session.save(admi);
-		/*session.save(deposito);
+		session.save(admi);
+		session.save(deposito);
 		session.save(mozo2);
 		session.save(mesita);
 		session.save(comandita2);
-		session.save(pdp);
-		session.save(ue);
-		session.getTransaction().commit();*/
+		//session.save(pdp);
+		//session.save(ue);
+		session.getTransaction().commit();
 		
 		//session.save(see);
 		//session.save(mpe);
-		//session.save(ingrediente1);
+		session.save(ingrediente1);
 		
 		/*session.save(ingrediente1);
-		session.save(deposito);
+		session.save(deposito);*/
 		session.getTransaction().commit();
 		session.save(mozo);
 		session.save(plato);
 		session.getTransaction().commit();
-		session.close();*/
+		session.close();
 		
 		//aca terminan pruebas de DB
 		
@@ -243,12 +243,19 @@ public class testHibernate2 {
 		
 		*/
 		
-		ReservaEntity res = new ReservaEntity("Nahu",fecha,8);
+		/*ReservaEntity res = new ReservaEntity("Nahu",fecha,8);
 		SessionFactory sf2 = HibernateUtil.getSessionFactory();
 		Session session2 = sf2.openSession();
 		session2.beginTransaction();
 		session2.save(res);
-		session2.getTransaction().commit();
+		session2.getTransaction().commit();*/
+		
+		
+		List<Mozo> listaMo=MozoDAO.getInstancia().getMozos();
+		for(Mozo m:listaMo)
+		{
+			System.out.println(m.getApellido());
+		}
 		
 		
 		/*--------------->----------->separador de bajo presupuesto<------------------<------------------------*/				  

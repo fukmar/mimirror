@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.classic.Session;
+
 import com.sun.corba.se.spi.protocol.CorbaMessageMediator;
 
 import dao.CajaDAO;
@@ -13,8 +15,10 @@ import dao.PlatoDAO;
 import dao.ReservaDAO;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
+import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
+import entities.SectorEntity;
 import enumns.Estado;
 import enumns.MedioDePago;
 import negocio.Caja;
@@ -120,6 +124,21 @@ public class Controlador {
 		return listaReservas;
 	}
 	
+	//-----------------------------------------------------------------------------------------------------------------------------------------------
+	//MOZOS
+	public List<MozoDTO> listarMozos()
+	{
+		List<MozoDTO> mozos=new ArrayList<MozoDTO>();
+		List<Mozo> listaM=MozoDAO.getInstancia().getMozos();
+		for(Mozo m:listaM) 
+		{
+			mozos.add(m.toDTO());
+		}
+		
+		return mozos;
+	}
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+	//LISTAR MESAS
 	
 	
 }

@@ -7,9 +7,11 @@ import java.util.List;
 import bd.BusinessDelegate;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
+import dto.MozoDTO;
 import dto.ReservaDTO;
 import enumns.MedioDePago;
 import exceptions.ComandaException;
+import exceptions.MozoException;
 import exceptions.ReservaException;
 
 public class testCliente2 {
@@ -17,6 +19,7 @@ public class testCliente2 {
 	public static void main(String[] args) 
 	{
 		Date fecha = new Date("10/10/2020");
+		//GRABAR RESERVAS
 		ReservaDTO reserva=new ReservaDTO("Ceci",fecha,8);
 		try {
 			BusinessDelegate.getInstance().grabarReserva(reserva);
@@ -27,6 +30,7 @@ public class testCliente2 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//LISTAR RESERVAS
 	 List<ReservaDTO> listaRes;
 	try {
 		listaRes = BusinessDelegate.getInstance().mostrarReservas();
@@ -42,7 +46,7 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	
+	//LISTAR COMANDAS
 	List<ComandaDTO> listCom;
 	try {
 		listCom = BusinessDelegate.getInstance().mostrarComandas();
@@ -57,7 +61,20 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	
+	//LISTAR MOZOS
+	try {
+		List<MozoDTO> listaMozos=BusinessDelegate.getInstance().mostrarMozos();
+		for(MozoDTO m:listaMozos)
+		{
+			System.out.println(m.toString());
+		}
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (MozoException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 
 }

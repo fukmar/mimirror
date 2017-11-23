@@ -7,10 +7,12 @@ import java.util.List;
 import controlador.Controlador;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
+import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
+import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
 import interfazRemota.manejoNegocio;
@@ -71,6 +73,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	@Override
 	public List<ReservaDTO> mostrarReservas() throws RemoteException, ReservaException {
 		return Controlador.getInstance().listarReservas();
+	}
+    //---------------------------------MOZOS--------------------------------------------------------------------------------
+	@Override
+	public List<MozoDTO> mostrarMozos() throws RemoteException, MozoException {
+		return Controlador.getInstance().listarMozos();
 	}
 
 	

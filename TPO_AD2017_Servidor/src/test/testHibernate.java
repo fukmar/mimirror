@@ -53,15 +53,15 @@ public class testHibernate {
 	
 		
 		
-		//DepositoEntity deposito = new DepositoEntity(materiapedido,solicitudes,remitos);
+		DepositoEntity deposito = new DepositoEntity(materiapedido,solicitudes,remitos);
 		
-		//remito.setDeposito(deposito);
+		remito.setDeposito(deposito);
 		
-		//LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
+		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
 		
-		//SalonEntity salon=new SalonEntity(1,AreaRest.salon, "Salon",local);
+		SalonEntity salon=new SalonEntity(1,AreaRest.salon, "Salon",local);
 	
-		//CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
+		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
 			
 		SectorEntity sector = new SectorEntity("Sector", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
@@ -69,7 +69,7 @@ public class testHibernate {
 		
 		//SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
 		
-		materia.setDeposito(deposito);
+		//materia.setDeposito(deposito);
 		//solicitud.setDeposito(deposito);
 		
 		//solicitudes.add(solicitud);
@@ -110,9 +110,9 @@ public class testHibernate {
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
 				
-		ComandaEntity comandita = new ComandaEntity(mozo, mesita/*,caja,*/,Estado.Terminado); //de aca solo comente caja porque tambien lo comente en el cosntuctor
-		ComandaEntity comandita2 = new ComandaEntity(mozo, mesita/*,caja*/,Estado.EnProceso);
-		ComandaEntity comandita3 = new ComandaEntity(mozo, mesita,/*caja,*/Estado.EnProceso);
+		ComandaEntity comandita = new ComandaEntity(mozo, mesita,Estado.Terminado); //de aca solo comente caja porque tambien lo comente en el cosntuctor
+		ComandaEntity comandita2 = new ComandaEntity(mozo, mesita,Estado.EnProceso);
+		ComandaEntity comandita3 = new ComandaEntity(mozo, mesita,Estado.EnProceso);
 		ItemComandaEntity itemCom2= new ItemComandaEntity(2, plato, comandita2);
 		ItemComandaEntity itemCom3= new ItemComandaEntity(5, plato, comandita3);
 		ItemComandaEntity itemCom= new ItemComandaEntity(2, plato, comandita);
@@ -121,8 +121,8 @@ public class testHibernate {
 		comanditas.add(comandita);
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
-		FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita, mozo,caja);
-		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo,caja);
+		//FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita, mozo,caja);
+		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo);
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
@@ -139,7 +139,7 @@ public class testHibernate {
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
-		session.save(deposito);
+	//	session.save(deposito);
 		session.save(remito);
 		//session.save(solicitud);
 		session.save(materia);
@@ -158,26 +158,26 @@ public class testHibernate {
 		session.save(comandita2);
 		session.save(itemCom3);
 		session.save(comandita3);
-		session.save(factura2);
+		//session.save(factura2);
 		session.save(factura);
 		
-		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
+		//NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
 		session.save(admi);
 		session.save(deposito);
-		//session.save(pdp);
-		//session.save(ue);
-	//	session.getTransaction().commit();
+		session.save(pdp);
+		session.save(ue);
+		session.getTransaction().commit();
 		
 		session.save(see);
 		session.save(mpe);
 		session.save(ingrediente1);
 		
-		//session.save(ingrediente1);
-		//session.save(deposito);
-		//session.getTransaction().commit();
-		//session.save(mozo);
-		//session.save(plato);
+		session.save(ingrediente1);
+		session.save(deposito);
+		session.getTransaction().commit();
+		session.save(mozo);
+		session.save(plato);
 		session.getTransaction().commit();
 		session.close();
 		
@@ -205,8 +205,8 @@ public class testHibernate {
 		
 		//grabar comanda
 		//ComandaEntity comandita = new ComandaEntity(mozo, mesita/*,caja,*/,Estado.Terminado);
-		Comanda coman=comandita.toNegocio();
-		ComandaDAO.getInstance().save(coman);
+		//Comanda coman=comandita.toNegocio();
+		//ComandaDAO.getInstance().save(coman);
 		
 		
 		/* //TEST  DAO COMANDA - BUSCAR COMANDA POR CODIGO   --FUNCIONA

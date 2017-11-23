@@ -21,6 +21,7 @@ import negocio.Remito;
 public class ItemRemitoEntity {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codItemRemito")
 	private Integer codItemRemito;
 	

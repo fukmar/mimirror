@@ -10,6 +10,7 @@ import java.util.List;
 import dto.*;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
+import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
 import interfazRemota.manejoNegocio;
@@ -70,7 +71,11 @@ public class BusinessDelegate
 	
 	public List<ComandaDTO> mostrarComandas() throws RemoteException, ComandaException 
 	{
-		return remoteObject.mostrarComandas();
+		try {
+			return remoteObject.mostrarComandas();
+		} catch (Exception e) {
+			throw new ComandaException("No se pudo LISTAR las comandas!");
+		}
 	}
 	
 	
@@ -104,6 +109,9 @@ public class BusinessDelegate
 		}
 	}
 	
-	
-	
+	//-----------------------------------MOZOS----------------------------------------------------------------------
+	public List<MozoDTO> mostrarMozos() throws RemoteException,MozoException
+	{
+		return remoteObject.mostrarMozos();
+	}
 }
