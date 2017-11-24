@@ -10,7 +10,7 @@ import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.ItemFacturaDTO;
 import enumns.*;
-
+import negocio.Factura;
 
 @Entity
 @Table(name="facturas")
@@ -99,7 +99,16 @@ public class FacturaEntity
 
 	public void setMozo(MozoEntity mozo) {
 		this.mozo = mozo;
+	}   
+	public Factura toNegocio() {
+		Factura f=new Factura();
+		f.setCodFactura(codFactura);
+		f.setFecha(fecha);
+		f.setImporte(importe); 
+		f.setMedioPago(medioPago);
+		f.setMesa(mesa.toNegocio());
+		f.setMozo(mozo.toNegocio());
+		return f;
 	}
-
 	
 }
