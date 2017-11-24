@@ -16,19 +16,17 @@ public class FacturaDTO implements Serializable
 	private float importe;
 	private MedioDePago medioPago;
 	private MesaDTO mesa;
-	private MozoDTO mozo;
 	
 	public FacturaDTO(){}
 
 	
 
-	public FacturaDTO(Date fecha, float importe,MedioDePago medioPago, MesaDTO mesa, MozoDTO mozo,CajaDTO caja) {
+	public FacturaDTO(Date fecha, float importe,MedioDePago medioPago, MesaDTO mesa) {
 		super();
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;
 		this.mesa = mesa;
-		this.mozo = mozo;
 	}
 
 	public Integer getCodFactura() {
@@ -77,40 +75,15 @@ public class FacturaDTO implements Serializable
 	}
 
 
-
-	public MozoDTO getMozo() {
-		return mozo;
-	}
-
-
-
-	public void setMozo(MozoDTO mozo) {
-		this.mozo = mozo;
-	}
-
-
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	
-
-
 
 
 	@Override
 	public String toString() {
 		return "FacturaDTO [codFactura=" + codFactura + ", fecha=" + fecha + ", importe=" + importe + ", medioPago="
-				+ medioPago + ", mesa=" + mesa + ", mozo=" + mozo + ", caja="+"]";
-	}
-
-
-
-	
-
-	
-	
-	
+				+ medioPago + ", mesa=" + mesa +"]";
+	}	
 	
 }

@@ -150,8 +150,7 @@ public class testCliente
 		comanditas.add(comanda);
 		
 		//FACTURA
-		FacturaDTO fact=new FacturaDTO(fecha,new Float(652),MedioDePago.Contado,mesa,mozo,caja);
-		
+		FacturaDTO fact=new FacturaDTO(fecha,(float)1000,MedioDePago.Contado,mesa);
 		//ITEMCFACTURA
 		ItemFacturaDTO itemfacturita = new ItemFacturaDTO(itemCom,fact);
 		

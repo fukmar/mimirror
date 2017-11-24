@@ -82,7 +82,7 @@ public class MozoDAO
 			s.beginTransaction();
 			List<Object[]> objetos = s.createQuery("select m.dni, "
 					+ "m.nombre,m.apellido, m.porcentajeComision * f.importe/100 "
-					+ "from FacturaEntity f join f.mozo m "
+					+ "from FacturaEntity f join f.mesa.mozo m "
 					).list();
 			s.getTransaction().commit();
 			for (Object[] aux : objetos)
@@ -105,7 +105,7 @@ public class MozoDAO
 			s.beginTransaction();
 			List<Object[]> objetos = s.createQuery("select m.dni, "
 					+ "m.nombre,m.apellido, m.porcentajeComision * f.importe/100 "
-					+ "from FacturaEntity f join f.mozo m where f.fecha between ? and ?"
+					+ "from FacturaEntity f join f.mesa.mozo m where f.fecha between ? and ?"
 					).setString(0, fromDate).setString(1, toDate).list();
 			
 			s.getTransaction().commit();

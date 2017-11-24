@@ -91,6 +91,7 @@ public class Mesa {
 	public MesaEntity toEntity()
 {
 		MesaEntity m=new MesaEntity();
+		m.setCodMesa(codMesa);
 		m.setCantidadPersonas(cantidadPersonas);
 		m.setCapacidad(capacidad);
 		m.setEstado(estado);
@@ -111,10 +112,5 @@ public class Mesa {
 		return m;
 	}
 
-	
-	
-	
-	
-	
 }
 

@@ -28,27 +28,21 @@ public class FacturaEntity
 	@Enumerated(EnumType.STRING)
 	private MedioDePago medioPago;
 	
-	
-	@OneToOne
+	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="codMesa")
 	private MesaEntity mesa;
-	
-	@OneToOne(cascade= CascadeType.ALL)
-	@JoinColumn(name="dni")
-	private MozoEntity mozo;
 	
 	
 	public FacturaEntity(){}
 
 	
 
-	public FacturaEntity(Date fecha, double importe,MedioDePago medioPago, MesaEntity mesa, MozoEntity mozo) {
+	public FacturaEntity(Date fecha, double importe,MedioDePago medioPago, MesaEntity mesa) {
 		super();
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;
 		this.mesa = mesa;
-		this.mozo = mozo;
 	}
 
 	public Integer getCodFactura() {
@@ -93,13 +87,6 @@ public class FacturaEntity
 		this.mesa = mesa;
 	} 
 
-	public MozoEntity getMozo() {
-		return mozo;
-	}
-
-	public void setMozo(MozoEntity mozo) {
-		this.mozo = mozo;
-	}   
 	public Factura toNegocio() {
 		Factura f=new Factura();
 		f.setCodFactura(codFactura);
@@ -107,7 +94,6 @@ public class FacturaEntity
 		f.setImporte(importe); 
 		f.setMedioPago(medioPago);
 		f.setMesa(mesa.toNegocio());
-		f.setMozo(mozo.toNegocio());
 		return f;
 	}
 	

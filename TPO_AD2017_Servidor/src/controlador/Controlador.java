@@ -107,11 +107,8 @@ public class Controlador {
 	public  void guardarFactura(FacturaDTO factura) 
 	{
 		Integer codMesa=factura.getMesa().getCodMesa();
-		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
-		Integer codMozo=factura.getMozo().getDni();
-		Mozo mozo=MozoDAO.getInstancia().getMozosByCod(codMozo); //FM: Saque la CAJA
-		//(Date fecha, double importe,MedioDePago medioPago, Mesa mesa, Mozo mozo,Caja caja)
-		new Factura(factura.getFecha(),factura.getImporte(),factura.getMedioPago(),mesa,mozo).save();
+		Mesa mesa=MesaDAO.getInstance().getMesaN(factura.getMesa().getCodMesa());
+		new Factura(factura.getFecha(),factura.getImporte(),factura.getMedioPago(),mesa).save();
 		
 	}
 	
@@ -199,4 +196,5 @@ public class Controlador {
 		}
 		return depositos;
 	}
+	
 }

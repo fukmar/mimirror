@@ -28,19 +28,17 @@ public class Factura
 	private double importe;
 	private MedioDePago medioPago;
 	private Mesa mesa;
-	private Mozo mozo;
-	
+
 	
 	public Factura(){}
 
 
-	public Factura(Date fecha, double importe,MedioDePago medioPago, Mesa mesa, Mozo mozo) {
+	public Factura(Date fecha, double importe,MedioDePago medioPago, Mesa mesa) {
 		super();
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;
 		this.mesa = mesa;
-		this.mozo = mozo;
 	}
 
 	public Integer getCodFactura() {
@@ -85,14 +83,6 @@ public class Factura
 		this.mesa = mesa;
 	}
 
-	public Mozo getMozo() {
-		return mozo;
-	}
-
-	public void setMozo(Mozo mozo) {
-		this.mozo = mozo;
-	}
-
 
 	//GUARDAR Factura
 	public void save() 
@@ -109,7 +99,6 @@ public class Factura
 		f.setImporte(importe);
 		f.setMedioPago(medioPago);
 		f.setMesa(mesa.toEntity());
-		f.setMozo(mozo.toEntity());
 		return f;
 	}
 	

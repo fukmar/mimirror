@@ -134,8 +134,8 @@ public class testHibernate3 {
 		comanditas.add(comandita);
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
-		FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita, mozo);
-		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo);
+		FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita);
+		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita);
 		
 		
 				
@@ -160,7 +160,7 @@ public class testHibernate3 {
 		session.save(materia);
 		
 		//DSECOMENTAR PARA CREAR BASE
-		//session.save(local);
+		session.save(local);
 		session.save(salon);
 		session.save(sector);
 		session.save(admi);
@@ -174,8 +174,8 @@ public class testHibernate3 {
 		session.save(comandita2);
 		session.save(itemCom3);
 		session.save(comandita3);
-		//session.save(factura2);
-		session.save(factura);*/
+		sesion.save(factura2);
+		session.save(factura);
 
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
@@ -184,6 +184,10 @@ public class testHibernate3 {
 		session.save(deposito);
 		session.save(mesita);
 		session.save(comandita2);
+		session.save(itemCom);
+		session.save(itemCom2);
+		session.save(itemCom3);
+		session.save(factura);
 		//int idsector=mozo.getSector().getCodSector();
 		
 		//System.out.println(mozito.getNombre());
@@ -364,6 +368,7 @@ public class testHibernate3 {
 		//TEST DAO FACTURACION FUNCIONA OK LUEGO DE PASAR A NEGOCIO! TODO EN ORDEN.  CAMBIOS..FACTURA COMO DIJO ZUKI NO TIENE ASOCIADA CAJA - NO TIENE SENTIDO y LE SUMAMOS COMPLEJIDAD. NO LLEGAMOS
 		// VERIFICAR QUE PREVIO A LA EJECUCION CREO LA FACTURA CON LO IMPORTANTE y LUEGO EJECUTO PARA EL CALCULO y SE ME CREAN LOS ITEMFACTURA A PARTIR DE ITEMCOMANDA. LA FACTURA TENDRA LA MESA y EL DAO
 		// BUSCA LAS COMANDAS ABIERTAS PARA ESA MESA Y LAS FACTURA.  LUEGO PASA A COMANDA CERRADA ESTOS ITEMS
+		System.out.println(factura.getCodFactura());
 		FacturaDAO.getInstance().CerrarFactura(factura);
 		factura=FacturaDAO.getInstance().obtenerFacturaByNro(factura.getCodFactura());
 	    System.out.println("El total de la factura nro "+factura.getCodFactura()+" es de ARS "+ factura.getImporte());
@@ -391,5 +396,8 @@ public class testHibernate3 {
 	    		System.out.println(resultadoaux);
 	    	}
 	    }
+	    //CHECK DAO GET MESA
+	    Mesa m=MesaDAO.getInstance().getMesaN(1);
+	    System.out.println(m.getCodMesa());
 }
 }
