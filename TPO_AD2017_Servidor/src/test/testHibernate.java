@@ -222,7 +222,7 @@ public class testHibernate {
 		Sector sector2 = new Sector("Sector", salon2);
 		Mozo mozo1 = new Mozo(31605789,"Pepe","Grillo",5.4f, sector2);
 		Mesa mesa = new Mesa(0,15,0,mozo1,sector2);
-		Factura factura3= new Factura(fecha, 40.4f, MedioDePago.Contado, mesa, mozo1);
+		Factura factura3= new Factura(fecha, 40.4f, MedioDePago.Contado, mesa);
 		
 		session.save(mesa.toEntity());
 		session.save(mozo1.toEntity());
