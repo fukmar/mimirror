@@ -58,7 +58,7 @@ private static ItemComandaDAO instancia;
 		return itemcomandasnegocio;
 	}
 	
-	public ItemComandaEntity obtenerItemComanda(int coditemComanda){
+	public ItemComandaEntity obtenerItemComandaByCod(int coditemComanda){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();

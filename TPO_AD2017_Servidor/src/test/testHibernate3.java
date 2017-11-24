@@ -365,7 +365,7 @@ public class testHibernate3 {
 		// VERIFICAR QUE PREVIO A LA EJECUCION CREO LA FACTURA CON LO IMPORTANTE y LUEGO EJECUTO PARA EL CALCULO y SE ME CREAN LOS ITEMFACTURA A PARTIR DE ITEMCOMANDA. LA FACTURA TENDRA LA MESA y EL DAO
 		// BUSCA LAS COMANDAS ABIERTAS PARA ESA MESA Y LAS FACTURA.  LUEGO PASA A COMANDA CERRADA ESTOS ITEMS
 		FacturaDAO.getInstance().CerrarFactura(factura);
-		factura=FacturaDAO.getInstance().obtenerFactura(factura.getCodFactura());
+		factura=FacturaDAO.getInstance().obtenerFacturaByNro(factura.getCodFactura());
 	    System.out.println("El total de la factura nro "+factura.getCodFactura()+" es de ARS "+ factura.getImporte());
 
 	    //VER COMISIONES MOZO POR LISTADO FUNCIONA YESS!  Habria que hacer un view pero va...

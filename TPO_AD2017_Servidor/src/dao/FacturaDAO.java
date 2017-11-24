@@ -62,14 +62,14 @@ public class FacturaDAO
 		session.beginTransaction();
 		Double totalfactura = (Double)session.createQuery("SELECT SUM(itf.subtotal) FROM ItemFacturaEntity itf join itf.factura fac WHERE fac.codFactura=?").setInteger(0,nroFact).setFirstResult(0).setMaxResults(1).uniqueResult();
 		FacturaEntity factura=new FacturaEntity();
-		factura=FacturaDAO.getInstance().obtenerFactura(nroFact);
+		factura=FacturaDAO.getInstance().obtenerFacturaByNro(nroFact);
 		factura.setImporte(totalfactura);
 		session.merge(factura);
 		session.getTransaction().commit();
 		session.close();
 	}
 	
-	public FacturaEntity obtenerFactura(int nroFact){
+	public FacturaEntity obtenerFacturaByNro(int nroFact){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		FacturaEntity factura=new FacturaEntity();
