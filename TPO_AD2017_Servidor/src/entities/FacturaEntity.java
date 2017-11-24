@@ -91,7 +91,7 @@ public class FacturaEntity
 
 	public void setMesa(MesaEntity mesa) {
 		this.mesa = mesa;
-	}
+	} 
 
 	public MozoEntity getMozo() {
 		return mozo;
