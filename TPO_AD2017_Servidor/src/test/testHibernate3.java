@@ -24,10 +24,13 @@ import hibernate.HibernateUtil;
 import negocio.Comanda;
 import negocio.Deposito;
 import negocio.Elaborado;
+import negocio.Factura;
 import negocio.Ingrediente;
+import negocio.Local;
 import negocio.Mesa;
 import negocio.Mozo;
 import negocio.Plato;
+import negocio.Salon;
 import negocio.Sector;
 import negocio.SemiElaborado;
 
@@ -67,7 +70,7 @@ public class testHibernate3 {
 		remito.setDeposito(deposito);
 		
 		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
-		SalonEntity salon=new SalonEntity(1,AreaRest.salon, "Salon",local);
+		SalonEntity salon=new SalonEntity(2,AreaRest.salon, "Salon",local);
 		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
 			
 		SectorEntity sector = new SectorEntity("Sector", salon);
@@ -133,6 +136,8 @@ public class testHibernate3 {
 		comanditas.add(comandita3);
 		FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita, mozo);
 		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo);
+		
+		
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
@@ -153,7 +158,8 @@ public class testHibernate3 {
 		session.save(remito);
 		session.save(solicitud);
 		session.save(materia);
-		*/
+		
+		//DSECOMENTAR PARA CREAR BASE
 		//session.save(local);
 		session.save(salon);
 		session.save(sector);
@@ -169,7 +175,8 @@ public class testHibernate3 {
 		session.save(itemCom3);
 		session.save(comandita3);
 		//session.save(factura2);
-		session.save(factura);
+		session.save(factura);*/
+
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		   
@@ -204,6 +211,8 @@ public class testHibernate3 {
 		//session.save(plato);
 		session.getTransaction().commit();
 		session.close();
+		
+		
 		
 		//aca terminan pruebas de DB
 		

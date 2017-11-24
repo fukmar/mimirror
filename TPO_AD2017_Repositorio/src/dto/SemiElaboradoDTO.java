@@ -14,9 +14,8 @@ public class SemiElaboradoDTO extends ProductoDTO implements Serializable{
 	public SemiElaboradoDTO (){}
 	
 	
-	public SemiElaboradoDTO(String tipo, String calidad, String descripcion,
-			PlanDeProduccionDTO pdp, Integer cantidad, Date caducidad, List<MateriaPrimaDTO> materiales,
-			UnidadDTO unidad) {
+	public SemiElaboradoDTO(String tipo, String calidad, String descripcion,PlanDeProduccionDTO pdp, Integer cantidad, Date caducidad, List<MateriaPrimaDTO> materiales,UnidadDTO unidad) 
+	{
 		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.materiales = materiales;
 		this.unidad = unidad;

@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 
 
+
+
 public class ItemComandaDTO implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -18,14 +20,12 @@ public class ItemComandaDTO implements Serializable
 	}
 
 
-	public ItemComandaDTO(Integer coditemComanda, Integer cantidad, PlatoDTO plato, ComandaDTO comanda) {
+	public ItemComandaDTO(Integer cantidad, PlatoDTO plato,ComandaDTO comanda) {
 		super();
-		this.coditemComanda = coditemComanda;
 		this.cantidad = cantidad;
 		this.plato = plato;
-		this.comanda = comanda;
+		this.comanda=comanda;
 	}
-
 
 	public Integer getCoditemComanda() {
 		return coditemComanda;

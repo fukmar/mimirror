@@ -4,21 +4,18 @@ import java.io.Serializable;
 
 import enumns.Estado;
 
+
 public class PlanDeProduccionDTO implements Serializable
 {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8360988089299212763L;
 	private Integer codigoPDP;
 	private Estado estado;
+	private AdministracionDTO administracion;
 	
 	public PlanDeProduccionDTO(){}
 	
-	public PlanDeProduccionDTO(Integer codigoPDP, Estado estado) {
+	public PlanDeProduccionDTO(Estado estado) {
 		super();
-		this.codigoPDP = codigoPDP;
+		
 		this.estado = estado;
 	}
 	public Integer getCodigoPDP() {
@@ -34,10 +31,20 @@ public class PlanDeProduccionDTO implements Serializable
 		this.estado = estado;
 	}
 
-	@Override
-	public String toString() {
-		return "PlanDeProduccionDTO [codigoPDP=" + codigoPDP + ", estado=" + estado + "]";
+	public AdministracionDTO getAdministracion() {
+		return administracion;
 	}
 
+	public void setAdministracion(AdministracionDTO administracion) {
+		this.administracion = administracion;
+	}
+
+	@Override
+	public String toString() {
+		return "PlanDeProduccionDTO [codigoPDP=" + codigoPDP + ", estado=" + estado + ", administracion="
+				+ administracion + "]";
+	}
+	
+ 
 	
 }

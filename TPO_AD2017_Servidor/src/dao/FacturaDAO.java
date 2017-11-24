@@ -2,8 +2,11 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import entities.ComandaEntity;
 import entities.ElaboradoEntity;
@@ -18,29 +21,32 @@ import negocio.ItemComanda;
 import negocio.ItemFactura;
 
 
-public class FacturaDAO {
-
-	
-private static FacturaDAO instancia;
+public class FacturaDAO
+{
+	private static FacturaDAO instancia=null;
+	private static SessionFactory sf=null;
 	
 	private FacturaDAO(){}
 	
-	public static FacturaDAO getInstance(){
-		if(instancia == null)
+	public static FacturaDAO getInstance()
+	{
+		if(instancia == null) 
+		{
 			instancia = new FacturaDAO();
+			sf=HibernateUtil.getSessionFactory();
+		}
+			
 		return instancia;
 	}
 	
 	public void save(Factura factura)
 	{
-
-	FacturaEntity fact = factura.toEntity();
-	SessionFactory sf = HibernateUtil.getSessionFactory();
-	Session session = sf.openSession();
-	session.beginTransaction();
-	session.save(fact);
-	session.getTransaction().commit();
-	session.close();
+		FacturaEntity fact = factura.toEntity();
+		Session session=sf.openSession();
+		Transaction tran=session.beginTransaction();
+		session.save(fact);
+		tran.commit();
+		session.close();
 	}
 
 	

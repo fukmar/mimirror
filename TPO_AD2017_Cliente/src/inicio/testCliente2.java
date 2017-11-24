@@ -8,10 +8,12 @@ import bd.BusinessDelegate;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
 import dto.MozoDTO;
+import dto.PlatoDTO;
 import dto.ReservaDTO;
 import enumns.MedioDePago;
 import exceptions.ComandaException;
 import exceptions.MozoException;
+import exceptions.PlatoException;
 import exceptions.ReservaException;
 
 public class testCliente2 {
@@ -72,6 +74,17 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} catch (MozoException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	//LISTAR PLATOS
+	List<PlatoDTO> listaPlatos;
+	try {
+		listaPlatos = BusinessDelegate.getInstance().listarPlatos();
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (PlatoException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

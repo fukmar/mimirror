@@ -20,9 +20,8 @@ public class CartaDTO implements Serializable
 	
 	public CartaDTO(){}
 
-	public CartaDTO(Integer codigoCarta, Date vigencia, Temporada temporada, List<PlatoDTO> itemCarta) {
+	public CartaDTO(Date vigencia, Temporada temporada, List<PlatoDTO> itemCarta) {
 		super();
-		this.codigoCarta = codigoCarta;
 		this.vigencia = vigencia;
 		this.temporada = temporada;
 		this.itemCarta = itemCarta;

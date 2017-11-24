@@ -15,8 +15,10 @@ import enumns.CategoriaPlato;
 
 
 
+
 public class IngredienteDTO implements Serializable
 {
+
 
 	private Integer codigocomponente;
 	private MateriaPrimaDTO materiaprima;
@@ -24,12 +26,13 @@ public class IngredienteDTO implements Serializable
 	private SemiElaboradoDTO platosemielaborado;
 	
 	
-	public IngredienteDTO() {}
-
-
-
-	public IngredienteDTO(Integer codigocomponente, dto.MateriaPrimaDTO materiaprima, Integer cantidad,
-			dto.SemiElaboradoDTO platosemielaborado) {
+	//Constructores
+	
+	public IngredienteDTO() {
+		super();
+	}
+	public IngredienteDTO(Integer codigocomponente, MateriaPrimaDTO materiaprima, Integer cantidad,SemiElaboradoDTO platosemielaborado) 
+	{
 		super();
 		this.codigocomponente = codigocomponente;
 		this.materiaprima = materiaprima;
@@ -38,38 +41,32 @@ public class IngredienteDTO implements Serializable
 	}
 
 
+	//Getters y Setters
+	
 	public Integer getCodigocomponente() {
 		return codigocomponente;
 	}
-
 	public void setCodigocomponente(Integer codigocomponente) {
 		this.codigocomponente = codigocomponente;
 	}
-
 	public MateriaPrimaDTO getMateriaprima() {
 		return materiaprima;
 	}
-
 	public void setMateriaprima(MateriaPrimaDTO materiaprima) {
 		this.materiaprima = materiaprima;
 	}
-
 	public Integer getCantidad() {
 		return cantidad;
 	}
-
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
 	}
-
 	public SemiElaboradoDTO getPlatosemielaborado() {
 		return platosemielaborado;
 	}
-
 	public void setPlatosemielaborado(SemiElaboradoDTO platosemielaborado) {
 		this.platosemielaborado = platosemielaborado;
 	}
-
 
 	@Override
 	public String toString() {

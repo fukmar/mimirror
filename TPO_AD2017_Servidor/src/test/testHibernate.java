@@ -18,9 +18,13 @@ import enumns.Temporada;
 import hibernate.HibernateUtil;
 import negocio.Comanda;
 import negocio.Deposito;
+import negocio.Factura;
+import negocio.Local;
 import negocio.Mesa;
 import negocio.Mozo;
 import negocio.Plato;
+import negocio.Salon;
+import negocio.Sector;
 
 public class testHibernate {
 
@@ -36,7 +40,7 @@ public class testHibernate {
 		Date fecha = new Date("10/10/2020");
 		
 		
-		MateriaPrimaEntity materia = new MateriaPrimaEntity("PapasAlDeposito",ue, 1000f);
+	/*	MateriaPrimaEntity materia = new MateriaPrimaEntity("PapasAlDeposito",ue, 1000f);
 		List<MateriaPrimaEntity> materiapedido = new ArrayList<MateriaPrimaEntity>();
 		materiapedido.add(materia);
 	
@@ -131,16 +135,16 @@ public class testHibernate {
 		List<PlatoEntity> itemCarta= new ArrayList<PlatoEntity>();
 		itemCarta.add(plato);
 		CartaEntity carta = new CartaEntity(fecha,temp.Primavera,itemCarta);
-		plato.setCarta(carta);
+		plato.setCarta(carta);*/
 		
-		SessionFactory sf = HibernateUtil.getSessionFactory();
+	/*SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		session.beginTransaction();
+		session.beginTransaction();*/
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
 	//	session.save(deposito);
-		session.save(remito);
+	/*	session.save(remito);
 		//session.save(solicitud);
 		session.save(materia);
 		
@@ -161,7 +165,7 @@ public class testHibernate {
 		//session.save(factura2);
 		session.save(factura);
 		
-		//NO BORRAR ESTE ORDEN DE GUARDADO*/
+		//NO BORRAR ESTE ORDEN DE GUARDADO
 		
 		session.save(admi);
 		session.save(deposito);
@@ -180,6 +184,8 @@ public class testHibernate {
 		session.save(plato);
 		session.getTransaction().commit();
 		session.close();
+		*/
+		
 		
 		//aca terminan pruebas de DB
 		
@@ -197,12 +203,43 @@ public class testHibernate {
 		
 		*/
 		
-		Mozo mozob=MozoDAO.getInstancia().getMozosByCod(31575032);
+		/*Mozo mozob=MozoDAO.getInstancia().getMozosByCod(31575032);
 		System.out.println("El mozo buscado es "+mozob.getNombre());
 		Mesa mesab=MesaDAO.getInstance().getMesaN(1);
-		System.out.println("La mesa buscada es "+mesab.getCodMesa());
-		//ambos buscar funcionan OK
+		System.out.println("La mesa buscada es "+mesab.getCodMesa());*/
 		
+		
+		//PRUEBAS CECI INICIO
+		//-------------------------------------------
+		//ojo ceci
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		
+		Deposito deposito2 = new Deposito();
+		Local local2=new Local("Juncal 123", "Palermo", deposito2);
+		Salon salon2=new Salon(9,AreaRest.salon, "Salon",local2);
+		Sector sector2 = new Sector("Sector", salon2);
+		Mozo mozo1 = new Mozo(31605789,"Pepe","Grillo",5.4f, sector2);
+		Mesa mesa = new Mesa(0,15,0,mozo1,sector2);
+		Factura factura3= new Factura(fecha, 40.4f, MedioDePago.Contado, mesa, mozo1);
+		
+		session.save(mesa.toEntity());
+		session.save(mozo1.toEntity());
+		session.save(sector2.toEntity());
+		session.save(salon2.toEntity());
+		session.save(local2.toEntity());
+		session.save(deposito2.toEntity());
+		
+		session.getTransaction().commit();
+		session.close();
+		
+		//probar dao grabar factura
+		FacturaDAO.getInstance().save(factura3);
+		
+		//FIN 
+		//Pruebas ceci FIN
+		//-----------------------------------------------------------------------------------------
 		//grabar comanda
 		//ComandaEntity comandita = new ComandaEntity(mozo, mesita/*,caja,*/,Estado.Terminado);
 		//Comanda coman=comandita.toNegocio();

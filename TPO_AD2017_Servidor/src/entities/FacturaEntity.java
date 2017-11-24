@@ -42,8 +42,7 @@ public class FacturaEntity
 
 	
 
-	public FacturaEntity(Date fecha, double importe,
-			MedioDePago medioPago, MesaEntity mesa, MozoEntity mozo) {
+	public FacturaEntity(Date fecha, double importe,MedioDePago medioPago, MesaEntity mesa, MozoEntity mozo) {
 		super();
 		this.fecha = fecha;
 		this.importe = importe;

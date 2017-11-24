@@ -16,9 +16,8 @@ public class SemiElaborado extends Producto
 	public SemiElaborado (){}
 	
 	
-	public SemiElaborado(String tipo, String calidad, String descripcion,
-			PlanDeProduccion pdp, Integer cantidad, Date caducidad, List<MateriaPrima> materiales,
-			Unidad unidad) {
+	public SemiElaborado(String tipo, String calidad, String descripcion,PlanDeProduccion pdp, Integer cantidad, Date caducidad, List<MateriaPrima> materiales,Unidad unidad) 
+	{
 		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
 		this.materiales = materiales;
 		this.unidad = unidad;

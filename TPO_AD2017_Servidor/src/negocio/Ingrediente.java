@@ -13,7 +13,8 @@ import javax.persistence.Table;
 
 import entities.*;
 
-public class Ingrediente {
+public class Ingrediente
+{
 
 	private Integer codigocomponente;
 	private MateriaPrima materiaprima;

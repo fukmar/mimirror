@@ -3,6 +3,7 @@ package negocio;
 import java.util.List;
 
 import dto.SectorDTO;
+import entities.SectorEntity;
 
 
 public class Sector 
@@ -52,6 +53,15 @@ public class Sector
 		s.setCodSector(codSector);
 		s.setDescripcion(descripcion);
 		s.setSalon(salon.toDTO());
+		return s;
+	}
+
+	public SectorEntity toEntity() 
+	{
+		SectorEntity s=new SectorEntity();
+		s.setCodSector(codSector);
+		s.setDescripcion(descripcion);
+		s.setSalon(salon.toEntity());
 		return s;
 	}
 }
