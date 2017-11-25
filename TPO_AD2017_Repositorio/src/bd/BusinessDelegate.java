@@ -63,6 +63,10 @@ public class BusinessDelegate
 		}
 	}
 	
+	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, String categoriaplato) throws RemoteException, PlatoException 
+	{
+		return remoteObject.BuscarPlatosparecidos(nombre, categoriaplato);
+	}
 	//---------------------------------------COMANDAS------------------------------------------------------------
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
 	{

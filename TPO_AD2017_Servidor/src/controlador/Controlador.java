@@ -77,6 +77,16 @@ public class Controlador {
 		
 	}
 	
+	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, String categoriaplato)
+	{
+		List<Plato> platosN=PlatoDAO.getInstance().getPlatosparecidos(nombre, categoriaplato);
+		List<PlatoDTO> platosp=new ArrayList<PlatoDTO>();
+		for(Plato p:platosN) 
+		{
+			platosp.add(p.toDTO());
+		}
+		return platosp;
+	}
 	//----------------------------------------------------------------------------------------------------------------------------------
    //COMANDAS
 	

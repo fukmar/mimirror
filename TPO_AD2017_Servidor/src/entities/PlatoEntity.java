@@ -24,7 +24,7 @@ public class PlatoEntity
 	private float precio;
 	private CategoriaPlato categoria;
 	
-	public PlatoEntity(Integer codigo, String nombre, float precio, CategoriaPlato categoria,
+/*	public PlatoEntity(Integer codigo, String nombre, float precio, CategoriaPlato categoria,
 			List<ElaboradoEntity> productoPlato, CartaEntity carta) {
 		super();
 		this.codigo = codigo;
@@ -33,7 +33,7 @@ public class PlatoEntity
 		this.categoria = categoria;
 		this.productoPlato = productoPlato;
 		this.carta = carta;
-	}
+	}*/
 
 	public PlatoEntity(String nombre, float precio, CategoriaPlato categoria, List<ElaboradoEntity> productoPlato,
 			CartaEntity carta) {
@@ -43,6 +43,16 @@ public class PlatoEntity
 		this.categoria = categoria;
 		this.productoPlato = productoPlato;
 		this.carta = carta;
+	}
+	
+	public PlatoEntity(){}
+
+	public PlatoEntity(String nombre, float precio, List<ElaboradoEntity> productoPlato) {
+		super();
+	
+		this.nombre = nombre;
+		this.precio = precio;
+		this.productoPlato = productoPlato;
 	}
 
 	public CategoriaPlato getCategoria() {
@@ -72,15 +82,7 @@ public class PlatoEntity
     private CartaEntity carta;
 	
 	
-	public PlatoEntity(){}
 
-	public PlatoEntity(String nombre, float precio, List<ElaboradoEntity> productoPlato) {
-		super();
-	
-		this.nombre = nombre;
-		this.precio = precio;
-		this.productoPlato = productoPlato;
-	}
 
 	public Integer getCodigo() {
 		return codigo;
@@ -114,6 +116,8 @@ public class PlatoEntity
 		this.productoPlato = productoPlato;
 	}
 
+	
+	
 	public Plato toNegocio() 
 	{
 		Plato p=new Plato();
@@ -126,6 +130,7 @@ public class PlatoEntity
 			elab.add(e.toNegocio());
 		}
 		p.setProductoPlato(elab);
+		p.setCategoria(categoria);
 		return p;
 	}
 

@@ -10,6 +10,7 @@ import dto.FacturaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
+import enumns.CategoriaPlato;
 import enumns.MedioDePago;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
@@ -116,7 +117,20 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 		}
-	
+	//SUGERIR PLATO
+	try {
+		List<PlatoDTO> platosS=BusinessDelegate.getInstance().BuscarPlatosparecidos("Milanesa con Papas Fritas","Carnes");
+		for(PlatoDTO p:platosS)
+		{
+			System.out.println(p.toString());
+		}
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (PlatoException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 
 }
