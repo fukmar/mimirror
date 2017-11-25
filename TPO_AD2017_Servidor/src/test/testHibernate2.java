@@ -28,7 +28,7 @@ public class testHibernate2 {
 	public static void main(String[] args) 
 	{
 		
-		
+	 	
 		
 		//aca van pruebas de DB
 		UnidadEntity ue = new UnidadEntity("gramos");
