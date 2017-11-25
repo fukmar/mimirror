@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import dto.PlatoDTO;
 import entities.CartaEntity;
 import entities.ElaboradoEntity;
+import entities.PlatoEntity;
 import enumns.CategoriaPlato;
 
 
@@ -107,6 +108,12 @@ public class Plato
 		}
 		p.setProductoPlato(elab);*/
 		return p;
+	}
+
+
+	public PlatoEntity toEntity() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

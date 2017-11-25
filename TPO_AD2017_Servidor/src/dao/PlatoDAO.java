@@ -34,7 +34,7 @@ public class PlatoDAO
 	
 	public void save(Plato plato){
 
-	PlatoEntity pe = this.toEntity(plato);
+	PlatoEntity pe = plato.toEntity();
 	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
@@ -143,10 +143,10 @@ public class PlatoDAO
 		return CategoriaPlato.valueOf(categoria);
 	}
 	//FALTA
-	private PlatoEntity toEntity(Plato plato) {	
+	/*private PlatoEntity toEntity(Plato plato) {	
 		return null;
 
-	}
+	}*/
 	
 }
 
