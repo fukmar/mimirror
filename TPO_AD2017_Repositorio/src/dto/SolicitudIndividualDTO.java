@@ -10,11 +10,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import enumns.EstadoSolicitud;
+
 public class SolicitudIndividualDTO  {
 
 	private static final long serialVersionUID = 1L;
 	private Integer codsolicitudIndividual;
 	protected AreaRestaurantDTO area;
+	private EstadoSolicitud estado;
 	protected String responsable;
 	protected Integer lote;
 	protected Date fechaCompra;
@@ -31,9 +34,10 @@ public class SolicitudIndividualDTO  {
 	
 	public SolicitudIndividualDTO(AreaRestaurantDTO area, String responsable,
 			Integer lote, Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaDTO materiaprima,
-			float cantidad, SolicitudDiariaDTO solicitudDiaria) {
+			float cantidad, SolicitudDiariaDTO solicitudDiaria,EstadoSolicitud estado) {
 		super();
 		this.area = area;
+		this.estado=estado;
 		this.responsable = responsable;
 		this.lote = lote;
 		this.fechaCompra = fechaCompra;
@@ -42,6 +46,16 @@ public class SolicitudIndividualDTO  {
 		this.materiaprima = materiaprima;
 		this.cantidad = cantidad;
 		this.solicitudDiaria = solicitudDiaria;
+	}
+
+
+	public EstadoSolicitud getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(EstadoSolicitud estado) {
+		this.estado = estado;
 	}
 
 
@@ -150,7 +164,7 @@ public class SolicitudIndividualDTO  {
 
 	@Override
 	public String toString() {
-		return "SolicitudIndividualDTO [materiales=" + materiaprima + ", cantidad=" + cantidad + ", motivo=" + motivo + ", responsable=" + responsable + "]";
+		return "SolicitudIndividualDTO [materiales=" + materiaprima + ", cantidad=" + cantidad + ", motivo=" + motivo + ", responsable=" + responsable + ", estado=" + estado + "]";
 	//faltan cosas que mostrar pero sirve para probar
 	}
 	

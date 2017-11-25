@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import enumns.EstadoSolicitud;
 import negocio.SolicitudIndividual;
 
 @Entity
@@ -17,7 +18,7 @@ public class SolicitudIndividualEntity {
     @ManyToOne
     @JoinColumn(name="codArea")
 	protected AreaRestaurantEntity area;
-    
+    private EstadoSolicitud estado;
 	protected String responsable;
 	protected Integer lote;
 	protected Date fechaCompra;
@@ -32,9 +33,10 @@ public class SolicitudIndividualEntity {
 
 
 	public SolicitudIndividualEntity(AreaRestaurantEntity area, String responsable,
-			Integer lote, Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaEntity materiaprima, float cantidad) {
+			Integer lote, Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaEntity materiaprima, float cantidad, EstadoSolicitud estado) {
 		super();
 		this.area = area;
+		this.estado=estado;
 		this.responsable = responsable;
 		this.lote = lote;
 		this.fechaCompra = fechaCompra;
@@ -47,6 +49,18 @@ public class SolicitudIndividualEntity {
 
 
 	public SolicitudIndividualEntity() {
+	}
+
+
+
+	public EstadoSolicitud getEstado() {
+		return estado;
+	}
+
+
+
+	public void setEstado(EstadoSolicitud estado) {
+		this.estado = estado;
 	}
 
 
@@ -164,6 +178,7 @@ public class SolicitudIndividualEntity {
 		s.setMateriaprima(materiaprima.toNegocio());
 		s.setMotivo(motivo);
 		s.setResponsable(responsable);
+		s.setEstado(estado);
 		return s;
 	}
 	

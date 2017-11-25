@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import entities.*;
+import enumns.EstadoSolicitud;
 
 public class SolicitudIndividual  {
 
@@ -24,6 +25,7 @@ public class SolicitudIndividual  {
 	private  MateriaPrima materiaprima;
 	private float cantidad;
 	private SolicitudDiaria solicitudDiaria;
+	private EstadoSolicitud estado;
 	
 	public SolicitudIndividual(){
 		
@@ -31,9 +33,10 @@ public class SolicitudIndividual  {
 	
 	public SolicitudIndividual(AreaRestaurant area, String responsable, Integer lote,
 			Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrima materiaprima, float cantidad,
-			SolicitudDiaria solicitudDiaria) {
+			SolicitudDiaria solicitudDiaria,EstadoSolicitud estado) {
 		super();
 		this.area = area;
+		this.estado=estado;
 		this.responsable = responsable;
 		this.lote = lote;
 		this.fechaCompra = fechaCompra;
@@ -42,6 +45,14 @@ public class SolicitudIndividual  {
 		this.materiaprima = materiaprima;
 		this.cantidad = cantidad;
 		this.solicitudDiaria = solicitudDiaria;
+	}
+
+	public EstadoSolicitud getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoSolicitud estado) {
+		this.estado = estado;
 	}
 
 	public Integer getCodsolicitudIndividual() {
@@ -138,6 +149,7 @@ public class SolicitudIndividual  {
 		s.setLote(lote);
 		s.setMateriaprima(materiaprima.toEntity());
 		s.setMotivo(motivo);
+		s.setEstado(estado);
 		s.setResponsable(responsable);
 		return s;
 	}

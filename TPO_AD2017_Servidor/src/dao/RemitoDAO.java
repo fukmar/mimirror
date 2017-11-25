@@ -10,11 +10,13 @@ import org.hibernate.SessionFactory;
 import entities.ItemRemitoEntity;
 import entities.PlatoEntity;
 import entities.RemitoEntity;
+import enumns.EstadoSolicitud;
 import hibernate.HibernateUtil;
 import negocio.ItemRemito;
 import negocio.MateriaPrima;
 import negocio.Plato;
 import negocio.Remito;
+import negocio.SolicitudIndividual;
 
 
 public class RemitoDAO {
@@ -63,6 +65,11 @@ public class RemitoDAO {
 			float cantidadfinal=cantidadingresada+cantidadactual;
 			MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaPorId(item.getMateriaprima().getCodigo());
 			MateriaPrimaDAO.getInstance().updateCantidadMateriaPrima(mp, cantidadfinal);
+			for (SolicitudIndividual solicitud: item.getSolicitudes())
+			{
+				SolicitudIndividualDAO.getInstance().updateEstadoSolicitudIndividual(solicitud, EstadoSolicitud.Recibida);
+			}
+				
 		}
 		
 	}

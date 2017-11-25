@@ -19,6 +19,7 @@ import entities.*;
 import enumns.AreaRest;
 import enumns.Estado;
 import enumns.EstadoItemRemito;
+import enumns.EstadoSolicitud;
 import enumns.MedioDePago;
 import enumns.Temporada;
 import hibernate.HibernateUtil;
@@ -95,7 +96,7 @@ public class testHibernate3 {
 		materiales.add(mpe);
 		List<SolicitudIndividualEntity>solicitudestoitemremito=new ArrayList <SolicitudIndividualEntity>();
 
-		SolicitudIndividualEntity solicitud = new SolicitudIndividualEntity(caja, "Jorge", 1, fecha, fecha, "faltante", mpe, 20);
+		SolicitudIndividualEntity solicitud = new SolicitudIndividualEntity(caja, "Jorge", 1, fecha, fecha, "faltante", mpe, 20,EstadoSolicitud.Iniciada);
 		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,(float) 1500,EstadoItemRemito.Procesado,null,solicitudestoitemremito);
 		solicitudestoitemremito.add(solicitud);
 		itemremito.setSolicitudes(solicitudestoitemremito);
