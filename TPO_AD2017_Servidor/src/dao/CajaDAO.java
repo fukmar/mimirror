@@ -1,5 +1,9 @@
 package dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 
@@ -33,6 +37,19 @@ public class CajaDAO
 		session.close();
 		caja=resu.toNegocio();
 		return caja;
+	}
+	public double getTotalFacturado (Date FechaDesde,Date FechaHasta)
+	{
+		Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+		s.beginTransaction();
+		SimpleDateFormat sf=new SimpleDateFormat("dd-MM-YYYY");
+		String fromDate=null;
+		String toDate=null;
+		fromDate=sf.format(FechaDesde);
+		toDate=sf.format(FechaHasta);
+		double total=(double) s.createQuery("select sum(f.importe) from FacturaEntity f where f.fecha between ? and ?").setString(0, fromDate).setString(1, toDate).uniqueResult();
+		return total;
+		
 	}
 }
 

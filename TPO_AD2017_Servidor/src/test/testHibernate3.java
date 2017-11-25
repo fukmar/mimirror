@@ -395,5 +395,14 @@ public class testHibernate3 {
 	    Remito remitoparaDAO=remito.toNegocio();
 	    RemitoDAO.getInstance().ingresarMateriaPrima(remitoparaDAO);
 	    //VERIFICAR LA BASE--PAPAS TENIA 1800 y ahora 3300 luego del DAO
+	    
+	    //PROBAMOS VER EL TOTAL FACTURADO ENTRE UNA FECHA Y OTRA usando as fechas que definimos para el anterior DAO
+
+	    double facturado=CajaDAO.getInstancia().getTotalFacturado(fechadesde, fechahasta);
+	    System.out.println("La caja facturo en ese periodo: "+facturado);
+	    double comision=MozoDAO.getInstancia().getComisionesapagar(fechadesde, fechahasta);
+	    System.out.println("comisiones:"+comision);
+	    System.out.println("EL TPO pedía mostrar primero el importe sin comision, luego la comision y luego el total..es solo formateo");
+	    
 }
 }

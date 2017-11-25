@@ -116,4 +116,18 @@ public class MozoDAO
 		}
 		return rta;
 	}
+	
+	public double getComisionesapagar (Date FechaDesde,Date FechaHasta)
+	{
+		SimpleDateFormat sf=new SimpleDateFormat("dd-MM-YYYY");
+		String fromDate=null;
+		String toDate=null;
+		fromDate=sf.format(FechaDesde);
+		toDate=sf.format(FechaHasta);
+			Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+			s.beginTransaction();
+			double comision= (double) s.createQuery("select m.porcentajeComision * f.importe/100 from FacturaEntity f join f.mesa.mozo m where f.fecha between ? and ?").setString(0, fromDate).setString(1, toDate).uniqueResult();
+			s.getTransaction().commit();
+		return comision;
+	}
 }
