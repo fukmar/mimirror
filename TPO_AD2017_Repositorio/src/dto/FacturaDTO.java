@@ -13,7 +13,7 @@ public class FacturaDTO implements Serializable
 	private static final long serialVersionUID = 1L;
 	private Integer codFactura;
 	private Date fecha;
-	private float importe;
+	private double importe;
 	private MedioDePago medioPago;
 	private MesaDTO mesa;
 	
@@ -21,7 +21,7 @@ public class FacturaDTO implements Serializable
 
 	
 
-	public FacturaDTO(Date fecha, float importe,MedioDePago medioPago, MesaDTO mesa) {
+	public FacturaDTO(Date fecha, double importe,MedioDePago medioPago, MesaDTO mesa) {
 		super();
 		this.fecha = fecha;
 		this.importe = importe;
@@ -46,11 +46,11 @@ public class FacturaDTO implements Serializable
 		this.fecha = fecha;
 	}
 
-	public float getImporte() {
+	public double getImporte() {
 		return importe;
 	}
 
-	public void setImporte(float importe) {
+	public void setImporte(double importe) {
 		this.importe = importe;
 	}
 

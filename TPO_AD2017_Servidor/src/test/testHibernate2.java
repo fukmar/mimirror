@@ -123,8 +123,8 @@ public class testHibernate2 {
 		comanditas.add(comandita);
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
-		FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita, mozo);
-		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita, mozo);
+		FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita);
+		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita);
 				
 		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		

@@ -42,6 +42,7 @@ public class FacturaDAO
 	public void save(Factura factura)
 	{
 		FacturaEntity fact = factura.toEntity();
+		//System.out.println(fact);
 		Session session=sf.openSession();
 		Transaction tran=session.beginTransaction();
 		session.save(fact);
@@ -49,12 +50,7 @@ public class FacturaDAO
 		session.close();
 	}
 
-	
-	//FALTA
-/*	private FacturaEntity toEntity(FacturaDAO factura) {	
-		return null;
 
-	}*/
 	
 	public void actualizarTotalFactura(int nroFact){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -120,6 +116,20 @@ public class FacturaDAO
 		Double monto = (Double)session.createQuery("SELECT SUM(p.monto_total) FROM Factura f JOIN f.pagos p WHERE f.factura_id=?").setInteger(0,nroFact).setFirstResult(0).setMaxResults(1).uniqueResult();
 		session.close();
 		return monto;
+	}
+	
+	public List<Factura> getFacturas()
+	{
+		List<Factura> facturas=new ArrayList<Factura>();
+		//HibernateUtil.initialize(facturas.get
+		Session session=sf.openSession();
+		List<FacturaEntity> resu=session.createQuery("from FacturaEntity").list();
+		for(FacturaEntity f:resu) 
+		{
+			facturas.add(f.toNegocio());
+		}
+		session.close();
+		return facturas;
 	}
 	/*
 	public FacturaEntity getFacturaxComanda(int idComanda){

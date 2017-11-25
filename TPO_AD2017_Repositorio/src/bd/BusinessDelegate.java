@@ -89,10 +89,14 @@ public class BusinessDelegate
 		try {
 			remoteObject.grabarFactura(factura);
 		} catch (Exception e) {
-			throw new FacturaException("No se pudo grabar la FACTURA!");
+			//throw new FacturaException("No se pudo grabar la FACTURA!");
 		}
 	}
 	
+	public List<FacturaDTO> mostrarFacturas() throws RemoteException, FacturaException 
+	{
+		return remoteObject.mostrarFacturas();
+	}
 	//---------------------------------------RESERVAS------------------------------------------------------------
 	
 	public void grabarReserva(ReservaDTO reserva) throws RemoteException, ReservaException 

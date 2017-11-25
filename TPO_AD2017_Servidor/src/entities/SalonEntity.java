@@ -40,8 +40,8 @@ public class SalonEntity extends AreaRestaurantEntity
 		Salon s=new Salon();
 		s.setCodArea(codArea);
 		s.setArea(area);
-		s.setNombreSalon(nombreSalon);
 		s.setLocal(local.toNegocio());
+		s.setNombreSalon(nombreSalon);
 		return s;
 	}
 

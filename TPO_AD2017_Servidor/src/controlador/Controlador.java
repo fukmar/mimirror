@@ -10,6 +10,7 @@ import com.sun.corba.se.spi.protocol.CorbaMessageMediator;
 import dao.CajaDAO;
 import dao.ComandaDAO;
 import dao.DepositoDAO;
+import dao.FacturaDAO;
 import dao.MesaDAO;
 import dao.MozoDAO;
 import dao.PlatoDAO;
@@ -106,9 +107,22 @@ public class Controlador {
 	//FACTURAS
 	public  void guardarFactura(FacturaDTO factura) 
 	{
+		//System.out.println("LLEGA");
 		Integer codMesa=factura.getMesa().getCodMesa();
-		Mesa mesa=MesaDAO.getInstance().getMesaN(factura.getMesa().getCodMesa());
+		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
 		new Factura(factura.getFecha(),factura.getImporte(),factura.getMedioPago(),mesa).save();
+		
+	}
+	
+	public List<FacturaDTO> listarFacturas()
+	{
+		List<FacturaDTO> facturas=new ArrayList<FacturaDTO>();
+		List<Factura> listaF=FacturaDAO.getInstance().getFacturas();
+		for(Factura f:listaF) 
+		{
+			facturas.add(f.toDTO());
+		}
+		return facturas;
 		
 	}
 	

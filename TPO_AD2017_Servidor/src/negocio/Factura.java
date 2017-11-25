@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 
 import dao.FacturaDAO;
 import dto.ComandaDTO;
+import dto.FacturaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import entities.CajaEntity;
@@ -101,5 +102,17 @@ public class Factura
 		f.setMesa(mesa.toEntity());
 		return f;
 	}
+
+
+	public FacturaDTO toDTO() 
+	{
+		FacturaDTO f=new FacturaDTO();
+		f.setCodFactura(codFactura);
+		f.setFecha(fecha);
+		f.setImporte(importe);
+		f.setMedioPago(medioPago);
+		f.setMesa(mesa.toDTO());
+		return f;
+	} 
 	
 }

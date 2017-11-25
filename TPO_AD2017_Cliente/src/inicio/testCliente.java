@@ -130,7 +130,7 @@ public class testCliente
 		elabs.add(ee);
 		
 		//PLATO
-		PlatoDTO plato = new PlatoDTO("Milanesa con Papas Fritas",13f,elabs);
+		PlatoDTO plato = new PlatoDTO("Bistec",13f,elabs);
 		
 		//MOZO
 		MozoDTO mozo = new MozoDTO(31604578,"Ceci","Zuki",80.4f, sector);

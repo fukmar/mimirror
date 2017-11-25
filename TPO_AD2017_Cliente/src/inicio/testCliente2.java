@@ -12,6 +12,7 @@ import dto.PlatoDTO;
 import dto.ReservaDTO;
 import enumns.MedioDePago;
 import exceptions.ComandaException;
+import exceptions.FacturaException;
 import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
@@ -85,6 +86,21 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} catch (PlatoException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	//LISTAR FACTURAS
+	try {
+		List<FacturaDTO> listaFact=BusinessDelegate.getInstance().mostrarFacturas();
+		for(FacturaDTO f: listaFact) 
+		{
+			System.out.println(f.toString());
+		}
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (FacturaException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

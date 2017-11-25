@@ -55,10 +55,21 @@ public class Local
 	}
 
 
+	
+	public Deposito getDeposito() {
+		return deposito;
+	}
+
+
+	public void setDeposito(Deposito deposito) {
+		this.deposito = deposito;
+	}
+
+
 	public LocalEntity toEntity()
 {
 		LocalEntity l=new LocalEntity();
-		//l.setCodigoLocal(codigoLocal);
+		l.setCodigoLocal(codigoLocal);
 		l.setDireccion(direccion);
 		l.setBarrio(barrio);
 		l.setDeposito(this.deposito.toEntity());

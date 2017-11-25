@@ -5,6 +5,12 @@ import java.util.List;
 import negocio.*;
 import javax.persistence.*;
 
+import org.hibernate.Hibernate;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+
 @Entity
 @Table(name="deposito")
 public class DepositoEntity
@@ -15,9 +21,16 @@ public class DepositoEntity
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="deposito", cascade = CascadeType.ALL)
 	private List<MateriaPrimaEntity> materiaprima;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<SolicitudInsumoEntity> solicitudes;
+	
+	
+
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)//ceci
 	private List<RemitoEntity> remitos;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
@@ -72,14 +85,14 @@ public class DepositoEntity
 		this.codDeposito = codDeposito;
 	}
 	
-	public Deposito toNegocio() {
+	public Deposito toNegocio()
+	{
 		
 	List<MateriaPrima> materias = new ArrayList<MateriaPrima>();
 		for(MateriaPrimaEntity materiaprima:this.materiaprima ) 
 		{
 			materias.add(materiaprima.toNegocio());
 		}
-		
 		List<Remito> remitos = new ArrayList<Remito>();
 		for(RemitoEntity remitEn: this.remitos) 
 		{

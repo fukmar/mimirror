@@ -29,8 +29,7 @@ public class SectorEntity
 		
 		this.descripcion = descripcion;
 		this.salon=salon;
-		//this.mozo = mozo;
-		//this.mesa = mesas;
+		
 	}
 
 	public Integer getCodSector() {
