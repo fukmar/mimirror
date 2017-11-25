@@ -30,7 +30,7 @@ public class ItemRemitoEntity {
 	@JoinColumn(name="codigo")
 	private MateriaPrimaEntity materiaprima;
 	
-	private Integer cantidad;
+	private Float cantidad;
 	private EstadoItemRemito estadoremito;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -43,7 +43,7 @@ public class ItemRemitoEntity {
 	
 	public ItemRemitoEntity(){}
 	
-	public ItemRemitoEntity(MateriaPrimaEntity materiaprima, Integer cantidad, EstadoItemRemito estadoremito,
+	public ItemRemitoEntity(MateriaPrimaEntity materiaprima, Float cantidad, EstadoItemRemito estadoremito,
 			RemitoEntity remito, List<SolicitudIndividualEntity> solicitudes) {
 		super();
 		this.materiaprima = materiaprima;
@@ -89,15 +89,14 @@ public class ItemRemitoEntity {
 		this.remito = remito;
 	}
 
-	public Integer getCantidad() {
+	public Float getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(Integer cantidad) {
+	public void setCantidad(Float cantidad) {
 		this.cantidad = cantidad;
 	}
 
-	
 	public Integer getCodItemRemito() {
 		return codItemRemito;
 	}
@@ -107,7 +106,7 @@ public class ItemRemitoEntity {
 	}
 
 	
-	public ItemRemitoEntity(Integer cantidad) {
+	public ItemRemitoEntity(Float cantidad) {
 		super();
 		this.cantidad = cantidad;
 	
@@ -119,17 +118,20 @@ public class ItemRemitoEntity {
 	public ItemRemito toNegocio() 
 	{
 		ItemRemito item=new ItemRemito();
+
 		item.setCodItemRemito(codItemRemito);
 		item.setCantidad(cantidad);
 		item.setEstadoremito(estadoremito);
-		item.setRemito(remito.toNegocio());
 		List<SolicitudIndividual> solicitudesnegocio=new ArrayList <SolicitudIndividual>();
 		for(SolicitudIndividualEntity s:solicitudes)
 		{
 			solicitudesnegocio.add(s.toNegocio());
 		}
+		
 		item.setSolicitudes(solicitudesnegocio);
+		
 		item.setMateriaprima(materiaprima.toNegocio());
+
 		return item;
 	}
 

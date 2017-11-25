@@ -23,7 +23,7 @@ public class ItemRemito {
 
 	private Integer codItemRemito;
 	private MateriaPrima materiaprima;
-	private Integer cantidad;
+	private Float cantidad;
 	private EstadoItemRemito estadoremito;
     private Remito remito;
 	private List<SolicitudIndividual> solicitudes;
@@ -33,7 +33,7 @@ public class ItemRemito {
 	}
 	
 	
-	public ItemRemito(Integer codItemRemito, MateriaPrima materiaprima, Integer cantidad,
+	public ItemRemito(Integer codItemRemito, MateriaPrima materiaprima, Float cantidad,
 			EstadoItemRemito estadoremito, Remito remito, List<SolicitudIndividual> solicitudes) {
 		super();
 		this.codItemRemito = codItemRemito;
@@ -46,7 +46,7 @@ public class ItemRemito {
 	
 
 
-	public ItemRemito(MateriaPrima materiaprima, Integer cantidad, EstadoItemRemito estadoremito, Remito remito,
+	public ItemRemito(MateriaPrima materiaprima, Float cantidad, EstadoItemRemito estadoremito, Remito remito,
 			List<SolicitudIndividual> solicitudes) {
 		super();
 		this.materiaprima = materiaprima;
@@ -78,12 +78,12 @@ public class ItemRemito {
 	}
 
 
-	public Integer getCantidad() {
+	public Float getCantidad() {
 		return cantidad;
 	}
 
 
-	public void setCantidad(Integer cantidad) {
+	public void setCantidad(Float cantidad) {
 		this.cantidad = cantidad;
 	}
 

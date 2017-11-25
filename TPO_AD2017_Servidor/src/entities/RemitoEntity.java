@@ -101,11 +101,14 @@ public class RemitoEntity {
 	
 	public Remito toNegocio() {
 		List<ItemRemito> items = new ArrayList<ItemRemito>();
-		for(ItemRemitoEntity itemEn: this.getItemsRemito()) {
+		for(ItemRemitoEntity itemEn: itemsRemito) {
 			items.add(itemEn.toNegocio());
 		}
-		Remito remito = new Remito(this.getCodigoProveedor(), this.getFecha(), items);
-		remito.setCodRemito(codRemito);
-		return remito;
+		Remito r = new Remito();
+		r.setCodigoProveedor(codigoProveedor);
+		r.setCodRemito(codRemito);
+		r.setFecha(fecha);
+		r.setItemsRemito(items);
+		return r;
 	}
 }

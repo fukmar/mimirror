@@ -32,7 +32,7 @@ public class MateriaPrimaDAO
 	
 	public void save(MateriaPrima material){
 
-	MateriaPrimaEntity mp = this.toEntity(material);
+	MateriaPrimaEntity mp = material.toEntity();
 	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
@@ -54,10 +54,10 @@ public class MateriaPrimaDAO
 		session.close();
 		return mp;
 	}
-	public MateriaPrima getPlatoPorId(Integer material_id) {
+	public MateriaPrima getMateriaPrimaPorId(Integer material_id) {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		MateriaPrimaEntity mp =(MateriaPrimaEntity) session.get(MateriaPrimaEntity.class,material_id); 
+		MateriaPrimaEntity mp=(MateriaPrimaEntity) session.createQuery("from MateriaPrimaEntity where codigo=?").setInteger(0, material_id).uniqueResult();
 		session.close();
 		return mp.toNegocio();
 	}
@@ -80,12 +80,17 @@ public class MateriaPrimaDAO
 		session.close();
 		return cantidad;
 	}
-	
-
-	//FALTA
-	private MateriaPrimaEntity toEntity(MateriaPrima material) {	
-		return null;
-
+	public void updateCantidadMateriaPrima(MateriaPrima mp,float cantidad)
+	{
+		Session session=sf.openSession();
+		session.beginTransaction();
+		Query query=session.createQuery("from MateriaPrimaEntity mp where mp.codigo= ? ");
+ 		query.setFloat(0,mp.getCodigo());
+		MateriaPrimaEntity materia=(MateriaPrimaEntity) query.uniqueResult();
+		materia.setCantidad(cantidad);
+		session.update(materia);
+		session.getTransaction().commit();
+		session.close();
 	}
 	
 }

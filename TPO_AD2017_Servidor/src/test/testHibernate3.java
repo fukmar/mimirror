@@ -31,6 +31,7 @@ import negocio.Local;
 import negocio.Mesa;
 import negocio.Mozo;
 import negocio.Plato;
+import negocio.Remito;
 import negocio.Salon;
 import negocio.Sector;
 import negocio.SemiElaborado;
@@ -95,7 +96,7 @@ public class testHibernate3 {
 		List<SolicitudIndividualEntity>solicitudestoitemremito=new ArrayList <SolicitudIndividualEntity>();
 
 		SolicitudIndividualEntity solicitud = new SolicitudIndividualEntity(caja, "Jorge", 1, fecha, fecha, "faltante", mpe, 20);
-		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,1,EstadoItemRemito.Procesado,null,solicitudestoitemremito);
+		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,(float) 1500,EstadoItemRemito.Procesado,null,solicitudestoitemremito);
 		solicitudestoitemremito.add(solicitud);
 		itemremito.setSolicitudes(solicitudestoitemremito);
 		itemremito.setRemito(remito);
@@ -388,8 +389,10 @@ public class testHibernate3 {
 	    		System.out.println(resultadoaux);
 	    	}
 	    }
-	    //CHECK DAO GET MESA
-	    Mesa m=MesaDAO.getInstance().getMesaN(1);
-	    System.out.println(m.getCodMesa());
+
+	    // PROBAMOS INGRESAR LA MERCADERIA DEL REMITO
+	    Remito remitoparaDAO=remito.toNegocio();
+	    RemitoDAO.getInstance().ingresarMateriaPrima(remitoparaDAO);
+	    //VERIFICAR LA BASE--PAPAS TENIA 1800 y ahora 3300 luego del DAO
 }
 }

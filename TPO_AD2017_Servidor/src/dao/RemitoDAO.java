@@ -2,6 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,6 +12,7 @@ import entities.PlatoEntity;
 import entities.RemitoEntity;
 import hibernate.HibernateUtil;
 import negocio.ItemRemito;
+import negocio.MateriaPrima;
 import negocio.Plato;
 import negocio.Remito;
 
@@ -27,9 +29,9 @@ public class RemitoDAO {
 		return instancia;
 	}
 	
-	public void save(RemitoDAO remito){
+	public void save(Remito remito){ //VERIFICAR ZUKI POR FAVOR..ACABO DE CAMBIARLO.
 
-	RemitoDAO rem = this.toEntity(remito);
+	RemitoEntity rem = remito.toEntity();
 	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
@@ -51,18 +53,20 @@ public class RemitoDAO {
 		session.close();
 		return listaItemRemitos;
 	}
+	public void ingresarMateriaPrima (Remito r)
+	{		
+		
+		for(ItemRemito item:r.getItemsRemito())
+		{
+			float cantidadingresada=item.getCantidad();
+			float cantidadactual=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(item.getMateriaprima());
+			float cantidadfinal=cantidadingresada+cantidadactual;
+			MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaPorId(item.getMateriaprima().getCodigo());
+			MateriaPrimaDAO.getInstance().updateCantidadMateriaPrima(mp, cantidadfinal);
+		}
+		
+	}
 
-	public RemitoEntity toEntity(Remito remito){ //COMPLETAR
-		RemitoEntity remitoentity=new RemitoEntity();
-    return remitoentity;
-	}
-	
-	
-	//FALTA
-	private RemitoDAO toEntity(RemitoDAO remito) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 }

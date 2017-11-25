@@ -120,9 +120,9 @@ public class MateriaPrimaEntity
 	public MateriaPrima toNegocio() 
 	{
 		MateriaPrima m=new MateriaPrima();
+		m.setCantidad(cantidad);
 		m.setCodigo(codigo);
 		m.setDescripcion(descripcion);
-		//m.setUnidadCompra(unidadCompra.toNegocio());
 		m.setUnidadUso(unidadUso.toNegocio());
 		return m;
 	}

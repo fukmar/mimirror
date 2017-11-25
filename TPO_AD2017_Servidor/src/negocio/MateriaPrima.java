@@ -77,6 +77,8 @@ public class MateriaPrima
 	public MateriaPrimaEntity toEntity() {
 		
 		MateriaPrimaEntity materia= new MateriaPrimaEntity(this.descripcion, this.unidadUso.toEntity(), this.cantidad);
+		materia.setCodigo(codigo);
+		materia.setDeposito(deposito.toEntity());
 		return materia;
 		
 	}
