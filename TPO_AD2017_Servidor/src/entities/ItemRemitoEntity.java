@@ -15,6 +15,7 @@ import negocio.ItemRemito;
 import negocio.Plato;
 import negocio.Producto;
 import negocio.Remito;
+import negocio.SolicitudIndividual;
 
 @Entity
 @Table(name="itemsRemito")
@@ -36,22 +37,30 @@ public class ItemRemitoEntity {
     @JoinColumn(name="codRemito", nullable=false)
     private RemitoEntity remito;
 	
-	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="codItemRemito", nullable = false)
+	private List<SolicitudIndividualEntity> solicitudes;
 	
 	public ItemRemitoEntity(){}
 	
-	
-	public ItemRemitoEntity(MateriaPrimaEntity materiaprima, Integer cantidad,
-			EstadoItemRemito estadoremito, RemitoEntity remito) {
+	public ItemRemitoEntity(MateriaPrimaEntity materiaprima, Integer cantidad, EstadoItemRemito estadoremito,
+			RemitoEntity remito, List<SolicitudIndividualEntity> solicitudes) {
 		super();
 		this.materiaprima = materiaprima;
 		this.cantidad = cantidad;
 		this.estadoremito = estadoremito;
 		this.remito = remito;
+		this.solicitudes = solicitudes;
+	}
+
+	public List<SolicitudIndividualEntity> getSolicitudes() {
+		return solicitudes;
 	}
 
 
-
+	public void setSolicitudes(List<SolicitudIndividualEntity> solicitudes) {
+		this.solicitudes = solicitudes;
+	}
 
 
 	public MateriaPrimaEntity getMateriaprima() {
@@ -114,6 +123,12 @@ public class ItemRemitoEntity {
 		item.setCantidad(cantidad);
 		item.setEstadoremito(estadoremito);
 		item.setRemito(remito.toNegocio());
+		List<SolicitudIndividual> solicitudesnegocio=new ArrayList <SolicitudIndividual>();
+		for(SolicitudIndividualEntity s:solicitudes)
+		{
+			solicitudesnegocio.add(s.toNegocio());
+		}
+		item.setSolicitudes(solicitudesnegocio);
 		item.setMateriaprima(materiaprima.toNegocio());
 		return item;
 	}

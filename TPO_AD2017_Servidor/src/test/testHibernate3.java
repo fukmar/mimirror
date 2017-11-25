@@ -92,10 +92,15 @@ public class testHibernate3 {
 		mpe.setDeposito(deposito);
 		List<MateriaPrimaEntity> materiales = new ArrayList<MateriaPrimaEntity>();
 		materiales.add(mpe);
-		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,1,EstadoItemRemito.Procesado,null);
+		List<SolicitudIndividualEntity>solicitudestoitemremito=new ArrayList <SolicitudIndividualEntity>();
+
+		SolicitudIndividualEntity solicitud = new SolicitudIndividualEntity(caja, "Jorge", 1, fecha, fecha, "faltante", mpe, 20);
+		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,1,EstadoItemRemito.Procesado,null,solicitudestoitemremito);
+		solicitudestoitemremito.add(solicitud);
+		itemremito.setSolicitudes(solicitudestoitemremito);
 		itemremito.setRemito(remito);
 		itemsremito.add(itemremito);
-		SolicitudIndividualEntity solicitud = new SolicitudIndividualEntity(caja, "Jorge", 1, fecha, fecha, "faltante", mpe, null, 20);
+		
 		SemiElaboradoEntity see = new SemiElaboradoEntity("Guarnicion","Extrema","Papas Fritas",pdp,1,fecha,ue);
 		SemiElaboradoEntity see2 = new SemiElaboradoEntity("Guarnicion","Extrema","Milanesa",pdp,1,fecha,ue);
 		IngredienteEntity ingrediente1=new IngredienteEntity (mpe,500);
@@ -135,12 +140,7 @@ public class testHibernate3 {
 		comanditas.add(comandita);
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
-		FacturaEntity factura2= new FacturaEntity(fecha, 20, MedioDePago.Contado, mesita);
 		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita);
-		
-		
-				
-		ItemFacturaEntity itemfacturita = new ItemFacturaEntity(itemCom,factura);
 		
 				
 		Temporada temp = null;
@@ -189,8 +189,9 @@ public class testHibernate3 {
 		session.save(itemCom2);
 		session.save(itemCom3);
 		session.save(factura);
-		session.save(solicitud);
 		session.save(remito);
+		session.save(solicitud);
+		session.save(itemremito);
 		//int idsector=mozo.getSector().getCodSector();
 		
 		//System.out.println(mozito.getNombre());
@@ -311,20 +312,8 @@ public class testHibernate3 {
 		/*--------------->----------->separador de bajo presupuesto<------------------<-----------------------*/				
 
 
-	/*
-		ComandaDTO comanda1=new ComandaDTO();
-		Integer codigomozo=comandita2.getMozo().getDni();
-		System.out.println(codigomozo);
-		Mozo mozito=MozoDAO.getInstancia().getMozosByCodEntity(codigomozo);
-		System.out.println(mozito.getApellido());
-		Mesa mesita10=MesaDAO.getInstance().getMesaN(comandita2.getMesa().getCodMesa());
-		System.out.println(mesita10.getCapacidad());
-		MesaDTO mesadto=mesita10.toDTO();
-		MozoDTO mozodto=mozito.toDTO();
-		comanda1.setMesa(mesadto);
-		comanda1.setMozo(mozodto);
-		comanda1.setEstado(comandita2.getEstado());
-		Controlador.getInstance().guardarComanda(comanda1);*/
+
+
 		//PRUEBO DAO RECETA INGREDIENTES//
 		List<Ingrediente> receta= IngredienteDAO.getInstance().getIngredientesdeSemi(see.toNegocio());
 		System.out.println(see.getDescripcion()+ " esta compuesto de: ");

@@ -16,7 +16,7 @@ public class SolicitudDiaria {
 
 	private Integer codsolicitudDiaria;
 	protected Deposito deposito;
-	
+	private List<SolicitudIndividual> solicitudes;
 	
 	
 	public SolicitudDiaria(){	
@@ -49,10 +49,24 @@ public class SolicitudDiaria {
 		return serialVersionUID;
 	}
 
+	public List<SolicitudIndividual> getSolicitudes() {
+		return solicitudes;
+	}
+
+	public void setSolicitudes(List<SolicitudIndividual> solicitudes) {
+		this.solicitudes = solicitudes;
+	}
+
 	public SolicitudDiariaEntity toEntity() {
 	SolicitudDiariaEntity s=new SolicitudDiariaEntity();
 	s.setCodsolicitudDiaria(codsolicitudDiaria);
 	s.setDeposito(deposito.toEntity());
+	List<SolicitudIndividualEntity> solicitudesnegocio=new ArrayList <SolicitudIndividualEntity>();
+	for(SolicitudIndividual sn:solicitudes)
+	{
+		solicitudesnegocio.add(sn.toEntity());
+	}
+	s.setSolicitudes(solicitudesnegocio);
 	return s;
 	}
 

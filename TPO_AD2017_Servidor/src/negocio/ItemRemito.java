@@ -1,42 +1,71 @@
 package negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import entities.ItemRemitoEntity;
 import entities.MateriaPrimaEntity;
+import entities.RemitoEntity;
+import entities.SolicitudIndividualEntity;
 import enumns.EstadoItemRemito;
 
 public class ItemRemito {
-	
+
 	private Integer codItemRemito;
-	private Integer cantidad;
-	private Remito remito;
-	private EstadoItemRemito estadoremito;
 	private MateriaPrima materiaprima;
-	 
+	private Integer cantidad;
+	private EstadoItemRemito estadoremito;
+    private Remito remito;
+	private List<SolicitudIndividual> solicitudes;
 
 	public ItemRemito() {
 		super();
 	}
 	
 	
-	public ItemRemito(Integer cantidad, Remito remito, EstadoItemRemito estadoremito, MateriaPrima materiaprima) {
-		super();
-		this.cantidad = cantidad;
-		this.remito = remito;
-		this.estadoremito = estadoremito;
-		this.materiaprima = materiaprima;
-	}
-
-
-	public ItemRemito(Integer codItemRemito, Integer cantidad, Remito remito, EstadoItemRemito estadoremito,
-			MateriaPrima materiaprima) {
+	public ItemRemito(Integer codItemRemito, MateriaPrima materiaprima, Integer cantidad,
+			EstadoItemRemito estadoremito, Remito remito, List<SolicitudIndividual> solicitudes) {
 		super();
 		this.codItemRemito = codItemRemito;
-		this.cantidad = cantidad;
-		this.remito = remito;
-		this.estadoremito = estadoremito;
 		this.materiaprima = materiaprima;
+		this.cantidad = cantidad;
+		this.estadoremito = estadoremito;
+		this.remito = remito;
+		this.solicitudes = solicitudes;
+	}
+	
+
+
+	public ItemRemito(MateriaPrima materiaprima, Integer cantidad, EstadoItemRemito estadoremito, Remito remito,
+			List<SolicitudIndividual> solicitudes) {
+		super();
+		this.materiaprima = materiaprima;
+		this.cantidad = cantidad;
+		this.estadoremito = estadoremito;
+		this.remito = remito;
+		this.solicitudes = solicitudes;
 	}
 
+
+	
+	public Integer getCodItemRemito() {
+		return codItemRemito;
+	}
+
+
+	public void setCodItemRemito(Integer codItemRemito) {
+		this.codItemRemito = codItemRemito;
+	}
 
 
 	public MateriaPrima getMateriaprima() {
@@ -49,53 +78,59 @@ public class ItemRemito {
 	}
 
 
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
 	public EstadoItemRemito getEstadoremito() {
 		return estadoremito;
 	}
+
 
 	public void setEstadoremito(EstadoItemRemito estadoremito) {
 		this.estadoremito = estadoremito;
 	}
 
-	
+
 	public Remito getRemito() {
 		return remito;
 	}
+
 
 	public void setRemito(Remito remito) {
 		this.remito = remito;
 	}
 
 
-	public Integer getCantidad() {
-		return cantidad;
+	public List<SolicitudIndividual> getSolicitudes() {
+		return solicitudes;
 	}
 
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+
+	public void setSolicitudes(List<SolicitudIndividual> solicitudes) {
+		this.solicitudes = solicitudes;
 	}
 
-	
-	public Integer getCodItemRemito() {
-		return codItemRemito;
-	}
 
-	public void setCodItemRemito(Integer codItemRemito) {
-		this.codItemRemito = codItemRemito;
-	}
-
-	public ItemRemito toNegocio() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	public ItemRemitoEntity toEntity() {
 		ItemRemitoEntity item=new ItemRemitoEntity();
 		item.setCodItemRemito(codItemRemito);
 		item.setCantidad(cantidad);
 		item.setEstadoremito(estadoremito);
-		item.setRemito(remito.toEntity());
 		item.setMateriaprima(materiaprima.toEntity());
+		item.setRemito(remito.toEntity());
+		List<SolicitudIndividualEntity> solicitudesentity=new ArrayList <SolicitudIndividualEntity>();
+		for(SolicitudIndividual s:solicitudes)
+		{
+			solicitudesentity.add(s.toEntity());
+		}
+		item.setSolicitudes(solicitudesentity);
 		return item;
 		
 	}

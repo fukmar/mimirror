@@ -139,7 +139,6 @@ public class SolicitudIndividual  {
 		s.setMateriaprima(materiaprima.toEntity());
 		s.setMotivo(motivo);
 		s.setResponsable(responsable);
-		s.setSolicitudDiaria(solicitudDiaria.toEntity());
 		return s;
 	}
 	

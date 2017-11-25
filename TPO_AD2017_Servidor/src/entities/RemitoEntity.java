@@ -105,6 +105,7 @@ public class RemitoEntity {
 			items.add(itemEn.toNegocio());
 		}
 		Remito remito = new Remito(this.getCodigoProveedor(), this.getFecha(), items);
+		remito.setCodRemito(codRemito);
 		return remito;
 	}
 }

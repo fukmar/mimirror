@@ -21,10 +21,13 @@ public class SolicitudDiariaEntity {
 	@Column(name="codsolicitudDiaria")
 	private Integer codsolicitudDiaria;
 
-	@OneToOne
+	@ManyToOne
     @JoinColumn(name="codDeposito", nullable=false)
 	protected DepositoEntity deposito;
 	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="codsolicitudDiaria", nullable = true)
+	private List<SolicitudIndividualEntity> solicitudes;
 	
 	
 	
@@ -58,17 +61,22 @@ public class SolicitudDiariaEntity {
 		this.deposito = deposito;
 	}
 
-	
+	public List<SolicitudIndividualEntity> getSolicitudes() {
+		return solicitudes;
+	}
+	public void setSolicitudes(List<SolicitudIndividualEntity> solicitudes) {
+		this.solicitudes = solicitudes;
+	}
 	public SolicitudDiaria toNegocio() {
 		SolicitudDiaria s=new SolicitudDiaria();
 		s.setCodsolicitudDiaria(codsolicitudDiaria);
 		s.setDeposito(deposito.toNegocio());
+		List<SolicitudIndividual> solicitudesnegocio=new ArrayList <SolicitudIndividual>();
+		for(SolicitudIndividualEntity si:solicitudes)
+		{
+			solicitudesnegocio.add(si.toNegocio());
+		}
+		s.setSolicitudes(solicitudesnegocio);
 		return s;
-	}
-	public SolicitudDiariaEntity toEntity() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
+	}	
 }

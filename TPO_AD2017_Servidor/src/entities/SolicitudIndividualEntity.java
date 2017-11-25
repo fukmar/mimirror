@@ -27,16 +27,12 @@ public class SolicitudIndividualEntity {
 	@JoinColumn(name="codigo")
 	private  MateriaPrimaEntity materiaprima;
 	
-	@ManyToOne(optional = true, fetch = FetchType.LAZY)
-	@JoinColumn(name="codsolicitudDiaria",nullable = true)
-	private SolicitudDiariaEntity solicitudDiaria;
-	
+
 	private float cantidad;
 
 
 	public SolicitudIndividualEntity(AreaRestaurantEntity area, String responsable,
-			Integer lote, Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaEntity materiaprima,
-			SolicitudDiariaEntity solicitudDiaria, float cantidad) {
+			Integer lote, Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaEntity materiaprima, float cantidad) {
 		super();
 		this.area = area;
 		this.responsable = responsable;
@@ -45,20 +41,7 @@ public class SolicitudIndividualEntity {
 		this.fechaVencimiento = fechaVencimiento;
 		this.motivo = motivo;
 		this.materiaprima = materiaprima;
-		this.solicitudDiaria = solicitudDiaria;
 		this.cantidad = cantidad;
-	}
-
-
-
-	public SolicitudDiariaEntity getSolicitudDiaria() {
-		return solicitudDiaria;
-	}
-
-
-
-	public void setSolicitudDiaria(SolicitudDiariaEntity solicitudDiaria) {
-		this.solicitudDiaria = solicitudDiaria;
 	}
 
 
@@ -181,7 +164,6 @@ public class SolicitudIndividualEntity {
 		s.setMateriaprima(materiaprima.toNegocio());
 		s.setMotivo(motivo);
 		s.setResponsable(responsable);
-		s.setSolicitudDiaria(solicitudDiaria.toNegocio());
 		return s;
 	}
 	

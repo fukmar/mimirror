@@ -37,7 +37,6 @@ public class HibernateUtil
              config.addAnnotatedClass(AdministracionEntity.class);
              config.addAnnotatedClass(CartaEntity.class);
              config.addAnnotatedClass(DepositoEntity.class);
-             config.addAnnotatedClass(SolicitudInsumoEntity.class);
              config.addAnnotatedClass(ReservaEntity.class);
              
              /*PROBANDO*/
