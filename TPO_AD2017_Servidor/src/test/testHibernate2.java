@@ -21,7 +21,7 @@ import negocio.Deposito;
 import negocio.Mesa;
 import negocio.Mozo;
 import negocio.Plato;
- 
+  
 public class testHibernate2 {
 
 	//----------------------->Hagan sus pruebas relacionadas a HIBERNATE aqui <-----------------------------
