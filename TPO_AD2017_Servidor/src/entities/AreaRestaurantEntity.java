@@ -58,6 +58,10 @@ public abstract class AreaRestaurantEntity {
 	}
 
 	public AreaRestaurant toNegocio() {
+		return null;
+	}
+
+	public AreaRestaurantEntity toEntity() {
 		// TODO Auto-generated method stub
 		return null;
 	}

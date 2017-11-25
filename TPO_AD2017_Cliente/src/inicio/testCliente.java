@@ -27,7 +27,7 @@ import dto.RemitoDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.SemiElaboradoDTO;
-import dto.SolicitudInsumoDTO;
+import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import enumns.AreaRest;
 import enumns.Estado;
@@ -64,7 +64,7 @@ public class testCliente
 		
 		
 		//SOLICITUD INSUMO
-		List<SolicitudInsumoDTO> solicitudes = new ArrayList<SolicitudInsumoDTO>();
+		List<SolicitudIndividualDTO> solicitudes = new ArrayList<SolicitudIndividualDTO>();
 		DepositoDTO deposito = new DepositoDTO();
 		remito.setDeposito(deposito);
 		

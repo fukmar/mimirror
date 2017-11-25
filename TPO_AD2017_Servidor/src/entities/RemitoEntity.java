@@ -22,7 +22,7 @@ public class RemitoEntity {
 	
 	
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="codDeposito", nullable=false)
     private DepositoEntity deposito;
 

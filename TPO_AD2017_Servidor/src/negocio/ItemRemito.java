@@ -1,6 +1,7 @@
 package negocio;
 
 import entities.ItemRemitoEntity;
+import entities.MateriaPrimaEntity;
 import enumns.EstadoItemRemito;
 
 public class ItemRemito {
@@ -9,14 +10,44 @@ public class ItemRemito {
 	private Integer cantidad;
 	private Remito remito;
 	private EstadoItemRemito estadoremito;
+	private MateriaPrima materiaprima;
 	 
-	 public ItemRemito(Integer codItemRemito, Integer cantidad, Remito remito, EstadoItemRemito estadoremito) {
+
+	public ItemRemito() {
+		super();
+	}
+	
+	
+	public ItemRemito(Integer cantidad, Remito remito, EstadoItemRemito estadoremito, MateriaPrima materiaprima) {
+		super();
+		this.cantidad = cantidad;
+		this.remito = remito;
+		this.estadoremito = estadoremito;
+		this.materiaprima = materiaprima;
+	}
+
+
+	public ItemRemito(Integer codItemRemito, Integer cantidad, Remito remito, EstadoItemRemito estadoremito,
+			MateriaPrima materiaprima) {
 		super();
 		this.codItemRemito = codItemRemito;
 		this.cantidad = cantidad;
 		this.remito = remito;
 		this.estadoremito = estadoremito;
+		this.materiaprima = materiaprima;
 	}
+
+
+
+	public MateriaPrima getMateriaprima() {
+		return materiaprima;
+	}
+
+
+	public void setMateriaprima(MateriaPrima materiaprima) {
+		this.materiaprima = materiaprima;
+	}
+
 
 	public EstadoItemRemito getEstadoremito() {
 		return estadoremito;
@@ -26,14 +57,7 @@ public class ItemRemito {
 		this.estadoremito = estadoremito;
 	}
 
-	public ItemRemito(){}
-
-		public ItemRemito(Integer cantidad) 
-		{
-			super();
-			this.cantidad = cantidad;
-			//this.codItemRemito = codItemRemito;
-		}
+	
 	public Remito getRemito() {
 		return remito;
 	}
@@ -71,6 +95,7 @@ public class ItemRemito {
 		item.setCantidad(cantidad);
 		item.setEstadoremito(estadoremito);
 		item.setRemito(remito.toEntity());
+		item.setMateriaprima(materiaprima.toEntity());
 		return item;
 		
 	}

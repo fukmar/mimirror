@@ -23,26 +23,12 @@ public class DepositoEntity
 	private List<MateriaPrimaEntity> materiaprima;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<SolicitudInsumoEntity> solicitudes;
-	
-	
-
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)//ceci
 	private List<RemitoEntity> remitos;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="deposito", cascade = CascadeType.ALL)
 	private List<OrdenDeCompraEntity> ordenDeCompra;
 	
-	public List<MateriaPrimaEntity> getMateriaprima() {
-		return materiaprima;
-	}
-
-	public void setMateriaprima(List<MateriaPrimaEntity> materiaprima) {
-		this.materiaprima = materiaprima;
-	}
 
 	
 	public DepositoEntity(){}
@@ -52,22 +38,39 @@ public class DepositoEntity
 		this.codDeposito = codDeposito;
 	}
 
-	public DepositoEntity(List<MateriaPrimaEntity> materiaprima, List<SolicitudInsumoEntity> solicitudes,
+	public DepositoEntity(Integer codDeposito, List<MateriaPrimaEntity> materiaprima, List<RemitoEntity> remitos,
+			List<OrdenDeCompraEntity> ordenDeCompra) {
+		super();
+		this.codDeposito = codDeposito;
+		this.materiaprima = materiaprima;
+		this.remitos = remitos;
+		this.ordenDeCompra = ordenDeCompra;
+	}
+
+	public DepositoEntity(List<MateriaPrimaEntity> materiaprima,
 			List<RemitoEntity> remitos) {
 		super();
 	this.materiaprima = materiaprima;
-	this.solicitudes = solicitudes;
 	this.remitos = remitos;
 	}
-
-
-	public List<SolicitudInsumoEntity> getSolicitudes() {
-		return solicitudes;
+	public List<MateriaPrimaEntity> getMateriaprima() {
+		return materiaprima;
 	}
 
-	public void setSolicitudes(List<SolicitudInsumoEntity> solicitudes) {
-		this.solicitudes = solicitudes;
+	public void setMateriaprima(List<MateriaPrimaEntity> materiaprima) {
+		this.materiaprima = materiaprima;
 	}
+
+
+	public List<OrdenDeCompraEntity> getOrdenDeCompra() {
+		return ordenDeCompra;
+	}
+
+	public void setOrdenDeCompra(List<OrdenDeCompraEntity> ordenDeCompra) {
+		this.ordenDeCompra = ordenDeCompra;
+	}
+
+
 
 	public List<RemitoEntity> getRemitos() {
 		return remitos;
@@ -99,14 +102,11 @@ public class DepositoEntity
 			remitos.add(remitEn.toNegocio());
 		}
 		
-		List<SolicitudInsumo> solicitudes=new ArrayList<SolicitudInsumo>();
-		for(SolicitudInsumoEntity solEn: this.getSolicitudes()) 
-		{
-			solicitudes.add(solEn.toNegocio());
-		}
-		
-		Deposito deposito =new Deposito(materias, solicitudes, remitos);
-		return deposito;
+		Deposito dep =new Deposito();
+		dep.setCodDeposito(codDeposito);
+		dep.setMateriaprima(materias);
+		dep.setRemitos(remitos);
+		return dep;
 	}
 	
 	

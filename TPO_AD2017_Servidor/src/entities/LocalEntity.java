@@ -90,7 +90,7 @@ public class LocalEntity
 		l.setCodigoLocal(codigoLocal);
 		l.setBarrio(barrio);
 		l.setDireccion(direccion);
-		l.setDeposito(deposito.toNegocio());
+		//l.setDeposito(deposito.toNegocio());
 		return l;
 	}
 

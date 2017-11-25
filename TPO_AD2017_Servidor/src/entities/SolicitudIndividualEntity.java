@@ -1,0 +1,189 @@
+package entities;
+
+import java.util.Date;
+
+import javax.persistence.*;
+
+import negocio.SolicitudIndividual;
+
+@Entity
+@Table(name="solicitudIndividual")
+public class SolicitudIndividualEntity {
+	@Id
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	@Column(name="codsolicitudIndividual")
+	private Integer codsolicitudIndividual;
+	
+    @ManyToOne
+    @JoinColumn(name="codArea")
+	protected AreaRestaurantEntity area;
+    
+	protected String responsable;
+	protected Integer lote;
+	protected Date fechaCompra;
+	protected Date fechaVencimiento;
+	protected String motivo;
+	@OneToOne
+	@JoinColumn(name="codigo")
+	private  MateriaPrimaEntity materiaprima;
+	
+	@ManyToOne(optional = true, fetch = FetchType.LAZY)
+	@JoinColumn(name="codsolicitudDiaria",nullable = true)
+	private SolicitudDiariaEntity solicitudDiaria;
+	
+	private float cantidad;
+
+
+	public SolicitudIndividualEntity(AreaRestaurantEntity area, String responsable,
+			Integer lote, Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaEntity materiaprima,
+			SolicitudDiariaEntity solicitudDiaria, float cantidad) {
+		super();
+		this.area = area;
+		this.responsable = responsable;
+		this.lote = lote;
+		this.fechaCompra = fechaCompra;
+		this.fechaVencimiento = fechaVencimiento;
+		this.motivo = motivo;
+		this.materiaprima = materiaprima;
+		this.solicitudDiaria = solicitudDiaria;
+		this.cantidad = cantidad;
+	}
+
+
+
+	public SolicitudDiariaEntity getSolicitudDiaria() {
+		return solicitudDiaria;
+	}
+
+
+
+	public void setSolicitudDiaria(SolicitudDiariaEntity solicitudDiaria) {
+		this.solicitudDiaria = solicitudDiaria;
+	}
+
+
+
+	public SolicitudIndividualEntity() {
+	}
+
+
+
+	public AreaRestaurantEntity getArea() {
+		return area;
+	}
+
+
+
+	public void setArea(AreaRestaurantEntity area) {
+		this.area = area;
+	}
+	public String getResponsable() {
+		return responsable;
+	}
+
+	public void setResponsable(String responsable) {
+		this.responsable = responsable;
+	}
+
+
+
+	public Integer getCodsolicitudIndividual() {
+		return codsolicitudIndividual;
+	}
+
+
+
+	public void setCodsolicitudIndividual(Integer codsolicitudIndividual) {
+		this.codsolicitudIndividual = codsolicitudIndividual;
+	}
+
+
+	public Integer getLote() {
+		return lote;
+	}
+
+
+
+	public void setLote(Integer lote) {
+		this.lote = lote;
+	}
+
+
+
+	public Date getFechaCompra() {
+		return fechaCompra;
+	}
+
+
+
+	public void setFechaCompra(Date fechaCompra) {
+		this.fechaCompra = fechaCompra;
+	}
+
+
+
+	public Date getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+
+
+
+	public void setFechaVencimiento(Date fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
+
+
+
+	public String getMotivo() {
+		return motivo;
+	}
+
+
+
+	public void setMotivo(String motivo) {
+		this.motivo = motivo;
+	}
+
+
+
+	public MateriaPrimaEntity getMateriaprima() {
+		return materiaprima;
+	}
+
+
+
+	public void setMateriaprima(MateriaPrimaEntity materiaprima) {
+		this.materiaprima = materiaprima;
+	}
+
+
+
+	public float getCantidad() {
+		return cantidad;
+	}
+
+
+
+	public void setCantidad(float cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
+
+	public SolicitudIndividual toNegocio() {
+		SolicitudIndividual s=new SolicitudIndividual();
+		s.setArea(area.toNegocio());
+		s.setCantidad(cantidad);
+		s.setCodsolicitudIndividual(codsolicitudIndividual);
+		s.setFechaCompra(fechaCompra);
+		s.setFechaVencimiento(fechaVencimiento);
+		s.setLote(lote);
+		s.setMateriaprima(materiaprima.toNegocio());
+		s.setMotivo(motivo);
+		s.setResponsable(responsable);
+		s.setSolicitudDiaria(solicitudDiaria.toNegocio());
+		return s;
+	}
+	
+	
+}

@@ -3,13 +3,12 @@ package negocio;
 import java.util.*;
 //FALTAN METODOS DE NEGOCIO
 
+import entities.SolicitudIndividualEntity;
 import entities.SolicitudInsumoEntity;
-
 
 
 public abstract class SolicitudInsumo {
 	
-	protected Integer codSolicitudInsumo;
 	protected Integer cantidadAPedir;
 	protected MateriaPrima materiaPrima; 
 	protected AreaRestaurant area;
@@ -28,43 +27,14 @@ public abstract class SolicitudInsumo {
 	public SolicitudInsumo(Integer codSolicitudInsumo,Integer cantidadAPedir, MateriaPrima materiaPrima,
 			AreaRestaurant area, String responsable, Integer lote, Date fechaCompra, Date fechaVencimiento,
 			String motivo) {
-	
-		this.cantidadAPedir = cantidadAPedir;
-		this.materiaPrima = materiaPrima;
 		this.area = area;
 		this.responsable = responsable;
 		this.lote = lote;
 		this.fechaCompra = fechaCompra;
 		this.fechaVencimiento = fechaVencimiento;
 		this.motivo = motivo;
-		this.codSolicitudInsumo=codSolicitudInsumo;
 	}
 
-
-
-	public Integer getCodSolicitudInsumo() {
-		return codSolicitudInsumo;
-	}
-
-	public void setCodSolicitudInsumo(Integer codSolicitudInsumo) {
-		this.codSolicitudInsumo = codSolicitudInsumo;
-	}
-
-	public Integer getCantidadAPedir() {
-		return cantidadAPedir;
-	}
-
-	public void setCantidadAPedir(Integer cantidadAPedir) {
-		this.cantidadAPedir = cantidadAPedir;
-	}
-
-	public MateriaPrima getMateriaPrima() {
-		return materiaPrima;
-	}
-
-	public void setMateriaPrima(MateriaPrima materiaPrima) {
-		this.materiaPrima = materiaPrima;
-	}
 
 	public AreaRestaurant getArea() {
 		return area;
@@ -114,14 +84,9 @@ public abstract class SolicitudInsumo {
 		this.motivo = motivo;
 	}
 
-	
-	
-
 	public Deposito getDeposito() {
 		return deposito;
 	}
-
-
 
 	public void setDeposito(Deposito deposito) {
 		this.deposito = deposito;

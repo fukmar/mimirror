@@ -53,7 +53,7 @@ public class testHibernate2 {
 	
 		
 		
-		DepositoEntity deposito = new DepositoEntity(materiapedido,solicitudes,remitos);
+		DepositoEntity deposito = new DepositoEntity(materiapedido,remitos);
 		
 		remito.setDeposito(deposito);
 		

@@ -16,13 +16,15 @@ public class ItemRemitoDTO implements Serializable{
 	private Integer cantidad;
 	private RemitoDTO remito;
 	private EstadoItemRemito estadoremito;
+	private MateriaPrimaDTO materiaprima;
 	 
-	 public ItemRemitoDTO(Integer codItemRemito, Integer cantidad, RemitoDTO remito, EstadoItemRemito estadoremito) {
+	 public ItemRemitoDTO(Integer codItemRemito, Integer cantidad, RemitoDTO remito, EstadoItemRemito estadoremito,MateriaPrimaDTO materiaprima) {
 		super();
 		this.codItemRemito = codItemRemito;
 		this.cantidad = cantidad;
 		this.remito = remito;
 		this.estadoremito = estadoremito;
+		this.materiaprima=materiaprima;
 	}
 
 	
@@ -69,6 +71,17 @@ public class ItemRemitoDTO implements Serializable{
 	public void setEstadoremito(EstadoItemRemito estadoremito) {
 		this.estadoremito = estadoremito;
 	}
+
+
+	public MateriaPrimaDTO getMateriaprima() {
+		return materiaprima;
+	}
+
+
+	public void setMateriaprima(MateriaPrimaDTO materiaprima) {
+		this.materiaprima = materiaprima;
+	}
+	
 
 	
 }

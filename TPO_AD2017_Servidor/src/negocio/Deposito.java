@@ -23,28 +23,17 @@ public class Deposito
 {
 	private Integer codDeposito;
 	private List<MateriaPrima> materiaprima;
-	private List<SolicitudInsumo> solicitudes;
 	private List<Remito> remitos;
 	
 	
 
 	public Deposito(){}
 	
-	public Deposito(List<MateriaPrima> materiaprima, List<SolicitudInsumo> solicitudes,
+	public Deposito(List<MateriaPrima> materiaprima, 
 			List<Remito> remitos) {
 		super();
 		this.materiaprima = materiaprima;
-		this.solicitudes = solicitudes;
 		this.remitos = remitos;
-	}
-
-
-	public List<SolicitudInsumo> getSolicitudes() {
-		return solicitudes;
-	}
-
-	public void setSolicitudes(List<SolicitudInsumo> solicitudes) {
-		this.solicitudes = solicitudes;
 	}
 
 	public List<Remito> getRemitos() {
@@ -97,13 +86,8 @@ public class Deposito
 			remitos.add(remitEn.toEntity());
 		}
 		
-		List<SolicitudInsumoEntity> solicitudes=new ArrayList<SolicitudInsumoEntity>();
-		for(SolicitudInsumo solEn: this.getSolicitudes()) {
-			solicitudes.add(solEn.toEntity());
-		}
 		
-		
-		DepositoEntity depEn=new DepositoEntity(materias, solicitudes, remitos);
+		DepositoEntity depEn=new DepositoEntity(materias, remitos);
 			
 		return depEn;
 	}

@@ -18,6 +18,7 @@ import dto.PlatoDTO;
 import entities.*;
 import enumns.AreaRest;
 import enumns.Estado;
+import enumns.EstadoItemRemito;
 import enumns.MedioDePago;
 import enumns.Temporada;
 import hibernate.HibernateUtil;
@@ -51,21 +52,20 @@ public class testHibernate3 {
 		MateriaPrimaEntity materia = new MateriaPrimaEntity("PapasAlDeposito",ue, 1000f);
 		List<MateriaPrimaEntity> materiapedido = new ArrayList<MateriaPrimaEntity>();
 		materiapedido.add(materia);
-	
-		List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
-		ItemRemitoEntity itemremito = new ItemRemitoEntity(1);
-		itemsremito.add(itemremito);
-		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);
-		itemremito.setRemito(remito);
+
 		
-		List<RemitoEntity> remitos = new ArrayList<RemitoEntity>();
-		remitos.add(remito);
-		
-		List<SolicitudInsumoEntity> solicitudes = new ArrayList<SolicitudInsumoEntity>();
-	
 		
 		
 		//DepositoEntity deposito = new DepositoEntity(materiapedido,solicitudes,remitos);
+		
+		
+	
+		List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
+		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);
+		
+		
+		List<RemitoEntity> remitos = new ArrayList<RemitoEntity>();
+		remitos.add(remito);
 		DepositoEntity deposito = new DepositoEntity();
 		remito.setDeposito(deposito);
 		
@@ -76,8 +76,6 @@ public class testHibernate3 {
 		SectorEntity sector = new SectorEntity("Sector", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
 		sectores.add(sector);
-		
-		//SolicitudInsumoEntity solicitud = new SolicitudInsumoEntity(100,materia,caja,"Responsable",1,fecha,fecha,"Motivo");
 		
 		materia.setDeposito(deposito);
 		//solicitud.setDeposito(deposito);
@@ -94,7 +92,10 @@ public class testHibernate3 {
 		mpe.setDeposito(deposito);
 		List<MateriaPrimaEntity> materiales = new ArrayList<MateriaPrimaEntity>();
 		materiales.add(mpe);
-		
+		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,1,EstadoItemRemito.Procesado,null);
+		itemremito.setRemito(remito);
+		itemsremito.add(itemremito);
+		SolicitudIndividualEntity solicitud = new SolicitudIndividualEntity(caja, "Jorge", 1, fecha, fecha, "faltante", mpe, null, 20);
 		SemiElaboradoEntity see = new SemiElaboradoEntity("Guarnicion","Extrema","Papas Fritas",pdp,1,fecha,ue);
 		SemiElaboradoEntity see2 = new SemiElaboradoEntity("Guarnicion","Extrema","Milanesa",pdp,1,fecha,ue);
 		IngredienteEntity ingrediente1=new IngredienteEntity (mpe,500);
@@ -188,6 +189,8 @@ public class testHibernate3 {
 		session.save(itemCom2);
 		session.save(itemCom3);
 		session.save(factura);
+		session.save(solicitud);
+		session.save(remito);
 		//int idsector=mozo.getSector().getCodSector();
 		
 		//System.out.println(mozito.getNombre());

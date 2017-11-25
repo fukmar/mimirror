@@ -25,6 +25,9 @@ public class ItemRemitoEntity {
 	@Column(name="codItemRemito")
 	private Integer codItemRemito;
 	
+	@ManyToOne
+	@JoinColumn(name="codigo")
+	private MateriaPrimaEntity materiaprima;
 	
 	private Integer cantidad;
 	private EstadoItemRemito estadoremito;
@@ -38,17 +41,29 @@ public class ItemRemitoEntity {
 	public ItemRemitoEntity(){}
 	
 	
-	public ItemRemitoEntity(Integer codItemRemito, Integer cantidad, EstadoItemRemito estadoremito,
-			RemitoEntity remito) {
+	public ItemRemitoEntity(MateriaPrimaEntity materiaprima, Integer cantidad,
+			EstadoItemRemito estadoremito, RemitoEntity remito) {
 		super();
-		this.codItemRemito = codItemRemito;
+		this.materiaprima = materiaprima;
 		this.cantidad = cantidad;
 		this.estadoremito = estadoremito;
 		this.remito = remito;
 	}
 
-	
-	
+
+
+
+
+	public MateriaPrimaEntity getMateriaprima() {
+		return materiaprima;
+	}
+
+
+	public void setMateriaprima(MateriaPrimaEntity materiaprima) {
+		this.materiaprima = materiaprima;
+	}
+
+
 	public EstadoItemRemito getEstadoremito() {
 		return estadoremito;
 	}
@@ -99,6 +114,7 @@ public class ItemRemitoEntity {
 		item.setCantidad(cantidad);
 		item.setEstadoremito(estadoremito);
 		item.setRemito(remito.toNegocio());
+		item.setMateriaprima(materiaprima.toNegocio());
 		return item;
 	}
 
