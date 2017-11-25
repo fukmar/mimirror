@@ -13,6 +13,7 @@ import dto.PlatoDTO;
 import entities.*;
 import enumns.AreaRest;
 import enumns.Estado;
+import enumns.EstadoItemRemito;
 import enumns.MedioDePago;
 import enumns.Temporada;
 import hibernate.HibernateUtil;
@@ -40,8 +41,14 @@ public class testHibernate2 {
 		List<MateriaPrimaEntity> materiapedido = new ArrayList<MateriaPrimaEntity>();
 		materiapedido.add(materia);
 	
+		MateriaPrimaEntity mpe = new MateriaPrimaEntity("Papas",ue, 3000f);
+		mpe.setDeposito(deposito);
+		List<MateriaPrimaEntity> materiales = new ArrayList<MateriaPrimaEntity>();
+		materiales.add(mpe);
+		List<SolicitudIndividualEntity>solicitudestoitemremito=new ArrayList <SolicitudIndividualEntity>();
+		
 		List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
-		ItemRemitoEntity itemremito = new ItemRemitoEntity(1);
+		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,(float) 1500,EstadoItemRemito.Procesado,null,solicitudestoitemremito);
 		itemsremito.add(itemremito);
 		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);
 		itemremito.setRemito(remito);

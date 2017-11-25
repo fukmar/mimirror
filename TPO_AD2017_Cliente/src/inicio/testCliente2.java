@@ -104,6 +104,19 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	
+	//BUSCAR COMANDA POR NRO
+	try {
+		ComandaDTO comanda=BusinessDelegate.getInstance().BuscarComandasPorCod(1);
+		System.out.println("La comanda buscada es: "+comanda.toString());
+		} catch (RemoteException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+		} catch (ComandaException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+		}
+	
 	}
 
 }

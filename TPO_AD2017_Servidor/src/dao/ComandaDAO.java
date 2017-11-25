@@ -87,7 +87,7 @@ private static SessionFactory sf=null;
 		return items;
 	}
 	
-	public Comanda obtenerComandaByCod(int codComanda)
+	public Comanda obtenerComandaByCod(Integer codComanda)
 	{
 		Comanda comanda=new Comanda();
 		SessionFactory sf = HibernateUtil.getSessionFactory();

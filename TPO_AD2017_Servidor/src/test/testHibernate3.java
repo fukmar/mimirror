@@ -157,7 +157,7 @@ public class testHibernate3 {
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
-		/*session.save(deposito);
+		session.save(deposito);
 		session.save(remito);
 		session.save(solicitud);
 		session.save(materia);
@@ -177,7 +177,7 @@ public class testHibernate3 {
 		session.save(comandita2);
 		session.save(itemCom3);
 		session.save(comandita3);
-		sesion.save(factura2);
+		//sesion.save(factura2);
 		session.save(factura);
 
 		
@@ -215,10 +215,10 @@ public class testHibernate3 {
 		session.save(ee);
 		session.save(plato);
 		//session.save(ingrediente1);
-		//session.save(deposito);
-		//session.getTransaction().commit();
-		//session.save(mozo);
-		//session.save(plato);
+		session.save(deposito);
+		//session.getTransaction().commit();//
+		session.save(mozo);
+		session.save(plato);
 		session.getTransaction().commit();
 		session.close();
 		

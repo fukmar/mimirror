@@ -103,6 +103,15 @@ public class Controlador {
 		return listaCom;
 	}
 	
+	
+	public ComandaDTO listarComandasPorCod(Integer codComanda)
+	{
+		ComandaDTO comanda=new ComandaDTO(); 
+		Comanda comandaN=ComandaDAO.getInstance().obtenerComandaByCod(codComanda);
+		comanda=comandaN.toDTO();
+		return comanda;
+	}
+	
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	//FACTURAS
 	public  void guardarFactura(FacturaDTO factura) 

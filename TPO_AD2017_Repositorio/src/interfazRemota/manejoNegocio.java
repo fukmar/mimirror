@@ -33,6 +33,7 @@ public interface manejoNegocio extends Remote
 	//COMANDA
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException,ComandaException;
 	public List<ComandaDTO> mostrarComandas()throws RemoteException,ComandaException;
+	public ComandaDTO BuscarComandasPorCod(Integer codComanda)throws RemoteException,ComandaException;
 	//FACTURA
 	public  void grabarFactura(FacturaDTO factura) throws RemoteException,FacturaException;
 	public List<FacturaDTO> mostrarFacturas()throws RemoteException,FacturaException;

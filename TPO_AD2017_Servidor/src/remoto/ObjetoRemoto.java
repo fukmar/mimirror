@@ -41,12 +41,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarPlatos();
 	}
 
-	@Override
-	/*public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
-	{
-		Controlador.getInstance().guardarComanda(comanda.getMozo(),comanda.getMesa(),comanda.getEstado());
-		
-	}*/
+
 	//----------------------------COMANDAS----------------------------------------------------------------------------
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
 	{
@@ -61,6 +56,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarComandas();
 	}
 	
+	@Override
+	public ComandaDTO BuscarComandasPorCod(Integer codComanda) throws RemoteException, ComandaException
+	{
+		return Controlador.getInstance().listarComandasPorCod(codComanda);
+	}
 	
 	//--------------------------FACTURAS--------------------------------------------------------------------------------
 	@Override
@@ -120,6 +120,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	{
 		return Controlador.getInstance().listarDepositos();
 	}
+
+	
 
 	
 	

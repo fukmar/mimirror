@@ -211,7 +211,14 @@ public class testHibernate {
 		
 		//PRUEBAS CECI INICIO
 		//-------------------------------------------
-		//ojo ceci
+		//ojo pruebas cz
+		/*FacturaDAO.getInstance().actualizarTotalFactura2(1);
+		List<Factura> facturas=FacturaDAO.getInstance().getFacturas();
+		for(Factura f:facturas) 
+		{
+			System.out.println(f.toString());
+		}
+		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -238,7 +245,7 @@ public class testHibernate {
 		FacturaDAO.getInstance().save(factura3);
 		
 		//FIN 
-		//Pruebas ceci FIN
+		//Pruebas ceci FIN*/
 		//-----------------------------------------------------------------------------------------
 		//grabar comanda
 		//ComandaEntity comandita = new ComandaEntity(mozo, mesita/*,caja,*/,Estado.Terminado);

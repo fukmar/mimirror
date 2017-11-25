@@ -82,6 +82,10 @@ public class BusinessDelegate
 		}
 	}
 	
+	public ComandaDTO BuscarComandasPorCod(Integer codComanda) throws RemoteException, ComandaException
+	{
+		return remoteObject.BuscarComandasPorCod(codComanda);
+	}
 	
 	//---------------------------------------FACTURAS------------------------------------------------------------
 	public void grabarFactura(FacturaDTO factura) throws RemoteException, FacturaException 
