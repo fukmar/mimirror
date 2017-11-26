@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import dto.SolicitudDiariaDTO;
 import entities.DepositoEntity;
 import entities.SolicitudDiariaEntity;
 import entities.SolicitudIndividualEntity;
@@ -17,6 +18,8 @@ public class SolicitudDiaria {
 	private Integer codsolicitudDiaria;
 	protected Deposito deposito;
 	private List<SolicitudIndividual> solicitudes;
+
+	
 	
 	
 	public SolicitudDiaria(){	
@@ -68,6 +71,10 @@ public class SolicitudDiaria {
 	}
 	s.setSolicitudes(solicitudesnegocio);
 	return s;
+	}
+	
+	public SolicitudDiariaDTO toDTO() {
+		return null;
 	}
 
 }

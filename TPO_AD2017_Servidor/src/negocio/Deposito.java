@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 
 import dto.DepositoDTO;
 import dto.MateriaPrimaDTO;
+import dto.RemitoDTO;
 import entities.DepositoEntity;
 import entities.MateriaPrimaEntity;
 import entities.RemitoEntity;
@@ -61,17 +62,40 @@ public class Deposito
 		this.materiaprima = materiaprima;
 	}
 
+	
+	//CON DATOS
 	public DepositoDTO toDTO() 
 	{
-		DepositoDTO d=new DepositoDTO();
-		d.setCodDeposito(codDeposito);
-		List<MateriaPrima> listaMP=new ArrayList<MateriaPrima>();
-		/*for(MateriaPrima m:listaMP) 
+		
+		List<MateriaPrimaDTO> listaMP=new ArrayList<MateriaPrimaDTO>();
+		for(MateriaPrima m:this.getMateriaprima()) 
 		{
 			listaMP.add(m.toDTO());
-		}*/
+		}
+		
+		List<RemitoDTO> remitoss = new ArrayList<RemitoDTO>();
+		for(Remito remitEn: this.remitos) {
+			remitoss.add(remitEn.toDTO());
+		}
+		
+		DepositoDTO d=new DepositoDTO(this.codDeposito, listaMP, remitoss);
 		return d;
 	}
+	
+	
+	//SOLO CODIGO DEL DEPOSITO
+	public DepositoDTO toDTO2() 
+	{
+		
+		List<MateriaPrimaDTO> listaMP=null;
+		
+		
+		List<RemitoDTO> remitoss =null;
+	
+		DepositoDTO d=new DepositoDTO(this.codDeposito, listaMP, remitoss);
+		return d;
+	}
+
 
 	public DepositoEntity toEntity() {
 		

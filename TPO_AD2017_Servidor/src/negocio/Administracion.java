@@ -6,10 +6,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
+import dto.AreaRestaurantDTO;
 import entities.AreaRestaurantEntity;
 import entities.LocalEntity;
 import entities.PlanDeProduccionEntity;
 import enumns.AreaRest;
+import dto.*;
 
 public class Administracion extends AreaRestaurant 
 {
@@ -38,6 +40,11 @@ public class Administracion extends AreaRestaurant
 	@Override
 	public AreaRestaurantEntity toEntity() {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AreaRestaurantDTO toDTO() {
 		return null;
 	}
 	

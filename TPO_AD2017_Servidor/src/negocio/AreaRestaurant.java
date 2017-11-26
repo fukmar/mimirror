@@ -1,6 +1,7 @@
 package negocio;
 
 
+import dto.AreaRestaurantDTO;
 import entities.AreaRestaurantEntity;
 import enumns.AreaRest;
 //FALTAN METODOS DE NEGOCIO
@@ -48,6 +49,7 @@ public abstract class AreaRestaurant
 	}
 	
 	public abstract AreaRestaurantEntity toEntity();
-	
+
+	public abstract AreaRestaurantDTO toDTO() ;
 	
 }

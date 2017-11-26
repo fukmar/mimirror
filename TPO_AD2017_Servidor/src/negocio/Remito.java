@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dto.ItemRemitoDTO;
+import dto.RemitoDTO;
 import entities.*;
 
 
@@ -73,6 +75,17 @@ public class Remito
 			items.add(itemsNegocio.toEntity());
 		}
 		RemitoEntity remit= new RemitoEntity(this.codigoProveedor, this.fecha, items);
+		return remit;
+	}
+	
+	public RemitoDTO toDTO() {
+		
+		List<ItemRemitoDTO> items= new ArrayList<ItemRemitoDTO>();
+		for(ItemRemito i:this.itemsRemito) {
+			items.add(i.toDTO());
+		}
+		
+		RemitoDTO remit=new RemitoDTO(this.codigoProveedor, this.fecha, items);
 		return remit;
 	}
 	

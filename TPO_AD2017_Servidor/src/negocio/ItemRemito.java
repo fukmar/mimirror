@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import dto.*;
+import dto.SolicitudIndividualDTO;
 import entities.ItemRemitoEntity;
 import entities.MateriaPrimaEntity;
 import entities.RemitoEntity;
@@ -133,6 +135,19 @@ public class ItemRemito {
 		item.setSolicitudes(solicitudesentity);
 		return item;
 		
+	}
+
+
+	public ItemRemitoDTO toDTO() {
+		List<SolicitudIndividualDTO> solis= new ArrayList<SolicitudIndividualDTO>();
+		for(SolicitudIndividual solComun : this.solicitudes) {
+			solis.add(solComun.toDTO());
+		}
+
+		ItemRemitoDTO itemDTO= new ItemRemitoDTO(this.codItemRemito, Math.round(this.cantidad), this.estadoremito, this.materiaprima.toDTO(), solis);
+		
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

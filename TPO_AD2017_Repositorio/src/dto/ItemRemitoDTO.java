@@ -21,12 +21,11 @@ public class ItemRemitoDTO implements Serializable{
 	private List<SolicitudIndividualDTO> solicitudes;
 
 	
-	public ItemRemitoDTO(Integer codItemRemito, Integer cantidad, RemitoDTO remito, EstadoItemRemito estadoremito,
+	public ItemRemitoDTO(Integer codItemRemito, Integer cantidad, EstadoItemRemito estadoremito,
 			MateriaPrimaDTO materiaprima, List<SolicitudIndividualDTO> solicitudes) {
 		super();
 		this.codItemRemito = codItemRemito;
 		this.cantidad = cantidad;
-		this.remito = remito;
 		this.estadoremito = estadoremito;
 		this.materiaprima = materiaprima;
 		this.solicitudes = solicitudes;

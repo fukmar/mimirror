@@ -12,6 +12,7 @@ import bd.BusinessDelegate;
 import controlador.Controlador;
 import dao.*;
 import dto.ComandaDTO;
+import dto.DepositoDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
@@ -165,7 +166,7 @@ public class testHibernate3 {
 		//DSECOMENTAR PARA CREAR BASE
 		session.save(local);
 		session.save(salon);
-		session.save(sector);
+		//session.save(sector);
 		session.save(admi);
 		session.save(mozo);
 		session.save(plato);
@@ -221,6 +222,8 @@ public class testHibernate3 {
 		session.save(plato);
 		session.getTransaction().commit();
 		session.close();
+		
+		
 		
 		
 		
@@ -404,5 +407,13 @@ public class testHibernate3 {
 	    System.out.println("comisiones:"+comision);
 	    System.out.println("EL TPO pedía mostrar primero el importe sin comision, luego la comision y luego el total..es solo formateo");
 	    
+		
+		List<Deposito> depositos= DepositoDAO.getInstancia().getDepositos();
+	
+		for(Deposito depo: depositos) {
+			DepositoDTO prueba =depo.toDTO2();
+			System.out.println(prueba.getCodDeposito());
+		}
+		
 }
 }

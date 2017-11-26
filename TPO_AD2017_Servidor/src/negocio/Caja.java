@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import dto.AreaRestaurantDTO;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
 import entities.CajaEntity;
@@ -49,6 +50,12 @@ public class Caja extends AreaRestaurant
 		c.setSalon(salon.toEntity());
 		c.setLocal(local.toEntity());
 		return c;
+	}
+
+	@Override
+	public AreaRestaurantDTO toDTO() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

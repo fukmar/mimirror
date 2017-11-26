@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import dto.*;
 import entities.*;
 import enumns.EstadoSolicitud;
 
@@ -152,6 +154,11 @@ public class SolicitudIndividual  {
 		s.setEstado(estado);
 		s.setResponsable(responsable);
 		return s;
+	}
+	
+	public SolicitudIndividualDTO toDTO() {
+		SolicitudIndividualDTO soli =new SolicitudIndividualDTO(this.area.toDTO(), this.responsable, this.lote, this.fechaCompra, this.fechaVencimiento, this.motivo, this.materiaprima.toDTO(), this.cantidad, this.solicitudDiaria.toDTO(), this.estado);
+		return soli;
 	}
 	
 	
