@@ -178,7 +178,7 @@ public class Controlador {
 		return mozos;
 	}
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
-	//LISTAR MESAS
+	// MESAS
 	public List<MesaDTO> listarMesas() 
 	{
 		List<MesaDTO> mesas=new ArrayList<MesaDTO>();
@@ -188,6 +188,14 @@ public class Controlador {
 			mesas.add(m.toDTO());
 		}
 		return mesas;
+	}
+	
+	public MesaDTO listarMesaPorCod(Integer codMesa) 
+	{
+		MesaDTO mesa=new MesaDTO();
+		Mesa mesaN=MesaDAO.getInstance().obtenerMesaPorCod(codMesa);
+		mesa=mesaN.toDTO();
+		return mesa;
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------------------------------

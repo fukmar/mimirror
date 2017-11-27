@@ -46,6 +46,8 @@ public interface manejoNegocio extends Remote
 	public List<MozoDTO> mostrarMozos() throws RemoteException,MozoException; 
 	//MESAS
 	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException;
+	public MesaDTO BuscarMesaPorCod(Integer codMesa)throws RemoteException,MesaException;
+	
 	//SECTORES
 	public List<SectorDTO> mostrarSectores() throws RemoteException,SectorException;
 	//SALONES

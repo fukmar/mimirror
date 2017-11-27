@@ -7,6 +7,7 @@ import java.util.List;
 import bd.BusinessDelegate;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
+import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
@@ -14,6 +15,7 @@ import enumns.CategoriaPlato;
 import enumns.MedioDePago;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
+import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
@@ -128,6 +130,19 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} catch (PlatoException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	
+	//BUSCAR MESA POR CODIGO
+	try {
+		MesaDTO mesa2=BusinessDelegate.getInstance().BuscarMesaPorCod(1);
+		System.out.println("La MESA buscada es: "+mesa2.toString());
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (MesaException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

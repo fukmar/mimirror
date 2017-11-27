@@ -137,6 +137,11 @@ public class BusinessDelegate
 		return remoteObject.mostrarMesas();
 	}
 	
+	public MesaDTO BuscarMesaPorCod(Integer codMesa) throws RemoteException, MesaException 
+	{
+		return remoteObject.BuscarMesaPorCod(codMesa);
+	}
+	
 	//-----------------------------------SECTORES-------------------------------------------------------------------------
 	public List<SectorDTO> mostrarSectores() throws RemoteException, SectorException
 	{

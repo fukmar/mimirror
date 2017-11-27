@@ -35,11 +35,14 @@ private static SessionFactory sf=null;
 		return instancia;
 	}
 	
-	public MesaEntity obtenerMesa(int nromesa){
+	public Mesa obtenerMesaPorCod(int nromesa)
+	{
+		Mesa mesa=new Mesa();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		MesaEntity mesa=new MesaEntity();
-		mesa = (MesaEntity)session.createQuery("FROM MesaEntity m WHERE m.codMesa=?").setInteger(0,nromesa).setFirstResult(0).setMaxResults(1).uniqueResult();
+		//MesaEntity mesa=new MesaEntity();
+		MesaEntity resu= (MesaEntity)session.createQuery("FROM MesaEntity m WHERE m.codMesa=?").setInteger(0,nromesa).setFirstResult(0).setMaxResults(1).uniqueResult();
+		mesa=resu.toNegocio();
 		return mesa;
 	}
 	
