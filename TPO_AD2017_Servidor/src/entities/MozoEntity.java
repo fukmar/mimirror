@@ -61,6 +61,22 @@ public class MozoEntity {
 	public void setProcentajeComision(Float procentajeComision) {
 		this.porcentajeComision = procentajeComision;
 	}
+	
+	public Float getPorcentajeComision() {
+		return porcentajeComision;
+	}
+
+	public void setPorcentajeComision(Float porcentajeComision) {
+		this.porcentajeComision = porcentajeComision;
+	}
+
+	public SectorEntity getSector() {
+		return sector;
+	}
+
+	public void setSector(SectorEntity sector) {
+		this.sector = sector;
+	}
 
 	public Mozo toNegocio() 
 	{

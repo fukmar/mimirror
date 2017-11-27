@@ -73,7 +73,8 @@ public class Mozo {
 		m.setDni(dni);
 		m.setNombre(nombre);
 		m.setApellido(apellido);
-		m.setProcentajeComision(porcentajeComision);
+		m.setSector(sector.toEntity());
+		m.setPorcentajeComision(porcentajeComision);
 		return m;
 	}
 
