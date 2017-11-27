@@ -16,11 +16,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import bd.BusinessDelegate;
 import dto.ComandaDTO;
+import dto.MesaDTO;
+import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
+import dto.SectorDTO;
 import exceptions.ComandaException;
+import exceptions.MesaException;
+import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
+import exceptions.SectorException;
 
 
 /**
@@ -107,12 +113,55 @@ public class Controller extends HttpServlet {
 			List<ComandaDTO> comandas = new ArrayList<ComandaDTO>();
 			try {
 				comandas = BusinessDelegate.getInstance().mostrarComandas();
+				
 				request.setAttribute("comandas", comandas);
 				RequestDispatcher rd = request.getRequestDispatcher("/verComandas.jsp");
 				rd.forward(request, response);
 			} catch (ComandaException e) {
 				System.out.println(e.getMessage());
 			}
+
+		}
+		
+		if(opcion.equals("verDatosParaCargarComanda")){
+			
+			List<PlatoDTO> platos = new ArrayList<PlatoDTO>();
+			List<MozoDTO> mozos = new ArrayList<MozoDTO>();
+			List<SectorDTO> sectores = new ArrayList<SectorDTO>();
+			List<MesaDTO> mesas = new ArrayList<MesaDTO>();
+			
+			
+			try {
+				platos = BusinessDelegate.getInstance().listarPlatos();
+				request.setAttribute("platos", platos);
+			} catch (PlatoException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				mozos = BusinessDelegate.getInstance().mostrarMozos();
+				request.setAttribute("mozos", mozos);
+			} catch (MozoException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				sectores = BusinessDelegate.getInstance().mostrarSectores();
+				request.setAttribute("sectores", sectores);
+			} catch (SectorException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				mesas = BusinessDelegate.getInstance().mostrarMesas();
+				request.setAttribute("mesas", mesas);
+			} catch (MesaException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			request.setAttribute("datosParaComanda", "listos");
+			RequestDispatcher rd = request.getRequestDispatcher("/cargarComanda.jsp");
+			rd.forward(request, response);
 
 		}
 		

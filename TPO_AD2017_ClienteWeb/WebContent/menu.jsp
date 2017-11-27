@@ -18,6 +18,8 @@
 			 
 		submmenus = new HashMap<String,String>();		
 			 submmenus.put("Ver Comandas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verComandas");
+			 submmenus.put("Cargar Comandas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verDatosParaCargarComanda");
+				
 			 menus.put("Comandas", submmenus);
             
 			 submmenus = new HashMap<String,String>();
