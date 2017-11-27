@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dto.MateriaPrimaDTO;
+import dto.SemiElaboradoDTO;
 import entities.*;
 
 
@@ -16,9 +18,9 @@ public class SemiElaborado extends Producto
 	public SemiElaborado (){}
 	
 	
-	public SemiElaborado(String tipo, String calidad, String descripcion,PlanDeProduccion pdp, Integer cantidad, Date caducidad, List<MateriaPrima> materiales,Unidad unidad) 
+	public SemiElaborado(String tipo, String calidad, String descripcion, Integer cantidad, Date caducidad, List<MateriaPrima> materiales,Unidad unidad) 
 	{
-		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
+		super(tipo, calidad, descripcion, cantidad, caducidad);
 		this.materiales = materiales;
 		this.unidad = unidad;
 	
@@ -46,7 +48,23 @@ public class SemiElaborado extends Producto
 	 * a la funcion que viene le pongo otro nombre*/
 	 
 	public SemiElaboradoEntity toEntitySemi() {
-		SemiElaboradoEntity semi=new SemiElaboradoEntity(this.tipo, this.calidad, this.descripcion, this.pdp.toEntity(), this.cantidad, this.caducidad, this.unidad.toEntity());
+		SemiElaboradoEntity semi=new SemiElaboradoEntity(this.tipo, this.calidad, this.descripcion, this.cantidad, this.caducidad, this.unidad.toEntity());
+		return semi;
+	}
+	public SemiElaboradoDTO toDTO() {
+		SemiElaboradoDTO semi=new SemiElaboradoDTO();
+		semi.setCaducidad(caducidad);
+		semi.setCalidad(calidad);
+		semi.setCantidad(cantidad);
+		semi.setDescripcion(descripcion);
+		semi.setTipo(tipo);
+		List<MateriaPrimaDTO> materialesdto=new ArrayList <MateriaPrimaDTO>();
+		for(MateriaPrima material:materiales)
+		{
+			materialesdto.add(material.toDTO());
+		}
+		semi.setMateriales(materialesdto);
+		semi.setUnidad(unidad.toDTO());
 		return semi;
 	}
 

@@ -19,7 +19,7 @@ import dto.PlatoDTO;
 import entities.*;
 import enumns.AreaRest;
 import enumns.Estado;
-import enumns.EstadoItemRemito;
+import enumns.EstadoRemito;
 import enumns.EstadoSolicitud;
 import enumns.MedioDePago;
 import enumns.Temporada;
@@ -32,6 +32,7 @@ import negocio.Ingrediente;
 import negocio.Local;
 import negocio.Mesa;
 import negocio.Mozo;
+import negocio.PlanDeProduccion;
 import negocio.Plato;
 import negocio.Remito;
 import negocio.Salon;
@@ -52,9 +53,7 @@ public class testHibernate3 {
 		Date fecha = new Date("10/10/2020");
 		
 		
-		MateriaPrimaEntity materia = new MateriaPrimaEntity("PapasAlDeposito",ue, 1000f);
-		List<MateriaPrimaEntity> materiapedido = new ArrayList<MateriaPrimaEntity>();
-		materiapedido.add(materia);
+
 
 		
 		
@@ -64,14 +63,16 @@ public class testHibernate3 {
 		
 	
 		List<ItemRemitoEntity> itemsremito = new ArrayList<ItemRemitoEntity>();
-		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito);
+		RemitoEntity remito = new RemitoEntity(1,fecha,itemsremito,EstadoRemito.EnProceso);
 		
 		
 		List<RemitoEntity> remitos = new ArrayList<RemitoEntity>();
 		remitos.add(remito);
 		DepositoEntity deposito = new DepositoEntity();
 		remito.setDeposito(deposito);
-		
+		MateriaPrimaEntity materia = new MateriaPrimaEntity("PapasAlDeposito",ue, 1000f,deposito);
+		List<MateriaPrimaEntity> materiapedido = new ArrayList<MateriaPrimaEntity>();
+		materiapedido.add(materia);
 		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
 		SalonEntity salon=new SalonEntity(2,AreaRest.salon, "Salon",local);
 		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
@@ -87,25 +88,25 @@ public class testHibernate3 {
 			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
 		AdministracionEntity admi= new AdministracionEntity(5, AreaRest.Administracion, planes, local);
-		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(Estado.EnProceso);
+		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(fecha,Estado.EnProceso,admi);
 		pdp.setAdministracion(admi);
 		planes.add(pdp);
 	
-		MateriaPrimaEntity mpe = new MateriaPrimaEntity("Papas",ue, 3000f);
+		MateriaPrimaEntity mpe = new MateriaPrimaEntity("Papas",ue, 3000f,deposito);
 		mpe.setDeposito(deposito);
 		List<MateriaPrimaEntity> materiales = new ArrayList<MateriaPrimaEntity>();
 		materiales.add(mpe);
 		List<SolicitudIndividualEntity>solicitudestoitemremito=new ArrayList <SolicitudIndividualEntity>();
 
 		SolicitudIndividualEntity solicitud = new SolicitudIndividualEntity(caja, "Jorge", 1, fecha, fecha, "faltante", mpe, 20,EstadoSolicitud.Iniciada);
-		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,(float) 1500,EstadoItemRemito.Procesado,null,solicitudestoitemremito);
+		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,(float) 1500,EstadoRemito.Procesado,null,solicitudestoitemremito);
 		solicitudestoitemremito.add(solicitud);
 		itemremito.setSolicitudes(solicitudestoitemremito);
 		itemremito.setRemito(remito);
 		itemsremito.add(itemremito);
 		
-		SemiElaboradoEntity see = new SemiElaboradoEntity("Guarnicion","Extrema","Papas Fritas",pdp,1,fecha,ue);
-		SemiElaboradoEntity see2 = new SemiElaboradoEntity("Guarnicion","Extrema","Milanesa",pdp,1,fecha,ue);
+		SemiElaboradoEntity see = new SemiElaboradoEntity("Guarnicion","Extrema","Papas Fritas",1,fecha,ue);
+		SemiElaboradoEntity see2 = new SemiElaboradoEntity("Guarnicion","Extrema","Milanesa",1,fecha,ue);
 		IngredienteEntity ingrediente1=new IngredienteEntity (mpe,500);
 		IngredienteEntity ingrediente2=new IngredienteEntity (mpe,700);
 		ingrediente1.setPlatosemielaborado(see);
@@ -144,8 +145,10 @@ public class testHibernate3 {
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
 		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita);
-		
-				
+		ItemPlanProduccionEntity itemplan=new ItemPlanProduccionEntity(plato,10,0,pdp);
+		List <ItemPlanProduccionEntity> variositemplanprod=	new ArrayList <ItemPlanProduccionEntity>();
+		variositemplanprod.add(itemplan);
+		pdp.setItemspdp(variositemplanprod);
 		Temporada temp = null;
 		List<PlatoEntity> itemCarta= new ArrayList<PlatoEntity>();
 		itemCarta.add(plato);
@@ -220,6 +223,9 @@ public class testHibernate3 {
 		//session.getTransaction().commit();//
 		session.save(mozo);
 		session.save(plato);
+		session.save(itemplan);
+		session.save(pdp);
+
 		session.getTransaction().commit();
 		session.close();
 		
@@ -397,6 +403,7 @@ public class testHibernate3 {
 	    // PROBAMOS INGRESAR LA MERCADERIA DEL REMITO
 	    Remito remitoparaDAO=remito.toNegocio();
 	    RemitoDAO.getInstance().ingresarMateriaPrima(remitoparaDAO);
+	    RemitoDAO.getInstance().updateEstadoRemito(remitoparaDAO, "Procesado");
 	    //VERIFICAR LA BASE--PAPAS TENIA 1800 y ahora 3300 luego del DAO
 	    
 	    //PROBAMOS VER EL TOTAL FACTURADO ENTRE UNA FECHA Y OTRA usando as fechas que definimos para el anterior DAO
@@ -407,13 +414,25 @@ public class testHibernate3 {
 	    System.out.println("comisiones:"+comision);
 	    System.out.println("EL TPO pedía mostrar primero el importe sin comision, luego la comision y luego el total..es solo formateo");
 	    
-		
-		List<Deposito> depositos= DepositoDAO.getInstancia().getDepositos();
+	    List<Deposito> depositos= DepositoDAO.getInstancia().getDepositos();
 	
 		for(Deposito depo: depositos) {
-			DepositoDTO prueba =depo.toDTO2();
+			DepositoDTO prueba =depo.toDTO();
 			System.out.println(prueba.getCodDeposito());
 		}
 		
+		//TESTEAMOS PLAN SEGUN FECHA
+		PlanDeProduccion plan=PlanDeProduccionDAO.getInstance().obtenerPlanFecha(fecha);
+		System.out.println(plan.getCodigoPDP());
+		
+		//TESTEO CANTIDAD DE PLATOS VENDIDOS EN UN DIA ESPECIFICO DE UN PLATO ESPECIFICO
+		Long cantidadesvendidas=PlatoDAO.getInstance().getCantidadPlatosFacturados(plato.toNegocio(), fecha);
+		System.out.println(cantidadesvendidas);
+		
+		//AVANCE PLAN PRODUCCION
+		System.out.println("CODIGO PLAN DE PROD:"+pdp.getCodigoPDP());
+		PlanDeProduccionDAO.getInstance().CalcularporcentajeAvance(pdp.toNegocio());
+		PlanDeProduccion planobtenido=PlanDeProduccionDAO.getInstance().obtenerPlanFecha(fecha);
+		System.out.println(planobtenido.getAvance()*100+" Porciento");
 }
 }

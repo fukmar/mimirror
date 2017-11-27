@@ -28,7 +28,7 @@ public class ElaboradoEntity extends ProductoEntity
 
 	public ElaboradoEntity(String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
 			Integer cantidad, Date caducidad, UnidadEntity unidad, List<SemiElaboradoEntity> componentes) {
-		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
+		super(tipo, calidad, descripcion, cantidad, caducidad);
 		this.unidad = unidad;
 		this.componentes = componentes;
 	}
@@ -56,7 +56,6 @@ public class ElaboradoEntity extends ProductoEntity
 		e.setCalidad(calidad);
 		e.setDescripcion(descripcion);
 		e.setTipo(tipo);
-		e.setPdp(pdp.toNegocio());
 		e.setUnidad(unidad.toNegocio());
 		List <SemiElaborado> semisnegocio=new ArrayList <SemiElaborado>();
 		for(SemiElaboradoEntity semi:this.getComponentes())

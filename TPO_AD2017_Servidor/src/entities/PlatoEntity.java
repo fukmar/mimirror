@@ -23,54 +23,6 @@ public class PlatoEntity
 	private String nombre;
 	private float precio;
 	private CategoriaPlato categoria;
-	
-/*	public PlatoEntity(Integer codigo, String nombre, float precio, CategoriaPlato categoria,
-			List<ElaboradoEntity> productoPlato, CartaEntity carta) {
-		super();
-		this.codigo = codigo;
-		this.nombre = nombre;
-		this.precio = precio;
-		this.categoria = categoria;
-		this.productoPlato = productoPlato;
-		this.carta = carta;
-	}*/
-
-	public PlatoEntity(String nombre, float precio, CategoriaPlato categoria, List<ElaboradoEntity> productoPlato,
-			CartaEntity carta) {
-		super();
-		this.nombre = nombre;
-		this.precio = precio;
-		this.categoria = categoria;
-		this.productoPlato = productoPlato;
-		this.carta = carta;
-	}
-	
-	public PlatoEntity(){}
-
-	public PlatoEntity(String nombre, float precio, List<ElaboradoEntity> productoPlato) {
-		super();
-	
-		this.nombre = nombre;
-		this.precio = precio;
-		this.productoPlato = productoPlato;
-	}
-
-	public CategoriaPlato getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(CategoriaPlato categoria) {
-		this.categoria = categoria;
-	}
-
-	public CartaEntity getCarta() {
-		return carta;
-	}
-
-	public void setCarta(CartaEntity carta) {
-		this.carta = carta;
-	}
-
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="platocompuestode",
 	joinColumns=@JoinColumn(name="codPlato",referencedColumnName="codPlato"),
@@ -81,7 +33,52 @@ public class PlatoEntity
     @JoinColumn(name="codCarta", nullable=false)
     private CartaEntity carta;
 	
-	
+	/*	public PlatoEntity(Integer codigo, String nombre, float precio, CategoriaPlato categoria,
+	List<ElaboradoEntity> productoPlato, CartaEntity carta) {
+super();
+this.codigo = codigo;
+this.nombre = nombre;
+this.precio = precio;
+this.categoria = categoria;
+this.productoPlato = productoPlato;
+this.carta = carta;
+}*/
+
+public PlatoEntity(String nombre, float precio, CategoriaPlato categoria, List<ElaboradoEntity> productoPlato,
+	CartaEntity carta) {
+super();
+this.nombre = nombre;
+this.precio = precio;
+this.categoria = categoria;
+this.productoPlato = productoPlato;
+this.carta = carta;
+}
+
+public PlatoEntity(){}
+
+public PlatoEntity(String nombre, float precio, List<ElaboradoEntity> productoPlato) {
+super();
+
+this.nombre = nombre;
+this.precio = precio;
+this.productoPlato = productoPlato;
+}
+
+public CategoriaPlato getCategoria() {
+return categoria;
+}
+
+public void setCategoria(CategoriaPlato categoria) {
+this.categoria = categoria;
+}
+
+public CartaEntity getCarta() {
+return carta;
+}
+
+public void setCarta(CartaEntity carta) {
+this.carta = carta;
+}
 
 
 	public Integer getCodigo() {

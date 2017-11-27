@@ -7,6 +7,7 @@ import java.util.List;
 import dto.ItemRemitoDTO;
 import dto.RemitoDTO;
 import entities.*;
+import enumns.EstadoRemito;
 
 
 public class Remito 
@@ -16,20 +17,29 @@ public class Remito
 	private Date fecha;
     private Deposito deposito;
 	private List<ItemRemito> itemsRemito;
-	
+	private EstadoRemito estado;
 		
 	public Remito(){}
 		
-	public Remito(Integer codigoProveedor, Date fecha,
-			List<ItemRemito> itemsRemito
-			) {
+	public Remito(Integer codigoProveedor, Date fecha, Deposito deposito, List<ItemRemito> itemsRemito,
+			EstadoRemito estado) {
 		super();
 		this.codigoProveedor = codigoProveedor;
 		this.fecha = fecha;
+		this.deposito = deposito;
 		this.itemsRemito = itemsRemito;
-		//this.ordendeCompra = ordendeCompra;
+		this.estado = estado;
 	}
+
 	
+	public EstadoRemito getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoRemito estado) {
+		this.estado = estado;
+	}
+
 	public Deposito getDeposito() {
 		return deposito;
 	}
@@ -71,10 +81,16 @@ public class Remito
 	public RemitoEntity toEntity() {
 		List<ItemRemitoEntity> items = new ArrayList<ItemRemitoEntity>();
 		
-		for(ItemRemito itemsNegocio: this.itemsRemito) {
-			items.add(itemsNegocio.toEntity());
+		for(ItemRemito itemnegocio: this.itemsRemito) {
+			items.add(itemnegocio.toEntity());
 		}
-		RemitoEntity remit= new RemitoEntity(this.codigoProveedor, this.fecha, items);
+		RemitoEntity remit= new RemitoEntity();
+		remit.setCodigoProveedor(codigoProveedor);
+		remit.setFecha(fecha);
+		remit.setItemsRemito(items);
+		remit.setEstado(estado);
+		remit.setCodRemito(codRemito);
+		remit.setDeposito(deposito.toEntity());
 		return remit;
 	}
 	
@@ -85,7 +101,13 @@ public class Remito
 			items.add(i.toDTO());
 		}
 		
-		RemitoDTO remit=new RemitoDTO(this.codigoProveedor, this.fecha, items);
+		RemitoDTO remit=new RemitoDTO();
+		remit.setCodigoProveedor(codigoProveedor);
+		remit.setCodRemito(codRemito);
+		remit.setDeposito(deposito.toDTO());
+		remit.setFecha(fecha);
+		remit.setItemsRemito(items);
+		remit.setEstado(estado);
 		return remit;
 	}
 	

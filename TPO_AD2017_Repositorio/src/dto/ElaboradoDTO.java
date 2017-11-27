@@ -16,9 +16,9 @@ public class ElaboradoDTO extends ProductoDTO implements Serializable{
 	public ElaboradoDTO(){}
 	
 
-	public ElaboradoDTO(String tipo, String calidad, String descripcion, PlanDeProduccionDTO pdp,
+	public ElaboradoDTO(String tipo, String calidad, String descripcion,
 			Integer cantidad, Date caducidad, UnidadDTO unidad, List<SemiElaboradoDTO> componentes) {
-		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
+		super(tipo, calidad, descripcion,  cantidad, caducidad);
 		this.unidad = unidad;
 		this.componentes = componentes;
 	}

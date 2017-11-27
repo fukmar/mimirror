@@ -20,18 +20,10 @@ public class MateriaPrimaEntity
 	private UnidadEntity unidadUso;
 	private Float cantidad;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne
     @JoinColumn(name="codDeposito")
     private DepositoEntity deposito;
 	
-
-	public MateriaPrimaEntity(String descripcion, UnidadEntity unidadUso, Float cantidad) {
-		super();
-	
-		this.descripcion = descripcion;
-		this.unidadUso = unidadUso;
-		this.setCantidad(cantidad);
-	}
 
 
 	public MateriaPrimaEntity( String descripcion, UnidadEntity unidadUso, Float cantidad,
@@ -84,6 +76,14 @@ public class MateriaPrimaEntity
 	public void setUnidadUso(UnidadEntity unidadUso) {
 		this.unidadUso = unidadUso;
 	}
+	public Float getCantidad() {
+		return cantidad;
+	}
+
+
+	public void setCantidad(Float cantidad) {
+		this.cantidad = cantidad;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -123,19 +123,9 @@ public class MateriaPrimaEntity
 		m.setCantidad(cantidad);
 		m.setCodigo(codigo);
 		m.setDescripcion(descripcion);
+		m.setDeposito(deposito.toNegocio());
 		m.setUnidadUso(unidadUso.toNegocio());
 		return m;
 	}
-
-
-	public Float getCantidad() {
-		return cantidad;
-	}
-
-
-	public void setCantidad(Float cantidad) {
-		this.cantidad = cantidad;
-	}
-	
 
 }

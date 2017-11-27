@@ -18,9 +18,6 @@ public abstract class ProductoEntity
 	protected String calidad;
 	protected String descripcion;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	protected PlanDeProduccionEntity pdp;
-	
 	protected Integer cantidad;
 	protected Date caducidad;
 	
@@ -30,14 +27,13 @@ public abstract class ProductoEntity
 	
 
 
-	public ProductoEntity(String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
+	public ProductoEntity(String tipo, String calidad, String descripcion, 
 			Integer cantidad, Date caducidad) {
 		super();
 		
 		this.tipo = tipo;
 		this.calidad = calidad;
 		this.descripcion = descripcion;
-		this.pdp = pdp;
 		this.cantidad = cantidad;
 		this.caducidad = caducidad;
 	}
@@ -81,22 +77,6 @@ public abstract class ProductoEntity
 	public void setCalidad(String calidad) {
 		this.calidad = calidad;
 	}
-
-
-
-
-	public PlanDeProduccionEntity getPdp() {
-		return pdp;
-	}
-
-
-
-
-	public void setPdp(PlanDeProduccionEntity pdp) {
-		this.pdp = pdp;
-	}
-
-
 
 
 	public Integer getCantidad() {

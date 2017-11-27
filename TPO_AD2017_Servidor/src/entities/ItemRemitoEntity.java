@@ -8,7 +8,7 @@ import javax.persistence.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import enumns.EstadoItemRemito;
+import enumns.EstadoRemito;
 import hibernate.HibernateUtil;
 import negocio.Elaborado;
 import negocio.ItemRemito;
@@ -31,7 +31,7 @@ public class ItemRemitoEntity {
 	private MateriaPrimaEntity materiaprima;
 	
 	private Float cantidad;
-	private EstadoItemRemito estadoremito;
+	private EstadoRemito estadoremito;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="codRemito", nullable=false)
@@ -43,7 +43,7 @@ public class ItemRemitoEntity {
 	
 	public ItemRemitoEntity(){}
 	
-	public ItemRemitoEntity(MateriaPrimaEntity materiaprima, Float cantidad, EstadoItemRemito estadoremito,
+	public ItemRemitoEntity(MateriaPrimaEntity materiaprima, Float cantidad, EstadoRemito estadoremito,
 			RemitoEntity remito, List<SolicitudIndividualEntity> solicitudes) {
 		super();
 		this.materiaprima = materiaprima;
@@ -73,11 +73,11 @@ public class ItemRemitoEntity {
 	}
 
 
-	public EstadoItemRemito getEstadoremito() {
+	public EstadoRemito getEstadoremito() {
 		return estadoremito;
 	}
 
-	public void setEstadoremito(EstadoItemRemito estadoremito) {
+	public void setEstadoremito(EstadoRemito estadoremito) {
 		this.estadoremito = estadoremito;
 	}
 

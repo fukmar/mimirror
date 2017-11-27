@@ -14,7 +14,6 @@ public abstract class ProductoDTO implements Serializable
 	protected String descripcion;
 	
 
-	protected PlanDeProduccionDTO pdp;
 	
 	protected Integer cantidad;
 	protected Date caducidad;
@@ -24,14 +23,13 @@ public abstract class ProductoDTO implements Serializable
 	
 
 
-	public ProductoDTO(String tipo, String calidad, String descripcion, PlanDeProduccionDTO pdp,
+	public ProductoDTO(String tipo, String calidad, String descripcion,
 			Integer cantidad, Date caducidad) {
 		super();
 		
 		this.tipo = tipo;
 		this.calidad = calidad;
 		this.descripcion = descripcion;
-		this.pdp = pdp;
 		this.cantidad = cantidad;
 		this.caducidad = caducidad;
 	}
@@ -77,22 +75,6 @@ public abstract class ProductoDTO implements Serializable
 	}
 
 
-
-
-	public PlanDeProduccionDTO getPdp() {
-		return pdp;
-	}
-
-
-
-
-	public void setPdp(PlanDeProduccionDTO pdp) {
-		this.pdp = pdp;
-	}
-
-
-
-
 	public Integer getCantidad() {
 		return cantidad;
 	}
@@ -121,7 +103,7 @@ public abstract class ProductoDTO implements Serializable
 	@Override
 	public String toString() {
 		return "ProductoDTO [numero=" + codigoProd + ", tipo=" + tipo + ", calidad=" + calidad + ", descripcion="
-				+ descripcion + ", pdp=" + pdp + ", cantidad=" + cantidad + ", caducidad=" + caducidad + "]";
+				+ descripcion + ", cantidad=" + cantidad + ", caducidad=" + caducidad + "]";
 	}
 
 

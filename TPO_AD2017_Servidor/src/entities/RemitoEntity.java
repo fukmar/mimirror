@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
+import enumns.EstadoRemito;
 import negocio.*;
 
 
@@ -19,8 +20,7 @@ public class RemitoEntity {
 	
 	private Integer codigoProveedor;
 	private Date fecha;
-	
-	
+	private EstadoRemito estado;
 
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="codDeposito", nullable=false)
@@ -39,15 +39,24 @@ public class RemitoEntity {
 	public RemitoEntity(){}
 		
 	public RemitoEntity(Integer codigoProveedor, Date fecha,
-			List<ItemRemitoEntity> itemsRemito) {
+			List<ItemRemitoEntity> itemsRemito,EstadoRemito estado ) {
 		super();
 		this.codigoProveedor = codigoProveedor;
+		this.estado=estado;
 		this.fecha = fecha;
 		this.itemsRemito = itemsRemito;
 		this.ordendeCompra = ordendeCompra;
 	}
 	
 	
+	public EstadoRemito getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoRemito estado) {
+		this.estado = estado;
+	}
+
 	public List<ItemRemitoEntity> getItemsRemito() {
 		return itemsRemito;
 	}
@@ -109,6 +118,7 @@ public class RemitoEntity {
 		r.setCodRemito(codRemito);
 		r.setFecha(fecha);
 		r.setItemsRemito(items);
+		r.setEstado(estado);
 		return r;
 	}
 }

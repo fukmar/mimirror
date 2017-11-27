@@ -20,9 +20,9 @@ public class SemiElaboradoEntity extends ProductoEntity
 		
 	public SemiElaboradoEntity (){}
 	
-	public SemiElaboradoEntity(String tipo, String calidad, String descripcion, PlanDeProduccionEntity pdp,
+	public SemiElaboradoEntity(String tipo, String calidad, String descripcion,
 			Integer cantidad, Date caducidad, UnidadEntity unidad) {
-		super(tipo, calidad, descripcion, pdp, cantidad, caducidad);
+		super(tipo, calidad, descripcion, cantidad, caducidad);
 		this.unidad = unidad;
 	}
 
@@ -41,7 +41,6 @@ public class SemiElaboradoEntity extends ProductoEntity
 		s.setCantidad(cantidad);
 		s.setDescripcion(descripcion);
 		s.setNumero(getNumero());
-		s.setPdp(pdp.toNegocio());
 		s.setTipo(tipo);
 		s.setUnidad(unidad.toNegocio());
 		return s;

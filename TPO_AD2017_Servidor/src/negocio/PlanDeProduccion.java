@@ -1,7 +1,16 @@
 package negocio;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+
+import dto.ItemPlanProduccionDTO;
+import dto.PlanDeProduccionDTO;
 import entities.*;
-import entities.PlanDeProduccionEntity;
 import enumns.Estado;
 
 public class PlanDeProduccion 
@@ -9,6 +18,9 @@ public class PlanDeProduccion
 	private Integer codigoPDP;
 	private Estado estado;
 	private Administracion administracion;
+	private List<ItemPlanProduccion> itemspdp;
+	private Date fechaplan;
+	private double avance;
 	
 	public PlanDeProduccion(){}
 	
@@ -17,6 +29,24 @@ public class PlanDeProduccion
 		
 		this.estado = estado;
 	}
+	
+	public PlanDeProduccion(Estado estado, Administracion administracion, List<ItemPlanProduccion> itemspdp,
+			Date fechaplan) {
+		super();
+		this.estado = estado;
+		this.administracion = administracion;
+		this.itemspdp = itemspdp;
+		this.fechaplan = fechaplan;
+	}
+
+	public Date getFechaplan() {
+		return fechaplan;
+	}
+
+	public void setFechaplan(Date fechaplan) {
+		this.fechaplan = fechaplan;
+	}
+
 	public Integer getCodigoPDP() {
 		return codigoPDP;
 	}
@@ -30,6 +60,14 @@ public class PlanDeProduccion
 		this.estado = estado;
 	}
 
+	public double getAvance() {
+		return avance;
+	}
+
+	public void setAvance(double avance) {
+		this.avance = avance;
+	}
+
 	public Administracion getAdministracion() {
 		return administracion;
 	}
@@ -38,9 +76,44 @@ public class PlanDeProduccion
 		this.administracion = administracion;
 	}
 	
+	public List<ItemPlanProduccion> getItemspdp() {
+		return itemspdp;
+	}
+
+	public void setItemspdp(List<ItemPlanProduccion> itemspdp) {
+		this.itemspdp = itemspdp;
+	}
+
 	public PlanDeProduccionEntity toEntity() {
-		PlanDeProduccionEntity plan=new PlanDeProduccionEntity(this.estado);
+		PlanDeProduccionEntity plan=new PlanDeProduccionEntity();
+		plan.setAdministracion(administracion.toEntity());
+		List <ItemPlanProduccionEntity> planesentity= new ArrayList <ItemPlanProduccionEntity>();
+		for (ItemPlanProduccion itemplan:itemspdp)
+		{
+			planesentity.add(itemplan.toEntity());
+		}
+		plan.setItemspdp(planesentity);
+		plan.setCodigoPDP(codigoPDP);
+		plan.setEstado(estado);
+		plan.setFechaplan(fechaplan);
+		plan.setAvance(avance);
 		return plan;
 	}
+	public PlanDeProduccionDTO toDTO() {
+		PlanDeProduccionDTO plandto=new PlanDeProduccionDTO();
+		plandto.setAdministracion(administracion.toDTO());
+		plandto.setCodigoPDP(codigoPDP);
+		plandto.setEstado(estado);
+		plandto.setFechaplan(fechaplan);
+		List <ItemPlanProduccionDTO> planesdto= new ArrayList <ItemPlanProduccionDTO>();
+		for (ItemPlanProduccion itemplan:itemspdp)
+		{
+			planesdto.add(itemplan.toDTO());
+		}
+		plandto.setItemspdp(planesdto);
+		plandto.setAvance(avance);
+		return plandto;
+	}
+	
 	
 }

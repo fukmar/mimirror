@@ -45,6 +45,7 @@ public class HibernateUtil
              config.addAnnotatedClass(IngredienteEntity.class);
              config.addAnnotatedClass(SolicitudIndividualEntity.class);
              config.addAnnotatedClass(SolicitudDiariaEntity.class);
+             config.addAnnotatedClass(ItemPlanProduccionEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)

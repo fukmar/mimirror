@@ -31,6 +31,7 @@ import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import enumns.AreaRest;
 import enumns.Estado;
+import enumns.EstadoRemito;
 import enumns.MedioDePago;
 import enumns.Temporada;
 import exceptions.ComandaException;
@@ -45,7 +46,8 @@ public class testCliente
 	
 		UnidadDTO ue = new UnidadDTO("gramos");
 		Date fecha = new Date("10/10/2020");
-		
+		DepositoDTO deposito=new DepositoDTO();
+		deposito.setCodDeposito(1);
 		//Materia Prima
 		MateriaPrimaDTO materia = new MateriaPrimaDTO("PapasAlDeposito",ue, 1000f);
 		List<MateriaPrimaDTO> materiapedido = new ArrayList<MateriaPrimaDTO>();
@@ -57,7 +59,8 @@ public class testCliente
 		itemsremito.add(itemremito);
 		
 		//REMITO
-		RemitoDTO remito = new RemitoDTO(1,fecha,itemsremito);
+		RemitoDTO remito = new RemitoDTO(1,fecha,deposito,itemsremito,EstadoRemito.EnProceso);
+	
 		itemremito.setRemito(remito);
 		List<RemitoDTO> remitos = new ArrayList<RemitoDTO>();
 		remitos.add(remito);
@@ -65,7 +68,6 @@ public class testCliente
 		
 		//SOLICITUD INSUMO
 		List<SolicitudIndividualDTO> solicitudes = new ArrayList<SolicitudIndividualDTO>();
-		DepositoDTO deposito = new DepositoDTO();
 		remito.setDeposito(deposito);
 		
 		
@@ -125,7 +127,7 @@ public class testCliente
 		componentes.add(see2);
 		
 		//ELABORADOS
-		ElaboradoDTO ee = new ElaboradoDTO("Tipo","Calidad","Milanesa con Papas fritas",pdp,1,fecha, ue, componentes);
+		ElaboradoDTO ee = new ElaboradoDTO("Tipo","Calidad","Milanesa con Papas fritas",1,fecha, ue, componentes);
 		List<ElaboradoDTO> elabs = new ArrayList<ElaboradoDTO>();
 		elabs.add(ee);
 		

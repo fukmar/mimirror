@@ -1,15 +1,18 @@
 package dao;
-
+import enumns.CategoriaPlato;
+import enumns.EstadoRemito;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.ItemRemitoEntity;
 import entities.PlatoEntity;
 import entities.RemitoEntity;
+import entities.SolicitudIndividualEntity;
 import enumns.EstadoSolicitud;
 import hibernate.HibernateUtil;
 import negocio.ItemRemito;
@@ -57,23 +60,46 @@ public class RemitoDAO {
 	}
 	public void ingresarMateriaPrima (Remito r)
 	{		
-		
-		for(ItemRemito item:r.getItemsRemito())
+		if (r.getEstado()==EstadoRemito.EnProceso)
 		{
-			float cantidadingresada=item.getCantidad();
-			float cantidadactual=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(item.getMateriaprima());
-			float cantidadfinal=cantidadingresada+cantidadactual;
-			MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaPorId(item.getMateriaprima().getCodigo());
-			MateriaPrimaDAO.getInstance().updateCantidadMateriaPrima(mp, cantidadfinal);
-			for (SolicitudIndividual solicitud: item.getSolicitudes())
-			{
-				SolicitudIndividualDAO.getInstance().updateEstadoSolicitudIndividual(solicitud, EstadoSolicitud.Recibida);
-			}
-				
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+			Session session = sf.openSession();
+			session.beginTransaction();
+			for(ItemRemito item:r.getItemsRemito())
+				{
+					float cantidadingresada=item.getCantidad();
+					float cantidadactual=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(item.getMateriaprima());
+					float cantidadfinal=cantidadingresada+cantidadactual;
+					MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaPorId(item.getMateriaprima().getCodigo());
+					MateriaPrimaDAO.getInstance().updateCantidadMateriaPrima(mp, cantidadfinal);
+					for (SolicitudIndividual solicitud: item.getSolicitudes())
+					{
+						SolicitudIndividualDAO.getInstance().updateEstadoSolicitudIndividual(solicitud, EstadoSolicitud.Recibida);
+					}
+				}
+		}
+	}
+	
+	
+		public void updateEstadoRemito(Remito remito, String estado)
+		{
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+			Session session=sf.openSession();
+			session.beginTransaction();
+			EstadoRemito estadoremito=estadoremitofromString(estado);
+			Query query=session.createQuery("update from RemitoEntity r set r.estado = ? where codRemito= ? ");
+	 		query.setParameter(0, estadoremito);
+			query.setFloat(1,remito.getCodRemito());
+			query.executeUpdate();
+			session.getTransaction().commit();
+			session.close();
 		}
 		
+		
+		private EstadoRemito estadoremitofromString(String estado)
+		{
+			return EstadoRemito.valueOf(estado);
+		}
 	}
 
-	
-	
-}
+

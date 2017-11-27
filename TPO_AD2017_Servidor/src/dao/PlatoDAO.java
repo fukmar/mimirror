@@ -1,5 +1,7 @@
 package dao;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -7,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.MateriaPrimaEntity;
+import entities.PlanDeProduccionEntity;
 import entities.PlatoEntity;
 import entities.UnidadEntity;
 import enumns.CategoriaPlato;
@@ -141,6 +144,18 @@ public class PlatoDAO
 	private CategoriaPlato categoriafromString(String categoria)
 	{
 		return CategoriaPlato.valueOf(categoria);
+	}
+	
+	public Long getCantidadPlatosFacturados (Plato p,Date fecha)
+	{
+		SimpleDateFormat sformat=new SimpleDateFormat("dd-MM-YYYY");
+		String fromDate=null;
+		fromDate=sformat.format(fecha);
+		Session s=sf.openSession();
+		s.beginTransaction();
+		Long cantidaddelplato= (Long) s.createQuery("select sum(ic.cantidad) FROM ItemFacturaEntity i join i.factura f join i.itemcomanda ic  WHERE f.fecha=? and ic.plato.codigo=?").setString(0, fromDate).setInteger(1, p.getCodigo()).uniqueResult();
+		s.getTransaction().commit();
+		return cantidaddelplato;
 	}
 	//FALTA
 	/*private PlatoEntity toEntity(Plato plato) {	

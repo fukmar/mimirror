@@ -1,6 +1,7 @@
 package entities;
 import javax.persistence.*;
 
+import dto.AdministracionDTO;
 import negocio.Administracion;
 import negocio.Elaborado;
 import negocio.PlanDeProduccion;

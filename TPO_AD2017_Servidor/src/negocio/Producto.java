@@ -11,23 +11,18 @@ private Integer codigoProd;
 	protected String tipo;
 	protected String calidad;
 	protected String descripcion;
-	protected PlanDeProduccion pdp;
 	protected Integer cantidad;
 	protected Date caducidad;
 	
 	public Producto(){}
-	
-	
 
-
-	public Producto(String tipo, String calidad, String descripcion, PlanDeProduccion pdp,
+	public Producto(String tipo, String calidad, String descripcion, 
 			Integer cantidad, Date caducidad) {
 		super();
 		
 		this.tipo = tipo;
 		this.calidad = calidad;
 		this.descripcion = descripcion;
-		this.pdp = pdp;
 		this.cantidad = cantidad;
 		this.caducidad = caducidad;
 	}
@@ -71,23 +66,6 @@ private Integer codigoProd;
 	public void setCalidad(String calidad) {
 		this.calidad = calidad;
 	}
-
-
-
-
-	public PlanDeProduccion getPdp() {
-		return pdp;
-	}
-
-
-
-
-	public void setPdp(PlanDeProduccion pdp) {
-		this.pdp = pdp;
-	}
-
-
-
 
 	public Integer getCantidad() {
 		return cantidad;

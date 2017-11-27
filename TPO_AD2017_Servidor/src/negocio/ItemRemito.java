@@ -19,14 +19,14 @@ import entities.ItemRemitoEntity;
 import entities.MateriaPrimaEntity;
 import entities.RemitoEntity;
 import entities.SolicitudIndividualEntity;
-import enumns.EstadoItemRemito;
+import enumns.EstadoRemito;
 
 public class ItemRemito {
 
 	private Integer codItemRemito;
 	private MateriaPrima materiaprima;
 	private Float cantidad;
-	private EstadoItemRemito estadoremito;
+	private EstadoRemito estadoremito;
     private Remito remito;
 	private List<SolicitudIndividual> solicitudes;
 
@@ -36,7 +36,7 @@ public class ItemRemito {
 	
 	
 	public ItemRemito(Integer codItemRemito, MateriaPrima materiaprima, Float cantidad,
-			EstadoItemRemito estadoremito, Remito remito, List<SolicitudIndividual> solicitudes) {
+			EstadoRemito estadoremito, Remito remito, List<SolicitudIndividual> solicitudes) {
 		super();
 		this.codItemRemito = codItemRemito;
 		this.materiaprima = materiaprima;
@@ -48,7 +48,7 @@ public class ItemRemito {
 	
 
 
-	public ItemRemito(MateriaPrima materiaprima, Float cantidad, EstadoItemRemito estadoremito, Remito remito,
+	public ItemRemito(MateriaPrima materiaprima, Float cantidad, EstadoRemito estadoremito, Remito remito,
 			List<SolicitudIndividual> solicitudes) {
 		super();
 		this.materiaprima = materiaprima;
@@ -90,12 +90,12 @@ public class ItemRemito {
 	}
 
 
-	public EstadoItemRemito getEstadoremito() {
+	public EstadoRemito getEstadoremito() {
 		return estadoremito;
 	}
 
 
-	public void setEstadoremito(EstadoItemRemito estadoremito) {
+	public void setEstadoremito(EstadoRemito estadoremito) {
 		this.estadoremito = estadoremito;
 	}
 

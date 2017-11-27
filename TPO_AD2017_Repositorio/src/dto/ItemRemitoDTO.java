@@ -3,7 +3,7 @@ package dto;
 import java.io.Serializable;
 import java.util.List;
 
-import enumns.EstadoItemRemito;
+import enumns.EstadoRemito;
 
 
 
@@ -16,12 +16,12 @@ public class ItemRemitoDTO implements Serializable{
 	private Integer codItemRemito;
 	private Integer cantidad;
 	private RemitoDTO remito;
-	private EstadoItemRemito estadoremito;
+	private EstadoRemito estadoremito;
 	private MateriaPrimaDTO materiaprima;
 	private List<SolicitudIndividualDTO> solicitudes;
 
 	
-	public ItemRemitoDTO(Integer codItemRemito, Integer cantidad, EstadoItemRemito estadoremito,
+	public ItemRemitoDTO(Integer codItemRemito, Integer cantidad, EstadoRemito estadoremito,
 			MateriaPrimaDTO materiaprima, List<SolicitudIndividualDTO> solicitudes) {
 		super();
 		this.codItemRemito = codItemRemito;
@@ -32,7 +32,7 @@ public class ItemRemitoDTO implements Serializable{
 	}
 	
 
-	public ItemRemitoDTO(Integer cantidad, RemitoDTO remito, EstadoItemRemito estadoremito,
+	public ItemRemitoDTO(Integer cantidad, RemitoDTO remito, EstadoRemito estadoremito,
 			MateriaPrimaDTO materiaprima, List<SolicitudIndividualDTO> solicitudes) {
 		super();
 		this.cantidad = cantidad;
@@ -89,11 +89,11 @@ public class ItemRemitoDTO implements Serializable{
 	}
 
 	
-	public EstadoItemRemito getEstadoremito() {
+	public EstadoRemito getEstadoremito() {
 		return estadoremito;
 	}
 
-	public void setEstadoremito(EstadoItemRemito estadoremito) {
+	public void setEstadoremito(EstadoRemito estadoremito) {
 		this.estadoremito = estadoremito;
 	}
 

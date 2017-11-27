@@ -6,7 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
-import dto.AreaRestaurantDTO;
+import entities.AdministracionEntity;
 import entities.AreaRestaurantEntity;
 import entities.LocalEntity;
 import entities.PlanDeProduccionEntity;
@@ -38,14 +38,29 @@ public class Administracion extends AreaRestaurant
 	}
 
 	@Override
-	public AreaRestaurantEntity toEntity() {
-		// TODO Auto-generated method stub
-		return null;
+	public AdministracionEntity toEntity() {
+		AdministracionEntity a=new AdministracionEntity();
+		a.setArea(area);
+		a.setCodArea(codArea);
+		a.setLocal(local.toEntity());
+		List <PlanDeProduccionEntity> planesentity = new ArrayList<PlanDeProduccionEntity>();
+		for (PlanDeProduccion plan: planesProd)
+		{
+			planesentity.add(plan.toEntity());
+		}
+		a.setPlanesProd(planesentity);
+		return a;
 	}
 
 	@Override
-	public AreaRestaurantDTO toDTO() {
-		return null;
+
+	public AdministracionDTO toDTO() 
+	{
+		AdministracionDTO a=new AdministracionDTO();
+		a.setArea(area);
+		a.setCodArea(codArea);
+		a.setLocal(local.toDTO());
+		return a;
 	}
 	
 	

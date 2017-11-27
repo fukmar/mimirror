@@ -16,12 +16,13 @@ public class MateriaPrima
 
 	public MateriaPrima(){}
 
-	public MateriaPrima(String descripcion, Unidad unidadUso, Float cantidad) {
+	public MateriaPrima(String descripcion, Unidad unidadUso, Float cantidad,Deposito deposito) {
 	super();
 
 	this.descripcion = descripcion;
 	this.unidadUso = unidadUso;
 	this.setCantidad(cantidad);
+	this.deposito=deposito;
 }
 
 	public Integer getCodigo() {
@@ -49,14 +50,7 @@ public class MateriaPrima
 		this.unidadUso = unidadUso;
 	}
 
-	public MateriaPrimaDTO toDTO()
-	{
-		MateriaPrimaDTO m=new MateriaPrimaDTO();
-		m.setCodigo(codigo);
-		m.setDescripcion(descripcion);
-		m.setUnidadUso(unidadUso.toDTO());
-		return m;
-	}
+
 
 	public Float getCantidad() {
 		return cantidad;
@@ -75,14 +69,26 @@ public class MateriaPrima
 	}
 	
 	public MateriaPrimaEntity toEntity() {
-		
-		MateriaPrimaEntity materia= new MateriaPrimaEntity(this.descripcion, this.unidadUso.toEntity(), this.cantidad);
+		MateriaPrimaEntity materia= new MateriaPrimaEntity();
+		materia.setCantidad(cantidad);
 		materia.setCodigo(codigo);
+		System.out.println(deposito);
 		materia.setDeposito(deposito.toEntity());
+		System.out.println(materia.getDeposito());
+		materia.setDescripcion(descripcion);
+		materia.setUnidadUso(unidadUso.toEntity());
 		return materia;
 		
 	}
-	
+	public MateriaPrimaDTO toDTO()
+	{
+		MateriaPrimaDTO m=new MateriaPrimaDTO();
+		m.setCodigo(codigo);
+		m.setDescripcion(descripcion);
+		m.setUnidadUso(unidadUso.toDTO());
+		m.setDeposito(deposito.toDTO());
+		return m;
+	}
 	
 	
 }
