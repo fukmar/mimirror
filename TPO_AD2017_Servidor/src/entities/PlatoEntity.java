@@ -6,6 +6,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import enumns.CategoriaPlato;
 import negocio.Elaborado;
 import negocio.Plato;
@@ -25,6 +28,7 @@ public class PlatoEntity
 	private CategoriaPlato categoria;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)  //cz
 	@JoinTable(name="platocompuestode",
 	joinColumns=@JoinColumn(name="codPlato",referencedColumnName="codPlato"),
 	inverseJoinColumns=@JoinColumn(name="codProducto",referencedColumnName="codProducto"))

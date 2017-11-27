@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import negocio.Elaborado;
 import negocio.SemiElaborado;
 
@@ -18,6 +21,7 @@ public class ElaboradoEntity extends ProductoEntity
 	private UnidadEntity unidad;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE) //cz
 	@JoinTable(name="compuestode",
 	joinColumns=@JoinColumn(name="codProductoE",referencedColumnName="codProducto"),
 	inverseJoinColumns=@JoinColumn(name="codProductoSM",referencedColumnName="codProducto"))
