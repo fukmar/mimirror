@@ -126,7 +126,7 @@ public class Controlador {
 	//FACTURAS
 	public  void guardarFactura(FacturaDTO factura) 
 	{
-		//System.out.println("LLEGA");
+		System.out.println("LLEGA");
 		Integer codMesa=factura.getMesa().getCodMesa();
 		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
 		new Factura(factura.getFecha(),factura.getImporte(),factura.getMedioPago(),mesa).save();

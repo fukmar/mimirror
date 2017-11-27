@@ -141,7 +141,7 @@ public class testCliente
 		//MozoDTO mozo, MesaDTO mesa,CajaDTO caja,Estado estado
 		
 		//MESA
-		MesaDTO mesa= new MesaDTO(0,15,0,mozo,sector);
+		MesaDTO mesa= new MesaDTO(1,15,0,null, mozo,sector);
 		
 		ComandaDTO comanda=new ComandaDTO(mozo, mesa,Estado.EnProceso);
 		
@@ -179,6 +179,7 @@ public class testCliente
 		///GUARDAR FACTURA
 		try {
 			BusinessDelegate.getInstance().grabarFactura(fact);
+			System.out.println("Se guardo la factura");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -17,9 +17,9 @@ public class MesaDTO implements Serializable
 	public MesaDTO(){}
 	
 
-	public MesaDTO(Integer cantidadPersonas, Integer capacidad, Integer estado, MozoDTO mozo,SectorDTO sector) {
+	public MesaDTO(Integer codmesa,Integer cantidadPersonas, Integer capacidad, Integer estado, MozoDTO mozo,SectorDTO sector) {
 		super();
-		
+		this.codMesa=codmesa; //lo acabo de agregar CZ
 		this.cantidadPersonas = cantidadPersonas;
 		this.capacidad = capacidad;
 		this.estado = estado;
