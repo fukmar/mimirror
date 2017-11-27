@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import entities.ComandaEntity;
+import entities.ItemComandaEntity;
 import entities.PlatoEntity;
 import enumns.MedioDePago;
 
@@ -54,5 +55,13 @@ public class ItemComanda {
 	public void setPlato(Plato plato) {
 		this.plato = plato;
 	}
-	
+	public ItemComandaEntity toEntity()
+	{
+		ItemComandaEntity i=new ItemComandaEntity();
+		i.setCantidad(cantidad);
+		i.setCoditemComanda(coditemComanda);
+		i.setPlato(plato.toEntity());
+		return i;
+	}
 }
+
