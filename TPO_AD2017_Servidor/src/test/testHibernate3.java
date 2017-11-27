@@ -129,7 +129,6 @@ public class testHibernate3 {
 		mocitos.add(mozo);
 	
 		MesaEntity mesita = new MesaEntity(0,15,0,mozo,sector);
-		
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
 				
@@ -373,8 +372,8 @@ public class testHibernate3 {
 		// BUSCA LAS COMANDAS ABIERTAS PARA ESA MESA Y LAS FACTURA.  LUEGO PASA A COMANDA CERRADA ESTOS ITEMS
 		System.out.println(factura.getCodFactura());
 		FacturaDAO.getInstance().CerrarFactura(factura);
-		factura=FacturaDAO.getInstance().obtenerFacturaByNro(factura.getCodFactura());
-	    System.out.println("El total de la factura nro "+factura.getCodFactura()+" es de ARS "+ factura.getImporte());
+		Factura facturanegocio=FacturaDAO.getInstance().obtenerFacturaByNro(factura.getCodFactura());
+	    System.out.println("El total de la factura nro "+facturanegocio.getCodFactura()+" es de ARS "+ facturanegocio.getImporte());
 
 	    //VER COMISIONES MOZO POR LISTADO FUNCIONA YESS!  Habria que hacer un view pero va...
 	    List<String[]> resultado=MozoDAO.getInstancia().ResultadoComisiones();

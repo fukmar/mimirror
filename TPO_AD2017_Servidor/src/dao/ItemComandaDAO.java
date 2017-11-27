@@ -33,9 +33,9 @@ private static ItemComandaDAO instancia;
 		return instancia;
 	}
 	
-	public void save(ItemComandaDAO itemcomanda){
+	public void save(ItemComanda itemcomanda){
 
-	ItemComandaEntity ic = this.toEntity(itemcomanda);
+	ItemComandaEntity ic = itemcomanda.toEntity();
 	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
@@ -58,14 +58,14 @@ private static ItemComandaDAO instancia;
 		return itemcomandasnegocio;
 	}
 	
-	public ItemComandaEntity obtenerItemComandaByCod(int coditemComanda){
+	public ItemComanda obtenerItemComandaByCod(int coditemComanda){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
 		ItemComandaEntity itemcomanda = (ItemComandaEntity)session.createQuery("from ItemComandaEntity c where c.coditemComanda=?").setInteger(0, coditemComanda).uniqueResult();
 		session.getTransaction().commit();
 		session.close();
-		return itemcomanda;
+		return itemcomanda.toNegocio();
 	}
 	public void reducirstockxItemComanda(ItemComanda i){
 		
@@ -86,10 +86,5 @@ private static ItemComandaDAO instancia;
 			session.close();
 			}
 		}
-	//FALTA
-	private ItemComandaEntity toEntity(ItemComandaDAO itemcomanda) {	
-		return null;
-
-	}
 	
 }
