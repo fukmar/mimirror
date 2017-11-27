@@ -26,6 +26,7 @@ import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import entities.PlatoEntity;
 import entities.SectorEntity;
 import enumns.Estado;
 import enumns.MedioDePago;
@@ -86,6 +87,13 @@ public class Controlador {
 			platosp.add(p.toDTO());
 		}
 		return platosp;
+	}
+	
+	public PlatoDTO listarPlatoPorCod(Integer codPlato) 
+	{
+		Plato platoN=PlatoDAO.getInstance().getPlatoPorCod(codPlato);
+		PlatoDTO plato=platoN.toDTO();
+		return plato;
 	}
 	//----------------------------------------------------------------------------------------------------------------------------------
    //COMANDAS

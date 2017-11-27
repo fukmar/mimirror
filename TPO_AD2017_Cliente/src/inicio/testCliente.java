@@ -169,13 +169,13 @@ public class testCliente
 		//HASTA ACA DECLARACION DE VARIABLES
 		//ACA EMPIEZAN LOS LLAMADOS
 		//GUARDAR COMANDA		
-		/*try {
+		try {
 			BusinessDelegate.getInstance().grabarComanda(comanda);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (ComandaException e) {
 			e.printStackTrace();
-		}*/
+		}
 		///GUARDAR FACTURA
 		try {
 			BusinessDelegate.getInstance().grabarFactura(fact);

@@ -146,6 +146,21 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	
+	
+	//BUSCAR PLATO POR CODIGO
+
+	try {
+		PlatoDTO plato=BusinessDelegate.getInstance().BuscarPlatoPorCod(1);
+		System.out.println("el PLATO buscado  es: "+plato.toString());
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (PlatoException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
 	}
 
 }

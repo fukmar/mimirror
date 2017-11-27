@@ -23,6 +23,7 @@ public class PlatoEntity
 	private String nombre;
 	private float precio;
 	private CategoriaPlato categoria;
+	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="platocompuestode",
 	joinColumns=@JoinColumn(name="codPlato",referencedColumnName="codPlato"),

@@ -60,12 +60,15 @@ public class PlatoDAO
 		session.close();
 		return listaPlatos;
 	}
-	public PlatoEntity getPlatoPorId(Integer plato_id) {
-		SessionFactory sf = HibernateUtil.getSessionFactory();
+	public Plato getPlatoPorCod(Integer codPlato) 
+	{
+		Plato plato=new Plato();
+		//SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		PlatoEntity elPlato =(PlatoEntity) session.get(PlatoEntity.class,plato_id); 
+		PlatoEntity resu =(PlatoEntity) session.createQuery("from PlatoEntity p where p.codigo=?").setInteger(0, codPlato).uniqueResult();
 		session.close();
-		return elPlato;
+		plato=resu.toNegocio();
+		return plato;
 	}
 	public List<Plato> getPlatosparecidos(String nombre, String categoriaplato)
 	{

@@ -48,6 +48,12 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().BuscarPlatosparecidos(nombre, categoriaplato);
 	}
 
+	@Override
+	public PlatoDTO BuscarPlatoPorCod(Integer codPlato) throws RemoteException, PlatoException {
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarPlatoPorCod(codPlato);
+	}
+
 	//----------------------------COMANDAS----------------------------------------------------------------------------
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
 	{
@@ -133,6 +139,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarDepositos();
 	}
 
+	
 
 
 	

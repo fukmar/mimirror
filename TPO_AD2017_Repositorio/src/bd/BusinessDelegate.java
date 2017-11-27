@@ -67,6 +67,13 @@ public class BusinessDelegate
 	{
 		return remoteObject.BuscarPlatosparecidos(nombre, categoriaplato);
 	}
+	
+	
+	public PlatoDTO BuscarPlatoPorCod(Integer codPlato) throws RemoteException, PlatoException {
+		// TODO Auto-generated method stub
+		return remoteObject.BuscarPlatoPorCod(codPlato);
+	}
+
 	//---------------------------------------COMANDAS------------------------------------------------------------
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
 	{

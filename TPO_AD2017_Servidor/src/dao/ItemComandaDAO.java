@@ -43,6 +43,7 @@ private static ItemComandaDAO instancia;
 	session.getTransaction().commit();
 	session.close();
 	}
+	
 	public List <ItemComanda> obtenerItemComandasAbiertasxMesa(int codComanda){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
