@@ -9,6 +9,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="css/style.css">
+<%@include file="./menu.jsp"%> <br><br>
 <title>Reservas</title>
 
 </head>
@@ -16,23 +18,43 @@
 
 
 <%
-if (request.getAttribute("reservas") !=null){
+if (request.getAttribute("reservas") ==null){
+RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verReservas");
+rd.forward(request, response);
+}
 List<ReservaDTO> reservas = (List<ReservaDTO>)request.getAttribute("reservas");
 %>
 
-<Select name = "Reservas">
-<% for(ReservaDTO reserva :  reservas) {%>
-	<option value= <%= reserva.getNombre()  %>><%= reserva.toString()%></option> 
-<%}}else{
-	RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verReservas");
-	rd.forward(request, response);
+
+
+	<table>
+  <caption>Reservas</caption>
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Fecha y Hora</th>
+      <th scope="col">A nombre de</th>
+      <th scope="col">Cantidad Personas</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% for(ReservaDTO reserva :  reservas) {%>
 	
-} %>
-</select>
+    <tr>
+      <td scope="row" data-label="Código"><%= reserva.getCodReserva() %></td>
+      <td data-label="Fecha y Hora"><%= reserva.getFechayHora() %></td>
+      <td data-label="A nombre de"><%= reserva.getNombre() %></td>
+      <td data-label="Cantidad Personas"><%= reserva.getCantidadComensales() %></td>
+     </tr>
+     <%} %>
+    
+  </tbody>
+</table>
+	
 
 	<P>
 	<p>
-	 <a href="index.jsp" target="_self">volver</a> 
+	 <a href="index.jsp" target="_self" class="link-btn">volver</a> 
   
   
 </body>

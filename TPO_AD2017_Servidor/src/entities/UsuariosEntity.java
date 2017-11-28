@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import enumns.AreaRest;
 import negocio.Usuarios;
 
 @Entity
@@ -22,15 +23,13 @@ public class UsuariosEntity {
 	private String password;
 	private String nombre;
 	private String apellido;
-	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn(name="codArea")
-	private AreaRestaurantEntity area;
+	private Enum<AreaRest> area;
 	
 	
 	public UsuariosEntity() {
 		super();
 	}
-	public UsuariosEntity(String login, String password, String nombre, String apellido, AreaRestaurantEntity area) {
+	public UsuariosEntity(String login, String password, String nombre, String apellido, Enum<AreaRest> area) {
 		super();
 		this.login = login;
 		this.password = password;
@@ -62,17 +61,17 @@ public class UsuariosEntity {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public AreaRestaurantEntity getArea() {
+	public Enum<AreaRest> getArea() {
 		return area;
 	}
-	public void setArea(AreaRestaurantEntity area) {
-		this.area = area;
+	public void setArea(Enum<AreaRest> area2) {
+		this.area = area2;
 	}
 	public Usuarios toNegocio()
 	{
 		Usuarios u=new Usuarios();
 		u.setApellido(apellido);
-		u.setArea(area.toNegocio());
+		u.setArea(area);
 		u.setLogin(login);
 		u.setNombre(nombre);
 		u.setPassword(password);

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import dto.UsuariosDTO;
 import entities.UsuariosEntity;
+import enumns.AreaRest;
 
 public class Usuarios {
 
@@ -20,13 +21,13 @@ public class Usuarios {
 	private String password;
 	private String nombre;
 	private String apellido;
-	private AreaRestaurant area;
+	private Enum<AreaRest> area;
 	
 	
 	public Usuarios() {
 		super();
 	}
-	public Usuarios(String login, String password, String nombre, String apellido, AreaRestaurant area) {
+	public Usuarios(String login, String password, String nombre, String apellido, AreaRest area) {
 		super();
 		this.login = login;
 		this.password = password;
@@ -58,18 +59,18 @@ public class Usuarios {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public AreaRestaurant getArea() {
+	public Enum<AreaRest> getArea() {
 		return area;
 	}
-	public void setArea(AreaRestaurant area) {
-		this.area = area;
+	public void setArea(Enum<AreaRest> area2) {
+		this.area = area2;
 	}
 	
 	public UsuariosEntity toEntity()
 	{
 		UsuariosEntity u=new UsuariosEntity();
 		u.setApellido(apellido);
-		u.setArea(area.toEntity());
+		u.setArea(area);
 		u.setLogin(login);
 		u.setNombre(nombre);
 		u.setPassword(password);
@@ -80,7 +81,7 @@ public class Usuarios {
 	{
 		UsuariosDTO u=new UsuariosDTO();
 		u.setApellido(apellido);
-		u.setArea(area.toDTO());
+		u.setArea(area);
 		u.setLogin(login);
 		u.setNombre(nombre);
 		u.setPassword(password);

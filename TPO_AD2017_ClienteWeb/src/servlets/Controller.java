@@ -222,7 +222,7 @@ if(opcion.equals("agregarItemsComanda_2step")){
 				System.out.println(e.getMessage());
 			}
 			
-			ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,comanda);
+			//ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,comanda);
 			
 		/*	try {
 				comanda = BusinessDelegate.getInstance().grabarItemComanda(comanda, itemComanda);

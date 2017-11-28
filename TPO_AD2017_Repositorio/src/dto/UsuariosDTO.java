@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import enumns.AreaRest;
+
 public class UsuariosDTO {
 
 	private String login;
@@ -18,13 +20,13 @@ public class UsuariosDTO {
 	private String nombre;
 	private String apellido;
 
-	private AreaRestaurantDTO area;
+	private Enum<AreaRest> area;
 	
 	
 	public UsuariosDTO() {
 		super();
 	}
-	public UsuariosDTO(String login, String password, String nombre, String apellido, AreaRestaurantDTO area) {
+	public UsuariosDTO(String login, String password, String nombre, String apellido, Enum<AreaRest> area) {
 		super();
 		this.login = login;
 		this.password = password;
@@ -56,11 +58,11 @@ public class UsuariosDTO {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public AreaRestaurantDTO getArea() {
+	public Enum<AreaRest> getArea() {
 		return area;
 	}
-	public void setArea(AreaRestaurantDTO area) {
-		this.area = area;
+	public void setArea(Enum<AreaRest> area2) {
+		this.area = area2;
 	}
 	
 	

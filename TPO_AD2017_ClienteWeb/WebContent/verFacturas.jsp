@@ -9,7 +9,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Lista de todas las Facturas</title>
+<link rel="stylesheet" href="css/style.css">
+<%@include file="./menu.jsp"%> <br><br>
+<title>Ver Facturas</title>
 
 </head>
 <body>
@@ -23,15 +25,41 @@ rd.forward(request, response);
 List<FacturaDTO> facturas = (List<FacturaDTO>)request.getAttribute("facturas");
 %>
 
-<Select name = "Facturas">
-<% for(FacturaDTO factura :  facturas) {%>
-	<option value= <%= factura.getCodFactura()  %>><%=factura.toString()%></option> 
-<%} %>
-</select>
+
+
+	<table>
+  <caption>Facturas</caption>
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Importe</th>
+      <th scope="col">Medio de Pago</th>
+      <th scope="col">Mesa</th>
+      <th scope="col">Apellido del Mozo</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% for(FacturaDTO factura :  facturas) {%>
+	
+    <tr>
+      <td scope="row" data-label="Código"><%= factura.getCodFactura() %></td>
+      <td data-label="Fecha"><%= factura.getFecha() %></td>
+      <td data-label="Importe"><%= factura.getImporte() %></td>
+      <td data-label="Medio de Pago"><%= factura.getMedioPago().toString() %></td>
+   
+      
+      
+      </tr>
+     <%} %>
+    
+  </tbody>
+</table>
+	
 
 	<P>
 	<p>
-	 <a href="index.jsp" target="_self">volver</a> 
+	 <a href="index.jsp" target="_self" class="link-btn">volver</a> 
   
   
 </body>
