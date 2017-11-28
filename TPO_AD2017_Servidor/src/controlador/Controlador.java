@@ -152,7 +152,7 @@ public class Controlador {
 		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
 		new Factura(factura.getFecha(),factura.getImporte(),factura.getMedioPago(),mesa).save();
 		
-	}
+	} 
 	
 	public List<FacturaDTO> listarFacturas()
 	{
