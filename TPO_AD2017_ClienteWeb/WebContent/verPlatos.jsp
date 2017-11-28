@@ -10,6 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/style.css">
+<%@include file="./menu.jsp"%> <br><br>
 <title>Platos Disponibles</title>
 
 </head>
@@ -24,15 +25,34 @@ rd.forward(request, response);
 List<PlatoDTO> platos = (List<PlatoDTO>)request.getAttribute("platos");
 %>
 
-<Select name = "Platos">
-<% for(PlatoDTO plato :  platos) {%>
-	<option value= <%= plato.getCodigo() %>><%=plato.toString()%></option> 
-<%} %>
-</select>
+
+
+	<table>
+  <caption>Platos</caption>
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% for(PlatoDTO plato :  platos) {%>
+	
+    <tr>
+      <td scope="row" data-label="Código"><%= plato.getCodigo() %></td>
+      <td data-label="Nombre"><%= plato.getNombre() %></td>
+      <td data-label="Precio"><%= plato.getPrecio() %></td>
+     </tr>
+     <%} %>
+    
+  </tbody>
+</table>
+	
 
 	<P>
 	<p>
-	 <a href="index.jsp" target="_self">volver</a> 
+	 <a href="index.jsp" target="_self" class="link-btn">volver</a> 
   
   
 </body>
