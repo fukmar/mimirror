@@ -1,4 +1,5 @@
 package entities;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -6,7 +7,8 @@ import javax.persistence.*;
 
 import dto.PlatoDTO;
 import enumns.Temporada;
-
+import negocio.Carta;
+import negocio.Plato;
 @Entity
 @Table(name="cartas")
 public class CartaEntity 
@@ -60,6 +62,19 @@ public class CartaEntity
 
 	public void setItemCarta(List<PlatoEntity> itemCarta) {
 		this.itemCarta = itemCarta;
+	}
+	public Carta toNetocio()
+	{
+		Carta cartanegocio=new Carta();
+		cartanegocio.setCodigoCarta(codigoCarta);
+		List <Plato> platosnegocio=new ArrayList <Plato>();
+		for (PlatoEntity pentity:itemCarta)
+		{
+			platosnegocio.add(pentity.toNegocio());
+		}
+		cartanegocio.setTemporada(temporada);
+		cartanegocio.setVigencia(vigencia);
+		return cartanegocio;
 	}
 
 }
