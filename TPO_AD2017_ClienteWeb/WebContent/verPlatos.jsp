@@ -25,7 +25,7 @@ List<PlatoDTO> platos = (List<PlatoDTO>)request.getAttribute("platos");
 
 <Select name = "Platos">
 <% for(PlatoDTO plato :  platos) {%>
-	<option value= <%= plato.getNombre()  %>><%=plato.toString()%></option> 
+	<option value= <%= plato.getCodigo() %>><%=plato.toString()%></option> 
 <%} %>
 </select>
 

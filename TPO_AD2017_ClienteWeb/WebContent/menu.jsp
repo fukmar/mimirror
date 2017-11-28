@@ -17,12 +17,22 @@
 			 menus.put("Platos", submmenus);
 			 
 		submmenus = new HashMap<String,String>();		
-			 submmenus.put("Ver Comandas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verComandas");
+			
+		submmenus.put("Ver Comandas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verComandas");
 			 submmenus.put("Cargar Comandas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verDatosParaCargarComanda");
 				
 			 menus.put("Comandas", submmenus);
             
 			 submmenus = new HashMap<String,String>();
+		
+			 
+			 submmenus.put("Ver Facturas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verFacturas");
+				
+			 menus.put("Facturas", submmenus);
+            
+			 submmenus = new HashMap<String,String>();
+		
+			 
 			 submmenus.put("Ver Reservas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verReservas");
 			 submmenus.put("Cargar Reservas", "/TPO_AD2017_ClienteWeb/cargarReserva.jsp");
 			 menus.put("Reservas", submmenus);   

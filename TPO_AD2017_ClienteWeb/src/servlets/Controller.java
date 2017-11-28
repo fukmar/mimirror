@@ -16,12 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import bd.BusinessDelegate;
 import dto.ComandaDTO;
+import dto.FacturaDTO;
+import dto.ItemComandaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SectorDTO;
+import enumns.Estado;
 import exceptions.ComandaException;
+import exceptions.FacturaException;
 import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlatoException;
@@ -82,6 +86,21 @@ public class Controller extends HttpServlet {
 
 		}
 		
+		
+		if(opcion.equals("verFacturas")){
+			
+			List<FacturaDTO> facturas = new ArrayList<FacturaDTO>();
+			try {
+				facturas = BusinessDelegate.getInstance().mostrarFacturas();
+				request.setAttribute("facturas", facturas);
+				RequestDispatcher rd = request.getRequestDispatcher("/verFacturas.jsp");
+				rd.forward(request, response);
+			} catch (FacturaException e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
+		
 
 		if(opcion.equals("cargarReserva")){
 			String nombre = request.getParameter("nombre");
@@ -125,32 +144,8 @@ public class Controller extends HttpServlet {
 		
 		if(opcion.equals("verDatosParaCargarComanda")){
 			
-			List<PlatoDTO> platos = new ArrayList<PlatoDTO>();
-			List<MozoDTO> mozos = new ArrayList<MozoDTO>();
-			List<SectorDTO> sectores = new ArrayList<SectorDTO>();
-			List<MesaDTO> mesas = new ArrayList<MesaDTO>();
+				List<MesaDTO> mesas = new ArrayList<MesaDTO>();
 			
-			
-			try {
-				platos = BusinessDelegate.getInstance().listarPlatos();
-				request.setAttribute("platos", platos);
-			} catch (PlatoException e) {
-				System.out.println(e.getMessage());
-			}
-			
-			try {
-				mozos = BusinessDelegate.getInstance().mostrarMozos();
-				request.setAttribute("mozos", mozos);
-			} catch (MozoException e) {
-				System.out.println(e.getMessage());
-			}
-			
-			try {
-				sectores = BusinessDelegate.getInstance().mostrarSectores();
-				request.setAttribute("sectores", sectores);
-			} catch (SectorException e) {
-				System.out.println(e.getMessage());
-			}
 			
 			try {
 				mesas = BusinessDelegate.getInstance().mostrarMesas();
@@ -164,6 +159,97 @@ public class Controller extends HttpServlet {
 			rd.forward(request, response);
 
 		}
+		
+		if(opcion.equals("agregarItemsComanda")){
+			
+			Integer id_mesa = Integer.parseInt(request.getParameter("mesa"));
+			
+			MesaDTO mesa = new MesaDTO();
+			
+			try {
+				mesa = BusinessDelegate.getInstance().BuscarMesaPorCod(id_mesa);
+			} catch (MesaException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			ComandaDTO comanda = new ComandaDTO(mesa.getMozo(),mesa,Estado.EnProceso);
+			
+			try {
+			  BusinessDelegate.getInstance().grabarComanda(comanda);
+			
+			} catch (ComandaException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			request.setAttribute("comanda", comanda);
+			
+			List<PlatoDTO> platos = new ArrayList<PlatoDTO>();
+			try {
+				platos = BusinessDelegate.getInstance().listarPlatos();
+				
+			} catch (PlatoException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			request.setAttribute("platos", platos);
+			request.setAttribute("vamosACargarItems", "listos");
+			RequestDispatcher rd = request.getRequestDispatcher("/agregarItemAComanda.jsp");
+			rd.forward(request, response);
+	}
+		
+if(opcion.equals("agregarItemsComanda_2step")){
+			
+	Integer codComanda = Integer.parseInt(request.getParameter("codComanda"));
+	Integer codPlato = Integer.parseInt(request.getParameter("codPlato"));
+		Integer cantidad = Integer.parseInt(request.getParameter("cantidad"));
+			
+		String accion = request.getParameter("boton");
+			
+		ComandaDTO comanda = new ComandaDTO();
+			PlatoDTO plato = new PlatoDTO();
+			
+			
+			try {
+				comanda = BusinessDelegate.getInstance().BuscarComandasPorCod(codComanda);
+			} catch (ComandaException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			/*try {
+				plato = BusinessDelegate.getInstance().BuscarPlatoPorCod(codPlato);
+			} catch (ComandaException e) {
+				System.out.println(e.getMessage());
+			}*/
+			
+			ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,comanda);
+			
+		/*	try {
+				comanda = BusinessDelegate.getInstance().grabarItemComanda(comanda, itemComanda);
+			} catch (ComandaException e) {
+				System.out.println(e.getMessage());
+			}
+		*/	
+			if (accion == "Aceptar") {
+			RequestDispatcher rd = request.getRequestDispatcher("/verComandas.jsp");
+			rd.forward(request, response);}
+			if (accion == "Otro") {
+				
+				List<PlatoDTO> platos = new ArrayList<PlatoDTO>();
+				try {
+					platos = BusinessDelegate.getInstance().listarPlatos();
+					
+				} catch (PlatoException e) {
+					System.out.println(e.getMessage());
+				}
+				
+				request.setAttribute("platos", platos);
+				request.setAttribute("comanda", comanda);
+				request.setAttribute("vamosACargarItems", "listos");
+				RequestDispatcher rd = request.getRequestDispatcher("/agregarItemAComanda.jsp");
+				rd.forward(request, response);rd.forward(request, response);}
+				
+			
+	}
 		
 		}
 	}

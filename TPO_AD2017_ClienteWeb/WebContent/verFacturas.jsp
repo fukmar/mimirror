@@ -9,25 +9,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Reservas</title>
+<title>Lista de todas las Facturas</title>
 
 </head>
 <body>
 
 
 <%
-if (request.getAttribute("reservas") !=null){
-List<ReservaDTO> reservas = (List<ReservaDTO>)request.getAttribute("reservas");
+if (request.getAttribute("facturas") ==null){
+RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verFacturas");
+rd.forward(request, response);
+}
+List<FacturaDTO> facturas = (List<FacturaDTO>)request.getAttribute("facturas");
 %>
 
-<Select name = "Reservas">
-<% for(ReservaDTO reserva :  reservas) {%>
-	<option value= <%= reserva.getNombre()  %>><%= reserva.toString()%></option> 
-<%}}else{
-	RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verReservas");
-	rd.forward(request, response);
-	
-} %>
+<Select name = "Facturas">
+<% for(FacturaDTO factura :  facturas) {%>
+	<option value= <%= factura.getCodFactura()  %>><%=factura.toString()%></option> 
+<%} %>
 </select>
 
 	<P>

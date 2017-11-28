@@ -14,8 +14,6 @@
 <body>
 <form action="/TPO_AD2017_ClienteWeb/Controller">
 
-<table border="1">
-
     <tr><td>Elija Mesa</td><td>
     
     <%
@@ -26,44 +24,17 @@ rd.forward(request, response);
 List<MesaDTO> mesas = (List<MesaDTO>)request.getAttribute("mesas");
 %>
 
-<Select name = "Mesas">
+<Select name = "mesa">
 <% for(MesaDTO mesa :  mesas) {%>
-	<option value= <%= mesa.getCodMesa() %>><%=mesa.toString() %></option> 
+	<option value=<%=mesa.getCodMesa()%>><%=mesa.getCodMesa()%></option> 
 <%} %>
 </select> 
-    
-    </table>
-    
-    </td></tr>
-    
     
   
-   
-    <%
-if (request.getAttribute("datosParaComanda") ==null){
-RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verDatosParaCargarComanda");
-rd.forward(request, response);
-}
-List<PlatoDTO> platos = (List<PlatoDTO>)request.getAttribute("platos");
-%>
-
-<Select name = "Platos">
-<% for(PlatoDTO plato :  platos) {%>
-	<option value= <%= plato.getCodigo() %>><%=plato.toString()%></option> 
-<%} %>
-</select> 
-   
-    <tr><td>Cantidad</td><td><input name="cantidad", size="20"/></td></tr>
+    </td></tr>
     
-   
-
-    
-    
-    <tr><td>Elija Plato</td><td>
-    
-   
 <tr><td colspan="2" align="right"><input name="boton" type="submit" value="Aceptar"  /></td></tr>
-<input type="hidden" name="opcion" value="cargarComanda">
+<input type="hidden" name="opcion" value="agregarItemsComanda">
 </form>
 </body>
 </html>
