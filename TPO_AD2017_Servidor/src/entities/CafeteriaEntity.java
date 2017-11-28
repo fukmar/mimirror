@@ -17,9 +17,9 @@ public class CafeteriaEntity extends AreaRestaurantEntity {
 	@JoinColumn(name="codEstimadoDiario")
 	private List<ProductoEntity> estimadoDiario;
 
-	public CafeteriaEntity(Integer codArea, AreaRest area,
+	public CafeteriaEntity(AreaRest area,
 			List<ProductoEntity> estimadoDiario,LocalEntity local) {
-		super(codArea, area,local);
+		super(area,local);
 		this.estimadoDiario = estimadoDiario;
 	}
 

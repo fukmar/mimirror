@@ -18,6 +18,7 @@ import dto.MozoDTO;
 import dto.PlatoDTO;
 import entities.*;
 import enumns.AreaRest;
+import enumns.CategoriaPlato;
 import enumns.Estado;
 import enumns.EstadoItemComanda;
 import enumns.EstadoRemito;
@@ -30,6 +31,7 @@ import negocio.Deposito;
 import negocio.Elaborado;
 import negocio.Factura;
 import negocio.Ingrediente;
+import negocio.ItemComanda;
 import negocio.Local;
 import negocio.Mesa;
 import negocio.Mozo;
@@ -75,9 +77,8 @@ public class testHibernate4 {
 		List<MateriaPrimaEntity> materiapedido = new ArrayList<MateriaPrimaEntity>();
 		materiapedido.add(materia);
 		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
-		SalonEntity salon=new SalonEntity(2,AreaRest.salon, "Salon",local);
-		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
-			
+		SalonEntity salon=new SalonEntity(AreaRest.salon, "Salon",local);
+		CajaEntity caja=new CajaEntity(AreaRest.Caja,salon,local);
 		SectorEntity sector = new SectorEntity("Sector", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
 		sectores.add(sector);
@@ -88,7 +89,7 @@ public class testHibernate4 {
 		//solicitudes.add(solicitud);
 			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
-		AdministracionEntity admi= new AdministracionEntity(5, AreaRest.Administracion, planes, local);
+		AdministracionEntity admi= new AdministracionEntity(AreaRest.Administracion, planes, local);
 		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(fecha,Estado.EnProceso,admi);
 		pdp.setAdministracion(admi);
 		planes.add(pdp);
@@ -121,9 +122,14 @@ public class testHibernate4 {
 		
 		List<ElaboradoEntity> elabs = new ArrayList<ElaboradoEntity>();
 		elabs.add(ee);
+		Temporada temp = null;
+		List<PlatoEntity> itemCarta= new ArrayList<PlatoEntity>();
 		
-		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,elabs);
-			
+		CartaEntity carta = new CartaEntity(fecha,temp.Primavera,itemCarta);
+		
+		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,AreaRest.Barra,CategoriaPlato.Carnes,elabs,carta);
+		plato.setCarta(carta);
+		itemCarta.add(plato);
 		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",5.4f, sector);
 		
 		List<MozoEntity> mocitos = new ArrayList<MozoEntity>();
@@ -137,9 +143,9 @@ public class testHibernate4 {
 		ComandaEntity comandita = new ComandaEntity(mozo, mesita/*,caja,*/,Estado.Terminado); //de aca solo comente caja porque tambien lo comente en el cosntuctor
 		ComandaEntity comandita2 = new ComandaEntity(mozo, mesita/*,caja*/,Estado.EnProceso);
 		ComandaEntity comandita3 = new ComandaEntity(mozo, mesita,/*caja,*/Estado.EnProceso);
-		ItemComandaEntity itemCom2= new ItemComandaEntity(1,EstadoItemComanda.Iniciada, plato, comandita2);
-		ItemComandaEntity itemCom3= new ItemComandaEntity(5,EstadoItemComanda.Iniciada, plato, comandita3);
-		ItemComandaEntity itemCom= new ItemComandaEntity(2,EstadoItemComanda.Iniciada, plato, comandita);
+		ItemComandaEntity itemCom2= new ItemComandaEntity(1,EstadoItemComanda.Pendiente, plato, comandita2);
+		ItemComandaEntity itemCom3= new ItemComandaEntity(5,EstadoItemComanda.Pendiente, plato, comandita3);
+		ItemComandaEntity itemCom= new ItemComandaEntity(2,EstadoItemComanda.Pendiente, plato, comandita);
 		
 		List<ComandaEntity> comanditas = new ArrayList<ComandaEntity>();
 		comanditas.add(comandita);
@@ -150,11 +156,7 @@ public class testHibernate4 {
 		List <ItemPlanProduccionEntity> variositemplanprod=	new ArrayList <ItemPlanProduccionEntity>();
 		variositemplanprod.add(itemplan);
 		pdp.setItemspdp(variositemplanprod);
-		Temporada temp = null;
-		List<PlatoEntity> itemCarta= new ArrayList<PlatoEntity>();
-		itemCarta.add(plato);
-		CartaEntity carta = new CartaEntity(fecha,temp.Primavera,itemCarta);
-		plato.setCarta(carta);
+
 		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
@@ -168,10 +170,10 @@ public class testHibernate4 {
 		session.save(materia);
 		
 		//DSECOMENTAR PARA CREAR BASE
+		session.save(admi);
 		session.save(local);
 		session.save(salon);
 		//session.save(sector);
-		session.save(admi);
 		session.save(mozo);
 		session.save(plato);
 		session.save(carta);
@@ -188,7 +190,6 @@ public class testHibernate4 {
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		   
-		session.save(admi);
 		session.save(deposito);
 		session.save(mesita);
 		session.save(comandita2);
@@ -211,7 +212,8 @@ public class testHibernate4 {
 		//session.save(pdp);
 		//session.save(ue);
 	//	session.getTransaction().commit();
-		
+		session.save(sector);
+		session.save(caja);
 		session.save(see);
 		session.save(see2);
 		session.save(mpe);
@@ -438,5 +440,9 @@ public class testHibernate4 {
 		System.out.println("CODIGO PLAN DE PROD:"+pdp.getCodigoPDP());
 		System.out.println(pdp.getItemspdp().get(0).getCantidad());
 		PlanDeProduccionDAO.getInstance().CalcularporcentajeAvance(pdp.toNegocio());
+		
+		//TESTEO SI ME TRAE ITEMCOMANDA SEGUN AREA FUNCIONA!
+		List<ItemComanda> items=ItemComandaDAO.getInstance().getItemsPendientesxArea("Barra");
+		System.out.println(items.get(0).getPlato().getNombre());
 }
 }

@@ -15,6 +15,7 @@ import dto.PlatoDTO;
 import entities.CartaEntity;
 import entities.ElaboradoEntity;
 import entities.PlatoEntity;
+import enumns.AreaRest;
 import enumns.CategoriaPlato;
 
 
@@ -27,20 +28,30 @@ public class Plato
 	private List<Elaborado> productoPlato;
     private Carta carta;
     private CategoriaPlato categoria;
-	
+    private AreaRest area;
 	
 	public Plato(){}
 
 
-	public Plato(Integer codigo, String nombre, float precio, List<Elaborado> productoPlato, Carta carta,
+	public Plato(String nombre, float precio, AreaRest area, List<Elaborado> productoPlato, Carta carta,
 			CategoriaPlato categoria) {
 		super();
-		this.codigo = codigo;
 		this.nombre = nombre;
+		this.area=area;
 		this.precio = precio;
 		this.productoPlato = productoPlato;
 		this.carta = carta;
 		this.categoria = categoria;
+	}
+
+
+	public AreaRest getArea() {
+		return area;
+	}
+
+
+	public void setArea(AreaRest area) {
+		this.area = area;
 	}
 
 
@@ -102,6 +113,7 @@ public class Plato
 		p.setCodigo(codigo);
 		p.setNombre(nombre);
 		p.setPrecio(precio);
+		p.setArea(area);
 		p.setCarta(carta.toEntity());
 		p.setCategoria(categoria);
 		List<ElaboradoEntity> productos=new ArrayList<ElaboradoEntity>();
@@ -118,6 +130,7 @@ public class Plato
 		PlatoDTO p=new PlatoDTO();
 		p.setCodigo(codigo);
 		p.setNombre(nombre);
+		p.setArea(area);
 		p.setPrecio(precio);
 		p.setCategoria(categoria);
 		p.setCarta(carta.toDTO());

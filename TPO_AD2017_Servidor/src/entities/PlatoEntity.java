@@ -9,6 +9,7 @@ import javax.persistence.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import enumns.AreaRest;
 import enumns.CategoriaPlato;
 import negocio.Elaborado;
 import negocio.Plato;
@@ -26,6 +27,7 @@ public class PlatoEntity
 	private String nombre;
 	private float precio;
 	private CategoriaPlato categoria;
+	private AreaRest area;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)  //cz
@@ -49,7 +51,7 @@ this.productoPlato = productoPlato;
 this.carta = carta;
 }*/
 
-public PlatoEntity(String nombre, float precio, CategoriaPlato categoria, List<ElaboradoEntity> productoPlato,
+public PlatoEntity(String nombre, float precio,AreaRest area, CategoriaPlato categoria, List<ElaboradoEntity> productoPlato,
 	CartaEntity carta) {
 super();
 this.nombre = nombre;
@@ -57,16 +59,18 @@ this.precio = precio;
 this.categoria = categoria;
 this.productoPlato = productoPlato;
 this.carta = carta;
+this.area=area;
 }
 
 public PlatoEntity(){}
 
-public PlatoEntity(String nombre, float precio, List<ElaboradoEntity> productoPlato) {
-super();
 
-this.nombre = nombre;
-this.precio = precio;
-this.productoPlato = productoPlato;
+public AreaRest getArea() {
+	return area;
+}
+
+public void setArea(AreaRest area) {
+	this.area = area;
 }
 
 public CategoriaPlato getCategoria() {

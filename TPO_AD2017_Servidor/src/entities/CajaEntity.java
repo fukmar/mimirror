@@ -18,8 +18,8 @@ public class CajaEntity extends AreaRestaurantEntity
 	public CajaEntity(){}
 
 	
-	public CajaEntity(Integer codArea,AreaRest area,SalonEntity salon,LocalEntity local) {
-		super(codArea, area,local);
+	public CajaEntity(AreaRest area,SalonEntity salon,LocalEntity local) {
+		super(area,local);
 		this.salon=salon;
 		// TODO Auto-generated constructor stub
 	}

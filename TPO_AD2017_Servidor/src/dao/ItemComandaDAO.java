@@ -2,6 +2,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -12,6 +13,9 @@ import entities.MateriaPrimaEntity;
 import entities.PlatoEntity;
 import entities.SemiElaboradoEntity;
 import entities.UnidadEntity;
+import enumns.AreaRest;
+import enumns.CategoriaPlato;
+import enumns.EstadoItemComanda;
 import hibernate.HibernateUtil;
 import negocio.Elaborado;
 import negocio.Ingrediente;
@@ -87,5 +91,58 @@ private static ItemComandaDAO instancia;
 			session.close();
 			}
 		}
+	public List<ItemComanda> getItemsPendientesxArea(String area)
+	{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session=sf.openSession();
+		List<ItemComanda> listaItemComanda=new ArrayList<ItemComanda>();
+		AreaRest arearestaurant=areaitemcomandafromString(area);
+		EstadoItemComanda estado=estadoitemcomandafromString("Pendiente");
+		Query query=session.createQuery("from ItemComandaEntity i where i.plato.area=? and i.estado=? ");
+ 		query.setParameter(0,arearestaurant);
+ 		query.setParameter(1,estado);
+ 		@SuppressWarnings("unchecked")
+		List<ItemComandaEntity> resu=query.list();
+		for(ItemComandaEntity i:resu) 
+		{
+			listaItemComanda.add(i.toNegocio());
+		}
+		session.close();
+		return listaItemComanda;
+	}
 	
+	public void updateitemComandatoIniciada(ItemComanda i)
+	{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session=sf.openSession();
+		EstadoItemComanda estado=estadoitemcomandafromString("Iniciada");
+		Query query=session.createQuery("update from ItemComandaEntity i set i.estado = ? where i.plato.area=?");
+ 		query.setParameter(1,i.getCoditemComanda());
+ 		query.setParameter(0,estado);
+		query.executeUpdate();
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	public void updateitemComandatoFinalizada(ItemComanda i)
+	{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session=sf.openSession();
+		EstadoItemComanda estado=estadoitemcomandafromString("Finalizada");
+		Query query=session.createQuery("update from ItemComandaEntity i set i.estado = ? where i.plato.area=?");
+ 		query.setParameter(1,i.getCoditemComanda());
+ 		query.setParameter(0,estado);
+		query.executeUpdate();
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	private EstadoItemComanda estadoitemcomandafromString(String estadoitem)
+	{
+		return EstadoItemComanda.valueOf(estadoitem);
+	}
+	private AreaRest areaitemcomandafromString(String area)
+	{
+		return AreaRest.valueOf(area);
+	}
 }

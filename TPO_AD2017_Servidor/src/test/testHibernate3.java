@@ -76,8 +76,8 @@ public class testHibernate3 {
 		List<MateriaPrimaEntity> materiapedido = new ArrayList<MateriaPrimaEntity>();
 		materiapedido.add(materia);
 		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
-		SalonEntity salon=new SalonEntity(2,AreaRest.salon, "Salon",local);
-		CajaEntity caja=new CajaEntity(2,AreaRest.Caja,salon,local);
+		SalonEntity salon=new SalonEntity(AreaRest.salon, "Salon",local);
+		CajaEntity caja=new CajaEntity(AreaRest.Caja,salon,local);
 			
 		SectorEntity sector = new SectorEntity("Sector", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
@@ -89,7 +89,7 @@ public class testHibernate3 {
 		//solicitudes.add(solicitud);
 			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
-		AdministracionEntity admi= new AdministracionEntity(5, AreaRest.Administracion, planes, local);
+		AdministracionEntity admi= new AdministracionEntity(AreaRest.Administracion, planes, local);
 		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(fecha,Estado.EnProceso,admi);
 		pdp.setAdministracion(admi);
 		planes.add(pdp);
@@ -123,7 +123,7 @@ public class testHibernate3 {
 		List<ElaboradoEntity> elabs = new ArrayList<ElaboradoEntity>();
 		elabs.add(ee);
 		
-		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,elabs);
+		PlatoEntity plato = new PlatoEntity();
 			
 		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",5.4f, sector);
 		

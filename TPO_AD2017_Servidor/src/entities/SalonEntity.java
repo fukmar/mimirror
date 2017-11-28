@@ -18,8 +18,8 @@ public class SalonEntity extends AreaRestaurantEntity
 	public SalonEntity(){}
 
 
-	public SalonEntity(Integer codArea,AreaRest area,String nombreSalon,LocalEntity local) {
-		super(codArea, area,local);
+	public SalonEntity(AreaRest area,String nombreSalon,LocalEntity local) {
+		super(area,local);
 		this.nombreSalon = nombreSalon;
 
 	}

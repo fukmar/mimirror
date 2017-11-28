@@ -116,15 +116,16 @@ public class FacturaDAO
 
 	public void cerrarFactura(Factura f){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
+		//Obtengo los item comandas y los transformo a item factura.  Miro de la mesa de la factura cuales son las comandas que no fueron facturadas.
 		Session session = sf.openSession();
 		session.beginTransaction();
 		@SuppressWarnings("unchecked")
 		Estado estado=estadocomandafromString("EnProceso");
-		List <ItemComandaEntity> comandas=session.createQuery("from ItemComandaEntity i where i.comanda.mesa.codMesa=? and i.comanda.estado=?").setInteger(0,f.getMesa().getCodMesa()).setParameter(1, estado).list();
+		List <ItemComandaEntity> itemscomandas=session.createQuery("from ItemComandaEntity i where i.comanda.mesa.codMesa=? and i.comanda.estado=?").setInteger(0,f.getMesa().getCodMesa()).setParameter(1, estado).list();
 		session.getTransaction().commit();
 		session.close();
 		double totalfactura=0;
-		for (ItemComandaEntity i :comandas){
+		for (ItemComandaEntity i :itemscomandas){
 			SessionFactory sf2 = HibernateUtil.getSessionFactory();
 			Session session2 = sf2.openSession();
 			session2.beginTransaction();
@@ -137,6 +138,7 @@ public class FacturaDAO
 			session2.getTransaction().commit();
 			session2.close();
 		}
+		//Actualizo el valor de la factura final
 		SessionFactory sf3 = HibernateUtil.getSessionFactory();
 		Session session3 = sf.openSession();
 		session3.beginTransaction();
@@ -144,6 +146,25 @@ public class FacturaDAO
 		session3.update(f.toEntity());
 		session3.getTransaction().commit();
 		session3.close();
+		SessionFactory sf4 = HibernateUtil.getSessionFactory();
+		//Actualizo estados comanda
+		Session session4 = sf4.openSession();
+		session4.beginTransaction();
+		estado=estadocomandafromString("EnProceso");
+		List <ComandaEntity> comandas=session4.createQuery("from ComandaEntity c where c.mesa.codMesa=? and c.estado=?").setInteger(0,f.getMesa().getCodMesa()).setParameter(1, estado).list();
+		for (ComandaEntity c:comandas)
+		{
+			SessionFactory sf5 = HibernateUtil.getSessionFactory();
+			Session session5 = sf5.openSession();
+			session5.beginTransaction();
+			c.setEstado(Estado.Terminado);
+			session5.update(c);
+			session5.getTransaction().commit();
+			session5.close();
+		}
+		
+		session4.getTransaction().commit();
+		session4.close();
 	}
 	private Estado estadocomandafromString(String estado)
 	{

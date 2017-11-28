@@ -26,9 +26,8 @@ public abstract class AreaRestaurantEntity {
 	
 	public AreaRestaurantEntity(){}
 
-	public AreaRestaurantEntity(Integer codArea,AreaRest area,LocalEntity local) {
+	public AreaRestaurantEntity(AreaRest area,LocalEntity local) {
 		super();
-		this.codArea=codArea;
 		this.area = area;
 		this.local=local;
 	}
