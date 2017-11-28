@@ -63,4 +63,10 @@ public class Elaborado extends Producto
 		return null;
 		}
 
+	public Elaborado toEntity() 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

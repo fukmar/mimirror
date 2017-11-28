@@ -111,9 +111,20 @@ public class Plato
 	}
 
 
-	public PlatoEntity toEntity() {
-		// TODO Auto-generated method stub
-		return null;
+	public PlatoEntity toEntity() 
+	{
+		PlatoEntity p=new PlatoEntity();
+		p.setCodigo(codigo);
+		p.setNombre(nombre);
+		p.setPrecio(precio);
+		
+		List<ElaboradoEntity> productos=new ArrayList<ElaboradoEntity>();
+		
+		for(Elaborado e:this.productoPlato ) 
+		{
+		//	productos.add(e.toEntity());
+		}
+		return p;
 	}
 
 }
