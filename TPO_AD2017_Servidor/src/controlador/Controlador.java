@@ -153,6 +153,14 @@ public class Controlador {
 		
 	}
 	
+	public FacturaDTO listarFacturaByCod(int nroFact)
+	{
+		FacturaDTO factura=new FacturaDTO();
+		Factura facturaN=FacturaDAO.getInstance().obtenerFacturaByCod(nroFact);
+		factura=facturaN.toDTO();
+		return factura;
+		
+	}
 	//-----------------------------------------------------------------------------------------------------------------------------------
 	//RESERVAS
 	

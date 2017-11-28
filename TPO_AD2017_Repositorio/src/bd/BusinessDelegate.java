@@ -126,6 +126,14 @@ public class BusinessDelegate
 	{
 		return remoteObject.mostrarFacturas();
 	}
+	
+	
+	public FacturaDTO mostrarFacturaByCod(int nroFact) throws RemoteException, FacturaException 
+	{
+		return remoteObject.mostrarFacturaByCod(nroFact);
+	}
+	
+	
 	//---------------------------------------RESERVAS------------------------------------------------------------
 	
 	public void grabarReserva(ReservaDTO reserva) throws RemoteException, ReservaException 

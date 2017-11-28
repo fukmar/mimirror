@@ -44,6 +44,7 @@ public interface manejoNegocio extends Remote
 	//FACTURA
 	public  void grabarFactura(FacturaDTO factura) throws RemoteException,FacturaException;
 	public List<FacturaDTO> mostrarFacturas()throws RemoteException,FacturaException;
+	public FacturaDTO mostrarFacturaByCod(int nroFact)throws RemoteException,FacturaException;
 	
 	//RESERVA
 	public void grabarReserva(ReservaDTO reserva) throws RemoteException,ReservaException;

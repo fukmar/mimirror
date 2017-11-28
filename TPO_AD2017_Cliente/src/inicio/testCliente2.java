@@ -177,6 +177,23 @@ public class testCliente2 {
 		e.printStackTrace();
 	}
 	
+	
+	//LISTAR FACTURAS POR CODIGO
+	try {
+		FacturaDTO factura=BusinessDelegate.getInstance().mostrarFacturaByCod(1);
+		System.out.println("La FACTURA BUSCADA es: "+factura.toString());
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (FacturaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	
+	
+	
+	
 	}
 
 }

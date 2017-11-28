@@ -90,6 +90,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarFacturas();
 	}
 
+	@Override
+	public FacturaDTO mostrarFacturaByCod(int nroFact) throws RemoteException, FacturaException 
+	{
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarFacturaByCod(nroFact);
+	}
+
 	//-----------------------------------RESERVA-----------------------------------------------------------------------
 	@Override
 	public void grabarReserva(ReservaDTO reserva) throws RemoteException, ReservaException
@@ -149,6 +156,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarTotalFacturadoCaja(FechaDesde, FechaHasta);
 	}
 
+	
 	
 
 

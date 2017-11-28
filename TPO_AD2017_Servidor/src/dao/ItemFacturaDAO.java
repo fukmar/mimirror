@@ -72,7 +72,7 @@ private static ItemFacturaDAO instancia;
 		ItemComanda itemcomanda=new ItemComanda();
 		itemcomanda=ItemComandaDAO.getInstance().obtenerItemComandaByCod(coditemcomanda);
 		Factura factura=new Factura();
-		factura=FacturaDAO.getInstance().obtenerFacturaByNro(codfactura);
+		factura=FacturaDAO.getInstance().obtenerFacturaByCod(codfactura);
 		ItemFactura item=new ItemFactura(itemcomanda,factura);
 		session.merge(item);
 		session.getTransaction().commit();
