@@ -29,6 +29,7 @@ import negocio.Deposito;
 import negocio.Elaborado;
 import negocio.Factura;
 import negocio.Ingrediente;
+import negocio.ItemComanda;
 import negocio.Local;
 import negocio.Mesa;
 import negocio.Mozo;
@@ -160,7 +161,7 @@ public class testHibernate3 {
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
-		session.save(deposito);
+		/*session.save(deposito);
 		session.save(remito);
 		session.save(solicitud);
 		session.save(materia);
@@ -181,12 +182,12 @@ public class testHibernate3 {
 		session.save(itemCom3);
 		session.save(comandita3);
 		//sesion.save(factura2);
-		session.save(factura);
+		session.save(factura);*/
 
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		   
-		session.save(admi);
+		/*session.save(admi);
 		session.save(deposito);
 		session.save(mesita);
 		session.save(comandita2);
@@ -196,7 +197,7 @@ public class testHibernate3 {
 		session.save(factura);
 		session.save(remito);
 		session.save(solicitud);
-		session.save(itemremito);
+		session.save(itemremito);*/
 		//int idsector=mozo.getSector().getCodSector();
 		
 		//System.out.println(mozito.getNombre());
@@ -210,7 +211,7 @@ public class testHibernate3 {
 		//session.save(ue);
 	//	session.getTransaction().commit();
 		
-		session.save(see);
+	/*	session.save(see);
 		session.save(see2);
 		session.save(mpe);
 		session.save(ingrediente1);
@@ -226,7 +227,7 @@ public class testHibernate3 {
 		session.save(pdp);
 
 		session.getTransaction().commit();
-		session.close();
+		session.close();*/
 		
 		
 		
@@ -234,6 +235,9 @@ public class testHibernate3 {
 		
 		//aca terminan pruebas de DB
 		
+		ItemComandaEntity itemCom4= new ItemComandaEntity(6, plato, comandita);
+		ItemComanda itcom=itemCom4.toNegocio();
+		ItemComandaDAO.getInstance().save(itcom);
 		
 		//test ceci
 		
@@ -322,7 +326,7 @@ public class testHibernate3 {
 		/*--------------->----------->separador de bajo presupuesto<------------------<-----------------------*/				
 
 
-
+/*
 
 		//PRUEBO DAO RECETA INGREDIENTES//
 		List<Ingrediente> receta= IngredienteDAO.getInstance().getIngredientesdeSemi(see.toNegocio());
@@ -370,9 +374,9 @@ public class testHibernate3 {
 		//TEST DAO FACTURACION FUNCIONA OK LUEGO DE PASAR A NEGOCIO! TODO EN ORDEN.  CAMBIOS..FACTURA COMO DIJO ZUKI NO TIENE ASOCIADA CAJA - NO TIENE SENTIDO y LE SUMAMOS COMPLEJIDAD. NO LLEGAMOS
 		// VERIFICAR QUE PREVIO A LA EJECUCION CREO LA FACTURA CON LO IMPORTANTE y LUEGO EJECUTO PARA EL CALCULO y SE ME CREAN LOS ITEMFACTURA A PARTIR DE ITEMCOMANDA. LA FACTURA TENDRA LA MESA y EL DAO
 		// BUSCA LAS COMANDAS ABIERTAS PARA ESA MESA Y LAS FACTURA.  LUEGO PASA A COMANDA CERRADA ESTOS ITEMS
-		System.out.println(factura.getCodFactura());
+	/*	System.out.println(factura.getCodFactura());
 		FacturaDAO.getInstance().CerrarFactura(factura);
-		Factura facturanegocio=FacturaDAO.getInstance().obtenerFacturaByNro(factura.getCodFactura());
+		Factura facturanegocio=FacturaDAO.getInstance().obtenerFacturaByCod(factura.getCodFactura());
 	    System.out.println("El total de la factura nro "+facturanegocio.getCodFactura()+" es de ARS "+ facturanegocio.getImporte());
 
 	    //VER COMISIONES MOZO POR LISTADO FUNCIONA YESS!  Habria que hacer un view pero va...
@@ -407,7 +411,7 @@ public class testHibernate3 {
 	    
 	    //PROBAMOS VER EL TOTAL FACTURADO ENTRE UNA FECHA Y OTRA usando as fechas que definimos para el anterior DAO
 
-	    double facturado=CajaDAO.getInstancia().getTotalFacturado(fechadesde, fechahasta);
+	    double facturado=CajaDAO.getInstancia().getTotalFacturadoCaja(fechadesde, fechahasta);
 	    System.out.println("La caja facturo en ese periodo: "+facturado);
 	    double comision=MozoDAO.getInstancia().getComisionesapagar(fechadesde, fechahasta);
 	    System.out.println("comisiones:"+comision);
@@ -433,5 +437,6 @@ public class testHibernate3 {
 		PlanDeProduccionDAO.getInstance().CalcularporcentajeAvance(pdp.toNegocio());
 		PlanDeProduccion planobtenido=PlanDeProduccionDAO.getInstance().obtenerPlanFecha(fecha);
 		System.out.println(planobtenido.getAvance()*100+" Porciento");
+		*/
 }
 }

@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import dao.ItemComandaDAO;
 import entities.ComandaEntity;
 import entities.ItemComandaEntity;
 import entities.PlatoEntity;
@@ -55,6 +56,21 @@ public class ItemComanda {
 	public void setPlato(Plato plato) {
 		this.plato = plato;
 	}
+	
+	
+	public Comanda getComanda() {
+		return comanda;
+	}
+
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
+	}
+
+	public void save() 
+	{
+		ItemComandaDAO.getInstance().save(this);
+	}
+	
 	public ItemComandaEntity toEntity()
 	{
 		ItemComandaEntity i=new ItemComandaEntity();

@@ -34,6 +34,7 @@ import negocio.Caja;
 import negocio.Comanda;
 import negocio.Deposito;
 import negocio.Factura;
+import negocio.ItemComanda;
 import negocio.Mesa;
 import negocio.Mozo;
 import negocio.Plato;
@@ -130,6 +131,17 @@ public class Controlador {
 		return comanda;
 	}
 	
+	//-------------------------------------------------------------------------------------------------------------------------------------
+	//ITEM COMANDA
+	public void save(ItemComanda itemComanda) 
+	{
+		//(Integer cantidad, Plato plato,Comanda comanda
+		Integer codPlato=itemComanda.getPlato().getCodigo();
+		Plato plato=PlatoDAO.getInstance().getPlatoPorCod(codPlato);
+		Integer codComanda=itemComanda.getComanda().getCodComanda();
+		Comanda comanda=ComandaDAO.getInstance().obtenerComandaByCod(codComanda);
+		new ItemComanda(itemComanda.getCantidad(),plato,comanda).save();
+	}
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	//FACTURAS
 	public  void guardarFactura(FacturaDTO factura) 
