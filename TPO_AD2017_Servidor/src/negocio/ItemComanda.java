@@ -9,9 +9,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import dao.ItemComandaDAO;
+import dto.ItemComandaDTO;
 import entities.ComandaEntity;
 import entities.ItemComandaEntity;
 import entities.PlatoEntity;
+import enumns.EstadoItemComanda;
 import enumns.MedioDePago;
 
 public class ItemComanda {
@@ -20,17 +22,26 @@ public class ItemComanda {
 	private Integer cantidad;
 	private Plato plato;
 	private Comanda comanda;
-	
+	private EstadoItemComanda estado;
 	
 	public ItemComanda()
 	{	
 	}
 
-	public ItemComanda(Integer cantidad, Plato plato,Comanda comanda) {
+	public ItemComanda(Integer cantidad, EstadoItemComanda estado,Plato plato,Comanda comanda) {
 		super();
 		this.cantidad = cantidad;
+		this.estado=estado;
 		this.plato = plato;
 		this.comanda=comanda;
+	}
+
+	public EstadoItemComanda getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoItemComanda estado) {
+		this.estado = estado;
 	}
 
 	public Integer getCoditemComanda() {
@@ -40,7 +51,7 @@ public class ItemComanda {
 	public void setCoditemComanda(Integer coditemComanda) {
 		this.coditemComanda = coditemComanda;
 	}
-
+ 
 	public Integer getCantidad() {
 		return cantidad;
 	}
@@ -77,6 +88,16 @@ public class ItemComanda {
 		i.setCantidad(cantidad);
 		i.setCoditemComanda(coditemComanda);
 		i.setPlato(plato.toEntity());
+		i.setEstado(estado);
+		return i;
+	}
+	public ItemComandaDTO toDTO()
+	{
+		ItemComandaDTO i=new ItemComandaDTO();
+		i.setCantidad(cantidad);
+		i.setCoditemComanda(coditemComanda);
+		i.setPlato(plato.toDTO());
+		i.setEstado(estado);
 		return i;
 	}
 }

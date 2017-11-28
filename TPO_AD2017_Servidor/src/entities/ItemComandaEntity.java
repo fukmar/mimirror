@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import enumns.EstadoItemComanda;
 import negocio.ItemComanda;
 import negocio.Plato;
 
@@ -21,7 +22,7 @@ public class ItemComandaEntity
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codPlato")
 	private PlatoEntity plato;
-	
+	private EstadoItemComanda estado;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codComanda")
@@ -32,11 +33,29 @@ public class ItemComandaEntity
 	{	
 	}
 
-	public ItemComandaEntity(Integer cantidad, PlatoEntity plato,ComandaEntity comanda) {
+	public ItemComandaEntity(Integer cantidad,EstadoItemComanda estado, PlatoEntity plato,ComandaEntity comanda) {
 		super();
 		this.cantidad = cantidad;
+		this.estado=estado;
 		this.plato = plato;
 		this.comanda=comanda;
+	}
+
+	
+	public EstadoItemComanda getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoItemComanda estado) {
+		this.estado = estado;
+	}
+
+	public ComandaEntity getComanda() {
+		return comanda;
+	}
+
+	public void setComanda(ComandaEntity comanda) {
+		this.comanda = comanda;
 	}
 
 	public Integer getCoditemComanda() {
@@ -69,6 +88,7 @@ public class ItemComandaEntity
 		i.setCoditemComanda(coditemComanda);
 		i.setPlato(plato.toNegocio());
 		i.setCantidad(cantidad);
+		i.setEstado(estado);
 		return i;
 	}
 	

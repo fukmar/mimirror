@@ -103,7 +103,6 @@ public class Plato
 		p.setNombre(nombre);
 		p.setPrecio(precio);
 		p.setCategoria(categoria);
-		p.setCarta(carta.toEntity());
 		List<ElaboradoEntity> productos=new ArrayList<ElaboradoEntity>();
 		for(Elaborado e:this.productoPlato ) 
 		{

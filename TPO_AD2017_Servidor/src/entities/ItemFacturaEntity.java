@@ -1,7 +1,9 @@
 package entities;
 import javax.persistence.*;
 
+import dto.ItemFacturaDTO;
 import negocio.Comanda;
+import negocio.ItemFactura;
 
 @Entity
 @Table(name="itemsfactura")
@@ -29,19 +31,15 @@ public class ItemFacturaEntity
 		return subtotal;
 	}
 
-	public void setSubtotal(Double subtotal) {
+	public void setSubtotal(double subtotal) {
 		this.subtotal = subtotal;
 	}
-
-
 
 	public ItemFacturaEntity(ItemComandaEntity itemcomanda, FacturaEntity factura) {
 		super();
 		this.itemcomanda = itemcomanda;
 		this.factura=factura;
 	}
-
-
 
 	public Integer getCodItemFactura() {
 		return codItemFactura;
@@ -50,9 +48,6 @@ public class ItemFacturaEntity
 	public void setCodItemFactura(Integer codItemFactura) {
 		this.codItemFactura = codItemFactura;
 	}
-
-
-
 	public ItemComandaEntity getItemcomanda() {
 		return itemcomanda;
 	}
@@ -61,19 +56,23 @@ public class ItemFacturaEntity
 		this.itemcomanda = itemcomanda;
 	}
 
-
-
 	public FacturaEntity getFactura() {
 		return factura;
 	}
-
-
 
 	public void setFactura(FacturaEntity factura) {
 		this.factura = factura;
 	}
 
-	
+	public ItemFactura tonegocio()
+	{ 
+		ItemFactura itemnetocio=new ItemFactura();
+		itemnetocio.setCodItemFactura(codItemFactura);
+		itemnetocio.setFactura(factura.toNegocio());
+		itemnetocio.setItemcomanda(itemcomanda.toNegocio());
+		itemnetocio.setSubtotal(subtotal);
+		return itemnetocio;
+	}
 	
 	
 	

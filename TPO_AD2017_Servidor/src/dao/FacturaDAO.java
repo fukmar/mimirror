@@ -113,29 +113,42 @@ public class FacturaDAO
 	
 	
 	//esto tiene que recibir Factura (negocio)
-	public void CerrarFactura(FacturaEntity factura){
+
+	public void cerrarFactura(Factura f){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		List<Comanda> comandasdemesa=ComandaDAO.getInstance().obtenerComandasAbiertasxMesa(factura.getMesa().getCodMesa());
-		for (Comanda comanda:comandasdemesa)
-		{  
-			List <ItemComanda> itemscomanda =new ArrayList<ItemComanda>();
-			itemscomanda =ItemComandaDAO.getInstance().obtenerItemComandasAbiertasxMesa(comanda.getCodComanda());
-			for (ItemComanda itemcom:itemscomanda )
-			{
-			ItemFacturaDAO.getInstance().itemComandatoitemFactura(factura.getCodFactura(), itemcom.getCoditemComanda());
-			ItemFacturaEntity itemfactura=ItemFacturaDAO.getInstance().obtenerItemFacturaxcodItemComanda(itemcom.getCoditemComanda());
-			ItemFacturaDAO.getInstance().actualizarsubtotalItemFactura(itemfactura.getCodItemFactura());
-			}
-			ComandaDAO.getInstance().cerrarComanda(comanda.getCodComanda());
-		}
-		FacturaDAO.getInstance().actualizarTotalFactura(factura.getCodFactura());
-		session.flush();
+		@SuppressWarnings("unchecked")
+		Estado estado=estadocomandafromString("EnProceso");
+		List <ItemComandaEntity> comandas=session.createQuery("from ItemComandaEntity i where i.comanda.mesa.codMesa=? and i.comanda.estado=?").setInteger(0,f.getMesa().getCodMesa()).setParameter(1, estado).list();
 		session.getTransaction().commit();
 		session.close();
+		double totalfactura=0;
+		for (ItemComandaEntity i :comandas){
+			SessionFactory sf2 = HibernateUtil.getSessionFactory();
+			Session session2 = sf2.openSession();
+			session2.beginTransaction();
+			ItemFacturaEntity item=new ItemFacturaEntity();
+			item.setFactura(f.toEntity());
+			item.setItemcomanda(i);
+			item.setSubtotal(i.getCantidad()*i.getPlato().getPrecio());
+			totalfactura=totalfactura+item.getSubtotal();
+			session2.merge(item);
+			session2.getTransaction().commit();
+			session2.close();
+		}
+		SessionFactory sf3 = HibernateUtil.getSessionFactory();
+		Session session3 = sf.openSession();
+		session3.beginTransaction();
+		f.setImporte(totalfactura);
+		session3.update(f.toEntity());
+		session3.getTransaction().commit();
+		session3.close();
 	}
-	
+	private Estado estadocomandafromString(String estado)
+	{
+		return Estado.valueOf(estado);
+	}
 
 	public Double getMontoPagos(int nroFact){
 		SessionFactory sf = HibernateUtil.getSessionFactory();

@@ -1,4 +1,8 @@
 package dao;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -9,6 +13,8 @@ import entities.ItemFacturaEntity;
 import entities.PlatoEntity;
 import entities.SemiElaboradoEntity;
 import entities.UnidadEntity;
+import enumns.Estado;
+import enumns.EstadoRemito;
 import hibernate.HibernateUtil;
 import negocio.Elaborado;
 import negocio.Factura;
@@ -38,60 +44,7 @@ private static ItemFacturaDAO instancia;
 	session.getTransaction().commit();
 	session.close();
 	}
-	public Double calcularSubTotalItemFactura(int codItemFactura){
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		Double subtotal = (Double)session.createQuery("select SUM(itcom.cantidad * p.precio) from ItemFacturaEntity itfac join itfac.itemcomanda itcom join itcom.plato p where itfac.codItemFactura=?").setInteger(0,codItemFactura).uniqueResult();
-		session.close();
-		return subtotal;
-	}
-	public ItemFacturaEntity obtenerItemFactura(int codItemFactura){
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		session.beginTransaction();
-		ItemFacturaEntity item=new ItemFacturaEntity();
-		item = (ItemFacturaEntity)session.createQuery("from ItemFacturaEntity where codItemFactura=?").setInteger(0,codItemFactura).uniqueResult();
-		session.close();
-		return item;
-		
-	}
-	public ItemFacturaEntity obtenerItemFacturaxcodItemComanda(int codItemComanda){
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		session.beginTransaction();
-		ItemFacturaEntity item=new ItemFacturaEntity();
-		item = (ItemFacturaEntity)session.createQuery("from ItemFacturaEntity where coditemComanda=?").setInteger(0,codItemComanda).uniqueResult();
-		session.close();
-		return item;
-		
-	}
-	public void itemComandatoitemFactura(int codfactura,int coditemcomanda){
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		session.beginTransaction();
-		ItemComanda itemcomanda=new ItemComanda();
-		itemcomanda=ItemComandaDAO.getInstance().obtenerItemComandaByCod(coditemcomanda);
-		Factura factura=new Factura();
-		factura=FacturaDAO.getInstance().obtenerFacturaByCod(codfactura);
-		ItemFactura item=new ItemFactura(itemcomanda,factura);
-		session.merge(item);
-		session.getTransaction().commit();
-		session.close();
-	}
-	public void actualizarsubtotalItemFactura(int codItemFactura)
-	{
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		session.beginTransaction();
-		ItemFacturaEntity itemfact=new ItemFacturaEntity();
-		itemfact=ItemFacturaDAO.getInstance().obtenerItemFactura(codItemFactura);
-		double subtotal=ItemFacturaDAO.getInstance().calcularSubTotalItemFactura(itemfact.getCodItemFactura());
-		itemfact.setSubtotal(subtotal);
-		session.merge(itemfact);
-		session.getTransaction().commit();
-		session.close();
-	}
-	
+
 	//FALTA
 	private ItemFacturaDAO toEntity(ItemFacturaDAO itemcomanda) {	
 		return null;

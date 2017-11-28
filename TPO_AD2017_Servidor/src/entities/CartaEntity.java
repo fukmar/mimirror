@@ -63,15 +63,10 @@ public class CartaEntity
 	public void setItemCarta(List<PlatoEntity> itemCarta) {
 		this.itemCarta = itemCarta;
 	}
-	public Carta toNetocio()
+	public Carta toNegocio()
 	{
 		Carta cartanegocio=new Carta();
 		cartanegocio.setCodigoCarta(codigoCarta);
-		List <Plato> platosnegocio=new ArrayList <Plato>();
-		for (PlatoEntity pentity:itemCarta)
-		{
-			platosnegocio.add(pentity.toNegocio());
-		}
 		cartanegocio.setTemporada(temporada);
 		cartanegocio.setVigencia(vigencia);
 		return cartanegocio;

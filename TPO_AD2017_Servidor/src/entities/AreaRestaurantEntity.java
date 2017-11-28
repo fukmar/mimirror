@@ -11,7 +11,7 @@ import negocio.AreaRestaurant;
 public abstract class AreaRestaurantEntity {
 
 	@Id
-	//@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(name="codAreaRestaurant")
 	protected Integer codArea;
 	

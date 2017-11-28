@@ -5,6 +5,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import dto.ItemFacturaDTO;
+import entities.ItemFacturaEntity;
+
 
 public class ItemFactura 
 {
@@ -19,11 +22,15 @@ public class ItemFactura
 	
 
 
-	public ItemFactura(ItemComanda itemcomanda, Factura factura) {
+
+	public ItemFactura(ItemComanda itemcomanda, Factura factura, double subtotal) {
 		super();
 		this.itemcomanda = itemcomanda;
-		this.factura=factura;
+		this.factura = factura;
+		this.subtotal = subtotal;
 	}
+
+
 
 
 	public double getSubtotal() {
@@ -46,6 +53,18 @@ public class ItemFactura
 
 
 
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
+
+
+
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
+	}
+
+
+
 	public ItemComanda getItemcomanda() {
 		return itemcomanda;
 	}
@@ -62,7 +81,25 @@ public class ItemFactura
 
 
 
-	public void setFactura(Factura factura) {
-		this.factura = factura;
+	public ItemFacturaEntity toEntity()
+	{
+		ItemFacturaEntity itement=new ItemFacturaEntity();
+		
+		itement.setCodItemFactura(codItemFactura);
+		itement.setFactura(factura.toEntity());
+		itement.setItemcomanda(itemcomanda.toEntity());
+		itement.setSubtotal(subtotal);
+		return itement;
 	}
+	
+	public ItemFacturaDTO toDTO()
+	{ 
+		ItemFacturaDTO itemdto=new ItemFacturaDTO();
+		itemdto.setCodItemFactura(codItemFactura);
+		itemdto.setFactura(factura.toDTO());
+		itemdto.setItemcomanda(itemcomanda.toDTO());
+		itemdto.setSubtotal(subtotal);
+		return itemdto;
+	}
+	
 }

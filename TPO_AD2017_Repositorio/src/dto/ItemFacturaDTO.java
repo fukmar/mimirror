@@ -10,12 +10,33 @@ public class ItemFacturaDTO implements Serializable
 	private Integer codItemFactura; 
 	private ItemComandaDTO itemcomanda; 
 	private FacturaDTO factura;
+	private double subtotal;
 	
-	
-	public ItemFacturaDTO(ItemComandaDTO itemcomanda, FacturaDTO factura) {
+
+
+	public ItemFacturaDTO(ItemComandaDTO itemcomanda, FacturaDTO factura, double subtotal) {
 		super();
 		this.itemcomanda = itemcomanda;
-		this.factura=factura;
+		this.factura = factura;
+		this.subtotal = subtotal;
+	}
+
+
+
+	public double getSubtotal() {
+		return subtotal;
+	}
+
+
+
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
+	}
+
+
+
+	public ItemFacturaDTO() {
+		super();
 	}
 
 

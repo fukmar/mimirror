@@ -2,9 +2,7 @@ package dto;
 
 import java.io.Serializable;
 
-
-
-
+import enumns.EstadoItemComanda;
 
 public class ItemComandaDTO implements Serializable
 {
@@ -13,6 +11,7 @@ public class ItemComandaDTO implements Serializable
 	private Integer cantidad;
 	private PlatoDTO plato;
 	private ComandaDTO comanda;
+	private EstadoItemComanda estado;
 	
 	
 	public ItemComandaDTO()
@@ -20,12 +19,23 @@ public class ItemComandaDTO implements Serializable
 	}
 
 
-	public ItemComandaDTO(Integer cantidad, PlatoDTO plato,ComandaDTO comanda) {
+	public ItemComandaDTO(Integer cantidad, PlatoDTO plato,EstadoItemComanda estado,ComandaDTO comanda) {
 		super();
 		this.cantidad = cantidad;
 		this.plato = plato;
 		this.comanda=comanda;
+		this.estado=estado;
 	}
+
+	public EstadoItemComanda getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(EstadoItemComanda estado) {
+		this.estado = estado;
+	}
+
 
 	public Integer getCoditemComanda() {
 		return coditemComanda;

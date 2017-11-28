@@ -141,7 +141,7 @@ public class Controlador {
 		Plato plato=PlatoDAO.getInstance().getPlatoPorCod(codPlato);
 		Integer codComanda=itemComanda.getComanda().getCodComanda();
 		Comanda comanda=ComandaDAO.getInstance().obtenerComandaByCod(codComanda);
-		new ItemComanda(itemComanda.getCantidad(),plato,comanda).save();
+		new ItemComanda(itemComanda.getCantidad(),itemComanda.getEstado(), plato,comanda).save();
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	//FACTURAS
