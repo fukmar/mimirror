@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>MENU PRINCIPAL</title>
+<title>Menu Principal</title>
 </head>
 <body>
 	<%@include file="./menu.jsp"%> 

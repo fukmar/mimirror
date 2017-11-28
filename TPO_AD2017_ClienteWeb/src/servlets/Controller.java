@@ -215,11 +215,12 @@ if(opcion.equals("agregarItemsComanda_2step")){
 				System.out.println(e.getMessage());
 			}
 			
-			/*try {
+			try {
 				plato = BusinessDelegate.getInstance().BuscarPlatoPorCod(codPlato);
-			} catch (ComandaException e) {
+				
+			} catch (PlatoException e) {
 				System.out.println(e.getMessage());
-			}*/
+			}
 			
 			ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,comanda);
 			

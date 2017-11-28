@@ -1,15 +1,27 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="css/style.css">
+<title>Menu Principal</title>
 
+</head>
+<body>
+ 
+ 
 <%@ page import=" java.util.*" %>
 <%      
     HashMap<String,HashMap<String,String>> menus = new HashMap<String,HashMap<String,String>>();
     HashMap<String,String> submmenus;
     HashMap<String,String> submmenus2;
  %>
+ <nav id="primary_nav_wrap">
     <ul id="menu">
+    
  <%
 
  %>
-        <li><a href="index.jsp">Inicio</a></li>
+        
  <%          
         
  		 submmenus = new HashMap<String,String>();
@@ -50,7 +62,7 @@
                  String subMenuName = (String)itSub.next();
                  String subMenuAction = (String)sub.get(subMenuName);
  %>
-                <li><a href="<%=subMenuAction%>"><%=subMenuName%></a></li>
+                <li><a href="<%=subMenuAction%>" ><%=subMenuName%></a></li>
  <%
             }
  %>
@@ -62,5 +74,7 @@
        
  
     </ul>
-
+    </nav>
+</body>
+</html>
                 
