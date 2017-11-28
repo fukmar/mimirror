@@ -10,6 +10,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import dto.ElaboradoDTO;
 import dto.PlatoDTO;
 import entities.CartaEntity;
 import entities.ElaboradoEntity;
@@ -94,22 +95,6 @@ public class Plato
 		this.categoria = categoria;
 	}
 
-	
-	public PlatoDTO toDTO()
-	{
-		PlatoDTO p=new PlatoDTO();
-		p.setCodigo(codigo);
-		p.setNombre(nombre);
-		p.setPrecio(precio);
-		List<Elaborado> elab=new ArrayList<Elaborado>();
-		/*for(Elaborado pp: productoPlato )
-		{
-			elab.add(pp.toDTO());
-		}
-		p.setProductoPlato(elab);*/
-		return p;
-	}
-
 
 	public PlatoEntity toEntity() 
 	{
@@ -117,14 +102,33 @@ public class Plato
 		p.setCodigo(codigo);
 		p.setNombre(nombre);
 		p.setPrecio(precio);
-		
+		p.setCategoria(categoria);
+		p.setCarta(carta.toEntity());
 		List<ElaboradoEntity> productos=new ArrayList<ElaboradoEntity>();
-		
 		for(Elaborado e:this.productoPlato ) 
 		{
-		//	productos.add(e.toEntity());
+			productos.add(e.toEntity());
 		}
+		p.setProductoPlato(productos);
 		return p;
 	}
+	
+	public PlatoDTO toDTO() 
+	{
+		PlatoDTO p=new PlatoDTO();
+		p.setCodigo(codigo);
+		p.setNombre(nombre);
+		p.setPrecio(precio);
+		p.setCategoria(categoria);
+		p.setCarta(carta.toDTO());
+		List<ElaboradoDTO> productos=new ArrayList<ElaboradoDTO>();
+		for(Elaborado e:this.productoPlato ) 
+		{
+			productos.add(e.toDTO());
+		}
+		p.setProductoPlato(productos);
+		return p;
+	}
+
 
 }

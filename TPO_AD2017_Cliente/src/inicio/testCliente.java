@@ -37,6 +37,7 @@ import enumns.Temporada;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
 import exceptions.PlatoException;
+import exceptions.itemComandaException;
 
 
 public class testCliente 
@@ -170,13 +171,13 @@ public class testCliente
 		//HASTA ACA DECLARACION DE VARIABLES
 		//ACA EMPIEZAN LOS LLAMADOS
 		//GUARDAR COMANDA		
-		try {
+		/*try {
 			BusinessDelegate.getInstance().grabarComanda(comanda);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (ComandaException e) {
 			e.printStackTrace();
-		}
+		}*/
 		///GUARDAR FACTURA
 		try {
 			BusinessDelegate.getInstance().grabarFactura(fact);
@@ -185,6 +186,17 @@ public class testCliente
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FacturaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//GRABAR ITEM COMANDA
+		try {
+			BusinessDelegate.getInstance().grabarItemComanda(itemCom);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (itemComandaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

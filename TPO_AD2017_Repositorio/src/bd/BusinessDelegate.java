@@ -19,6 +19,7 @@ import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
+import exceptions.itemComandaException;
 import interfazRemota.manejoNegocio;
 
 
@@ -111,6 +112,15 @@ public class BusinessDelegate
 			throw new ComandaException("No se pudo encontrar la COMANDA por codigo!");
 		}
 	}
+	
+	
+	//---------------------------------------ITEM COMANDA------------------------------------------------------------
+	
+	public void grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException, itemComandaException 
+	{
+		remoteObject.grabarItemComanda(itemComanda);
+	}
+	
 	
 	//---------------------------------------FACTURAS------------------------------------------------------------
 	public void grabarFactura(FacturaDTO factura) throws RemoteException, FacturaException 

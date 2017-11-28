@@ -1,9 +1,13 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dto.CartaDTO;
 import dto.PlatoDTO;
+import entities.CartaEntity;
+import entities.PlatoEntity;
 import enumns.Temporada;
 
 public class Carta 
@@ -53,5 +57,33 @@ public class Carta
 	public void setItemCarta(List<Plato> itemCarta) {
 		this.itemCarta = itemCarta;
 	}
+	
+	public CartaEntity toEntity()
+	{
+		CartaEntity cartaentity=new CartaEntity();
+		cartaentity.setCodigoCarta(codigoCarta);
+		List <PlatoEntity> platosentity=new ArrayList <PlatoEntity>();
+		for (Plato pentity:itemCarta)
+		{
+			platosentity.add(pentity.toEntity());
+		}
+		cartaentity.setTemporada(temporada);
+		cartaentity.setVigencia(vigencia);
+		return cartaentity;
+	}
+	public CartaDTO toDTO()
+	{
+		CartaDTO cartadto=new CartaDTO();
+		cartadto.setCodigoCarta(codigoCarta);
+		List <PlatoDTO> platosdto=new ArrayList <PlatoDTO>();
+		for (Plato pl:itemCarta)
+		{
+			platosdto.add(pl.toDTO());
+		}
+		cartadto.setTemporada(temporada);
+		cartadto.setVigencia(vigencia);
+		return cartadto;
+	}
+	
 
 }

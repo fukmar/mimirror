@@ -9,6 +9,7 @@ import controlador.Controlador;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
+import dto.ItemComandaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
@@ -25,6 +26,7 @@ import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
+import exceptions.itemComandaException;
 import interfazRemota.manejoNegocio;
 
 public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
@@ -76,6 +78,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarComandasPorCod(codComanda);
 	}
 	
+	//--------------------------ITEM COMANDA--------------------------------------------------------------------------------
+	@Override
+	public void grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException, itemComandaException 
+	{
+		Controlador.getInstance().guardarItemComanda(itemComanda);
+		
+	}
 	//--------------------------FACTURAS--------------------------------------------------------------------------------
 	@Override
 	public void grabarFactura(FacturaDTO factura) throws RemoteException, FacturaException 
@@ -155,6 +164,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().listarTotalFacturadoCaja(FechaDesde, FechaHasta);
 	}
+
+
 
 	
 	

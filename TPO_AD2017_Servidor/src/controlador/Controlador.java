@@ -20,6 +20,7 @@ import dao.SectorDAO;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
+import dto.ItemComandaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
@@ -133,7 +134,7 @@ public class Controlador {
 	
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	//ITEM COMANDA
-	public void save(ItemComanda itemComanda) 
+	public void guardarItemComanda(ItemComandaDTO itemComanda) 
 	{
 		//(Integer cantidad, Plato plato,Comanda comanda
 		Integer codPlato=itemComanda.getPlato().getCodigo();

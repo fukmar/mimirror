@@ -6,6 +6,7 @@ import java.util.List;
 
 import dto.ElaboradoDTO;
 import dto.SemiElaboradoDTO;
+import entities.ElaboradoEntity;
 import entities.PlanDeProduccionEntity;
 import entities.SemiElaboradoEntity;
 import entities.UnidadEntity;
@@ -45,7 +46,7 @@ public class Elaborado extends Producto
 	}
 
 	
-	public Elaborado toDTO() 
+	public ElaboradoDTO toDTO() 
 		{
 		ElaboradoDTO e=new ElaboradoDTO();
 		e.setCaducidad(caducidad);
@@ -60,13 +61,25 @@ public class Elaborado extends Producto
 		e.setDescripcion(descripcion);
 		e.setTipo(tipo);
 		e.setUnidad(unidad.toDTO());
-		return null;
+		return e;
 		}
 
-	public Elaborado toEntity() 
+	public ElaboradoEntity toEntity() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		ElaboradoEntity e=new ElaboradoEntity();
+		e.setCaducidad(caducidad);
+		e.setCalidad(calidad);
+		e.setCantidad(cantidad);
+		List<SemiElaboradoEntity> semisentity=new ArrayList <SemiElaboradoEntity>();
+		for (SemiElaborado s:componentes)
+		{
+			semisentity.add(s.toEntitySemi());
+		}
+		e.setComponentes(semisentity);
+		e.setDescripcion(descripcion);
+		e.setTipo(tipo);
+		e.setUnidad(unidad.toEntity());
+		return e;
 	}
 
 }

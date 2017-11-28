@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import dto.IngredienteDTO;
 import entities.*;
 
 public class Ingrediente
@@ -72,5 +73,14 @@ public class Ingrediente
 		i.setPlatosemielaborado(platosemielaborado.toEntitySemi());
 		return i;
 	}
+	public IngredienteDTO toDTO() {
+		IngredienteDTO i=new IngredienteDTO();
+		i.setCantidad(cantidad);
+		i.setCodigocomponente(codigocomponente);
+		i.setMateriaprima(materiaprima.toDTO());
+		i.setPlatosemielaborado(platosemielaborado.toDTO());
+		return i;
+	}
+
 
 }
