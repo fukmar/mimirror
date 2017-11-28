@@ -13,6 +13,7 @@ import dto.PlatoDTO;
 import dto.ReservaDTO;
 import enumns.CategoriaPlato;
 import enumns.MedioDePago;
+import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
 import exceptions.MesaException;
@@ -157,6 +158,21 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} catch (PlatoException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	//TOTAL FACTURADO POR CAJA
+	Date FechaDesde = new Date("01/01/2016");
+	Date FechaHasta = new Date("10/10/2020");
+	try {
+		double importeTotal=BusinessDelegate.getInstance().mostrarTotalFacturadoCaja(FechaDesde, FechaHasta);
+		System.out.println("el total facturado de la CAJA es  "+importeTotal);
+		
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (CajaException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

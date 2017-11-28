@@ -48,6 +48,7 @@ public class testCliente
 		Date fecha = new Date("10/10/2020");
 		DepositoDTO deposito=new DepositoDTO();
 		deposito.setCodDeposito(1);
+		
 		//Materia Prima
 		MateriaPrimaDTO materia = new MateriaPrimaDTO("PapasAlDeposito",ue, 1000f);
 		List<MateriaPrimaDTO> materiapedido = new ArrayList<MateriaPrimaDTO>();

@@ -2,6 +2,7 @@ package remoto;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Date;
 import java.util.List;
 
 import controlador.Controlador;
@@ -14,6 +15,7 @@ import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
 import exceptions.FacturaException;
@@ -137,6 +139,14 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	public List<DepositoDTO> mostrarDepositos() throws RemoteException, DepositoException
 	{
 		return Controlador.getInstance().listarDepositos();
+	}
+
+	//----------------------------------CAJA---------------------------------------------------------------------------------
+	@Override
+	public double mostrarTotalFacturadoCaja(Date FechaDesde, Date FechaHasta) throws RemoteException, CajaException 
+	{
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarTotalFacturadoCaja(FechaDesde, FechaHasta);
 	}
 
 	

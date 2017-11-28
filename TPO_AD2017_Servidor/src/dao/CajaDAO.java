@@ -38,7 +38,8 @@ public class CajaDAO
 		caja=resu.toNegocio();
 		return caja;
 	}
-	public double getTotalFacturado (Date FechaDesde,Date FechaHasta)
+	
+	public double getTotalFacturadoCaja (Date FechaDesde,Date FechaHasta)
 	{
 		Session s = HibernateUtil.getSessionFactory().getCurrentSession();
 		s.beginTransaction();

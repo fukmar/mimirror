@@ -246,4 +246,13 @@ public class Controlador {
 		return depositos;
 	}
 	
+	
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+    //LISTAR FACTURADO EN CAJA
+	public double listarTotalFacturadoCaja (Date FechaDesde,Date FechaHasta)
+	{
+		double importe=CajaDAO.getInstancia().getTotalFacturadoCaja(FechaDesde, FechaHasta);
+		return importe;
+	}
+	
 }

@@ -5,9 +5,11 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Date;
 import java.util.List;
 
 import dto.*;
+import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
 import exceptions.FacturaException;
@@ -65,13 +67,21 @@ public class BusinessDelegate
 	
 	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, String categoriaplato) throws RemoteException, PlatoException 
 	{
-		return remoteObject.BuscarPlatosparecidos(nombre, categoriaplato);
+		try {
+			return remoteObject.BuscarPlatosparecidos(nombre, categoriaplato);
+		} catch (RemoteException e) {
+			throw new PlatoException("No se encontraron PLATOS similares!");
+		}
 	}
 	
 	
-	public PlatoDTO BuscarPlatoPorCod(Integer codPlato) throws RemoteException, PlatoException {
-		// TODO Auto-generated method stub
-		return remoteObject.BuscarPlatoPorCod(codPlato);
+	public PlatoDTO BuscarPlatoPorCod(Integer codPlato) throws RemoteException, PlatoException 
+	{
+		try {
+			return remoteObject.BuscarPlatoPorCod(codPlato);
+		} catch (RemoteException e) {
+			throw new PlatoException("No se encontro el PLATO por CODIGO!");
+		}
 	}
 
 	//---------------------------------------COMANDAS------------------------------------------------------------
@@ -95,7 +105,11 @@ public class BusinessDelegate
 	
 	public ComandaDTO BuscarComandasPorCod(Integer codComanda) throws RemoteException, ComandaException
 	{
-		return remoteObject.BuscarComandasPorCod(codComanda);
+		try {
+			return remoteObject.BuscarComandasPorCod(codComanda);
+		} catch (Exception e) {
+			throw new ComandaException("No se pudo encontrar la COMANDA por codigo!");
+		}
 	}
 	
 	//---------------------------------------FACTURAS------------------------------------------------------------
@@ -104,7 +118,7 @@ public class BusinessDelegate
 		try {
 			remoteObject.grabarFactura(factura);
 		} catch (Exception e) {
-			//throw new FacturaException("No se pudo grabar la FACTURA!");
+			throw new FacturaException("No se pudo grabar la FACTURA!");
 		}
 	}
 	
@@ -165,5 +179,12 @@ public class BusinessDelegate
 	public List<DepositoDTO> mostrarDepositos() throws RemoteException, DepositoException
 	{
 		return remoteObject.mostrarDepositos();
+	}
+	
+	
+	//-----------------------------------DEPOSITOS-------------------------------------------------------------------------
+	public double mostrarTotalFacturadoCaja(Date FechaDesde, Date FechaHasta) throws RemoteException, CajaException 
+	{
+		return remoteObject.mostrarTotalFacturadoCaja(FechaDesde, FechaHasta);
 	}
 }
