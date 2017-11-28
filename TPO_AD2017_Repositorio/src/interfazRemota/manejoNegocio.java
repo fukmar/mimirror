@@ -8,6 +8,7 @@ import java.util.List;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
+import dto.ItemComandaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
@@ -24,6 +25,8 @@ import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
+import exceptions.itemComandaException;
+
 
 
 
@@ -40,6 +43,9 @@ public interface manejoNegocio extends Remote
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException,ComandaException;
 	public List<ComandaDTO> mostrarComandas()throws RemoteException,ComandaException;
 	public ComandaDTO BuscarComandasPorCod(Integer codComanda)throws RemoteException,ComandaException;
+	
+	//ITEMCOMANDA
+	public void grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException,itemComandaException;
 	
 	//FACTURA
 	public  void grabarFactura(FacturaDTO factura) throws RemoteException,FacturaException;
