@@ -35,7 +35,7 @@ public class PlatoEntity
 	private List<ElaboradoEntity> productoPlato;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn(name="codCarta", nullable=false)
+    @JoinColumn(name="codCarta")
     private CartaEntity carta;
 	
 	/*	public PlatoEntity(Integer codigo, String nombre, float precio, CategoriaPlato categoria,
@@ -126,6 +126,7 @@ this.carta = carta;
 		p.setCodigo(codigo);
 		p.setNombre(nombre);
 		p.setPrecio(precio);
+		p.setCarta(carta.toNegocio());
 		List<Elaborado> elab=new ArrayList<Elaborado>();
 		for(ElaboradoEntity e: this.getProductoPlato() )
 		{

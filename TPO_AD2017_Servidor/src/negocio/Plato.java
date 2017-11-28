@@ -102,6 +102,7 @@ public class Plato
 		p.setCodigo(codigo);
 		p.setNombre(nombre);
 		p.setPrecio(precio);
+		p.setCarta(carta.toEntity());
 		p.setCategoria(categoria);
 		List<ElaboradoEntity> productos=new ArrayList<ElaboradoEntity>();
 		for(Elaborado e:this.productoPlato ) 
@@ -119,6 +120,7 @@ public class Plato
 		p.setNombre(nombre);
 		p.setPrecio(precio);
 		p.setCategoria(categoria);
+		p.setCarta(carta.toDTO());
 		p.setCarta(carta.toDTO());
 		List<ElaboradoDTO> productos=new ArrayList<ElaboradoDTO>();
 		for(Elaborado e:this.productoPlato ) 
