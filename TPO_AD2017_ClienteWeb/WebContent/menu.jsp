@@ -18,9 +18,7 @@
  <nav id="primary_nav_wrap">
     <ul id="menu">
     
- <%
-
- %>
+ <li><a href="index.jsp">Inicio</a></li>
         
  <%          
         
@@ -68,11 +66,12 @@
  %>
             </ul>
         </li>
+         
  <%        
         }
  %>
        
- 
+ <li><a href="login.jsp">Salir</a></li>
     </ul>
     </nav>
 </body>
