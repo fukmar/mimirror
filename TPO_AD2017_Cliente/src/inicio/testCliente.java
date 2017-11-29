@@ -30,7 +30,9 @@ import dto.SemiElaboradoDTO;
 import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import enumns.AreaRest;
+import enumns.CategoriaPlato;
 import enumns.Estado;
+import enumns.EstadoItemComanda;
 import enumns.EstadoRemito;
 import enumns.MedioDePago;
 import enumns.Temporada;
@@ -134,7 +136,7 @@ public class testCliente
 		elabs.add(ee);
 		
 		//PLATO
-		PlatoDTO plato = new PlatoDTO("Bistec",13f,elabs);
+		PlatoDTO plato = new PlatoDTO("Bistec",30f,elabs,CategoriaPlato.Carnes,AreaRest.Cocina);
 		
 		//MOZO
 		MozoDTO mozo = new MozoDTO(31604578,"Ceci","Zuki",80.4f, sector);
@@ -149,7 +151,7 @@ public class testCliente
 		
 		
 		//ITEM COMANDA
-		ItemComandaDTO itemCom= new ItemComandaDTO(2, plato, comanda);
+		ItemComandaDTO itemCom= new ItemComandaDTO(2, plato,EstadoItemComanda.Iniciada, comanda);
 		List<ComandaDTO> comanditas = new ArrayList<ComandaDTO>();
 		comanditas.add(comanda);
 		
@@ -189,7 +191,7 @@ public class testCliente
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		 
 		//GRABAR ITEM COMANDA
 		try {
 			BusinessDelegate.getInstance().grabarItemComanda(itemCom);
