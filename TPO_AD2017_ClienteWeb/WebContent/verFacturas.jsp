@@ -47,6 +47,8 @@ List<FacturaDTO> facturas = (List<FacturaDTO>)request.getAttribute("facturas");
       <td data-label="Fecha"><%= factura.getFecha() %></td>
       <td data-label="Importe"><%= factura.getImporte() %></td>
       <td data-label="Medio de Pago"><%= factura.getMedioPago().toString() %></td>
+   	<td data-label="Mesa"><%= factura.getMesa().getCodMesa() %></td>
+      <td data-label="Medio de Pago"><%= factura.getMesa().getMozo().getApellido() %></td>
    
       
       

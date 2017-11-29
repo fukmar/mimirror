@@ -96,7 +96,7 @@ public class Mesa {
 		m.setCantidadPersonas(cantidadPersonas);
 		m.setCapacidad(capacidad);
 		m.setMozo(mozo.toDTO());
-		m.setSector(sector.toDTO());
+		//m.setSector(sector.toDTO()); //nahueloide
 		return m;
 	}
 

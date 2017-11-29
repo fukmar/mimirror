@@ -186,7 +186,8 @@ public class FacturaDAO
 		Session session=sf.openSession();
 		List<FacturaEntity> resu=session.createQuery("from FacturaEntity").list();
 		for(FacturaEntity f:resu) 
-		{
+		{	
+			System.out.println(f.getMesa().toString());
 			facturas.add(f.toNegocio());
 		}
 		session.close();
