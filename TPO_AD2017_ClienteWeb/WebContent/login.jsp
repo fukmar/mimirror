@@ -7,22 +7,35 @@
 <title>Login Resto</title>
 <link rel="stylesheet" href="css/style.css">
 
+
+<script language="Javascript">
+
+            function IsEmpty(){ 
+            	
+                if(document.getElementById("usuario").value == "" || document.getElementById("clave").value == "")
+                {
+                    alert("Debe completar usuario y clave");
+                }
+                return;
+            }
+
+
+        </script>
+
 </head>
 
 <body>
   <div class="login-page">
-<<<<<<< HEAD
+
   <form action="/TPO_AD2017_ClienteWeb/Controller?opcion=login" method="post">
-=======
-  <form action="/TPO_AD2017_ClienteWeb/menu.jsp" method="get">
->>>>>>> a7b9622a85516367a79c8ab3f0e3bcfb15dd8e7b
+
   <div class="form">
     <form class="login-form">
     		<a><% if (request.getParameter("mensaje") != null) out.print(request.getParameter("mensaje"));%></a>
-      <input type="text" placeholder="usuario" name="usuario"/>
-      <input type="password" placeholder="clave" name="clave"/>
+      <input type="text" id="usuario" placeholder="usuario" name="usuario"/>
+      <input type="password" id="clave" placeholder="clave" name="clave"/>
       
-      <button>Ingresar</button>
+      <button onclick="IsEmpty();">Ingresar</button>
      
 </form>
   </div>

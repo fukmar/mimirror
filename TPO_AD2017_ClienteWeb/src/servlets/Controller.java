@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,11 +11,13 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import bd.BusinessDelegate;
 import dto.ComandaDTO;
@@ -34,10 +38,12 @@ import exceptions.ReservaException;
 import exceptions.SectorException;
 
 
+
 /**
  * Servlet implementation class Controller
  */
 @WebServlet("/Controller")
+@MultipartConfig
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -96,6 +102,21 @@ public class Controller extends HttpServlet {
 					rd.forward(request, response);
 					}
 				
+				if(opcion.equals("cargarArchivo")){
+					
+					String descripcion = request.getParameter("descripcion"); 
+				    Part filePart = request.getPart("archivo");
+				    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+				    InputStream fileContent = filePart.getInputStream();
+				    int read = 0;
+			        final byte[] bytes = new byte[1024];
+
+			        while ((read = fileContent.read(bytes)) != -1) {
+			            System.out.write(bytes, 0, read);
+			        }
+			        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+					rd.forward(request, response);
+									}
 				
 			
 			if(opcion.equals("verPlatos")){
@@ -107,6 +128,20 @@ public class Controller extends HttpServlet {
 					RequestDispatcher rd = request.getRequestDispatcher("/verPlatos.jsp");
 					rd.forward(request, response);
 				} catch (PlatoException e) {
+					System.out.println(e.getMessage());
+				}
+
+			}
+			
+if(opcion.equals("verMozos")){
+				
+				List<MozoDTO> mozos = new ArrayList<MozoDTO>();
+				try {
+					mozos = BusinessDelegate.getInstance().mostrarMozos();
+					request.setAttribute("mozos", mozos);
+					RequestDispatcher rd = request.getRequestDispatcher("/verMozos.jsp");
+					rd.forward(request, response);
+				} catch (MozoException e) {
 					System.out.println(e.getMessage());
 				}
 

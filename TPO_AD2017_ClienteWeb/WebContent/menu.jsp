@@ -30,6 +30,10 @@
 			 submmenus.put("Ver Platos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPlatos");
 			 menus.put("Platos", submmenus);
 			 
+			 submmenus = new HashMap<String,String>();
+			 submmenus.put("Ver Mozos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verMozos");
+			 menus.put("Mozos", submmenus);
+			 
 		submmenus = new HashMap<String,String>();		
 			
 		submmenus.put("Ver Comandas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verComandas");
@@ -84,7 +88,6 @@
 
  <li><a href="/TPO_AD2017_ClienteWeb/Controller?opcion=logout">Salir</a></li>
 
- <li><a href="login.jsp">Salir</a></li>
 
     </ul>
     </nav>
