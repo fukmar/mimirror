@@ -190,7 +190,7 @@ public class testCliente
 		} catch (FacturaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 		 
 		//GRABAR ITEM COMANDA
 		try {
