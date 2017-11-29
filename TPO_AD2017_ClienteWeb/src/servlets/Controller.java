@@ -58,6 +58,17 @@ public class Controller extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else {
+			
+			
+				if(opcion.equals("login")){
+				
+					String usuario = request.getParameter("usuario");
+					String clave = request.getParameter("clave");
+					
+					System.out.println(usuario + "-" + clave);
+				}
+			
+			
 			if(opcion.equals("verPlatos")){
 				
 				List<PlatoDTO> platos = new ArrayList<PlatoDTO>();

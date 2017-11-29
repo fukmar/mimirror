@@ -11,7 +11,7 @@
 
 <body>
   <div class="login-page">
-  <form action="/TPO_AD2017_ClienteWeb/menu.jsp" method="get">
+  <form action="/TPO_AD2017_ClienteWeb/Controller?login" method="post">
   <div class="form">
     <form class="login-form">
       <input type="text" placeholder="usuario"/>

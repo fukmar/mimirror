@@ -71,7 +71,7 @@
         }
  %>
        
- <li><a href="login.jsp">Salir</a></li>
+ <li><a href="logout.jsp">Salir</a></li>
     </ul>
     </nav>
 </body>
