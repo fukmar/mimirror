@@ -9,17 +9,15 @@ public class MozoDTO implements Serializable
 	private Integer dni;
 	private String nombre, apellido;
 	private Float porcentajeComision;
-	private SectorDTO sector;
 	
 	public MozoDTO(){}
 	
-	public MozoDTO(Integer dni, String nombre, String apellido, Float procentajeComision, SectorDTO sector) {
+	public MozoDTO(Integer dni, String nombre, String apellido, Float procentajeComision) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.porcentajeComision = procentajeComision;
-		this.sector = sector;
 	}
 
 	public Integer getDni() {
@@ -55,18 +53,11 @@ public class MozoDTO implements Serializable
 	}
 
 	
-	public SectorDTO getSector() {
-		return sector;
-	}
-
-	public void setSector(SectorDTO sector) {
-		this.sector = sector;
-	}
 
 	@Override
 	public String toString() {
 		return "MozoDTO [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", procentajeComision="
-				+ porcentajeComision + ", sector=" + sector + "]";
+				+ porcentajeComision + "]";
 	}
 
 	

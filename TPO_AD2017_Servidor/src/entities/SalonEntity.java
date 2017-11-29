@@ -8,13 +8,14 @@ import negocio.Sector;
 
 import javax.persistence.*;
 
+import dto.SectorDTO;
 import enumns.AreaRest;
 @Entity
 @Table(name="salones")
 public class SalonEntity 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codSalon")
 	protected Integer codSalon;
 	private String nombreSalon;
@@ -40,6 +41,14 @@ public class SalonEntity
 		this.local = local;
 	}
 	
+	public SalonEntity(Integer codSalon, String nombreSalon, LocalEntity local, List<SectorEntity> sectores) {
+		super();
+		this.codSalon = codSalon;
+		this.nombreSalon = nombreSalon;
+		this.local = local;
+		this.sectores = sectores;
+	}
+
 	public List<SectorEntity> getSectores() {
 		return sectores;
 	}
@@ -84,12 +93,6 @@ public class SalonEntity
 		s.setCodSalon(codSalon);
 		s.setLocal(local.toNegocio());
 		s.setNombreSalon(nombreSalon);
-		List <Sector> sectoresnegocio=new ArrayList<Sector>();
-		for (SectorEntity sectorentity:sectores)
-		{
-			sectoresnegocio.add(sectorentity.toNegocio());
-		}
-		s.setSectores(sectoresnegocio);
 		return s;
 	}
 

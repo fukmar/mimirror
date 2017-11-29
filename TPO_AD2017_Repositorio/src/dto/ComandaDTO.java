@@ -61,7 +61,7 @@ public class ComandaDTO implements Serializable
 
 	@Override
 	public String toString() {
-		return "ComandaDTO [codComanda=" + codComanda + ", estado=" + estado + ", mozo=" + mozo + ", mesa=" + mesa
+		return "ComandaDTO [codComanda=" + codComanda + ", estado=" + estado + ", mozo=" + mozo.getApellido() + ", mesa=" + mesa.getCodMesa()
 				+ "]";
 	}
 	

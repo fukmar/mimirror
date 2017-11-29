@@ -133,8 +133,6 @@ public class Plato
 		p.setArea(area);
 		p.setPrecio(precio);
 		p.setCategoria(categoria);
-		p.setCarta(carta.toDTO());
-		p.setCarta(carta.toDTO());
 		List<ElaboradoDTO> productos=new ArrayList<ElaboradoDTO>();
 		for(Elaborado e:this.productoPlato ) 
 		{

@@ -20,7 +20,7 @@ import negocio.Mesa;
 public class MesaEntity 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private  Integer codMesa;
 	private  Integer cantidadPersonas;
 	private  Integer capacidad;
@@ -30,20 +30,19 @@ public class MesaEntity
 	@JoinColumn(name="codMozo")
 	private MozoEntity mozo;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "codSector")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="sector")
 	private SectorEntity sector;
 	
 	public MesaEntity(){}
 	
 
-	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo,SectorEntity sector) {
+	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo) {
 		super();
 		
 		this.cantidadPersonas = cantidadPersonas;
 		this.capacidad = capacidad;
 		this.estado = estado;
-		this.sector=sector;
 		this.mozo = mozo;
 		
 	}
@@ -135,8 +134,8 @@ public class MesaEntity
 		m.setCantidadPersonas(cantidadPersonas);
 		m.setCapacidad(capacidad);
 		m.setEstado(estado);
-		m.setSector(sector.toNegocio());
 		m.setMozo(mozo.toNegocio());
+		m.setSector(sector.toNegocio());
 		return m;
 	}
 

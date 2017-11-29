@@ -76,18 +76,6 @@ public class Mesa {
 		this.sector = sector;
 	}
 
-	public MesaEntity toNegocio() 
-	{
-		MesaEntity m=new MesaEntity();
-		m.setCodMesa(codMesa);
-		m.setEstado(estado);
-		m.setCantidadPersonas(cantidadPersonas);
-		m.setCapacidad(capacidad);
-		m.setMozo(mozo.toEntity());
-		//aca mp falta el sector?
-		return m;
-	}
-
 	public MesaEntity toEntity()
 {
 		MesaEntity m=new MesaEntity();
@@ -96,6 +84,7 @@ public class Mesa {
 		m.setCapacidad(capacidad);
 		m.setEstado(estado);
 		m.setMozo(mozo.toEntity());
+		m.setSector(sector.toEntity());
 		return m;
 	}
 
@@ -107,7 +96,7 @@ public class Mesa {
 		m.setCantidadPersonas(cantidadPersonas);
 		m.setCapacidad(capacidad);
 		m.setMozo(mozo.toDTO());
-		//m.setSector(sector.toDTO());
+		m.setSector(sector.toDTO());
 		return m;
 	}
 

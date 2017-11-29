@@ -1,10 +1,12 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 import javax.persistence.*;
 
+import negocio.Mesa;
 import negocio.Sector;
 @Entity
 @Table(name="sectores")
@@ -12,25 +14,35 @@ import negocio.Sector;
 public class SectorEntity 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codSector")
 	private Integer codSector;
 	private String descripcion;
 	
-	@ManyToOne(cascade= CascadeType.ALL)
-	@JoinColumn(name="codSalon")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="codSalon",nullable=false)
 	private SalonEntity salon;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="sector", cascade = CascadeType.ALL)
+	private List<MesaEntity> mesas ;
 	
 	
 	public SectorEntity(){}
 
-	public SectorEntity(String descripcion,SalonEntity salon) {
+
+	public SectorEntity(String descripcion, SalonEntity salon, List<MesaEntity> mesas) {
 		super();
-		
 		this.descripcion = descripcion;
-		this.salon=salon;
-		
+		this.salon = salon;
+		this.mesas = mesas;
 	}
+	public SectorEntity(String descripcion, SalonEntity salon) {
+		super();
+		this.descripcion = descripcion;
+		this.salon = salon;
+	}
+
+
 
 	public Integer getCodSector() {
 		return codSector;
@@ -55,6 +67,17 @@ public class SectorEntity
 	public void setSalon(SalonEntity salon) {
 		this.salon = salon;
 	}
+	
+
+	public List<MesaEntity> getMesas() {
+		return mesas;
+	}
+
+
+	public void setMesas(List<MesaEntity> mesas) {
+		this.mesas = mesas;
+	}
+
 
 	public Sector toNegocio() 
 	{

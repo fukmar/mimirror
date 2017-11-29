@@ -81,17 +81,17 @@ public class testHibernate4 {
 		CajaEntity caja=new CajaEntity(AreaRest.Caja,salon,local);
 		SectorEntity sector = new SectorEntity("Sector", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
+		List <MesaEntity> mesas=new ArrayList<MesaEntity>();
+	
 		sectores.add(sector);
-		
+		salon.setSectores(sectores);
 		materia.setDeposito(deposito);
 		//solicitud.setDeposito(deposito);
 		
 		//solicitudes.add(solicitud);
 			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
-		AdministracionEntity admi= new AdministracionEntity(AreaRest.Administracion, planes, local);
-		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(fecha,Estado.EnProceso,admi);
-		pdp.setAdministracion(admi);
+		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(fecha,Estado.EnProceso);
 		planes.add(pdp);
 	
 		MateriaPrimaEntity mpe = new MateriaPrimaEntity("Papas",ue, 3000f,deposito);
@@ -135,10 +135,13 @@ public class testHibernate4 {
 		List<MozoEntity> mocitos = new ArrayList<MozoEntity>();
 		mocitos.add(mozo);
 	
-		MesaEntity mesita = new MesaEntity(0,15,0,mozo,sector);
+		MesaEntity mesita = new MesaEntity(0,15,0,mozo);
+		mesas.add(mesita);
+		sector.setMesas(mesas);
 		
 		List<MesaEntity> mesitas = new ArrayList<MesaEntity>();
 		mesitas.add(mesita);
+		mesita.setSector(sector);
 				
 		ComandaEntity comandita = new ComandaEntity(mozo, mesita/*,caja,*/,Estado.Terminado); //de aca solo comente caja porque tambien lo comente en el cosntuctor
 		ComandaEntity comandita2 = new ComandaEntity(mozo, mesita/*,caja*/,Estado.EnProceso);
@@ -170,14 +173,13 @@ public class testHibernate4 {
 		session.save(materia);
 		
 		//DSECOMENTAR PARA CREAR BASE
-		session.save(admi);
 		session.save(local);
+		session.save(mesita);
 		session.save(salon);
-		//session.save(sector);
+		session.save(sector);
 		session.save(mozo);
 		session.save(plato);
 		session.save(carta);
-		session.save(mesita);
 		session.save(itemCom);
 		session.save(itemCom2);
 		session.save(comandita);
@@ -191,7 +193,7 @@ public class testHibernate4 {
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		   
 		session.save(deposito);
-		session.save(mesita);
+
 		session.save(comandita2);
 		session.save(itemCom);
 		session.save(itemCom2);

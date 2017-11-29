@@ -12,18 +12,16 @@ public class Mozo {
 	private String nombre;
 	private String apellido;
 	private Float porcentajeComision;
-	private Sector sector;
 	
 	public Mozo(){}
 	
-	public Mozo(Integer dni, String nombre, String apellido, Float procentajeComision,Sector sector)
+	public Mozo(Integer dni, String nombre, String apellido, Float procentajeComision)
 	{
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.porcentajeComision = procentajeComision;
-		this.sector = sector;
 	
 	}
 
@@ -59,13 +57,7 @@ public class Mozo {
 		this.porcentajeComision = procentajeComision;
 	}
 
-	public Sector getSector() {
-		return sector;
-	}
 
-	public void setSector(Sector sector) {
-		this.sector = sector;
-	}
 
 	public MozoEntity toEntity() 
 	{
@@ -73,7 +65,6 @@ public class Mozo {
 		m.setDni(dni);
 		m.setNombre(nombre);
 		m.setApellido(apellido);
-		m.setSector(sector.toEntity());
 		m.setPorcentajeComision(porcentajeComision);
 		return m;
 	}
@@ -85,7 +76,6 @@ public class Mozo {
 		m.setNombre(nombre);
 		m.setApellido(apellido);
 		m.setProcentajeComision(porcentajeComision);
-		m.setSector(sector.toDTO());
 		return m;
 	}
 

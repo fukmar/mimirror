@@ -83,7 +83,7 @@ public class FacturaDTO implements Serializable
 	@Override
 	public String toString() {
 		return "FacturaDTO [codFactura=" + codFactura + ", fecha=" + fecha + ", importe=" + importe + ", medioPago="
-				+ medioPago + ", mesa=" + mesa +"]";
+				+ medioPago + ", mesa=" + mesa.getCodMesa() +"]";
 	}	
 	
 }

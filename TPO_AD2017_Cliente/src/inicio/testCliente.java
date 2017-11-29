@@ -136,7 +136,7 @@ public class testCliente
 		PlatoDTO plato = new PlatoDTO("Bistec",30f,elabs,CategoriaPlato.Carnes,AreaRest.Cocina);
 		
 		//MOZO
-		MozoDTO mozo = new MozoDTO(31604578,"Ceci","Zuki",80.4f, sector);
+		MozoDTO mozo = new MozoDTO(31604578,"Ceci","Zuki",80.4f);
 		List<MozoDTO> mocitos = new ArrayList<MozoDTO>();
 		mocitos.add(mozo);
 		//MozoDTO mozo, MesaDTO mesa,CajaDTO caja,Estado estado

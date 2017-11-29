@@ -59,6 +59,7 @@ private static SessionFactory sf=null;
 	{
 		Session session=sf.openSession();
 		List<Comanda> listaCom=new ArrayList<Comanda>();
+		@SuppressWarnings("unchecked")
 		List<ComandaEntity> resu=session.createQuery("from ComandaEntity").list();
 		for(ComandaEntity c:resu) 
 		{

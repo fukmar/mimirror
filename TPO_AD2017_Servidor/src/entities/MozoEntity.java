@@ -15,9 +15,6 @@ public class MozoEntity {
 	private String nombre;
 	private String apellido;
 	private Float porcentajeComision;
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "codSector")
-	private SectorEntity sector;
 	
 	public MozoEntity(){}
 	
@@ -27,7 +24,6 @@ public class MozoEntity {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.porcentajeComision = procentajeComision;
-		this.sector = sector;
 	}
 
 	public Integer getDni() {
@@ -70,13 +66,6 @@ public class MozoEntity {
 		this.porcentajeComision = porcentajeComision;
 	}
 
-	public SectorEntity getSector() {
-		return sector;
-	}
-
-	public void setSector(SectorEntity sector) {
-		this.sector = sector;
-	}
 
 	public Mozo toNegocio() 
 	{
@@ -85,8 +74,6 @@ public class MozoEntity {
 		m.setNombre(nombre);
 		m.setApellido(apellido);
 		m.setProcentajeComision(porcentajeComision);
-	//	System.out.println(m.getSector().getSalon().getLocal());
-		m.setSector(sector.toNegocio());
 		return m;
 	}
 

@@ -80,12 +80,7 @@ public class Salon
 		s.setCodSalon(codSalon);
 		s.setLocal(local.toEntity());
 		s.setNombreSalon(nombreSalon);
-		List <SectorEntity> sectoresentity=new ArrayList<SectorEntity>();
-		for (Sector sectornegocio:sectores)
-		{
-			sectoresentity.add(sectornegocio.toEntity());
-		}
-		s.setSectores(sectoresentity);
+
 		return s;
 	}
 
@@ -96,12 +91,6 @@ public class Salon
 		s.setCodSalon(codSalon);
 		s.setLocal(local.toDTO());
 		s.setNombreSalon(nombreSalon);
-		List <SectorDTO> sectoresdto=new ArrayList<SectorDTO>();
-		for (Sector sectornegocio:sectores)
-		{
-			sectoresdto.add(sectornegocio.toDTO());
-		}
-		s.setSectores(sectoresdto);
 		return s;
 	}
 

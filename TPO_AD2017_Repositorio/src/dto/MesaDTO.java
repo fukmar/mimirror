@@ -99,7 +99,7 @@ public class MesaDTO implements Serializable
 	@Override
 	public String toString() {
 		return "MesaDTO [codMesa=" + codMesa + ", cantidadPersonas=" + cantidadPersonas + ", capacidad=" + capacidad
-				+ ", estado=" + estado + ", mozo=" + mozo + ", sector=" + sector + "]";
+				+ ", estado=" + estado + ", mozo=" + mozo.getApellido() + ", sector=" + sector.getDescripcion() + "]";
 	}
 
 		

@@ -9,7 +9,7 @@ public class SectorDTO implements Serializable
 	private Integer codSector;
 	private String descripcion;
 	private SalonDTO salon;
-	
+	private List<MesaDTO> mesas ;
 	
 	public SectorDTO(){}
 
@@ -18,6 +18,14 @@ public class SectorDTO implements Serializable
 		
 		this.descripcion = descripcion;
 		this.salon=salon;
+	}
+
+	public List<MesaDTO> getMesas() {
+		return mesas;
+	}
+
+	public void setMesas(List<MesaDTO> mesas) {
+		this.mesas = mesas;
 	}
 
 	public Integer getCodSector() {

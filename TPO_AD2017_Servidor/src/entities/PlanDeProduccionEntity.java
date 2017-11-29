@@ -44,6 +44,19 @@ public class PlanDeProduccionEntity
 		this.itemspdp = itemspdp;
 	}
 
+	public PlanDeProduccionEntity(Date fechaplan, Estado estado) {
+		super();
+		this.fechaplan = fechaplan;
+		this.estado = estado;
+	}
+
+	public PlanDeProduccionEntity(Date fechaplan, Estado estado, List<ItemPlanProduccionEntity> itemspdp) {
+		super();
+		this.fechaplan = fechaplan;
+		this.estado = estado;
+		this.itemspdp = itemspdp;
+	}
+
 	public double getAvance() {
 		return avance;
 	}

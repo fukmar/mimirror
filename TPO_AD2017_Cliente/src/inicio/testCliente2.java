@@ -1,6 +1,7 @@
 package inicio;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,12 +55,12 @@ public class testCliente2 {
 		e.printStackTrace();
 	}
 	//LISTAR COMANDAS
-	List<ComandaDTO> listCom;
+	List<ComandaDTO> listCom=new ArrayList <ComandaDTO>();
 	try {
 		listCom = BusinessDelegate.getInstance().mostrarComandas();
 		for(ComandaDTO c:listCom) 
 		{
-			System.out.println(c.getEstado());
+			System.out.println(c.toString());
 		}
 	} catch (RemoteException e) {
 		// TODO Auto-generated catch block

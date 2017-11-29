@@ -48,7 +48,6 @@ public class Administracion extends AreaRestaurant
 		{
 			planesentity.add(plan.toEntity());
 		}
-		a.setPlanesProd(planesentity);
 		return a;
 	}
 
