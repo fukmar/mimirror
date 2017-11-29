@@ -236,6 +236,26 @@ public class testHibernate3 {
 		
 		//aca terminan pruebas de DB
 		
+		
+		List<Local> localesN=LocalDAO.getInstancia().getLocales();
+		for(Local l:localesN)
+		{
+			System.out.println("codigo local"+l.getCodigoLocal());
+		}
+		
+		List<Salon> salonesN=SalonDAO.getInstancia().getSalones();
+		for(Salon s:salonesN)
+		{
+			System.out.println(s.getNombreSalon());
+		}
+		
+		
+		List<Sector> sectoresN=SectorDAO.getInstancia().getSectores();
+		for(Sector s:sectoresN)
+		{
+			System.out.println(s.getCodSector());
+		}
+		
 		ItemComandaEntity itemCom4= new ItemComandaEntity(6, EstadoItemComanda.Iniciada,plato, comandita);
 		ItemComanda itcom=itemCom4.toNegocio();
 		ItemComandaDAO.getInstance().save(itcom);

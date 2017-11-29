@@ -19,6 +19,7 @@ public class LocalEntity
 	private Integer codigoLocal;
 	private String direccion;
 	private String barrio;
+	
 	@OneToOne
 	@JoinColumn(name="codDeposito")
 	private DepositoEntity deposito;
@@ -38,10 +39,9 @@ public class LocalEntity
 
 	public LocalEntity(String direccion, String barrio, DepositoEntity deposito) {
 		super();
-		
-		this.deposito = deposito;
 		this.direccion = direccion;
 		this.barrio = barrio;
+		this.deposito = deposito;
 
 	}
 
@@ -90,7 +90,7 @@ public class LocalEntity
 		l.setCodigoLocal(codigoLocal);
 		l.setBarrio(barrio);
 		l.setDireccion(direccion);
-		//l.setDeposito(deposito.toNegocio());
+		l.setDeposito(deposito.toNegocio());
 		return l;
 	}
 

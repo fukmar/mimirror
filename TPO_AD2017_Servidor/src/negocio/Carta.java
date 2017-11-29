@@ -75,13 +75,14 @@ public class Carta
 	{
 		CartaDTO cartadto=new CartaDTO();
 		cartadto.setCodigoCarta(codigoCarta);
+		cartadto.setTemporada(temporada);
+		cartadto.setVigencia(vigencia);
 		List <PlatoDTO> platosdto=new ArrayList <PlatoDTO>();
 		for (Plato pl:itemCarta)
 		{
 			platosdto.add(pl.toDTO());
 		}
-		cartadto.setTemporada(temporada);
-		cartadto.setVigencia(vigencia);
+		
 		return cartadto;
 	}
 	

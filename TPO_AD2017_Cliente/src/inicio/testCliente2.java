@@ -54,7 +54,7 @@ public class testCliente2 {
 		e.printStackTrace();
 	}
 	//LISTAR COMANDAS
-	List<ComandaDTO> listCom;
+	/*List<ComandaDTO> listCom;
 	try {
 		listCom = BusinessDelegate.getInstance().mostrarComandas();
 		for(ComandaDTO c:listCom) 
@@ -92,7 +92,7 @@ public class testCliente2 {
 	} catch (PlatoException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}*/
 	
 	//LISTAR FACTURAS
 	try {
@@ -107,7 +107,7 @@ public class testCliente2 {
 	} catch (FacturaException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}/*
 	
 	//BUSCAR COMANDA POR NRO
 	try {
@@ -192,7 +192,7 @@ public class testCliente2 {
 	
 	
 	
-	
+	*/
 	
 	}
 

@@ -85,7 +85,7 @@ public class MozoEntity {
 		m.setNombre(nombre);
 		m.setApellido(apellido);
 		m.setProcentajeComision(porcentajeComision);
-		System.out.println(m.getSector().getSalon().getLocal().getCodigoLocal());
+	//	System.out.println(m.getSector().getSalon().getLocal());
 		m.setSector(sector.toNegocio());
 		return m;
 	}
