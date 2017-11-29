@@ -17,7 +17,6 @@ import dao.PlatoDAO;
 import dao.ReservaDAO;
 import dao.SalonDAO;
 import dao.SectorDAO;
-import dao.UsuariosDAO;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
@@ -64,16 +63,6 @@ public class Controlador {
 		return uv;
 	}*/
 	
-	//----------------------------------------------------------------------------------------------------------------------------------------
-	//USUARIOS
-	
-	
-	public boolean autenticarPassword(String login, String password) 
-	{
-		boolean resu = false;
-		resu=UsuariosDAO.getInstance().validarPassword(login, password);
-		return resu;
-	}
 	//----------------------------------------------------------------------------------------------------------------------------------------
 	//PLATOS
 	public List<PlatoDTO> listarPlatos()

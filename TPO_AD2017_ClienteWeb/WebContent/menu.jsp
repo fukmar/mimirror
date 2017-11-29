@@ -21,10 +21,13 @@
  <li><a href="index.jsp">Inicio</a></li>
         
  <%          
+<<<<<<< HEAD
 		  if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("admin"))
 		  { 
  			out.print("<a>Hola "+session.getAttribute("usuario")+"!</a>");    
  		
+=======
+>>>>>>> a7b9622a85516367a79c8ab3f0e3bcfb15dd8e7b
         
  		 submmenus = new HashMap<String,String>();
 			 submmenus.put("Ver Platos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPlatos");
@@ -38,7 +41,7 @@
 			 menus.put("Comandas", submmenus);
             
 			 submmenus = new HashMap<String,String>();
-	
+		
 			 
 			 submmenus.put("Ver Facturas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verFacturas");
 				
@@ -81,7 +84,11 @@
         
  %>
        
+<<<<<<< HEAD
  <li><a href="/TPO_AD2017_ClienteWeb/Controller?opcion=logout">Salir</a></li>
+=======
+ <li><a href="login.jsp">Salir</a></li>
+>>>>>>> a7b9622a85516367a79c8ab3f0e3bcfb15dd8e7b
     </ul>
     </nav>
 </body>

@@ -11,7 +11,11 @@
 
 <body>
   <div class="login-page">
+<<<<<<< HEAD
   <form action="/TPO_AD2017_ClienteWeb/Controller?opcion=login" method="post">
+=======
+  <form action="/TPO_AD2017_ClienteWeb/menu.jsp" method="get">
+>>>>>>> a7b9622a85516367a79c8ab3f0e3bcfb15dd8e7b
   <div class="form">
     <form class="login-form">
     		<a><% if (request.getParameter("mensaje") != null) out.print(request.getParameter("mensaje"));%></a>

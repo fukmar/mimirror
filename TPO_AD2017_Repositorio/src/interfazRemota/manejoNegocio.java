@@ -25,7 +25,6 @@ import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
-import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 
 
@@ -34,8 +33,6 @@ import exceptions.itemComandaException;
 public interface manejoNegocio extends Remote 
 {
 
-	//USUARIO
-	public boolean verificarPassword(String login, String password) throws RemoteException,UsuarioException;
 	
 	//PLATO
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException;

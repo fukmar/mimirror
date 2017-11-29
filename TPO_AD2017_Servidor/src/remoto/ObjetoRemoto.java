@@ -26,7 +26,6 @@ import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
-import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 import interfazRemota.manejoNegocio;
 
@@ -39,16 +38,6 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		super();
 	}
 
-	
-	//-----------------------------USUARIOS--------------------------------------------------------------------------
-	
-	@Override
-	public boolean verificarPassword(String login, String password) throws RemoteException, UsuarioException 
-	{
-		return Controlador.getInstance().autenticarPassword(login, password);
-	}
-	
-	
 	//----------------------------PLATOS------------------------------------------------------------------------------
 	@Override
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
@@ -175,8 +164,6 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().listarTotalFacturadoCaja(FechaDesde, FechaHasta);
 	}
-
-	
 
 
 

@@ -34,9 +34,8 @@ public class Factura
 	public Factura(){}
 
 
-	public Factura(Integer codFactura,Date fecha, double importe,MedioDePago medioPago, Mesa mesa) {
+	public Factura(Date fecha, double importe,MedioDePago medioPago, Mesa mesa) {
 		super();
-		this.codFactura=codFactura;
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;

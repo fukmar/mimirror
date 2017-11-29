@@ -19,7 +19,6 @@ import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
-import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 import interfazRemota.manejoNegocio;
 
@@ -49,20 +48,13 @@ public class BusinessDelegate
 		}
 		return instance;
 	}
-		
+	
+	
 
 /*	
 	public void insertarRubro(RubroDto rubro) throws RemoteException {
 		this.remoteObject.insertarRubro(rubro);		
 	}*/
-	
-	//---------------------------------------USUARIOS------------------------------------------------------------
-	public boolean verificarPassword(String login, String password) throws RemoteException, UsuarioException
-	{
-		return remoteObject.verificarPassword(login, password);
-	}
-	
-	
 	//---------------------------------------PLATOS------------------------------------------------------------
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
 	{

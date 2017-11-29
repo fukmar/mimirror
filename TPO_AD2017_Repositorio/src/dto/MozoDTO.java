@@ -7,8 +7,7 @@ public class MozoDTO implements Serializable
 {
 	private static final long serialVersionUID = 1999050924715622562L;
 	private Integer dni;
-	private String nombre;
-	private String apellido;
+	private String nombre, apellido;
 	private Float porcentajeComision;
 	private SectorDTO sector;
 	
