@@ -31,6 +31,7 @@ import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import enumns.AreaRest;
 import enumns.Estado;
+import enumns.EstadoItemComanda;
 import enumns.EstadoRemito;
 import enumns.MedioDePago;
 import enumns.Temporada;
@@ -149,14 +150,14 @@ public class testCliente
 		
 		
 		//ITEM COMANDA
-		ItemComandaDTO itemCom= new ItemComandaDTO(2, plato, comanda);
+		ItemComandaDTO itemCom= new ItemComandaDTO(1,plato, EstadoItemComanda.Pendiente, comanda);
 		List<ComandaDTO> comanditas = new ArrayList<ComandaDTO>();
 		comanditas.add(comanda);
 		
 		//FACTURA
 		FacturaDTO fact=new FacturaDTO(fecha,(float)1000,MedioDePago.Contado,mesa);
 		//ITEMCFACTURA
-		ItemFacturaDTO itemfacturita = new ItemFacturaDTO(itemCom,fact);
+		ItemFacturaDTO itemfacturita = new ItemFacturaDTO(itemCom,fact, 0);//
 		
 		//TEMPORADA
 		Temporada temp = null;
@@ -191,7 +192,7 @@ public class testCliente
 		}
 		
 		//GRABAR ITEM COMANDA
-		try {
+		/*try {
 			BusinessDelegate.getInstance().grabarItemComanda(itemCom);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -199,7 +200,7 @@ public class testCliente
 		} catch (itemComandaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	
 	}
 	
