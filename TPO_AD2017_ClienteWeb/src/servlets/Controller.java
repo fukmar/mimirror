@@ -59,7 +59,7 @@ public class Controller extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else {
-<<<<<<< HEAD
+
 			
 			
 				if(opcion.equals("login")){
@@ -97,11 +97,7 @@ public class Controller extends HttpServlet {
 					}
 				
 				
-				
 			
-			
-=======
->>>>>>> a7b9622a85516367a79c8ab3f0e3bcfb15dd8e7b
 			if(opcion.equals("verPlatos")){
 				
 				List<PlatoDTO> platos = new ArrayList<PlatoDTO>();

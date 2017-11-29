@@ -8,6 +8,6 @@
 <title>Menu Principal</title>
 </head>
 <body>
-	<%@include file="./menu.jsp"%> 
+	<%@include file="./menu.jsp"%> <br><br>
 </body>
 </html>
