@@ -17,9 +17,16 @@ import java.awt.event.InputEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 public class MenuPrincipal {
-
+	ImageIcon icono = new javax.swing.ImageIcon(getClass().getResource("logo.jpg"));
+	Image imagen = icono.getImage();
+	ImageIcon iconoEscalado = new ImageIcon (imagen.getScaledInstance(100,100,Image.SCALE_SMOOTH));
 	private JFrame frame;
 
 	/**
@@ -31,6 +38,7 @@ public class MenuPrincipal {
 				try {
 					MenuPrincipal window = new MenuPrincipal();
 					window.frame.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -63,6 +71,12 @@ public class MenuPrincipal {
 		escritorio.setBackground(Color.WHITE);
 		frame.getContentPane().add(escritorio, "2, 2, fill, fill");
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\fmouzo\\Documents\\JAVA TPO2\\TPAppDistribuidas-master\\TPO_AD2017_Cliente\\src\\inicio\\logo.jpg"));
+		lblNewLabel.setBounds(201, 209, 602, 324);
+		escritorio.add(lblNewLabel);
+		frame.setIconImage(imagen);
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		
@@ -162,5 +176,41 @@ public class MenuPrincipal {
 			}
 		});
 		mnFacturacin.add(mntmCancelarFactura);
+		
+		JMenu mnMateriaprima = new JMenu("MateriaPrima");
+		menuBar.add(mnMateriaprima);
+		
+		JMenuItem mntmAlta = new JMenuItem("Alta");
+		mnMateriaprima.add(mntmAlta);
+		
+		JMenuItem mntmModificacion = new JMenuItem("Modificacion");
+		mnMateriaprima.add(mntmModificacion);
+		
+		JMenu mnSemielaborado = new JMenu("SemiElaborado");
+		menuBar.add(mnSemielaborado);
+		
+		JMenuItem mntmAlta_1 = new JMenuItem("Alta");
+		mnSemielaborado.add(mntmAlta_1);
+		
+		JMenuItem mntmModificacion_1 = new JMenuItem("Modificacion");
+		mnSemielaborado.add(mntmModificacion_1);
+		
+		JMenu mnElaborado = new JMenu("Elaborado");
+		menuBar.add(mnElaborado);
+		
+		JMenuItem mntmAlta_2 = new JMenuItem("Alta");
+		mnElaborado.add(mntmAlta_2);
+		
+		JMenuItem mntmModificacion_2 = new JMenuItem("Modificacion");
+		mnElaborado.add(mntmModificacion_2);
+		
+		JMenu mnReceta = new JMenu("Receta");
+		menuBar.add(mnReceta);
+		
+		JMenuItem mntmAlta_3 = new JMenuItem("Alta");
+		mnReceta.add(mntmAlta_3);
+		
+		JMenuItem mntmModificacion_3 = new JMenuItem("Modificacion");
+		mnReceta.add(mntmModificacion_3);
 	}
 }
