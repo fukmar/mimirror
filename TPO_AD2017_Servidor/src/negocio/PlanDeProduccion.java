@@ -17,7 +17,6 @@ public class PlanDeProduccion
 {
 	private Integer codigoPDP;
 	private Estado estado;
-	private Administracion administracion;
 	private List<ItemPlanProduccion> itemspdp;
 	private Date fechaplan;
 	private double avance;
@@ -30,11 +29,10 @@ public class PlanDeProduccion
 		this.estado = estado;
 	}
 	
-	public PlanDeProduccion(Estado estado, Administracion administracion, List<ItemPlanProduccion> itemspdp,
+	public PlanDeProduccion(Estado estado, List<ItemPlanProduccion> itemspdp,
 			Date fechaplan) {
 		super();
 		this.estado = estado;
-		this.administracion = administracion;
 		this.itemspdp = itemspdp;
 		this.fechaplan = fechaplan;
 	}
@@ -68,13 +66,7 @@ public class PlanDeProduccion
 		this.avance = avance;
 	}
 
-	public Administracion getAdministracion() {
-		return administracion;
-	}
 
-	public void setAdministracion(Administracion administracion) {
-		this.administracion = administracion;
-	}
 	
 	public List<ItemPlanProduccion> getItemspdp() {
 		return itemspdp;
@@ -86,7 +78,6 @@ public class PlanDeProduccion
 
 	public PlanDeProduccionEntity toEntity() {
 		PlanDeProduccionEntity plan=new PlanDeProduccionEntity();
-		plan.setAdministracion(administracion.toEntity());
 		List <ItemPlanProduccionEntity> planesentity= new ArrayList <ItemPlanProduccionEntity>();
 		for (ItemPlanProduccion itemplan:itemspdp)
 		{
@@ -101,7 +92,6 @@ public class PlanDeProduccion
 	}
 	public PlanDeProduccionDTO toDTO() {
 		PlanDeProduccionDTO plandto=new PlanDeProduccionDTO();
-		plandto.setAdministracion(administracion.toDTO());
 		plandto.setCodigoPDP(codigoPDP);
 		plandto.setEstado(estado);
 		plandto.setFechaplan(fechaplan);

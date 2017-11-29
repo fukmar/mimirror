@@ -49,6 +49,18 @@ public class MesaEntity
 	}
 
 
+	public MesaEntity(Integer codMesa, Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo,
+			SectorEntity sector) {
+		super();
+		this.codMesa = codMesa;
+		this.cantidadPersonas = cantidadPersonas;
+		this.capacidad = capacidad;
+		this.estado = estado;
+		this.mozo = mozo;
+		this.sector = sector;
+	}
+
+
 	public Integer getCodMesa() {
 		return codMesa;
 	}

@@ -4,9 +4,9 @@ package negocio;
 import dto.AreaRestaurantDTO;
 import entities.AreaRestaurantEntity;
 import enumns.AreaRest;
-//FALTAN METODOS DE NEGOCIO
 
-public abstract class AreaRestaurant 
+
+public class AreaRestaurant
 {
 	
 	protected Integer codArea;
@@ -48,8 +48,20 @@ public abstract class AreaRestaurant
 		this.local = local;
 	}
 	
-	public abstract AreaRestaurantEntity toEntity();
+	public AreaRestaurantEntity toEntity()
+	{
+		AreaRestaurantEntity r=new AreaRestaurantEntity();
+		r.setArea(area);
+		r.setCodArea(codArea);
+		r.setLocal(local.toEntity());
+		return r;
+		
+	}
 
-	public abstract AreaRestaurantDTO toDTO() ;
+	public AreaRestaurantDTO toDTO() 
+	{
+		return null;
+		
+	}
 	
 }

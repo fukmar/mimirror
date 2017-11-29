@@ -43,7 +43,7 @@ public class testCliente2 {
 		listaRes = BusinessDelegate.getInstance().mostrarReservas();
 		 for(ReservaDTO r:listaRes)
 		 {
-			 //System.out.println(r.getCodReserva()+r.getNombre()+r.getFechayHora());
+			 System.out.println(r.getCodReserva()+r.getNombre()+r.getFechayHora());
 			 System.out.println(r.toString());
 		 }
 	} catch (RemoteException e) {
@@ -54,12 +54,12 @@ public class testCliente2 {
 		e.printStackTrace();
 	}
 	//LISTAR COMANDAS
-	/*List<ComandaDTO> listCom;
+	List<ComandaDTO> listCom;
 	try {
 		listCom = BusinessDelegate.getInstance().mostrarComandas();
 		for(ComandaDTO c:listCom) 
 		{
-			System.out.println(c.toString());
+			System.out.println(c.getEstado());
 		}
 	} catch (RemoteException e) {
 		// TODO Auto-generated catch block
@@ -92,7 +92,7 @@ public class testCliente2 {
 	} catch (PlatoException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}*/
+	}
 	
 	//LISTAR FACTURAS
 	try {
@@ -107,7 +107,7 @@ public class testCliente2 {
 	} catch (FacturaException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}/*
+	}
 	
 	//BUSCAR COMANDA POR NRO
 	try {
@@ -191,8 +191,6 @@ public class testCliente2 {
 	}
 	
 	
-	
-	*/
 	
 	}
 

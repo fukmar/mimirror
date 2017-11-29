@@ -12,7 +12,6 @@ public class PlanDeProduccionDTO implements Serializable
 {
 	private Integer codigoPDP;
 	private Estado estado;
-	private AdministracionDTO administracion;
 	private List<ItemPlanProduccionDTO> itemspdp;
 	private Date fechaplan;
 	private double avance;
@@ -27,11 +26,10 @@ public class PlanDeProduccionDTO implements Serializable
 	
 
 
-	public PlanDeProduccionDTO(Estado estado, AdministracionDTO administracion, List<ItemPlanProduccionDTO> itemspdp,
+	public PlanDeProduccionDTO(Estado estado, List<ItemPlanProduccionDTO> itemspdp,
 			Date fechaplan) {
 		super();
 		this.estado = estado;
-		this.administracion = administracion;
 		this.itemspdp = itemspdp;
 		this.fechaplan = fechaplan;
 	}
@@ -65,13 +63,7 @@ public class PlanDeProduccionDTO implements Serializable
 		this.estado = estado;
 	}
 
-	public AdministracionDTO getAdministracion() {
-		return administracion;
-	}
 
-	public void setAdministracion(AdministracionDTO administracion) {
-		this.administracion = administracion;
-	}
 
 	public Date getFechaplan() {
 		return fechaplan;
@@ -83,8 +75,7 @@ public class PlanDeProduccionDTO implements Serializable
 
 	@Override
 	public String toString() {
-		return "PlanDeProduccionDTO [codigoPDP=" + codigoPDP + ", estado=" + estado + ", administracion="
-				+ administracion + "]";
+		return "PlanDeProduccionDTO [codigoPDP=" + codigoPDP + ", estado=" + estado + "]";
 	}
 	
  

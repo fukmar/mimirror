@@ -81,12 +81,11 @@ public class testCliente
 		remito.setDeposito(deposito);
 		
 		//LOCAL
-		LocalDTO local=new LocalDTO(1,"Sucre 123", "Belgrano", depo);
-		
+		LocalDTO local=new LocalDTO("Urquiza 1841","Parque Patricios",deposito);
 		//SALON
-		SalonDTO salon=new SalonDTO(2,AreaRest.salon, "Salon", local);
+		SalonDTO salon=new SalonDTO("Salon Blanco",local);
 		//CAJA
-		CajaDTO caja=new CajaDTO(2,AreaRest.Caja,salon, local);
+		//CajaDTO caja=new CajaDTO(AreaRest.Caja,salon, local);
 		
 		//AdministracionDTO admi= new AdministracionDTO(6, AreaRest.Administracion, planes, local);
 		
@@ -94,15 +93,13 @@ public class testCliente
 		SectorDTO sector = new SectorDTO("Sector", salon);
 		List<SectorDTO> sectores = new ArrayList<SectorDTO>();
 		sectores.add(sector);
-		
+		salon.setSectores(sectores);
 		materia.setDeposito(deposito);
 		
 		//PDP
 		
 		List<PlanDeProduccionDTO> planes= new ArrayList<PlanDeProduccionDTO>();
-		AdministracionDTO admi= new AdministracionDTO(5, AreaRest.Administracion, planes, local);
 		PlanDeProduccionDTO pdp = new PlanDeProduccionDTO(Estado.EnProceso);
-		pdp.setAdministracion(admi);
 		planes.add(pdp);
 		
 		//MATERIA PRIMA

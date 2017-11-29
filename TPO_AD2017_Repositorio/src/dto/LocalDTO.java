@@ -25,6 +25,12 @@ public class LocalDTO implements Serializable
 		this.barrio = barrio;
 		this.deposito = deposito;
 	}
+	public LocalDTO( String direccion, String barrio, DepositoDTO deposito) {
+		super();
+		this.direccion = direccion;
+		this.barrio = barrio;
+		this.deposito = deposito;
+	}
 
 
 

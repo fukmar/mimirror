@@ -6,12 +6,11 @@ import enumns.AreaRest;
 import negocio.AreaRestaurant;
 
 @Entity
-//@Table(name="AreasRestaurant")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class AreaRestaurantEntity {
+@Table(name="AreasRestaurant")
+public class AreaRestaurantEntity {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codAreaRestaurant")
 	protected Integer codArea;
 	
@@ -26,11 +25,24 @@ public abstract class AreaRestaurantEntity {
 	
 	public AreaRestaurantEntity(){}
 
-	public AreaRestaurantEntity(AreaRest area,LocalEntity local) {
+
+
+	public AreaRestaurantEntity(AreaRest area, LocalEntity local) {
 		super();
 		this.area = area;
-		this.local=local;
+		this.local = local;
 	}
+
+
+
+	public AreaRestaurantEntity(Integer codArea, AreaRest area, LocalEntity local) {
+		super();
+		this.codArea = codArea;
+		this.area = area;
+		this.local = local;
+	}
+
+
 
 	public Integer getCodArea() {
 		return codArea;
@@ -57,16 +69,13 @@ public abstract class AreaRestaurantEntity {
 	}
 
 	public AreaRestaurant toNegocio() {
-		return null;
+		AreaRestaurant r=new AreaRestaurant();
+		r.setArea(area);
+		r.setCodArea(codArea);
+		r.setLocal(local.toNegocio());
+		return r;
 	}
 
-	public AreaRestaurantEntity toEntity() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 		
-	
-	
-	//hashCode e equals? revisar ejemplo ProductoEntity
-
 }

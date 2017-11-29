@@ -23,10 +23,6 @@ public class PlanDeProduccionEntity
 	private Estado estado;
 	private double avance;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="codAdministracion",nullable=false)
-	private AdministracionEntity administracion;
-	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="itemplanid", cascade = CascadeType.ALL)
 	private List<ItemPlanProduccionEntity> itemspdp;
 	
@@ -37,23 +33,15 @@ public class PlanDeProduccionEntity
 		this.estado = estado;
 	}
 	
-		
-	public PlanDeProduccionEntity(Date fechaplan, Estado estado, AdministracionEntity administracion,
+
+	public PlanDeProduccionEntity(Integer codigoPDP, Date fechaplan, Estado estado, double avance,
 			List<ItemPlanProduccionEntity> itemspdp) {
 		super();
+		this.codigoPDP = codigoPDP;
 		this.fechaplan = fechaplan;
 		this.estado = estado;
-		this.administracion = administracion;
+		this.avance = avance;
 		this.itemspdp = itemspdp;
-	}
-	
-
-	public PlanDeProduccionEntity(Date fechaplan, Estado estado,
-			AdministracionEntity administracion) {
-		super();
-		this.fechaplan = fechaplan;
-		this.estado = estado;
-		this.administracion = administracion;
 	}
 
 	public double getAvance() {
@@ -93,16 +81,10 @@ public class PlanDeProduccionEntity
 		this.estado = estado;
 	}
 	
-	public AdministracionEntity getAdministracion() {
-		return administracion;
-	}
-	public void setAdministracion(AdministracionEntity ad) {
-		this.administracion=ad;
-	}
+
 	public PlanDeProduccion toNegocio() 
 	{
 		PlanDeProduccion p=new PlanDeProduccion();
-		p.setAdministracion(administracion.toNegocio());
 		p.setCodigoPDP(codigoPDP);
 		List <ItemPlanProduccion> planesnegocio= new ArrayList <ItemPlanProduccion>();
 		for (ItemPlanProduccionEntity itemplan:itemspdp)

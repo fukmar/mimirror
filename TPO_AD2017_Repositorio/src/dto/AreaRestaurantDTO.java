@@ -5,8 +5,9 @@ import java.io.Serializable;
 import enumns.AreaRest;
 
 
-public abstract class AreaRestaurantDTO implements Serializable
+public class AreaRestaurantDTO implements Serializable
 {
+
 	protected Integer codArea;
 	protected AreaRest area;
 	protected LocalDTO local;

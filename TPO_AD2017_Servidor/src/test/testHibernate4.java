@@ -77,7 +77,7 @@ public class testHibernate4 {
 		List<MateriaPrimaEntity> materiapedido = new ArrayList<MateriaPrimaEntity>();
 		materiapedido.add(materia);
 		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
-		SalonEntity salon=new SalonEntity(AreaRest.salon, "Salon",local);
+		SalonEntity salon=new SalonEntity("Salon",local);
 		CajaEntity caja=new CajaEntity(AreaRest.Caja,salon,local);
 		SectorEntity sector = new SectorEntity("Sector", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();

@@ -76,7 +76,7 @@ public class testHibernate3 {
 		List<MateriaPrimaEntity> materiapedido = new ArrayList<MateriaPrimaEntity>();
 		materiapedido.add(materia);
 		LocalEntity local=new LocalEntity("Sucre 123", "Belgrano", deposito);
-		SalonEntity salon=new SalonEntity(AreaRest.salon, "Salon",local);
+		SalonEntity salon=new SalonEntity("Salon",local);
 		CajaEntity caja=new CajaEntity(AreaRest.Caja,salon,local);
 			
 		SectorEntity sector = new SectorEntity("Sector", salon);
@@ -90,8 +90,7 @@ public class testHibernate3 {
 			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
 		AdministracionEntity admi= new AdministracionEntity(AreaRest.Administracion, planes, local);
-		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity(fecha,Estado.EnProceso,admi);
-		pdp.setAdministracion(admi);
+		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity();
 		planes.add(pdp);
 	
 		MateriaPrimaEntity mpe = new MateriaPrimaEntity("Papas",ue, 3000f,deposito);
