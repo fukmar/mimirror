@@ -63,9 +63,9 @@ public class PlatoDAO
 	public Plato getPlatoPorCod(Integer codPlato) 
 	{
 		Plato plato=new Plato();
-		//SessionFactory sf = HibernateUtil.getSessionFactory();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		PlatoEntity resu =(PlatoEntity) session.createQuery("from PlatoEntity p where p.codigo=?").setInteger(0, codPlato).uniqueResult();
+		PlatoEntity resu =(PlatoEntity) session.createQuery("from PlatoEntity p where p.codPlato=?").setInteger(0, codPlato).uniqueResult();
 		session.close();
 		plato=resu.toNegocio();
 		return plato;
