@@ -96,7 +96,6 @@ private static SessionFactory sf=null;
 		session.beginTransaction();
 		String senten = " FROM ComandaEntity WHERE codComanda = ?";
 		ComandaEntity resu = (ComandaEntity) session.createQuery(senten).setInteger(0, codComanda).uniqueResult();
-		session.getTransaction().commit();
 		session.close();
 		comanda=resu.toNegocio();
 		return comanda;

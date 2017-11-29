@@ -20,7 +20,7 @@ public class SectorEntity
 	private Integer codSector;
 	private String descripcion;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="codSalon",nullable=false)
 	private SalonEntity salon;
 	

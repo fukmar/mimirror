@@ -446,5 +446,9 @@ public class testHibernate4 {
 		//TESTEO SI ME TRAE ITEMCOMANDA SEGUN AREA FUNCIONA!
 		List<ItemComanda> items=ItemComandaDAO.getInstance().getItemsPendientesxArea("Barra");
 		System.out.println(items.get(0).getPlato().getNombre());
+		
+		//TEST BUSCAR COMANDA POR CODIGO
+		Comanda comandabuscada=ComandaDAO.getInstance().obtenerComandaByCod(1);
+		System.out.println(comandabuscada.getCodComanda());
 }
 }

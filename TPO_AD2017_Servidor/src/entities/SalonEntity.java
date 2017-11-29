@@ -91,6 +91,7 @@ public class SalonEntity
 	{
 		Salon s=new Salon();
 		s.setCodSalon(codSalon);
+		
 		s.setLocal(local.toNegocio());
 		s.setNombreSalon(nombreSalon);
 		return s;
