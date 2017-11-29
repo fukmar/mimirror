@@ -21,6 +21,9 @@
  <li><a href="index.jsp">Inicio</a></li>
         
  <%          
+ 		Cookie ck[]=request.getCookies();  
+ 		out.print("Hello "+ck);  
+ 
         
  		 submmenus = new HashMap<String,String>();
 			 submmenus.put("Ver Platos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPlatos");
@@ -34,7 +37,7 @@
 			 menus.put("Comandas", submmenus);
             
 			 submmenus = new HashMap<String,String>();
-		
+	
 			 
 			 submmenus.put("Ver Facturas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verFacturas");
 				

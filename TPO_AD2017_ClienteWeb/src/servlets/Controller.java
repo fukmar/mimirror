@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +32,7 @@ import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SectorException;
+import exceptions.UsuarioException;
 
 
 /**
@@ -64,8 +66,20 @@ public class Controller extends HttpServlet {
 				
 					String usuario = request.getParameter("usuario");
 					String clave = request.getParameter("clave");
-					
-					System.out.println(usuario + "-" + clave);
+					Boolean ok = false;
+					try {
+						ok = BusinessDelegate.getInstance().verificarPassword(usuario, clave);
+					} catch (UsuarioException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					if (ok) {
+						 Cookie ck=new Cookie("usuario",usuario);  
+						 response.addCookie(ck); 
+				
+						 RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
+						 rd.forward(request, response);
+					}
 				}
 			
 			
