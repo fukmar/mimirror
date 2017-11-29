@@ -145,7 +145,7 @@ public class testHibernate3 {
 		comanditas.add(comandita);
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
-		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita);
+		FacturaEntity factura= new FacturaEntity(2,fecha, 40.4f, MedioDePago.Contado, mesita);
 		ItemPlanProduccionEntity itemplan=new ItemPlanProduccionEntity(plato,10,0,pdp);
 		List <ItemPlanProduccionEntity> variositemplanprod=	new ArrayList <ItemPlanProduccionEntity>();
 		variositemplanprod.add(itemplan);
@@ -162,7 +162,7 @@ public class testHibernate3 {
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		
-		/*session.save(deposito);
+		session.save(deposito);
 		session.save(remito);
 		session.save(solicitud);
 		session.save(materia);
@@ -170,7 +170,7 @@ public class testHibernate3 {
 		//DSECOMENTAR PARA CREAR BASE
 		session.save(local);
 		session.save(salon);
-		//session.save(sector);
+		session.save(sector);
 		session.save(admi);
 		session.save(mozo);
 		session.save(plato);
@@ -183,12 +183,12 @@ public class testHibernate3 {
 		session.save(itemCom3);
 		session.save(comandita3);
 		//sesion.save(factura2);
-		session.save(factura);*/
+		session.save(factura);
 
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
 		   
-		/*session.save(admi);
+		session.save(admi);
 		session.save(deposito);
 		session.save(mesita);
 		session.save(comandita2);
@@ -198,7 +198,7 @@ public class testHibernate3 {
 		session.save(factura);
 		session.save(remito);
 		session.save(solicitud);
-		session.save(itemremito);*/
+		session.save(itemremito);
 		//int idsector=mozo.getSector().getCodSector();
 		
 		//System.out.println(mozito.getNombre());
@@ -212,7 +212,7 @@ public class testHibernate3 {
 		//session.save(ue);
 	//	session.getTransaction().commit();
 		
-	/*	session.save(see);
+		session.save(see);
 		session.save(see2);
 		session.save(mpe);
 		session.save(ingrediente1);
@@ -228,7 +228,7 @@ public class testHibernate3 {
 		session.save(pdp);
 
 		session.getTransaction().commit();
-		session.close();*/
+		session.close();
 		
 		
 		

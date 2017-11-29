@@ -21,8 +21,9 @@ public class FacturaDTO implements Serializable
 
 	
 
-	public FacturaDTO(Date fecha, double importe,MedioDePago medioPago, MesaDTO mesa) {
+	public FacturaDTO(Integer codFactura,Date fecha, double importe,MedioDePago medioPago, MesaDTO mesa) {
 		super();
+		this.codFactura=codFactura;
 		this.fecha = fecha;
 		this.importe = importe;
 		this.medioPago = medioPago;
