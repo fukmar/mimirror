@@ -11,11 +11,13 @@
 
 <body>
   <div class="login-page">
-  <form action="/TPO_AD2017_ClienteWeb/Controller?login" method="post">
+  <form action="/TPO_AD2017_ClienteWeb/Controller?opcion=login" method="post">
   <div class="form">
     <form class="login-form">
-      <input type="text" placeholder="usuario"/>
-      <input type="password" placeholder="clave"/>
+    		<a><% if (request.getParameter("mensaje") != null) out.print(request.getParameter("mensaje"));%></a>
+      <input type="text" placeholder="usuario" name="usuario"/>
+      <input type="password" placeholder="clave" name="clave"/>
+      
       <button>Ingresar</button>
      
 </form>

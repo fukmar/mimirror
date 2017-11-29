@@ -67,7 +67,7 @@ public class UsuariosDAO
 	public Usuarios getUserPorLogin(String login) 
 	{
 		Usuarios user=new Usuarios();
-		//SessionFactory sf = HibernateUtil.getSessionFactory();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		UsuariosEntity resu =(UsuariosEntity) session.createQuery("from UsuariosEntity u where u.login=?").setString(0, login).uniqueResult();
 		session.close();

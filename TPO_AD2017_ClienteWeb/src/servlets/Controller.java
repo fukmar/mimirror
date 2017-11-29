@@ -14,6 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bd.BusinessDelegate;
 import dto.ComandaDTO;
@@ -56,7 +57,7 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String opcion = request.getParameter("opcion");
 		if(opcion == null){
-			RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);
 		}
 		else {
@@ -67,20 +68,37 @@ public class Controller extends HttpServlet {
 					String usuario = request.getParameter("usuario");
 					String clave = request.getParameter("clave");
 					Boolean ok = false;
-					try {
-						ok = BusinessDelegate.getInstance().verificarPassword(usuario, clave);
-					} catch (UsuarioException e) {
+					//try {
+						//ok = BusinessDelegate.getInstance().verificarPassword(usuario, clave); ESTO NO ANDA AUN
+						ok = true;
+						
+					//} catch (UsuarioException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					//	e.printStackTrace();
+					//}
 					if (ok) {
-						 Cookie ck=new Cookie("usuario",usuario);  
-						 response.addCookie(ck); 
-				
+						 HttpSession session=request.getSession();  
+					     session.setAttribute("usuario",usuario);  
 						 RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
 						 rd.forward(request, response);
+					} else
+					{
+						 RequestDispatcher rd = request.getRequestDispatcher("/login.jsp?mensaje=Usuario o Clave Incorrectos");
+						 rd.forward(request, response);
+						
 					}
 				}
+				
+				if(opcion.equals("logout")){
+					
+					HttpSession session=request.getSession();  
+		            session.invalidate();    
+		            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+					rd.forward(request, response);
+					}
+				
+				
+				
 			
 			
 			if(opcion.equals("verPlatos")){

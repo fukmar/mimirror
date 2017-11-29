@@ -21,9 +21,10 @@
  <li><a href="index.jsp">Inicio</a></li>
         
  <%          
- 		Cookie ck[]=request.getCookies();  
- 		out.print("Hello "+ck);  
- 
+		  if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("admin"))
+		  { 
+ 			out.print("<a>Hola "+session.getAttribute("usuario")+"!</a>");    
+ 		
         
  		 submmenus = new HashMap<String,String>();
 			 submmenus.put("Ver Platos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPlatos");
@@ -71,10 +72,16 @@
         </li>
          
  <%        
+        }}
+		  else{ //no hay sesion o no es admin
+        	
+        	RequestDispatcher rd = request.getRequestDispatcher("/login.jsp?mensaje=Usuario o Clave Incorrectos");
+		rd.forward(request, response);
         }
+        
  %>
        
- <li><a href="logout.jsp">Salir</a></li>
+ <li><a href="/TPO_AD2017_ClienteWeb/Controller?opcion=logout">Salir</a></li>
     </ul>
     </nav>
 </body>
