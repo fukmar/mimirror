@@ -37,17 +37,18 @@ public class MesaEntity
 	public MesaEntity(){}
 	
 
-	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo) {
+	public MesaEntity(Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo, SectorEntity sector) {
 		super();
 		
 		this.cantidadPersonas = cantidadPersonas;
 		this.capacidad = capacidad;
 		this.estado = estado;
 		this.mozo = mozo;
+		this.sector = sector;
 		
 	}
 
-
+/* este constructor no va porque le pasa por param el codmesa y NO!
 	public MesaEntity(Integer codMesa, Integer cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo,
 			SectorEntity sector) {
 		super();
@@ -58,7 +59,7 @@ public class MesaEntity
 		this.mozo = mozo;
 		this.sector = sector;
 	}
-
+*/
 
 	public Integer getCodMesa() {
 		return codMesa;

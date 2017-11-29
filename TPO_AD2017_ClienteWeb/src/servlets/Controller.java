@@ -29,6 +29,7 @@ import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SectorDTO;
 import enumns.Estado;
+import enumns.EstadoItemComanda;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
 import exceptions.MesaException;
@@ -36,6 +37,7 @@ import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SectorException;
+import exceptions.itemComandaException;
 
 
 
@@ -248,15 +250,26 @@ if(opcion.equals("verMozos")){
 			}
 			
 			ComandaDTO comanda = new ComandaDTO(mesa.getMozo(),mesa,Estado.EnProceso);
+			List<ComandaDTO> comandas = new ArrayList<ComandaDTO>();
 			
 			try {
 			  BusinessDelegate.getInstance().grabarComanda(comanda);
+			  
+			 
+				try {
+					comandas = BusinessDelegate.getInstance().mostrarComandas();
+					request.setAttribute("comandas", comandas);
+					
+				} catch (ComandaException e) {
+					System.out.println(e.getMessage());
+				}
+			  
 			
 			} catch (ComandaException e) {
 				System.out.println(e.getMessage());
 			}
 			
-			request.setAttribute("comanda", comanda);
+			request.setAttribute("comanda", comandas.get(comandas.size()-1));
 			
 			List<PlatoDTO> platos = new ArrayList<PlatoDTO>();
 			try {
@@ -297,14 +310,14 @@ if(opcion.equals("agregarItemsComanda_2step")){
 				System.out.println(e.getMessage());
 			}
 			
-			//ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,comanda);
+			ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,EstadoItemComanda.Iniciada, comanda);
 			
-		/*	try {
-				comanda = BusinessDelegate.getInstance().grabarItemComanda(comanda, itemComanda);
-			} catch (ComandaException e) {
+			try {
+			BusinessDelegate.getInstance().grabarItemComanda(itemComanda);
+			} catch (itemComandaException e) {
 				System.out.println(e.getMessage());
 			}
-		*/	
+			
 			if (accion == "Aceptar") {
 			RequestDispatcher rd = request.getRequestDispatcher("/verComandas.jsp");
 			rd.forward(request, response);}

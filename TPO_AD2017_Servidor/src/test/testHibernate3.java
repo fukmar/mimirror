@@ -89,7 +89,7 @@ public class testHibernate3 {
 		//solicitudes.add(solicitud);
 			
 		List<PlanDeProduccionEntity> planes= new ArrayList<PlanDeProduccionEntity>();
-		AdministracionEntity admi= new AdministracionEntity(AreaRest.Administracion, planes, local);
+		//AdministracionEntity admi= new AdministracionEntity(AreaRest.Administracion, local);
 		PlanDeProduccionEntity pdp = new PlanDeProduccionEntity();
 		planes.add(pdp);
 	
@@ -124,7 +124,7 @@ public class testHibernate3 {
 		
 		PlatoEntity plato = new PlatoEntity();
 			
-		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",5.4f, sector);
+		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",5.4f);
 		
 		List<MozoEntity> mocitos = new ArrayList<MozoEntity>();
 		mocitos.add(mozo);
@@ -435,7 +435,7 @@ public class testHibernate3 {
 	    System.out.println("La caja facturo en ese periodo: "+facturado);
 	    double comision=MozoDAO.getInstancia().getComisionesapagar(fechadesde, fechahasta);
 	    System.out.println("comisiones:"+comision);
-	    System.out.println("EL TPO pedía mostrar primero el importe sin comision, luego la comision y luego el total..es solo formateo");
+	    System.out.println("EL TPO pedï¿½a mostrar primero el importe sin comision, luego la comision y luego el total..es solo formateo");
 	    
 	    List<Deposito> depositos= DepositoDAO.getInstancia().getDepositos();
 	

@@ -24,7 +24,7 @@ public class ComandaEntity {
 	@JoinColumn(name="dni")
 	private MozoEntity mozo;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="codMesa")
 	private MesaEntity mesa;
 	

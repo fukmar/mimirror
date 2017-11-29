@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import negocio.ItemRemito;
 import negocio.Mesa;
 import negocio.Sector;
 @Entity
@@ -30,12 +31,13 @@ public class SectorEntity
 	public SectorEntity(){}
 
 
-	public SectorEntity(String descripcion, SalonEntity salon, List<MesaEntity> mesas) {
+	/*public SectorEntity(String descripcion, SalonEntity salon, List<MesaEntity> mesas) {
 		super();
 		this.descripcion = descripcion;
 		this.salon = salon;
-		this.mesas = mesas;
-	}
+		//this.mesas = mesas;
+	}*/
+	
 	public SectorEntity(String descripcion, SalonEntity salon) {
 		super();
 		this.descripcion = descripcion;
@@ -81,10 +83,13 @@ public class SectorEntity
 
 	public Sector toNegocio() 
 	{
+		
+		
 		Sector s=new Sector();
 		s.setCodSector(codSector);
 		s.setDescripcion(descripcion);
 		s.setSalon(salon.toNegocio());
+		//s.setMesas(mesaslist);
 		return s;
 	}
 

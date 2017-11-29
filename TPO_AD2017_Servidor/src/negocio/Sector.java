@@ -14,25 +14,25 @@ public class Sector
 	private Integer codSector;
 	private String descripcion;
 	private Salon salon;
-	private List<Mesa> mesas ;
+	//private List<Mesa> mesas ;
 	
 	
 	public Sector(){}
 
-	public Sector(String descripcion,Salon salon)
+	/*public Sector(String descripcion,Salon salon)
 	{
 		super();
 		
 		this.descripcion = descripcion;
 		this.salon=salon;
 	}
-	
+	*/
 
-	public Sector(String descripcion, Salon salon, List<Mesa> mesas) {
+	public Sector(String descripcion, Salon salon/*, List<Mesa> mesas*/) {
 		super();
 		this.descripcion = descripcion;
 		this.salon = salon;
-		this.mesas = mesas;
+		//this.mesas = mesas;
 	}
 
 	public Integer getCodSector() {
@@ -58,7 +58,7 @@ public class Sector
 	public void setSalon(Salon salon) {
 		this.salon = salon;
 	}
-
+/*
 	public List<Mesa> getMesas() {
 		return mesas;
 	}
@@ -66,19 +66,19 @@ public class Sector
 	public void setMesas(List<Mesa> mesas) {
 		this.mesas = mesas;
 	}
-
+*/
 	public SectorDTO toDTO() 
 	{
 		SectorDTO s=new SectorDTO();
 		s.setCodSector(codSector);
 		s.setDescripcion(descripcion);
 		s.setSalon(salon.toDTO());
-		List <MesaDTO> mesasdto=new ArrayList <MesaDTO>();
+		/*List <MesaDTO> mesasdto=new ArrayList <MesaDTO>();
 		for (Mesa m : mesas)
 		{
 			mesasdto.add(m.toDTO());
 		}
-		s.setMesas(mesasdto);
+		s.setMesas(mesasdto);*/
 		return s;
 	}
 

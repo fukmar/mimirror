@@ -18,7 +18,7 @@ public class MozoEntity {
 	
 	public MozoEntity(){}
 	
-	public MozoEntity(Integer dni, String nombre, String apellido, Float procentajeComision, SectorEntity sector) {
+	public MozoEntity(Integer dni, String nombre, String apellido, Float procentajeComision) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;

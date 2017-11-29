@@ -30,7 +30,7 @@ Mesa N*<%=comanda.getMesa().getCodMesa() %>
     </td></tr>
  
  
- <Select name = "Platos">
+ <Select name = "codPlato">
 <% for(PlatoDTO plato :  platos) {%>
 	<option value= <%= plato.getCodigo() %>><%=plato.toString()%></option> 
 <%} %>
