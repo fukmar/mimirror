@@ -111,4 +111,32 @@ private static SessionFactory sf=null;
 		return listaM;
 	}
 	
+	public boolean validateMesasLibresbyCantidad(int cantidadpersonas)
+	{
+		Session session=sf.openSession();
+		List<Mesa> listaM=new ArrayList<Mesa>();
+		List<MesaEntity> resu=session.createQuery("from MesaEntity m where m.estado=0 and m.capacidad>?").setInteger(0, cantidadpersonas).list();
+		for(MesaEntity m:resu)
+		{
+			listaM.add(m.toNegocio());
+		}
+		session.close();
+		if (resu.isEmpty()) return false;
+		else return true;
+	}
+	
+	public List<Mesa> getMesasLibresbyCantidad(int cantidadpersonas)
+	{
+		Session session=sf.openSession();
+		List<Mesa> listaM=new ArrayList<Mesa>();
+		List<MesaEntity> resu=session.createQuery("from MesaEntity m where m.estado=0 and m.capacidad>?").setInteger(0, cantidadpersonas).list();
+		for(MesaEntity m:resu)
+		{
+			listaM.add(m.toNegocio());
+		}
+		session.close();
+		return listaM;
+		
+	}
+	
 }

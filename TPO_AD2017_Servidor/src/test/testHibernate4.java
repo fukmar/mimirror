@@ -481,5 +481,16 @@ public class testHibernate4 {
 		{
 			System.out.println("LA MESA LIBRE Nro "+m.getCodMesa()+" es de "+m.getCantidadPersonas()+" Personas y esta en el sector "+m.getSector().getDescripcion());
 		}
+		
+		//PROBAMOS BUSCAR SI TENGO MESA PARA 100 personas
+		boolean okmesa=MesaDAO.getInstance().validateMesasLibresbyCantidad(100);
+		System.out.println(okmesa);
+		
+		//BUSCAMOS MESA LIBRE PARA 10 personas - Teniamos una mesa cargada para 15 :)
+		List<Mesa> mesaslibres2=MesaDAO.getInstance().getMesasLibresbyCantidad(10);
+		for (Mesa m:mesaslibres2)
+		{
+			System.out.println("LA MESA LIBRE Nro "+m.getCodMesa()+" es de "+m.getCantidadPersonas()+" Personas y esta en el sector "+m.getSector().getDescripcion());
+		}
 }
 }
