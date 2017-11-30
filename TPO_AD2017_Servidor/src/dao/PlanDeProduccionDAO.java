@@ -69,7 +69,7 @@ public class PlanDeProduccionDAO {
 		{
 			Session s=sf.openSession();
 			s.beginTransaction();
-			Long CantidadFacturada=PlatoDAO.getInstance().getCantidadPlatosFacturados(item.getPlato(), plan.getFechaplan());
+			Long CantidadFacturada=SemiElaboradoDAO.getInstance().getSemiElaboradosFacturados(item.getSemielaborado(), plan.getFechaplan());
 			double porcentajetotal=(double)CantidadFacturada/item.getCantidad();
 			item.setPorcientoavance(porcentajetotal);
 			Query query=s.createQuery("update from ItemPlanProduccionEntity i set i.porcientoavance = ? where itemplanid= ? ");

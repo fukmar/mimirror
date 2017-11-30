@@ -12,9 +12,9 @@ public class ItemPlanProduccionEntity {
 	@Id
 	@GeneratedValue
 	private Integer itemplanid;
-	@ManyToOne
-	@JoinColumn(name="codigo")
-	private PlatoEntity plato;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="codigoProd")
+	private SemiElaboradoEntity semielaborado;
 	private Integer cantidad;
 	private double porcientoavance=0;
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -23,10 +23,10 @@ public class ItemPlanProduccionEntity {
 	
 
 
-	public ItemPlanProduccionEntity(PlatoEntity plato, Integer cantidad, double porcientoavance,
+	public ItemPlanProduccionEntity(SemiElaboradoEntity semielaborado, Integer cantidad, double porcientoavance,
 			PlanDeProduccionEntity plandeProduccion) {
 		super();
-		this.plato = plato;
+		this.semielaborado = semielaborado;
 		this.cantidad = cantidad;
 		this.porcientoavance = porcientoavance;
 		this.plandeProduccion = plandeProduccion;
@@ -60,12 +60,13 @@ public class ItemPlanProduccionEntity {
 		this.itemplanid = itemplanid;
 	}
 
-	public PlatoEntity getPlato() {
-		return plato;
+
+	public SemiElaboradoEntity getSemielaborado() {
+		return semielaborado;
 	}
 
-	public void setPlato(PlatoEntity plato) {
-		this.plato = plato;
+	public void setSemielaborado(SemiElaboradoEntity semielaborado) {
+		this.semielaborado = semielaborado;
 	}
 
 	public double getPorcientoavance() {
@@ -82,8 +83,8 @@ public class ItemPlanProduccionEntity {
 		ItemPlanProduccion itemplan=new ItemPlanProduccion();
 		itemplan.setItemplanid(itemplanid);
 		itemplan.setCantidad(cantidad);
-		itemplan.setPlato(plato.toNegocio());
 		itemplan.setPorcientoavance(porcientoavance);
+		itemplan.setSemielaborado(semielaborado.toNegocio());
 		return itemplan;
 	}
 

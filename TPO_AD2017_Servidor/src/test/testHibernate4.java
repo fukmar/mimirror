@@ -58,7 +58,6 @@ public class testHibernate4 {
 		
 		
 		Usuarios usu = new Usuarios("admin","admin","N","G",AreaRest.Administracion);
-		Usuarios usu2 = new Usuarios("cocina","cocina","N","G",AreaRest.Cocina);
 
 		
 		
@@ -129,7 +128,7 @@ public class testHibernate4 {
 		
 		CartaEntity carta = new CartaEntity(fecha,temp.Primavera,itemCarta);
 		
-		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,AreaRest.Cocina,CategoriaPlato.Carnes,elabs/*,carta*/);
+		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,AreaRest.Barra,CategoriaPlato.Carnes,elabs/*,carta*/);
 		plato.setCarta(carta);
 		itemCarta.add(plato);
 		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",5.4f);
@@ -157,7 +156,7 @@ public class testHibernate4 {
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
 		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita);
-		ItemPlanProduccionEntity itemplan=new ItemPlanProduccionEntity(plato,10,0,pdp);
+		ItemPlanProduccionEntity itemplan=new ItemPlanProduccionEntity(see,100,0,pdp);
 		List <ItemPlanProduccionEntity> variositemplanprod=	new ArrayList <ItemPlanProduccionEntity>();
 		variositemplanprod.add(itemplan);
 		pdp.setItemspdp(variositemplanprod);
@@ -233,7 +232,7 @@ public class testHibernate4 {
 		session.save(itemplan);
 		session.save(pdp);
 		session.save(usu.toEntity());
-		session.save(usu2.toEntity());
+
 		session.getTransaction().commit();
 		session.close();
 		
@@ -441,15 +440,23 @@ public class testHibernate4 {
 		Long cantidadesvendidas=PlatoDAO.getInstance().getCantidadPlatosFacturados(plato.toNegocio(), fecha);
 		System.out.println(cantidadesvendidas);
 		
+		//TESTEO CANTIDAD DE UN SEMI VENDIDOS EN UN DIA ESPECIFICO DE UN PLATO ESPECIFICO
+		Long cantidadesutilizadas=SemiElaboradoDAO.getInstance().getSemiElaboradosFacturados(see.toNegocio(), fecha);
+		Long cantidadesutilizadas2=SemiElaboradoDAO.getInstance().getSemiElaboradosFacturados(see2.toNegocio(), fecha);
+		System.out.println("CANTIDAD DEL SEMI "+see.getDescripcion()+ " : " + cantidadesutilizadas);
+		System.out.println("CANTIDAD DEL SEMI "+see2.getDescripcion()+ " : " + cantidadesutilizadas2);
+		
 		//AVANCE PLAN PRODUCCION
 		System.out.println("CODIGO PLAN DE PROD:"+pdp.getCodigoPDP());
-		System.out.println(pdp.getItemspdp().get(0).getCantidad());
 		PlanDeProduccionDAO.getInstance().CalcularporcentajeAvance(pdp.toNegocio());
+		double avance=PlanDeProduccionDAO.getInstance().obtenerPlan(pdp.getCodigoPDP()).getAvance();
+		double avancetotal=avance*100;
+		System.out.println("El AVANCE DEL PLAN DE PRODUCCION ES DE : "+ avancetotal + " %");
 		
 		//TESTEO SI ME TRAE ITEMCOMANDA SEGUN AREA FUNCIONA!
-		List<ItemComanda> items=ItemComandaDAO.getInstance().getItemsPendientesxArea(AreaRest.Cocina);
+		List<ItemComanda> items=ItemComandaDAO.getInstance().getItemsPendientesxArea(AreaRest.Barra);
 		System.out.println(items.get(0).getPlato().getNombre());
-		//TEST CAMBIOS ESTADO ITEMCOMANDA 
+		//TEST CAMBIOS ESTADO ITEMCOMANDA A FINALIZADA
 		ItemComanda item=ItemComandaDAO.getInstance().obtenerItemComandaByCod(items.get(0).getCoditemComanda());
 		ItemComandaDAO.getInstance().updateitemComandatoFinalizada(item);
 		

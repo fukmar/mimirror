@@ -28,6 +28,14 @@ private Integer codigoProd;
 	}
 
 
+	public Integer getCodigoProd() {
+		return codigoProd;
+	}
+
+	public void setCodigoProd(Integer codigoProd) {
+		this.codigoProd = codigoProd;
+	}
+
 	public Integer getNumero() {
 		return codigoProd;
 	}

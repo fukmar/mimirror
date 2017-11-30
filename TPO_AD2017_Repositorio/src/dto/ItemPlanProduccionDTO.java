@@ -3,10 +3,12 @@ package dto;
 import javax.persistence.*;
 
 
+
+
 public class ItemPlanProduccionDTO {
 
 	private Integer itemplanid;
-	private PlatoDTO plato;
+	private SemiElaboradoDTO semielaborado;
 	private Integer cantidad;
 	private double porcientoavance=0;
 	private PlanDeProduccionDTO plandeProduccion;
@@ -17,10 +19,10 @@ public class ItemPlanProduccionDTO {
 	}
 
 
-	public ItemPlanProduccionDTO(PlatoDTO plato, Integer cantidad, Integer porcientoavance,
+	public ItemPlanProduccionDTO(SemiElaboradoDTO semielaborado, Integer cantidad, Integer porcientoavance,
 			PlanDeProduccionDTO plandeProduccion) {
 		super();
-		this.plato = plato;
+		this.semielaborado= semielaborado;
 		this.cantidad = cantidad;
 		this.porcientoavance = porcientoavance;
 		this.plandeProduccion = plandeProduccion;
@@ -37,13 +39,14 @@ public class ItemPlanProduccionDTO {
 	}
 
 
-	public PlatoDTO getPlato() {
-		return plato;
+
+	public SemiElaboradoDTO getSemielaborado() {
+		return semielaborado;
 	}
 
 
-	public void setPlato(PlatoDTO plato) {
-		this.plato = plato;
+	public void setSemielaborado(SemiElaboradoDTO semielaborado) {
+		this.semielaborado = semielaborado;
 	}
 
 

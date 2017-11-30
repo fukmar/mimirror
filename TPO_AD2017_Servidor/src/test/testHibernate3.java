@@ -145,7 +145,7 @@ public class testHibernate3 {
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
 		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita);
-		ItemPlanProduccionEntity itemplan=new ItemPlanProduccionEntity(plato,10,0,pdp);
+		ItemPlanProduccionEntity itemplan=new ItemPlanProduccionEntity(see,10,0,pdp);
 		List <ItemPlanProduccionEntity> variositemplanprod=	new ArrayList <ItemPlanProduccionEntity>();
 		variositemplanprod.add(itemplan);
 		pdp.setItemspdp(variositemplanprod);

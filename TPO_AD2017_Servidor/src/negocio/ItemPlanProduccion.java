@@ -6,11 +6,12 @@ import dto.ItemPlanProduccionDTO;
 import entities.ItemPlanProduccionEntity;
 import entities.PlanDeProduccionEntity;
 import entities.PlatoEntity;
+import entities.SemiElaboradoEntity;
 
 public class ItemPlanProduccion {
 
 	private Integer itemplanid;
-	private Plato plato;
+	private SemiElaborado semielaborado;
 	private Integer cantidad;
 	private double porcientoavance=0;
 	private PlanDeProduccion plandeProduccion;
@@ -19,10 +20,10 @@ public class ItemPlanProduccion {
 	public ItemPlanProduccion() {
 		super();
 	}
-	public ItemPlanProduccion(Plato plato, Integer cantidad, double porcientoavance,
+	public ItemPlanProduccion(SemiElaborado semielaborado, Integer cantidad, double porcientoavance,
 			PlanDeProduccion plandeProduccion) {
 		super();
-		this.plato = plato;
+		this.semielaborado = semielaborado;
 		this.cantidad = cantidad;
 		this.porcientoavance = porcientoavance;
 		this.plandeProduccion = plandeProduccion;
@@ -33,11 +34,12 @@ public class ItemPlanProduccion {
 	public void setItemplanid(Integer itemplanid) {
 		this.itemplanid = itemplanid;
 	}
-	public Plato getPlato() {
-		return plato;
+
+	public SemiElaborado getSemielaborado() {
+		return semielaborado;
 	}
-	public void setPlato(Plato plato) {
-		this.plato = plato;
+	public void setSemielaborado(SemiElaborado semielaborado) {
+		this.semielaborado = semielaborado;
 	}
 	public Integer getCantidad() {
 		return cantidad;
@@ -63,7 +65,7 @@ public class ItemPlanProduccion {
 		itemplandto.setCantidad(cantidad);
 		itemplandto.setItemplanid(itemplanid);
 		itemplandto.setPlandeProduccion(plandeProduccion.toDTO());
-		itemplandto.setPlato(plato.toDTO());
+		itemplandto.setSemielaborado(semielaborado.toDTO());
 		itemplandto.setPorcientoavance(porcientoavance);
 		return itemplandto;
 	}
@@ -73,7 +75,7 @@ public class ItemPlanProduccion {
 		itemplan.setCantidad(cantidad);
 		itemplan.setItemplanid(itemplanid);
 		itemplan.setPlandeProduccion(plandeProduccion.toEntity());
-		itemplan.setPlato(plato.toEntity());
+		itemplan.setSemielaborado(semielaborado.toEntitySemi());
 		itemplan.setPorcientoavance(porcientoavance);
 		return itemplan;
 	}
