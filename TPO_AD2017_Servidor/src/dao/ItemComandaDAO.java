@@ -115,8 +115,9 @@ private static ItemComandaDAO instancia;
 	{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session=sf.openSession();
+		session.beginTransaction();
 		EstadoItemComanda estado=estadoitemcomandafromString("Iniciada");
-		Query query=session.createQuery("update from ItemComandaEntity i set i.estado = ? where i.plato.area=?");
+		Query query=session.createQuery("update from ItemComandaEntity i set i.estado = ? where i.coditemComanda=?");
  		query.setParameter(1,i.getCoditemComanda());
  		query.setParameter(0,estado);
 		query.executeUpdate();
@@ -128,8 +129,9 @@ private static ItemComandaDAO instancia;
 	{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session=sf.openSession();
+		session.beginTransaction();
 		EstadoItemComanda estado=estadoitemcomandafromString("Finalizada");
-		Query query=session.createQuery("update from ItemComandaEntity i set i.estado = ? where i.plato.area=?");
+		Query query=session.createQuery("update from ItemComandaEntity i set i.estado = ? where i.coditemComanda=?");
  		query.setParameter(1,i.getCoditemComanda());
  		query.setParameter(0,estado);
 		query.executeUpdate();

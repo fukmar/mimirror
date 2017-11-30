@@ -41,6 +41,7 @@ import negocio.Remito;
 import negocio.Salon;
 import negocio.Sector;
 import negocio.SemiElaborado;
+import negocio.Usuarios;
 
 public class testHibernate4 {
 
@@ -56,7 +57,7 @@ public class testHibernate4 {
 		Date fecha = new Date("10/10/2020");
 		
 		
-
+		Usuarios usu = new Usuarios("admin","admin","N","G",AreaRest.Administracion);
 
 		
 		
@@ -230,6 +231,7 @@ public class testHibernate4 {
 		session.save(plato);
 		session.save(itemplan);
 		session.save(pdp);
+		session.save(usu.toEntity());
 
 		session.getTransaction().commit();
 		session.close();
@@ -446,6 +448,9 @@ public class testHibernate4 {
 		//TESTEO SI ME TRAE ITEMCOMANDA SEGUN AREA FUNCIONA!
 		List<ItemComanda> items=ItemComandaDAO.getInstance().getItemsPendientesxArea("Barra");
 		System.out.println(items.get(0).getPlato().getNombre());
+		//TEST CAMBIOS ESTADO ITEMCOMANDA 
+		ItemComanda item=ItemComandaDAO.getInstance().obtenerItemComandaByCod(items.get(0).getCoditemComanda());
+		ItemComandaDAO.getInstance().updateitemComandatoFinalizada(item);
 		
 		//TEST BUSCAR COMANDA POR CODIGO
 		Comanda comandabuscada=ComandaDAO.getInstance().obtenerComandaByCod(1);
