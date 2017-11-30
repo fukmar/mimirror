@@ -50,4 +50,17 @@ public class ReservaDAO
 		}
 		return listaRes;
 	}
+	
+	public List<Reserva> getMesaLibre()
+	{
+		Session session=sf.openSession();
+		List<Reserva> listaRes=new ArrayList<Reserva>();
+		List<ReservaEntity> resu=session.createQuery("from ReservaEntity").list();
+		session.close();
+		for(ReservaEntity r: resu) 
+		{
+			listaRes.add(r.toNegocio());
+		}
+		return listaRes;
+	}
 }

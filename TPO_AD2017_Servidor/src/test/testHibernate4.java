@@ -463,5 +463,23 @@ public class testHibernate4 {
 		//TEST BUSCAR COMANDA POR CODIGO
 		Comanda comandabuscada=ComandaDAO.getInstance().obtenerComandaByCod(1);
 		System.out.println(comandabuscada.getCodComanda());
+		
+		//PASAMOS LA MESA A OCUPADA
+		MesaDAO.getInstance().updateMesaToOcupada(mesita.toNegocio());
+		Mesa mesabuscadaparavalidar=MesaDAO.getInstance().getMesaN(mesita.getCodMesa());
+		System.out.println("EL ESTADO DE LA MESA AHORA ES: "+mesabuscadaparavalidar.getEstado());
+		
+		//PASAMOS LA MESA A LIBRE (Luego podemos probar las libres)
+		MesaDAO.getInstance().updateMesaToLibre(mesita.toNegocio());
+		Mesa mesabuscadaparavalidar2=MesaDAO.getInstance().getMesaN(mesita.getCodMesa());
+		System.out.println("EL ESTADO DE LA MESA AHORA ES: "+mesabuscadaparavalidar2.getEstado());
+		
+		//BUSCAMOS MESAS LIBRES
+		List<Mesa> mesaslibres=MesaDAO.getInstance().getMesasLibres();
+		
+		for (Mesa m:mesaslibres)
+		{
+			System.out.println("LA MESA LIBRE Nro "+m.getCodMesa()+" es de "+m.getCantidadPersonas()+" Personas y esta en el sector "+m.getSector().getDescripcion());
+		}
 }
 }
