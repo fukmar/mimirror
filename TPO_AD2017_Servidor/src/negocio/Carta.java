@@ -62,11 +62,11 @@ public class Carta
 	{
 		CartaEntity cartaentity=new CartaEntity();
 		cartaentity.setCodigoCarta(codigoCarta);
-		List <PlatoEntity> platosentity=new ArrayList <PlatoEntity>();
+		/*List <PlatoEntity> platosentity=new ArrayList <PlatoEntity>();
 		for (Plato pentity:itemCarta)
 		{
 			platosentity.add(pentity.toEntity());
-		}
+		} mismo que abajo... en las conversiones no hace falta*/
 		cartaentity.setTemporada(temporada);
 		cartaentity.setVigencia(vigencia);
 		return cartaentity;
@@ -77,11 +77,11 @@ public class Carta
 		cartadto.setCodigoCarta(codigoCarta);
 		cartadto.setTemporada(temporada);
 		cartadto.setVigencia(vigencia);
-		List <PlatoDTO> platosdto=new ArrayList <PlatoDTO>();
+		/*List <PlatoDTO> platosdto=new ArrayList <PlatoDTO>();
 		for (Plato pl:itemCarta)
 		{
 			platosdto.add(pl.toDTO());
-		}
+		} no lo necesitamos y hace que pinche plato cuando pasa carta a dto nahuelito*/
 		
 		return cartadto;
 	}

@@ -26,7 +26,7 @@ public class Plato
 	private String nombre;
 	private float precio;
 	private List<Elaborado> productoPlato;
-    //private Carta carta;
+    private Carta carta;
     private CategoriaPlato categoria;
     private AreaRest area;
 	
@@ -86,7 +86,7 @@ public class Plato
 	public void setProductoPlato(List<Elaborado> productoPlato) {
 		this.productoPlato = productoPlato;
 	}
-/*
+
 	public Carta getCarta() {
 		return carta;
 	}
@@ -94,7 +94,7 @@ public class Plato
 	public void setCarta(Carta carta) {
 		this.carta = carta;
 	}
-*/	
+	
 	
 
 	public CategoriaPlato getCategoria() {
@@ -114,7 +114,7 @@ public class Plato
 		p.setNombre(nombre);
 		p.setPrecio(precio);
 		p.setArea(area);
-		//p.setCarta(carta.toEntity());
+		p.setCarta(carta.toEntity());
 		p.setCategoria(categoria);
 		List<ElaboradoEntity> productos=new ArrayList<ElaboradoEntity>();
 		for(Elaborado e:this.productoPlato ) 
@@ -139,6 +139,7 @@ public class Plato
 			productos.add(e.toDTO());
 		}
 		p.setProductoPlato(productos);
+		p.setCarta(carta.toDTO());
 		return p;
 	}
 

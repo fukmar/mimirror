@@ -37,6 +37,7 @@ import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SectorException;
+import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 
 
@@ -75,14 +76,14 @@ public class Controller extends HttpServlet {
 					String usuario = request.getParameter("usuario");
 					String clave = request.getParameter("clave");
 					Boolean ok = false;
-					//try {
-						//ok = BusinessDelegate.getInstance().verificarPassword(usuario, clave); ESTO NO ANDA AUN
+					try {
+						ok = BusinessDelegate.getInstance().verificarPassword(usuario, clave); 
 						ok = true;
 						
-					//} catch (UsuarioException e) {
+					} catch (UsuarioException e) {
 						// TODO Auto-generated catch block
-					//	e.printStackTrace();
-					//}
+						e.printStackTrace();
+					}
 					if (ok) {
 						 HttpSession session=request.getSession();  
 					     session.setAttribute("usuario",usuario);  
@@ -311,7 +312,7 @@ if(opcion.equals("agregarItemsComanda_2step")){
 			}
 			
 			ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,EstadoItemComanda.Iniciada, comanda);
-			
+			itemComanda.setComanda(comanda);
 			try {
 			BusinessDelegate.getInstance().grabarItemComanda(itemComanda);
 			} catch (itemComandaException e) {

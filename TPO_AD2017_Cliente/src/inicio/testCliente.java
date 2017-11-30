@@ -132,8 +132,18 @@ public class testCliente
 		List<ElaboradoDTO> elabs = new ArrayList<ElaboradoDTO>();
 		elabs.add(ee);
 		
+				
+		//CARTA
+		List<PlatoDTO> itemCarta= new ArrayList<PlatoDTO>();
+		CartaDTO carta = new CartaDTO(fecha,Temporada.Primavera,itemCarta);
+			
 		//PLATO
-		PlatoDTO plato = new PlatoDTO("Bistec",30f,elabs,CategoriaPlato.Carnes,AreaRest.Cocina);
+		PlatoDTO plato = new PlatoDTO("Bistec",30f,elabs,CategoriaPlato.Carnes,AreaRest.Cocina, carta);
+			
+				
+		
+		itemCarta.add(plato);
+		plato.setCarta(carta);
 		
 		//MOZO
 		MozoDTO mozo = new MozoDTO(31604578,"Ceci","Zuki",80.4f);
@@ -158,14 +168,6 @@ public class testCliente
 		//ITEMCFACTURA
 		ItemFacturaDTO itemfacturita = new ItemFacturaDTO(itemCom,fact, 0);//
 		
-		//TEMPORADA
-		Temporada temp = null;
-		List<PlatoDTO> itemCarta= new ArrayList<PlatoDTO>();
-		itemCarta.add(plato);
-		
-		//CARTA
-		CartaDTO carta = new CartaDTO(fecha,temp.Primavera,itemCarta);
-		//plato.setCarta(carta);
 		
 		
 		//HASTA ACA DECLARACION DE VARIABLES

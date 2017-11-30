@@ -89,6 +89,7 @@ public class ItemComanda {
 		i.setCoditemComanda(coditemComanda);
 		i.setPlato(plato.toEntity());
 		i.setEstado(estado);
+		i.setComanda(comanda.toEntity());
 		return i;
 	}
 	public ItemComandaDTO toDTO()
@@ -98,6 +99,7 @@ public class ItemComanda {
 		i.setCoditemComanda(coditemComanda);
 		i.setPlato(plato.toDTO());
 		i.setEstado(estado);
+		i.setComanda(comanda.toDTO());
 		return i;
 	}
 }

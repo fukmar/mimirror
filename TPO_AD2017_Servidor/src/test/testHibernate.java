@@ -267,17 +267,17 @@ public class testHibernate {
 		
 		/* AHORA PROBAMOS PASAR TODOS LOS ITEMS DE LAS COMANDAS ACTIVAS SIN FACTURAR EN UNA MESA DETERMINADA, USAMOS MESA 1 y DEBERIA
 		 * PASARNOS LOS ITEMCOMANDAS DE LA COMANDA 2 y 3. ADEMAS CREARNOS LOS ITEM FACTURA y ASOCIARLOS A LA FACTURA QUE CREEMOS
-
+*/
 		//
-		/*
+		
 		//TEST DAO OBTENER PLATO POR ID  --FUNCIONA
-		PlatoEntity platoelegido=new PlatoEntity();
-		platoelegido=PlatoDAO.getInstance().getPlatoPorId(8);
-		System.out.println("EL PLATO BUSCADO ES: "+platoelegido.getNombre());
+		Plato platoelegido=new Plato();
+		platoelegido=PlatoDAO.getInstance().getPlatoPorCod(1);
+		System.out.println("EL PLATO BUSCADO ES: "+platoelegido.getCarta().getCodigoCarta());
 		
 		// 
 		
-		*/
+		
 		
 		
 		

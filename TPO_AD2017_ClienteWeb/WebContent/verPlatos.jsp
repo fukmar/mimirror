@@ -34,6 +34,7 @@ List<PlatoDTO> platos = (List<PlatoDTO>)request.getAttribute("platos");
       <th scope="col">Código</th>
       <th scope="col">Nombre</th>
       <th scope="col">Precio</th>
+      <th scope="col">Carta N*</th>
     </tr>
   </thead>
   <tbody>
@@ -42,7 +43,8 @@ List<PlatoDTO> platos = (List<PlatoDTO>)request.getAttribute("platos");
     <tr>
       <td scope="row" data-label="Código"><%= plato.getCodigo() %></td>
       <td data-label="Nombre"><%= plato.getNombre() %></td>
-      <td data-label="Precio"><%= plato.getPrecio() %></td>
+      <td data-label="Precio"><%= plato.getPrecio()  %></td>
+      <td data-label="Carta N*"><%= plato.getCarta().getCodigoCarta() %></td>
      </tr>
      <%} %>
     

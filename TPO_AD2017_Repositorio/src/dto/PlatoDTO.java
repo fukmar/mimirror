@@ -23,7 +23,7 @@ public class PlatoDTO implements Serializable
 	private String nombre;
 	private float precio;
 	private List<ElaboradoDTO> productoPlato;
-	//private CartaDTO carta;
+	private CartaDTO carta;
 	private CategoriaPlato categoria;
 	private AreaRest area;
 	
@@ -44,13 +44,14 @@ public class PlatoDTO implements Serializable
 	
 */
 	public PlatoDTO(String nombre, float precio, List<ElaboradoDTO> productoPlato,
-			CategoriaPlato categoria, AreaRest area) {
+			CategoriaPlato categoria, AreaRest area, CartaDTO carta) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.productoPlato = productoPlato;
 		this.categoria = categoria;
 		this.area = area;
+		this.carta = carta;
 	}
 
 	public AreaRest getArea() {
@@ -100,7 +101,7 @@ public class PlatoDTO implements Serializable
 	public void setProductoPlato(List<ElaboradoDTO> productoPlato) {
 		this.productoPlato = productoPlato;
 	}
-/*
+
 	public CartaDTO getCarta() {
 		return carta;
 	}
@@ -108,7 +109,7 @@ public class PlatoDTO implements Serializable
 	public void setCarta(CartaDTO carta) {
 		this.carta = carta;
 	}
-*/
+
 	@Override
 	public String toString() {
 		return "PlatoDTO [codigo=" + codPlato + ", nombre=" + nombre + ", precio=" + precio +"]";

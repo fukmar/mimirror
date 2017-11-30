@@ -36,7 +36,7 @@ public class PlatoEntity
 	inverseJoinColumns=@JoinColumn(name="codProducto",referencedColumnName="codProducto"))
 	private List<ElaboradoEntity> productoPlato;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="codCarta")
     private CartaEntity carta;
 	
@@ -130,7 +130,7 @@ this.carta = carta;
 		p.setCodigo(codPlato);
 		p.setNombre(nombre);
 		p.setPrecio(precio);
-		//p.setCarta(carta.toNegocio());
+		p.setCarta(carta.toNegocio());
 		List<Elaborado> elab=new ArrayList<Elaborado>();
 		for(ElaboradoEntity e: this.getProductoPlato() )
 		{
