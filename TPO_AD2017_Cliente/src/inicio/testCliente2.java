@@ -17,6 +17,7 @@ import exceptions.FacturaException;
 import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
+import exceptions.UsuarioException;
 
 public class testCliente2 {
 
@@ -145,6 +146,21 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	
+	//VALIDAR USUARIOS
+	
+	try {
+		BusinessDelegate.getInstance().verificarPassword("admin","admin");
+		System.out.println("Usuario validado");
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (UsuarioException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	
 	}
 
 }
