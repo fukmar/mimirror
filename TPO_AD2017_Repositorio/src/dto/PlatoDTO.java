@@ -19,20 +19,21 @@ import enumns.CategoriaPlato;
 public class PlatoDTO implements Serializable
 {
 
-	private Integer codigo;
+	private Integer codPlato;
 	private String nombre;
 	private float precio;
 	private List<ElaboradoDTO> productoPlato;
-	private CartaDTO carta;
+	//private CartaDTO carta;
 	private CategoriaPlato categoria;
 	private AreaRest area;
 	
 	public PlatoDTO() {}
 
+	/*
 	public PlatoDTO(Integer codigo, String nombre, AreaRest area,float precio, List<ElaboradoDTO> productoPlato, CartaDTO carta,
 			CategoriaPlato categoria) {
 		super();
-		this.codigo = codigo;
+		this.codPlato = codigo;
 		this.area=area;
 		this.nombre = nombre;
 		this.precio = precio;
@@ -41,7 +42,7 @@ public class PlatoDTO implements Serializable
 		this.categoria = categoria;
 	}
 	
-
+*/
 	public PlatoDTO(String nombre, float precio, List<ElaboradoDTO> productoPlato,
 			CategoriaPlato categoria, AreaRest area) {
 		super();
@@ -69,11 +70,11 @@ public class PlatoDTO implements Serializable
 	}
 
 	public Integer getCodigo() {
-		return codigo;
+		return codPlato;
 	}
 
 	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+		this.codPlato = codigo;
 	}
 
 	public String getNombre() {
@@ -99,7 +100,7 @@ public class PlatoDTO implements Serializable
 	public void setProductoPlato(List<ElaboradoDTO> productoPlato) {
 		this.productoPlato = productoPlato;
 	}
-
+/*
 	public CartaDTO getCarta() {
 		return carta;
 	}
@@ -107,10 +108,10 @@ public class PlatoDTO implements Serializable
 	public void setCarta(CartaDTO carta) {
 		this.carta = carta;
 	}
-
+*/
 	@Override
 	public String toString() {
-		return "PlatoDTO [codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio +"]";
+		return "PlatoDTO [codigo=" + codPlato + ", nombre=" + nombre + ", precio=" + precio +"]";
 	}
 
 

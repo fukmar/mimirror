@@ -165,7 +165,7 @@ public class testCliente
 		
 		//CARTA
 		CartaDTO carta = new CartaDTO(fecha,temp.Primavera,itemCarta);
-		plato.setCarta(carta);
+		//plato.setCarta(carta);
 		
 		
 		//HASTA ACA DECLARACION DE VARIABLES

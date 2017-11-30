@@ -22,25 +22,25 @@ import enumns.CategoriaPlato;
 
 public class Plato 
 {
-	private Integer codigo;
+	private Integer codPlato;
 	private String nombre;
 	private float precio;
 	private List<Elaborado> productoPlato;
-    private Carta carta;
+    //private Carta carta;
     private CategoriaPlato categoria;
     private AreaRest area;
 	
 	public Plato(){}
 
 
-	public Plato(String nombre, float precio, AreaRest area, List<Elaborado> productoPlato, Carta carta,
+	public Plato(String nombre, float precio, AreaRest area, List<Elaborado> productoPlato/*, Carta carta*/,
 			CategoriaPlato categoria) {
 		super();
 		this.nombre = nombre;
 		this.area=area;
 		this.precio = precio;
 		this.productoPlato = productoPlato;
-		this.carta = carta;
+		//this.carta = carta;
 		this.categoria = categoria;
 	}
 
@@ -56,11 +56,11 @@ public class Plato
 
 
 	public Integer getCodigo() {
-		return codigo;
+		return codPlato;
 	}
 
 	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+		this.codPlato = codigo;
 	}
 
 	public String getNombre() {
@@ -86,7 +86,7 @@ public class Plato
 	public void setProductoPlato(List<Elaborado> productoPlato) {
 		this.productoPlato = productoPlato;
 	}
-
+/*
 	public Carta getCarta() {
 		return carta;
 	}
@@ -94,7 +94,7 @@ public class Plato
 	public void setCarta(Carta carta) {
 		this.carta = carta;
 	}
-	
+*/	
 	
 
 	public CategoriaPlato getCategoria() {
@@ -110,11 +110,11 @@ public class Plato
 	public PlatoEntity toEntity() 
 	{
 		PlatoEntity p=new PlatoEntity();
-		p.setCodigo(codigo);
+		p.setCodigo(codPlato);
 		p.setNombre(nombre);
 		p.setPrecio(precio);
 		p.setArea(area);
-		p.setCarta(carta.toEntity());
+		//p.setCarta(carta.toEntity());
 		p.setCategoria(categoria);
 		List<ElaboradoEntity> productos=new ArrayList<ElaboradoEntity>();
 		for(Elaborado e:this.productoPlato ) 
@@ -128,7 +128,7 @@ public class Plato
 	public PlatoDTO toDTO() 
 	{
 		PlatoDTO p=new PlatoDTO();
-		p.setCodigo(codigo);
+		p.setCodigo(codPlato);
 		p.setNombre(nombre);
 		p.setArea(area);
 		p.setPrecio(precio);

@@ -153,7 +153,7 @@ public class testHibernate3 {
 		List<PlatoEntity> itemCarta= new ArrayList<PlatoEntity>();
 		itemCarta.add(plato);
 		CartaEntity carta = new CartaEntity(fecha,temp.Primavera,itemCarta);
-		plato.setCarta(carta);
+		//plato.setCarta(carta);
 		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();

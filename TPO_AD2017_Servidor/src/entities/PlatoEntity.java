@@ -23,7 +23,7 @@ public class PlatoEntity
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codPlato")
-	private Integer codigo;
+	private Integer codPlato;
 	private String nombre;
 	private float precio;
 	private CategoriaPlato categoria;
@@ -51,14 +51,14 @@ this.productoPlato = productoPlato;
 this.carta = carta;
 }*/
 
-public PlatoEntity(String nombre, float precio,AreaRest area, CategoriaPlato categoria, List<ElaboradoEntity> productoPlato,
-	CartaEntity carta) {
+public PlatoEntity(String nombre, float precio,AreaRest area, CategoriaPlato categoria, List<ElaboradoEntity> productoPlato/*,
+	CartaEntity carta*/) {
 super();
 this.nombre = nombre;
 this.precio = precio;
 this.categoria = categoria;
 this.productoPlato = productoPlato;
-this.carta = carta;
+//this.carta = carta;
 this.area=area;
 }
 
@@ -91,11 +91,11 @@ this.carta = carta;
 
 
 	public Integer getCodigo() {
-		return codigo;
+		return codPlato;
 	}
 
 	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+		this.codPlato = codigo;
 	}
 
 	public String getNombre() {
@@ -127,10 +127,10 @@ this.carta = carta;
 	public Plato toNegocio() 
 	{
 		Plato p=new Plato();
-		p.setCodigo(codigo);
+		p.setCodigo(codPlato);
 		p.setNombre(nombre);
 		p.setPrecio(precio);
-		p.setCarta(carta.toNegocio());
+		//p.setCarta(carta.toNegocio());
 		List<Elaborado> elab=new ArrayList<Elaborado>();
 		for(ElaboradoEntity e: this.getProductoPlato() )
 		{

@@ -117,6 +117,20 @@ public class testCliente2 {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 		}
+	
+	//BUSCAR PLATO POR NRO
+		try {
+			PlatoDTO plato=BusinessDelegate.getInstance().BuscarPlatoPorCod(1);
+			System.out.println("El plato buscado es: "+plato.toString());
+			} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			} catch (PlatoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			}
+	
+	
 	//SUGERIR PLATO
 	try {
 		List<PlatoDTO> platosS=BusinessDelegate.getInstance().BuscarPlatosparecidos("Milanesa con Papas Fritas","Carnes");

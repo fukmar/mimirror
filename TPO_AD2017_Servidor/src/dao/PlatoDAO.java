@@ -66,8 +66,8 @@ public class PlatoDAO
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		PlatoEntity resu =(PlatoEntity) session.createQuery("from PlatoEntity p where p.codPlato=?").setInteger(0, codPlato).uniqueResult();
-		session.close();
 		plato=resu.toNegocio();
+		session.close();
 		return plato;
 	}
 	public List<Plato> getPlatosparecidos(String nombre, String categoriaplato)
@@ -135,7 +135,7 @@ public class PlatoDAO
 		{
 			MateriaPrimaEntity mp= new MateriaPrimaEntity();
 			Session session=sf.openSession();
-			mp=(MateriaPrimaEntity) session.createQuery("from MateriaPrimaEntity mp where mp.codigo=?").setInteger(0,i.getMateriaprima().getCodigo()).uniqueResult();
+			mp=(MateriaPrimaEntity) session.createQuery("from MateriaPrimaEntity mp where mp.codMaterial=?").setInteger(0,i.getMateriaprima().getCodigo()).uniqueResult();
 	 		if (mp.getCantidad()<i.getCantidad())
 	 			sepuede++;
 	 		session.close();
@@ -156,7 +156,7 @@ public class PlatoDAO
 		fromDate=sformat.format(fecha);
 		Session s=sf.openSession();
 		s.beginTransaction();
-		Long cantidaddelplato= (Long) s.createQuery("select sum(ic.cantidad) FROM ItemFacturaEntity i join i.factura f join i.itemcomanda ic  WHERE f.fecha=? and ic.plato.codigo=?").setString(0, fromDate).setInteger(1, p.getCodigo()).uniqueResult();
+		Long cantidaddelplato= (Long) s.createQuery("select sum(ic.cantidad) FROM ItemFacturaEntity i join i.factura f join i.itemcomanda ic  WHERE f.fecha=? and ic.plato.codPlato=?").setString(0, fromDate).setInteger(1, p.getCodigo()).uniqueResult();
 		s.getTransaction().commit();
 		return cantidaddelplato;
 	}

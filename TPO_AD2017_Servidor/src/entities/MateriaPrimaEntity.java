@@ -11,7 +11,7 @@ public class MateriaPrimaEntity
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="codMaterial")
-	private Integer codigo;
+	private Integer codMaterial;
 	
 	private String descripcion;
 	
@@ -53,10 +53,10 @@ public class MateriaPrimaEntity
 
 
 	public Integer getCodigo() {
-		return codigo;
+		return codMaterial;
 	}
 	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+		this.codMaterial = codigo;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -88,7 +88,7 @@ public class MateriaPrimaEntity
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((codMaterial == null) ? 0 : codMaterial.hashCode());
 		result = prime * result
 				+ ((descripcion == null) ? 0 : descripcion.hashCode());
 		return result;
@@ -103,10 +103,10 @@ public class MateriaPrimaEntity
 		if (getClass() != obj.getClass())
 			return false;
 		MateriaPrimaEntity other = (MateriaPrimaEntity) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
+		if (codMaterial == null) {
+			if (other.codMaterial != null)
 				return false;
-		} else if (!codigo.equals(other.codigo))
+		} else if (!codMaterial.equals(other.codMaterial))
 			return false;
 		if (descripcion == null) {
 			if (other.descripcion != null)
@@ -121,7 +121,7 @@ public class MateriaPrimaEntity
 	{
 		MateriaPrima m=new MateriaPrima();
 		m.setCantidad(cantidad);
-		m.setCodigo(codigo);
+		m.setCodigo(codMaterial);
 		m.setDescripcion(descripcion);
 		m.setDeposito(deposito.toNegocio());
 		m.setUnidadUso(unidadUso.toNegocio());

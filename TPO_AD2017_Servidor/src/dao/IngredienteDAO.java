@@ -56,7 +56,7 @@ public class IngredienteDAO {
 		{
 			MateriaPrimaEntity mp= new MateriaPrimaEntity();
 			Session session=sf.openSession();
-			mp=(MateriaPrimaEntity) session.createQuery("from MateriaPrimaEntity mp where mp.codigo=?").setInteger(0,i.getMateriaprima().getCodigo()).uniqueResult();
+			mp=(MateriaPrimaEntity) session.createQuery("from MateriaPrimaEntity mp where mp.codMaterial=?").setInteger(0,i.getMateriaprima().getCodigo()).uniqueResult();
 	 		if (mp.getCantidad()<i.getCantidad())
 	 			sepuede++;
 	 		session.close();

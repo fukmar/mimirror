@@ -127,7 +127,7 @@ public class testHibernate4 {
 		
 		CartaEntity carta = new CartaEntity(fecha,temp.Primavera,itemCarta);
 		
-		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,AreaRest.Barra,CategoriaPlato.Carnes,elabs,carta);
+		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,AreaRest.Barra,CategoriaPlato.Carnes,elabs/*,carta*/);
 		plato.setCarta(carta);
 		itemCarta.add(plato);
 		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",5.4f);
