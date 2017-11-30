@@ -20,7 +20,7 @@ public class MateriaPrimaEntity
 	private UnidadEntity unidadUso;
 	private Float cantidad;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="codDeposito")
     private DepositoEntity deposito;
 	

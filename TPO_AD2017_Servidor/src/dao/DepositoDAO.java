@@ -39,4 +39,15 @@ public class DepositoDAO
 		session.close();
 		return depositos;
 	}
+	
+	public Deposito getDepositoByCod(Integer codDeposito) 
+	{
+		Deposito deposito=new Deposito();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session=sf.openSession();
+		DepositoEntity depo= (DepositoEntity) session.createQuery("from DepositoEntity c where c.codDeposito=?").setInteger(0, codDeposito).uniqueResult();
+		session.close();
+		deposito=depo.toNegocio();
+		return deposito;
+	}
 }

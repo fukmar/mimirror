@@ -17,17 +17,20 @@ import dao.PlatoDAO;
 import dao.ReservaDAO;
 import dao.SalonDAO;
 import dao.SectorDAO;
+import dao.UnidadDAO;
 import dao.UsuariosDAO;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
+import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import dto.UnidadDTO;
 import entities.PlatoEntity;
 import entities.SectorEntity;
 import enumns.Estado;
@@ -37,12 +40,14 @@ import negocio.Comanda;
 import negocio.Deposito;
 import negocio.Factura;
 import negocio.ItemComanda;
+import negocio.MateriaPrima;
 import negocio.Mesa;
 import negocio.Mozo;
 import negocio.Plato;
 import negocio.Reserva;
 import negocio.Salon;
 import negocio.Sector;
+import negocio.Unidad;
 
 
 public class Controlador {
@@ -286,6 +291,44 @@ public class Controlador {
 	{
 		double importe=CajaDAO.getInstancia().getTotalFacturadoCaja(FechaDesde, FechaHasta);
 		return importe;
+	}
+	
+	//LISTAR TODAS LAS UNIDADES
+	public List<UnidadDTO> listarUnidades() {
+		// TODO Auto-generated method stub
+		
+		List<UnidadDTO> unidadesDTO=new ArrayList<UnidadDTO>();
+		List<Unidad> unidadesCo=UnidadDAO.getInstance().getUnidades();
+		
+		for(Unidad uniCom:unidadesCo) {
+			unidadesDTO.add(uniCom.toDTO());
+		}
+		return unidadesDTO;
+	}
+	
+	//OBTENER UNIDAD POR DESCRIPCION
+	public UnidadDTO UnidadByDescp(String descp) {
+		// TODO Auto-generated method stub
+		Unidad uni = UnidadDAO.getInstance().getUnidadByDescp(descp);
+		UnidadDTO unidad =uni.toDTO();
+		return unidad;
+	}
+	
+	//GRABAR MATERIA PRIMA
+	public void grabarMateriaPrima(MateriaPrimaDTO materia) {
+		// TODO Auto-generated method stub
+		Unidad uni= UnidadDAO.getInstance().getUnidadByDescp(materia.getUnidadUso().getDescripcion());
+		Deposito depo= new Deposito();
+		new MateriaPrima(materia.getDescripcion(), uni, materia.getCantidad(), depo).save();
+		
+	}
+
+	//OBTENER DEPOSITO POR CODIGO
+	public DepositoDTO DepositoByCod(Integer codDeposito) {
+		// TODO Auto-generated method stub
+		Deposito depo=DepositoDAO.getInstancia().getDepositoByCod(codDeposito);
+		DepositoDTO deposito=depo.toDTO();
+		return deposito;
 	}
 	
 }

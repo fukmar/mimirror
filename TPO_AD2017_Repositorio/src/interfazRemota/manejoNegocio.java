@@ -9,12 +9,14 @@ import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
+import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import dto.UnidadDTO;
 import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
@@ -25,6 +27,7 @@ import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
+import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 
@@ -74,8 +77,19 @@ public interface manejoNegocio extends Remote
 	
 	//DEPOSITOS
 	public List<DepositoDTO> mostrarDepositos() throws RemoteException,DepositoException;
+	public DepositoDTO DepositoByCod(Integer codDeposito) throws RemoteException;
+	
 	
 	//FACTURACION CAJA
 	public double mostrarTotalFacturadoCaja (Date FechaDesde,Date FechaHasta)throws RemoteException,CajaException;
+	
+
+	//UNIDAD
+	public List<UnidadDTO> mostrarUnidades() throws RemoteException, UnidadException;
+	public UnidadDTO UnidadByDescp(String descp) throws RemoteException;
+
+	//MATERIA PRIMA
+	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException;
+	
 	
 }

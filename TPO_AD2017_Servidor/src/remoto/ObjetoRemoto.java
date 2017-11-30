@@ -10,12 +10,14 @@ import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
+import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import dto.UnidadDTO;
 import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
@@ -26,6 +28,7 @@ import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
+import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 import interfazRemota.manejoNegocio;
@@ -166,6 +169,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	{
 		return Controlador.getInstance().listarDepositos();
 	}
+	
+	
+	@Override
+	public DepositoDTO DepositoByCod(Integer codDeposito) throws RemoteException {
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().DepositoByCod(codDeposito);
+	}
 
 	//----------------------------------CAJA---------------------------------------------------------------------------------
 	@Override
@@ -175,7 +185,28 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarTotalFacturadoCaja(FechaDesde, FechaHasta);
 	}
 
+	//----------------------------------UNIDADES----------------------------------------------------------------------------
+	@Override
+	public List<UnidadDTO> mostrarUnidades() throws RemoteException, UnidadException
+	{
+		return Controlador.getInstance().listarUnidades();
+		
+		
+	}
 
+	@Override
+	public UnidadDTO UnidadByDescp(String descp) throws RemoteException {
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().UnidadByDescp(descp);
+	}
+
+
+	//-----------------------------------MATERIA PRIMA-----------------------------------------------------------------------
+	@Override
+	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException {
+		Controlador.getInstance().grabarMateriaPrima(materia);
+		
+	}
 
 	
 	

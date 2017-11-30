@@ -1,5 +1,6 @@
 package negocio;
 
+import dao.MateriaPrimaDAO;
 import dto.MateriaPrimaDTO;
 import dto.UnidadDTO;
 import entities.DepositoEntity;
@@ -90,5 +91,8 @@ public class MateriaPrima
 		return m;
 	}
 	
+	public void save() {
+		MateriaPrimaDAO.getInstance().save(this);
+	}
 	
 }

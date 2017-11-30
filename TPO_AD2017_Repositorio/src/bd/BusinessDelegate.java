@@ -19,6 +19,7 @@ import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
+import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 import interfazRemota.manejoNegocio;
@@ -218,4 +219,22 @@ public class BusinessDelegate
 	{
 		return remoteObject.mostrarTotalFacturadoCaja(FechaDesde, FechaHasta);
 	}
+	
+	
+	//-----------------------------------UNIDADES---------------------------------------------------------------------------
+	public List<UnidadDTO> mostrarUnidades() throws RemoteException, UnidadException {
+		return remoteObject.mostrarUnidades();
+		
+	}
+	
+	public UnidadDTO UnidadByDescp(String descp) throws RemoteException {
+		return remoteObject.UnidadByDescp(descp);
+	}
+	
+	
+	//-----------------------------------MATERIA PRIMA(MATERIALES)------------------------------------------------------------------
+	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException{
+		remoteObject.grabarMateriaPrima(materia);
+	}
+	
 }
