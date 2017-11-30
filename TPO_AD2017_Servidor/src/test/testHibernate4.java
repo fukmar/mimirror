@@ -58,6 +58,7 @@ public class testHibernate4 {
 		
 		
 		Usuarios usu = new Usuarios("admin","admin","N","G",AreaRest.Administracion);
+		Usuarios usu2 = new Usuarios("cocina","cocina","N","G",AreaRest.Cocina);
 
 		
 		
@@ -128,7 +129,7 @@ public class testHibernate4 {
 		
 		CartaEntity carta = new CartaEntity(fecha,temp.Primavera,itemCarta);
 		
-		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,AreaRest.Barra,CategoriaPlato.Carnes,elabs/*,carta*/);
+		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,AreaRest.Cocina,CategoriaPlato.Carnes,elabs/*,carta*/);
 		plato.setCarta(carta);
 		itemCarta.add(plato);
 		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",5.4f);
@@ -232,7 +233,7 @@ public class testHibernate4 {
 		session.save(itemplan);
 		session.save(pdp);
 		session.save(usu.toEntity());
-
+		session.save(usu2.toEntity());
 		session.getTransaction().commit();
 		session.close();
 		
@@ -446,7 +447,7 @@ public class testHibernate4 {
 		PlanDeProduccionDAO.getInstance().CalcularporcentajeAvance(pdp.toNegocio());
 		
 		//TESTEO SI ME TRAE ITEMCOMANDA SEGUN AREA FUNCIONA!
-		List<ItemComanda> items=ItemComandaDAO.getInstance().getItemsPendientesxArea("Barra");
+		List<ItemComanda> items=ItemComandaDAO.getInstance().getItemsPendientesxArea(AreaRest.Cocina);
 		System.out.println(items.get(0).getPlato().getNombre());
 		//TEST CAMBIOS ESTADO ITEMCOMANDA 
 		ItemComanda item=ItemComandaDAO.getInstance().obtenerItemComandaByCod(items.get(0).getCoditemComanda());

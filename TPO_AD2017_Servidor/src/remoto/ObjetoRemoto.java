@@ -18,6 +18,7 @@ import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.UnidadDTO;
+import enumns.AreaRest;
 import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
@@ -206,6 +207,14 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException {
 		Controlador.getInstance().grabarMateriaPrima(materia);
 		
+	}
+
+	//-----------------------------------ITEMS COMANDA POR AREA-----------------------------------------------------------------------
+
+	@Override
+	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException {
+
+		return Controlador.getInstance().getItemsPendientesxArea(area);
 	}
 
 	

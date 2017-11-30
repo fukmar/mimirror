@@ -91,15 +91,15 @@ private static ItemComandaDAO instancia;
 			session.close();
 			}
 		}
-	public List<ItemComanda> getItemsPendientesxArea(String area)
+	public List<ItemComanda> getItemsPendientesxArea(AreaRest area)
 	{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session=sf.openSession();
 		List<ItemComanda> listaItemComanda=new ArrayList<ItemComanda>();
-		AreaRest arearestaurant=areaitemcomandafromString(area);
+		
 		EstadoItemComanda estado=estadoitemcomandafromString("Pendiente");
 		Query query=session.createQuery("from ItemComandaEntity i where i.plato.area=? and i.estado=? ");
- 		query.setParameter(0,arearestaurant);
+ 		query.setParameter(0,area);
  		query.setParameter(1,estado);
  		@SuppressWarnings("unchecked")
 		List<ItemComandaEntity> resu=query.list();

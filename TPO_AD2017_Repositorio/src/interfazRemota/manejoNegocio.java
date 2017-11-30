@@ -17,6 +17,7 @@ import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.UnidadDTO;
+import enumns.AreaRest;
 import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
@@ -90,6 +91,9 @@ public interface manejoNegocio extends Remote
 
 	//MATERIA PRIMA
 	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException;
+
+	//ITEMS COMANDA
+	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException;
 	
 	
 }

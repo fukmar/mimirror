@@ -28,6 +28,7 @@ import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SectorDTO;
+import enumns.AreaRest;
 import enumns.Estado;
 import enumns.EstadoItemComanda;
 import exceptions.ComandaException;
@@ -69,7 +70,8 @@ public class Controller extends HttpServlet {
 		}
 		else {
 
-			
+			 HttpSession session=request.getSession();  
+				
 			
 				if(opcion.equals("login")){
 				
@@ -85,7 +87,6 @@ public class Controller extends HttpServlet {
 						e.printStackTrace();
 					}
 					if (ok) {
-						 HttpSession session=request.getSession();  
 					     session.setAttribute("usuario",usuario);  
 						 RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
 						 rd.forward(request, response);
@@ -99,8 +100,7 @@ public class Controller extends HttpServlet {
 				
 				if(opcion.equals("logout")){
 					
-					HttpSession session=request.getSession();  
-		            session.invalidate();    
+					session.invalidate();    
 		            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 					rd.forward(request, response);
 					}
@@ -207,6 +207,9 @@ if(opcion.equals("verMozos")){
 		
 		if(opcion.equals("verComandas")){
 			
+			 if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("admin"))
+			  { 
+			
 			List<ComandaDTO> comandas = new ArrayList<ComandaDTO>();
 			try {
 				comandas = BusinessDelegate.getInstance().mostrarComandas();
@@ -218,6 +221,17 @@ if(opcion.equals("verMozos")){
 				System.out.println(e.getMessage());
 			}
 
+		}else if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("cocina")) {
+			
+			List<ItemComandaDTO> items = new ArrayList<ItemComandaDTO>();
+				//FALTA LA CAPTURA DE EXCEPCION!
+				items = BusinessDelegate.getInstance().getItemsPendientesxArea(AreaRest.Cocina);
+				request.setAttribute("items", items);
+				RequestDispatcher rd = request.getRequestDispatcher("/verMisItems.jsp");
+				rd.forward(request, response);
+			
+				
+		}
 		}
 		
 		if(opcion.equals("verDatosParaCargarComanda")){
@@ -311,7 +325,7 @@ if(opcion.equals("agregarItemsComanda_2step")){
 				System.out.println(e.getMessage());
 			}
 			
-			ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,EstadoItemComanda.Iniciada, comanda);
+			ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,EstadoItemComanda.Pendiente, comanda);
 			itemComanda.setComanda(comanda);
 			try {
 			BusinessDelegate.getInstance().grabarItemComanda(itemComanda);
@@ -319,10 +333,10 @@ if(opcion.equals("agregarItemsComanda_2step")){
 				System.out.println(e.getMessage());
 			}
 			
-			if (accion == "Aceptar") {
+			if (accion.equals("Aceptar")) {
 			RequestDispatcher rd = request.getRequestDispatcher("/verComandas.jsp");
 			rd.forward(request, response);}
-			if (accion == "Otro") {
+			if (accion.equals("Otro")) {
 				
 				List<PlatoDTO> platos = new ArrayList<PlatoDTO>();
 				try {
@@ -336,7 +350,7 @@ if(opcion.equals("agregarItemsComanda_2step")){
 				request.setAttribute("comanda", comanda);
 				request.setAttribute("vamosACargarItems", "listos");
 				RequestDispatcher rd = request.getRequestDispatcher("/agregarItemAComanda.jsp");
-				rd.forward(request, response);rd.forward(request, response);}
+				rd.forward(request, response);}
 				
 			
 	}

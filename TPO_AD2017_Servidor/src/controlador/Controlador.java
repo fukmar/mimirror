@@ -11,6 +11,7 @@ import dao.CajaDAO;
 import dao.ComandaDAO;
 import dao.DepositoDAO;
 import dao.FacturaDAO;
+import dao.ItemComandaDAO;
 import dao.MesaDAO;
 import dao.MozoDAO;
 import dao.PlatoDAO;
@@ -33,6 +34,7 @@ import dto.SectorDTO;
 import dto.UnidadDTO;
 import entities.PlatoEntity;
 import entities.SectorEntity;
+import enumns.AreaRest;
 import enumns.Estado;
 import enumns.MedioDePago;
 import negocio.Caja;
@@ -329,6 +331,17 @@ public class Controlador {
 		Deposito depo=DepositoDAO.getInstancia().getDepositoByCod(codDeposito);
 		DepositoDTO deposito=depo.toDTO();
 		return deposito;
+	}
+
+	//OBTENER ITEMS DE COMANDAS POR AREA
+	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) {
+		List<ItemComandaDTO> items=new ArrayList<ItemComandaDTO>();
+		List<ItemComanda> itemsnegocio=ItemComandaDAO.getInstance().getItemsPendientesxArea(area);
+		for(ItemComanda item:itemsnegocio)
+		{
+			items.add(item.toDTO());
+		}
+		return items;
 	}
 	
 }

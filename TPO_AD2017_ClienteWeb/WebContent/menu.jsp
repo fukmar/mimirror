@@ -13,7 +13,7 @@
 <%      
     HashMap<String,HashMap<String,String>> menus = new HashMap<String,HashMap<String,String>>();
     HashMap<String,String> submmenus;
-    HashMap<String,String> submmenus2;
+   
  %>
  <nav id="primary_nav_wrap">
     <ul id="menu">
@@ -56,31 +56,62 @@
 			 menus.put("Reservas", submmenus);   
 			 
 			 
-        for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
-            String menuName = (String)itMenu.next();
-            HashMap sub = (HashMap)menus.get(menuName);            
-%>            
-        <li><a href=?#?><%=menuName%></a>
-            <ul>
-            
- <%     
-            for(Iterator itSub = sub.keySet().iterator(); itSub.hasNext();) {
-                 String subMenuName = (String)itSub.next();
-                 String subMenuAction = (String)sub.get(subMenuName);
- %>
-                <li><a href="<%=subMenuAction%>" ><%=subMenuName%></a></li>
- <%
-            }
- %>
-            </ul>
-        </li>
+		        for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
+		            String menuName = (String)itMenu.next();
+		            HashMap sub = (HashMap)menus.get(menuName);            
+		%>            
+		        <li><a href=?#?><%=menuName%></a>
+		            <ul>
+		            
+		 <%     
+		            for(Iterator itSub = sub.keySet().iterator(); itSub.hasNext();) {
+		                 String subMenuName = (String)itSub.next();
+		                 String subMenuAction = (String)sub.get(subMenuName);
+		 %>
+		                <li><a href="<%=subMenuAction%>" ><%=subMenuName%></a></li>
+		 <%
+		            }
+		 %>
+		            </ul>
+		        </li>
+		        
+			 
+			
          
  <%        
         }}
-		  else{ //no hay sesion o no es admin
+		  else if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("cocina")){
+			  out.print("<a>Hola "+session.getAttribute("usuario")+"!</a>");
+			  submmenus = new HashMap<String,String>();		
+				
+				submmenus.put("Ver Comandas de la Cocina", "/TPO_AD2017_ClienteWeb/Controller?opcion=verComandas");
+					 menus.put("Comandas", submmenus);
+					 
+				        for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
+				            String menuName = (String)itMenu.next();
+				            HashMap sub = (HashMap)menus.get(menuName);            
+				%>            
+				        <li><a href=?#?><%=menuName%></a>
+				            <ul>
+				            
+				 <%     
+				            for(Iterator itSub = sub.keySet().iterator(); itSub.hasNext();) {
+				                 String subMenuName = (String)itSub.next();
+				                 String subMenuAction = (String)sub.get(subMenuName);
+				 %>
+				                <li><a href="<%=subMenuAction%>" ><%=subMenuName%></a></li>
+				 <%
+				            }
+				 %>
+				            </ul>
+				        </li>
+					 
+        	<%
+        }} else {
         	
         	RequestDispatcher rd = request.getRequestDispatcher("/login.jsp?mensaje=Usuario o Clave Incorrectos");
-		rd.forward(request, response);
+    		rd.forward(request, response);
+        	
         }
         
  %>

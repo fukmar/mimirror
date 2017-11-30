@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import dto.*;
+import enumns.AreaRest;
 import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
@@ -235,6 +236,12 @@ public class BusinessDelegate
 	//-----------------------------------MATERIA PRIMA(MATERIALES)------------------------------------------------------------------
 	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException{
 		remoteObject.grabarMateriaPrima(materia);
+	}
+
+	//-----------------------------------ITEMS COMANDA------------------------------------------------------------------
+
+	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException{
+		return remoteObject.getItemsPendientesxArea(area);
 	}
 	
 }
