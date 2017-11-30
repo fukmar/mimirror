@@ -136,9 +136,9 @@ public class testHibernate3 {
 		ComandaEntity comandita = new ComandaEntity(mozo, mesita/*,caja,*/,Estado.Terminado); //de aca solo comente caja porque tambien lo comente en el cosntuctor
 		ComandaEntity comandita2 = new ComandaEntity(mozo, mesita/*,caja*/,Estado.EnProceso);
 		ComandaEntity comandita3 = new ComandaEntity(mozo, mesita,/*caja,*/Estado.EnProceso);
-		ItemComandaEntity itemCom2= new ItemComandaEntity(1,EstadoItemComanda.Iniciada, plato, comandita2);
-		ItemComandaEntity itemCom3= new ItemComandaEntity(5,EstadoItemComanda.Iniciada, plato, comandita3);
-		ItemComandaEntity itemCom= new ItemComandaEntity(2,EstadoItemComanda.Iniciada, plato, comandita);
+		ItemComandaEntity itemCom2= new ItemComandaEntity(1,EstadoItemComanda.Pendiente, plato, comandita2);
+		ItemComandaEntity itemCom3= new ItemComandaEntity(5,EstadoItemComanda.Pendiente, plato, comandita3);
+		ItemComandaEntity itemCom= new ItemComandaEntity(2,EstadoItemComanda.Pendiente, plato, comandita);
 		
 		List<ComandaEntity> comanditas = new ArrayList<ComandaEntity>();
 		comanditas.add(comandita);
@@ -255,7 +255,7 @@ public class testHibernate3 {
 			System.out.println(s.getCodSector());
 		}
 		
-		ItemComandaEntity itemCom4= new ItemComandaEntity(6, EstadoItemComanda.Iniciada,plato, comandita);
+		ItemComandaEntity itemCom4= new ItemComandaEntity(6, EstadoItemComanda.Pendiente,plato, comandita);
 		ItemComanda itcom=itemCom4.toNegocio();
 		ItemComandaDAO.getInstance().save(itcom);
 		

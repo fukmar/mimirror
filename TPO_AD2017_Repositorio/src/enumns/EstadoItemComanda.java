@@ -2,5 +2,5 @@ package enumns;
 
 public enum EstadoItemComanda
 {
-	Pendiente, Iniciada, Finalizada
+	Pendiente, Finalizada
 }

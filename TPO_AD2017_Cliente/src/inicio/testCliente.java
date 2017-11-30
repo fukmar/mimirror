@@ -158,7 +158,7 @@ public class testCliente
 		
 		
 		//ITEM COMANDA
-		ItemComandaDTO itemCom= new ItemComandaDTO(2, plato,EstadoItemComanda.Iniciada, comanda);
+		ItemComandaDTO itemCom= new ItemComandaDTO(2, plato,EstadoItemComanda.Pendiente, comanda);
 		ItemComandaDTO itemCom2= new ItemComandaDTO(1,plato, EstadoItemComanda.Pendiente, comanda);
 		List<ComandaDTO> comanditas = new ArrayList<ComandaDTO>();
 		comanditas.add(comanda);

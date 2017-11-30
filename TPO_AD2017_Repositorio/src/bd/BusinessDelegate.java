@@ -61,7 +61,11 @@ public class BusinessDelegate
 	//---------------------------------------USUARIOS------------------------------------------------------------
 	public boolean verificarPassword(String login, String password) throws RemoteException, UsuarioException
 	{
-		return remoteObject.verificarPassword(login, password);
+		try {
+			return remoteObject.verificarPassword(login, password);
+		} catch (UsuarioException e) {
+			throw new UsuarioException("USUARIO o PASSWORD incorrecta!");
+		}
 	}
 	
 	//---------------------------------------PLATOS------------------------------------------------------------
