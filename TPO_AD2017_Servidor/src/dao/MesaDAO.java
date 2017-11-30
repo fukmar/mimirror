@@ -115,7 +115,7 @@ private static SessionFactory sf=null;
 	{
 		Session session=sf.openSession();
 		List<Mesa> listaM=new ArrayList<Mesa>();
-		List<MesaEntity> resu=session.createQuery("from MesaEntity m where m.estado=0 and m.capacidad>=?").setInteger(0, cantidadpersonas).list();
+		List<MesaEntity> resu=session.createQuery("from MesaEntity m where m.estado=0 and m.capacidad>? or m.capacidad=?").setInteger(0, cantidadpersonas).setInteger(1, cantidadpersonas).list();
 		for(MesaEntity m:resu)
 		{
 			listaM.add(m.toNegocio());
@@ -129,7 +129,7 @@ private static SessionFactory sf=null;
 	{
 		Session session=sf.openSession();
 		List<Mesa> listaM=new ArrayList<Mesa>();
-		List<MesaEntity> resu=session.createQuery("from MesaEntity m where m.estado=0 and m.capacidad>=?").setInteger(0, cantidadpersonas).list();
+		List<MesaEntity> resu=session.createQuery("from MesaEntity m where m.estado=0 and m.capacidad>? or m.capacidad=?").setInteger(0, cantidadpersonas).setInteger(1, cantidadpersonas).list();
 		for(MesaEntity m:resu)
 		{
 			listaM.add(m.toNegocio());
