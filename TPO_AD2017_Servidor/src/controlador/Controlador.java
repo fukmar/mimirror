@@ -258,7 +258,7 @@ public class Controlador {
 	}
 	
 	
-	public List<MesaDTO> lsitarMesasLibres()
+	public List<MesaDTO> listarMesasLibres()
 	{
 		List<MesaDTO> mesas=new ArrayList<MesaDTO>();
 		List<Mesa> mesasN=MesaDAO.getInstance().getMesasLibres();

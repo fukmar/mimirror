@@ -156,7 +156,15 @@ if(opcion.equals("ocuparMesa")){
 	 
 	String[] mesa = request.getParameterValues("mesaelegida[]");
 	
-	BusinessDelegate.getInstance().ocuparMesaPorCod(mesa[0]);
+	try {
+		BusinessDelegate.getInstance().BuscarMesaPorCod(Integer.parseInt(mesa[0]));
+	} catch (NumberFormatException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (MesaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 				
 			}
 
@@ -164,7 +172,7 @@ if(opcion.equals("combinarMesas")){
 	 
 String[] mesa = request.getParameterValues("mesaelegida[]");
 	
-	BusinessDelegate.getInstance().combinarMesasPorCod(mesa[0],mesa[1]);
+	//BusinessDelegate.getInstance().combinarMesasPorCod(mesa[0],mesa[1]);
 					
 			}
 			

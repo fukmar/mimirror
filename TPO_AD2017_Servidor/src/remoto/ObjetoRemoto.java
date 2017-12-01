@@ -154,7 +154,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	@Override
 	public List<MesaDTO> mostrarMesasLibres() throws RemoteException, MesaException {
 		// TODO Auto-generated method stub
-		return Controlador.getInstance().lsitarMesasLibres();
+		return Controlador.getInstance().listarMesasLibres();
 	}
 	
 	public void ocuparMesaPorCod(Integer codMesa) throws RemoteException, MesaException {
