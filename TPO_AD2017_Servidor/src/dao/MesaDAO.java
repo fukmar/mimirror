@@ -72,7 +72,7 @@ private static SessionFactory sf=null;
 		}
 		session.close();
 		return listaM;
-	}
+	}  
 	public void updateMesaToOcupada(Mesa m)
 	{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -138,22 +138,18 @@ private static SessionFactory sf=null;
 		return listaM;
 		
 	}
-	public Mesa combinarMesa (Mesa mesa1, Mesa mesa2, int cantidadpersonas)
+	public Mesa combinarMesa (Mesa mesa1, Mesa mesa2)
 		{
 			if (mesa1.getEstado()==0 && mesa2.getEstado()==0 && mesa1.getActiva()==0 && mesa2.getActiva()==0)
 			{
 				if (mesa1.getSector().getCodSector()==mesa2.getSector().getCodSector())
 					{
-					
-					int capacidadnueva=mesa1.getCapacidad()+mesa2.getCapacidad();
-					System.out.println("TENGO "+capacidadnueva);
-					if ((mesa1.getCapacidad()+mesa2.getCapacidad())>=cantidadpersonas)
-					{
+						int capacidadnueva=mesa1.getCapacidad()+mesa2.getCapacidad();
 						MesaEntity mesa3=new MesaEntity();
-						mesa3.setCantidadPersonas(cantidadpersonas);
 						mesa3.setCapacidad(mesa1.getCapacidad()+mesa2.getCapacidad());
 						mesa3.setCombinada(1);
 						mesa3.setEstado(1);
+						mesa3.setCantidadPersonas(0);
 						mesa3.setSector(mesa1.getSector().toEntity());
 						mesa3.setMozo(mesa1.getMozo().toEntity());
 						SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -187,7 +183,7 @@ private static SessionFactory sf=null;
 						session3.close();
 						return (mesa3.toNegocio());
 					}
-					}	
+						
 				}
 			return null;
 		}
