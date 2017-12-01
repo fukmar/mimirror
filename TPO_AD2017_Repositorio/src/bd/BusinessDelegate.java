@@ -10,6 +10,7 @@ import java.util.List;
 
 import dto.*;
 import enumns.AreaRest;
+import enumns.MedioDePago;
 import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
@@ -156,6 +157,15 @@ public class BusinessDelegate
 	public FacturaDTO mostrarFacturaByCod(int nroFact) throws RemoteException, FacturaException 
 	{
 		return remoteObject.mostrarFacturaByCod(nroFact);
+	}
+	
+	public void facturarMesa(int codMesa, MedioDePago formadepago) throws RemoteException, FacturaException
+	{
+		try {
+			remoteObject.facturarMesa(codMesa, formadepago);;
+		} catch (Exception e) {
+			throw new FacturaException("No se pudo generar la FACTURA!");
+		}
 	}
 	
 	// ---------------------------------------ITEM FACTURA------------------------------------------------------

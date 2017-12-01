@@ -20,6 +20,7 @@ import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.UnidadDTO;
 import enumns.AreaRest;
+import enumns.MedioDePago;
 import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
@@ -127,6 +128,10 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	{
 		return Controlador.getInstance().obtenerItemsFacturaByCodFactura(codFactura);
 		
+	}
+	public void facturarMesa(int codMesa, MedioDePago formadepago) throws RemoteException, FacturaException
+	{
+		Controlador.getInstance().facturarMesa(codMesa, formadepago);
 	}
 
 	

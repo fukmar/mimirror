@@ -1,5 +1,8 @@
 package dao;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -13,12 +16,15 @@ import entities.ElaboradoEntity;
 import entities.FacturaEntity;
 import entities.ItemComandaEntity;
 import entities.ItemFacturaEntity;
+import entities.MesaEntity;
 import enumns.Estado;
+import enumns.MedioDePago;
 import hibernate.HibernateUtil;
 import negocio.Comanda;
 import negocio.Factura;
 import negocio.ItemComanda;
 import negocio.ItemFactura;
+import negocio.Mesa;
 
 
 public class FacturaDAO
@@ -141,14 +147,25 @@ public class FacturaDAO
 	
 	//esto tiene que recibir Factura (negocio)
 
-	public void cerrarFactura(Factura f){
+	public void facturarMesa(int codMesa, MedioDePago formadepago){
+		Mesa mesa=MesaDAO.getInstance().getMesaN(codMesa);
+		MesaEntity mesaentity=mesa.toEntity();
+		DateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date=new Date();
+		FacturaEntity fenti=new FacturaEntity(date,0,formadepago,mesaentity);
+		SessionFactory sf10 = HibernateUtil.getSessionFactory();
+		Session session10 = sf10.openSession();
+		session10.beginTransaction();
+		session10.save(fenti);
+		session10.getTransaction().commit();
+		session10.close();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		//Obtengo los item comandas y los transformo a item factura.  Miro de la mesa de la factura cuales son las comandas que no fueron facturadas.
 		Session session = sf.openSession();
 		session.beginTransaction();
 		@SuppressWarnings("unchecked")
 		Estado estado=estadocomandafromString("EnProceso");
-		List <ItemComandaEntity> itemscomandas=session.createQuery("from ItemComandaEntity i where i.comanda.mesa.codMesa=? and i.comanda.estado=?").setInteger(0,f.getMesa().getCodMesa()).setParameter(1, estado).list();
+		List <ItemComandaEntity> itemscomandas=session.createQuery("from ItemComandaEntity i where i.comanda.mesa.codMesa=? and i.comanda.estado=?").setInteger(0,fenti.getMesa().getCodMesa()).setParameter(1, estado).list();
 		session.getTransaction().commit();
 		session.close();
 		double totalfactura=0;
@@ -157,7 +174,7 @@ public class FacturaDAO
 			Session session2 = sf2.openSession();
 			session2.beginTransaction();
 			ItemFacturaEntity item=new ItemFacturaEntity();
-			item.setFactura(f.toEntity());
+			item.setFactura(fenti);
 			item.setItemcomanda(i);
 			item.setSubtotal(i.getCantidad()*i.getPlato().getPrecio());
 			totalfactura=totalfactura+item.getSubtotal();
@@ -169,8 +186,8 @@ public class FacturaDAO
 		SessionFactory sf3 = HibernateUtil.getSessionFactory();
 		Session session3 = sf.openSession();
 		session3.beginTransaction();
-		f.setImporte(totalfactura);
-		session3.update(f.toEntity());
+		fenti.setImporte(totalfactura);
+		session3.update(fenti);
 		session3.getTransaction().commit();
 		session3.close();
 		SessionFactory sf4 = HibernateUtil.getSessionFactory();
@@ -178,7 +195,7 @@ public class FacturaDAO
 		Session session4 = sf4.openSession();
 		session4.beginTransaction();
 		estado=estadocomandafromString("EnProceso");
-		List <ComandaEntity> comandas=session4.createQuery("from ComandaEntity c where c.mesa.codMesa=? and c.estado=?").setInteger(0,f.getMesa().getCodMesa()).setParameter(1, estado).list();
+		List <ComandaEntity> comandas=session4.createQuery("from ComandaEntity c where c.mesa.codMesa=? and c.estado=?").setInteger(0,fenti.getMesa().getCodMesa()).setParameter(1, estado).list();
 		for (ComandaEntity c:comandas)
 		{
 			SessionFactory sf5 = HibernateUtil.getSessionFactory();

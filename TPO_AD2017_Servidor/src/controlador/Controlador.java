@@ -1,4 +1,7 @@
 package controlador;
+import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,11 +36,13 @@ import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.UnidadDTO;
+import entities.MesaEntity;
 import entities.PlatoEntity;
 import entities.SectorEntity;
 import enumns.AreaRest;
 import enumns.Estado;
 import enumns.MedioDePago;
+import exceptions.FacturaException;
 import negocio.Caja;
 import negocio.Comanda;
 import negocio.Deposito;
@@ -177,6 +182,12 @@ public class Controlador {
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	//FACTURAS
+
+	public void facturarMesa(int codMesa, MedioDePago formadepago) 
+	{
+		FacturaDAO.getInstance().facturarMesa(codMesa, formadepago);
+	}
+	
 	public  void guardarFactura(FacturaDTO factura) 
 	{
 		Integer codMesa=factura.getMesa().getCodMesa();
@@ -384,6 +395,7 @@ public class Controlador {
 		new MateriaPrima(materia.getDescripcion(), uni, materia.getCantidad(), depo).save();
 		
 	}
+
 
 
 

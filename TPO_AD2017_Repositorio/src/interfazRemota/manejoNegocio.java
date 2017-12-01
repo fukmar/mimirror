@@ -19,6 +19,7 @@ import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.UnidadDTO;
 import enumns.AreaRest;
+import enumns.MedioDePago;
 import exceptions.CajaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
@@ -59,7 +60,7 @@ public interface manejoNegocio extends Remote
 	public  void grabarFactura(FacturaDTO factura) throws RemoteException,FacturaException;
 	public List<FacturaDTO> mostrarFacturas()throws RemoteException,FacturaException;
 	public FacturaDTO mostrarFacturaByCod(int nroFact)throws RemoteException,FacturaException;
-	
+	public void facturarMesa(int codMesa, MedioDePago formadepago) throws RemoteException, FacturaException;
 	//ITEMFACTURA
 	List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws RemoteException, FacturaException;
 	
