@@ -162,7 +162,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		Controlador.getInstance().ocuparMesaPorCod(codMesa);
 	}
 	
-	public int combinarMesasPorCod(int codmesa1, int codmesa2) throws RemoteException, MesaException {
+	public Integer combinarMesasPorCod(Integer codmesa1, Integer codmesa2) throws RemoteException, MesaException {
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().combinarMesasPorCod(codmesa1, codmesa2);
 	}

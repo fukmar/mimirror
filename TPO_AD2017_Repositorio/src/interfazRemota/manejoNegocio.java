@@ -71,7 +71,7 @@ public interface manejoNegocio extends Remote
 	public MesaDTO BuscarMesaPorCod(Integer codMesa)throws RemoteException,MesaException;
 	public List<MesaDTO> mostrarMesasLibres()throws RemoteException,MesaException;
 	public void ocuparMesaPorCod(Integer codMesa)throws RemoteException,MesaException;
-	public int combinarMesasPorCod(int codmesa1, int codmesa2) throws RemoteException, MesaException;
+	public Integer combinarMesasPorCod(Integer codmesa1, Integer codmesa2) throws RemoteException, MesaException;
 	
 	//SECTORES
 	public List<SectorDTO> mostrarSectores() throws RemoteException,SectorException;

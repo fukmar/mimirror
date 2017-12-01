@@ -274,7 +274,7 @@ public class Controlador {
 		MesaDAO.getInstance().updateMesaToOcupada(mesaN);
 	}
 	
-	public int combinarMesasPorCod(int codmesa1, int codmesa2)
+	public Integer combinarMesasPorCod(Integer codmesa1, Integer codmesa2)
 	{
 		Mesa mesa1=MesaDAO.getInstance().getMesaN(codmesa1);
 		Mesa mesa2=MesaDAO.getInstance().getMesaN(codmesa2);

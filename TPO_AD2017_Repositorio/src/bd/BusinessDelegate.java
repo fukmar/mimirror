@@ -209,7 +209,7 @@ public class BusinessDelegate
 	}
 	}
 		
-	public int combinarMesasPorCod(int codmesa1, int codmesa2) throws RemoteException, MesaException
+	public Integer combinarMesasPorCod(Integer codmesa1, Integer codmesa2) throws RemoteException, MesaException
 		{		
 			return remoteObject.combinarMesasPorCod(codmesa1, codmesa2);
 		}
