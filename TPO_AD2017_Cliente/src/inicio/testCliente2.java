@@ -7,6 +7,7 @@ import java.util.List;
 import bd.BusinessDelegate;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
+import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
@@ -14,6 +15,7 @@ import enumns.CategoriaPlato;
 import enumns.MedioDePago;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
+import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
@@ -160,6 +162,21 @@ public class testCliente2 {
 		e.printStackTrace();
 	}
 	
+	//LISTAR MESAS LIBRES
+	try {
+		List<MesaDTO> mesas=BusinessDelegate.getInstance().mostrarMesasLibres();
+		for(MesaDTO m: mesas)
+		{
+			System.out.println("Mesas libres:"+m.toString());
+		}
+		
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (MesaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
 	}
 

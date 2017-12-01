@@ -32,7 +32,7 @@ private static SessionFactory sf=null;
 	
 	public void save(Elaborado elab){
 
-	ElaboradoEntity ee = this.toEntity(elab);
+	ElaboradoEntity ee = elab.toEntity();//cz
 	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
@@ -76,10 +76,10 @@ private static SessionFactory sf=null;
 	
 }
 	*/
-	//FALTA
+	/*//FALTA
 	private ElaboradoEntity toEntity(Elaborado elab) {	
 		return null;
 
-	}
+	}*/
 	
 }

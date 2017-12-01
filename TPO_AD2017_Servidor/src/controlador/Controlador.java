@@ -162,6 +162,17 @@ public class Controlador {
 		Comanda comanda=ComandaDAO.getInstance().obtenerComandaByCod(codComanda);
 		new ItemComanda(itemComanda.getCantidad(),itemComanda.getEstado(), plato,comanda).save();
 	}
+	
+	//OBTENER ITEMS DE COMANDAS POR AREA
+	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) {
+		List<ItemComandaDTO> items=new ArrayList<ItemComandaDTO>();
+		List<ItemComanda> itemsnegocio=ItemComandaDAO.getInstance().getItemsPendientesxArea(area);
+		for(ItemComanda item:itemsnegocio)
+		{
+			items.add(item.toDTO());
+		}
+		return items;
+	}
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	//FACTURAS
 	public  void guardarFactura(FacturaDTO factura) 
@@ -246,6 +257,18 @@ public class Controlador {
 		return mesa;
 	}
 	
+	
+	public List<MesaDTO> lsitarMesasLibres()
+	{
+		List<MesaDTO> mesas=new ArrayList<MesaDTO>();
+		List<Mesa> mesasN=MesaDAO.getInstance().getMesasLibres();
+		for(Mesa m:mesasN)
+		{
+			mesas.add(m.toDTO());
+		}
+		return mesas;
+	}
+	
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
     //LISTAR SECTORES
 	
@@ -286,6 +309,13 @@ public class Controlador {
 		return depositos;
 	}
 	
+	//OBTENER DEPOSITO POR CODIGO
+	public DepositoDTO DepositoByCod(Integer codDeposito) {
+		// TODO Auto-generated method stub
+		Deposito depo=DepositoDAO.getInstancia().getDepositoByCod(codDeposito);
+		DepositoDTO deposito=depo.toDTO();
+		return deposito;
+	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
     //LISTAR FACTURADO EN CAJA
@@ -295,6 +325,8 @@ public class Controlador {
 		return importe;
 	}
 	
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+    //UNIDADES
 	//LISTAR TODAS LAS UNIDADES
 	public List<UnidadDTO> listarUnidades() {
 		// TODO Auto-generated method stub
@@ -316,6 +348,8 @@ public class Controlador {
 		return unidad;
 	}
 	
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+    //MATERIA PRIMA
 	//GRABAR MATERIA PRIMA
 	public void grabarMateriaPrima(MateriaPrimaDTO materia) {
 		// TODO Auto-generated method stub
@@ -325,23 +359,8 @@ public class Controlador {
 		
 	}
 
-	//OBTENER DEPOSITO POR CODIGO
-	public DepositoDTO DepositoByCod(Integer codDeposito) {
-		// TODO Auto-generated method stub
-		Deposito depo=DepositoDAO.getInstancia().getDepositoByCod(codDeposito);
-		DepositoDTO deposito=depo.toDTO();
-		return deposito;
-	}
 
-	//OBTENER ITEMS DE COMANDAS POR AREA
-	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) {
-		List<ItemComandaDTO> items=new ArrayList<ItemComandaDTO>();
-		List<ItemComanda> itemsnegocio=ItemComandaDAO.getInstance().getItemsPendientesxArea(area);
-		for(ItemComanda item:itemsnegocio)
-		{
-			items.add(item.toDTO());
-		}
-		return items;
-	}
+
+
 	
 }

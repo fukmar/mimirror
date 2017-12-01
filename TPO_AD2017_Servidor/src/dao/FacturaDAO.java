@@ -52,7 +52,7 @@ public class FacturaDAO
 
 
 	
-	public void actualizarTotalFactura(int nroFact){
+	/*public void actualizarTotalFactura(int nroFact){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -63,9 +63,9 @@ public class FacturaDAO
 		session.merge(factura);
 		session.getTransaction().commit();
 		session.close();
-	}
+	}*/
 	
-	///CZ
+	///CZ miralo plis :D
 	/*public void actualizarTotalFactura2(int nroFact){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
@@ -90,7 +90,7 @@ public class FacturaDAO
 	}
 	
 	
-	///CZ
+	///CZ mirar!
 	  	/*public Factura obtenerFacturaByNro2(int nroFact){
 		Factura factura=new Factura();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -110,6 +110,19 @@ public class FacturaDAO
 		session.getTransaction().commit();
 		session.close();
 	}
+	
+	/* CZ, mirar :)
+	public void addItemsFactura2(ItemFactura item)
+	{
+		ItemFacturaEntity itemFactE=item.toEntity();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.save(itemFactE);
+		session.flush();
+		session.getTransaction().commit();
+		session.close();
+	}*/
 	
 	
 	//esto tiene que recibir Factura (negocio)
@@ -166,11 +179,13 @@ public class FacturaDAO
 		session4.getTransaction().commit();
 		session4.close();
 	}
+	
 	private Estado estadocomandafromString(String estado)
 	{
 		return Estado.valueOf(estado);
 	}
 
+	
 	public Double getMontoPagos(int nroFact){
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
