@@ -27,7 +27,7 @@ import dto.*;
 import exceptions.DepositoException;
 import exceptions.UnidadException;
 import bd.BusinessDelegate;
-
+import swing.*;
 
 public class AltaMaterial extends JFrame {
 
@@ -49,6 +49,8 @@ public class AltaMaterial extends JFrame {
 			public void run() {
 				try {
 					AltaMaterial frame = new AltaMaterial();
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -62,7 +64,7 @@ public class AltaMaterial extends JFrame {
 	 */
 	public AltaMaterial() {
 		setTitle("Alta Material");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 790, 709);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -91,11 +93,7 @@ public class AltaMaterial extends JFrame {
 				
 			}
 		});
-		btnCrearMaterial.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			}
-		});
+		
 		contentPane.setLayout(null);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
@@ -144,6 +142,20 @@ public class AltaMaterial extends JFrame {
 		contentPane.add(btnCrearMaterial);
 		
 		btnVolver = new JButton("Volver");
+		btnVolver.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Principal principal = new Principal();
+				principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				principal.setVisible(true);
+				
+			}
+		});
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnVolver.setBounds(325, 311, 119, 48);
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		contentPane.add(btnVolver);
