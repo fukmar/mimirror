@@ -71,8 +71,10 @@ public class UsuariosDAO
 		Session session = sf.openSession();
 		UsuariosEntity resu =(UsuariosEntity) session.createQuery("from UsuariosEntity u where u.login=?").setString(0, login).uniqueResult();
 		session.close();
-		user=resu.toNegocio();
-		return user;
+		if (resu!=null)
+			return resu.toNegocio();
+		else 
+			return null;
 	}
 	public List<Usuarios> getUsersbyArea(String area)
 	{
@@ -93,11 +95,17 @@ public class UsuariosDAO
 	
 	public boolean validarPassword(String login, String password)
 	{
- 		String passwordcorrecto=UsuariosDAO.getInstance().getUserPorLogin(login).getPassword();
- 		if (password==passwordcorrecto)
- 			return true;
- 		else
- 			return false;
+		Usuarios user= UsuariosDAO.getInstance().getUserPorLogin(login);
+		if (user==null)
+			return false;
+		else 
+		{
+	 		String passwordcorrecto=UsuariosDAO.getInstance().getUserPorLogin(login).getPassword();
+	 		if (password==passwordcorrecto)
+	 			return true;
+	 		else
+	 			return false;
+		}
 	}
 	
 	private AreaRest arearestaurantfromString(String area)
