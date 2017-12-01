@@ -33,6 +33,7 @@ import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 import interfazRemota.manejoNegocio;
+import negocio.Mesa;
 
 public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 {
@@ -154,6 +155,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	public List<MesaDTO> mostrarMesasLibres() throws RemoteException, MesaException {
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().lsitarMesasLibres();
+	}
+	
+	public void ocuparMesaPorCod(Integer codMesa) throws RemoteException, MesaException {
+		// TODO Auto-generated method stub
+		Controlador.getInstance().ocuparMesaPorCod(codMesa);
 	}
 	
 	//----------------------------------SECTORES---------------------------------------------------------------------------------

@@ -268,6 +268,12 @@ public class Controlador {
 		}
 		return mesas;
 	}
+	public void ocuparMesaPorCod(Integer codMesa)
+	{
+		Mesa mesaN=MesaDAO.getInstance().obtenerMesaPorCod(codMesa);
+		MesaDAO.getInstance().updateMesaToLibre(mesaN);
+	}
+
 	
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
     //LISTAR SECTORES

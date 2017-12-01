@@ -498,18 +498,18 @@ public class testHibernate4 {
 		
 		//Probamos el Combinar Mesa ..   FUNCIONA
 		// la logica del DAO es.  Ahora las mesas tienen atributo "combinada". CERO si no es una mesa o formo parte de una combinacion. UNO si es combinada o DOS si formó parte de una combinacion
-		Mesa mesacombinada=MesaDAO.getInstance().combinarMesa(mesita.toNegocio(), mesita2.toNegocio(), 30);
+		Mesa mesacombinada=MesaDAO.getInstance().combinarMesa(mesita.toNegocio(), mesita2.toNegocio());
 		System.out.println("La mesa creada es la mesa nro: "+mesacombinada.getCodMesa());
 		//EN ESTE CASO ES IMPORTANTE ...LA MESA SE CREA CON ESTADO OCUPADA...LAS MESAS QUE INTERVIENEN TAMBIEN PASAN A OCUPADA.  CUANDO CERREMOS LA NUEVA MESA...SI ES COMBINADA DEBEMOS HACER QUE SE ELIMINE LA MESA COMBINADA
 
 		//PROBAMOS CERRAR La mesa combinada.  PRIMERO MIRAMOS SI ESTA EN NUESTRO LISTADO
-		List<Mesa> mesaslibres3=MesaDAO.getInstance().getMesas();
+		/*List<Mesa> mesaslibres3=MesaDAO.getInstance().getMesas();
 		for (Mesa m:mesaslibres3)
 		{
 			System.out.println("Las mesas despues de crear combinada Nro "+m.getCodMesa()+" es de "+m.getCapacidad()+" Personas y esta en el sector "+m.getSector().getDescripcion());
 		}
 		
-		MesaDAO.getInstance().LiberarMesaCombinada(mesacombinada);
+		MesaDAO.getInstance().LiberarMesaCombinada(mesacombinada);*/
 		
 }
 }

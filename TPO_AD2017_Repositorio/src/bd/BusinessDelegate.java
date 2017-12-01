@@ -200,6 +200,15 @@ public class BusinessDelegate
 	{
 		return remoteObject.mostrarMesasLibres();
 	}
+	public void ocuparMesaPorCod(Integer codMesa) throws RemoteException, MesaException
+	{		
+		try {
+				remoteObject.ocuparMesaPorCod(codMesa);
+		} catch (Exception e) {
+		throw new MesaException("No se pudo Cambiar el Estado");
+	}
+		
+	}
 	//-----------------------------------SECTORES-------------------------------------------------------------------------
 	public List<SectorDTO> mostrarSectores() throws RemoteException, SectorException
 	{
