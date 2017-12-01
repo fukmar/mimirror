@@ -45,6 +45,22 @@ public abstract class ProductoEntity
 	public void setNumero(Integer numero) {
 		this.codigoProd = numero;
 	}
+	
+	
+	public Integer getCodigoProd() {
+		return codigoProd;
+	}
+
+
+
+
+	public void setCodigoProd(Integer codigoProd) {
+		this.codigoProd = codigoProd;
+	}
+
+
+
+
 	public String getDescripcion() {
 		return descripcion;
 	}

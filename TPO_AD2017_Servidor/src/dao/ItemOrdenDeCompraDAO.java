@@ -2,8 +2,10 @@ package dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import entities.ItemOrdenDeCompraEntity;
 import entities.OrdenDeCompraEntity;
 import hibernate.HibernateUtil;
+import negocio.ItemOrdenDeCompra;
 import negocio.OrdenDeCompra;
 
 public class ItemOrdenDeCompraDAO {
@@ -20,22 +22,21 @@ public class ItemOrdenDeCompraDAO {
 		return instancia;
 	}
 	
-	public void save (ItemOrdenDeCompraDAO itemOrDeCom){
+	public void save (ItemOrdenDeCompra itemOrDeCom){ //cz guarda negocio, esto no me gusta pero no se puede hacer el to Entity porque Producto es abastracta y no se puede instanciar
 		
-		ItemOrdenDeCompraDAO iodc = this.toEntity(itemOrDeCom);
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.save(iodc);
+		session.save(itemOrDeCom);
 		session.getTransaction().commit();
 		session.close();
 	}
 
 	
 	//FALTA
-	private ItemOrdenDeCompraDAO toEntity(ItemOrdenDeCompraDAO itemOrDeCom) {
+	/*private ItemOrdenDeCompraDAO toEntity(ItemOrdenDeCompraDAO itemOrDeCom) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 }

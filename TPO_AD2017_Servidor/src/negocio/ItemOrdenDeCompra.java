@@ -1,5 +1,7 @@
 package negocio;
 
+import entities.ItemOrdenDeCompraEntity;
+
 public class ItemOrdenDeCompra {
 	
 		private Integer codItemOrdenDeCompra;
@@ -47,6 +49,10 @@ public class ItemOrdenDeCompra {
 		public void setProducto(Producto producto) {
 			this.producto = producto;
 		}
+
+
+	
+		
 		
 		
 

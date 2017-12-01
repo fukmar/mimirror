@@ -36,19 +36,21 @@ private static ItemFacturaDAO instancia;
 		return instancia;
 	}
 	
-	public void save(ItemFacturaEntity itemfactura){
-	SessionFactory sf = HibernateUtil.getSessionFactory();
-	Session session = sf.openSession();
-	session.beginTransaction();
-	session.save(itemfactura);
-	session.getTransaction().commit();
-	session.close();
+	public void save(ItemFactura itemfactura)
+	{
+		ItemFacturaEntity ite=itemfactura.toEntity(); //aca cambie yo, cz
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.save(ite);
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	//FALTA
-	private ItemFacturaDAO toEntity(ItemFacturaDAO itemcomanda) {	
+	/*private ItemFacturaDAO toEntity(ItemFacturaDAO itemcomanda) {	
 		return null;
 
-	}
+	}*/
 	
 }

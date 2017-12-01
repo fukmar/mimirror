@@ -40,7 +40,7 @@ public class PlanDeProduccionDAO {
 	}
 
 	
-	public PlanDeProduccionEntity obtenerPlan(int codPdp) {
+	public PlanDeProduccionEntity getPlanByCod(int codPdp) {
 		
 		Session s=sf.openSession();
 		s.beginTransaction();
@@ -90,12 +90,12 @@ public class PlanDeProduccionDAO {
 		s2.close();
 	}
 	
-	public void save(PlanDeProduccionEntity plan) {
+	public void save(PlanDeProduccion plan) {
 		
 		//PlanDeProduccionEntity pl = this.toEntity(plan);
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.save(plan);
+		session.save(plan.toEntity()); //cz pasado a entity
 		session.getTransaction().commit();
 		session.close();
 	}

@@ -51,6 +51,8 @@ public class ReservaDAO
 		return listaRes;
 	}
 	
+	//que es esto?solo lista mesas 
+	//hay que agrear where estado=0
 	public List<Reserva> getMesaLibre()
 	{
 		Session session=sf.openSession();

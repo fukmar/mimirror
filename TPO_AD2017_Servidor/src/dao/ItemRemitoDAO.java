@@ -22,7 +22,7 @@ public class ItemRemitoDAO {
 	
 	public void save(ItemRemito itemRemito){
 
-	ItemRemitoEntity item = this.toEntity(itemRemito);
+	ItemRemitoEntity item = itemRemito.toEntity(); //pasado a entity cz
 	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();
@@ -31,10 +31,10 @@ public class ItemRemitoDAO {
 	session.close();
 	}
 
-	public ItemRemitoEntity toEntity(ItemRemito itemremito){
+	/*public ItemRemitoEntity toEntity(ItemRemito itemremito){
 		ItemRemitoEntity item=new ItemRemitoEntity();
 		return item;
-	}
+	}*/
 	
 	
 	

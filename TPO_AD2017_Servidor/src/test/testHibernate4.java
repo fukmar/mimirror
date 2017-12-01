@@ -449,7 +449,7 @@ public class testHibernate4 {
 		//AVANCE PLAN PRODUCCION
 		System.out.println("CODIGO PLAN DE PROD:"+pdp.getCodigoPDP());
 		PlanDeProduccionDAO.getInstance().CalcularporcentajeAvance(pdp.toNegocio());
-		double avance=PlanDeProduccionDAO.getInstance().obtenerPlan(pdp.getCodigoPDP()).getAvance();
+		double avance=PlanDeProduccionDAO.getInstance().getPlanByCod(pdp.getCodigoPDP()).getAvance();
 		double avancetotal=avance*100;
 		System.out.println("El AVANCE DEL PLAN DE PRODUCCION ES DE : "+ avancetotal + " %");
 		
