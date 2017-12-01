@@ -172,8 +172,18 @@ if(opcion.equals("ocuparMesa")){
 if(opcion.equals("combinarMesas")){
 	 
 String[] mesa = request.getParameterValues("mesaelegida[]");
-	
-	//BusinessDelegate.getInstance().combinarMesasPorCod(mesa[0],mesa[1]);
+	Integer nuevamesa = 0;
+	try {
+		nuevamesa = BusinessDelegate.getInstance().combinarMesasPorCod(Integer.parseInt(mesa[0]),Integer.parseInt(mesa[1]));
+		RequestDispatcher rd = request.getRequestDispatcher("/decirMesa.jsp?nuevamesa="+nuevamesa);
+		rd.forward(request, response);
+	} catch (NumberFormatException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (MesaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 					
 			}
 			

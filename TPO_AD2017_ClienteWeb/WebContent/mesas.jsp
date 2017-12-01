@@ -58,9 +58,9 @@ List<MesaDTO> mesas = (List<MesaDTO>)request.getAttribute("mesas");
 
   <center>
   <br>
-   <button>Abrir Mesa</button>
-<button>Combinar Dos Mesas</button>
-<input type="hidden" name="opcion" value="ocuparMesa">
+   <button name="opcion" value="ocuparMesa">Abrir Mesa</button>
+<button name="opcion" value="combinarMesas">Combinar Dos Mesas</button>
+
 	</center></form>
 
 	<P>
