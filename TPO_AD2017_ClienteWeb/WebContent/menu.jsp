@@ -41,6 +41,15 @@
 				
 			 menus.put("Comandas", submmenus);
             
+			 
+			 submmenus = new HashMap<String,String>();		
+				
+				submmenus.put("Mesas Libres", "/TPO_AD2017_ClienteWeb/Controller?opcion=mesas");
+						
+					 menus.put("Mesas", submmenus);
+		       
+			 
+			 
 			 submmenus = new HashMap<String,String>();
 		
 			 

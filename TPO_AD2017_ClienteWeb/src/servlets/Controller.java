@@ -136,6 +136,38 @@ public class Controller extends HttpServlet {
 
 			}
 			
+			if(opcion.equals("mesas")){
+				
+				List<MesaDTO> mesas = new ArrayList<MesaDTO>();
+				try {
+					mesas = BusinessDelegate.getInstance().mostrarMesasLibres();
+					request.setAttribute("mesas", mesas);
+					RequestDispatcher rd = request.getRequestDispatcher("/mesas.jsp");
+					rd.forward(request, response);
+				
+				} catch (MesaException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+			
+if(opcion.equals("ocuparMesa")){
+	 
+	String[] mesa = request.getParameterValues("mesaelegida[]");
+	
+	BusinessDelegate.getInstance().ocuparMesaPorCod(mesa[0]);
+				
+			}
+
+if(opcion.equals("combinarMesas")){
+	 
+String[] mesa = request.getParameterValues("mesaelegida[]");
+	
+	BusinessDelegate.getInstance().combinarMesasPorCod(mesa[0],mesa[1]);
+					
+			}
+			
 if(opcion.equals("verMozos")){
 				
 				List<MozoDTO> mozos = new ArrayList<MozoDTO>();

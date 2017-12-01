@@ -128,7 +128,7 @@ public class testHibernate4 {
 		
 		CartaEntity carta = new CartaEntity(fecha,temp.Primavera,itemCarta);
 		
-		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,AreaRest.Barra,CategoriaPlato.Carnes,elabs/*,carta*/);
+		PlatoEntity plato = new PlatoEntity("Milanesa con Papas Fritas",13f,AreaRest.Cocina,CategoriaPlato.Carnes,elabs/*,carta*/);
 		plato.setCarta(carta);
 		itemCarta.add(plato);
 		MozoEntity mozo = new MozoEntity(31575032,"Nahuelito","Grisoluble",5.4f);
@@ -457,7 +457,7 @@ public class testHibernate4 {
 		System.out.println("El AVANCE DEL PLAN DE PRODUCCION ES DE : "+ avancetotal + " %");
 		
 		//TESTEO SI ME TRAE ITEMCOMANDA SEGUN AREA FUNCIONA!
-		List<ItemComanda> items=ItemComandaDAO.getInstance().getItemsPendientesxArea(AreaRest.Barra);
+		List<ItemComanda> items=ItemComandaDAO.getInstance().getItemsPendientesxArea(AreaRest.Cocina);
 		System.out.println(items.get(0).getPlato().getNombre());
 		//TEST CAMBIOS ESTADO ITEMCOMANDA A FINALIZADA
 		ItemComanda item=ItemComandaDAO.getInstance().obtenerItemComandaByCod(items.get(0).getCoditemComanda());
@@ -497,7 +497,7 @@ public class testHibernate4 {
 		}
 		
 		//Probamos el Combinar Mesa ..   FUNCIONA
-		// la logica del DAO es.  Ahora las mesas tienen atributo "combinada". CERO si no es una mesa o formo parte de una combinacion. UNO si es combinada o DOS si formó parte de una combinacion
+		// la logica del DAO es.  Ahora las mesas tienen atributo "combinada". CERO si no es una mesa o formo parte de una combinacion. UNO si es combinada o DOS si formï¿½ parte de una combinacion
 		Mesa mesacombinada=MesaDAO.getInstance().combinarMesa(mesita.toNegocio(), mesita2.toNegocio(), 30);
 		System.out.println("La mesa creada es la mesa nro: "+mesacombinada.getCodMesa());
 		//EN ESTE CASO ES IMPORTANTE ...LA MESA SE CREA CON ESTADO OCUPADA...LAS MESAS QUE INTERVIENEN TAMBIEN PASAN A OCUPADA.  CUANDO CERREMOS LA NUEVA MESA...SI ES COMBINADA DEBEMOS HACER QUE SE ELIMINE LA MESA COMBINADA
