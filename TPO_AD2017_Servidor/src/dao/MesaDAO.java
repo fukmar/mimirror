@@ -72,7 +72,7 @@ private static SessionFactory sf=null;
 		}
 		session.close();
 		return listaM;
-	}
+	}  
 	public void updateMesaToOcupada(Mesa m)
 	{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
