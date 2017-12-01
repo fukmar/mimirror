@@ -13,6 +13,8 @@ import javax.swing.JList;
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -28,6 +30,7 @@ public class BajaMaterial extends JFrame {
 	private JTextField textField;
 	private JTable table;
 	private JButton btnEliminar;
+	private JButton btnVolver;
 
 	/**
 	 * Launch the application.
@@ -106,7 +109,23 @@ public class BajaMaterial extends JFrame {
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnEliminar.setBounds(261, 450, 151, 46);
+		btnEliminar.setBounds(97, 448, 151, 46);
 		contentPane.add(btnEliminar);
+		
+		btnVolver = new JButton("Volver");
+		btnVolver.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Principal principal = new Principal();
+				principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				principal.setVisible(true);
+				
+			}
+		});
+		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnVolver.setBounds(356, 448, 135, 46);
+		contentPane.add(btnVolver);
+		
+		
 	}
 }

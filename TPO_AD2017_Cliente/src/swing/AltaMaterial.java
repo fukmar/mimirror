@@ -30,7 +30,7 @@ import exceptions.UnidadException;
 import bd.BusinessDelegate;
 import swing.*;
 
-public class CrearMaterial extends JFrame {
+public class AltaMaterial extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldDescripcion;
@@ -49,7 +49,7 @@ public class CrearMaterial extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CrearMaterial frame = new CrearMaterial();
+					AltaMaterial frame = new AltaMaterial();
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 					
 					frame.setVisible(true);
@@ -63,7 +63,7 @@ public class CrearMaterial extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CrearMaterial() {
+	public AltaMaterial() {
 		setTitle("Alta Material");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 790, 709);
@@ -79,8 +79,7 @@ public class CrearMaterial extends JFrame {
 				String descrip=textFieldDescripcion.getText();
 				Float cantidad=Float.parseFloat(textFieldCantidad.getText());
 				try {
-					UnidadDTO uni= BusinessDelegate.getInstance().UnidadByDescp("pruebaUnidadSi");
-					//UnidadDTO uni= BusinessDelegate.getInstance().UnidadByCod(Integer.parseInt(comboBoxUnidades.getSelectedItem().toString()));
+					UnidadDTO uni= BusinessDelegate.getInstance().UnidadByDescp((comboBoxUnidades.getSelectedItem().toString()));
 					MateriaPrimaDTO materia= new MateriaPrimaDTO(descrip, uni, cantidad);
 					BusinessDelegate.getInstance().grabarMateriaPrima(materia);
 					JOptionPane.showMessageDialog(null, "Material creado exitosamente", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
@@ -152,12 +151,7 @@ public class CrearMaterial extends JFrame {
 				
 			}
 		});
-		btnVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		btnVolver.setBounds(325, 311, 119, 48);
+		btnVolver.setBounds(363, 311, 119, 48);
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		contentPane.add(btnVolver);
 		

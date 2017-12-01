@@ -15,6 +15,8 @@ import java.awt.Font;
 import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
 //PRUEBA
@@ -111,5 +113,19 @@ public class ModificarMaterial extends JFrame {
 		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnModificar.setBounds(381, 419, 137, 41);
 		contentPane.add(btnModificar);
+		
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Principal principal = new Principal();
+				principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				principal.setVisible(true);
+				
+			}
+		});
+		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnVolver.setBounds(116, 419, 124, 41);
+		contentPane.add(btnVolver);
 	}
 }
