@@ -26,7 +26,7 @@ List<FacturaDTO> facturas = (List<FacturaDTO>)request.getAttribute("facturas");
 %>
 
 
-
+<form action="/TPO_AD2017_ClienteWeb/Controller">
 	<table>
   <caption>Facturas</caption>
   <thead>
@@ -37,6 +37,7 @@ List<FacturaDTO> facturas = (List<FacturaDTO>)request.getAttribute("facturas");
       <th scope="col">Medio de Pago</th>
       <th scope="col">Mesa</th>
       <th scope="col">Apellido del Mozo</th>
+      <th scope="col">Ver Detalle</th>
     </tr>
   </thead>
   <tbody>
@@ -49,18 +50,20 @@ List<FacturaDTO> facturas = (List<FacturaDTO>)request.getAttribute("facturas");
       <td data-label="Medio de Pago"><%= factura.getMedioPago().toString() %></td>
    	<td data-label="Mesa"><%= factura.getMesa().getCodMesa() %></td>
       <td data-label="Medio de Pago"><%= factura.getMesa().getMozo().getApellido() %></td>
-   
-      
+      <td data-label="Ver Detalles"><input type="radio" name="facturaelegida" value=<%= factura.getCodFactura() %>>
       
       </tr>
      <%} %>
     
   </tbody>
 </table>
-	
+	<center>
+  <br>
+<button name="opcion" value="verDetalleFactura">Mostrar Detalles</button>
 
-	<P>
-	<p>
+	</center>
+
+	</form>
 	 <a href="index.jsp" target="_self" class="link-btn">volver</a> 
   
   

@@ -160,7 +160,7 @@ public class BusinessDelegate
 	
 	// ---------------------------------------ITEM FACTURA------------------------------------------------------
 	
-	List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws RemoteException, FacturaException
+	public List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws RemoteException, FacturaException
 	{
 		return remoteObject.obtenerItemsFacturaByCodFactura(codFactura);
 	}

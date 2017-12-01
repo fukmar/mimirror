@@ -374,6 +374,7 @@ table th {
 }
 
 h1 { font-size:6.2em;font-weight:500; }
+texto { font-size:2.2em;font-weight:500; }
 
 body {
   background: #ff510b; /* fallback for old browsers */

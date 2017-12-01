@@ -23,6 +23,7 @@ import bd.BusinessDelegate;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
+import dto.ItemFacturaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlatoDTO;
@@ -187,6 +188,59 @@ String[] mesa = request.getParameterValues("mesaelegida[]");
 					
 			}
 			
+
+if(opcion.equals("facturarMesa")){
+	
+	List<MesaDTO> mesas = new ArrayList<MesaDTO>();
+	/*try {
+		//mesas = BusinessDelegate.getInstance().mostrarMesasFacturables();
+		request.setAttribute("mesas", mesas);
+		RequestDispatcher rd = request.getRequestDispatcher("/facturarMesa.jsp");
+		rd.forward(request, response);
+	
+	} catch (MesaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}*/
+
+}
+
+if(opcion.equals("facturarMesaYa")){
+	
+	String mesa = request.getParameter("mesaelegida"); 
+	
+	/*try {
+		//BusinessDelegate.getInstance().facturarMesa(Integer.parseInt(mesa));
+		RequestDispatcher rd = request.getRequestDispatcher("/verFacturas.jsp");
+		rd.forward(request, response);
+	
+	} catch (MesaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}*/
+
+}
+
+
+if(opcion.equals("verDetalleFactura")){
+	
+	String facturaelegida = request.getParameter("facturaelegida"); 
+	List<ItemFacturaDTO> items = new ArrayList<ItemFacturaDTO>();
+
+	
+	try { 
+		items = BusinessDelegate.getInstance().obtenerItemsFacturaByCodFactura(Integer.parseInt(facturaelegida));
+		request.setAttribute("items", items);
+		RequestDispatcher rd = request.getRequestDispatcher("/verDetalleFactura.jsp");
+		rd.forward(request, response);
+	
+	} catch (FacturaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+}
+
 if(opcion.equals("verMozos")){
 				
 				List<MozoDTO> mozos = new ArrayList<MozoDTO>();
