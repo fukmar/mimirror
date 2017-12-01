@@ -140,9 +140,10 @@ private static SessionFactory sf=null;
 	}
 	public Mesa combinarMesa (Mesa mesa1, Mesa mesa2)
 		{
-			if (mesa1.getEstado()==0 && mesa2.getEstado()==0 && mesa1.getActiva()==0 && mesa2.getActiva()==0)
+			System.out.println(mesa2.getSector().getCodSector());
+			if (mesa1.getEstado()==0 & mesa2.getEstado()==0 & mesa1.getActiva()==0 & mesa2.getActiva()==0)
 			{
-				if (mesa1.getSector().getCodSector()==mesa2.getSector().getCodSector())
+				if (mesa1.getSector().getCodSector().equals(mesa2.getSector().getCodSector()))
 					{
 						int capacidadnueva=mesa1.getCapacidad()+mesa2.getCapacidad();
 						MesaEntity mesa3=new MesaEntity();
@@ -152,6 +153,7 @@ private static SessionFactory sf=null;
 						mesa3.setCantidadPersonas(0);
 						mesa3.setSector(mesa1.getSector().toEntity());
 						mesa3.setMozo(mesa1.getMozo().toEntity());
+						System.out.println("LLEGUE!!!");
 						SessionFactory sf = HibernateUtil.getSessionFactory();
 						Session session=sf.openSession();
 						session.beginTransaction();
