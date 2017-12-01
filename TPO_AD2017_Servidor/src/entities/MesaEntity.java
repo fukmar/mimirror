@@ -25,6 +25,9 @@ public class MesaEntity
 	private  Integer cantidadPersonas;
 	private  Integer capacidad;
 	private  Integer estado;
+	private  Integer combinada=0;	
+	private Integer combinador=0;
+	private Integer activa=0;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codMozo")
@@ -63,6 +66,36 @@ public class MesaEntity
 
 	public Integer getCodMesa() {
 		return codMesa;
+	}
+
+
+	public Integer getActiva() {
+		return activa;
+	}
+
+
+	public void setActiva(Integer activa) {
+		this.activa = activa;
+	}
+
+
+	public Integer getCombinador() {
+		return combinador;
+	}
+
+
+	public void setCombinador(Integer combinador) {
+		this.combinador = combinador;
+	}
+
+
+	public Integer getCombinada() {
+		return combinada;
+	}
+
+
+	public void setCombinada(Integer combinada) {
+		this.combinada = combinada;
 	}
 
 
@@ -131,9 +164,12 @@ public class MesaEntity
 	public Mesa toNegocio() 
 	{
 		Mesa m=new Mesa();
+		m.setCombinador(combinador);
+		m.setCombinada(combinada);
 		m.setCodMesa(codMesa);
 		m.setCantidadPersonas(cantidadPersonas);
 		m.setCapacidad(capacidad);
+		m.setActiva(activa);
 		m.setEstado(estado);
 		m.setMozo(mozo.toNegocio());
 		m.setSector(sector.toNegocio());

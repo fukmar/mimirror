@@ -13,7 +13,9 @@ public class MesaDTO implements Serializable
 	private  Integer estado;
 	private MozoDTO mozo;
 	private SectorDTO sector;
-	
+	private  Integer combinada=0;
+	private Integer combinador=0;
+	private Integer activa=0;
 	public MesaDTO(){}
 	
 
@@ -26,6 +28,36 @@ public class MesaDTO implements Serializable
 		this.sector=sector;
 		this.mozo = mozo;
 		
+	}
+
+
+	public Integer getActiva() {
+		return activa;
+	}
+
+
+	public void setActiva(Integer activa) {
+		this.activa = activa;
+	}
+
+
+	public Integer getCombinador() {
+		return combinador;
+	}
+
+
+	public void setCombinador(Integer combinador) {
+		this.combinador = combinador;
+	}
+
+
+	public Integer getCombinada() {
+		return combinada;
+	}
+
+
+	public void setCombinada(Integer combinada) {
+		this.combinada = combinada;
 	}
 
 

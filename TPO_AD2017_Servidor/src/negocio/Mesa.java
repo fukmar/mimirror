@@ -11,7 +11,9 @@ public class Mesa {
 	private  Integer estado;
 	private Mozo mozo;
 	private Sector sector;
-
+	private  Integer combinada=0;
+	private Integer combinador=0;
+	private Integer activa=0;
 	
 	public Mesa(){}
 	
@@ -25,6 +27,30 @@ public class Mesa {
 		this.sector=sector;
 		this.mozo = mozo;
 	
+	}
+
+	public Integer getActiva() {
+		return activa;
+	}
+
+	public void setActiva(Integer activa) {
+		this.activa = activa;
+	}
+
+	public Integer getCombinador() {
+		return combinador;
+	}
+
+	public void setCombinador(Integer combinador) {
+		this.combinador = combinador;
+	}
+
+	public Integer getCombinada() {
+		return combinada;
+	}
+
+	public void setCombinada(Integer combinada) {
+		this.combinada = combinada;
 	}
 
 	public Integer getCodMesa() {
@@ -79,10 +105,13 @@ public class Mesa {
 	public MesaEntity toEntity()
 {
 		MesaEntity m=new MesaEntity();
+		m.setCombinada(combinada);
 		m.setCodMesa(codMesa);
 		m.setCantidadPersonas(cantidadPersonas);
 		m.setCapacidad(capacidad);
 		m.setEstado(estado);
+		m.setCombinador(combinador);
+		m.setActiva(activa);
 		m.setMozo(mozo.toEntity());
 		m.setSector(sector.toEntity());
 		return m;
@@ -91,6 +120,9 @@ public class Mesa {
 	public MesaDTO toDTO() 
 	{ 
 		MesaDTO m=new MesaDTO();
+		m.setCombinada(combinada);
+		m.setCombinador(combinador);
+		m.setActiva(activa);
 		m.setCodMesa(codMesa);
 		m.setEstado(estado);
 		m.setCantidadPersonas(cantidadPersonas);
