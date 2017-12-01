@@ -207,8 +207,13 @@ public class BusinessDelegate
 		} catch (Exception e) {
 		throw new MesaException("No se pudo Cambiar el Estado");
 	}
-		
 	}
+		
+	public int combinarMesasPorCod(int codmesa1, int codmesa2) throws RemoteException, MesaException
+		{		
+			return remoteObject.combinarMesasPorCod(codmesa1, codmesa2);
+		}
+		
 	//-----------------------------------SECTORES-------------------------------------------------------------------------
 	public List<SectorDTO> mostrarSectores() throws RemoteException, SectorException
 	{

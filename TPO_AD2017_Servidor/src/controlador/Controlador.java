@@ -273,6 +273,14 @@ public class Controlador {
 		Mesa mesaN=MesaDAO.getInstance().obtenerMesaPorCod(codMesa);
 		MesaDAO.getInstance().updateMesaToOcupada(mesaN);
 	}
+	
+	public int combinarMesasPorCod(int codmesa1, int codmesa2)
+	{
+		Mesa mesa1=MesaDAO.getInstance().getMesaN(codmesa1);
+		Mesa mesa2=MesaDAO.getInstance().getMesaN(codmesa2);
+		Mesa mesaCombinada=MesaDAO.getInstance().combinarMesa(mesa1, mesa2);
+		return mesaCombinada.getCodMesa();
+	}
 
 	
 	//--------------------------------------------------------------------------------------------------------------------------------------------------

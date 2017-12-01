@@ -50,7 +50,7 @@ public interface manejoNegocio extends Remote
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException,ComandaException;
 	public List<ComandaDTO> mostrarComandas()throws RemoteException,ComandaException;
 	public ComandaDTO BuscarComandasPorCod(Integer codComanda)throws RemoteException,ComandaException;
-	
+	 
 	//ITEMCOMANDA
 	public void grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException,itemComandaException;
 	
@@ -71,6 +71,7 @@ public interface manejoNegocio extends Remote
 	public MesaDTO BuscarMesaPorCod(Integer codMesa)throws RemoteException,MesaException;
 	public List<MesaDTO> mostrarMesasLibres()throws RemoteException,MesaException;
 	public void ocuparMesaPorCod(Integer codMesa)throws RemoteException,MesaException;
+	public int combinarMesasPorCod(int codmesa1, int codmesa2) throws RemoteException, MesaException;
 	
 	//SECTORES
 	public List<SectorDTO> mostrarSectores() throws RemoteException,SectorException;
