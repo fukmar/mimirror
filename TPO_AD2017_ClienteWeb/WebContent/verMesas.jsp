@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/style.css">
 <%@include file="./menu.jsp"%> <br><br>
-<title>Vamos a Facturar una Mesa</title>
+<title>Ver todas las Mesas</title>
 
 </head>
 <body>
@@ -19,51 +19,53 @@
 
 <%
 if (request.getAttribute("mesas") ==null){
-RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=facturarMesa");
+RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verMesas");
 rd.forward(request, response);
 }
 List<MesaDTO> mesas = (List<MesaDTO>)request.getAttribute("mesas");
 %>
 
-<form action="/TPO_AD2017_ClienteWeb/Controller">
+
 
 	<table>
   <caption>Mesas</caption>
   <thead>
     <tr>
       <th scope="col">Código</th>
-      <th scope="col">Elegir</th>
-      <th scope="col">Medio de Pago</th>
-      </tr>
+      <th scope="col">Capacidad</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Sector</th>
+        <th scope="col">Mozo</th>
+    </tr>
   </thead>
   <tbody>
    <% for(MesaDTO mesa :  mesas) {%>
-	
+	<% if (mesa.getCombinada().equals(1)){ 
+	%>
     <tr>
+      <td scope="row" data-label="Código"><strong> COMB<%= mesa.getCodMesa() %></strong></td>
+      <td data-label="Capacidad"><%= mesa.getCapacidad() %></td>
+       <td data-label="Estado"><%= mesa.getEstado() %></td>
+       <td data-label="Sector"><%= mesa.getSector().getDescripcion() %></td>
+       <td data-label="Mozo"><%= mesa.getMozo().getApellido() %></td>
+      
+     </tr>
+     <%} else {%>
+     <tr>
       <td scope="row" data-label="Código"><%= mesa.getCodMesa() %></td>
-       <td data-label="Elegir"><input type="radio" name="mesaelegida" value=<%= mesa.getCodMesa() %>>
-         <td data-label="Elegir"><select name="mpago">
-  <option value="contado">Contado</option>
-  <option value="debito">Débito</option>
-  <option value="credito">Crédito</option>
-
-</select>
-    
-      <br></td>
-      </tr>
+      <td data-label="Capacidad"><%= mesa.getCapacidad() %></td>
+       <td data-label="Estado"><%= mesa.getEstado() %></td>
+       <td data-label="Sector"><%= mesa.getSector().getDescripcion() %></td>
+       <td data-label="Mozo"><%= mesa.getMozo().getApellido() %></td>
+      
+     </tr>
      <%} %>
     
-   
+     <%} %>
+    
   </tbody>
-
-
 </table>
-
-  <center>
-  <br>
-   <button name="opcion" value="facturarMesaAhora">Facturar Mesa $$$$</button>
-
-	</center></form>
+	
 
 	<P>
 	<p>

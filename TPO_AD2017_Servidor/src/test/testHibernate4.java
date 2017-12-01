@@ -387,7 +387,7 @@ public class testHibernate4 {
 		
 		
 		///PRUEBO NUEVO DAO
-		FacturaDAO.getInstance().cerrarFactura(factura.toNegocio());
+		//FacturaDAO.getInstance().cerrarFactura(factura.toNegocio());
 
 		
 	    //VER COMISIONES MOZO POR LISTADO FUNCIONA YESS!  Habria que hacer un view pero va...

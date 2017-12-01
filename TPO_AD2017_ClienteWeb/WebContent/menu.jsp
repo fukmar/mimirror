@@ -45,6 +45,8 @@
 			 submmenus = new HashMap<String,String>();		
 				
 				submmenus.put("Asignar y Combinar Mesas", "/TPO_AD2017_ClienteWeb/Controller?opcion=mesas");
+				submmenus.put("Ver todas las Mesas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verMesas");
+				
 					 menus.put("Mesas", submmenus);
 		      
 			 submmenus = new HashMap<String,String>();

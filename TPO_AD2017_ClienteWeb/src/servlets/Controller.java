@@ -32,6 +32,7 @@ import dto.SectorDTO;
 import enumns.AreaRest;
 import enumns.Estado;
 import enumns.EstadoItemComanda;
+import enumns.MedioDePago;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
 import exceptions.MesaException;
@@ -137,6 +138,23 @@ public class Controller extends HttpServlet {
 
 			}
 			
+			
+if(opcion.equals("verMesas")){
+				
+				List<MesaDTO> mesas = new ArrayList<MesaDTO>();
+				try {
+					mesas = BusinessDelegate.getInstance().mostrarMesas();
+					request.setAttribute("mesas", mesas);
+					RequestDispatcher rd = request.getRequestDispatcher("/verMesas.jsp");
+					rd.forward(request, response);
+				
+				} catch (MesaException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+}
+			
 			if(opcion.equals("mesas")){
 				
 				List<MesaDTO> mesas = new ArrayList<MesaDTO>();
@@ -192,8 +210,8 @@ String[] mesa = request.getParameterValues("mesaelegida[]");
 if(opcion.equals("facturarMesa")){
 	
 	List<MesaDTO> mesas = new ArrayList<MesaDTO>();
-	/*try {
-		//mesas = BusinessDelegate.getInstance().mostrarMesasFacturables();
+	try {
+		mesas = BusinessDelegate.getInstance().mostrarMesas(); //OJO FALTA CAMBIAR A MESAS FACTURABLES
 		request.setAttribute("mesas", mesas);
 		RequestDispatcher rd = request.getRequestDispatcher("/facturarMesa.jsp");
 		rd.forward(request, response);
@@ -201,23 +219,32 @@ if(opcion.equals("facturarMesa")){
 	} catch (MesaException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}*/
+	}
 
 }
 
 if(opcion.equals("facturarMesaYa")){
 	
 	String mesa = request.getParameter("mesaelegida"); 
+	String mpago = request.getParameter("mpago"); 
+	MedioDePago medio = null;
 	
-	/*try {
-		//BusinessDelegate.getInstance().facturarMesa(Integer.parseInt(mesa));
+	switch(mpago){  
+    case "contado": medio = MedioDePago.Contado;break;  
+    case "debito": medio = MedioDePago.Debito;break;  
+    case "credito": medio = MedioDePago.Credito;break;  
+    default:medio = MedioDePago.Contado;
+    }  
+	
+	try {
+		BusinessDelegate.getInstance().facturarMesa(Integer.parseInt(mesa),medio);
 		RequestDispatcher rd = request.getRequestDispatcher("/verFacturas.jsp");
 		rd.forward(request, response);
 	
-	} catch (MesaException e) {
+	} catch (FacturaException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}*/
+	}
 
 }
 
