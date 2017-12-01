@@ -3,6 +3,7 @@ package swing;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+//PRUEBA
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -29,7 +30,7 @@ import exceptions.UnidadException;
 import bd.BusinessDelegate;
 import swing.*;
 
-public class AltaMaterial extends JFrame {
+public class CrearMaterial extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldDescripcion;
@@ -48,7 +49,7 @@ public class AltaMaterial extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AltaMaterial frame = new AltaMaterial();
+					CrearMaterial frame = new CrearMaterial();
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 					
 					frame.setVisible(true);
@@ -62,7 +63,7 @@ public class AltaMaterial extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AltaMaterial() {
+	public CrearMaterial() {
 		setTitle("Alta Material");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 790, 709);

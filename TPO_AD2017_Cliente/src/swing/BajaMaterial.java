@@ -49,6 +49,7 @@ public class BajaMaterial extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	//PRUEBA
 	public BajaMaterial() {
 		setTitle("Baja de Material");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

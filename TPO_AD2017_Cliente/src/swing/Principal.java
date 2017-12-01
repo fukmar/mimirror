@@ -23,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
+
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
@@ -68,7 +69,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmAlta = new JMenuItem("Nuevo Material");
 		mntmAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AltaMaterial altaM=new AltaMaterial();
+				CrearMaterial altaM=new CrearMaterial();
 				setVisible(false);
 				altaM.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				altaM.setVisible(true);
