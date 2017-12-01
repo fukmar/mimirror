@@ -44,17 +44,14 @@
 			 
 			 submmenus = new HashMap<String,String>();		
 				
-				submmenus.put("Mesas Libres", "/TPO_AD2017_ClienteWeb/Controller?opcion=mesas");
-						
+				submmenus.put("Asignar y Combinar Mesas", "/TPO_AD2017_ClienteWeb/Controller?opcion=mesas");
 					 menus.put("Mesas", submmenus);
-		       
-			 
-			 
+		      
 			 submmenus = new HashMap<String,String>();
 		
-			 
 			 submmenus.put("Ver Facturas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verFacturas");
-				
+			 submmenus.put("Facturar Mesa", "/TPO_AD2017_ClienteWeb/Controller?opcion=facturarMesa");
+					
 			 menus.put("Facturas", submmenus);
             
 			 submmenus = new HashMap<String,String>();
