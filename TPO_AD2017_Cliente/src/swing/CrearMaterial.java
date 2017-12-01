@@ -3,6 +3,7 @@ package swing;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+//PRUEBA
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -27,9 +28,9 @@ import dto.*;
 import exceptions.DepositoException;
 import exceptions.UnidadException;
 import bd.BusinessDelegate;
+import swing.*;
 
-
-public class AltaMaterial extends JFrame {
+public class CrearMaterial extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldDescripcion;
@@ -48,7 +49,9 @@ public class AltaMaterial extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AltaMaterial frame = new AltaMaterial();
+					CrearMaterial frame = new CrearMaterial();
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,9 +63,9 @@ public class AltaMaterial extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AltaMaterial() {
+	public CrearMaterial() {
 		setTitle("Alta Material");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 790, 709);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -91,11 +94,7 @@ public class AltaMaterial extends JFrame {
 				
 			}
 		});
-		btnCrearMaterial.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			}
-		});
+		
 		contentPane.setLayout(null);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
@@ -144,6 +143,20 @@ public class AltaMaterial extends JFrame {
 		contentPane.add(btnCrearMaterial);
 		
 		btnVolver = new JButton("Volver");
+		btnVolver.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Principal principal = new Principal();
+				principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				principal.setVisible(true);
+				
+			}
+		});
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnVolver.setBounds(325, 311, 119, 48);
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		contentPane.add(btnVolver);

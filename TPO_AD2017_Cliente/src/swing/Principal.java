@@ -1,6 +1,7 @@
 package swing;
 
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -16,6 +17,12 @@ import java.awt.event.MouseEvent;
 import java.awt.SystemColor;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import swing.*;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
 
 public class Principal extends JFrame {
 
@@ -29,6 +36,7 @@ public class Principal extends JFrame {
 			public void run() {
 				try {
 					Principal frame = new Principal();
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,53 +59,90 @@ public class Principal extends JFrame {
 		setContentPane(contentPane);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(5, 5, 136, 26);
+		menuBar.setBounds(10, 10, 577, 26);
+		
 		
 		JMenu mnNewMenu = new JMenu("Materiales");
+		mnNewMenu.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmAlta = new JMenuItem("Nuevo Material");
-		mntmAlta.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				
+		mntmAlta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CrearMaterial altaM=new CrearMaterial();
+				setVisible(false);
+				altaM.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				altaM.setVisible(true);
+			
 			}
 		});
+		mntmAlta.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
 		contentPane.setLayout(null);
 		mnNewMenu.add(mntmAlta);
 		
 		JMenuItem mntmModificarDeposito = new JMenuItem("Modificar Material");
+		mntmModificarDeposito.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				BajaMaterial mm=new BajaMaterial();
+				setVisible(false);
+				mm.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				mm.setVisible(true);
+			}
+		});
+		mntmModificarDeposito.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnNewMenu.add(mntmModificarDeposito);
 		
 		JMenuItem mntmEliminarFactura = new JMenuItem("Eliminar Material");
+		mntmEliminarFactura.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificarMaterial bj=new ModificarMaterial();
+				setVisible(false);
+				bj.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				bj.setVisible(true);
+			}
+		});
+		mntmEliminarFactura.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnNewMenu.add(mntmEliminarFactura);
 		
 		JMenu mnComandas = new JMenu("Platos");
+		mnComandas.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		menuBar.add(mnComandas);
 		
 		JMenu mnElaborados = new JMenu("Elaborados");
+		mnElaborados.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnComandas.add(mnElaborados);
 		
 		JMenuItem mntmNuevoPlatoElaborado = new JMenuItem("Nuevo Plato Elaborado");
+		mntmNuevoPlatoElaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnElaborados.add(mntmNuevoPlatoElaborado);
 		
 		JMenuItem mntmModificarPlatoElaborado = new JMenuItem("Modificar Plato Elaborado");
+		mntmModificarPlatoElaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnElaborados.add(mntmModificarPlatoElaborado);
 		
 		JMenuItem mntmEliminarPlatoElaborado = new JMenuItem("Eliminar Plato Elaborado");
+		mntmEliminarPlatoElaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnElaborados.add(mntmEliminarPlatoElaborado);
 		
 		JMenu mnSemielaborados = new JMenu("SemiElaborados");
+		mnSemielaborados.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnComandas.add(mnSemielaborados);
 		
 		JMenuItem mntmNuevoPlatoSemielaborado = new JMenuItem("Nuevo Plato SemiElaborado");
+		mntmNuevoPlatoSemielaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnSemielaborados.add(mntmNuevoPlatoSemielaborado);
 		
 		JMenuItem mntmModificarPlatoSemielaborado = new JMenuItem("Modificar Plato SemiElaborado");
+		mntmModificarPlatoSemielaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnSemielaborados.add(mntmModificarPlatoSemielaborado);
 		
 		JMenuItem mntmEliminarPlatoSemielaborado = new JMenuItem("Eliminar Plato SemiElaborado");
+		mntmEliminarPlatoSemielaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnSemielaborados.add(mntmEliminarPlatoSemielaborado);
 		contentPane.add(menuBar);
+		
+		JMenu mnUsuarios = new JMenu("Usuarios");
+		mnUsuarios.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		menuBar.add(mnUsuarios);
 	}
 }
