@@ -271,7 +271,7 @@ public class Controlador {
 	public void ocuparMesaPorCod(Integer codMesa)
 	{
 		Mesa mesaN=MesaDAO.getInstance().obtenerMesaPorCod(codMesa);
-		MesaDAO.getInstance().updateMesaToLibre(mesaN);
+		MesaDAO.getInstance().updateMesaToOcupada(mesaN);
 	}
 
 	

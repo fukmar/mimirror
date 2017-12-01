@@ -157,7 +157,8 @@ if(opcion.equals("ocuparMesa")){
 	String[] mesa = request.getParameterValues("mesaelegida[]");
 	
 	try {
-		BusinessDelegate.getInstance().BuscarMesaPorCod(Integer.parseInt(mesa[0]));
+		System.out.println(mesa[0]);
+		BusinessDelegate.getInstance().ocuparMesaPorCod(Integer.parseInt(mesa[0]));
 	} catch (NumberFormatException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
