@@ -89,6 +89,20 @@ public class FacturaDAO
 		return factura.toNegocio();
 	}
 	
+	public List<ItemFactura> obtenerItemFacturaByCod(Integer codFactura){
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		FacturaEntity items=new FacturaEntity();
+		List<ItemFactura> itemsfacturanegocio=new  ArrayList <ItemFactura>();
+		List<ItemFacturaEntity> itemsfactura = (List<ItemFacturaEntity>)session.createQuery("FROM ItemFacturaEntity ifac WHERE ifac.factura.codFactura=?").setInteger(0,codFactura).list();
+		session.close();
+		for (ItemFacturaEntity i:itemsfactura)
+		{
+			itemsfacturanegocio.add(i.tonegocio());
+		}
+		return itemsfacturanegocio;
+	}
+	
 	
 	///CZ mirar!
 	  	/*public Factura obtenerFacturaByNro2(int nroFact){
@@ -209,6 +223,8 @@ public class FacturaDAO
 		session.close();
 		return facturas;
 	}
+	
+	
 	/*
 	public FacturaEntity getFacturaxComanda(int idComanda){
 		SessionFactory sf = HibernateUtil.getSessionFactory();

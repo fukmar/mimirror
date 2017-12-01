@@ -210,4 +210,17 @@ private static SessionFactory sf=null;
 		session3.close();
 		
 	}
+	
+	public List<ItemComanda> mostrarMesasFacturables()
+	{
+		Session session=sf.openSession();
+		List<ItemComanda> listaM=new ArrayList<ItemComanda>();
+		List<ItemComandaEntity> resu=session.createQuery("from ItemComandaEntity i where i.comanda.estado=? and i.estado=? and i.comanda.mesa.estado=1").setParameter(0, Estado.EnProceso).setParameter(1, EstadoItemComanda.Finalizada).list();
+		for(ItemComandaEntity i:resu)
+		{
+			listaM.add(i.toNegocio());
+		}
+		session.close();
+		return listaM;
+	}  
 }

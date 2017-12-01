@@ -158,6 +158,12 @@ public class BusinessDelegate
 		return remoteObject.mostrarFacturaByCod(nroFact);
 	}
 	
+	// ---------------------------------------ITEM FACTURA------------------------------------------------------
+	
+	List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws RemoteException, FacturaException
+	{
+		return remoteObject.obtenerItemsFacturaByCodFactura(codFactura);
+	}
 	
 	//---------------------------------------RESERVAS------------------------------------------------------------
 	

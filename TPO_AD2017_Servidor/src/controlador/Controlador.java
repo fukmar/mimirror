@@ -24,6 +24,7 @@ import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
+import dto.ItemFacturaDTO;
 import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
@@ -42,6 +43,7 @@ import negocio.Comanda;
 import negocio.Deposito;
 import negocio.Factura;
 import negocio.ItemComanda;
+import negocio.ItemFactura;
 import negocio.MateriaPrima;
 import negocio.Mesa;
 import negocio.Mozo;
@@ -202,6 +204,17 @@ public class Controlador {
 		factura=facturaN.toDTO();
 		return factura;
 		
+	}
+	
+	public List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura)
+	{
+		List <ItemFacturaDTO> items=new ArrayList <ItemFacturaDTO>();
+		List <ItemFactura> itemsnegocio=FacturaDAO.getInstance().obtenerItemFacturaByCod(codFactura);
+		for (ItemFactura i:itemsnegocio)
+		{
+		 items.add(i.toDTO());
+		}
+		return items;
 	}
 	//-----------------------------------------------------------------------------------------------------------------------------------
 	//RESERVAS

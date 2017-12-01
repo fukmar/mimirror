@@ -9,6 +9,7 @@ import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
+import dto.ItemFacturaDTO;
 import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
@@ -59,6 +60,9 @@ public interface manejoNegocio extends Remote
 	public List<FacturaDTO> mostrarFacturas()throws RemoteException,FacturaException;
 	public FacturaDTO mostrarFacturaByCod(int nroFact)throws RemoteException,FacturaException;
 	
+	//ITEMFACTURA
+	List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws RemoteException, FacturaException;
+	
 	//RESERVA
 	public void grabarReserva(ReservaDTO reserva) throws RemoteException,ReservaException;
 	public List<ReservaDTO> mostrarReservas()throws RemoteException,ReservaException;
@@ -97,6 +101,8 @@ public interface manejoNegocio extends Remote
 
 	//ITEMS COMANDA
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException;
+
+
 	
 	
 }
