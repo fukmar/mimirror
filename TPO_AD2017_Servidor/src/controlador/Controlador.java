@@ -436,4 +436,15 @@ public class Controlador {
 		return platos;
 	}
 	
+	public List<CartaDTO> listarCartas()
+	{
+		List<CartaDTO> cartas=new ArrayList<CartaDTO>();
+		List<Carta> cartasN=CartaDAO.getInstance().getCartas();
+		for(Carta c:cartasN) 
+		{
+			cartas.add(c.toDTO());
+		}
+		return cartas;
+	}
+	
 }

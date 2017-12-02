@@ -39,6 +39,7 @@ import exceptions.itemComandaException;
 
 
 
+
 public interface manejoNegocio extends Remote 
 {
 
@@ -110,5 +111,5 @@ public interface manejoNegocio extends Remote
 	//CARTA
 	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException,CartaException;
 	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta)throws RemoteException,CartaException;
-	
+	public List<CartaDTO> mostrarCartas()throws RemoteException,CartaException;
 }

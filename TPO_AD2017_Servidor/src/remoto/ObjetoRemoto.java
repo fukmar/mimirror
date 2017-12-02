@@ -271,6 +271,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarPlatosporCodCarta(nrocarta);
 	}
 
+	@Override
+	public List<CartaDTO> mostrarCartas() throws RemoteException, CartaException 
+	{
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarCartas();
+	}
+
 	
 
 	
