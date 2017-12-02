@@ -59,7 +59,7 @@ public interface manejoNegocio extends Remote
 	
 	//PLATO
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException;
-	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, String categoriaplato) throws RemoteException, PlatoException;
+	public List<PlatoDTO> buscarPlatosParecidos(String nombre, String categoriaplato) throws RemoteException, PlatoException;
 	public PlatoDTO BuscarPlatoPorCod(Integer codPlato) throws RemoteException, PlatoException;
 	
 	//COMANDA

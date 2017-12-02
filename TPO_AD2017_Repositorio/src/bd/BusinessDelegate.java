@@ -103,7 +103,7 @@ public class BusinessDelegate
 	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, String categoriaplato) throws RemoteException, PlatoException 
 	{
 		try {
-			return remoteObject.BuscarPlatosparecidos(nombre, categoriaplato);
+			return remoteObject.buscarPlatosParecidos(nombre, categoriaplato);
 		} catch (RemoteException e) {
 			throw new PlatoException("No se encontraron PLATOS similares!");
 		}

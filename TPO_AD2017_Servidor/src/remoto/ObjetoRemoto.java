@@ -90,7 +90,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	}
 
 	@Override
-	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, String categoriaplato)
+	public List<PlatoDTO> buscarPlatosParecidos(String nombre, String categoriaplato)
 			throws RemoteException, PlatoException {
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().BuscarPlatosparecidos(nombre, categoriaplato);
