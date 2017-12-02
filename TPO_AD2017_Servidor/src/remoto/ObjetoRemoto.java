@@ -15,6 +15,7 @@ import dto.ItemFacturaDTO;
 import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
+import dto.PlanDeProduccionDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
@@ -29,6 +30,7 @@ import exceptions.DepositoException;
 import exceptions.FacturaException;
 import exceptions.MesaException;
 import exceptions.MozoException;
+import exceptions.PlanDeProduccionException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
@@ -276,6 +278,14 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	{
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().listarCartas();
+	}
+
+	//--------------------------------PLAN DE PRODUCCION------------------------------------------------
+	@Override
+	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException, PlanDeProduccionException 
+	{
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarPlanesProduccion();
 	}
 
 	

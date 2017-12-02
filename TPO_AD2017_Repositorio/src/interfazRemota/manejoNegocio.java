@@ -5,6 +5,8 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 
+import com.sun.xml.internal.ws.api.pipe.ThrowableContainerPropertySet;
+
 import dto.CartaDTO;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
@@ -14,6 +16,7 @@ import dto.ItemFacturaDTO;
 import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
+import dto.PlanDeProduccionDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
@@ -28,6 +31,7 @@ import exceptions.DepositoException;
 import exceptions.FacturaException;
 import exceptions.MesaException;
 import exceptions.MozoException;
+import exceptions.PlanDeProduccionException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
@@ -112,4 +116,8 @@ public interface manejoNegocio extends Remote
 	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException,CartaException;
 	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta)throws RemoteException,CartaException;
 	public List<CartaDTO> mostrarCartas()throws RemoteException,CartaException;
+	
+	//PLAN DE PRODUCCION
+	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException,PlanDeProduccionException;
+	
 }

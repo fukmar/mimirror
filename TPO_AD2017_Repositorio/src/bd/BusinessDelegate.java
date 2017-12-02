@@ -18,6 +18,7 @@ import exceptions.DepositoException;
 import exceptions.FacturaException;
 import exceptions.MesaException;
 import exceptions.MozoException;
+import exceptions.PlanDeProduccionException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
@@ -299,4 +300,9 @@ public class BusinessDelegate
 		return remoteObject.mostrarCartas();
 	}
 	
+	//-----------------------------------PLAN DE PRODUCCION-----------------------------------------------------------------------------
+	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException, PlanDeProduccionException 
+	{
+		return remoteObject.mostrarPDPs();
+	}
 }

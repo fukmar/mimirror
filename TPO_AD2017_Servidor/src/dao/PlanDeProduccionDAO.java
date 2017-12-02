@@ -118,7 +118,7 @@ public class PlanDeProduccionDAO {
 		session.getTransaction().commit();
 		session.close();
 	}
-	public List<ItemPlanProduccion> getPlatosporCodCarta(int nroPlanDeProduccion)
+	public List<ItemPlanProduccion> getItemPlanPorCodPlan(int nroPlanDeProduccion)
 	{
 		PlanDeProduccion plan=PlanDeProduccionDAO.getInstance().getPlanByCod(nroPlanDeProduccion);
 		PlanDeProduccionDAO.getInstance().CalcularporcentajeAvance(plan);

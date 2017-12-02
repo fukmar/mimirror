@@ -18,6 +18,7 @@ import dao.FacturaDAO;
 import dao.ItemComandaDAO;
 import dao.MesaDAO;
 import dao.MozoDAO;
+import dao.PlanDeProduccionDAO;
 import dao.PlatoDAO;
 import dao.ReservaDAO;
 import dao.SalonDAO;
@@ -30,9 +31,11 @@ import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
 import dto.ItemFacturaDTO;
+import dto.ItemPlanProduccionDTO;
 import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
+import dto.PlanDeProduccionDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
@@ -52,9 +55,11 @@ import negocio.Deposito;
 import negocio.Factura;
 import negocio.ItemComanda;
 import negocio.ItemFactura;
+import negocio.ItemPlanProduccion;
 import negocio.MateriaPrima;
 import negocio.Mesa;
 import negocio.Mozo;
+import negocio.PlanDeProduccion;
 import negocio.Plato;
 import negocio.Reserva;
 import negocio.Salon;
@@ -445,6 +450,32 @@ public class Controlador {
 			cartas.add(c.toDTO());
 		}
 		return cartas;
+	}
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+    //PLAN DE PRODUCCION
+	
+	public List<PlanDeProduccionDTO> listarPlanesProduccion()
+	{
+		List<PlanDeProduccionDTO> planes=new ArrayList<PlanDeProduccionDTO>();
+		List<PlanDeProduccion> planesN=new ArrayList<PlanDeProduccion>();
+		for(PlanDeProduccion p: planesN) 
+		{
+			planes.add(p.toDTO());
+		}
+		return planes;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+    //ITEM PLAN DE PRODUCCION
+	public List<ItemPlanProduccionDTO> listarItemPlanPorCodPlan(int nroPlanDeProduccion)
+	{
+		List<ItemPlanProduccionDTO> items=new ArrayList<ItemPlanProduccionDTO>();
+		List<ItemPlanProduccion> itemsN=PlanDeProduccionDAO.getInstance().getItemPlanPorCodPlan(nroPlanDeProduccion);
+		for(ItemPlanProduccion i:itemsN)
+		{
+			items.add(i.toDTO());
+		}
+		return items;
 	}
 	
 }
