@@ -196,6 +196,22 @@ public class Principal extends JFrame {
 		
 		mnUsuarios.add(mntmEliminarUsuario);
 		
+		JMenu mnMesas = new JMenu("Mesas");
+		mnMesas.setFont(new Font("Segoe UI", Font.PLAIN, 23));
+		menuBar.add(mnMesas);
+		
+		JMenu mnSectores = new JMenu("Sectores");
+		mnSectores.setFont(new Font("Segoe UI", Font.PLAIN, 23));
+		menuBar.add(mnSectores);
+		
+		JMenu mnMozos = new JMenu("Mozos");
+		mnMozos.setFont(new Font("Segoe UI", Font.PLAIN, 23));
+		menuBar.add(mnMozos);
+		
+		JMenu mnCarta = new JMenu("Carta");
+		mnCarta.setFont(new Font("Segoe UI", Font.PLAIN, 23));
+		menuBar.add(mnCarta);
+		
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();

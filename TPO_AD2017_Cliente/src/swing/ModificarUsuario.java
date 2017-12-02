@@ -149,6 +149,7 @@ public class ModificarUsuario extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				Principal principal = new Principal();
 				principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				dispose();
 				principal.setVisible(true);
 				
 			}
