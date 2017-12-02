@@ -38,7 +38,7 @@ public class PlanDeProduccionDAO {
 			sf=HibernateUtil.getSessionFactory();
 		}
 		return instancia;
-	}
+	} 
 
 	
 	private PlanDeProduccionDAO(){
