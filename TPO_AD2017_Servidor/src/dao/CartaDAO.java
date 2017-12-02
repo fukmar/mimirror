@@ -58,7 +58,7 @@ public class CartaDAO {
 		{
 			Session session=sf.openSession();
 			List<Plato> listaM=new ArrayList<Plato>();
-			List<PlatoEntity> resu=session.createQuery("from PlatoEntity p where p.carta.codigoCarta=?").list();
+			List<PlatoEntity> resu=session.createQuery("from PlatoEntity p where p.carta.codigoCarta=?").setInteger(0, nrocarta).list();
 			for(PlatoEntity p:resu)
 			{
 				listaM.add(p.toNegocio());
