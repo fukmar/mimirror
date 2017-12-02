@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import controlador.Controlador;
+import dto.CartaDTO;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
@@ -22,6 +23,7 @@ import dto.UnidadDTO;
 import enumns.AreaRest;
 import enumns.MedioDePago;
 import exceptions.CajaException;
+import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
 import exceptions.FacturaException;
@@ -252,6 +254,21 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException {
 		
 		return Controlador.getInstance().obtenerItemsComandaByCodComanda(parseInt);
+	}
+
+	
+	//--------------------------------CARTA-------------------------------------------------
+	@Override
+	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException, CartaException 
+	{
+		
+		return Controlador.getInstance().listarCartaPorCod(nrocarta);
+	}
+
+	@Override
+	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta) throws RemoteException, CartaException 
+	{
+		return Controlador.getInstance().listarPlatosporCodCarta(nrocarta);
 	}
 
 	
