@@ -67,9 +67,25 @@
 			 
 			 submmenus = new HashMap<String,String>();
 				
-			 submmenus.put("Ver Carta", "/TPO_AD2017_ClienteWeb/Controller?opcion=verCarta");
+			 submmenus.put("Ver Carta", "/TPO_AD2017_ClienteWeb/Controller?opcion=verCartas");
 			 
 			 menus.put("Carta", submmenus);   
+			 
+			 submmenus = new HashMap<String,String>();
+				
+			 submmenus.put("Verificar PdP", "/TPO_AD2017_ClienteWeb/Controller?opcion=verificarPdP");
+			 
+			 menus.put("PdP", submmenus);   
+			
+			 
+
+			 submmenus = new HashMap<String,String>();
+				
+			 submmenus.put("Solicitud Diaria", "/TPO_AD2017_ClienteWeb/Controller?opcion=solicitudDiaria");
+			 submmenus.put("Solicitud Individual", "/TPO_AD2017_ClienteWeb/Controller?opcion=solicitudIndividual");
+			 
+			 menus.put("Insumos", submmenus);   
+			
 			 
 		        for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
 		            String menuName = (String)itMenu.next();

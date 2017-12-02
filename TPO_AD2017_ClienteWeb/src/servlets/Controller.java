@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import bd.BusinessDelegate;
+import dto.CartaDTO;
 import dto.ComandaDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
@@ -33,6 +34,7 @@ import enumns.AreaRest;
 import enumns.Estado;
 import enumns.EstadoItemComanda;
 import enumns.MedioDePago;
+import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
 import exceptions.MesaException;
@@ -152,6 +154,42 @@ if(opcion.equals("verMesas")){
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+
+}
+
+
+if(opcion.equals("verCartas")){
+	
+	List<CartaDTO> cartas = new ArrayList<CartaDTO>();
+	try {
+		cartas = BusinessDelegate.getInstance().mostrarCartas();
+	} catch (CartaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	request.setAttribute("cartas", cartas);
+	RequestDispatcher rd = request.getRequestDispatcher("/verCartas.jsp");
+	rd.forward(request, response);
+
+}
+
+if(opcion.equals("verDetalleCarta")){
+	
+	String cartaelegida = request.getParameter("cartaelegida"); 
+	List<PlatoDTO> items = new ArrayList<PlatoDTO>();
+
+	try {
+		items = BusinessDelegate.getInstance().obtenerPlatosByCodCarta(Integer.parseInt(cartaelegida));
+	} catch (NumberFormatException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (CartaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	request.setAttribute("items", items);
+	RequestDispatcher rd = request.getRequestDispatcher("/verDetalleCarta.jsp");
+	rd.forward(request, response);
 
 }
 			
