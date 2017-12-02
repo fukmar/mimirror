@@ -15,13 +15,16 @@ import org.hibernate.SessionFactory;
 
 import entities.AdministracionEntity;
 import entities.ItemPlanProduccionEntity;
+import entities.MateriaPrimaEntity;
 import entities.MesaEntity;
 import entities.PlanDeProduccionEntity;
 import entities.PlatoEntity;
 import enumns.EstadoRemito;
 import hibernate.HibernateUtil;
 import negocio.Administracion;
+import negocio.Ingrediente;
 import negocio.ItemPlanProduccion;
+import negocio.MateriaPrima;
 import negocio.Mesa;
 import negocio.PlanDeProduccion;
 import negocio.Plato;
@@ -133,5 +136,28 @@ public class PlanDeProduccionDAO {
 		session.close();
 		return listaM;
 	}
+	public void reducirstockxSemiElaborado(ItemPlanProduccion itemplan)
+	{
+		
+		List <Ingrediente> ingredientes=PlatoDAO.getInstance().getIngredientesdeSemi(itemplan.getSemielaborado());
+		for (Ingrediente ing:ingredientes)
+		{
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+			Session session = sf.openSession();
+			session.beginTransaction();
+			MateriaPrima mp=ing.getMateriaprima();
+			if (mp.getEstadescontado()==0)
+			{
+				float cantidadenstock=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(ing.getMateriaprima());
+				float cantidadfinal=cantidadenstock-(ing.getCantidad()*itemplan.getCantidad());
+				MateriaPrimaEntity mpentity =(MateriaPrimaEntity) session.get(MateriaPrimaEntity.class,mp.getCodigo()); 
+				mpentity.setCantidad(cantidadfinal);
+				mpentity.setEstadescontado(1);
+				session.merge(mpentity);
+			}
+			session.getTransaction().commit();
+			session.close();
+			}
+		}
 	
 }

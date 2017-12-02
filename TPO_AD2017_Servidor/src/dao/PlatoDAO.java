@@ -160,6 +160,34 @@ public class PlatoDAO
 		s.getTransaction().commit();
 		return cantidaddelplato;
 	}
+	public List<Ingrediente> getIngredientesdeSemi (SemiElaborado semi)
+	{
+		List <Ingrediente> ingredientesFinal=new ArrayList <Ingrediente>();
+		List<Ingrediente> ingredientesdereceta=new ArrayList <Ingrediente>();
+		ingredientesdereceta=IngredienteDAO.getInstance().getIngredientesdeSemi(semi);
+			for (Ingrediente idereceta:ingredientesdereceta)
+				{
+					int codigoabuscar=idereceta.getMateriaprima().getCodigo();
+					if (ingredientesFinal.isEmpty())	
+						ingredientesFinal.add(idereceta);
+					else
+					{
+						for (Ingrediente ifinal:ingredientesFinal)
+						{
+							if(ifinal.getMateriaprima().getCodigo()==codigoabuscar)
+							{
+								int subcantidad=ifinal.getCantidad()+idereceta.getCantidad();
+								ifinal.setCantidad(subcantidad);
+							}
+							else
+							{
+								ingredientesFinal.add(idereceta);
+							}
+					}
+					}
+				}
+		return ingredientesFinal;
+	}
 	//FALTA
 	/*private PlatoEntity toEntity(Plato plato) {	
 		return null;

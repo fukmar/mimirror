@@ -10,6 +10,7 @@ public class MateriaPrimaDTO implements Serializable
 	private String descripcion;
 	private UnidadDTO unidadUso;
 	private Float cantidad;
+	private Integer estadescontado=0;
 	private DepositoDTO deposito;
 
 	public MateriaPrimaDTO(){}
@@ -21,6 +22,14 @@ public class MateriaPrimaDTO implements Serializable
 	this.unidadUso = unidadUso;
 	this.setCantidad(cantidad);
 }
+
+	public Integer getEstadescontado() {
+		return estadescontado;
+	}
+
+	public void setEstadescontado(Integer estadescontado) {
+		this.estadescontado = estadescontado;
+	}
 
 	public Integer getCodigo() {
 		return codigo;
