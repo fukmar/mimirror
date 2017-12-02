@@ -26,6 +26,7 @@ import exceptions.SectorException;
 import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
+import exceptions.itemPlanDeProduccionException;
 import interfazRemota.manejoNegocio;
 
 
@@ -304,5 +305,11 @@ public class BusinessDelegate
 	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException, PlanDeProduccionException 
 	{
 		return remoteObject.mostrarPDPs();
+	}
+	
+	//-----------------------------------ITEM PLAN DE PRODUCCION-----------------------------------------------------------------------------
+	public List<ItemPlanProduccionDTO> obtenterItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException
+	{
+		return remoteObject.obtenterItemPDPByCodPDP(nroPlanDeProduccion);
 	}
 }

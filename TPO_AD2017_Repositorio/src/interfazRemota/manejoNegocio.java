@@ -13,6 +13,7 @@ import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
 import dto.ItemFacturaDTO;
+import dto.ItemPlanProduccionDTO;
 import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
@@ -39,6 +40,7 @@ import exceptions.SectorException;
 import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
+import exceptions.itemPlanDeProduccionException;
 
 
 
@@ -120,4 +122,6 @@ public interface manejoNegocio extends Remote
 	//PLAN DE PRODUCCION
 	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException,PlanDeProduccionException;
 	
+	//ITEM PLAN DE PRODUCCION
+	public List<ItemPlanProduccionDTO> obtenterItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException;
 }
