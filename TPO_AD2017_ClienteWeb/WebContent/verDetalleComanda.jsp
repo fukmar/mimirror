@@ -23,13 +23,14 @@ RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 rd.forward(request, response);
 }
 List<ItemComandaDTO> items = (List<ItemComandaDTO>)request.getAttribute("items");
+ComandaDTO comanda = (ComandaDTO)request.getAttribute("comanda");
 %>
 
 
 	<table>
-  <caption>Detalle de Comanda N* <%=items.get(0).getComanda().getCodComanda() %></caption>
-  <br>Atendió: <%=items.get(0).getComanda().getMesa().getMozo().getApellido() %>
-  </caption>
+  <caption>Detalle de Comanda N* <%=comanda.getCodComanda() %></caption><br>
+   <caption>Atendió: <%=comanda.getMozo().getApellido() %></caption>
+ 
   
   <thead>
     <tr>

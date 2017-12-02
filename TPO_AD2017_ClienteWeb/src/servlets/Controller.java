@@ -273,10 +273,21 @@ if(opcion.equals("verDetalleComanda")){
 	
 	String comandaelegida = request.getParameter("comandaelegida"); 
 	List<ItemComandaDTO> items = new ArrayList<ItemComandaDTO>();
-
+	ComandaDTO comanda = new ComandaDTO();
 	//FALTA EXCEPTIONS
+	try {
+		comanda = BusinessDelegate.getInstance().BuscarComandasPorCod(Integer.parseInt(comandaelegida));
+	} catch (NumberFormatException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (ComandaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	items = BusinessDelegate.getInstance().obtenerItemsComandaByCodComanda(Integer.parseInt(comandaelegida));
 	request.setAttribute("items", items);
+	request.setAttribute("comanda", comanda);
+	
 	RequestDispatcher rd = request.getRequestDispatcher("/verDetalleComanda.jsp");
 	rd.forward(request, response);
 
