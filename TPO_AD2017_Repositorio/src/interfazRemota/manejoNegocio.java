@@ -125,5 +125,5 @@ public interface manejoNegocio extends Remote
 	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException,PlanDeProduccionException;
 	
 	//ITEM PLAN DE PRODUCCION
-	public List<ItemPlanProduccionDTO> obtenterItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException;
+	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException;
 }

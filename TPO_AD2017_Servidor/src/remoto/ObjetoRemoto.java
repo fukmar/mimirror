@@ -300,7 +300,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	}
 
 	@Override
-	public List<ItemPlanProduccionDTO> obtenterItemPDPByCodPDP(int nroPlanDeProduccion)
+	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)
 			throws RemoteException, itemPlanDeProduccionException {
 		// TODO Auto-generated method stub listarItemPlanPorCodPlan
 		return Controlador.getInstance().listarItemPlanPorCodPlan(nroPlanDeProduccion);

@@ -41,6 +41,7 @@ import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.UnidadDTO;
+import dto.UsuariosDTO;
 import entities.MesaEntity;
 import entities.PlatoEntity;
 import entities.SectorEntity;
@@ -96,6 +97,11 @@ public class Controlador {
 			boolean resu = false;
 			resu=UsuariosDAO.getInstance().validarPassword(login, password);
 			return resu;
+	}
+	
+	public void grabarUsuarios(UsuariosDTO usuario) 
+	{
+		
 	}
 	//----------------------------------------------------------------------------------------------------------------------------------------
 	//PLATOS
