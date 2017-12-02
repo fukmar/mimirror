@@ -277,5 +277,9 @@ public class BusinessDelegate
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException{
 		return remoteObject.getItemsPendientesxArea(area);
 	}
+
+	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException{
+		return remoteObject.obtenerItemsComandaByCodComanda(parseInt);
+	}
 	
 }

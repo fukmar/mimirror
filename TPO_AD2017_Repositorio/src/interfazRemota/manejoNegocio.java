@@ -103,7 +103,6 @@ public interface manejoNegocio extends Remote
 	//ITEMS COMANDA
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException;
 
-
-	
+	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException;
 	
 }

@@ -28,9 +28,12 @@
   <div class="login-page">
 
   <form action="/TPO_AD2017_ClienteWeb/Controller?opcion=login" method="post">
-
+  
   <div class="form">
+  <img src="img/logo.jpg" alt="logo" width="240">
+  <br><br>
     <form class="login-form">
+    
     		<a><% if (request.getParameter("mensaje") != null) out.print(request.getParameter("mensaje"));%></a>
       <input type="text" id="usuario" placeholder="usuario" name="usuario"/>
       <input type="password" id="clave" placeholder="clave" name="clave"/>

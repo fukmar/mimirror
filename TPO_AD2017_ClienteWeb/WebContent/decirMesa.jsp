@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Muestro Mesa</title>
 <link rel="stylesheet" href="css/style.css">
-
+<%@include file="./menu.jsp"%> <br><br>
 </head>
 
 <body>

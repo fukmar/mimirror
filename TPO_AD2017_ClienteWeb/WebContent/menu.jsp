@@ -24,7 +24,7 @@
 
 		  if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("admin"))
 		  { 
- 			out.print("<a>Hola "+session.getAttribute("usuario")+"!</a>");    
+ 			out.print("<a>Hola "+session.getAttribute("usuario")+"</a>");    
  		
  		 submmenus = new HashMap<String,String>();
 			 submmenus.put("Ver Platos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPlatos");
@@ -32,6 +32,8 @@
 			 
 			 submmenus = new HashMap<String,String>();
 			 submmenus.put("Ver Mozos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verMozos");
+			 submmenus.put("Ver Comisiones", "/TPO_AD2017_ClienteWeb/Controller?opcion=verComisiones");
+				
 			 menus.put("Mozos", submmenus);
 			 
 		submmenus = new HashMap<String,String>();		
@@ -63,6 +65,11 @@
 			 submmenus.put("Cargar Reservas", "/TPO_AD2017_ClienteWeb/cargarReserva.jsp");
 			 menus.put("Reservas", submmenus);   
 			 
+			 submmenus = new HashMap<String,String>();
+				
+			 submmenus.put("Ver Carta", "/TPO_AD2017_ClienteWeb/Controller?opcion=verCarta");
+			 
+			 menus.put("Carta", submmenus);   
 			 
 		        for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
 		            String menuName = (String)itMenu.next();
@@ -115,9 +122,120 @@
 				        </li>
 					 
         	<%
-        }} else {
+        }} 
+		  
+		  else if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("bar")){
+			  out.print("<a>Hola "+session.getAttribute("usuario")+"!</a>");
+			  submmenus = new HashMap<String,String>();		
+				
+				submmenus.put("Ver Comandas del Bar", "/TPO_AD2017_ClienteWeb/Controller?opcion=verComandas");
+					 menus.put("Comandas", submmenus);
+					 
+				        for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
+				            String menuName = (String)itMenu.next();
+				            HashMap sub = (HashMap)menus.get(menuName);            
+				%>            
+				        <li><a href=?#?><%=menuName%></a>
+				            <ul>
+				            
+				 <%     
+				            for(Iterator itSub = sub.keySet().iterator(); itSub.hasNext();) {
+				                 String subMenuName = (String)itSub.next();
+				                 String subMenuAction = (String)sub.get(subMenuName);
+				 %>
+				                <li><a href="<%=subMenuAction%>" ><%=subMenuName%></a></li>
+				 <%
+				            }
+				 %>
+				            </ul>
+				        </li>
+					 
+        	<%
+}} 
+		  
+		  else if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("mozo")){
+			  out.print("<a>Hola "+session.getAttribute("usuario")+"!</a>");
+
+			  submmenus = new HashMap<String,String>();
+				 submmenus.put("Ver Platos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPlatos");
+				 menus.put("Platos", submmenus);
+				 
+				 submmenus = new HashMap<String,String>();
+				 submmenus.put("Ver Mozos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verMozos");	
+				 menus.put("Mozos", submmenus);
+				 
+			submmenus = new HashMap<String,String>();		
+				
+			submmenus.put("Ver Comandas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verComandas");
+				 submmenus.put("Cargar Comandas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verDatosParaCargarComanda");
+					
+				 menus.put("Comandas", submmenus);
+	         	 
+				 submmenus = new HashMap<String,String>();		
+					
+					submmenus.put("Asignar y Combinar Mesas", "/TPO_AD2017_ClienteWeb/Controller?opcion=mesas");
+					submmenus.put("Ver todas las Mesas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verMesas");
+					
+						 menus.put("Mesas", submmenus);
+			      
+				        for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
+				            String menuName = (String)itMenu.next();
+				            HashMap sub = (HashMap)menus.get(menuName);            
+				%>            
+				        <li><a href=?#?><%=menuName%></a>
+				            <ul>
+				            
+				 <%     
+				            for(Iterator itSub = sub.keySet().iterator(); itSub.hasNext();) {
+				                 String subMenuName = (String)itSub.next();
+				                 String subMenuAction = (String)sub.get(subMenuName);
+				 %>
+				                <li><a href="<%=subMenuAction%>" ><%=subMenuName%></a></li>
+				 <%
+				            }
+				 %>
+				            </ul>
+				        </li>
+					 
+        	<%
+				}}
+        	 else if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("caja")){
+   			  out.print("<a>Hola "+session.getAttribute("usuario")+"!</a>");
+   			  submmenus = new HashMap<String,String>();
+  			
+   			 submmenus.put("Ver Facturas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verFacturas");
+			 submmenus.put("Facturar Mesa", "/TPO_AD2017_ClienteWeb/Controller?opcion=facturarMesa");
+					
+			 menus.put("Facturas", submmenus);
+   					 
+   				        for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
+   				            String menuName = (String)itMenu.next();
+   				            HashMap sub = (HashMap)menus.get(menuName);            
+   				%>            
+   				        <li><a href=?#?><%=menuName%></a>
+   				            <ul>
+   				            
+   				 <%     
+   				            for(Iterator itSub = sub.keySet().iterator(); itSub.hasNext();) {
+   				                 String subMenuName = (String)itSub.next();
+   				                 String subMenuAction = (String)sub.get(subMenuName);
+   				 %>
+   				                <li><a href="<%=subMenuAction%>" ><%=subMenuName%></a></li>
+   				 <%
+   				            }
+   				 %>
+   				            </ul>
+   				        </li>
+   					 
+           	<%
+           	
+   		
+    
         	
-        	RequestDispatcher rd = request.getRequestDispatcher("/login.jsp?mensaje=Usuario o Clave Incorrectos");
+		}}
+		  else {
+        	
+        	RequestDispatcher rd = request.getRequestDispatcher("/login.jsp?mensaje=Afuera");
     		rd.forward(request, response);
         	
         }

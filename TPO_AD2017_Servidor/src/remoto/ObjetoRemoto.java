@@ -240,12 +240,18 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		
 	}
 
-	//-----------------------------------ITEMS COMANDA POR AREA-----------------------------------------------------------------------
+	//-----------------------------------ITEMS COMANDA POR AREA y POR COD COMANDA------------
 
 	@Override
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException {
 
 		return Controlador.getInstance().getItemsPendientesxArea(area);
+	}
+
+	@Override
+	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException {
+		
+		return Controlador.getInstance().obtenerItemsComandaByCodComanda(parseInt);
 	}
 
 	

@@ -26,7 +26,7 @@ List<ComandaDTO> comandas = (List<ComandaDTO>)request.getAttribute("comandas");
 %>
 
 
-
+<form action="/TPO_AD2017_ClienteWeb/Controller">
 	<table>
   <caption>Comandas</caption>
   <thead>
@@ -35,7 +35,7 @@ List<ComandaDTO> comandas = (List<ComandaDTO>)request.getAttribute("comandas");
       <th scope="col">Estado</th>
       <th scope="col">Mesa</th>
       <th scope="col">Apellido del Mozo</th>
-      
+       <th scope="col">Ver Detalle</th>
     </tr>
   </thead>
   <tbody>
@@ -46,7 +46,8 @@ List<ComandaDTO> comandas = (List<ComandaDTO>)request.getAttribute("comandas");
       <td data-label="Estado"><%= comanda.getEstado() %></td>
       <td data-label="Mesa"><%= comanda.getMesa().getCodMesa() %></td>
       <td data-label="Apellido del Mozo"><%= comanda.getMozo().getApellido() %></td>
-   
+   	 <td data-label="Ver Detalles"><input type="radio" name="comandaelegida" value=<%= comanda.getCodComanda() %>>
+     
       
       
       </tr>
@@ -54,10 +55,13 @@ List<ComandaDTO> comandas = (List<ComandaDTO>)request.getAttribute("comandas");
     
   </tbody>
 </table>
-	
+	<center>
+  <br>
+<button name="opcion" value="verDetalleComanda">Mostrar Detalles</button>
 
-	<P>
-	<p>
+	</center>
+	
+</form>
 	 <a href="index.jsp" target="_self" class="link-btn">volver</a> 
   
   

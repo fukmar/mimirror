@@ -10,12 +10,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Agregar items a la Comanda</title>
 <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 
 <form action="/TPO_AD2017_ClienteWeb/Controller">
 
-    <tr><td>Elija Plato a Agregar y su Cantidad</td><td><br><br>
+   Elija Plato a Agregar y su Cantidad<br><br>
     
     <%
 if (request.getAttribute("vamosACargarItems") ==null){
@@ -26,14 +27,14 @@ ComandaDTO comanda = (ComandaDTO)request.getAttribute("comanda");
 List<PlatoDTO> platos = (List<PlatoDTO>)request.getAttribute("platos");
 %>
 
-Mesa N*<%=comanda.getMesa().getCodMesa() %>
+Mesa N*<%=comanda.getMesa().getCodMesa() %><br>
  
     </td></tr>
- 
- 
+ <br>
+
  <Select name = "codPlato">
 <% for(PlatoDTO plato :  platos) {%>
-	<option value= <%= plato.getCodigo() %>><%=plato.toString()%></option> 
+	<option value= <%= plato.getCodigo() %>><%=plato.getNombre() %></option> 
 <%} %>
 </select>
 Cantidad</td><td><input name="cantidad", size="20"/></td></tr>

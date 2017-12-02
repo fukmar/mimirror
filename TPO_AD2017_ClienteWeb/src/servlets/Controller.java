@@ -268,6 +268,20 @@ if(opcion.equals("verDetalleFactura")){
 
 }
 
+
+if(opcion.equals("verDetalleComanda")){
+	
+	String comandaelegida = request.getParameter("comandaelegida"); 
+	List<ItemComandaDTO> items = new ArrayList<ItemComandaDTO>();
+
+	//FALTA EXCEPTIONS
+	items = BusinessDelegate.getInstance().obtenerItemsComandaByCodComanda(Integer.parseInt(comandaelegida));
+	request.setAttribute("items", items);
+	RequestDispatcher rd = request.getRequestDispatcher("/verDetalleComanda.jsp");
+	rd.forward(request, response);
+
+}
+
 if(opcion.equals("verMozos")){
 				
 				List<MozoDTO> mozos = new ArrayList<MozoDTO>();
@@ -358,6 +372,16 @@ if(opcion.equals("verMozos")){
 			List<ItemComandaDTO> items = new ArrayList<ItemComandaDTO>();
 				//FALTA LA CAPTURA DE EXCEPCION!
 				items = BusinessDelegate.getInstance().getItemsPendientesxArea(AreaRest.Cocina);
+				request.setAttribute("items", items);
+				RequestDispatcher rd = request.getRequestDispatcher("/verMisItems.jsp");
+				rd.forward(request, response);
+			
+				
+		}else if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("bar")) {
+			
+			List<ItemComandaDTO> items = new ArrayList<ItemComandaDTO>();
+				//FALTA LA CAPTURA DE EXCEPCION!
+				items = BusinessDelegate.getInstance().getItemsPendientesxArea(AreaRest.Barra);
 				request.setAttribute("items", items);
 				RequestDispatcher rd = request.getRequestDispatcher("/verMisItems.jsp");
 				rd.forward(request, response);

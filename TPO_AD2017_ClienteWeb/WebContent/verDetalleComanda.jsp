@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/style.css">
 <%@include file="./menu.jsp"%> <br><br>
-<title>Ver Mis Comandas</title>
+<title>Detalle de Comanda</title>
 
 </head>
 <body>
@@ -26,14 +26,17 @@ List<ItemComandaDTO> items = (List<ItemComandaDTO>)request.getAttribute("items")
 %>
 
 
-
 	<table>
-  <caption>Mis Comandas</caption>
+  <caption>Detalle de Comanda N* <%=items.get(0).getComanda().getCodComanda() %></caption>
+  <br>Atendió: <%=items.get(0).getComanda().getMesa().getMozo().getApellido() %>
+  </caption>
+  
   <thead>
     <tr>
-      <th scope="col">Código</th>
-      <th scope="col">Debo Preparar</th>
-	 <th scope="col">Está Listo!</th>
+  
+      <th scope="col">Nombre</th>
+	   <th scope="col">Cantidad a Preparar</th>
+	
       
     </tr>
   </thead>
@@ -41,19 +44,14 @@ List<ItemComandaDTO> items = (List<ItemComandaDTO>)request.getAttribute("items")
    <% for(ItemComandaDTO item :  items) {%>
 	
     <tr>
-      <td scope="row" data-label="Código"><%= item.getCoditemComanda() %></td>
-      <td data-label="Debo Preparar"><%= item.getPlato().getNombre() %></td>
-     <td data-label="Listo"><input type="radio" name="listo" value=<%= item.getCoditemComanda() %>>
- 
+     <td data-label="Nombre del Plato"><%= item.getPlato().getNombre() %></td>
+     <td data-label="Cantidad"><%= item.getCantidad() %></td>
+     
         </tr>
      <%} %>
-    
+   
   </tbody>
 </table>
-	
-
-	<P>
-	<p>
 	 <a href="index.jsp" target="_self" class="link-btn">volver</a> 
   
   

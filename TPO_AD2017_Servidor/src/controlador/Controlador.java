@@ -180,6 +180,20 @@ public class Controlador {
 		}
 		return items;
 	}
+	
+	//OBTENER ITEMS DE COMANDAS POR COMANDA COD
+	
+	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) {
+		List<ItemComandaDTO> items=new ArrayList<ItemComandaDTO>();
+		List<ItemComanda> itemsnegocio=ItemComandaDAO.getInstance().obtenerItemComandasAbiertasxMesa(parseInt);
+		for(ItemComanda item:itemsnegocio)
+		{
+			items.add(item.toDTO());
+		}
+		return items;
+	}
+
+	
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	//FACTURAS
 
@@ -395,8 +409,6 @@ public class Controlador {
 		new MateriaPrima(materia.getDescripcion(), uni, materia.getCantidad(), depo).save();
 		
 	}
-
-
 
 
 

@@ -61,7 +61,7 @@ List<MesaDTO> mesas = (List<MesaDTO>)request.getAttribute("mesas");
 
   <center>
   <br>
-   <button name="opcion" value="facturarMesaAhora">Facturar Mesa $$$$</button>
+   <button name="opcion" value="facturarMesaYa">Facturar Mesa $$$$</button>
 
 	</center></form>
 

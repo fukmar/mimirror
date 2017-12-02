@@ -9,13 +9,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css">
+
 <title>Cargar una Comanda</title>
 </head>
 
 <body>
 <form action="/TPO_AD2017_ClienteWeb/Controller">
 
-    <tr><td>Elija Mesa</td><td>
+    <tr><td>Elija Número de Mesa</td><td><br><br>
     
     <%
 if (request.getAttribute("datosParaComanda") ==null){
@@ -24,13 +25,13 @@ rd.forward(request, response);
 }
 List<MesaDTO> mesas = (List<MesaDTO>)request.getAttribute("mesas");
 %>
-<div class="styled-select blue semi-square">
+
 <Select name = "mesa">
 <% for(MesaDTO mesa :  mesas) {%>
 	<option value=<%=mesa.getCodMesa()%>><%=mesa.getCodMesa()%></option> 
 <%} %>
 </select> 
- </div>
+
   
     </td></tr>
     
