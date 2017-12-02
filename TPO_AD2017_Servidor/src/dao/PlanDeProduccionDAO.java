@@ -14,14 +14,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.AdministracionEntity;
+import entities.ItemPlanProduccionEntity;
 import entities.MesaEntity;
 import entities.PlanDeProduccionEntity;
+import entities.PlatoEntity;
 import enumns.EstadoRemito;
 import hibernate.HibernateUtil;
 import negocio.Administracion;
 import negocio.ItemPlanProduccion;
 import negocio.Mesa;
 import negocio.PlanDeProduccion;
+import negocio.Plato;
 
 public class PlanDeProduccionDAO {
 	
@@ -114,6 +117,18 @@ public class PlanDeProduccionDAO {
 		session.save(plan.toEntity()); //cz pasado a entity
 		session.getTransaction().commit();
 		session.close();
+	}
+	public List<ItemPlanProduccion> getPlatosporCodCarta(int nroPlanDeProduccion)
+	{
+		Session session=sf.openSession();
+		List<ItemPlanProduccion> listaM=new ArrayList<ItemPlanProduccion>();
+		List<ItemPlanProduccionEntity> resu=session.createQuery("from ItemPlanProduccionEntity i where i.plandeProduccion.codigoPDP=?").setInteger(0, nroPlanDeProduccion).list();
+		for(ItemPlanProduccionEntity i:resu)
+		{
+			listaM.add(i.toNegocio());
+		}
+		session.close();
+		return listaM;
 	}
 	
 }
