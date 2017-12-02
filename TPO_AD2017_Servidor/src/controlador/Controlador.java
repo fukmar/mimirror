@@ -46,6 +46,7 @@ import entities.MesaEntity;
 import entities.PlatoEntity;
 import entities.SectorEntity;
 import enumns.AreaRest;
+import enumns.CategoriaPlato;
 import enumns.Estado;
 import enumns.MedioDePago;
 import exceptions.FacturaException;
@@ -137,7 +138,7 @@ public class Controlador {
 		
 	}
 	
-	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, String categoriaplato)
+	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, CategoriaPlato categoriaplato)
 	{
 		List<Plato> platosN=PlatoDAO.getInstance().getPlatosparecidos(nombre, categoriaplato);
 		List<PlatoDTO> platosp=new ArrayList<PlatoDTO>();

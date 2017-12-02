@@ -10,6 +10,7 @@ import java.util.List;
 
 import dto.*;
 import enumns.AreaRest;
+import enumns.CategoriaPlato;
 import enumns.MedioDePago;
 import exceptions.CajaException;
 import exceptions.CartaException;
@@ -100,7 +101,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, String categoriaplato) throws RemoteException, PlatoException 
+	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, CategoriaPlato categoriaplato) throws RemoteException, PlatoException 
 	{
 		try {
 			return remoteObject.buscarPlatosParecidos(nombre, categoriaplato);

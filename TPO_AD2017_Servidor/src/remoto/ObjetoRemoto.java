@@ -25,6 +25,7 @@ import dto.SectorDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
 import enumns.AreaRest;
+import enumns.CategoriaPlato;
 import enumns.MedioDePago;
 import exceptions.CajaException;
 import exceptions.CartaException;
@@ -90,7 +91,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	}
 
 	@Override
-	public List<PlatoDTO> buscarPlatosParecidos(String nombre, String categoriaplato)
+	public List<PlatoDTO> buscarPlatosParecidos(String nombre, CategoriaPlato categoriaplato)
 			throws RemoteException, PlatoException {
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().BuscarPlatosparecidos(nombre, categoriaplato);
@@ -338,25 +339,6 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	}
 
 	
-
-
-	
-
-
-
-
-	
-
-	
-
-	
-	
-
-
-	
-
-	
-
 	
 	
 	

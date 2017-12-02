@@ -35,6 +35,7 @@ import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SectorDTO;
 import enumns.AreaRest;
+import enumns.CategoriaPlato;
 import enumns.Estado;
 import enumns.EstadoItemComanda;
 import enumns.MedioDePago;
@@ -156,6 +157,40 @@ public class Controller extends HttpServlet {
 
 			}
 			
+	if(opcion.equals("sugerirPlatos")){
+				
+				List<PlatoDTO> platos = new ArrayList<PlatoDTO>();
+				try {
+					String nombre = request.getParameter("nombre"); 
+					String categoriaplato = request.getParameter("categoriaplato"); 
+					  
+					
+					CategoriaPlato categoria = null;
+					
+					switch(categoriaplato){  
+					case "Carnes": categoria = CategoriaPlato.Carnes;break;  
+				    case "Bebida": categoria = CategoriaPlato.Bebida;break;  
+				    case "Pollo": categoria = CategoriaPlato.Pollo;break;  
+				    case "Pescado": categoria = CategoriaPlato.Pescado;break;  
+				    case "Postres": categoria = CategoriaPlato.Postres;break;  
+				    case "Vegetariano": categoria = CategoriaPlato.Vegetariano;break;  
+				    case "EspecialdelDia": categoria = CategoriaPlato.EspecialdelDia;break;  
+				    case "Vinos": categoria = CategoriaPlato.Vinos;break;  
+				    
+				
+				    default:categoria = CategoriaPlato.Carnes;
+				    }  
+					
+					platos = BusinessDelegate.getInstance().BuscarPlatosparecidos(nombre, categoria);
+					request.setAttribute("platos", platos);
+					RequestDispatcher rd = request.getRequestDispatcher("/sugiero.jsp");
+					rd.forward(request, response);
+				} catch (PlatoException e) {
+					System.out.println(e.getMessage());
+				}
+
+			}
+			
 			
 if(opcion.equals("verMesas")){
 				
@@ -230,7 +265,18 @@ if(opcion.equals("verPdPs")){
 if(opcion.equals("verDetallePdP")){
 	
 	String pdpelegido = request.getParameter("pdpelegido"); 
-	PlanDeP
+	PlanDeProduccionDTO pdp = null;
+	try {
+		 pdp = BusinessDelegate.getInstance().obtenerPDPByCodPDP(Integer.parseInt(pdpelegido));
+	} catch (NumberFormatException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	} catch (PlanDeProduccionException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	
+	
 	List<ItemPlanProduccionDTO> items = new ArrayList<ItemPlanProduccionDTO>();
 		try {
 			items = BusinessDelegate.getInstance().obtenerItemPDPByCodPDP(Integer.parseInt(pdpelegido));
@@ -242,6 +288,8 @@ if(opcion.equals("verDetallePdP")){
 			e.printStackTrace();
 		}
 	request.setAttribute("items", items);
+	request.setAttribute("pdp", pdp);
+	
 	RequestDispatcher rd = request.getRequestDispatcher("/verDetallePdP.jsp");
 	rd.forward(request, response);
 

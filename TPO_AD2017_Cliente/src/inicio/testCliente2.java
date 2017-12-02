@@ -136,7 +136,7 @@ public class testCliente2 {
 	
 	//SUGERIR PLATO
 	try {
-		List<PlatoDTO> platosS=BusinessDelegate.getInstance().BuscarPlatosparecidos("Milanesa con Papas Fritas","Carnes");
+		List<PlatoDTO> platosS=BusinessDelegate.getInstance().BuscarPlatosparecidos("Milanesa con Papas Fritas",CategoriaPlato.Carnes);
 		for(PlatoDTO p:platosS)
 		{
 			System.out.println(p.toString());

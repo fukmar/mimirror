@@ -70,16 +70,15 @@ public class PlatoDAO
 		session.close();
 		return plato;
 	}
-	public List<Plato> getPlatosparecidos(String nombre, String categoriaplato)
+	public List<Plato> getPlatosparecidos(String nombre, CategoriaPlato categoriaplato)
 	{
 		Session session=sf.openSession();
 		List<Plato> listaPlatos=new ArrayList<Plato>();
-		CategoriaPlato categoria=categoriafromString(categoriaplato);
- 		//List<PlatoEntity> resu=session.createCriteria("from PlatoEntity").list();
+		//List<PlatoEntity> resu=session.createCriteria("from PlatoEntity").list();
  		@SuppressWarnings("unchecked")
 		Query query=session.createQuery("from PlatoEntity p where p.categoria=? and p.nombre like ? ");
  		query.setString(1,"%"+nombre+"%");
- 		query.setParameter(0,categoria);
+ 		query.setParameter(0,categoriaplato);
  		@SuppressWarnings("unchecked")
 		List<PlatoEntity> resu=query.list();
 		for(PlatoEntity p:resu) 

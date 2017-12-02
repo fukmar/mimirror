@@ -27,7 +27,8 @@
  			out.print("<a>Hola "+session.getAttribute("usuario")+"</a>");    
  		
  		 submmenus = new HashMap<String,String>();
-			 submmenus.put("Ver Platos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPlatos");
+ 		 submmenus.put("Ver Platos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPlatos");
+ 		 submmenus.put("Sugerir Platos", "/TPO_AD2017_ClienteWeb/pedirDatosSugerir.jsp");
 			 menus.put("Platos", submmenus);
 			 
 			 submmenus = new HashMap<String,String>();
