@@ -1,6 +1,8 @@
 package swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,9 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AltaSemiElaborado extends JFrame {
 
@@ -45,6 +52,7 @@ public class AltaSemiElaborado extends JFrame {
 		setTitle("Crear Plato SemiElaborado");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1077, 745);
+		contentPane.setBackground(Color.WHITE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -115,9 +123,26 @@ public class AltaSemiElaborado extends JFrame {
 		contentPane.add(btnCrearProducto);
 		
 		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Principal principal = new Principal();
+				principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				dispose();
+				principal.setVisible(true);
+			}
+		});
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnVolver.setBounds(672, 320, 167, 52);
 		contentPane.add(btnVolver);
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		JLabel lblIcono = new JLabel("");
+		lblIcono.setIcon(new ImageIcon(Principal.class.getResource("/swing/logo.jpg")));
+		//lblIcono.setBounds((int) ((int) width/2.65), (int) ((int) height/2.9), 418, 278);
+		lblIcono.setBounds((int) width-400, (int) ((int) height-((int)height*0.40)), 418, 278);
+		contentPane.add(lblIcono);
 	}
 
 }

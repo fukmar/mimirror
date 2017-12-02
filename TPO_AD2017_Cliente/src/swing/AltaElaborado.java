@@ -1,6 +1,8 @@
 package swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,8 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -49,6 +54,7 @@ public class AltaElaborado extends JFrame {
 		setBounds(100, 100, 770, 765);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(Color.WHITE);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -164,5 +170,14 @@ public class AltaElaborado extends JFrame {
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnVolver.setBounds(544, 351, 181, 55);
 		contentPane.add(btnVolver);
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		JLabel lblIcono = new JLabel("");
+		lblIcono.setIcon(new ImageIcon(Principal.class.getResource("/swing/logo.jpg")));
+		//lblIcono.setBounds((int) ((int) width/2.65), (int) ((int) height/2.9), 418, 278);
+		lblIcono.setBounds((int) width-400, (int) ((int) height-((int)height*0.40)), 418, 278);
+		contentPane.add(lblIcono);
 	}
 }

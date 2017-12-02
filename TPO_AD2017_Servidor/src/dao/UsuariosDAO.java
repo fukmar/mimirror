@@ -64,6 +64,7 @@ public class UsuariosDAO
 		session.close();
 		return listaUsuarios;
 	}
+	
 	public Usuarios getUserPorLogin(String login) 
 	{
 		Usuarios user=new Usuarios();

@@ -1,6 +1,8 @@
 package swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,7 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
@@ -50,6 +55,7 @@ public class ModificarUsuario extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 734, 640);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -95,11 +101,6 @@ public class ModificarUsuario extends JFrame {
 		lblApellido.setBounds(12, 439, 95, 35);
 		contentPane.add(lblApellido);
 		
-		JLabel lblArea = new JLabel("Area:");
-		lblArea.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblArea.setBounds(12, 522, 78, 22);
-		contentPane.add(lblArea);
-		
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textField_1.setEditable(false);
@@ -128,10 +129,6 @@ public class ModificarUsuario extends JFrame {
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(180, 524, 171, 35);
-		contentPane.add(comboBox);
-		
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -158,5 +155,14 @@ public class ModificarUsuario extends JFrame {
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnVolver.setBounds(526, 411, 149, 54);
 		contentPane.add(btnVolver);
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		JLabel lblIcono = new JLabel("");
+		lblIcono.setIcon(new ImageIcon(Principal.class.getResource("/swing/logo.jpg")));
+		//lblIcono.setBounds((int) ((int) width/2.65), (int) ((int) height/2.9), 418, 278);
+		lblIcono.setBounds((int) width-400, (int) ((int) height-((int)height*0.40)), 418, 278);
+		contentPane.add(lblIcono);
 	}
 }

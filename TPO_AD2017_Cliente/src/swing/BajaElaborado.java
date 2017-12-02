@@ -1,6 +1,8 @@
 package swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,7 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -20,7 +25,7 @@ public class BajaElaborado extends JFrame {
 	private JTextField textCodigo;
 	private JTextField textTipo;
 	private JTextField textDescripcion;
-	private JTextField textField_1;
+	private JTextField textCantidad;
 
 	/**
 	 * Launch the application.
@@ -47,6 +52,7 @@ public class BajaElaborado extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 926, 758);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -130,11 +136,20 @@ public class BajaElaborado extends JFrame {
 		lblCantidad.setBounds(263, 504, 105, 29);
 		contentPane.add(lblCantidad);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(415, 502, 200, 37);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textCantidad = new JTextField();
+		textCantidad.setEditable(false);
+		textCantidad.setBounds(415, 502, 200, 37);
+		contentPane.add(textCantidad);
+		textCantidad.setColumns(10);
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		JLabel lblIcono = new JLabel("");
+		lblIcono.setIcon(new ImageIcon(Principal.class.getResource("/swing/logo.jpg")));
+		//lblIcono.setBounds((int) ((int) width/2.65), (int) ((int) height/2.9), 418, 278);
+		lblIcono.setBounds((int) width-400, (int) ((int) height-((int)height*0.40)), 418, 278);
+		contentPane.add(lblIcono);
 	}
 
 }

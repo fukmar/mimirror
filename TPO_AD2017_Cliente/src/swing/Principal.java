@@ -82,7 +82,7 @@ public class Principal extends JFrame {
 		mntmAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AltaMaterial altaM=new AltaMaterial();
-				setVisible(false);
+				dispose();
 				altaM.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				altaM.setVisible(true);
 			
@@ -125,14 +125,38 @@ public class Principal extends JFrame {
 		mnComandas.add(mnElaborados);
 		
 		JMenuItem mntmNuevoPlatoElaborado = new JMenuItem("Nuevo Plato Elaborado");
+		mntmNuevoPlatoElaborado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AltaElaborado altaM=new AltaElaborado();
+				dispose();
+				altaM.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				altaM.setVisible(true);
+			}
+		});
 		mntmNuevoPlatoElaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnElaborados.add(mntmNuevoPlatoElaborado);
 		
 		JMenuItem mntmModificarPlatoElaborado = new JMenuItem("Modificar Plato Elaborado");
+		mntmModificarPlatoElaborado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificarElaborado altaM=new ModificarElaborado();
+				dispose();
+				altaM.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				altaM.setVisible(true);
+			}
+		});
 		mntmModificarPlatoElaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnElaborados.add(mntmModificarPlatoElaborado);
 		
 		JMenuItem mntmEliminarPlatoElaborado = new JMenuItem("Eliminar Plato Elaborado");
+		mntmEliminarPlatoElaborado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BajaElaborado altaM=new BajaElaborado();
+				dispose();
+				altaM.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				altaM.setVisible(true);
+			}
+		});
 		mntmEliminarPlatoElaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnElaborados.add(mntmEliminarPlatoElaborado);
 		
@@ -141,14 +165,38 @@ public class Principal extends JFrame {
 		mnComandas.add(mnSemielaborados);
 		
 		JMenuItem mntmNuevoPlatoSemielaborado = new JMenuItem("Nuevo Plato SemiElaborado");
+		mntmNuevoPlatoSemielaborado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AltaSemiElaborado altaM=new AltaSemiElaborado();
+				dispose();
+				altaM.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				altaM.setVisible(true);
+			}
+		});
 		mntmNuevoPlatoSemielaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnSemielaborados.add(mntmNuevoPlatoSemielaborado);
 		
 		JMenuItem mntmModificarPlatoSemielaborado = new JMenuItem("Modificar Plato SemiElaborado");
+		mntmModificarPlatoSemielaborado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificarSemiElaborado altaM=new ModificarSemiElaborado();
+				dispose();
+				altaM.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				altaM.setVisible(true);
+			}
+		});
 		mntmModificarPlatoSemielaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnSemielaborados.add(mntmModificarPlatoSemielaborado);
 		
 		JMenuItem mntmEliminarPlatoSemielaborado = new JMenuItem("Eliminar Plato SemiElaborado");
+		mntmEliminarPlatoSemielaborado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BajaSemiElaborado altaM=new BajaSemiElaborado();
+				dispose();
+				altaM.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				altaM.setVisible(true);
+			}
+		});
 		mntmEliminarPlatoSemielaborado.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnSemielaborados.add(mntmEliminarPlatoSemielaborado);
 		contentPane.add(menuBar);
@@ -162,7 +210,7 @@ public class Principal extends JFrame {
 		mntmNuevoUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AltaUsuario au=new AltaUsuario();
-				setVisible(false);
+				dispose();
 				au.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				au.setVisible(true);
 			}
@@ -174,7 +222,7 @@ public class Principal extends JFrame {
 		mntmEliminarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BajaUsuario el=new BajaUsuario();
-				setVisible(false);
+				dispose();
 				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				el.setVisible(true);
 			}
@@ -185,7 +233,7 @@ public class Principal extends JFrame {
 		mntmModificarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ModificarUsuario el=new ModificarUsuario();
-				setVisible(false);
+				dispose();
 				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				el.setVisible(true);
 			}
@@ -221,7 +269,6 @@ public class Principal extends JFrame {
 		lblIcono.setBounds((int) ((int) width/2.65), (int) ((int) height/2.9), 418, 278);
 		//lblIcono.setBounds((int) width-400, (int) ((int) height-((int)height*0.40)), 418, 278);
 		contentPane.add(lblIcono);
-		
 		
 	}
 }

@@ -1,11 +1,15 @@
 package swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -46,6 +50,7 @@ public class ModificarElaborado extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 926, 758);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -134,6 +139,15 @@ public class ModificarElaborado extends JFrame {
 		textField_1.setBounds(415, 502, 200, 37);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		JLabel lblIcono = new JLabel("");
+		lblIcono.setIcon(new ImageIcon(Principal.class.getResource("/swing/logo.jpg")));
+		//lblIcono.setBounds((int) ((int) width/2.65), (int) ((int) height/2.9), 418, 278);
+		lblIcono.setBounds((int) width-400, (int) ((int) height-((int)height*0.40)), 418, 278);
+		contentPane.add(lblIcono);
 	
 	}
 
