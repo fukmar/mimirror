@@ -6,7 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dto.UsuariosDTO;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -15,14 +19,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
+import enumns.*;
 
 public class AltaUsuario extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textLogin;
+	private JTextField textPassword;
+	private JTextField textNombre;
+	private JTextField textApellido;
 
 	/**
 	 * Launch the application.
@@ -78,34 +83,53 @@ public class AltaUsuario extends JFrame {
 		lblArea.setBounds(12, 444, 99, 28);
 		contentPane.add(lblArea);
 		
-		textField = new JTextField();
-		textField.setBounds(199, 62, 219, 22);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textLogin = new JTextField();
+		textLogin.setBounds(199, 62, 219, 22);
+		contentPane.add(textLogin);
+		textLogin.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(199, 138, 219, 22);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textPassword = new JTextField();
+		textPassword.setBounds(199, 138, 219, 22);
+		contentPane.add(textPassword);
+		textPassword.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(199, 240, 219, 22);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textNombre = new JTextField();
+		textNombre.setBounds(199, 240, 219, 22);
+		contentPane.add(textNombre);
+		textNombre.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(199, 339, 219, 22);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		textApellido = new JTextField();
+		textApellido.setBounds(199, 339, 219, 22);
+		contentPane.add(textApellido);
+		textApellido.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(199, 441, 219, 22);
-		contentPane.add(comboBox);
+		JComboBox comboBoxArea = new JComboBox();
+		comboBoxArea.setMaximumRowCount(15);
+		comboBoxArea.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		comboBoxArea.addItem("Caja");
+		comboBoxArea.addItem("Salon");
+		comboBoxArea.addItem("Administracion");
+		comboBoxArea.addItem("Cocina");
+		comboBoxArea.addItem("Cafeteria");
+		comboBoxArea.addItem("Barra");
+		comboBoxArea.setBounds(199, 441, 219, 31);
+		contentPane.add(comboBoxArea);
 		
 		JButton btnCrear = new JButton("Crear Usuario");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				AreaRest areaDeRest=null;
+				String area=comboBoxArea.getSelectedItem().toString();
+				switch(area){  
+			    case "Caja": areaDeRest = AreaRest.Caja;break;  
+			    case "Salon": areaDeRest = AreaRest.salon;break;  
+			    case "Administracion": areaDeRest = AreaRest.Administracion;break;  
+			    case "Cocina": areaDeRest = AreaRest.Cocina;break;  
+			    case "Cafeteria": areaDeRest = AreaRest.Cafeteria;break;  
+			    case "Barra": areaDeRest = AreaRest.Barra;break;  
+			    }  
+				UsuariosDTO usuario= new UsuariosDTO(textLogin.getText(), textPassword.getText(), textNombre.getText(), textApellido.getText(), areaDeRest);
+				JOptionPane.showMessageDialog(null, "Usuario creado exitosamente", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
 				//CODIGO PARA DAR DE ALTA USUARIO
 				
 			}
