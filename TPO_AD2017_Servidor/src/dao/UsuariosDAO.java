@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import entities.MateriaPrimaEntity;
 import entities.PlanDeProduccionEntity;
@@ -65,6 +66,17 @@ public class UsuariosDAO
 		return listaUsuarios;
 	}
 	
+	
+	public void delete(String login)
+	{
+		Session session=sf.openSession();
+		Transaction tran=session.beginTransaction();
+		UsuariosEntity resu=(UsuariosEntity) session.createQuery("from UsuariosEntity u where u.login=?").setString(0,login).uniqueResult();
+		session.delete(resu);
+		tran.commit();
+		session.close();
+	}
+	
 	public Usuarios getUserPorLogin(String login) 
 	{
 		Usuarios user=new Usuarios();
@@ -112,6 +124,8 @@ public class UsuariosDAO
 	{
 		return AreaRest.valueOf(area);
 	}
+	
+	
 	
 }
 

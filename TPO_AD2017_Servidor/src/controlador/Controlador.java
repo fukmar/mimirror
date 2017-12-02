@@ -114,6 +114,12 @@ public class Controlador {
 		return usuario;
 	}
 	
+	
+	public void borrarUsuario () 
+	{
+		
+	}
+	
 	//----------------------------------------------------------------------------------------------------------------------------------------
 	//PLATOS
 	public List<PlatoDTO> listarPlatos()

@@ -101,6 +101,9 @@ public class Usuarios {
 		
 	}
 	
-	
+	public void delete() 
+	{
+		
+	}
 	
 }
