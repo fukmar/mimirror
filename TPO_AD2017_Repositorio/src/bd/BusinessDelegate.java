@@ -313,7 +313,7 @@ public class BusinessDelegate
 	}
 	
 	//-----------------------------------ITEM PLAN DE PRODUCCION-----------------------------------------------------------------------------
-	public List<ItemPlanProduccionDTO> obtenterItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException
+	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException
 	{
 		return remoteObject.obtenerItemPDPByCodPDP(nroPlanDeProduccion);
 	}

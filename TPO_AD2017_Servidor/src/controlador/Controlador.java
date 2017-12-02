@@ -66,6 +66,7 @@ import negocio.Reserva;
 import negocio.Salon;
 import negocio.Sector;
 import negocio.Unidad;
+import negocio.Usuarios;
 
 
 public class Controlador {
@@ -101,7 +102,7 @@ public class Controlador {
 	
 	public void grabarUsuarios(UsuariosDTO usuario) 
 	{
-		
+		new Usuarios(usuario.getLogin(),usuario.getPassword(),usuario.getNombre(),usuario.getApellido(),null).save();
 	}
 	//----------------------------------------------------------------------------------------------------------------------------------------
 	//PLATOS

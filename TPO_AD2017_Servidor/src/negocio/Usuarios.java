@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import dao.UsuariosDAO;
 import dto.UsuariosDTO;
 import entities.UsuariosEntity;
 import enumns.AreaRest;
@@ -59,6 +60,7 @@ public class Usuarios {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	
 	public Enum<AreaRest> getArea() {
 		return area;
 	}
@@ -86,6 +88,11 @@ public class Usuarios {
 		u.setNombre(nombre);
 		u.setPassword(password);
 		return u;
+	}
+	public void save() 
+	{
+		UsuariosDAO.getInstance().save(this);
+		
 	}
 	
 	
