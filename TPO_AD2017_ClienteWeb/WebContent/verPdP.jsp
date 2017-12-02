@@ -16,7 +16,7 @@
 </head>
 <body>
 
-
+<form action="/TPO_AD2017_ClienteWeb/Controller">
 <%
 if (request.getAttribute("pdps") ==null){
 RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verPdPs");
@@ -48,8 +48,13 @@ List<PlanDeProduccionDTO> pdps = (List<PlanDeProduccionDTO>)request.getAttribute
      <%} %>
     </tbody>
 </table>
-	
+	<center>
+  <br>
+<button name="opcion" value="verDetallePdP">Mostrar Detalles</button>
 
+	</center>
+	
+</form>
 	<P>
 	<p>
 	 <a href="index.jsp" target="_self" class="link-btn">volver</a> 

@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class ItemPlanProduccionDTO implements Serializable {
 
 	private Integer itemplanid;
-	//private SemiElaboradoDTO semielaborado;
+	private SemiElaboradoDTO semielaborado;
 	private Integer cantidad;
 	private double porcientoavance=0;
 	//private PlanDeProduccionDTO plandeProduccion;
@@ -21,10 +21,10 @@ public class ItemPlanProduccionDTO implements Serializable {
 	}
 
 
-	public ItemPlanProduccionDTO(/*SemiElaboradoDTO semielaborado, */Integer cantidad, Integer porcientoavance/*,
+	public ItemPlanProduccionDTO(SemiElaboradoDTO semielaborado, Integer cantidad, Integer porcientoavance/*,
 			PlanDeProduccionDTO plandeProduccion*/) {
 		super();
-		//this.semielaborado= semielaborado;
+		this.semielaborado= semielaborado;
 		this.cantidad = cantidad;
 		this.porcientoavance = porcientoavance;
 		//this.plandeProduccion = plandeProduccion;
@@ -41,7 +41,7 @@ public class ItemPlanProduccionDTO implements Serializable {
 	}
 
 
-/*
+
 	public SemiElaboradoDTO getSemielaborado() {
 		return semielaborado;
 	}
@@ -51,7 +51,7 @@ public class ItemPlanProduccionDTO implements Serializable {
 		this.semielaborado = semielaborado;
 	}
 
-*/
+
 	public Integer getCantidad() {
 		return cantidad;
 	}

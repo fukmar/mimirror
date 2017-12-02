@@ -230,6 +230,7 @@ if(opcion.equals("verPdPs")){
 if(opcion.equals("verDetallePdP")){
 	
 	String pdpelegido = request.getParameter("pdpelegido"); 
+	PlanDeP
 	List<ItemPlanProduccionDTO> items = new ArrayList<ItemPlanProduccionDTO>();
 		try {
 			items = BusinessDelegate.getInstance().obtenerItemPDPByCodPDP(Integer.parseInt(pdpelegido));

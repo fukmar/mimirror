@@ -65,7 +65,7 @@ public class ItemPlanProduccion {
 		itemplandto.setCantidad(cantidad);
 		itemplandto.setItemplanid(itemplanid);
 		//itemplandto.setPlandeProduccion(plandeProduccion.toDTO());
-		//itemplandto.setSemielaborado(semielaborado.toDTO());
+		itemplandto.setSemielaborado(semielaborado.toDTO());
 		itemplandto.setPorcientoavance(porcientoavance);
 		return itemplandto;
 	}
@@ -75,7 +75,7 @@ public class ItemPlanProduccion {
 		itemplan.setCantidad(cantidad);
 		itemplan.setItemplanid(itemplanid);
 		//itemplan.setPlandeProduccion(plandeProduccion.toEntity());
-		//itemplan.setSemielaborado(semielaborado.toEntitySemi());
+		itemplan.setSemielaborado(semielaborado.toEntitySemi());
 		itemplan.setPorcientoavance(porcientoavance);
 		return itemplan;
 	}
