@@ -28,7 +28,7 @@ public class Usuarios {
 	public Usuarios() {
 		super();
 	}
-	public Usuarios(String login, String password, String nombre, String apellido, AreaRest area) {
+	public Usuarios(String login, String password, String nombre, String apellido, Enum<AreaRest> area) {
 		super();
 		this.login = login;
 		this.password = password;
@@ -64,9 +64,15 @@ public class Usuarios {
 	public Enum<AreaRest> getArea() {
 		return area;
 	}
-	public void setArea(Enum<AreaRest> area2) {
+	
+	public void setArea(Enum<AreaRest>  area2) {
 		this.area = area2;
 	}
+	
+	
+	/*public void setArea(AreaRest area) {
+		this.area = area;
+	}*/
 	
 	public UsuariosEntity toEntity()
 	{

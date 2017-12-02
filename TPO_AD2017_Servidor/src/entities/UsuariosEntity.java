@@ -23,7 +23,7 @@ public class UsuariosEntity {
 	private String password;
 	private String nombre;
 	private String apellido;
-	private Enum<AreaRest> area;
+	private Enum<AreaRest> area;//CZ era un Enum<Area>
 	
 	
 	public UsuariosEntity() {

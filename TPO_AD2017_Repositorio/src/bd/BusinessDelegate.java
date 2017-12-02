@@ -74,6 +74,10 @@ public class BusinessDelegate
 		}
 	}
 	
+	public void guardarUsuarios(UsuariosDTO usuario) throws RemoteException, UsuarioException 
+	{
+		remoteObject.guardarUsuarios(usuario);
+	}
 	//---------------------------------------PLATOS------------------------------------------------------------
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
 	{

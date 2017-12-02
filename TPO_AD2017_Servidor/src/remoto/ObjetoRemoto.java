@@ -23,6 +23,7 @@ import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.UnidadDTO;
+import dto.UsuariosDTO;
 import enumns.AreaRest;
 import enumns.MedioDePago;
 import exceptions.CajaException;
@@ -304,6 +305,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 			throws RemoteException, itemPlanDeProduccionException {
 		// TODO Auto-generated method stub listarItemPlanPorCodPlan
 		return Controlador.getInstance().listarItemPlanPorCodPlan(nroPlanDeProduccion);
+	}
+
+	@Override
+	public void guardarUsuarios(UsuariosDTO usuario) throws RemoteException, UsuarioException 
+	{
+		Controlador.getInstance().grabarUsuarios(usuario);
+		
 	}
 
 	

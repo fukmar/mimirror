@@ -102,8 +102,9 @@ public class Controlador {
 	
 	public void grabarUsuarios(UsuariosDTO usuario) 
 	{
-		new Usuarios(usuario.getLogin(),usuario.getPassword(),usuario.getNombre(),usuario.getApellido(),null).save();
+		new Usuarios(usuario.getLogin(),usuario.getPassword(),usuario.getNombre(),usuario.getApellido(),usuario.getArea()).save();
 	}
+	
 	//----------------------------------------------------------------------------------------------------------------------------------------
 	//PLATOS
 	public List<PlatoDTO> listarPlatos()

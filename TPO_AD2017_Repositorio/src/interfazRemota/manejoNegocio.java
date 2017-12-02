@@ -23,6 +23,7 @@ import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.UnidadDTO;
+import dto.UsuariosDTO;
 import enumns.AreaRest;
 import enumns.MedioDePago;
 import exceptions.CajaException;
@@ -51,6 +52,7 @@ public interface manejoNegocio extends Remote
 
 	//USUARIO
 	public boolean verificarPassword(String login, String password) throws RemoteException,UsuarioException;
+	public void guardarUsuarios(UsuariosDTO usuario)throws RemoteException,UsuarioException;
 	
 	//PLATO
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException;
