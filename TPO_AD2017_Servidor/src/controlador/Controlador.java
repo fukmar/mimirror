@@ -115,9 +115,9 @@ public class Controlador {
 	}
 	
 	
-	public void borrarUsuario () 
+	public void borrarUsuario (UsuariosDTO usuario) 
 	{
-		
+		new Usuarios(usuario.getLogin(),usuario.getPassword(),usuario.getNombre(),usuario.getApellido(),usuario.getArea()).delete();
 	}
 	
 	//----------------------------------------------------------------------------------------------------------------------------------------

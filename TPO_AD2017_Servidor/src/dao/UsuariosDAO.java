@@ -67,11 +67,12 @@ public class UsuariosDAO
 	}
 	
 	
-	public void delete(String login)
+	public void delete(Usuarios usuario)
 	{
 		Session session=sf.openSession();
+		UsuariosEntity usuarioE=usuario.toEntity();
 		Transaction tran=session.beginTransaction();
-		UsuariosEntity resu=(UsuariosEntity) session.createQuery("from UsuariosEntity u where u.login=?").setString(0,login).uniqueResult();
+		UsuariosEntity resu=(UsuariosEntity) session.createQuery("from UsuariosEntity u where u.login=?").setString(0,usuario.getLogin()).uniqueResult();
 		session.delete(resu);
 		tran.commit();
 		session.close();

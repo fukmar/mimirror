@@ -239,7 +239,7 @@ public class testHibernate4 {
 		session.getTransaction().commit();
 		session.close();
 		
-		UsuariosDAO.getInstance().delete("ceci");
+		//UsuariosDAO.getInstance().delete("ceci");
 		
 		
 		

@@ -77,6 +77,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 			return Controlador.getInstance().listarUserPorLogin(login);
 		}
 
+		@Override
+		public void borrarUsuario(UsuariosDTO usuario) throws RemoteException, UsuarioException {
+			Controlador.getInstance().borrarUsuario(usuario);
+			
+		}
 	//----------------------------PLATOS------------------------------------------------------------------------------
 	@Override
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
@@ -324,6 +329,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		// TODO Auto-generated method stub listarItemPlanPorCodPlan
 		return Controlador.getInstance().listarItemPlanPorCodPlan(nroPlanDeProduccion);
 	}
+
+
 
 	
 
