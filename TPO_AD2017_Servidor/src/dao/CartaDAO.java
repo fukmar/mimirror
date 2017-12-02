@@ -53,7 +53,7 @@ public class CartaDAO {
 			}
 			session.close();
 			return listaM;
-		}  
+		}   
 		public List<Plato> getPlatosporCodCarta(int nrocarta)
 		{
 			Session session=sf.openSession();
