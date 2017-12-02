@@ -48,9 +48,14 @@ public class CajaDAO
 		String toDate=null;
 		fromDate=sf.format(FechaDesde);
 		toDate=sf.format(FechaHasta);
+		if (s.createQuery("select sum(f.importe) from FacturaEntity f where f.fecha between ? and ?").setString(0, fromDate).setString(1, toDate).uniqueResult() == null) {
+		return 0;
+		}else
+		{
 		double total=(double) s.createQuery("select sum(f.importe) from FacturaEntity f where f.fecha between ? and ?").setString(0, fromDate).setString(1, toDate).uniqueResult();
-		return total;
 		
+		return total;
+		}
 	}
 }
 

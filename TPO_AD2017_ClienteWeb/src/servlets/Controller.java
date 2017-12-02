@@ -2,10 +2,12 @@ package servlets;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +27,10 @@ import dto.ComandaDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
 import dto.ItemFacturaDTO;
+import dto.ItemPlanProduccionDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
+import dto.PlanDeProduccionDTO;
 import dto.PlatoDTO;
 import dto.ReservaDTO;
 import dto.SectorDTO;
@@ -34,16 +38,19 @@ import enumns.AreaRest;
 import enumns.Estado;
 import enumns.EstadoItemComanda;
 import enumns.MedioDePago;
+import exceptions.CajaException;
 import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
 import exceptions.MesaException;
 import exceptions.MozoException;
+import exceptions.PlanDeProduccionException;
 import exceptions.PlatoException;
 import exceptions.ReservaException;
 import exceptions.SectorException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
+import exceptions.itemPlanDeProduccionException;
 
 
 
@@ -63,6 +70,15 @@ public class Controller extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	private static BigDecimal truncateDecimal(double x,int numberofDecimals)
+	{
+	    if ( x > 0) {
+	        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_FLOOR);
+	    } else {
+	        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING);
+	    }
+	}
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -193,6 +209,43 @@ if(opcion.equals("verDetalleCarta")){
 
 }
 			
+
+if(opcion.equals("verPdps")){
+	
+	List<PlanDeProduccionDTO> pdps = new ArrayList<PlanDeProduccionDTO>();
+	
+		try {
+			pdps = BusinessDelegate.getInstance().mostrarPDPs();
+		} catch (PlanDeProduccionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	request.setAttribute("pdps", pdps);
+	RequestDispatcher rd = request.getRequestDispatcher("/verPdP.jsp");
+	rd.forward(request, response);
+
+}
+
+if(opcion.equals("verDetallePdP")){
+	
+	String pdpelegido = request.getParameter("pdpelegido"); 
+	List<ItemPlanProduccionDTO> items = new ArrayList<ItemPlanProduccionDTO>();
+		try {
+			items = BusinessDelegate.getInstance().obtenerItemPDPByCodPDP(Integer.parseInt(pdpelegido));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (itemPlanDeProduccionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	request.setAttribute("items", items);
+	RequestDispatcher rd = request.getRequestDispatcher("/verDetallePdP.jsp");
+	rd.forward(request, response);
+
+}
+
 			if(opcion.equals("mesas")){
 				
 				List<MesaDTO> mesas = new ArrayList<MesaDTO>();
@@ -306,6 +359,36 @@ if(opcion.equals("verDetalleFactura")){
 
 }
 
+
+if(opcion.equals("cerrarCaja")){
+	 double valortotal = 0;
+	  Date hoy = new Date();
+	  double valorcomi = 0;
+	    Date desde = new Date("10/10/2019");
+	    Date hasta = new Date("10/10/2020");
+	
+		try {
+			valortotal = BusinessDelegate.getInstance().mostrarTotalFacturadoCaja(desde, hasta);
+		} catch (CajaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("valortotal", truncateDecimal(valortotal,2));
+		try {
+			valorcomi = BusinessDelegate.getInstance().mostrarComisionesAPagar(desde, hasta);
+		} catch (MozoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("valorcomi", truncateDecimal(valorcomi, 2));
+		request.setAttribute("valorfinal", truncateDecimal(valortotal - valorcomi,2));
+		RequestDispatcher rd = request.getRequestDispatcher("/cierreCaja.jsp");
+		rd.forward(request, response);
+	
+	
+
+}
 
 if(opcion.equals("verDetalleComanda")){
 	

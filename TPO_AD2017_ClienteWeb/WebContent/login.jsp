@@ -30,7 +30,8 @@
   <form action="/TPO_AD2017_ClienteWeb/Controller?opcion=login" method="post">
   
   <div class="form">
-  <img src="img/logo.jpg" alt="logo" width="240">
+  <center>
+  <img src="img/logo.jpg" alt="logo" width="240"></center>
   <br><br>
     <form class="login-form">
     

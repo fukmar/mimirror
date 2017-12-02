@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css">
-<%@include file="./menu.jsp"%> <br><br>
+
 <title>Cargar una Reserva</title>
 </head>
 
