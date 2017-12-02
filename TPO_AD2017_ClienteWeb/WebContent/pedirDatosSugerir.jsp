@@ -13,7 +13,7 @@
 <div class="form">
     
       <input type="text" placeholder="nombre" name="nombre"/>
-      <select name="mpago">
+      <select name=categoriaplato>
   <option value="contado">Bebida</option>
   <option value="debito">Carnes</option>
   <option value="credito">Pollo</option>
