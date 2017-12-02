@@ -84,6 +84,11 @@ public class BusinessDelegate
 	{
 		return remoteObject.buscarUserPorLogin(login);
 	}
+	
+	public void borrarUsuario(UsuariosDTO usuario) throws RemoteException, UsuarioException
+	{
+		remoteObject.borrarUsuario(usuario);
+	}
 	//---------------------------------------PLATOS------------------------------------------------------------
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
 	{

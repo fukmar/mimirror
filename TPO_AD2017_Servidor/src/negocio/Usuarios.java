@@ -103,7 +103,7 @@ public class Usuarios {
 	
 	public void delete() 
 	{
-		
+		UsuariosDAO.getInstance().delete(this);
 	}
 	
 }
