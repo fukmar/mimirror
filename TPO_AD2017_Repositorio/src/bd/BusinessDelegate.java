@@ -12,6 +12,7 @@ import dto.*;
 import enumns.AreaRest;
 import enumns.MedioDePago;
 import exceptions.CajaException;
+import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
 import exceptions.FacturaException;
@@ -272,7 +273,7 @@ public class BusinessDelegate
 		remoteObject.grabarMateriaPrima(materia);
 	}
 
-	//-----------------------------------ITEMS COMANDA------------------------------------------------------------------
+	//-----------------------------------ITEMS COMANDA-----------------------------------------------------------------------------
 
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException{
 		return remoteObject.getItemsPendientesxArea(area);
@@ -280,6 +281,12 @@ public class BusinessDelegate
 
 	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException{
 		return remoteObject.obtenerItemsComandaByCodComanda(parseInt);
+	}
+	
+	//-----------------------------------CARTA-----------------------------------------------------------------------------
+	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException, CartaException
+	{
+		return remoteObject.buscarCartaPorCod(nrocarta);
 	}
 	
 }

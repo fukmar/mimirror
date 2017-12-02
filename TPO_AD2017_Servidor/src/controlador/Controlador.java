@@ -11,6 +11,7 @@ import org.hibernate.classic.Session;
 import com.sun.corba.se.spi.protocol.CorbaMessageMediator;
 
 import dao.CajaDAO;
+import dao.CartaDAO;
 import dao.ComandaDAO;
 import dao.DepositoDAO;
 import dao.FacturaDAO;
@@ -23,6 +24,7 @@ import dao.SalonDAO;
 import dao.SectorDAO;
 import dao.UnidadDAO;
 import dao.UsuariosDAO;
+import dto.CartaDTO;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
@@ -44,6 +46,7 @@ import enumns.Estado;
 import enumns.MedioDePago;
 import exceptions.FacturaException;
 import negocio.Caja;
+import negocio.Carta;
 import negocio.Comanda;
 import negocio.Deposito;
 import negocio.Factura;
@@ -410,7 +413,22 @@ public class Controlador {
 		
 	}
 
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+    //CARTAS
+	//BUSCAR CARTA POR CODIGO
 
-
+	public CartaDTO listarCartaPorCod(int nrocarta) 
+	{
+		CartaDTO carta=new CartaDTO();
+		Carta cartaN=CartaDAO.getInstance().obtenerCartaPorCod(nrocarta);
+		carta=cartaN.toDTO();
+		return carta;
+	}
+	
+	public List<PlatoDTO> getPlatosporCodCarta(int nrocarta)
+	{
+		List<PlatoDTO> platos=new ArrayList<PlatoDTO>();
+		return platos;
+	}
 	
 }

@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 
+import dto.CartaDTO;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
@@ -21,6 +22,7 @@ import dto.UnidadDTO;
 import enumns.AreaRest;
 import enumns.MedioDePago;
 import exceptions.CajaException;
+import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
 import exceptions.FacturaException;
@@ -104,5 +106,8 @@ public interface manejoNegocio extends Remote
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException;
 
 	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException;
+	
+	//CARTA
+	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException,CartaException;
 	
 }
