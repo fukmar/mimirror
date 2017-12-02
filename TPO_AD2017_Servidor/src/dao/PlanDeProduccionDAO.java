@@ -120,7 +120,10 @@ public class PlanDeProduccionDAO {
 	}
 	public List<ItemPlanProduccion> getPlatosporCodCarta(int nroPlanDeProduccion)
 	{
+		PlanDeProduccion plan=PlanDeProduccionDAO.getInstance().getPlanByCod(nroPlanDeProduccion);
+		PlanDeProduccionDAO.getInstance().CalcularporcentajeAvance(plan);
 		Session session=sf.openSession();
+	
 		List<ItemPlanProduccion> listaM=new ArrayList<ItemPlanProduccion>();
 		List<ItemPlanProduccionEntity> resu=session.createQuery("from ItemPlanProduccionEntity i where i.plandeProduccion.codigoPDP=?").setInteger(0, nroPlanDeProduccion).list();
 		for(ItemPlanProduccionEntity i:resu)
