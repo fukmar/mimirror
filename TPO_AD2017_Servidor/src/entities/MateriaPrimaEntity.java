@@ -23,7 +23,7 @@ public class MateriaPrimaEntity
 	@ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="codDeposito")
     private DepositoEntity deposito;
-	
+	private Integer estadescontado=0;
 
 
 	public MateriaPrimaEntity( String descripcion, UnidadEntity unidadUso, Float cantidad,
@@ -33,6 +33,26 @@ public class MateriaPrimaEntity
 		this.unidadUso = unidadUso;
 		this.cantidad = cantidad;
 		this.deposito = deposito;
+	}
+
+
+	public Integer getCodMaterial() {
+		return codMaterial;
+	}
+
+
+	public void setCodMaterial(Integer codMaterial) {
+		this.codMaterial = codMaterial;
+	}
+
+
+	public Integer getEstadescontado() {
+		return estadescontado;
+	}
+
+
+	public void setEstadescontado(Integer estadescontado) {
+		this.estadescontado = estadescontado;
 	}
 
 
@@ -125,6 +145,7 @@ public class MateriaPrimaEntity
 		m.setDescripcion(descripcion);
 		m.setDeposito(deposito.toNegocio());
 		m.setUnidadUso(unidadUso.toNegocio());
+		m.setEstadescontado(estadescontado);
 		return m;
 	}
 

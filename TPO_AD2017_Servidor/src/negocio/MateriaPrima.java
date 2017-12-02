@@ -14,7 +14,8 @@ public class MateriaPrima
 	private Unidad unidadUso;
 	private Float cantidad;
 	private Deposito deposito;
-
+	private Integer estadescontado=0;
+	
 	public MateriaPrima(){}
 
 	public MateriaPrima(String descripcion, Unidad unidadUso, Float cantidad,Deposito deposito) {
@@ -25,6 +26,14 @@ public class MateriaPrima
 	this.setCantidad(cantidad);
 	this.deposito=deposito;
 }
+
+	public Integer getEstadescontado() {
+		return estadescontado;
+	}
+
+	public void setEstadescontado(Integer estadescontado) {
+		this.estadescontado = estadescontado;
+	}
 
 	public Integer getCodigo() {
 		return codigo;
@@ -78,6 +87,7 @@ public class MateriaPrima
 		System.out.println(materia.getDeposito());
 		materia.setDescripcion(descripcion);
 		materia.setUnidadUso(unidadUso.toEntity());
+		materia.setEstadescontado(estadescontado);
 		return materia;
 		
 	}
@@ -88,6 +98,7 @@ public class MateriaPrima
 		m.setDescripcion(descripcion);
 		m.setUnidadUso(unidadUso.toDTO());
 		m.setDeposito(deposito.toDTO());
+		m.setEstadescontado(estadescontado);
 		return m;
 	}
 	

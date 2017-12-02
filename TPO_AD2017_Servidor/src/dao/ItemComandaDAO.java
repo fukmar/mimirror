@@ -82,11 +82,14 @@ private static ItemComandaDAO instancia;
 			Session session = sf.openSession();
 			session.beginTransaction();
 			MateriaPrima mp=ing.getMateriaprima();
-			float cantidadenstock=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(ing.getMateriaprima());
-			float cantidadfinal=cantidadenstock-(ing.getCantidad()*i.getCantidad());
-			MateriaPrimaEntity mpentity =(MateriaPrimaEntity) session.get(MateriaPrimaEntity.class,mp.getCodigo()); 
-			mpentity.setCantidad(cantidadfinal);
-			session.merge(mpentity);
+			if (mp.getEstadescontado()==0)
+			{
+				float cantidadenstock=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(ing.getMateriaprima());
+				float cantidadfinal=cantidadenstock-(ing.getCantidad()*i.getCantidad());
+				MateriaPrimaEntity mpentity =(MateriaPrimaEntity) session.get(MateriaPrimaEntity.class,mp.getCodigo()); 
+				mpentity.setCantidad(cantidadfinal);
+				session.merge(mpentity);
+			}
 			session.getTransaction().commit();
 			session.close();
 			}

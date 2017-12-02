@@ -54,9 +54,15 @@
 			 submmenus = new HashMap<String,String>();
 		
 			 submmenus.put("Ver Facturas", "/TPO_AD2017_ClienteWeb/Controller?opcion=verFacturas");
-			 submmenus.put("Facturar Mesa", "/TPO_AD2017_ClienteWeb/Controller?opcion=facturarMesa");
-					
+			 submmenus.put("Facturar Mesa", "/TPO_AD2017_ClienteWeb/Controller?opcion=facturarMesa");				
 			 menus.put("Facturas", submmenus);
+			 
+			 
+			 submmenus = new HashMap<String,String>();
+				
+			 submmenus.put("Comisiones", "/TPO_AD2017_ClienteWeb/Controller?opcion=comisiones");
+			 submmenus.put("Cerrar", "/TPO_AD2017_ClienteWeb/Controller?opcion=cerrarCaja");				
+			 menus.put("Caja", submmenus);
             
 			 submmenus = new HashMap<String,String>();
 		
@@ -224,6 +230,13 @@
 					
 			 menus.put("Facturas", submmenus);
    					 
+			 
+			 submmenus = new HashMap<String,String>();
+				
+			 submmenus.put("Comisiones", "/TPO_AD2017_ClienteWeb/Controller?opcion=comisiones");
+			 submmenus.put("Cerrar", "/TPO_AD2017_ClienteWeb/Controller?opcion=cerrarCaja");				
+			 menus.put("Caja", submmenus);
+			 
    				        for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 
    				            String menuName = (String)itMenu.next();
    				            HashMap sub = (HashMap)menus.get(menuName);            
