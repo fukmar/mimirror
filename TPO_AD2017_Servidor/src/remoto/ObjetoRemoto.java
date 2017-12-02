@@ -180,7 +180,12 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarComisionesAPagar(FechaDesde, FechaHasta);
 	}
 
-	
+	@Override
+	public List<String[]> mostrarResultadoComisionesMozo() throws RemoteException, MozoException
+	{
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().ResultadoComisionesMozo();
+	}
 	
 	//----------------------------------MESAS---------------------------------------------------------------------------------
 	@Override
@@ -319,6 +324,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		// TODO Auto-generated method stub listarItemPlanPorCodPlan
 		return Controlador.getInstance().listarItemPlanPorCodPlan(nroPlanDeProduccion);
 	}
+
+	
 
 
 

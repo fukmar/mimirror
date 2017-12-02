@@ -64,6 +64,7 @@ public interface manejoNegocio extends Remote
 	public void grabarComanda(ComandaDTO comanda) throws RemoteException,ComandaException;
 	public List<ComandaDTO> mostrarComandas()throws RemoteException,ComandaException;
 	public ComandaDTO BuscarComandasPorCod(Integer codComanda)throws RemoteException,ComandaException;
+	
 	 
 	//ITEMCOMANDA
 	public void grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException,itemComandaException;
@@ -84,6 +85,7 @@ public interface manejoNegocio extends Remote
 	//MOZOS
 	public List<MozoDTO> mostrarMozos() throws RemoteException,MozoException; 
 	public double mostrarComisionesAPagar(Date FechaDesde, Date FechaHasta) throws RemoteException, MozoException;
+	public List<String[]> mostrarResultadoComisionesMozo ()throws RemoteException, MozoException;
 	
 	//MESAS 
 	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException;

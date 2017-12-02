@@ -315,6 +315,12 @@ public class Controlador {
 		return comisiones;
 	}
 	
+	
+	public List<String[]> ResultadoComisionesMozo ()
+	{
+		List<String[]> resuComisiones=MozoDAO.getInstancia().ResultadoComisiones();
+		return resuComisiones;
+	}
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
 	// MESAS
 	public List<MesaDTO> listarMesas() 
