@@ -23,8 +23,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 import enumns.*;
+import exceptions.UsuarioException;
 
 public class AltaUsuario extends JFrame {
 
@@ -135,12 +137,18 @@ public class AltaUsuario extends JFrame {
 			    case "Barra": areaDeRest = AreaRest.Barra;break;  
 			    }  
 				UsuariosDTO usuario= new UsuariosDTO(textLogin.getText(), textPassword.getText(), textNombre.getText(), textApellido.getText(), areaDeRest);
-				//BusinessDelegate.getInstance().grabarUsuario(usuario);
-				JOptionPane.showMessageDialog(null, "Usuario creado exitosamente", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
-				textApellido.setText("");
-				textNombre.setText("");
-				textLogin.setText("");
-				textPassword.setText("");
+				try {
+					BusinessDelegate.getInstance().guardarUsuarios(usuario);
+					JOptionPane.showMessageDialog(null, "Usuario creado exitosamente", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
+					textApellido.setText("");
+					textNombre.setText("");
+					textLogin.setText("");
+					textPassword.setText("");
+				} catch (RemoteException | UsuarioException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				//CODIGO PARA DAR DE ALTA USUARIO
 				
 			}
