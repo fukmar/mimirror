@@ -70,6 +70,7 @@ public interface manejoNegocio extends Remote
 	public List<FacturaDTO> mostrarFacturas()throws RemoteException,FacturaException;
 	public FacturaDTO mostrarFacturaByCod(int nroFact)throws RemoteException,FacturaException;
 	public void facturarMesa(int codMesa, MedioDePago formadepago) throws RemoteException, FacturaException;
+	
 	//ITEMFACTURA
 	List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws RemoteException, FacturaException;
 	
@@ -79,6 +80,7 @@ public interface manejoNegocio extends Remote
 	
 	//MOZOS
 	public List<MozoDTO> mostrarMozos() throws RemoteException,MozoException; 
+	public double mostrarComisionesAPagar(Date FechaDesde, Date FechaHasta) throws RemoteException, MozoException;
 	
 	//MESAS 
 	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException;

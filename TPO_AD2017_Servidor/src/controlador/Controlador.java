@@ -281,6 +281,17 @@ public class Controlador {
 		
 		return mozos;
 	}
+	
+	
+	//COMISIONES MOZO
+	
+	public double listarComisionesAPagar (Date FechaDesde,Date FechaHasta) 
+	{
+		double comisiones=0;
+		comisiones=MozoDAO.getInstancia().getComisionesapagar(FechaDesde, FechaHasta);
+		return comisiones;
+	}
+	
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
 	// MESAS
 	public List<MesaDTO> listarMesas() 
@@ -477,5 +488,8 @@ public class Controlador {
 		}
 		return items;
 	}
+	
+	
+	
 	
 }

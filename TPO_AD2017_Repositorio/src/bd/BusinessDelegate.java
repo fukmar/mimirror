@@ -204,6 +204,11 @@ public class BusinessDelegate
 		return remoteObject.mostrarMozos();
 	}
 	
+	public double mostrarComisionesAPagar(Date FechaDesde, Date FechaHasta) throws RemoteException, MozoException
+	{
+		return remoteObject.mostrarComisionesAPagar(FechaDesde, FechaHasta);
+	}
+	
 	//-----------------------------------MESAS-------------------------------------------------------------------------
 	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException
 	{
@@ -312,4 +317,7 @@ public class BusinessDelegate
 	{
 		return remoteObject.obtenterItemPDPByCodPDP(nroPlanDeProduccion);
 	}
+	
+	
+	
 }

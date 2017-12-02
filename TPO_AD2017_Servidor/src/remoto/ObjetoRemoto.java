@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import controlador.Controlador;
+import dao.MozoDAO;
 import dto.CartaDTO;
 import dto.ComandaDTO;
 import dto.DepositoDTO;
@@ -159,6 +160,14 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarMozos();
 	}
 
+	@Override
+	public double mostrarComisionesAPagar(Date FechaDesde, Date FechaHasta) throws RemoteException, MozoException {
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarComisionesAPagar(FechaDesde, FechaHasta);
+	}
+
+	
+	
 	//----------------------------------MESAS---------------------------------------------------------------------------------
 	@Override
 	public List<MesaDTO> mostrarMesas() throws RemoteException, MesaException {
@@ -296,6 +305,10 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		// TODO Auto-generated method stub listarItemPlanPorCodPlan
 		return Controlador.getInstance().listarItemPlanPorCodPlan(nroPlanDeProduccion);
 	}
+
+	
+
+	
 
 	
 
