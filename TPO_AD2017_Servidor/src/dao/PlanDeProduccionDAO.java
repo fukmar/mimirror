@@ -57,7 +57,7 @@ public class PlanDeProduccionDAO {
 	
 	
 	public PlanDeProduccion getPlanByCod(int codPdp) {
-		
+		 
 		Session s=sf.openSession();
 		s.beginTransaction();
 		PlanDeProduccionEntity plan=(PlanDeProduccionEntity) s.createQuery("FROM PlanDeProduccionEntity WHERE codigoPDP=?").setInteger(0, codPdp).uniqueResult();
