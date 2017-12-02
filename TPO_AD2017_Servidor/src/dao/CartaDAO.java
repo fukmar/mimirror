@@ -8,9 +8,11 @@ import org.hibernate.SessionFactory;
 
 import entities.CartaEntity;
 import entities.MesaEntity;
+import entities.PlatoEntity;
 import hibernate.HibernateUtil;
 import negocio.Carta;
 import negocio.Mesa;
+import negocio.Plato;
 
 public class CartaDAO {
 
@@ -52,4 +54,17 @@ public class CartaDAO {
 			session.close();
 			return listaM;
 		}  
+		public List<Plato> getPlatosporCodCarta(int nrocarta)
+		{
+			Session session=sf.openSession();
+			List<Plato> listaM=new ArrayList<Plato>();
+			List<PlatoEntity> resu=session.createQuery("from PlatoEntity p where p.carta.codigoCarta=?").list();
+			for(PlatoEntity p:resu)
+			{
+				listaM.add(p.toNegocio());
+			}
+			session.close();
+			return listaM;
+		}
+		
 }
