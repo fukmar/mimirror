@@ -109,5 +109,6 @@ public interface manejoNegocio extends Remote
 	
 	//CARTA
 	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException,CartaException;
+	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta)throws RemoteException,CartaException;
 	
 }

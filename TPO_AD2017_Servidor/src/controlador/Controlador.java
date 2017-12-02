@@ -425,9 +425,14 @@ public class Controlador {
 		return carta;
 	}
 	
-	public List<PlatoDTO> getPlatosporCodCarta(int nrocarta)
+	public List<PlatoDTO> listarPlatosporCodCarta(int nrocarta)
 	{
 		List<PlatoDTO> platos=new ArrayList<PlatoDTO>();
+		List<Plato> platosN=CartaDAO.getInstance().getPlatosporCodCarta(nrocarta);
+		for(Plato p:platosN)
+		{
+			platos.add(p.toDTO());
+		}
 		return platos;
 	}
 	

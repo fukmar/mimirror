@@ -289,4 +289,9 @@ public class BusinessDelegate
 		return remoteObject.buscarCartaPorCod(nrocarta);
 	}
 	
+	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta) throws RemoteException, CartaException 
+	{
+		return remoteObject.obtenerPlatosByCodCarta(nrocarta);
+	}
+	
 }
