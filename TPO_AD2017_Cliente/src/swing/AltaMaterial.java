@@ -72,7 +72,7 @@ public class AltaMaterial extends JFrame {
 		setContentPane(contentPane);
 		
 		btnCrearMaterial = new JButton("Crear Material");
-		btnCrearMaterial.setBounds(168, 311, 152, 48);
+		btnCrearMaterial.setBounds(168, 375, 172, 55);
 		btnCrearMaterial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -96,32 +96,32 @@ public class AltaMaterial extends JFrame {
 		
 		contentPane.setLayout(null);
 		
-		JLabel lblDescripcion = new JLabel("Descripcion");
-		lblDescripcion.setBounds(45, 48, 81, 20);
-		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		JLabel lblDescripcion = new JLabel("Descripcion:");
+		lblDescripcion.setBounds(23, 52, 109, 28);
+		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblDescripcion);
 		
 		textFieldDescripcion = new JTextField();
-		textFieldDescripcion.setBounds(168, 45, 592, 26);
-		textFieldDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textFieldDescripcion.setBounds(168, 45, 592, 35);
+		textFieldDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textFieldDescripcion.setToolTipText("");
 		contentPane.add(textFieldDescripcion);
 		textFieldDescripcion.setColumns(10);
 		
-		lblCantidad = new JLabel("Cantidad");
-		lblCantidad.setBounds(54, 114, 62, 20);
-		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCantidad = new JLabel("Cantidad:");
+		lblCantidad.setBounds(23, 142, 86, 20);
+		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblCantidad);
 		
 		textFieldCantidad = new JTextField();
-		textFieldCantidad.setBounds(168, 111, 146, 26);
-		textFieldCantidad.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textFieldCantidad.setBounds(168, 136, 152, 35);
+		textFieldCantidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(textFieldCantidad);
 		textFieldCantidad.setColumns(10);
 		
 		comboBoxUnidades = new JComboBox();
-		comboBoxUnidades.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		comboBoxUnidades.setBounds(325, 114, 157, 23);
+		comboBoxUnidades.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		comboBoxUnidades.setBounds(351, 138, 172, 33);
 		try {
 			List<UnidadDTO> unidades= BusinessDelegate.getInstance().mostrarUnidades();
 			//System.out.println("");
@@ -134,11 +134,11 @@ public class AltaMaterial extends JFrame {
 		}
 		contentPane.add(comboBoxUnidades);
 		
-		lblDeposito = new JLabel("Deposito");
-		lblDeposito.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblDeposito.setBounds(55, 194, 81, 16);
+		lblDeposito = new JLabel("Deposito:");
+		lblDeposito.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblDeposito.setBounds(23, 230, 93, 24);
 		contentPane.add(lblDeposito);
-		btnCrearMaterial.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCrearMaterial.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		contentPane.add(btnCrearMaterial);
 		
 		btnVolver = new JButton("Volver");
@@ -152,12 +152,13 @@ public class AltaMaterial extends JFrame {
 				
 			}
 		});
-		btnVolver.setBounds(363, 311, 119, 48);
-		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnVolver.setBounds(424, 375, 139, 55);
+		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		contentPane.add(btnVolver);
 		
 		comboBoxDepositos = new JComboBox();
-		comboBoxDepositos.setBounds(168, 192, 183, 22);
+		comboBoxDepositos.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		comboBoxDepositos.setBounds(168, 226, 240, 33);
 		try {
 			List<DepositoDTO> unidades= BusinessDelegate.getInstance().mostrarDepositos();
 			//System.out.println("");

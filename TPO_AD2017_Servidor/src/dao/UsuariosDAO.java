@@ -107,7 +107,6 @@ public class UsuariosDAO
 	 			return false;
 		}
 	}
-	
 	private AreaRest arearestaurantfromString(String area)
 	{
 		return AreaRest.valueOf(area);

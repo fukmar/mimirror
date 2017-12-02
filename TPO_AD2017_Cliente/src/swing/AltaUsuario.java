@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import bd.BusinessDelegate;
 import dto.UsuariosDTO;
 
 import javax.swing.JLabel;
@@ -129,7 +130,12 @@ public class AltaUsuario extends JFrame {
 			    case "Barra": areaDeRest = AreaRest.Barra;break;  
 			    }  
 				UsuariosDTO usuario= new UsuariosDTO(textLogin.getText(), textPassword.getText(), textNombre.getText(), textApellido.getText(), areaDeRest);
+				//BusinessDelegate.getInstance().grabarUsuario(usuario);
 				JOptionPane.showMessageDialog(null, "Usuario creado exitosamente", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
+				textApellido.setText("");
+				textNombre.setText("");
+				textLogin.setText("");
+				textPassword.setText("");
 				//CODIGO PARA DAR DE ALTA USUARIO
 				
 			}

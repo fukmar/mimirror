@@ -19,6 +19,7 @@ public class BajaSemiElaborado extends JFrame {
 			public void run() {
 				try {
 					BajaSemiElaborado frame = new BajaSemiElaborado();
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

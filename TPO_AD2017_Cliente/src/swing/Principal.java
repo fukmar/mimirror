@@ -63,7 +63,7 @@ public class Principal extends JFrame {
 		setAlwaysOnTop(true);
 		setBackground(SystemColor.activeCaption);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 678, 698);
+		setBounds(100, 100, 862, 747);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
