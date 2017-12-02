@@ -316,9 +316,9 @@ public class Controlador {
 	}
 	
 	
-	public List<String[]> ResultadoComisionesMozo ()
+	public List<String[]> ResultadoComisionesMozo (Date FechaDesde,Date FechaHasta)
 	{
-		List<String[]> resuComisiones=MozoDAO.getInstancia().ResultadoComisiones();
+		List<String[]> resuComisiones=MozoDAO.getInstancia().ResultadoComisiones(FechaDesde,FechaHasta);
 		return resuComisiones;
 	}
 	//--------------------------------------------------------------------------------------------------------------------------------------------------

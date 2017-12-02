@@ -85,7 +85,7 @@ public interface manejoNegocio extends Remote
 	//MOZOS
 	public List<MozoDTO> mostrarMozos() throws RemoteException,MozoException; 
 	public double mostrarComisionesAPagar(Date FechaDesde, Date FechaHasta) throws RemoteException, MozoException;
-	public List<String[]> mostrarResultadoComisionesMozo ()throws RemoteException, MozoException;
+	public List<String[]> mostrarResultadoComisionesMozo (Date FechaDesde,Date FechaHasta)throws RemoteException, MozoException;
 	
 	//MESAS 
 	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException;

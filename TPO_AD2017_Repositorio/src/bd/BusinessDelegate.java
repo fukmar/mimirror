@@ -219,9 +219,9 @@ public class BusinessDelegate
 		return remoteObject.mostrarComisionesAPagar(FechaDesde, FechaHasta);
 	}
 	
-	public List<String[]> mostrarResultadoComisionesMozo() throws RemoteException, MozoException
+	public List<String[]> mostrarResultadoComisionesMozo(Date FechaDesde,Date FechaHasta) throws RemoteException, MozoException
 	{
-		return remoteObject.mostrarResultadoComisionesMozo();
+		return remoteObject.mostrarResultadoComisionesMozo(FechaDesde,FechaHasta);
 	}
 	
 	//-----------------------------------MESAS-------------------------------------------------------------------------
