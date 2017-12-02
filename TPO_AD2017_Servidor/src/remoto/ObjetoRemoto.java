@@ -63,6 +63,19 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 			return Controlador.getInstance().autenticarPassword(login, password);
 		}
 		
+		
+		@Override
+		public void guardarUsuarios(UsuariosDTO usuario) throws RemoteException, UsuarioException 
+		{
+			Controlador.getInstance().grabarUsuarios(usuario);
+			
+		}
+
+		@Override
+		public UsuariosDTO buscarUserPorLogin(String login) throws RemoteException, UsuarioException {
+			// TODO Auto-generated method stub
+			return Controlador.getInstance().listarUserPorLogin(login);
+		}
 
 	//----------------------------PLATOS------------------------------------------------------------------------------
 	@Override
@@ -307,14 +320,8 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarItemPlanPorCodPlan(nroPlanDeProduccion);
 	}
 
-	@Override
-	public void guardarUsuarios(UsuariosDTO usuario) throws RemoteException, UsuarioException 
-	{
-		Controlador.getInstance().grabarUsuarios(usuario);
-		
-	}
 
-	
+
 
 	
 

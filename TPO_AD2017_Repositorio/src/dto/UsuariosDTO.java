@@ -1,5 +1,7 @@
 package dto;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,12 @@ import javax.persistence.Table;
 
 import enumns.AreaRest;
 
-public class UsuariosDTO {
+public class UsuariosDTO implements Serializable
+{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private String login;
 	private String password;

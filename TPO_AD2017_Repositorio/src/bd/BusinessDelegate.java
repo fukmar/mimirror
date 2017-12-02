@@ -78,6 +78,12 @@ public class BusinessDelegate
 	{
 		remoteObject.guardarUsuarios(usuario);
 	}
+	
+	
+	public UsuariosDTO buscarUserPorLogin(String login) throws RemoteException, UsuarioException
+	{
+		return remoteObject.buscarUserPorLogin(login);
+	}
 	//---------------------------------------PLATOS------------------------------------------------------------
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
 	{

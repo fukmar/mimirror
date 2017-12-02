@@ -53,6 +53,7 @@ public interface manejoNegocio extends Remote
 	//USUARIO
 	public boolean verificarPassword(String login, String password) throws RemoteException,UsuarioException;
 	public void guardarUsuarios(UsuariosDTO usuario)throws RemoteException,UsuarioException;
+	public UsuariosDTO buscarUserPorLogin(String login) throws RemoteException,UsuarioException;
 	
 	//PLATO
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException;

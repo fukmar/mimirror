@@ -105,6 +105,15 @@ public class Controlador {
 		new Usuarios(usuario.getLogin(),usuario.getPassword(),usuario.getNombre(),usuario.getApellido(),usuario.getArea()).save();
 	}
 	
+	
+	public UsuariosDTO listarUserPorLogin(String login) 
+	{
+		UsuariosDTO usuario=new UsuariosDTO();
+		Usuarios usuarioN=UsuariosDAO.getInstance().getUserPorLogin(login);
+		usuario=usuarioN.toDTO();
+		return usuario;
+	}
+	
 	//----------------------------------------------------------------------------------------------------------------------------------------
 	//PLATOS
 	public List<PlatoDTO> listarPlatos()
