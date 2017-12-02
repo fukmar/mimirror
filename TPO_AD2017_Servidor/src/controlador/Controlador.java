@@ -497,7 +497,7 @@ public class Controlador {
 	public List<PlanDeProduccionDTO> listarPlanesProduccion()
 	{
 		List<PlanDeProduccionDTO> planes=new ArrayList<PlanDeProduccionDTO>();
-		List<PlanDeProduccion> planesN=new ArrayList<PlanDeProduccion>();
+		List<PlanDeProduccion> planesN=PlanDeProduccionDAO.getInstance().getPlanesProduccion();
 		for(PlanDeProduccion p: planesN) 
 		{
 			planes.add(p.toDTO());

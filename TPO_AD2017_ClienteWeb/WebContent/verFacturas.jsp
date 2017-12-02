@@ -1,6 +1,7 @@
 <%@page import="interfazRemota.*"%>
 <%@page import="bd.*"%>
 <%@page import="dto.*"%>
+<%@page import="java.math.BigDecimal"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -41,12 +42,22 @@ List<FacturaDTO> facturas = (List<FacturaDTO>)request.getAttribute("facturas");
     </tr>
   </thead>
   <tbody>
+  <%!
+  private static BigDecimal truncateDecimal(double x,int numberofDecimals)
+	{
+	    if ( x > 0) {
+	        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_FLOOR);
+	    } else {
+	        return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING);
+	    }
+	}
+  %>
    <% for(FacturaDTO factura :  facturas) {%>
 	
     <tr>
       <td scope="row" data-label="Código"><%= factura.getCodFactura() %></td>
       <td data-label="Fecha"><%= factura.getFecha() %></td>
-      <td data-label="Importe"><%= factura.getImporte() %></td>
+      <td data-label="Importe"><%= truncateDecimal(factura.getImporte(),2) %></td>
       <td data-label="Medio de Pago"><%= factura.getMedioPago().toString() %></td>
    	<td data-label="Mesa"><%= factura.getMesa().getCodMesa() %></td>
       <td data-label="Medio de Pago"><%= factura.getMesa().getMozo().getApellido() %></td>

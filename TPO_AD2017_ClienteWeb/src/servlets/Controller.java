@@ -210,7 +210,7 @@ if(opcion.equals("verDetalleCarta")){
 }
 			
 
-if(opcion.equals("verPdps")){
+if(opcion.equals("verPdPs")){
 	
 	List<PlanDeProduccionDTO> pdps = new ArrayList<PlanDeProduccionDTO>();
 	
@@ -359,16 +359,35 @@ if(opcion.equals("verDetalleFactura")){
 
 }
 
+if(opcion.equals("comisiones")){
+	
+	 Date hoy = new Date();
+	    Date fechadesde = new Date("10/10/2019");
+	    Date fechahasta = new Date("10/10/2020");
+	    
+	ArrayList<String[]> comisiones = null;
+	try {
+		comisiones = (ArrayList<String[]>) BusinessDelegate.getInstance().mostrarResultadoComisionesMozo(fechadesde,fechahasta);
+	} catch (MozoException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+		request.setAttribute("comisiones", comisiones);
+		RequestDispatcher rd = request.getRequestDispatcher("/verComisiones.jsp");
+		rd.forward(request, response);
+	
+}
+
 
 if(opcion.equals("cerrarCaja")){
 	 double valortotal = 0;
 	  Date hoy = new Date();
 	  double valorcomi = 0;
-	    Date desde = new Date("10/10/2019");
-	    Date hasta = new Date("10/10/2020");
+	   
 	
 		try {
-			valortotal = BusinessDelegate.getInstance().mostrarTotalFacturadoCaja(desde, hasta);
+			valortotal = BusinessDelegate.getInstance().mostrarTotalFacturadoCaja(hoy, hoy);
 		} catch (CajaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -376,7 +395,7 @@ if(opcion.equals("cerrarCaja")){
 		
 		request.setAttribute("valortotal", truncateDecimal(valortotal,2));
 		try {
-			valorcomi = BusinessDelegate.getInstance().mostrarComisionesAPagar(desde, hasta);
+			valorcomi = BusinessDelegate.getInstance().mostrarComisionesAPagar(hoy, hoy);
 		} catch (MozoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -386,8 +405,6 @@ if(opcion.equals("cerrarCaja")){
 		RequestDispatcher rd = request.getRequestDispatcher("/cierreCaja.jsp");
 		rd.forward(request, response);
 	
-	
-
 }
 
 if(opcion.equals("verDetalleComanda")){

@@ -22,7 +22,7 @@ if (request.getAttribute("pdps") ==null){
 RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verPdPs");
 rd.forward(request, response);
 }
-List<PlanDeProduccionDTO> pdps = (List<PlanDeProduccionDTO>)request.getAttribute("planes");
+List<PlanDeProduccionDTO> pdps = (List<PlanDeProduccionDTO>)request.getAttribute("pdps");
 %>
 
 

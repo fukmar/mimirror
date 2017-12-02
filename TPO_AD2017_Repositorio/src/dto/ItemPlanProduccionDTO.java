@@ -1,17 +1,19 @@
 package dto;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 
 
 
-public class ItemPlanProduccionDTO {
+public class ItemPlanProduccionDTO implements Serializable {
 
 	private Integer itemplanid;
-	private SemiElaboradoDTO semielaborado;
+	//private SemiElaboradoDTO semielaborado;
 	private Integer cantidad;
 	private double porcientoavance=0;
-	private PlanDeProduccionDTO plandeProduccion;
+	//private PlanDeProduccionDTO plandeProduccion;
 	
 
 	public ItemPlanProduccionDTO() {
@@ -19,13 +21,13 @@ public class ItemPlanProduccionDTO {
 	}
 
 
-	public ItemPlanProduccionDTO(SemiElaboradoDTO semielaborado, Integer cantidad, Integer porcientoavance,
-			PlanDeProduccionDTO plandeProduccion) {
+	public ItemPlanProduccionDTO(/*SemiElaboradoDTO semielaborado, */Integer cantidad, Integer porcientoavance/*,
+			PlanDeProduccionDTO plandeProduccion*/) {
 		super();
-		this.semielaborado= semielaborado;
+		//this.semielaborado= semielaborado;
 		this.cantidad = cantidad;
 		this.porcientoavance = porcientoavance;
-		this.plandeProduccion = plandeProduccion;
+		//this.plandeProduccion = plandeProduccion;
 	}
 
 
@@ -39,7 +41,7 @@ public class ItemPlanProduccionDTO {
 	}
 
 
-
+/*
 	public SemiElaboradoDTO getSemielaborado() {
 		return semielaborado;
 	}
@@ -49,7 +51,7 @@ public class ItemPlanProduccionDTO {
 		this.semielaborado = semielaborado;
 	}
 
-
+*/
 	public Integer getCantidad() {
 		return cantidad;
 	}
@@ -69,7 +71,7 @@ public class ItemPlanProduccionDTO {
 		this.porcientoavance = porcientoavance;
 	}
 
-
+/*
 	public PlanDeProduccionDTO getPlandeProduccion() {
 		return plandeProduccion;
 	}
@@ -78,5 +80,5 @@ public class ItemPlanProduccionDTO {
 	public void setPlandeProduccion(PlanDeProduccionDTO plandeProduccion) {
 		this.plandeProduccion = plandeProduccion;
 	}
-	
+*/	
 }
