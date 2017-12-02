@@ -47,6 +47,7 @@ import exceptions.itemPlanDeProduccionException;
 
 
 
+
 public interface manejoNegocio extends Remote 
 {
 
@@ -129,6 +130,7 @@ public interface manejoNegocio extends Remote
 	
 	//PLAN DE PRODUCCION
 	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException,PlanDeProduccionException;
+	public PlanDeProduccionDTO obtenerPDPByCodPDP(int codPdp)throws RemoteException,PlanDeProduccionException;
 	
 	//ITEM PLAN DE PRODUCCION
 	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException;
