@@ -508,7 +508,8 @@ public class Controlador {
 	public PlanDeProduccionDTO listarPlanByCod(int codPdp) 
 	{
 		PlanDeProduccionDTO pdp=new PlanDeProduccionDTO();
-		PlanDeProduccion pdpM=PlanDeProduccionDAO.getInstance().getPlanByCod(codPdp);
+		PlanDeProduccion pdpN=PlanDeProduccionDAO.getInstance().getPlanByCod(codPdp);
+		pdp=pdpN.toDTO();
 		return pdp;
 		
 	}
