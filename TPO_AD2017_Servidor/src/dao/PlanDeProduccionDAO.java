@@ -1,6 +1,7 @@
 package dao;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,11 +14,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.AdministracionEntity;
+import entities.MesaEntity;
 import entities.PlanDeProduccionEntity;
 import enumns.EstadoRemito;
 import hibernate.HibernateUtil;
 import negocio.Administracion;
 import negocio.ItemPlanProduccion;
+import negocio.Mesa;
 import negocio.PlanDeProduccion;
 
 public class PlanDeProduccionDAO {
@@ -38,15 +41,28 @@ public class PlanDeProduccionDAO {
 	private PlanDeProduccionDAO(){
 		sf = HibernateUtil.getSessionFactory();
 	}
-
 	
-	public PlanDeProduccionEntity getPlanByCod(int codPdp) {
-		
+	public List<PlanDeProduccion> getPlanesProduccion()
+	{
+		Session session=sf.openSession();
+		List<PlanDeProduccion> listaM=new ArrayList<PlanDeProduccion>();
+		List<PlanDeProduccionEntity> resu=session.createQuery("from PlanDeProduccionEntity p").list();
+		for(PlanDeProduccionEntity p:resu)
+		{
+			listaM.add(p.toNegocio());
+		}
+		session.close();
+		return listaM;
+	}  
+	
+	
+	public PlanDeProduccion getPlanByCod(int codPdp) {
+		 
 		Session s=sf.openSession();
 		s.beginTransaction();
 		PlanDeProduccionEntity plan=(PlanDeProduccionEntity) s.createQuery("FROM PlanDeProduccionEntity WHERE codigoPDP=?").setInteger(0, codPdp).uniqueResult();
 		s.getTransaction().commit();
-		return plan;
+		return plan.toNegocio();
 	}
 	
 	public PlanDeProduccion obtenerPlanFecha(Date Fecha) {
