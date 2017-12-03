@@ -49,7 +49,7 @@ public class RemitoDAO {
 	session.save(rem);
 	session.getTransaction().commit();
 	session.close();
-	}
+	} 
 	
 	public List<ItemRemito> getItemsRemitos(int codigoRemito)
 	{
