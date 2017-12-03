@@ -112,7 +112,7 @@ public class Controller extends HttpServlet {
 					Boolean ok = false;
 					try {
 						ok = BusinessDelegate.getInstance().verificarPassword(usuario, clave); 
-						ok = true;
+						
 						
 					} catch (UsuarioException e) {
 						// TODO Auto-generated catch block
@@ -520,7 +520,15 @@ if(opcion.equals("verDetalleComanda")){
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	items = BusinessDelegate.getInstance().obtenerItemsComandaByCodComanda(Integer.parseInt(comandaelegida));
+	try {
+		items = BusinessDelegate.getInstance().obtenerItemsComandaByCodComanda(Integer.parseInt(comandaelegida));
+	} catch (NumberFormatException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (itemComandaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	request.setAttribute("items", items);
 	request.setAttribute("comanda", comanda);
 	
@@ -864,8 +872,13 @@ if(opcion.equals("verMozos")){
 		}else if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("cocina")) {
 			
 			List<ItemComandaDTO> items = new ArrayList<ItemComandaDTO>();
-				//FALTA LA CAPTURA DE EXCEPCION!
-				items = BusinessDelegate.getInstance().getItemsPendientesxArea(AreaRest.Cocina);
+		
+				try {
+					items = BusinessDelegate.getInstance().getItemsPendientesxArea(AreaRest.Cocina);
+				} catch (itemComandaException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				request.setAttribute("items", items);
 				RequestDispatcher rd = request.getRequestDispatcher("/verMisItems.jsp");
 				rd.forward(request, response);
@@ -874,8 +887,13 @@ if(opcion.equals("verMozos")){
 		}else if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("bar")) {
 			
 			List<ItemComandaDTO> items = new ArrayList<ItemComandaDTO>();
-				//FALTA LA CAPTURA DE EXCEPCION!
-				items = BusinessDelegate.getInstance().getItemsPendientesxArea(AreaRest.Barra);
+			
+				try {
+					items = BusinessDelegate.getInstance().getItemsPendientesxArea(AreaRest.Barra);
+				} catch (itemComandaException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				request.setAttribute("items", items);
 				RequestDispatcher rd = request.getRequestDispatcher("/verMisItems.jsp");
 				rd.forward(request, response);
