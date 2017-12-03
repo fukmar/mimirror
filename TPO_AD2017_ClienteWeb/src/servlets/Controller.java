@@ -38,11 +38,13 @@ import dto.PlatoDTO;
 import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SectorDTO;
+import dto.SolicitudIndividualDTO;
 import enumns.AreaRest;
 import enumns.CategoriaPlato;
 import enumns.Estado;
 import enumns.EstadoItemComanda;
 import enumns.EstadoRemito;
+import enumns.EstadoSolicitud;
 import enumns.MedioDePago;
 import exceptions.CajaException;
 import exceptions.CartaException;
@@ -614,6 +616,51 @@ if(opcion.equals("verMozos")){
 			rd.forward(request, response);
 		}
 		
+		
+		
+		if(opcion.equals("solicitudIndividual")){
+			List<MateriaPrimaDTO> mps = null;
+			try {
+				mps = BusinessDelegate.getInstance().listarStock();
+			} catch (MateriaPrima e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("mps", mps);
+			RequestDispatcher rd = request.getRequestDispatcher("/solicitudDiaria.jsp");
+			rd.forward(request, response);
+			
+		}
+		
+		if(opcion.equals("agregarSolicitudIndividual")){
+			String cantidad = request.getParameter("cantidad");
+			String responsable = request.getParameter("responsable");
+			String motivo = request.getParameter("motivo");
+			String codMP = request.getParameter("codMP");
+			
+				MateriaPrimaDTO mp = null;
+			try {
+				 mp = BusinessDelegate.getInstance().getMateriaPrimaByCod(Integer.parseInt(codMP));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (MateriaPrima e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			SolicitudIndividualDTO si = null;
+			if (session.getAttribute("usuario").equals("admin"))
+				si = new SolicitudIndividualDTO(AreaRest.Administracion,responsable,motivo,mp,Float.parseFloat(cantidad),EstadoSolicitud.Recibida);
+			if (session.getAttribute("usuario").equals("bar"))
+				si = new SolicitudIndividualDTO(AreaRest.Barra,responsable,motivo,mp,Float.parseFloat(cantidad),EstadoSolicitud.Recibida);
+			if (session.getAttribute("usuario").equals("cocina"))
+				si = new SolicitudIndividualDTO(AreaRest.Cocina,responsable,motivo,mp,Float.parseFloat(cantidad),EstadoSolicitud.Recibida);
+				
+			BusinessDelegate.getInstance().grabarSolicitudIndidual(si);
+			
+			}
+			
 		
 		if(opcion.equals("cargarRemito")){
 			String codigoProveedor = request.getParameter("codigoProveedor");
