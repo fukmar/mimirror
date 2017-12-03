@@ -42,7 +42,7 @@ public class SectorDAO
 	{
 		Sector sector=new Sector();
 		Session session=sf.openSession();
-		SectorEntity resu=(SectorEntity) session.createQuery("from SectorEntity s where s.codSector=?").setInteger(0, codSector).uniqueResult();
+		SectorEntity resu=(SectorEntity) session.createQuery("from SectorEntity s where s.codSector=?").setInteger(0, codSector).uniqueResult();//cambiado por Franco
 		session.close();
 		sector=resu.toNegocio();
 		return sector;
