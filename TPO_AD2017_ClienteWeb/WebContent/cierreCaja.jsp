@@ -31,7 +31,8 @@ rd.forward(request, response);
       <h1>La Caja Facturó $<%=request.getAttribute("valortotal")%></h1>
       <h1>Para Mozos $<%=request.getAttribute("valorcomi")%></h1>
       <h1>Quedan $<%=request.getAttribute("valorfinal")%></h1><br>
-  
+  	<center>
+  <img src="img/cash.png" alt="cash"></center>
  </center>
   
 	 <a href="index.jsp" target="_self" class="link-btn">volver</a> 

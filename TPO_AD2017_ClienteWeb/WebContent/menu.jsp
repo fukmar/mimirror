@@ -95,7 +95,14 @@
 			 submmenus.put("Solicitud Diaria", "/TPO_AD2017_ClienteWeb/Controller?opcion=solicitudDiaria");
 			 submmenus.put("Solicitud Individual", "/TPO_AD2017_ClienteWeb/Controller?opcion=solicitudIndividual");
 			 
-			 menus.put("Insumos", submmenus);   
+			 menus.put("Insumos", submmenus); 
+			 
+			 submmenus = new HashMap<String,String>();		
+				
+				submmenus.put("Ver Remitos", "/TPO_AD2017_ClienteWeb/Controller?opcion=verRemitos");
+					 submmenus.put("Cargar Remito", "/TPO_AD2017_ClienteWeb/cargarRemito.jsp");
+						
+					 menus.put("Remitos", submmenus);
 			
 			 
 		        for( Iterator itMenu = menus.keySet().iterator(); itMenu.hasNext();) { 

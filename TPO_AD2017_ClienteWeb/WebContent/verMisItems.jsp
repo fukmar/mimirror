@@ -34,7 +34,7 @@ List<ItemComandaDTO> items = (List<ItemComandaDTO>)request.getAttribute("items")
     <tr>
       <th scope="col">Código</th>
       <th scope="col">Debo Preparar</th>
-	 <th scope="col">Está Listo!</th>
+	 <th scope="col">Listo?</th>
       
     </tr>
   </thead>
@@ -44,7 +44,7 @@ List<ItemComandaDTO> items = (List<ItemComandaDTO>)request.getAttribute("items")
     <tr>
       <td scope="row" data-label="Código"><%= item.getCoditemComanda() %></td>
       <td data-label="Debo Preparar"><%= item.getPlato().getNombre() %></td>
-     <td data-label="Listo"><input type="radio" name="listo" value=<%= item.getCoditemComanda() %>>
+     <td data-label="Listo?"><input type="radio" name="itemcomandaelegida" value=<%= item.getCoditemComanda() %>>
  
         </tr>
      <%} %>
@@ -55,7 +55,7 @@ List<ItemComandaDTO> items = (List<ItemComandaDTO>)request.getAttribute("items")
 
 <center>
   <br>
-<button name="opcion" value="listo">Listo</button>
+<button name="opcion" value="listoitemcomanda">Listo!</button>
 
 	</center>	
 

@@ -14,6 +14,8 @@
 
   <center>
       <h1>Su mesa es la <%=request.getParameter("nuevamesa")%></h1><br>
+      <center>
+  <img src="img/salchi.png" alt="salchi" ></center>
       <h1>A sentarse que hay hambre!!!!</h1>
   
  </center>

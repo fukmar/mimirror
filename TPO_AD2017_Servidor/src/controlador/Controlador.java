@@ -58,6 +58,7 @@ import enumns.Estado;
 import enumns.EstadoRemito;
 import enumns.MedioDePago;
 import exceptions.FacturaException;
+import exceptions.RemitoException;
 import negocio.Caja;
 import negocio.Carta;
 import negocio.Comanda;
@@ -577,8 +578,19 @@ public class Controlador {
 	{
 		//Integer codigoProveedor, Date fecha,List<ItemRemitoEntity> itemsRemito,EstadoRemito estado
 		//List<ItemRemito> items=remito.getItemsRemito();
-		new Remito(remito.getCodigoProveedor(),remito.getFecha()).save();
+		Deposito deposito = DepositoDAO.getInstancia().getDepositoByCod(remito.getDeposito().getCodDeposito());
+		new Remito(remito.getCodigoProveedor(),remito.getFecha(),deposito,EstadoRemito.EnProceso).save();
 	}
+	
+	public RemitoDTO getRemitoByCod(int parseInt) throws RemoteException, RemitoException {
+		Remito rem=new Remito();
+		RemitoDTO remDTO = new RemitoDTO();
+		rem = RemitoDAO.getInstance().getRemitoByCod(parseInt);
+		remDTO=rem.toDTO();
+		return remDTO;
+		
+	}
+	
 	
 	//ITEM REMITO
 	
@@ -595,7 +607,8 @@ public class Controlador {
 		List<RemitoDTO> remitos=new ArrayList<RemitoDTO>();
 		List<Remito> remitoN=RemitoDAO.getInstance().getRemitos();
 		for(Remito r: remitoN)
-		{
+		{	
+			
 			remitos.add(r.toDTO());
 		}
 		return remitos;

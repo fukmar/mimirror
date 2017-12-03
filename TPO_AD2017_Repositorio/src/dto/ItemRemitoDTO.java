@@ -28,7 +28,7 @@ public class ItemRemitoDTO implements Serializable{
 		this.materiaprima = materiaprima;
 	}
 
-
+/*
 	public ItemRemitoDTO(Integer codItemRemito, Float cantidad, EstadoRemito estadoremito,
 			MateriaPrimaDTO materiaprima, List<SolicitudIndividualDTO> solicitudes) {
 		super();
@@ -49,7 +49,7 @@ public class ItemRemitoDTO implements Serializable{
 		this.materiaprima = materiaprima;
 		this.solicitudes = solicitudes;
 	}
-
+*/
 
 	public ItemRemitoDTO(){}
 

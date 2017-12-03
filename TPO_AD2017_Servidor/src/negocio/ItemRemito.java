@@ -137,7 +137,7 @@ public class ItemRemito {
 		item.setCantidad(cantidad);
 		item.setEstadoremito(estadoremito);
 		item.setMateriaprima(materiaprima.toEntity());
-		//item.setRemito(remito.toEntity());
+		item.setRemito(remito.toEntity());
 		List<SolicitudIndividualEntity> solicitudesentity=new ArrayList <SolicitudIndividualEntity>();
 		for(SolicitudIndividual s:solicitudes)
 		{
@@ -159,6 +159,7 @@ public class ItemRemito {
 		itemDTO.setCantidad(cantidad);
 		itemDTO.setMateriaprima(materiaprima.toDTO());
 		itemDTO.setCodItemRemito(codItemRemito);
+		itemDTO.setRemito(remito.toDTO());
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -96,9 +96,9 @@ public class Remito
 	public RemitoEntity toEntity() {
 		List<ItemRemitoEntity> items = new ArrayList<ItemRemitoEntity>();
 		
-		for(ItemRemito itemnegocio: this.itemsRemito) {
+		/*for(ItemRemito itemnegocio: this.itemsRemito) {
 			items.add(itemnegocio.toEntity());
-		}
+		}*/
 		RemitoEntity remit= new RemitoEntity();
 		remit.setCodigoProveedor(codigoProveedor);
 		remit.setFecha(fecha);

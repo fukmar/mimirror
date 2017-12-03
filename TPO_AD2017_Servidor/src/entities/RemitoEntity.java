@@ -123,6 +123,7 @@ public class RemitoEntity {
 		Remito r = new Remito();
 		r.setCodigoProveedor(codigoProveedor);
 		r.setCodRemito(codRemito);
+		r.setDeposito(deposito.toNegocio());
 		r.setFecha(fecha);
 		//r.setItemsRemito(items);
 		r.setEstado(estado);

@@ -148,9 +148,10 @@ public interface manejoNegocio extends Remote
 	//REMITO
 	public void grabarRemito(RemitoDTO remito) throws RemoteException,RemitoException;
 	public List<RemitoDTO> mostrarRemitos()throws RemoteException,RemitoException;
-	
+	public RemitoDTO getRemitoByCod(int parseInt) throws RemoteException,RemitoException;
 	
 	//ITEM REMITO
 	public void grabarItemRemito(ItemRemitoDTO itemRemito) throws RemoteException,itemRemitoException;
+	
 }
 

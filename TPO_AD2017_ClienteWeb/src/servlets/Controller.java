@@ -24,35 +24,42 @@ import javax.servlet.http.Part;
 import bd.BusinessDelegate;
 import dto.CartaDTO;
 import dto.ComandaDTO;
+import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
 import dto.ItemFacturaDTO;
 import dto.ItemPlanProduccionDTO;
+import dto.ItemRemitoDTO;
 import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlanDeProduccionDTO;
 import dto.PlatoDTO;
+import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SectorDTO;
 import enumns.AreaRest;
 import enumns.CategoriaPlato;
 import enumns.Estado;
 import enumns.EstadoItemComanda;
+import enumns.EstadoRemito;
 import enumns.MedioDePago;
 import exceptions.CajaException;
 import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
+import exceptions.MateriaPrima;
 import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlanDeProduccionException;
 import exceptions.PlatoException;
+import exceptions.RemitoException;
 import exceptions.ReservaException;
 import exceptions.SectorException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 import exceptions.itemPlanDeProduccionException;
+import exceptions.itemRemitoException;
 
 
 
@@ -192,12 +199,32 @@ public class Controller extends HttpServlet {
 
 			}
 			
+	
+	if(opcion.equals("verRemitos")){
+		
+		List<RemitoDTO> remitos = new ArrayList<RemitoDTO>();
+		try {
+			remitos = BusinessDelegate.getInstance().mostrarRemitos();
+			request.setAttribute("remitos", remitos);
+			RequestDispatcher rd = request.getRequestDispatcher("/verRemitos.jsp");
+			rd.forward(request, response);
+		} catch (RemitoException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+	
 			
 	if(opcion.equals("verMP")){
 		
 		List<MateriaPrimaDTO> materiales = new ArrayList<MateriaPrimaDTO>();
 		
-			materiales = BusinessDelegate.getInstance().listarStock();
+			try {
+				materiales = BusinessDelegate.getInstance().listarStock();
+			} catch (MateriaPrima e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			request.setAttribute("materiales", materiales);
 			RequestDispatcher rd = request.getRequestDispatcher("/verMP.jsp");
 			rd.forward(request, response);
@@ -333,6 +360,10 @@ if(opcion.equals("ocuparMesa")){
 	try {
 		System.out.println(mesa[0]);
 		BusinessDelegate.getInstance().ocuparMesaPorCod(Integer.parseInt(mesa[0]));
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/decirMesa.jsp?nuevamesa="+Integer.parseInt(mesa[0]));
+		rd.forward(request, response);
+		
 	} catch (NumberFormatException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -495,6 +526,25 @@ if(opcion.equals("verDetalleComanda")){
 
 }
 
+
+
+if(opcion.equals("listoitemcomanda")){
+	
+	String itemcomandaelegida = request.getParameter("itemcomandaelegida"); 
+	try {
+		BusinessDelegate.getInstance().itemComandaLista(Integer.parseInt(itemcomandaelegida));
+	} catch (NumberFormatException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (itemComandaException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verComandas");
+	rd.forward(request, response);
+
+}
+
 if(opcion.equals("verMozos")){
 				
 				List<MozoDTO> mozos = new ArrayList<MozoDTO>();
@@ -563,6 +613,154 @@ if(opcion.equals("verMozos")){
 			RequestDispatcher rd = request.getRequestDispatcher("Controller?opcion=verReservas");
 			rd.forward(request, response);
 		}
+		
+		
+		if(opcion.equals("cargarRemito")){
+			String codigoProveedor = request.getParameter("codigoProveedor");
+			String fecha = request.getParameter("fecha");
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			//surround below line with try catch block as below code throws checked exception
+			Date startDate = null;
+			try {
+				startDate = sdf.parse(fecha);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			request.setAttribute("codigoProveedor", codigoProveedor);
+			request.setAttribute("fecha", fecha);
+			DepositoDTO deposito = new DepositoDTO(1);
+			RemitoDTO remito = new RemitoDTO(Integer.parseInt(codigoProveedor),startDate,deposito,EstadoRemito.EnProceso);
+			
+			List<RemitoDTO> remitos = new ArrayList<RemitoDTO>();
+			
+			try {
+				BusinessDelegate.getInstance().grabarRemito(remito);
+			} catch (RemitoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				remitos = BusinessDelegate.getInstance().mostrarRemitos();
+			} catch (RemitoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("remito", remitos.get(remitos.size()-1));
+			
+			List<MateriaPrimaDTO> mps = null;
+			try {
+				mps = BusinessDelegate.getInstance().listarStock();
+			} catch (MateriaPrima e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("mps", mps);
+			RequestDispatcher rd = request.getRequestDispatcher("/agregarItemARemito.jsp");
+			rd.forward(request, response);
+		}
+		
+		
+		if(opcion.equals("agregarItemARemito")){
+			String cantidad = request.getParameter("cantidad");
+			String codMP = request.getParameter("codMP");
+			String codRemito = request.getParameter("codRemito");
+			String accion2 = request.getParameter("boton");
+			
+			if (accion2.equals("Aceptar")) {
+				MateriaPrimaDTO mp = null;
+			try {
+				 mp = BusinessDelegate.getInstance().getMateriaPrimaByCod(Integer.parseInt(codMP));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (MateriaPrima e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			RemitoDTO remito = null;
+			
+				 try {
+					remito = BusinessDelegate.getInstance().getRemitoByCod(Integer.parseInt(codRemito));
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (RemitoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				 
+				ItemRemitoDTO itemRem = new ItemRemitoDTO(Float.parseFloat(cantidad),remito,mp);
+				
+				try {
+					BusinessDelegate.getInstance().grabarItemRemito(itemRem);
+				} catch (itemRemitoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
+				rd.forward(request, response);
+				}
+				if (accion2.equals("Otro")) {
+					
+			MateriaPrimaDTO mp = null;
+			try {
+				mp = BusinessDelegate.getInstance().getMateriaPrimaByCod(Integer.parseInt(codMP));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (MateriaPrima e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+					
+			RemitoDTO remito = null;
+			
+			 try {
+				remito = BusinessDelegate.getInstance().getRemitoByCod(Integer.parseInt(codRemito));
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (RemitoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			 
+			 
+			ItemRemitoDTO itemRem = new ItemRemitoDTO(Float.parseFloat(cantidad),remito,mp);
+			try {
+				BusinessDelegate.getInstance().grabarItemRemito(itemRem);
+			} catch (itemRemitoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			List<RemitoDTO> remitos = null;
+			try {
+				remitos = BusinessDelegate.getInstance().mostrarRemitos();
+			} catch (RemitoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("remito", remitos.get(remitos.size()-1));
+			List<MateriaPrimaDTO> mps = null;
+			try {
+				mps = BusinessDelegate.getInstance().listarStock();
+			} catch (MateriaPrima e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("mps", mps);
+			RequestDispatcher rd = request.getRequestDispatcher("/agregarItemARemito.jsp");
+			rd.forward(request, response);
+		}}
+		
 		
 		if(opcion.equals("verComandas")){
 			

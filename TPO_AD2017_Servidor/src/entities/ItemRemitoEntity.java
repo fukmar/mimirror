@@ -140,7 +140,7 @@ public class ItemRemitoEntity {
 		//}
 		
 		//item.setSolicitudes(solicitudesnegocio);
-		
+		item.setRemito(remito.toNegocio());
 		item.setMateriaprima(materiaprima.toNegocio());
 
 		return item;
