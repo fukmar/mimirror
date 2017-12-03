@@ -35,7 +35,7 @@ import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
 import exceptions.FacturaException;
-import exceptions.MateriaPrima;
+import exceptions.MateriaPrimaException;
 import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlanDeProduccionException;
@@ -127,9 +127,9 @@ public interface manejoNegocio extends Remote
 	public UnidadDTO UnidadByDescp(String descp) throws RemoteException,UnidadException;
 
 	//MATERIA PRIMA
-	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException,MateriaPrima;
-	public List<MateriaPrimaDTO> listarStock() throws RemoteException,MateriaPrima;
-	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException,MateriaPrima;
+	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException,MateriaPrimaException;
+	public List<MateriaPrimaDTO> listarStock() throws RemoteException,MateriaPrimaException;
+	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException,MateriaPrimaException;
 	
 	//ITEMS COMANDA
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException;

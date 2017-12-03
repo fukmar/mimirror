@@ -1,8 +1,8 @@
 package exceptions;
 
-public class MateriaPrima extends Exception 
+public class MateriaPrimaException extends Exception 
 {
-	public MateriaPrima(String message)
+	public MateriaPrimaException(String message)
 	{
 		super(message);
 	}

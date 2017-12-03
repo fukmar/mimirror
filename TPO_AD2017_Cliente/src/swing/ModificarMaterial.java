@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import bd.BusinessDelegate;
 import dto.MateriaPrimaDTO;
-import exceptions.MateriaPrima;
+import exceptions.MateriaPrimaException;
 
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -91,7 +91,7 @@ public class ModificarMaterial extends JFrame {
 					textFieldDescripcion.setText(materia.getDescripcion());
 					textFieldDescripcion.setEditable(true);;
 					
-				} catch (NumberFormatException | RemoteException | MateriaPrima e) {
+				} catch (NumberFormatException | RemoteException | MateriaPrimaException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

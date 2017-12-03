@@ -30,7 +30,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import dto.*;
 import exceptions.DepositoException;
-import exceptions.MateriaPrima;
+import exceptions.MateriaPrimaException;
 import exceptions.UnidadException;
 import bd.BusinessDelegate;
 import swing.*;
@@ -94,7 +94,7 @@ public class AltaMaterial extends JFrame {
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (MateriaPrima e) {
+				} catch (MateriaPrimaException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

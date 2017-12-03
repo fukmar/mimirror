@@ -17,7 +17,7 @@ import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
 import exceptions.FacturaException;
-import exceptions.MateriaPrima;
+import exceptions.MateriaPrimaException;
 import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlanDeProduccionException;
@@ -404,16 +404,25 @@ public class BusinessDelegate
 	
 	
 	//-----------------------------------MATERIA PRIMA(MATERIALES)------------------------------------------------------------------
-	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException, MateriaPrima{
-		remoteObject.grabarMateriaPrima(materia);
-	}
-	
-	public List<MateriaPrimaDTO> listarStock() throws RemoteException, MateriaPrima
+	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException, MateriaPrimaException
 	{
-		return remoteObject.listarStock();
+		try {
+			remoteObject.grabarMateriaPrima(materia);
+		} catch (MateriaPrimaException e) {
+			throw new MateriaPrimaException("No se puede GRABAR la MATERIA PRIMA!");
+		}
 	}
 	
-	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException, MateriaPrima
+	public List<MateriaPrimaDTO> listarStock() throws RemoteException, MateriaPrimaException
+	{
+		try {
+			return remoteObject.listarStock();
+		} catch (Exception e) {
+			throw new MateriaPrimaException("No se pueden LISTAR  las MATERIAS PRIMA!");
+		}
+	}
+	
+	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException, MateriaPrimaException
 	{
 		return remoteObject.getMateriaPrimaByCod(codMaterial);
 	}
