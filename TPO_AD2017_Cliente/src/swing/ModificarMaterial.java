@@ -8,6 +8,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import bd.BusinessDelegate;
+import dto.MateriaPrimaDTO;
+import exceptions.MateriaPrima;
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
@@ -21,6 +26,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 //PRUEBA
@@ -77,6 +83,19 @@ public class ModificarMaterial extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//AQUI VA EL CODIGO PARA BUSCAR EL MATERIAL A PARTIR DEL CODIGO INGRESADO
+				try {
+					MateriaPrimaDTO materia = BusinessDelegate.getInstance().getMateriaPrimaByCod(Integer.parseInt(textFieldCodigoMaterial.getText()));
+					textFieldCodigoMaterial.setEnabled(false);
+					textFieldCantidad.setText(materia.getCantidad().toString());
+					textFieldCantidad.setEditable(true);
+					textFieldDescripcion.setText(materia.getDescripcion());
+					textFieldDescripcion.setEditable(true);;
+					
+				} catch (NumberFormatException | RemoteException | MateriaPrima e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				
 			}
 		});
