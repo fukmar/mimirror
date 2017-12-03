@@ -24,6 +24,7 @@ import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
 import enumns.AreaRest;
@@ -43,6 +44,7 @@ import exceptions.RemitoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
+import exceptions.SolicitudException;
 import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
@@ -152,6 +154,9 @@ public interface manejoNegocio extends Remote
 	
 	//ITEM REMITO
 	public void grabarItemRemito(ItemRemitoDTO itemRemito) throws RemoteException,itemRemitoException;
+	
+	//SOLICITUD INDIVIDUAL
+	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales()throws RemoteException,SolicitudException;
 	
 }
 

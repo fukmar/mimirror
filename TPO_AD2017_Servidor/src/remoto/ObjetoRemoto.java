@@ -24,6 +24,7 @@ import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
 import enumns.AreaRest;
@@ -43,6 +44,7 @@ import exceptions.RemitoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
+import exceptions.SolicitudException;
 import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
@@ -392,12 +394,22 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().getRemitoByCod(parseInt);
 	}
 
-	//-------------------------------ITEM REMITO------------------------------------------------
+	//-------------------------------ITEM REMITO---------------------------------------------------------
 	//ITEM REMITO
 	@Override
 	public void grabarItemRemito(ItemRemitoDTO itemRemito) throws RemoteException, itemRemitoException 
 	{
 		Controlador.getInstance().guardarItemRemito(itemRemito);
+	}
+
+	
+	//-------------------------------SOLICITUDES----------------------------------------------------------
+	//MOSTRAR
+	@Override
+	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales() throws RemoteException, SolicitudException 
+	{
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarSolicitudesIndividuales();
 	}
 
 	

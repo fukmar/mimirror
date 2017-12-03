@@ -25,6 +25,7 @@ import dao.RemitoDAO;
 import dao.ReservaDAO;
 import dao.SalonDAO;
 import dao.SectorDAO;
+import dao.SolicitudIndividualDAO;
 import dao.UnidadDAO;
 import dao.UsuariosDAO;
 import dto.CartaDTO;
@@ -44,6 +45,7 @@ import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
 import entities.ItemRemitoEntity;
@@ -77,6 +79,7 @@ import negocio.Remito;
 import negocio.Reserva;
 import negocio.Salon;
 import negocio.Sector;
+import negocio.SolicitudIndividual;
 import negocio.Unidad;
 import negocio.Usuarios;
 
@@ -623,5 +626,17 @@ public class Controlador {
 		materias=mpsN.toDTO();
 		return materias;
 		
+	}
+	
+	//SOLICITUD DIARIA
+	public List<SolicitudIndividualDTO> listarSolicitudesIndividuales()
+	{
+		List<SolicitudIndividualDTO> solicitudes=new ArrayList<SolicitudIndividualDTO>();
+		List<SolicitudIndividual> soliN=SolicitudIndividualDAO.getInstance().getsolicitudes();
+		for(SolicitudIndividual s: soliN)
+		{
+			solicitudes.add(s.toDTO());
+		}
+		return solicitudes;
 	}
 }

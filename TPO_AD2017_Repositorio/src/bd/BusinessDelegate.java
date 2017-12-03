@@ -26,6 +26,7 @@ import exceptions.RemitoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
+import exceptions.SolicitudException;
 import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
@@ -464,5 +465,10 @@ public class BusinessDelegate
 		remoteObject.grabarItemRemito(itemRemito);
 	}
 
+	
+	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales() throws RemoteException, SolicitudException  
+	{
+		return remoteObject.mostrarSolicitudesIndividuales();
+	}
 	
 }
