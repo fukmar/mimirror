@@ -118,7 +118,8 @@ public interface manejoNegocio extends Remote
 
 	//MATERIA PRIMA
 	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException;
-
+	public List<MateriaPrimaDTO> listarStock() throws RemoteException;
+	
 	//ITEMS COMANDA
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException;
 

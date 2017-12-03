@@ -16,6 +16,7 @@ import dao.ComandaDAO;
 import dao.DepositoDAO;
 import dao.FacturaDAO;
 import dao.ItemComandaDAO;
+import dao.MateriaPrimaDAO;
 import dao.MesaDAO;
 import dao.MozoDAO;
 import dao.PlanDeProduccionDAO;
@@ -457,6 +458,17 @@ public class Controlador {
 		Deposito depo= new Deposito();
 		new MateriaPrima(materia.getDescripcion(), uni, materia.getCantidad(), depo).save();
 		
+	}
+	public List<MateriaPrimaDTO> listarStock() {
+		// TODO Auto-generated method stub
+		
+		List<MateriaPrimaDTO> materiaprimaDTO=new ArrayList<MateriaPrimaDTO>();
+		List<MateriaPrima> materiaprimanegocio=MateriaPrimaDAO.getInstance().getMateriales();
+		
+		for(MateriaPrima mp:materiaprimanegocio) {
+			materiaprimaDTO.add(mp.toDTO());
+		}
+		return materiaprimaDTO;
 	}
 
 	//--------------------------------------------------------------------------------------------------------------------------------------------------

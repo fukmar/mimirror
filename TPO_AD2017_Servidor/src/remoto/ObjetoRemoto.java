@@ -279,6 +279,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		Controlador.getInstance().grabarMateriaPrima(materia);
 		
 	}
+	@Override
+	public List<MateriaPrimaDTO> listarStock() throws RemoteException
+	{
+		return Controlador.getInstance().listarStock();
+	}
 
 	//-----------------------------------ITEMS COMANDA POR AREA y POR COD COMANDA------------
 

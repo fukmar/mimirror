@@ -300,6 +300,11 @@ public class BusinessDelegate
 	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException{
 		remoteObject.grabarMateriaPrima(materia);
 	}
+	
+	public List<MateriaPrimaDTO> listarStock() throws RemoteException
+	{
+		return remoteObject.listarStock();
+	}
 
 	//-----------------------------------ITEMS COMANDA-----------------------------------------------------------------------------
 
