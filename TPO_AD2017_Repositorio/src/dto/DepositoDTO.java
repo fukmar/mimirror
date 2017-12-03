@@ -15,8 +15,7 @@ public class DepositoDTO implements Serializable
 	public DepositoDTO(){}
 
 	
-	public DepositoDTO(Integer codDeposito,List<MateriaPrimaDTO> materiaprima, 
-			List<RemitoDTO> remitos) {
+	public DepositoDTO(Integer codDeposito) {
 		super();
 		this.codDeposito = codDeposito;
 	}
