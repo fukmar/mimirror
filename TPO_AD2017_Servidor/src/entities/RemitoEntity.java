@@ -31,10 +31,6 @@ public class RemitoEntity {
 	private List<ItemRemitoEntity> itemsRemito;
 	
 	
-	@OneToOne
-	@JoinColumn(name="codOrdenDeCompra")
-	private OrdenDeCompraEntity ordendeCompra;
-	/*para probar el onetomany la saco un rato*/	
 		
 	public RemitoEntity(){}
 		
@@ -45,7 +41,6 @@ public class RemitoEntity {
 		this.estado=estado;
 		this.fecha = fecha;
 		this.itemsRemito = itemsRemito;
-		this.ordendeCompra = ordendeCompra;
 	}
 	
 	public RemitoEntity(Integer codigoProveedor, Date fecha) 
@@ -53,7 +48,6 @@ public class RemitoEntity {
 		super();
 		this.codigoProveedor = codigoProveedor;
 		this.fecha = fecha;
-		this.ordendeCompra = ordendeCompra;
 	}
 	
 	public EstadoRemito getEstado() {
@@ -88,14 +82,6 @@ public class RemitoEntity {
 	}
 	
 
-	public OrdenDeCompraEntity getOrdendeCompra() {
-		return ordendeCompra;
-	}
-
-	public void setOrdendeCompra(OrdenDeCompraEntity ordendeCompra) {
-		this.ordendeCompra = ordendeCompra;
-	}
-	
 	
 	public Integer getCodRemito() {
 		return codRemito;
