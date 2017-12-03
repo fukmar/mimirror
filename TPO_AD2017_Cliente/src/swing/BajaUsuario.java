@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Toolkit;
 
@@ -17,14 +19,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import bd.BusinessDelegate;
+import dto.UsuariosDTO;
+import exceptions.UsuarioException;
+
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 public class BajaUsuario extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField textIngresa;
 	private JTextField textLogin;
 	private JTextField textPassword;
 	private JTextField textNombre;
@@ -64,13 +72,29 @@ public class BajaUsuario extends JFrame {
 		lblLogin.setBounds(12, 78, 215, 28);
 		contentPane.add(lblLogin);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textField.setBounds(247, 83, 378, 33);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textIngresa = new JTextField();
+		textIngresa.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textIngresa.setBounds(247, 83, 378, 33);
+		contentPane.add(textIngresa);
+		textIngresa.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					UsuariosDTO user=BusinessDelegate.getInstance().buscarUserPorLogin(textIngresa.getText());
+					textIngresa.setEditable(false);
+					textLogin.setText(user.getLogin());
+					textPassword.setText(user.getPassword());
+					textNombre.setText(user.getNombre());
+					textApellido.setText(user.getApellido());
+					
+				} catch (RemoteException | UsuarioException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnBuscar.setBounds(376, 140, 115, 41);
 		contentPane.add(btnBuscar);
@@ -118,27 +142,57 @@ public class BajaUsuario extends JFrame {
 		contentPane.add(lblApellido);
 		
 		textLogin = new JTextField();
+		textLogin.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textLogin.setEditable(false);
 		textLogin.setBounds(74, 253, 153, 33);
 		contentPane.add(textLogin);
 		textLogin.setColumns(10);
 		
 		textPassword = new JTextField();
+		textPassword.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textPassword.setEditable(false);
 		textPassword.setBounds(439, 253, 186, 33);
 		contentPane.add(textPassword);
 		textPassword.setColumns(10);
 		
 		textNombre = new JTextField();
+		textNombre.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textNombre.setEditable(false);
 		textNombre.setBounds(89, 385, 138, 31);
 		contentPane.add(textNombre);
 		textNombre.setColumns(10);
 		
 		textApellido = new JTextField();
+		textApellido.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textApellido.setEditable(false);
 		textApellido.setBounds(439, 389, 186, 31);
 		contentPane.add(textApellido);
 		textApellido.setColumns(10);
+		
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					UsuariosDTO usua = BusinessDelegate.getInstance().buscarUserPorLogin(textIngresa.getText());
+					BusinessDelegate.getInstance().borrarUsuario(usua);
+					JOptionPane.showMessageDialog(null, "Usuario eliminado exitosamente", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
+					textIngresa.setEditable(true);
+					textIngresa.setText("");
+					textLogin.setText("");
+					textPassword.setText("");
+					textNombre.setText("");
+					textApellido.setText("");
+					
+					
+				} catch (RemoteException | UsuarioException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnEliminar.setBounds(43, 490, 138, 41);
+		contentPane.add(btnEliminar);
 	}
 }
