@@ -132,9 +132,9 @@ public interface manejoNegocio extends Remote
 	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException,MateriaPrimaException;
 	
 	//ITEMS COMANDA
-	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException;
+	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException,itemComandaException;
 
-	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException;
+	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException,itemComandaException;
 
 	//CARTA
 	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException,CartaException;

@@ -303,7 +303,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	}
 
 	@Override
-	public UnidadDTO UnidadByDescp(String descp) throws RemoteException {
+	public UnidadDTO UnidadByDescp(String descp) throws RemoteException,UnidadException {
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().UnidadByDescp(descp);
 	}

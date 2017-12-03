@@ -417,23 +417,29 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.listarStock();
-		} catch (Exception e) {
+		} catch (MateriaPrimaException e) {
 			throw new MateriaPrimaException("No se pueden LISTAR  las MATERIAS PRIMA!");
 		}
 	}
 	
 	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException, MateriaPrimaException
 	{
-		return remoteObject.getMateriaPrimaByCod(codMaterial);
+		try {
+			return remoteObject.getMateriaPrimaByCod(codMaterial);
+		} catch (MateriaPrimaException e) {
+			throw new MateriaPrimaException("No se pueden MOSTRAR Las MATERIAS PRIMAS!");
+		}
 	}
 
 	//-----------------------------------ITEMS COMANDA-----------------------------------------------------------------------------
 
-	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException{
+	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException,itemComandaException
+	{
 		return remoteObject.getItemsPendientesxArea(area);
 	}
 
-	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException{
+	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException,itemComandaException
+	{
 		return remoteObject.obtenerItemsComandaByCodComanda(parseInt);
 	}
 	
