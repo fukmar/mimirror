@@ -232,7 +232,7 @@ public class Controlador {
 	{
 		ItemComanda itemnegocio=ItemComandaDAO.getInstance().obtenerItemComandaByCod(coditemcomanda);
 		ItemComandaDAO.getInstance().updateitemComandatoFinalizada(itemnegocio);
-	//	ItemComandaDAO.getInstance().reducirstockxItemComanda(itemnegocio);
+		ItemComandaDAO.getInstance().reducirstockxItemComanda(itemnegocio);
 	}
 	
 	//-------------------------------------------------------------------------------------------------------------------------------------
