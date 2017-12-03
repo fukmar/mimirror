@@ -378,7 +378,7 @@ public class BusinessDelegate
 		return remoteObject.mostrarRemitos();
 	}
 	
-	public RemitoDTO getRemitoByCod(int parseInt) throws RemoteException, RemitoException {
+	public RemitoDTO getRemitoByCod(Integer parseInt) throws RemoteException, RemitoException {
 		return remoteObject.getRemitoByCod(parseInt);
 		
 	}

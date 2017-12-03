@@ -387,7 +387,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 
 	
 	
-	public RemitoDTO getRemitoByCod(int parseInt) throws RemoteException, RemitoException {
+	public RemitoDTO getRemitoByCod(Integer parseInt) throws RemoteException, RemitoException {
 		
 		return Controlador.getInstance().getRemitoByCod(parseInt);
 	}

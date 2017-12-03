@@ -582,7 +582,7 @@ public class Controlador {
 		new Remito(remito.getCodigoProveedor(),remito.getFecha(),deposito,EstadoRemito.EnProceso).save();
 	}
 	
-	public RemitoDTO getRemitoByCod(int parseInt) 
+	public RemitoDTO getRemitoByCod(Integer parseInt) 
 	{
 		Remito rem=new Remito();
 		RemitoDTO remDTO = new RemitoDTO();

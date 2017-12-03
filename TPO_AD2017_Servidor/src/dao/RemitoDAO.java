@@ -130,8 +130,8 @@ public class RemitoDAO {
 			Remito remito=new Remito();
 			Session session=sf.openSession();
 			RemitoEntity resu=(RemitoEntity) session.createQuery("from RemitoEntity r where r.codRemito=?").setInteger(0, codRemito).uniqueResult();
-			session.close();
 			remito=resu.toNegocio();
+			session.close();
 			return remito;
 		}
 	}
