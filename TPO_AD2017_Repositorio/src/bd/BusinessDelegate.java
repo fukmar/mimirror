@@ -80,18 +80,30 @@ public class BusinessDelegate
 	
 	public void guardarUsuarios(UsuariosDTO usuario) throws RemoteException, UsuarioException 
 	{
-		remoteObject.guardarUsuarios(usuario);
+		try {
+			remoteObject.guardarUsuarios(usuario);
+		} catch (UsuarioException e) {
+			throw new UsuarioException("No se puede grabar el usuario!");
+		}
 	}
 	
 	
 	public UsuariosDTO buscarUserPorLogin(String login) throws RemoteException, UsuarioException
 	{
-		return remoteObject.buscarUserPorLogin(login);
+		try {
+			return remoteObject.buscarUserPorLogin(login);
+		} catch (UsuarioException e) {
+			throw new UsuarioException("No se ENCUENTRA el usuario");
+		}
 	}
 	
 	public void borrarUsuario(UsuariosDTO usuario) throws RemoteException, UsuarioException
 	{
-		remoteObject.borrarUsuario(usuario);
+		try {
+			remoteObject.borrarUsuario(usuario);
+		} catch (UsuarioException e) {
+			throw new UsuarioException("No se pudo BORRAR el usuario");
+		}
 	}
 	//---------------------------------------PLATOS------------------------------------------------------------
 	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
@@ -100,7 +112,7 @@ public class BusinessDelegate
 			return remoteObject.listarPlatos();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
-			throw new PlatoException("Error! no hay plato");
+			throw new PlatoException("Error! no hay platos");
 		}
 	}
 	
@@ -156,11 +168,21 @@ public class BusinessDelegate
 	
 	public void grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException, itemComandaException 
 	{
-		remoteObject.grabarItemComanda(itemComanda);
+		try {
+			remoteObject.grabarItemComanda(itemComanda);
+		} catch (itemComandaException e) {
+			throw new itemComandaException("NO se pudo GRABAR el ITEMCOMANDA!");
+		}
 	}
+	
+	
 	public void itemComandaLista(int coditemcomanda) throws RemoteException, itemComandaException 
 	{
-		remoteObject.itemComandaLista(coditemcomanda);
+		try {
+			remoteObject.itemComandaLista(coditemcomanda);
+		} catch (itemComandaException e) {
+			throw new itemComandaException("El ITEM DE LA COMANDA NO PUDO REALIZARSE!");
+		}
 	}
 	
 	//---------------------------------------FACTURAS------------------------------------------------------------
@@ -168,27 +190,35 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.grabarFactura(factura);
-		} catch (Exception e) {
+		} catch (FacturaException e) {
 			throw new FacturaException("No se pudo grabar la FACTURA!");
 		}
 	}
 	
 	public List<FacturaDTO> mostrarFacturas() throws RemoteException, FacturaException 
 	{
-		return remoteObject.mostrarFacturas();
+		try {
+			return remoteObject.mostrarFacturas();
+		} catch (FacturaException e) {
+			throw new FacturaException("No se pueden MOSTRAR las FACTURAS!");
+		}
 	}
 	
 	
 	public FacturaDTO mostrarFacturaByCod(int nroFact) throws RemoteException, FacturaException 
 	{
-		return remoteObject.mostrarFacturaByCod(nroFact);
+		try {
+			return remoteObject.mostrarFacturaByCod(nroFact);
+		} catch (FacturaException e) {
+			throw new FacturaException("No se ENCONTRO la FACTURA!");
+		}
 	}
 	
 	public void facturarMesa(int codMesa, MedioDePago formadepago) throws RemoteException, FacturaException
 	{
 		try {
-			remoteObject.facturarMesa(codMesa, formadepago);;
-		} catch (Exception e) {
+			remoteObject.facturarMesa(codMesa, formadepago);
+		} catch (FacturaException e) {
 			throw new FacturaException("No se pudo generar la FACTURA!");
 		}
 	}
@@ -197,7 +227,11 @@ public class BusinessDelegate
 	
 	public List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws RemoteException, FacturaException
 	{
-		return remoteObject.obtenerItemsFacturaByCodFactura(codFactura);
+		try {
+			return remoteObject.obtenerItemsFacturaByCodFactura(codFactura);
+		} catch (FacturaException e) {
+			throw new FacturaException("No se encontraron los items de la FACTURA!");
+		}
 	}
 	
 	//---------------------------------------RESERVAS------------------------------------------------------------
@@ -206,7 +240,7 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.grabarReserva(reserva);
-		} catch (Exception e) {
+		} catch (ReservaException e) {
 			throw new ReservaException("No se pudo GRABAR la RESERVA");
 		}
 	}
@@ -215,66 +249,106 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarReservas();
-		} catch (Exception e) {
-			throw new ReservaException("No se pudo LISTAR las RESERVAS");
+		} catch (ReservaException e) {
+			throw new ReservaException("No se pudieron LISTAR las RESERVAS");
 		}
 	}
 	
 	//-----------------------------------MOZOS----------------------------------------------------------------------
 	public List<MozoDTO> mostrarMozos() throws RemoteException,MozoException
 	{
-		return remoteObject.mostrarMozos();
+		try {
+			return remoteObject.mostrarMozos();
+		} catch (MozoException e) {
+			throw new MozoException("No se pueden MOSTRAR los MOZOS!");
+		}
 	}
+	
 	
 	public double mostrarComisionesAPagar(Date FechaDesde, Date FechaHasta) throws RemoteException, MozoException
 	{
-		return remoteObject.mostrarComisionesAPagar(FechaDesde, FechaHasta);
+		try {
+			return remoteObject.mostrarComisionesAPagar(FechaDesde, FechaHasta);
+		} catch (MozoException e) {
+			throw new MozoException("No se pueden CALCULAR las comisiones de los MOZOS!");
+		}
 	}
+	
 	
 	public List<String[]> mostrarResultadoComisionesMozo(Date FechaDesde,Date FechaHasta) throws RemoteException, MozoException
 	{
-		return remoteObject.mostrarResultadoComisionesMozo(FechaDesde,FechaHasta);
+		try {
+			return remoteObject.mostrarResultadoComisionesMozo(FechaDesde,FechaHasta);
+		} catch (MozoException e) {
+			throw new MozoException("No se pueden MOSTRAR el resultado de las COMISIONES de los MOZOS!");
+		}
 	}
 	
 	//-----------------------------------MESAS-------------------------------------------------------------------------
 	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException
 	{
-		return remoteObject.mostrarMesas();
+		try {
+			return remoteObject.mostrarMesas();
+		} catch (MesaException e) {
+			throw new MesaException("No se pueden MOSTRAR las MESAS!");
+		}
 	}
 	
 	public MesaDTO BuscarMesaPorCod(Integer codMesa) throws RemoteException, MesaException 
 	{
-		return remoteObject.BuscarMesaPorCod(codMesa);
+		try {
+			return remoteObject.BuscarMesaPorCod(codMesa);
+		} catch (MesaException e) {
+			throw new MesaException("No se pueden ENCONTRO la MESA buscada!");
+		}
 	}
 	
 	public List<MesaDTO> mostrarMesasLibres() throws RemoteException, MesaException
 	{
-		return remoteObject.mostrarMesasLibres();
+		try {
+			return remoteObject.mostrarMesasLibres();
+		} catch (MesaException e) {
+			throw new MesaException("No se pueden MOSTRAR las MESAS LIBRES!");
+		}
 	}
+	
+	
 	public void ocuparMesaPorCod(Integer codMesa) throws RemoteException, MesaException
 	{		
 		try {
 				remoteObject.ocuparMesaPorCod(codMesa);
-		} catch (Exception e) {
+		} catch (MesaException e) {
 		throw new MesaException("No se pudo Cambiar el Estado");
 	}
 	}
 		
 	public Integer combinarMesasPorCod(Integer codmesa1, Integer codmesa2) throws RemoteException, MesaException
 		{		
-			return remoteObject.combinarMesasPorCod(codmesa1, codmesa2);
+			try {
+				return remoteObject.combinarMesasPorCod(codmesa1, codmesa2);
+			} catch (MesaException e) {
+				throw new MesaException("No se pueden COMBINAR esas MESAS!");
+			}
 		}
 		
 	public void grabarMesa(MesaDTO mesa) throws RemoteException, MesaException 
 	{
-		remoteObject.grabarMesa(mesa);
+		try {
+			remoteObject.grabarMesa(mesa);
+		} catch (MesaException e) {
+			throw new MesaException("No se puede GRABAR la MESA!");
+		}
 	}
 	
 	
 	//-----------------------------------SECTORES-------------------------------------------------------------------------
 	public List<SectorDTO> mostrarSectores() throws RemoteException, SectorException
 	{
-		return remoteObject.mostrarSectores();
+		try {
+			return remoteObject.mostrarSectores();
+		} catch (SectorException e) {
+			throw new SectorException("No se pueden MOSTRAR los SECTORES!");
+		}
 	}
 	
 	//-----------------------------------SALONES-------------------------------------------------------------------------
