@@ -126,7 +126,7 @@ public class ItemRemito {
 		item.setCantidad(cantidad);
 		item.setEstadoremito(estadoremito);
 		item.setMateriaprima(materiaprima.toEntity());
-		item.setRemito(remito.toEntity());
+		//item.setRemito(remito.toEntity());
 		List<SolicitudIndividualEntity> solicitudesentity=new ArrayList <SolicitudIndividualEntity>();
 		for(SolicitudIndividual s:solicitudes)
 		{
@@ -140,12 +140,14 @@ public class ItemRemito {
 
 	public ItemRemitoDTO toDTO() {
 		List<SolicitudIndividualDTO> solis= new ArrayList<SolicitudIndividualDTO>();
-		for(SolicitudIndividual solComun : this.solicitudes) {
-			solis.add(solComun.toDTO());
-		}
+		//for(SolicitudIndividual solComun : this.solicitudes) {
+		//	solis.add(solComun.toDTO());
+		//}
 
-		ItemRemitoDTO itemDTO= new ItemRemitoDTO(this.codItemRemito, Math.round(this.cantidad), this.estadoremito, this.materiaprima.toDTO(), solis);
-		
+		ItemRemitoDTO itemDTO= new ItemRemitoDTO();
+		itemDTO.setCantidad(cantidad);
+		itemDTO.setMateriaprima(materiaprima.toDTO());
+		itemDTO.setCodItemRemito(codItemRemito);
 		// TODO Auto-generated method stub
 		return null;
 	}

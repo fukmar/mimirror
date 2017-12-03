@@ -14,14 +14,22 @@ public class ItemRemitoDTO implements Serializable{
 	 */
 	private static final long serialVersionUID = -8398478230128292011L;
 	private Integer codItemRemito;
-	private Integer cantidad;
+	private Float cantidad;
 	private RemitoDTO remito;
 	private EstadoRemito estadoremito;
 	private MateriaPrimaDTO materiaprima;
 	private List<SolicitudIndividualDTO> solicitudes;
 
 	
-	public ItemRemitoDTO(Integer codItemRemito, Integer cantidad, EstadoRemito estadoremito,
+	public ItemRemitoDTO(Float cantidad, RemitoDTO remito, MateriaPrimaDTO materiaprima) {
+		super();
+		this.cantidad = cantidad;
+		this.remito = remito;
+		this.materiaprima = materiaprima;
+	}
+
+
+	public ItemRemitoDTO(Integer codItemRemito, Float cantidad, EstadoRemito estadoremito,
 			MateriaPrimaDTO materiaprima, List<SolicitudIndividualDTO> solicitudes) {
 		super();
 		this.codItemRemito = codItemRemito;
@@ -32,7 +40,7 @@ public class ItemRemitoDTO implements Serializable{
 	}
 	
 
-	public ItemRemitoDTO(Integer cantidad, RemitoDTO remito, EstadoRemito estadoremito,
+	public ItemRemitoDTO(Float cantidad, RemitoDTO remito, EstadoRemito estadoremito,
 			MateriaPrimaDTO materiaprima, List<SolicitudIndividualDTO> solicitudes) {
 		super();
 		this.cantidad = cantidad;
@@ -45,7 +53,7 @@ public class ItemRemitoDTO implements Serializable{
 
 	public ItemRemitoDTO(){}
 
-		public ItemRemitoDTO(Integer cantidad) 
+		public ItemRemitoDTO(Float cantidad) 
 		{
 			super();
 			this.cantidad = cantidad;
@@ -71,11 +79,11 @@ public class ItemRemitoDTO implements Serializable{
 	}
 
 
-	public Integer getCantidad() {
+	public Float getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(Integer cantidad) {
+	public void setCantidad(Float cantidad) {
 		this.cantidad = cantidad;
 	}
 
