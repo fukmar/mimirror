@@ -49,7 +49,7 @@ public class testHibernate4 {
 	//----------------------->Hagan sus pruebas relacionadas a HIBERNATE aqui <-----------------------------
 	public static void main(String[] args) 
 	{
-		
+		 
 		
 		
 		//aca van pruebas de DB
