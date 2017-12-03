@@ -88,6 +88,7 @@ public class MateriaPrima
 		materia.setDescripcion(descripcion);
 		materia.setUnidadUso(unidadUso.toEntity());
 		materia.setEstadescontado(estadescontado);
+		
 		return materia;
 		
 	}
@@ -99,6 +100,7 @@ public class MateriaPrima
 		m.setUnidadUso(unidadUso.toDTO());
 		m.setDeposito(deposito.toDTO());
 		m.setEstadescontado(estadescontado);
+		m.setCantidad(cantidad);
 		return m;
 	}
 	

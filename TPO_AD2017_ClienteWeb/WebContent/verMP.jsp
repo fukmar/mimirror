@@ -56,7 +56,7 @@ List<MateriaPrimaDTO> materiales = (List<MateriaPrimaDTO>)request.getAttribute("
     <tr>
       <td scope="row" data-label="Código"><%= material.getCodigo() %></td>
       <td data-label="Descrición"><%= material.getDescripcion() %></td>
-      <td data-label="Unidad"><%= material.getUnidadUso() %></td>
+      <td data-label="Unidad"><%= material.getUnidadUso().getDescripcion() %></td>
       <td data-label="Cantidad"><%= material.getCantidad() %></td>
       </tr>
      <%} %>
@@ -64,9 +64,9 @@ List<MateriaPrimaDTO> materiales = (List<MateriaPrimaDTO>)request.getAttribute("
   </tbody>
 </table>
 	
-
-	<P>
-	<p>
+</form>
+	
+	
 	 <a href="index.jsp" target="_self" class="link-btn">volver</a> 
   
   

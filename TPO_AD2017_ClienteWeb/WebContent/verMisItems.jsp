@@ -27,6 +27,7 @@ List<ItemComandaDTO> items = (List<ItemComandaDTO>)request.getAttribute("items")
 
 
 
+<form action="/TPO_AD2017_ClienteWeb/Controller">
 	<table>
   <caption>Mis Comandas</caption>
   <thead>
@@ -49,11 +50,15 @@ List<ItemComandaDTO> items = (List<ItemComandaDTO>)request.getAttribute("items")
      <%} %>
     
   </tbody>
+  
 </table>
-	
 
-	<P>
-	<p>
+<center>
+  <br>
+<button name="opcion" value="listo">Listo</button>
+
+	</center>	
+
 	 <a href="index.jsp" target="_self" class="link-btn">volver</a> 
   
   

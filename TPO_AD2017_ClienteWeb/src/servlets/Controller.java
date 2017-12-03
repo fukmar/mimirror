@@ -28,6 +28,7 @@ import dto.FacturaDTO;
 import dto.ItemComandaDTO;
 import dto.ItemFacturaDTO;
 import dto.ItemPlanProduccionDTO;
+import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlanDeProduccionDTO;
@@ -192,6 +193,20 @@ public class Controller extends HttpServlet {
 			}
 			
 			
+	if(opcion.equals("verMP")){
+		
+		List<MateriaPrimaDTO> materiales = new ArrayList<MateriaPrimaDTO>();
+		
+			materiales = BusinessDelegate.getInstance().listarStock();
+			request.setAttribute("materiales", materiales);
+			RequestDispatcher rd = request.getRequestDispatcher("/verMP.jsp");
+			rd.forward(request, response);
+		
+		
+
+	}
+	
+	
 if(opcion.equals("verMesas")){
 				
 				List<MesaDTO> mesas = new ArrayList<MesaDTO>();
