@@ -97,6 +97,9 @@ public class AltaMaterial extends JFrame {
 				} catch (MateriaPrimaException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				} catch (UnidadException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				
 				
