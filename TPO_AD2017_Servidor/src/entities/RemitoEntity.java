@@ -48,6 +48,13 @@ public class RemitoEntity {
 		this.ordendeCompra = ordendeCompra;
 	}
 	
+	public RemitoEntity(Integer codigoProveedor, Date fecha) 
+	{
+		super();
+		this.codigoProveedor = codigoProveedor;
+		this.fecha = fecha;
+		this.ordendeCompra = ordendeCompra;
+	}
 	
 	public EstadoRemito getEstado() {
 		return estado;
