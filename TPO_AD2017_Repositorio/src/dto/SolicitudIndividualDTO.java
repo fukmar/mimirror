@@ -26,7 +26,7 @@ public class SolicitudIndividualDTO  {
 	protected String motivo;
 	private  MateriaPrimaDTO materiaprima;
 	private float cantidad;
-	private SolicitudDiariaDTO solicitudDiaria;
+	//private SolicitudDiariaDTO solicitudDiaria;
 	
 	public SolicitudIndividualDTO(){
 		
@@ -34,8 +34,8 @@ public class SolicitudIndividualDTO  {
 	
 	
 	public SolicitudIndividualDTO(AreaRest area, String responsable,
-			Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaDTO materiaprima,
-			float cantidad, SolicitudDiariaDTO solicitudDiaria,EstadoSolicitud estado) {
+			/*Date fechaCompra, Date fechaVencimiento,*/ String motivo, MateriaPrimaDTO materiaprima,
+			float cantidad, /*SolicitudDiariaDTO solicitudDiaria,*/EstadoSolicitud estado) {
 		super();
 		this.area = area;
 		this.estado=estado;
@@ -46,7 +46,7 @@ public class SolicitudIndividualDTO  {
 		this.motivo = motivo;
 		this.materiaprima = materiaprima;
 		this.cantidad = cantidad;
-		this.solicitudDiaria = solicitudDiaria;
+		//this.solicitudDiaria = solicitudDiaria;
 	}
 
 
@@ -119,7 +119,7 @@ public class SolicitudIndividualDTO  {
 		this.cantidad = cantidad;
 	}
 
-
+/*
 	public SolicitudDiariaDTO getSolicitudDiaria() {
 		return solicitudDiaria;
 	}
@@ -128,7 +128,7 @@ public class SolicitudIndividualDTO  {
 	public void setSolicitudDiaria(SolicitudDiariaDTO solicitudDiaria) {
 		this.solicitudDiaria = solicitudDiaria;
 	}
-
+*/
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
