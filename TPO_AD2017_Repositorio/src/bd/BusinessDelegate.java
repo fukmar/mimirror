@@ -266,6 +266,8 @@ public class BusinessDelegate
 	{
 		remoteObject.grabarMesa(mesa);
 	}
+	
+	
 	//-----------------------------------SECTORES-------------------------------------------------------------------------
 	public List<SectorDTO> mostrarSectores() throws RemoteException, SectorException
 	{
