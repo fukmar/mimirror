@@ -54,7 +54,7 @@ public class testHibernate4 {
 		//aca van pruebas de DB
 		UnidadEntity ue = new UnidadEntity("gramos");
 		
-		Date fecha = new Date("10/10/2020");
+		Date fecha = new Date("12/03/2017");
 		
 		
 		Usuarios usu = new Usuarios("admin","admin","N","G",AreaRest.Administracion);
@@ -158,7 +158,6 @@ public class testHibernate4 {
 		comanditas.add(comandita);
 		comanditas.add(comandita2);
 		comanditas.add(comandita3);
-		FacturaEntity factura= new FacturaEntity(fecha, 40.4f, MedioDePago.Contado, mesita);
 		ItemPlanProduccionEntity itemplan=new ItemPlanProduccionEntity(see,100,0,pdp);
 		List <ItemPlanProduccionEntity> variositemplanprod=	new ArrayList <ItemPlanProduccionEntity>();
 		variositemplanprod.add(itemplan);
@@ -191,7 +190,6 @@ public class testHibernate4 {
 		session.save(itemCom3);
 		session.save(comandita3);
 		//sesion.save(factura2);
-		session.save(factura);
 
 		
 		/*NO BORRAR ESTE ORDEN DE GUARDADO*/
@@ -202,7 +200,6 @@ public class testHibernate4 {
 		session.save(itemCom);
 		session.save(itemCom2);
 		session.save(itemCom3);
-		session.save(factura);
 		session.save(remito);
 		session.save(solicitud);
 		session.save(itemremito);
@@ -381,9 +378,7 @@ public class testHibernate4 {
 		//TEST DAO FACTURACION FUNCIONA OK LUEGO DE PASAR A NEGOCIO! TODO EN ORDEN.  CAMBIOS..FACTURA COMO DIJO ZUKI NO TIENE ASOCIADA CAJA - NO TIENE SENTIDO y LE SUMAMOS COMPLEJIDAD. NO LLEGAMOS
 		// VERIFICAR QUE PREVIO A LA EJECUCION CREO LA FACTURA CON LO IMPORTANTE y LUEGO EJECUTO PARA EL CALCULO y SE ME CREAN LOS ITEMFACTURA A PARTIR DE ITEMCOMANDA. LA FACTURA TENDRA LA MESA y EL DAO
 		// BUSCA LAS COMANDAS ABIERTAS PARA ESA MESA Y LAS FACTURA.  LUEGO PASA A COMANDA CERRADA ESTOS ITEMS
-		//FacturaDAO.getInstance().CerrarFactura(factura.toNegocio());
-		//Factura facturanegocio=FacturaDAO.getInstance().obtenerFacturaByCod(factura.getCodFactura());
-	    //System.out.println("El total de la factura nro "+factura.getCodFactura()+" es de ARS "+ factura.getImporte());
+		FacturaDAO.getInstance().facturarMesa(mesita.getCodMesa(), MedioDePago.Contado);
 		
 		
 		///PRUEBO NUEVO DAO
@@ -402,7 +397,7 @@ public class testHibernate4 {
 	    }
 	    
 	   // /DAO para ver Comision segun fecha desde y HASTA FUNCIONA YESSSS Habria que hacer un view pero va... //
-	    Date fechadesde = new Date("10/10/2019");
+	    Date fechadesde = new Date("10/10/2016");
 	    Date fechahasta = new Date("10/10/2020");
 	    List<String[]> resultado2=MozoDAO.getInstancia().ResultadoComisiones(fechadesde,fechahasta);
 	    
@@ -436,81 +431,8 @@ public class testHibernate4 {
 		}
 		
 		//TESTEAMOS PLAN SEGUN FECHA
-		PlanDeProduccion plan=PlanDeProduccionDAO.getInstance().obtenerPlanFecha(fecha);
-		System.out.println(plan.getCodigoPDP());
+	/*	PlanDeProduccion plan=PlanDeProduccionDAO.getInstance().obtenerPlanFecha(fecha);
+		System.out.println(plan.getCodigoPDP());*/
+	
 		
-		//TESTEO CANTIDAD DE PLATOS VENDIDOS EN UN DIA ESPECIFICO DE UN PLATO ESPECIFICO
-		Long cantidadesvendidas=PlatoDAO.getInstance().getCantidadPlatosFacturados(plato.toNegocio(), fecha);
-		System.out.println(cantidadesvendidas);
-		
-		//TESTEO CANTIDAD DE UN SEMI VENDIDOS EN UN DIA ESPECIFICO DE UN PLATO ESPECIFICO
-		Long cantidadesutilizadas=SemiElaboradoDAO.getInstance().getSemiElaboradosFacturados(see.toNegocio(), fecha);
-		Long cantidadesutilizadas2=SemiElaboradoDAO.getInstance().getSemiElaboradosFacturados(see2.toNegocio(), fecha);
-		System.out.println("CANTIDAD DEL SEMI "+see.getDescripcion()+ " : " + cantidadesutilizadas);
-		System.out.println("CANTIDAD DEL SEMI "+see2.getDescripcion()+ " : " + cantidadesutilizadas2);
-		
-		//AVANCE PLAN PRODUCCION
-		System.out.println("CODIGO PLAN DE PROD:"+pdp.getCodigoPDP());
-		PlanDeProduccionDAO.getInstance().CalcularporcentajeAvance(pdp.toNegocio());
-		double avance=PlanDeProduccionDAO.getInstance().getPlanByCod(pdp.getCodigoPDP()).getAvance();
-		double avancetotal=avance*100;
-		System.out.println("El AVANCE DEL PLAN DE PRODUCCION ES DE : "+ avancetotal + " %");
-		
-		//TESTEO SI ME TRAE ITEMCOMANDA SEGUN AREA FUNCIONA!
-		List<ItemComanda> items=ItemComandaDAO.getInstance().getItemsPendientesxArea(AreaRest.Cocina);
-		System.out.println(items.get(0).getPlato().getNombre());
-		//TEST CAMBIOS ESTADO ITEMCOMANDA A FINALIZADA
-		ItemComanda item=ItemComandaDAO.getInstance().obtenerItemComandaByCod(items.get(0).getCoditemComanda());
-		ItemComandaDAO.getInstance().updateitemComandatoFinalizada(item);
-		
-		//TEST BUSCAR COMANDA POR CODIGO
-		Comanda comandabuscada=ComandaDAO.getInstance().obtenerComandaByCod(1);
-		System.out.println(comandabuscada.getCodComanda());
-		
-		//PASAMOS LA MESA A OCUPADA
-		//MesaDAO.getInstance().updateMesaToOcupada(mesita.toNegocio());
-		//Mesa mesabuscadaparavalidar=MesaDAO.getInstance().getMesaN(mesita.getCodMesa());
-		//System.out.println("EL ESTADO DE LA MESA AHORA ES: "+mesabuscadaparavalidar.getEstado());
-		
-		//PASAMOS LA MESA A LIBRE (Luego podemos probar las libres)
-		MesaDAO.getInstance().updateMesaToLibre(mesita.toNegocio());
-		Mesa mesabuscadaparavalidar2=MesaDAO.getInstance().getMesaN(mesita.getCodMesa());
-		System.out.println("EL ESTADO DE LA MESA AHORA ES: "+mesabuscadaparavalidar2.getEstado());
-		
-		//BUSCAMOS MESAS LIBRES
-		List<Mesa> mesaslibres=MesaDAO.getInstance().getMesasLibres();
-		
-		for (Mesa m:mesaslibres)
-		{
-			System.out.println("LA MESA LIBRE Nro "+m.getCodMesa()+" es de "+m.getCapacidad()+" Personas y esta en el sector "+m.getSector().getDescripcion());
-		}
-		
-		//PROBAMOS BUSCAR SI TENGO MESA PARA 100 personas
-		boolean okmesa=MesaDAO.getInstance().validateMesasLibresbyCantidad(100);
-		System.out.println(okmesa);
-		
-		//BUSCAMOS MESA LIBRE PARA 10 personas - Teniamos una mesa cargada para 15 :)
-		List<Mesa> mesaslibres2=MesaDAO.getInstance().getMesasLibresbyCantidad(10);
-		for (Mesa m:mesaslibres2)
-		{
-			System.out.println("LA MESA LIBRE Nro "+m.getCodMesa()+" es de "+m.getCapacidad()+" Personas y esta en el sector "+m.getSector().getDescripcion());
-		}
-		
-		//Probamos el Combinar Mesa ..   FUNCIONA
-		// la logica del DAO es.  Ahora las mesas tienen atributo "combinada". CERO si no es una mesa o formo parte de una combinacion. UNO si es combinada o DOS si form� parte de una combinacion
-		//Integer mesacombinada=Controlador.getInstance().combinarMesasPorCod(1, 2);
-		//System.out.println(mesacombinada);
-		//System.out.println("La mesa creada es la mesa nro: "+mesacombinada.getCodMesa());
-		//EN ESTE CASO ES IMPORTANTE ...LA MESA SE CREA CON ESTADO OCUPADA...LAS MESAS QUE INTERVIENEN TAMBIEN PASAN A OCUPADA.  CUANDO CERREMOS LA NUEVA MESA...SI ES COMBINADA DEBEMOS HACER QUE SE ELIMINE LA MESA COMBINADA
-
-		//PROBAMOS CERRAR La mesa combinada.  PRIMERO MIRAMOS SI ESTA EN NUESTRO LISTADO
-		/*List<Mesa> mesaslibres3=MesaDAO.getInstance().getMesas();
-		for (Mesa m:mesaslibres3)
-		{
-			System.out.println("Las mesas despues de crear combinada Nro "+m.getCodMesa()+" es de "+m.getCapacidad()+" Personas y esta en el sector "+m.getSector().getDescripcion());
-		}
-		
-		MesaDAO.getInstance().LiberarMesaCombinada(mesacombinada);*/
-		
-}
-}
+	}}
