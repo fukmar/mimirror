@@ -115,8 +115,22 @@ public class RemitoDAO {
 			List<Remito> remitos=new ArrayList<Remito>();
 			Session session=sf.openSession();
 			List<RemitoEntity> resu=session.createQuery("from RemitoEntity").list();
+			for(RemitoEntity r: resu)
+			{
+				remitos.add(r.toNegocio());
+			}
 			session.close();
 			return remitos;
+		}
+		
+		public Remito getRemitoByCod(Integer codRemito)
+		{
+			Remito remito=new Remito();
+			Session session=sf.openSession();
+			RemitoEntity resu=(RemitoEntity) session.createQuery("from RemitoEntity r where r.codRemito=?").setInteger(0, codRemito).uniqueResult();
+			session.close();
+			remito=resu.toNegocio();
+			return remito;
 		}
 	}
 

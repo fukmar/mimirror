@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import dao.ItemRemitoDAO;
+import dao.RemitoDAO;
 import dto.*;
 import dto.SolicitudIndividualDTO;
 import entities.ItemRemitoEntity;
@@ -58,6 +60,15 @@ public class ItemRemito {
 		this.solicitudes = solicitudes;
 	}
 
+
+	public ItemRemito(MateriaPrima materiaprima, Float cantidad, EstadoRemito estadoremito, Remito remito) {
+		super();
+		this.materiaprima = materiaprima;
+		this.cantidad = cantidad;
+		this.estadoremito = estadoremito;
+		this.remito = remito;
+		
+	}
 
 	
 	public Integer getCodItemRemito() {
@@ -150,6 +161,13 @@ public class ItemRemito {
 		itemDTO.setCodItemRemito(codItemRemito);
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	public void save() 
+	{
+		ItemRemitoDAO.getInstance().save(this);
+		
 	}
 	
 	
