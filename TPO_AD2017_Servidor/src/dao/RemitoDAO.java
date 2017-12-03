@@ -77,7 +77,7 @@ public class RemitoDAO {
 					float cantidadingresada=item.getCantidad();
 					float cantidadactual=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(item.getMateriaprima());
 					float cantidadfinal=cantidadingresada+cantidadactual;
-					MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaPorId(item.getMateriaprima().getCodigo());
+					MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(item.getMateriaprima().getCodigo());
 					MateriaPrimaDAO.getInstance().updateCantidadMateriaPrima(mp, cantidadfinal);
 					for (SolicitudIndividual solicitud: item.getSolicitudes())
 					{

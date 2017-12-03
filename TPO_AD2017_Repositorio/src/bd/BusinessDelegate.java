@@ -17,6 +17,7 @@ import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
 import exceptions.FacturaException;
+import exceptions.MateriaPrima;
 import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlanDeProduccionException;
@@ -307,13 +308,18 @@ public class BusinessDelegate
 	
 	
 	//-----------------------------------MATERIA PRIMA(MATERIALES)------------------------------------------------------------------
-	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException{
+	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException, MateriaPrima{
 		remoteObject.grabarMateriaPrima(materia);
 	}
 	
-	public List<MateriaPrimaDTO> listarStock() throws RemoteException
+	public List<MateriaPrimaDTO> listarStock() throws RemoteException, MateriaPrima
 	{
 		return remoteObject.listarStock();
+	}
+	
+	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException, MateriaPrima
+	{
+		return remoteObject.getMateriaPrimaByCod(codMaterial);
 	}
 
 	//-----------------------------------ITEMS COMANDA-----------------------------------------------------------------------------

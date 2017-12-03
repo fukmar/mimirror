@@ -33,6 +33,7 @@ import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
 import exceptions.FacturaException;
+import exceptions.MateriaPrima;
 import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlanDeProduccionException;
@@ -317,6 +318,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	}
 
 
+	@Override
+	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException, MateriaPrima
+	{
+		// TODO Auto-generated method stub
+		return  Controlador.getInstance().listarMateriaPrimaByCod(codMaterial);
+	}
+
 	//--------------------------------CARTA-------------------------------------------------
 	@Override
 	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException, CartaException 
@@ -372,6 +380,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().listarRemitos();
 	}
+
 
 	
 

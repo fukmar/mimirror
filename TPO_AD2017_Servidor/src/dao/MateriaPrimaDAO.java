@@ -54,7 +54,8 @@ public class MateriaPrimaDAO
 		session.close();
 		return mp;
 	}
-	public MateriaPrima getMateriaPrimaPorId(Integer material_id) {
+	
+	public MateriaPrima getMateriaPrimaByCod(Integer material_id) {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		MateriaPrimaEntity mp=(MateriaPrimaEntity) session.createQuery("from MateriaPrimaEntity where codMaterial=?").setInteger(0, material_id).uniqueResult();

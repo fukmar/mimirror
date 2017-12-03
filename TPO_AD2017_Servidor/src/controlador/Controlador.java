@@ -589,4 +589,13 @@ public class Controlador {
 		return remitos;
 	}
 	
+	//MATERIA PRIMA
+	public MateriaPrimaDTO listarMateriaPrimaByCod(Integer codMaterial) 
+	{
+		MateriaPrimaDTO materias=new MateriaPrimaDTO();
+		MateriaPrima mpsN=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(codMaterial);
+		materias=mpsN.toDTO();
+		return materias;
+		
+	}
 }
