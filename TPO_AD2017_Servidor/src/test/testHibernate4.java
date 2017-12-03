@@ -41,6 +41,7 @@ import negocio.Remito;
 import negocio.Salon;
 import negocio.Sector;
 import negocio.SemiElaborado;
+import negocio.SolicitudDiaria;
 import negocio.Usuarios;
 
 public class testHibernate4 {
@@ -432,6 +433,17 @@ public class testHibernate4 {
 		//TESTEAMOS PLAN SEGUN FECHA
 	/*	PlanDeProduccion plan=PlanDeProduccionDAO.getInstance().obtenerPlanFecha(fecha);
 		System.out.println(plan.getCodigoPDP());*/
-	
+		SessionFactory sf2 = HibernateUtil.getSessionFactory();
+		Session session2 = sf2.openSession();
+		session2.beginTransaction();
+		SolicitudDiariaEntity soli=new SolicitudDiariaEntity (deposito);
+		SolicitudIndividualEntity solicitudtest = new SolicitudIndividualEntity(AreaRest.Caja, "Jorge", "faltante", mpe, 20,EstadoSolicitud.Iniciada);
+		session2.save(solicitudtest);
+		session2.save(soli);
+		session2.getTransaction().commit();
+		session2.close();
+		SolicitudIndividualDAO.getInstance().vinculartoDiaria(solicitudtest.toNegocio(), soli.toNegocio());
+		
+		
 		
 	}}

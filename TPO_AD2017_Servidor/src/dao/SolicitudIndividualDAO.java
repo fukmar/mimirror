@@ -10,9 +10,11 @@ import entities.SolicitudIndividualEntity;
 import entities.PlatoEntity;
 import entities.UnidadEntity;
 import enumns.CategoriaPlato;
+import enumns.EstadoItemComanda;
 import enumns.EstadoSolicitud;
 import hibernate.HibernateUtil;
 import negocio.SolicitudIndividual;
+import negocio.ItemComanda;
 import negocio.Plato;
 import negocio.SolicitudDiaria;
 
@@ -77,16 +79,16 @@ public class SolicitudIndividualDAO
 		session.getTransaction().commit();
 		session.close();
 	}
-	
-	public void updateEstadoSolicitudIndividual(SolicitudIndividual solicitud,SolicitudDiaria solicitudDiaria)
+	 
+	public void vinculartoDiaria(SolicitudIndividual sol, SolicitudDiaria soldiaria)
 	{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session=sf.openSession();
 		session.beginTransaction();
-		Query query=session.createQuery("from SolicitudIndividualEntity solicitud where solicitud.codsolicitudIndividual= ? ");
- 		query.setFloat(0,solicitud.getCodsolicitudIndividual());
-		SolicitudIndividualEntity solicitudentity=(SolicitudIndividualEntity) query.uniqueResult();
-		solicitudentity.setEstado(estado);
-		session.update(solicitudentity);
+		Query query=session.createQuery("update from SolicitudDiariaEntity s join s.solicitudes set s.solicitudes.estado= ? where s.solicitudes.codsolicitudIndividual=?");
+ 		query.setParameter(1,sol.getCodsolicitudIndividual());
+ 		query.setParameter(0,EstadoSolicitud.Recibida);
+		query.executeUpdate();
 		session.getTransaction().commit();
 		session.close();
 	}
