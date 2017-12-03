@@ -365,4 +365,8 @@ public class BusinessDelegate
 		remoteObject.grabarRemito(remito);
 	}
 	
+	public List<RemitoDTO> mostrarRemitos() throws RemoteException, RemitoException 
+	{
+		return remoteObject.mostrarRemitos();
+	}
 }

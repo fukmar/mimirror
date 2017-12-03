@@ -366,6 +366,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		
 	}
 
+	@Override
+	public List<RemitoDTO> mostrarRemitos() throws RemoteException, RemitoException 
+	{
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarRemitos();
+	}
+
 	
 
 	

@@ -21,6 +21,7 @@ import dao.MesaDAO;
 import dao.MozoDAO;
 import dao.PlanDeProduccionDAO;
 import dao.PlatoDAO;
+import dao.RemitoDAO;
 import dao.ReservaDAO;
 import dao.SalonDAO;
 import dao.SectorDAO;
@@ -572,6 +573,17 @@ public class Controlador {
 		//Integer codigoProveedor, Date fecha,List<ItemRemitoEntity> itemsRemito,EstadoRemito estado
 		//List<ItemRemito> items=remito.getItemsRemito();
 		new Remito(remito.getCodigoProveedor(),remito.getFecha()).save();
+	}
+	
+	public List<RemitoDTO> listarRemitos()
+	{
+		List<RemitoDTO> remitos=new ArrayList<RemitoDTO>();
+		List<Remito> remitoN=RemitoDAO.getInstance().getRemitos();
+		for(Remito r: remitoN)
+		{
+			remitos.add(r.toDTO());
+		}
+		return remitos;
 	}
 	
 }

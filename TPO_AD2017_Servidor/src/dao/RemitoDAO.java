@@ -25,12 +25,17 @@ import negocio.SolicitudIndividual;
 public class RemitoDAO {
 
 	private static RemitoDAO instancia;
+	private static SessionFactory sf=null;
 	
 	private RemitoDAO(){}
 	
-	public static RemitoDAO getInstance(){
+	public static RemitoDAO getInstance()
+	{
 		if(instancia == null)
+		{
 			instancia = new RemitoDAO();
+			sf=HibernateUtil.getSessionFactory();
+		}
 		return instancia;
 	}
 	
@@ -101,6 +106,17 @@ public class RemitoDAO {
 		private EstadoRemito estadoremitofromString(String estado)
 		{
 			return EstadoRemito.valueOf(estado);
+		}
+		
+		
+		
+		public List<Remito> getRemitos()
+		{
+			List<Remito> remitos=new ArrayList<Remito>();
+			Session session=sf.openSession();
+			List<RemitoEntity> resu=session.createQuery("from RemitoEntity").list();
+			session.close();
+			return remitos;
 		}
 	}
 
