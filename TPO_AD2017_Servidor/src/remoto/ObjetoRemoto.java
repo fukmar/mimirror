@@ -130,11 +130,28 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		Controlador.getInstance().guardarItemComanda(itemComanda);
 		
 	}
-	@Override
+	
+	//Paso a listo el item comanda
 	public void itemComandaLista(int coditemcomanda) throws RemoteException, itemComandaException 
 	{
 		Controlador.getInstance().itemComandaLista(coditemcomanda);
 	}
+	
+	//-----------------------------------ITEMS COMANDA POR AREA y POR COD COMANDA------------
+
+	@Override
+	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException {
+
+		return Controlador.getInstance().getItemsPendientesxArea(area);
+	}
+
+	@Override
+	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException {
+		
+		return Controlador.getInstance().obtenerItemsComandaByCodComanda(parseInt);
+	}
+
+	
 	//--------------------------FACTURAS--------------------------------------------------------------------------------
 	@Override
 	public void grabarFactura(FacturaDTO factura) throws RemoteException, FacturaException 
@@ -290,21 +307,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarStock();
 	}
 
-	//-----------------------------------ITEMS COMANDA POR AREA y POR COD COMANDA------------
 
-	@Override
-	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException {
-
-		return Controlador.getInstance().getItemsPendientesxArea(area);
-	}
-
-	@Override
-	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException {
-		
-		return Controlador.getInstance().obtenerItemsComandaByCodComanda(parseInt);
-	}
-
-	
 	//--------------------------------CARTA-------------------------------------------------
 	@Override
 	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException, CartaException 

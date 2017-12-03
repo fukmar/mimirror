@@ -75,7 +75,8 @@ public class Controlador {
 	
 	private static Controlador instancia; 
 	
-	public static Controlador getInstance(){
+	public static Controlador getInstance()
+	{
 		if (instancia == null)
 		return instancia = new Controlador();
 		else
@@ -461,7 +462,8 @@ public class Controlador {
 	public void grabarMateriaPrima(MateriaPrimaDTO materia) {
 		// TODO Auto-generated method stub
 		Unidad uni= UnidadDAO.getInstance().getUnidadByDescp(materia.getUnidadUso().getDescripcion());
-		Deposito depo= new Deposito();
+		//Deposito depo= new Deposito();
+		Deposito depo=DepositoDAO.getInstancia().getDepositoByCod(materia.getDeposito().getCodDeposito());
 		new MateriaPrima(materia.getDescripcion(), uni, materia.getCantidad(), depo).save();
 		
 	}
@@ -545,7 +547,6 @@ public class Controlador {
 		}
 		return items;
 	}
-	
 	
 	
 	

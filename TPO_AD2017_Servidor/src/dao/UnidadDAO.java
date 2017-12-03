@@ -22,12 +22,17 @@ import negocio.*;
 public class UnidadDAO {
 	
 private static UnidadDAO instancia;
+private static SessionFactory sf=null;
 	
 	private UnidadDAO(){}
 	
-	public static UnidadDAO getInstance(){
+	public static UnidadDAO getInstance()
+	{
 		if(instancia == null)
+		{
 			instancia = new UnidadDAO();
+			sf=HibernateUtil.getSessionFactory();
+		}
 		return instancia;
 	}
 	
@@ -68,5 +73,14 @@ private static UnidadDAO instancia;
 		return unidad;
 	}
 	
+	public Unidad getUnidadByCod(Integer codUnidad)
+	{
+		Unidad unidad=new Unidad();
+		Session session=sf.openSession();
+		UnidadEntity resu=(UnidadEntity) session.createQuery("from UnidadEntity u where u.codigoUni=?").setInteger(0, codUnidad).uniqueResult();
+		unidad=resu.toNegocio();
+		session.close();
+		return unidad;
+	}
 	
 }
