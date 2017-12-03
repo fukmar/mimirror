@@ -21,6 +21,7 @@ import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlanDeProduccionException;
 import exceptions.PlatoException;
+import exceptions.RemitoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
@@ -358,6 +359,10 @@ public class BusinessDelegate
 		return remoteObject.obtenerItemPDPByCodPDP(nroPlanDeProduccion);
 	}
 	
-	
+	//REMITO
+	public void grabarRemito(RemitoDTO remito) throws RemoteException, RemitoException 
+	{
+		remoteObject.grabarRemito(remito);
+	}
 	
 }

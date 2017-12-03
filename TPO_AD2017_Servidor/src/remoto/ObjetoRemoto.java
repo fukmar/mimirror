@@ -19,6 +19,7 @@ import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlanDeProduccionDTO;
 import dto.PlatoDTO;
+import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
@@ -36,6 +37,7 @@ import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlanDeProduccionException;
 import exceptions.PlatoException;
+import exceptions.RemitoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
@@ -356,6 +358,12 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 			throws RemoteException, itemPlanDeProduccionException {
 		// TODO Auto-generated method stub listarItemPlanPorCodPlan
 		return Controlador.getInstance().listarItemPlanPorCodPlan(nroPlanDeProduccion);
+	}
+
+	@Override
+	public void grabarRemito(RemitoDTO remito) throws RemoteException, RemitoException {
+		Controlador.getInstance().guardarRemito(remito);
+		
 	}
 
 	

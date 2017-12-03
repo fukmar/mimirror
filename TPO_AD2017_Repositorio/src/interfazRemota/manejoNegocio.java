@@ -19,6 +19,7 @@ import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlanDeProduccionDTO;
 import dto.PlatoDTO;
+import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
@@ -36,6 +37,7 @@ import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlanDeProduccionException;
 import exceptions.PlatoException;
+import exceptions.RemitoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
@@ -138,4 +140,7 @@ public interface manejoNegocio extends Remote
 	
 	//ITEM PLAN DE PRODUCCION
 	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException;
+	
+	//REMITO
+	public void grabarRemito(RemitoDTO remito) throws RemoteException,RemitoException;
 }
