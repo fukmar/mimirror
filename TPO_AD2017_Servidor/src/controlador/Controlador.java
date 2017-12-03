@@ -575,6 +575,7 @@ public class Controlador {
 		return items;
 	}
 	
+	//----------------------------------------------------------------------------------------------------------------------------------
 	//REMITO
 	
 	public void guardarRemito(RemitoDTO remito)
@@ -595,7 +596,7 @@ public class Controlador {
 		
 	}
 	
-	
+	//----------------------------------------------------------------------------------------------------------------------------------
 	//ITEM REMITO
 	
 	public void guardarItemRemito(ItemRemitoDTO itemRemito)
@@ -618,6 +619,7 @@ public class Controlador {
 		return remitos;
 	}
 	
+	//----------------------------------------------------------------------------------------------------------------------------------
 	//MATERIA PRIMA
 	public MateriaPrimaDTO listarMateriaPrimaByCod(Integer codMaterial) 
 	{
@@ -627,8 +629,8 @@ public class Controlador {
 		return materias;
 		
 	}
-	
-	//SOLICITUD DIARIA
+	//----------------------------------------------------------------------------------------------------------------------------------
+	//SOLICITUD INDIVIDUAL
 	public List<SolicitudIndividualDTO> listarSolicitudesIndividuales()
 	{
 		List<SolicitudIndividualDTO> solicitudes=new ArrayList<SolicitudIndividualDTO>();
@@ -646,4 +648,7 @@ public class Controlador {
 		MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(solicitud.getMateriaprima().getCodigo());
 		new SolicitudIndividual(solicitud.getArea(),solicitud.getResponsable(),solicitud.getMotivo(), mp,solicitud.getCantidad(),solicitud.getEstado()).save();
 	}
+	
+	//----------------------------------------------------------------------------------------------------------------------------------
+	//SOLICITUD DIARIA
 }
