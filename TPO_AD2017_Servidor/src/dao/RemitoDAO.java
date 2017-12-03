@@ -88,7 +88,20 @@ public class RemitoDAO {
 			session.close();
 		}
 	}
-	
+	public void ingresarMateriaPrimaporItemRemito (ItemRemito item)
+	{		
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+			Session session = sf.openSession();
+			Transaction tran=session.beginTransaction();
+			//session.beginTransaction();
+					float cantidadingresada=item.getCantidad();
+					float cantidadactual=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(item.getMateriaprima());
+					float cantidadfinal=cantidadingresada+cantidadactual;
+					MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(item.getMateriaprima().getCodigo());
+					MateriaPrimaDAO.getInstance().updateCantidadMateriaPrima(mp, cantidadfinal);
+			tran.commit();
+			session.close();
+		}
 	
 		public void updateEstadoRemito(Remito remito, String estado)
 		{

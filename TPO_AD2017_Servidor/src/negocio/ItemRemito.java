@@ -135,7 +135,7 @@ public class ItemRemito {
 	public void save() 
 	{
 		ItemRemitoDAO.getInstance().save(this);
-		
+		RemitoDAO.getInstance().ingresarMateriaPrimaporItemRemito(this); 
 	}
 	
 	
