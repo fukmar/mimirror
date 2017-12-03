@@ -49,6 +49,7 @@ import entities.ItemRemitoEntity;
 import entities.MesaEntity;
 import entities.MozoEntity;
 import entities.PlatoEntity;
+import entities.SalonEntity;
 import entities.SectorEntity;
 import enumns.AreaRest;
 import enumns.CategoriaPlato;
@@ -395,7 +396,9 @@ public class Controlador {
 	
 	public void guardarSectores(SectorDTO sector)
 	{
-		
+		//String descripcion, SalonEntity salon
+		Salon salon=SalonDAO.getInstancia().getSalonByCod(sector.getSalon().getCodSalon());
+		new Sector(sector.getDescripcion(),salon).save();
 	}
 	
 	public List<SectorDTO> listarSectores()

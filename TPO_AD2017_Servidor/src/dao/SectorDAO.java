@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
 import dto.MozoDTO;
@@ -26,6 +27,16 @@ public class SectorDAO
 		return instancia;
 	}
 	
+	
+	public void save(Sector sector)
+	{
+		SectorEntity sectorE=sector.toEntity();
+		Session session=sf.openSession();
+		Transaction tran=session.beginTransaction();
+		session.save(sectorE);
+		tran.commit();
+		session.close();
+	}
 	
 	public Sector getSectorByCod(Integer codSector) 
 	{

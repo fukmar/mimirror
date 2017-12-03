@@ -3,6 +3,7 @@ package negocio;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.SectorDAO;
 import dto.MesaDTO;
 import dto.SectorDTO;
 import entities.MesaEntity;
@@ -89,5 +90,11 @@ public class Sector
 		s.setDescripcion(descripcion);
 		s.setSalon(salon.toEntity());
 		return s;
+	}
+
+	public void save() 
+	{
+		
+		SectorDAO.getInstancia().save(this);
 	}
 }
