@@ -582,7 +582,8 @@ public class Controlador {
 		new Remito(remito.getCodigoProveedor(),remito.getFecha(),deposito,EstadoRemito.EnProceso).save();
 	}
 	
-	public RemitoDTO getRemitoByCod(int parseInt) throws RemoteException, RemitoException {
+	public RemitoDTO getRemitoByCod(int parseInt) 
+	{
 		Remito rem=new Remito();
 		RemitoDTO remDTO = new RemitoDTO();
 		rem = RemitoDAO.getInstance().getRemitoByCod(parseInt);

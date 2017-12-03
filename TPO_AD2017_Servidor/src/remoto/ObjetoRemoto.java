@@ -385,6 +385,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarRemitos();
 	}
 
+	
+	
+	public RemitoDTO getRemitoByCod(int parseInt) throws RemoteException, RemitoException {
+		
+		return Controlador.getInstance().getRemitoByCod(parseInt);
+	}
+
 	//-------------------------------ITEM REMITO------------------------------------------------
 	//ITEM REMITO
 	@Override
@@ -393,12 +400,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		Controlador.getInstance().guardarItemRemito(itemRemito);
 	}
 
-	@Override
-	public RemitoDTO getRemitoByCod(int parseInt) throws RemoteException, RemitoException {
-		
-		return Controlador.getInstance().getRemitoByCod(parseInt);
-	}
-
+	
 
 
 	
