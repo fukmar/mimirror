@@ -411,8 +411,8 @@ public class testHibernate4 {
 
 	    // PROBAMOS INGRESAR LA MERCADERIA DEL REMITO
 	    Remito remitoparaDAO=remito.toNegocio();
-	    RemitoDAO.getInstance().ingresarMateriaPrima(remitoparaDAO);
-	    RemitoDAO.getInstance().updateEstadoRemito(remitoparaDAO, "Procesado");
+	    //RemitoDAO.getInstance().ingresarMateriaPrima(remitoparaDAO);
+	    //RemitoDAO.getInstance().updateEstadoRemito(remitoparaDAO, "Procesado");
 	    //VERIFICAR LA BASE--PAPAS TENIA 1800 y ahora 3300 luego del DAO
 	    
 	    //PROBAMOS VER EL TOTAL FACTURADO ENTRE UNA FECHA Y OTRA usando as fechas que definimos para el anterior DAO
@@ -442,7 +442,8 @@ public class testHibernate4 {
 		session2.save(soli);
 		session2.getTransaction().commit();
 		session2.close();
-		SolicitudIndividualDAO.getInstance().vinculartoDiaria(solicitudtest.toNegocio(), soli.toNegocio());
+
+		RemitoDAO.getInstance().ingresarMateriaPrimaporItemRemito();
 		
 		
 		
