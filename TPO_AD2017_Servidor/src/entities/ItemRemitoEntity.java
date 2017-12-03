@@ -122,13 +122,13 @@ public class ItemRemitoEntity {
 		item.setCodItemRemito(codItemRemito);
 		item.setCantidad(cantidad);
 		item.setEstadoremito(estadoremito);
-		List<SolicitudIndividual> solicitudesnegocio=new ArrayList <SolicitudIndividual>();
-		for(SolicitudIndividualEntity s:solicitudes)
-		{
-			solicitudesnegocio.add(s.toNegocio());
-		}
+		//List<SolicitudIndividual> solicitudesnegocio=new ArrayList <SolicitudIndividual>();
+		//for(SolicitudIndividualEntity s:solicitudes)
+		//{
+		//	solicitudesnegocio.add(s.toNegocio());
+		//}
 		
-		item.setSolicitudes(solicitudesnegocio);
+		//item.setSolicitudes(solicitudesnegocio);
 		
 		item.setMateriaprima(materiaprima.toNegocio());
 

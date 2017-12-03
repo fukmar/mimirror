@@ -20,7 +20,7 @@ public class RemitoEntity {
 	
 	private Integer codigoProveedor;
 	private Date fecha;
-	private EstadoRemito estado;
+	private EstadoRemito estado=EstadoRemito.EnProceso;
 
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="codDeposito", nullable=false)
