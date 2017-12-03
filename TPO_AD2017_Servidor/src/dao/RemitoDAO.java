@@ -51,13 +51,13 @@ public class RemitoDAO {
 	session.close();
 	}
 	
-	public List<ItemRemito> getItemsRemitos()
+	public List<ItemRemito> getItemsRemitos(int codigoRemito)
 	{
 		List<ItemRemito> listaItemRemitos=new ArrayList<ItemRemito>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session=sf.openSession();
  		@SuppressWarnings("unchecked")
-		List<ItemRemitoEntity> itemsRemito=session.createQuery("from ItemRemitoEntity").list();
+		List<ItemRemitoEntity> itemsRemito=session.createQuery("from ItemRemitoEntity where remito.codRemito=?").setInteger(0,codigoRemito).list();
 		for(ItemRemitoEntity item:itemsRemito) 
 		{
 			listaItemRemitos.add(item.toNegocio());
@@ -69,20 +69,20 @@ public class RemitoDAO {
 	{		
 		if (r.getEstado()==EstadoRemito.EnProceso)
 		{
+
 			SessionFactory sf = HibernateUtil.getSessionFactory();
 			Session session = sf.openSession();
 			session.beginTransaction();
-			for(ItemRemito item:r.getItemsRemito())
+			List <ItemRemito> items = RemitoDAO.getInstance().getItemsRemitos(r.getCodRemito());
+			for(ItemRemito item:items)
 				{
+				System.out.println("LLEGUENIVEL2");
+				System.out.println("LLEGUE:"+item.getCodItemRemito());
 					float cantidadingresada=item.getCantidad();
 					float cantidadactual=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(item.getMateriaprima());
 					float cantidadfinal=cantidadingresada+cantidadactual;
 					MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(item.getMateriaprima().getCodigo());
 					MateriaPrimaDAO.getInstance().updateCantidadMateriaPrima(mp, cantidadfinal);
-					for (SolicitudIndividual solicitud: item.getSolicitudes())
-					{
-						SolicitudIndividualDAO.getInstance().updateEstadoSolicitudIndividual(solicitud, EstadoSolicitud.Recibida);
-					}
 				}
 		}
 	}
