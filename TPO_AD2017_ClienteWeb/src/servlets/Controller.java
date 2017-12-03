@@ -50,7 +50,7 @@ import exceptions.CajaException;
 import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.FacturaException;
-import exceptions.MateriaPrima;
+import exceptions.MateriaPrimaException;
 import exceptions.MesaException;
 import exceptions.MozoException;
 import exceptions.PlanDeProduccionException;
@@ -58,6 +58,7 @@ import exceptions.PlatoException;
 import exceptions.RemitoException;
 import exceptions.ReservaException;
 import exceptions.SectorException;
+import exceptions.SolicitudException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 import exceptions.itemPlanDeProduccionException;
@@ -223,7 +224,7 @@ public class Controller extends HttpServlet {
 		
 			try {
 				materiales = BusinessDelegate.getInstance().listarStock();
-			} catch (MateriaPrima e) {
+			} catch (MateriaPrimaException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -456,11 +457,11 @@ if(opcion.equals("verDetalleFactura")){
 
 }
 
-if(opcion.equals("comisiones")){
+if(opcion.equals("verComisiones")){
 	
 	 Date hoy = new Date();
-	    Date fechadesde = new Date("10/10/2019");
-	    Date fechahasta = new Date("10/10/2020");
+	    Date fechadesde = new Date();
+	    Date fechahasta = new Date();
 	    
 	ArrayList<String[]> comisiones = null;
 	try {
@@ -622,11 +623,27 @@ if(opcion.equals("verMozos")){
 			List<MateriaPrimaDTO> mps = null;
 			try {
 				mps = BusinessDelegate.getInstance().listarStock();
-			} catch (MateriaPrima e) {
+			} catch (MateriaPrimaException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			request.setAttribute("mps", mps);
+			RequestDispatcher rd = request.getRequestDispatcher("/solicitudIndividual.jsp");
+			rd.forward(request, response);
+			
+		}
+		
+		if(opcion.equals("solicitudDiaria")){
+			List<SolicitudIndividualDTO> solicitudesIndividuales = null;
+			
+			try {
+				solicitudesIndividuales = BusinessDelegate.getInstance().mostrarSolicitudesIndividuales();
+			} catch (SolicitudException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			request.setAttribute("solicitudesIndividuales", solicitudesIndividuales);
 			RequestDispatcher rd = request.getRequestDispatcher("/solicitudDiaria.jsp");
 			rd.forward(request, response);
 			
@@ -644,7 +661,7 @@ if(opcion.equals("verMozos")){
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (MateriaPrima e) {
+			} catch (MateriaPrimaException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -657,10 +674,29 @@ if(opcion.equals("verMozos")){
 			if (session.getAttribute("usuario").equals("cocina"))
 				si = new SolicitudIndividualDTO(AreaRest.Cocina,responsable,motivo,mp,Float.parseFloat(cantidad),EstadoSolicitud.Recibida);
 				
-			BusinessDelegate.getInstance().grabarSolicitudIndidual(si);
+			try {
+				BusinessDelegate.getInstance().grabarSolicitudIndividual(si);
+			} catch (SolicitudException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			}
 			
+		if(opcion.equals("combinarSolicitudesIndividuales")){
+			 
+			String[] solicitudesIndividuales = request.getParameterValues("solicitudesElegidas[]");
+
+
+			Integer[] resultado = new Integer[solicitudesIndividuales.length];
+			   for (int i = 0; i < solicitudesIndividuales.length; i++) {
+				   resultado[i] = Integer.parseInt(solicitudesIndividuales[i]);
+			   }
+					
+			//BusinessDelegate.getInstance().unirSolicitudesIndividuales(resultado);
+					
+								
+						}
 		
 		if(opcion.equals("cargarRemito")){
 			String codigoProveedor = request.getParameter("codigoProveedor");
@@ -701,7 +737,7 @@ if(opcion.equals("verMozos")){
 			List<MateriaPrimaDTO> mps = null;
 			try {
 				mps = BusinessDelegate.getInstance().listarStock();
-			} catch (MateriaPrima e) {
+			} catch (MateriaPrimaException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -724,7 +760,7 @@ if(opcion.equals("verMozos")){
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (MateriaPrima e) {
+			} catch (MateriaPrimaException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -762,7 +798,7 @@ if(opcion.equals("verMozos")){
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (MateriaPrima e) {
+			} catch (MateriaPrimaException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -799,7 +835,7 @@ if(opcion.equals("verMozos")){
 			List<MateriaPrimaDTO> mps = null;
 			try {
 				mps = BusinessDelegate.getInstance().listarStock();
-			} catch (MateriaPrima e) {
+			} catch (MateriaPrimaException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
