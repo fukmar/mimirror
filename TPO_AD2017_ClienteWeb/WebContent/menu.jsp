@@ -84,8 +84,12 @@
 				 
 			 menus.put("PdP", submmenus);   
 			
-			 
-
+			 submmenus = new HashMap<String,String>();
+				
+			 submmenus.put("Ver Materia Prima", "/TPO_AD2017_ClienteWeb/Controller?opcion=verMP");
+				 
+			 menus.put("Stock", submmenus);   
+			
 			 submmenus = new HashMap<String,String>();
 				
 			 submmenus.put("Solicitud Diaria", "/TPO_AD2017_ClienteWeb/Controller?opcion=solicitudDiaria");

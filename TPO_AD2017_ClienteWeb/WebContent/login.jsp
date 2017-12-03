@@ -19,7 +19,6 @@
                 return;
             }
 
-
         </script>
 
 </head>
@@ -31,7 +30,10 @@
   
   <div class="form">
   <center>
+  <img src="img/w.png" alt="logo" width="80"></center>
+  <center>
   <img src="img/logo.jpg" alt="logo" width="240"></center>
+   
   <br><br>
     <form class="login-form">
     
