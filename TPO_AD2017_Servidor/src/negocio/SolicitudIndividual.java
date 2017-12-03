@@ -15,7 +15,7 @@ import entities.*;
 import enumns.EstadoSolicitud;
 
 public class SolicitudIndividual  {
-
+ 
 	private static final long serialVersionUID = 1L;
 	private Integer codsolicitudIndividual;
 	protected AreaRestaurant area;
