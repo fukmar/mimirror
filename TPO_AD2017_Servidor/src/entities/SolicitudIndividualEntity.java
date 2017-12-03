@@ -20,27 +20,25 @@ public class SolicitudIndividualEntity {
 	protected AreaRestaurantEntity area;
     private EstadoSolicitud estado;
 	protected String responsable;
-	protected Integer lote;
-	protected Date fechaCompra;
-	protected Date fechaVencimiento;
+	//protected Integer lote;
+	//protected Date fechaCompra;
+	//protected Date fechaVencimiento;
 	protected String motivo;
 	@OneToOne
 	@JoinColumn(name="codigo")
 	private  MateriaPrimaEntity materiaprima;
-	
-
 	private float cantidad;
 
 
 	public SolicitudIndividualEntity(AreaRestaurantEntity area, String responsable,
-			Integer lote, Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaEntity materiaprima, float cantidad, EstadoSolicitud estado) {
+		 String motivo, MateriaPrimaEntity materiaprima, float cantidad, EstadoSolicitud estado) {
 		super();
 		this.area = area;
 		this.estado=estado;
 		this.responsable = responsable;
-		this.lote = lote;
-		this.fechaCompra = fechaCompra;
-		this.fechaVencimiento = fechaVencimiento;
+		//this.lote = lote;
+		//this.fechaCompra = fechaCompra;
+		//this.fechaVencimiento = fechaVencimiento;
 		this.motivo = motivo;
 		this.materiaprima = materiaprima;
 		this.cantidad = cantidad;
@@ -95,39 +93,6 @@ public class SolicitudIndividualEntity {
 	}
 
 
-	public Integer getLote() {
-		return lote;
-	}
-
-
-
-	public void setLote(Integer lote) {
-		this.lote = lote;
-	}
-
-
-
-	public Date getFechaCompra() {
-		return fechaCompra;
-	}
-
-
-
-	public void setFechaCompra(Date fechaCompra) {
-		this.fechaCompra = fechaCompra;
-	}
-
-
-
-	public Date getFechaVencimiento() {
-		return fechaVencimiento;
-	}
-
-
-
-	public void setFechaVencimiento(Date fechaVencimiento) {
-		this.fechaVencimiento = fechaVencimiento;
-	}
 
 
 
@@ -172,9 +137,6 @@ public class SolicitudIndividualEntity {
 		s.setArea(area.toNegocio());
 		s.setCantidad(cantidad);
 		s.setCodsolicitudIndividual(codsolicitudIndividual);
-		s.setFechaCompra(fechaCompra);
-		s.setFechaVencimiento(fechaVencimiento);
-		s.setLote(lote);
 		s.setMateriaprima(materiaprima.toNegocio());
 		s.setMotivo(motivo);
 		s.setResponsable(responsable);

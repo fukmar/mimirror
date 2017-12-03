@@ -19,9 +19,9 @@ public class SolicitudIndividualDTO  {
 	protected AreaRestaurantDTO area;
 	private EstadoSolicitud estado;
 	protected String responsable;
-	protected Integer lote;
-	protected Date fechaCompra;
-	protected Date fechaVencimiento;
+	//protected Integer lote;
+	//protected Date fechaCompra;
+	//protected Date fechaVencimiento;
 	protected String motivo;
 	private  MateriaPrimaDTO materiaprima;
 	private float cantidad;
@@ -33,15 +33,15 @@ public class SolicitudIndividualDTO  {
 	
 	
 	public SolicitudIndividualDTO(AreaRestaurantDTO area, String responsable,
-			Integer lote, Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaDTO materiaprima,
+			Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaDTO materiaprima,
 			float cantidad, SolicitudDiariaDTO solicitudDiaria,EstadoSolicitud estado) {
 		super();
 		this.area = area;
 		this.estado=estado;
 		this.responsable = responsable;
-		this.lote = lote;
-		this.fechaCompra = fechaCompra;
-		this.fechaVencimiento = fechaVencimiento;
+		//this.lote = lote;
+		//this.fechaCompra = fechaCompra;
+		//this.fechaVencimiento = fechaVencimiento;
 		this.motivo = motivo;
 		this.materiaprima = materiaprima;
 		this.cantidad = cantidad;
@@ -87,35 +87,6 @@ public class SolicitudIndividualDTO  {
 		this.responsable = responsable;
 	}
 
-
-	public Integer getLote() {
-		return lote;
-	}
-
-
-	public void setLote(Integer lote) {
-		this.lote = lote;
-	}
-
-
-	public Date getFechaCompra() {
-		return fechaCompra;
-	}
-
-
-	public void setFechaCompra(Date fechaCompra) {
-		this.fechaCompra = fechaCompra;
-	}
-
-
-	public Date getFechaVencimiento() {
-		return fechaVencimiento;
-	}
-
-
-	public void setFechaVencimiento(Date fechaVencimiento) {
-		this.fechaVencimiento = fechaVencimiento;
-	}
 
 
 	public String getMotivo() {

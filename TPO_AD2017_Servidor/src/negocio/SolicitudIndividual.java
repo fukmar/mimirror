@@ -20,9 +20,9 @@ public class SolicitudIndividual  {
 	private Integer codsolicitudIndividual;
 	protected AreaRestaurant area;
 	protected String responsable;
-	protected Integer lote;
-	protected Date fechaCompra;
-	protected Date fechaVencimiento;
+	//protected Integer lote;
+	//protected Date fechaCompra;
+	//protected Date fechaVencimiento;
 	protected String motivo;
 	private  MateriaPrima materiaprima;
 	private float cantidad;
@@ -33,16 +33,12 @@ public class SolicitudIndividual  {
 		
 	}
 	
-	public SolicitudIndividual(AreaRestaurant area, String responsable, Integer lote,
-			Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrima materiaprima, float cantidad,
+	public SolicitudIndividual(AreaRestaurant area, String responsable,  String motivo, MateriaPrima materiaprima, float cantidad,
 			SolicitudDiaria solicitudDiaria,EstadoSolicitud estado) {
 		super();
 		this.area = area;
 		this.estado=estado;
 		this.responsable = responsable;
-		this.lote = lote;
-		this.fechaCompra = fechaCompra;
-		this.fechaVencimiento = fechaVencimiento;
 		this.motivo = motivo;
 		this.materiaprima = materiaprima;
 		this.cantidad = cantidad;
@@ -89,29 +85,6 @@ public class SolicitudIndividual  {
 		this.responsable = responsable;
 	}
 
-	public Integer getLote() {
-		return lote;
-	}
-
-	public void setLote(Integer lote) {
-		this.lote = lote;
-	}
-
-	public Date getFechaCompra() {
-		return fechaCompra;
-	}
-
-	public void setFechaCompra(Date fechaCompra) {
-		this.fechaCompra = fechaCompra;
-	}
-
-	public Date getFechaVencimiento() {
-		return fechaVencimiento;
-	}
-
-	public void setFechaVencimiento(Date fechaVencimiento) {
-		this.fechaVencimiento = fechaVencimiento;
-	}
 
 	public String getMotivo() {
 		return motivo;
@@ -146,9 +119,6 @@ public class SolicitudIndividual  {
 		s.setArea(area.toEntity());
 		s.setCantidad(cantidad);
 		s.setCodsolicitudIndividual(codsolicitudIndividual);
-		s.setFechaCompra(fechaCompra);
-		s.setFechaVencimiento(fechaVencimiento);
-		s.setLote(lote);
 		s.setMateriaprima(materiaprima.toEntity());
 		s.setMotivo(motivo);
 		s.setEstado(estado);
@@ -156,8 +126,17 @@ public class SolicitudIndividual  {
 		return s;
 	}
 	
-	public SolicitudIndividualDTO toDTO() {
-		SolicitudIndividualDTO soli =new SolicitudIndividualDTO(this.area.toDTO(), this.responsable, this.lote, this.fechaCompra, this.fechaVencimiento, this.motivo, this.materiaprima.toDTO(), this.cantidad, this.solicitudDiaria.toDTO(), this.estado);
+	public SolicitudIndividualDTO toDTO()
+	{
+		SolicitudIndividualDTO soli = new SolicitudIndividualDTO();
+		soli.setArea(area.toDTO());
+		soli.setCantidad(cantidad);
+		soli.setCodsolicitudIndividual(codsolicitudIndividual);
+		soli.setEstado(estado);
+		soli.setMateriaprima(materiaprima.toDTO());
+		soli.setMotivo(motivo);
+		soli.setResponsable(responsable);
+		soli.setSolicitudDiaria(solicitudDiaria.toDTO());
 		return soli;
 	}
 	
