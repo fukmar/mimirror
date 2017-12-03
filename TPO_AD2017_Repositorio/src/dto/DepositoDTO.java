@@ -13,7 +13,7 @@ public class DepositoDTO implements Serializable
 	private Integer codDeposito;
 	
 	public DepositoDTO(){}
-
+ 
 	
 	public DepositoDTO(Integer codDeposito) {
 		super();
