@@ -1,5 +1,6 @@
 package negocio;
 
+import dao.MesaDAO;
 import dto.MesaDTO;
 import entities.MesaEntity;
 import entities.SectorEntity;
@@ -130,6 +131,11 @@ public class Mesa {
 		m.setMozo(mozo.toDTO());
 		m.setSector(sector.toDTO()); //nahueloide
 		return m;
+	}
+
+	public void save()
+	{
+		MesaDAO.getInstance().save(this);
 	}
 
 

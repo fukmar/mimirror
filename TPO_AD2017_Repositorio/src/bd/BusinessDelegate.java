@@ -262,6 +262,10 @@ public class BusinessDelegate
 			return remoteObject.combinarMesasPorCod(codmesa1, codmesa2);
 		}
 		
+	public void grabarMesa(MesaDTO mesa) throws RemoteException, MesaException 
+	{
+		remoteObject.grabarMesa(mesa);
+	}
 	//-----------------------------------SECTORES-------------------------------------------------------------------------
 	public List<SectorDTO> mostrarSectores() throws RemoteException, SectorException
 	{

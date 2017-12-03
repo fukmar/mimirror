@@ -44,6 +44,7 @@ import dto.SectorDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
 import entities.MesaEntity;
+import entities.MozoEntity;
 import entities.PlatoEntity;
 import entities.SectorEntity;
 import enumns.AreaRest;
@@ -362,6 +363,7 @@ public class Controlador {
 		}
 		return mesas;
 	}
+	
 	public void ocuparMesaPorCod(Integer codMesa)
 	{
 		Mesa mesaN=MesaDAO.getInstance().obtenerMesaPorCod(codMesa);
@@ -376,7 +378,13 @@ public class Controlador {
 		return mesaCombinada.getCodMesa();
 	}
 
-	
+	public void guardarMesa(MesaDTO mesa) 
+	{
+		Mozo mozo=MozoDAO.getInstancia().getMozosByCod(mesa.getMozo().getDni());
+		Sector sector=SectorDAO.getInstancia().getSectorByCod(mesa.getSector().getCodSector());
+		//nteger cantidadPersonas, Integer capacidad, Integer estado, MozoEntity mozo, SectorEntity sector
+		new Mesa(mesa.getCantidadPersonas(),mesa.getCapacidad(),mesa.getEstado(),mozo,sector).save();
+	}
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
     //LISTAR SECTORES
 	

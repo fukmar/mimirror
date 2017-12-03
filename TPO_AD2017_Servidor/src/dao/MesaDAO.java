@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.hql.ast.tree.SessionFactoryAwareNode;
 
 import entities.ComandaEntity;
@@ -36,6 +37,16 @@ private static SessionFactory sf=null;
 			sf=HibernateUtil.getSessionFactory();
 		}
 		return instancia;
+	}
+	
+	public void save(Mesa mesa)
+	{
+		Session session=sf.openSession();
+		MesaEntity mesaE=mesa.toEntity();
+		Transaction tran=session.beginTransaction();
+		session.save(mesaE);
+		tran.commit();
+		session.close();
 	}
 	
 	public Mesa obtenerMesaPorCod(int nromesa)
