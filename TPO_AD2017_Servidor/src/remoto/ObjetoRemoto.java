@@ -412,6 +412,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().listarSolicitudesIndividuales();
 	}
 
+	@Override
+	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud) throws RemoteException, SolicitudException 
+	{
+		Controlador.getInstance().guardarSolicitudIndividual(solicitud);
+		
+	}
+
 	
 
 

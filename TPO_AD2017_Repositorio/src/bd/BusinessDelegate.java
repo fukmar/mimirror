@@ -465,10 +465,17 @@ public class BusinessDelegate
 		remoteObject.grabarItemRemito(itemRemito);
 	}
 
+	//-----------------------------------SOLICITUD INDIVIDUAL-------------------------------------------------------------------------
 	
 	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales() throws RemoteException, SolicitudException  
 	{
 		return remoteObject.mostrarSolicitudesIndividuales();
+	}
+	
+	
+	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud) throws RemoteException, SolicitudException 
+	{
+		remoteObject.grabarSolicitudIndividual(solicitud);
 	}
 	
 }

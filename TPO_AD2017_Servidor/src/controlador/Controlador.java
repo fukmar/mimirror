@@ -639,4 +639,11 @@ public class Controlador {
 		}
 		return solicitudes;
 	}
+	
+	
+	public void guardarSolicitudIndividual(SolicitudIndividualDTO solicitud)
+	{
+		MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(solicitud.getMateriaprima().getCodigo());
+		new SolicitudIndividual(solicitud.getArea(),solicitud.getResponsable(),solicitud.getMotivo(), mp,solicitud.getCantidad(),solicitud.getEstado()).save();
+	}
 }

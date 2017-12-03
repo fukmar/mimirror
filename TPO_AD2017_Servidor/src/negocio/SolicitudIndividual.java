@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import dao.SolicitudIndividualDAO;
 import dto.*;
 import entities.*;
 import enumns.AreaRest;
@@ -27,15 +28,15 @@ public class SolicitudIndividual  {
 	protected String motivo;
 	private  MateriaPrima materiaprima;
 	private float cantidad;
-	private SolicitudDiaria solicitudDiaria;
+	//private SolicitudDiaria solicitudDiaria;
 	private EstadoSolicitud estado;
 	
 	public SolicitudIndividual(){
 		
 	}
 	
-	public SolicitudIndividual(AreaRest area, String responsable,  String motivo, MateriaPrima materiaprima, float cantidad,
-			SolicitudDiaria solicitudDiaria,EstadoSolicitud estado) {
+	public SolicitudIndividual(AreaRest area, String responsable,  String motivo, MateriaPrima materiaprima, float cantidad/*,
+			SolicitudDiaria solicitudDiaria,*/,EstadoSolicitud estado) {
 		super();
 		this.area = area;
 		this.estado=estado;
@@ -43,7 +44,7 @@ public class SolicitudIndividual  {
 		this.motivo = motivo;
 		this.materiaprima = materiaprima;
 		this.cantidad = cantidad;
-		this.solicitudDiaria = solicitudDiaria;
+		//this.solicitudDiaria = solicitudDiaria;
 	}
 
 	public EstadoSolicitud getEstado() {
@@ -62,13 +63,13 @@ public class SolicitudIndividual  {
 		this.codsolicitudIndividual = codsolicitudIndividual;
 	}
 
-	public SolicitudDiaria getSolicitudDiaria() {
+	/*public SolicitudDiaria getSolicitudDiaria() {
 		return solicitudDiaria;
 	}
 
 	public void setSolicitudDiaria(SolicitudDiaria solicitudDiaria) {
 		this.solicitudDiaria = solicitudDiaria;
-	}
+	}*/
 
 	public AreaRest getArea() {
 		return area;
@@ -137,8 +138,14 @@ public class SolicitudIndividual  {
 		soli.setMateriaprima(materiaprima.toDTO());
 		soli.setMotivo(motivo);
 		soli.setResponsable(responsable);
-		soli.setSolicitudDiaria(solicitudDiaria.toDTO());
+	//	soli.setSolicitudDiaria(solicitudDiaria.toDTO());
 		return soli;
+	}
+
+	public void save()
+	{
+		SolicitudIndividualDAO.getInstance().save(this);
+		
 	}
 	
 	
