@@ -38,11 +38,13 @@ import dto.MesaDTO;
 import dto.MozoDTO;
 import dto.PlanDeProduccionDTO;
 import dto.PlatoDTO;
+import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
+import entities.ItemRemitoEntity;
 import entities.MesaEntity;
 import entities.MozoEntity;
 import entities.PlatoEntity;
@@ -50,6 +52,7 @@ import entities.SectorEntity;
 import enumns.AreaRest;
 import enumns.CategoriaPlato;
 import enumns.Estado;
+import enumns.EstadoRemito;
 import enumns.MedioDePago;
 import exceptions.FacturaException;
 import negocio.Caja;
@@ -65,6 +68,7 @@ import negocio.Mesa;
 import negocio.Mozo;
 import negocio.PlanDeProduccion;
 import negocio.Plato;
+import negocio.Remito;
 import negocio.Reserva;
 import negocio.Salon;
 import negocio.Sector;
@@ -561,6 +565,13 @@ public class Controlador {
 		return items;
 	}
 	
+	//REMITO
 	
+	public void guardarRemito(RemitoDTO remito)
+	{
+		//Integer codigoProveedor, Date fecha,List<ItemRemitoEntity> itemsRemito,EstadoRemito estado
+		//List<ItemRemito> items=remito.getItemsRemito();
+		new Remito(remito.getCodigoProveedor(),remito.getFecha()).save();
+	}
 	
 }

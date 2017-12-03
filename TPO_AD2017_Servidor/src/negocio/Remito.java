@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dao.RemitoDAO;
 import dto.ItemRemitoDTO;
 import dto.RemitoDTO;
 import entities.*;
@@ -30,6 +31,7 @@ public class Remito
 		this.itemsRemito = itemsRemito;
 		this.estado = estado;
 	}
+	
 	public Remito(Integer codigoProveedor, Date fecha, Deposito deposito, 
 			EstadoRemito estado) {
 		super();
@@ -39,7 +41,12 @@ public class Remito
 		this.estado = estado;
 	}
 
+	public Remito(Integer codigoProveedor, Date fecha) {
+		super();
+		this.codigoProveedor = codigoProveedor;
+		this.fecha = fecha;
 	
+	}
 	public EstadoRemito getEstado() {
 		return estado;
 	}
@@ -117,6 +124,12 @@ public class Remito
 		//remit.setItemsRemito(items);
 		remit.setEstado(estado);
 		return remit;
+	}
+
+	public void save() 
+	{
+		RemitoDAO.getInstance().save(this);
+		
 	}
 	
 }
