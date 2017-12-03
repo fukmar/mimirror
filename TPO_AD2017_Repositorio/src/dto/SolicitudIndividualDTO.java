@@ -10,13 +10,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import enumns.AreaRest;
 import enumns.EstadoSolicitud;
 
 public class SolicitudIndividualDTO  {
 
 	private static final long serialVersionUID = 1L;
 	private Integer codsolicitudIndividual;
-	protected AreaRestaurantDTO area;
+	protected AreaRest area;
 	private EstadoSolicitud estado;
 	protected String responsable;
 	//protected Integer lote;
@@ -32,7 +33,7 @@ public class SolicitudIndividualDTO  {
 	}
 	
 	
-	public SolicitudIndividualDTO(AreaRestaurantDTO area, String responsable,
+	public SolicitudIndividualDTO(AreaRest area, String responsable,
 			Date fechaCompra, Date fechaVencimiento, String motivo, MateriaPrimaDTO materiaprima,
 			float cantidad, SolicitudDiariaDTO solicitudDiaria,EstadoSolicitud estado) {
 		super();
@@ -68,12 +69,12 @@ public class SolicitudIndividualDTO  {
 	}
 
 
-	public AreaRestaurantDTO getArea() {
+	public AreaRest getArea() {
 		return area;
 	}
 
 
-	public void setArea(AreaRestaurantDTO area) {
+	public void setArea(AreaRest area) {
 		this.area = area;
 	}
 

@@ -12,13 +12,14 @@ import javax.persistence.OneToOne;
 
 import dto.*;
 import entities.*;
+import enumns.AreaRest;
 import enumns.EstadoSolicitud;
 
 public class SolicitudIndividual  {
  
 	private static final long serialVersionUID = 1L;
 	private Integer codsolicitudIndividual;
-	protected AreaRestaurant area;
+	protected AreaRest area;
 	protected String responsable;
 	//protected Integer lote;
 	//protected Date fechaCompra;
@@ -33,7 +34,7 @@ public class SolicitudIndividual  {
 		
 	}
 	
-	public SolicitudIndividual(AreaRestaurant area, String responsable,  String motivo, MateriaPrima materiaprima, float cantidad,
+	public SolicitudIndividual(AreaRest area, String responsable,  String motivo, MateriaPrima materiaprima, float cantidad,
 			SolicitudDiaria solicitudDiaria,EstadoSolicitud estado) {
 		super();
 		this.area = area;
@@ -69,11 +70,11 @@ public class SolicitudIndividual  {
 		this.solicitudDiaria = solicitudDiaria;
 	}
 
-	public AreaRestaurant getArea() {
+	public AreaRest getArea() {
 		return area;
 	}
 
-	public void setArea(AreaRestaurant area) {
+	public void setArea(AreaRest area) {
 		this.area = area;
 	}
 
@@ -116,7 +117,7 @@ public class SolicitudIndividual  {
 
 	public SolicitudIndividualEntity toEntity() {
 		SolicitudIndividualEntity s=new SolicitudIndividualEntity();
-		s.setArea(area.toEntity());
+		s.setArea(area);
 		s.setCantidad(cantidad);
 		s.setCodsolicitudIndividual(codsolicitudIndividual);
 		s.setMateriaprima(materiaprima.toEntity());
@@ -129,7 +130,7 @@ public class SolicitudIndividual  {
 	public SolicitudIndividualDTO toDTO()
 	{
 		SolicitudIndividualDTO soli = new SolicitudIndividualDTO();
-		soli.setArea(area.toDTO());
+		soli.setArea(area);
 		soli.setCantidad(cantidad);
 		soli.setCodsolicitudIndividual(codsolicitudIndividual);
 		soli.setEstado(estado);
