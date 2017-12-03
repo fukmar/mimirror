@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import enumns.AreaRest;
 import enumns.EstadoSolicitud;
 import negocio.SolicitudIndividual;
 
@@ -15,9 +16,7 @@ public class SolicitudIndividualEntity {
 	@Column(name="codsolicitudIndividual")
 	private Integer codsolicitudIndividual;
 	
-    @ManyToOne
-    @JoinColumn(name="codArea")
-	protected AreaRestaurantEntity area;
+    private AreaRest area;
     private EstadoSolicitud estado;
 	protected String responsable;
 	//protected Integer lote;
@@ -30,7 +29,7 @@ public class SolicitudIndividualEntity {
 	private float cantidad;
 
 
-	public SolicitudIndividualEntity(AreaRestaurantEntity area, String responsable,
+	public SolicitudIndividualEntity(AreaRest area, String responsable,
 		 String motivo, MateriaPrimaEntity materiaprima, float cantidad, EstadoSolicitud estado) {
 		super();
 		this.area = area;
@@ -63,13 +62,13 @@ public class SolicitudIndividualEntity {
 
 
 
-	public AreaRestaurantEntity getArea() {
+	public AreaRest getArea() {
 		return area;
 	}
 
 
 
-	public void setArea(AreaRestaurantEntity area) {
+	public void setArea(AreaRest area) {
 		this.area = area;
 	}
 	public String getResponsable() {
@@ -134,7 +133,7 @@ public class SolicitudIndividualEntity {
 
 	public SolicitudIndividual toNegocio() {
 		SolicitudIndividual s=new SolicitudIndividual();
-		s.setArea(area.toNegocio());
+		s.setArea(area);
 		s.setCantidad(cantidad);
 		s.setCodsolicitudIndividual(codsolicitudIndividual);
 		s.setMateriaprima(materiaprima.toNegocio());
