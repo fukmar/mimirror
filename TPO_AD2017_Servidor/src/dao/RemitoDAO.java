@@ -50,7 +50,7 @@ public class RemitoDAO {
 	session.getTransaction().commit();
 	session.close();
 	} 
-	
+	 
 	public List<ItemRemito> getItemsRemitos(int codigoRemito)
 	{
 		List<ItemRemito> listaItemRemitos=new ArrayList<ItemRemito>();
