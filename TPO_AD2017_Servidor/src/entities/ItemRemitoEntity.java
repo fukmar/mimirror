@@ -53,6 +53,17 @@ public class ItemRemitoEntity {
 		this.solicitudes = solicitudes;
 	}
 
+	public ItemRemitoEntity(MateriaPrimaEntity materiaprima, Float cantidad, EstadoRemito estadoremito,
+			RemitoEntity remito) {
+		super();
+		this.materiaprima = materiaprima;
+		this.cantidad = cantidad;
+		this.estadoremito = estadoremito;
+		this.remito = remito;
+		
+	}
+
+	
 	public List<SolicitudIndividualEntity> getSolicitudes() {
 		return solicitudes;
 	}

@@ -30,6 +30,7 @@ import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 import exceptions.itemPlanDeProduccionException;
+import exceptions.itemRemitoException;
 import interfazRemota.manejoNegocio;
 
 
@@ -365,6 +366,7 @@ public class BusinessDelegate
 		return remoteObject.obtenerItemPDPByCodPDP(nroPlanDeProduccion);
 	}
 	
+	//-----------------------------------REMITO-------------------------------------------------------------------------
 	//REMITO
 	public void grabarRemito(RemitoDTO remito) throws RemoteException, RemitoException 
 	{
@@ -374,5 +376,12 @@ public class BusinessDelegate
 	public List<RemitoDTO> mostrarRemitos() throws RemoteException, RemitoException 
 	{
 		return remoteObject.mostrarRemitos();
+	}
+	
+	//-----------------------------------ITEM RMEITO-------------------------------------------------------------------------
+	//ITEM REMITO
+	public void grabarItemRemito(ItemRemitoDTO itemRemito) throws RemoteException, itemRemitoException 
+	{
+		remoteObject.grabarItemRemito(itemRemito);
 	}
 }

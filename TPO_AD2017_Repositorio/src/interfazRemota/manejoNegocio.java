@@ -14,6 +14,7 @@ import dto.FacturaDTO;
 import dto.ItemComandaDTO;
 import dto.ItemFacturaDTO;
 import dto.ItemPlanProduccionDTO;
+import dto.ItemRemitoDTO;
 import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
@@ -46,6 +47,7 @@ import exceptions.UnidadException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 import exceptions.itemPlanDeProduccionException;
+import exceptions.itemRemitoException;
 
 
 
@@ -146,4 +148,9 @@ public interface manejoNegocio extends Remote
 	//REMITO
 	public void grabarRemito(RemitoDTO remito) throws RemoteException,RemitoException;
 	public List<RemitoDTO> mostrarRemitos()throws RemoteException,RemitoException;
+	
+	
+	//ITEM REMITO
+	public void grabarItemRemito(ItemRemitoDTO itemRemito) throws RemoteException,itemRemitoException;
 }
+

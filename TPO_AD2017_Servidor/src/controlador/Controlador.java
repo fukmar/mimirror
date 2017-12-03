@@ -34,6 +34,7 @@ import dto.FacturaDTO;
 import dto.ItemComandaDTO;
 import dto.ItemFacturaDTO;
 import dto.ItemPlanProduccionDTO;
+import dto.ItemRemitoDTO;
 import dto.MateriaPrimaDTO;
 import dto.MesaDTO;
 import dto.MozoDTO;
@@ -65,6 +66,7 @@ import negocio.Factura;
 import negocio.ItemComanda;
 import negocio.ItemFactura;
 import negocio.ItemPlanProduccion;
+import negocio.ItemRemito;
 import negocio.MateriaPrima;
 import negocio.Mesa;
 import negocio.Mozo;
@@ -578,6 +580,16 @@ public class Controlador {
 		new Remito(remito.getCodigoProveedor(),remito.getFecha()).save();
 	}
 	
+	//ITEM REMITO
+	
+	public void guardarItemRemito(ItemRemitoDTO itemRemito)
+	{
+		//MateriaPrima materiaprima, Float cantidad, EstadoRemito estadoremito, Remito remito
+		MateriaPrima materia=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(itemRemito.getMateriaprima().getCodigo());
+		Remito remito=RemitoDAO.getInstance().getRemitoByCod(itemRemito.getRemito().getCodRemito());
+		new ItemRemito(materia,itemRemito.getCantidad(),itemRemito.getEstadoremito(),remito).save();
+	}
+
 	public List<RemitoDTO> listarRemitos()
 	{
 		List<RemitoDTO> remitos=new ArrayList<RemitoDTO>();
