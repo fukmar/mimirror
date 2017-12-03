@@ -605,6 +605,7 @@ public class Controlador {
 		MateriaPrima materia=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(itemRemito.getMateriaprima().getCodigo());
 		Remito remito=RemitoDAO.getInstance().getRemitoByCod(itemRemito.getRemito().getCodRemito());
 		new ItemRemito(materia,itemRemito.getCantidad(),itemRemito.getEstadoremito(),remito).save();
+		RemitoDAO.getInstance().ingresarMateriaPrimaporItemRemito ();
 	}
 
 	public List<RemitoDTO> listarRemitos()

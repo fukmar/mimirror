@@ -66,6 +66,15 @@ public class RemitoDAO {
 		session.close();
 		return listaItemRemitos;
 	}
+	public ItemRemito getItemRemito(Integer codigoitemRemito)
+	{
+		ItemRemito ItemRemitos=new ItemRemito();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session=sf.openSession();
+ 		@SuppressWarnings("unchecked")
+		ItemRemitoEntity itemRemito=(ItemRemitoEntity) session.createQuery("from ItemRemitoEntity where codItemRemito=?").setInteger(0,codigoitemRemito).uniqueResult();
+		return itemRemito.toNegocio();
+	}
 	public void ingresarMateriaPrima (Remito r)
 	{		
 		if (r.getEstado()==EstadoRemito.EnProceso)
@@ -88,19 +97,26 @@ public class RemitoDAO {
 			session.close();
 		}
 	}
-	public void ingresarMateriaPrimaporItemRemito (ItemRemito item)
+	public void ingresarMateriaPrimaporItemRemito ()
 	{		
 			SessionFactory sf = HibernateUtil.getSessionFactory();
 			Session session = sf.openSession();
 			Transaction tran=session.beginTransaction();
+			Integer maxitemremito=(Integer) session.createQuery("select max(codItemRemito) from ItemRemitoEntity").uniqueResult();
+			ItemRemito itemremito=RemitoDAO.getInstance().getItemRemito(maxitemremito);
 			//session.beginTransaction();
-					float cantidadingresada=item.getCantidad();
-					float cantidadactual=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(item.getMateriaprima());
-					float cantidadfinal=cantidadingresada+cantidadactual;
-					MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(item.getMateriaprima().getCodigo());
-					MateriaPrimaDAO.getInstance().updateCantidadMateriaPrima(mp, cantidadfinal);
+			SessionFactory sf2 = HibernateUtil.getSessionFactory();
+			Session session2 = sf2.openSession();
+			Transaction tran2=session2.beginTransaction();
+			float cantidadingresada=itemremito.getCantidad();
+			float cantidadactual=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(itemremito.getMateriaprima());
+			float cantidadfinal=cantidadingresada+cantidadactual;
+			MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(itemremito.getMateriaprima().getCodigo());
+			MateriaPrimaDAO.getInstance().updateCantidadMateriaPrima(mp, cantidadfinal);
 			tran.commit();
 			session.close();
+			tran2.commit();
+			session2.close();
 		}
 	
 		public void updateEstadoRemito(Remito remito, String estado)
