@@ -67,31 +67,8 @@ public class SolicitudIndividualDAO
 	}
 
 
-	public void updateEstadoSolicitudIndividual(SolicitudIndividual solicitud,EstadoSolicitud estado)
-	{
-		Session session=sf.openSession();
-		session.beginTransaction();
-		Query query=session.createQuery("from SolicitudIndividualEntity solicitud where solicitud.codsolicitudIndividual= ? ");
- 		query.setFloat(0,solicitud.getCodsolicitudIndividual());
-		SolicitudIndividualEntity solicitudentity=(SolicitudIndividualEntity) query.uniqueResult();
-		solicitudentity.setEstado(estado);
-		session.update(solicitudentity);
-		session.getTransaction().commit();
-		session.close();
-	}
 	 
-	public void vinculartoDiaria(SolicitudIndividual sol, SolicitudDiaria soldiaria)
-	{
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session=sf.openSession();
-		session.beginTransaction();
-		Query query=session.createQuery("update from SolicitudDiariaEntity s join s.solicitudes set s.solicitudes.estado= ? where s.solicitudes.codsolicitudIndividual=?");
- 		query.setParameter(1,sol.getCodsolicitudIndividual());
- 		query.setParameter(0,EstadoSolicitud.Recibida);
-		query.executeUpdate();
-		session.getTransaction().commit();
-		session.close();
-	}
+
 	
 }
 
