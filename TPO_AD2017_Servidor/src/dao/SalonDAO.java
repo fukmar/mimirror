@@ -38,5 +38,12 @@ public class SalonDAO
 		return salones;
 	}
 	
-	
+	public Salon getSalonByCod(Integer codSalon)
+	{
+		Salon salon=new Salon();
+		Session session=sf.openSession();
+		SalonEntity resu=(SalonEntity) session.createQuery("from SalonEntity s where e.codSalon=?").setInteger(0, codSalon).uniqueResult();
+		session.close();
+		return salon;
+	}
 }

@@ -388,6 +388,11 @@ public class Controlador {
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
     //LISTAR SECTORES
 	
+	public void guardarSectores(SectorDTO sector)
+	{
+		
+	}
+	
 	public List<SectorDTO> listarSectores()
 	{
 		List<SectorDTO> sectores=new ArrayList<SectorDTO>();
