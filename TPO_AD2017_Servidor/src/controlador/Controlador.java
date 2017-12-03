@@ -226,6 +226,12 @@ public class Controlador {
 		return items;
 	}
 
+	public void itemComandaLista(int coditemcomanda)
+	{
+		ItemComanda itemnegocio=ItemComandaDAO.getInstance().obtenerItemComandaByCod(coditemcomanda);
+		ItemComandaDAO.getInstance().updateitemComandatoFinalizada(itemnegocio);
+	//	ItemComandaDAO.getInstance().reducirstockxItemComanda(itemnegocio);
+	}
 	
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	//FACTURAS

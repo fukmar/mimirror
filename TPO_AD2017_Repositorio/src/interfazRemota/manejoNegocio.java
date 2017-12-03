@@ -71,6 +71,7 @@ public interface manejoNegocio extends Remote
 	 
 	//ITEMCOMANDA
 	public void grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException,itemComandaException;
+	public void itemComandaLista(int coditemcomanda) throws RemoteException, itemComandaException;
 	
 	//FACTURA
 	public  void grabarFactura(FacturaDTO factura) throws RemoteException,FacturaException;
@@ -124,7 +125,7 @@ public interface manejoNegocio extends Remote
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException;
 
 	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException;
-	
+
 	//CARTA
 	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException,CartaException;
 	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta)throws RemoteException,CartaException;

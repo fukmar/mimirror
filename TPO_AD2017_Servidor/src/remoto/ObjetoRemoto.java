@@ -130,6 +130,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		Controlador.getInstance().guardarItemComanda(itemComanda);
 		
 	}
+	@Override
+	public void itemComandaLista(int coditemcomanda) throws RemoteException, itemComandaException 
+	{
+		Controlador.getInstance().itemComandaLista(coditemcomanda);
+	}
 	//--------------------------FACTURAS--------------------------------------------------------------------------------
 	@Override
 	public void grabarFactura(FacturaDTO factura) throws RemoteException, FacturaException 

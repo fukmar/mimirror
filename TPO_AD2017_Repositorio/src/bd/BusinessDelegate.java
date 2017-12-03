@@ -155,7 +155,10 @@ public class BusinessDelegate
 	{
 		remoteObject.grabarItemComanda(itemComanda);
 	}
-	
+	public void itemComandaLista(int coditemcomanda) throws RemoteException, itemComandaException 
+	{
+		remoteObject.itemComandaLista(coditemcomanda);
+	}
 	
 	//---------------------------------------FACTURAS------------------------------------------------------------
 	public void grabarFactura(FacturaDTO factura) throws RemoteException, FacturaException 
