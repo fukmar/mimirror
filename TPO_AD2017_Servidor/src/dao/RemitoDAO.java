@@ -34,7 +34,8 @@ public class RemitoDAO {
 		return instancia;
 	}
 	
-	public void save(Remito remito){ //VERIFICAR ZUKI POR FAVOR..ACABO DE CAMBIARLO.
+	public void save(Remito remito)
+	{ //VERIFICAR ZUKI POR FAVOR..ACABO DE CAMBIARLO.
 
 	RemitoEntity rem = remito.toEntity();
 	SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -44,6 +45,7 @@ public class RemitoDAO {
 	session.getTransaction().commit();
 	session.close();
 	}
+	
 	public List<ItemRemito> getItemsRemitos()
 	{
 		List<ItemRemito> listaItemRemitos=new ArrayList<ItemRemito>();
