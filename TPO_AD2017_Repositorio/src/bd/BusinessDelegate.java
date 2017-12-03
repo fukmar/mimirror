@@ -355,31 +355,51 @@ public class BusinessDelegate
 	//-----------------------------------SALONES-------------------------------------------------------------------------
 	public List<SalonDTO> mostrarSalones() throws RemoteException, SalonException 
 	{
-		return remoteObject.mostrarSalones();
+		try {
+			return remoteObject.mostrarSalones();
+		} catch (SalonException e) {
+			throw new SalonException("No se pueden MOSTRAR los SALONES!");
+		}
 	}
 	
 	//-----------------------------------DEPOSITOS-------------------------------------------------------------------------
 	public List<DepositoDTO> mostrarDepositos() throws RemoteException, DepositoException
 	{
-		return remoteObject.mostrarDepositos();
+		try {
+			return remoteObject.mostrarDepositos();
+		} catch (DepositoException e) {
+			throw new DepositoException("No se pueden MOSTRAR los DEPOSITOS!");
+		}
 	}
 	
 	
-	//-----------------------------------DEPOSITOS-------------------------------------------------------------------------
+	//-----------------------------------FACTURADO CAJA-------------------------------------------------------------------------
 	public double mostrarTotalFacturadoCaja(Date FechaDesde, Date FechaHasta) throws RemoteException, CajaException 
 	{
-		return remoteObject.mostrarTotalFacturadoCaja(FechaDesde, FechaHasta);
+		try {
+			return remoteObject.mostrarTotalFacturadoCaja(FechaDesde, FechaHasta);
+		} catch (CajaException e) {
+			throw new CajaException("No se pueden MOSTRAR lo FACTURADO EN CAJA");
+		}
 	}
 	
 	
 	//-----------------------------------UNIDADES---------------------------------------------------------------------------
 	public List<UnidadDTO> mostrarUnidades() throws RemoteException, UnidadException {
-		return remoteObject.mostrarUnidades();
+		try {
+			return remoteObject.mostrarUnidades();
+		} catch (UnidadException e) {
+			throw new UnidadException("No se pueden MOSTRAR las UNIDADES!");
+		}
 		
 	}
 	
-	public UnidadDTO UnidadByDescp(String descp) throws RemoteException {
-		return remoteObject.UnidadByDescp(descp);
+	public UnidadDTO UnidadByDescp(String descp) throws RemoteException,UnidadException {
+		try {
+			return remoteObject.UnidadByDescp(descp);
+		} catch (UnidadException e) {
+			throw new UnidadException("No se pueden MOSTRAR las UNIDADES por descripcion!");
+		}
 	}
 	
 	

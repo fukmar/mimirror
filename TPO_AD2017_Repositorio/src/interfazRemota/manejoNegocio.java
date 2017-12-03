@@ -124,7 +124,7 @@ public interface manejoNegocio extends Remote
 
 	//UNIDAD
 	public List<UnidadDTO> mostrarUnidades() throws RemoteException, UnidadException;
-	public UnidadDTO UnidadByDescp(String descp) throws RemoteException;
+	public UnidadDTO UnidadByDescp(String descp) throws RemoteException,UnidadException;
 
 	//MATERIA PRIMA
 	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException,MateriaPrima;
