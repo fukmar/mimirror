@@ -18,7 +18,6 @@ public class ItemRemitoDTO implements Serializable{
 	private RemitoDTO remito;
 	private EstadoRemito estadoremito;
 	private MateriaPrimaDTO materiaprima;
-	private List<SolicitudIndividualDTO> solicitudes;
 
 	
 	public ItemRemitoDTO(Float cantidad, RemitoDTO remito, MateriaPrimaDTO materiaprima) {
@@ -60,15 +59,6 @@ public class ItemRemitoDTO implements Serializable{
 			//this.codItemRemito = codItemRemito;
 		}
 		
-	public List<SolicitudIndividualDTO> getSolicitudes() {
-			return solicitudes;
-		}
-
-
-		public void setSolicitudes(List<SolicitudIndividualDTO> solicitudes) {
-			this.solicitudes = solicitudes;
-		}
-
 
 	public RemitoDTO getRemito() {
 		return remito;

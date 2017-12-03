@@ -30,7 +30,6 @@ public class ItemRemito {
 	private Float cantidad;
 	private EstadoRemito estadoremito;
     private Remito remito;
-	private List<SolicitudIndividual> solicitudes;
 
 	public ItemRemito() {
 		super();
@@ -38,26 +37,13 @@ public class ItemRemito {
 	
 	
 	public ItemRemito(Integer codItemRemito, MateriaPrima materiaprima, Float cantidad,
-			EstadoRemito estadoremito, Remito remito, List<SolicitudIndividual> solicitudes) {
+			EstadoRemito estadoremito, Remito remito) {
 		super();
 		this.codItemRemito = codItemRemito;
 		this.materiaprima = materiaprima;
 		this.cantidad = cantidad;
 		this.estadoremito = estadoremito;
 		this.remito = remito;
-		this.solicitudes = solicitudes;
-	}
-	
-
-
-	public ItemRemito(MateriaPrima materiaprima, Float cantidad, EstadoRemito estadoremito, Remito remito,
-			List<SolicitudIndividual> solicitudes) {
-		super();
-		this.materiaprima = materiaprima;
-		this.cantidad = cantidad;
-		this.estadoremito = estadoremito;
-		this.remito = remito;
-		this.solicitudes = solicitudes;
 	}
 
 
@@ -121,14 +107,6 @@ public class ItemRemito {
 	}
 
 
-	public List<SolicitudIndividual> getSolicitudes() {
-		return solicitudes;
-	}
-
-
-	public void setSolicitudes(List<SolicitudIndividual> solicitudes) {
-		this.solicitudes = solicitudes;
-	}
 
 
 	public ItemRemitoEntity toEntity() {
@@ -138,23 +116,12 @@ public class ItemRemito {
 		item.setEstadoremito(estadoremito);
 		item.setMateriaprima(materiaprima.toEntity());
 		item.setRemito(remito.toEntity());
-		List<SolicitudIndividualEntity> solicitudesentity=new ArrayList <SolicitudIndividualEntity>();
-		for(SolicitudIndividual s:solicitudes)
-		{
-			solicitudesentity.add(s.toEntity());
-		}
-		item.setSolicitudes(solicitudesentity);
 		return item;
 		
 	}
 
 
 	public ItemRemitoDTO toDTO() {
-		List<SolicitudIndividualDTO> solis= new ArrayList<SolicitudIndividualDTO>();
-		//for(SolicitudIndividual solComun : this.solicitudes) {
-		//	solis.add(solComun.toDTO());
-		//}
-
 		ItemRemitoDTO itemDTO= new ItemRemitoDTO();
 		itemDTO.setCantidad(cantidad);
 		itemDTO.setMateriaprima(materiaprima.toDTO());

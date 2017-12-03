@@ -102,9 +102,8 @@ public class testHibernate4 {
 		List<SolicitudIndividualEntity>solicitudestoitemremito=new ArrayList <SolicitudIndividualEntity>();
 
 		SolicitudIndividualEntity solicitud = new SolicitudIndividualEntity(caja, "Jorge", 1, fecha, fecha, "faltante", mpe, 20,EstadoSolicitud.Iniciada);
-		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,(float) 1500,EstadoRemito.Procesado,null,solicitudestoitemremito);
+		ItemRemitoEntity itemremito = new ItemRemitoEntity(mpe,(float) 1500,EstadoRemito.Procesado,null);
 		solicitudestoitemremito.add(solicitud);
-		itemremito.setSolicitudes(solicitudestoitemremito);
 		itemremito.setRemito(remito);
 		itemsremito.add(itemremito);
 		
