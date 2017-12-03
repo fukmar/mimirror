@@ -31,7 +31,14 @@ public class RemitoDTO implements Serializable
 		this.itemsRemito = itemsRemito;
 		this.estado = estado;
 	}
-
+	public RemitoDTO(Integer codigoProveedor, Date fecha, DepositoDTO deposito,
+			EstadoRemito estado) {
+		super();
+		this.codigoProveedor = codigoProveedor;
+		this.fecha = fecha;
+		this.deposito = deposito;
+		this.estado = estado;
+	}
 
 	public EstadoRemito getEstado() {
 		return estado;

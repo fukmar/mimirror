@@ -109,15 +109,15 @@ public class RemitoEntity {
 	
 	
 	public Remito toNegocio() {
-		List<ItemRemito> items = new ArrayList<ItemRemito>();
-		for(ItemRemitoEntity itemEn: itemsRemito) {
-			items.add(itemEn.toNegocio());
-		}
+		//List<ItemRemito> items = new ArrayList<ItemRemito>();
+		//for(ItemRemitoEntity itemEn: itemsRemito) {
+		//	items.add(itemEn.toNegocio());
+		//}
 		Remito r = new Remito();
 		r.setCodigoProveedor(codigoProveedor);
 		r.setCodRemito(codRemito);
 		r.setFecha(fecha);
-		r.setItemsRemito(items);
+		//r.setItemsRemito(items);
 		r.setEstado(estado);
 		return r;
 	}

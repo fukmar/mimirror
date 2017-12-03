@@ -30,6 +30,14 @@ public class Remito
 		this.itemsRemito = itemsRemito;
 		this.estado = estado;
 	}
+	public Remito(Integer codigoProveedor, Date fecha, Deposito deposito, 
+			EstadoRemito estado) {
+		super();
+		this.codigoProveedor = codigoProveedor;
+		this.fecha = fecha;
+		this.deposito = deposito;
+		this.estado = estado;
+	}
 
 	
 	public EstadoRemito getEstado() {
@@ -87,7 +95,7 @@ public class Remito
 		RemitoEntity remit= new RemitoEntity();
 		remit.setCodigoProveedor(codigoProveedor);
 		remit.setFecha(fecha);
-		remit.setItemsRemito(items);
+	//	remit.setItemsRemito(items);
 		remit.setEstado(estado);
 		remit.setCodRemito(codRemito);
 		remit.setDeposito(deposito.toEntity());
@@ -96,17 +104,17 @@ public class Remito
 	
 	public RemitoDTO toDTO() {
 		
-		List<ItemRemitoDTO> items= new ArrayList<ItemRemitoDTO>();
-		for(ItemRemito i:this.itemsRemito) {
-			items.add(i.toDTO());
-		}
+		//List<ItemRemitoDTO> items= new ArrayList<ItemRemitoDTO>();
+		//for(ItemRemito i:this.itemsRemito) {
+		//	items.add(i.toDTO());
+		//}
 		
 		RemitoDTO remit=new RemitoDTO();
 		remit.setCodigoProveedor(codigoProveedor);
 		remit.setCodRemito(codRemito);
 		remit.setDeposito(deposito.toDTO());
 		remit.setFecha(fecha);
-		remit.setItemsRemito(items);
+		//remit.setItemsRemito(items);
 		remit.setEstado(estado);
 		return remit;
 	}
