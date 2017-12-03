@@ -8,6 +8,7 @@ import java.util.Scanner;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import entities.ItemRemitoEntity;
 import entities.PlatoEntity;
@@ -72,18 +73,19 @@ public class RemitoDAO {
 
 			SessionFactory sf = HibernateUtil.getSessionFactory();
 			Session session = sf.openSession();
-			session.beginTransaction();
+			Transaction tran=session.beginTransaction();
+			//session.beginTransaction();
 			List <ItemRemito> items = RemitoDAO.getInstance().getItemsRemitos(r.getCodRemito());
 			for(ItemRemito item:items)
 				{
-				System.out.println("LLEGUENIVEL2");
-				System.out.println("LLEGUE:"+item.getCodItemRemito());
 					float cantidadingresada=item.getCantidad();
 					float cantidadactual=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(item.getMateriaprima());
 					float cantidadfinal=cantidadingresada+cantidadactual;
 					MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(item.getMateriaprima().getCodigo());
 					MateriaPrimaDAO.getInstance().updateCantidadMateriaPrima(mp, cantidadfinal);
 				}
+			tran.commit();
+			session.close();
 		}
 	}
 	
