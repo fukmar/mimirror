@@ -162,7 +162,6 @@ public class PoblarBase {
 		
 		
 		
-		
 		sectores.add(sector);
 		salon.setSectores(sectores);
 		session.save(local1);
@@ -383,6 +382,16 @@ public class PoblarBase {
 		platos.add(plato5);
 		CartaEntity carta= new CartaEntity(fecha, Temporada.Verano, platos);
 		session.save(carta);
+		plato1.setCarta(carta);
+		plato2.setCarta(carta);
+		plato3.setCarta(carta);
+		plato4.setCarta(carta);
+		plato5.setCarta(carta);
+		session.update(plato1);
+		session.update(plato2);
+		session.update(plato3);
+		session.update(plato4);
+		session.update(plato5);
 
 		
 		session.getTransaction().commit();
