@@ -109,7 +109,7 @@ public class PlatoDAO
 					{
 						for (Ingrediente ifinal:ingredientesFinal)
 						{
-							if(ifinal.getMateriaprima().getCodigo()==codigoabuscar)
+							if(ifinal.getMateriaprima().getCodigo().equals(codigoabuscar))
 							{
 								int subcantidad=ifinal.getCantidad()+idereceta.getCantidad();
 								ifinal.setCantidad(subcantidad);

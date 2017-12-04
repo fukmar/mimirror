@@ -75,12 +75,14 @@ private static ItemComandaDAO instancia;
 	}
 	public void reducirstockxItemComanda(ItemComanda i){
 		List <Ingrediente> ingredientes=PlatoDAO.getInstance().getIngredientes(i.getPlato());
+		
 		for (Ingrediente ing:ingredientes)
 		{
 			SessionFactory sf = HibernateUtil.getSessionFactory();
 			Session session = sf.openSession();
 			session.beginTransaction();
 			MateriaPrima mp=ing.getMateriaprima();
+			System.out.println("clavale un syso: "+mp.getEstadescontado());
 			if (mp.getEstadescontado()==0)
 			{
 				float cantidadenstock=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(ing.getMateriaprima());
