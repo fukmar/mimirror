@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import dao.SolicitudDiariaDAO;
 import dao.SolicitudIndividualDAO;
 import dto.SolicitudDiariaDTO;
+import dto.SolicitudIndividualDTO;
 import entities.DepositoEntity;
 import entities.SolicitudDiariaEntity;
 import entities.SolicitudIndividualEntity;
@@ -88,5 +89,15 @@ public class SolicitudDiaria {
 		SolicitudDiariaDAO.getInstance().save(this);
 		
 	}
+
+	public SolicitudDiariaDTO toDTO()
+	{
+		SolicitudDiariaDTO soli = new SolicitudDiariaDTO();
+		soli.setCodsolicitudDiaria(codsolicitudDiaria);
+		soli.setDeposito(deposito.toDTO());
+	
+		return soli;
+	}
+
 
 }

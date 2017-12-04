@@ -40,6 +40,7 @@ import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SectorDTO;
 import dto.SemiElaboradoDTO;
+import dto.SolicitudDiariaDTO;
 import dto.SolicitudIndividualDTO;
 import enumns.AreaRest;
 import enumns.CategoriaPlato;
@@ -601,6 +602,38 @@ if(opcion.equals("verMozos")){
 
 		}
 		
+		
+if(opcion.equals("verSolicitudesIndividuales")){
+			
+			List<SolicitudIndividualDTO> sols = new ArrayList<SolicitudIndividualDTO>();
+		
+				try {
+					sols = BusinessDelegate.getInstance().mostrarSolicitudesNoDiarias();
+				} catch (SolicitudException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				request.setAttribute("sols", sols);
+				RequestDispatcher rd = request.getRequestDispatcher("/verSolicitudesIndividuales.jsp");
+				rd.forward(request, response);
+		}
+
+
+if(opcion.equals("verSolicitudesDiarias")){
+	
+	List<SolicitudDiariaDTO> sols = new ArrayList<SolicitudDiariaDTO>();
+
+		try {
+			sols = BusinessDelegate.getInstance().mostrarSolicitudesDiarias();
+		} catch (SolicitudException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("sols", sols);
+		RequestDispatcher rd = request.getRequestDispatcher("/verSolicitudesDiarias.jsp");
+		rd.forward(request, response);
+}
+
 
 		if(opcion.equals("cargarReserva")){
 			String nombre = request.getParameter("nombre");

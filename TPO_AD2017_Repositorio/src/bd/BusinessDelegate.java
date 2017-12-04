@@ -563,6 +563,12 @@ public class BusinessDelegate
 	{
 		return remoteObject.mostrarSolicitudesNoDiarias();
 	}
+	
+	public List<SolicitudDiariaDTO> mostrarSolicitudesDiarias() throws RemoteException, SolicitudException{
+		return remoteObject.mostrarSolicitudesDiarias();
+	}
+
+	
 	//-----------------------------------SEMIS-------------------------------------------------------------------------
 	
 	public List<SemiElaboradoDTO> mostrarSemiElaborados()  throws RemoteException, SemiElaboradoException{
@@ -593,6 +599,7 @@ public class BusinessDelegate
 		 remoteObject.actualizarElaborado(elab);
 	}
 
+	
 
 
 	

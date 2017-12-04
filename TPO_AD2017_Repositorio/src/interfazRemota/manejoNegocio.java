@@ -28,6 +28,7 @@ import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.SemiElaboradoDTO;
+import dto.SolicitudDiariaDTO;
 import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
@@ -174,6 +175,9 @@ public interface manejoNegocio extends Remote
 	public List<SolicitudIndividualDTO> mostrarSolicitudesNoDiarias()	throws RemoteException, SolicitudException;
 	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud)throws RemoteException,SolicitudException;
 	public void unirSolicitudesIndividuales(List<CombinadorDTO> mandar) throws RemoteException,SolicitudException;
+	
+	//SOLI DIARIA
+	public List<SolicitudDiariaDTO> mostrarSolicitudesDiarias() throws RemoteException, SolicitudException;
 	
 	//SEMIS
 	public List<SemiElaboradoDTO> mostrarSemiElaborados() throws RemoteException, SemiElaboradoException;

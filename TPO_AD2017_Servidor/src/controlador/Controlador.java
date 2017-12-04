@@ -51,6 +51,7 @@ import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.SemiElaboradoDTO;
+import dto.SolicitudDiariaDTO;
 import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
@@ -772,6 +773,16 @@ public class Controlador {
 		
 	}
 
+	public List<SolicitudDiariaDTO> listarSolicitudesDiarias()
+	{
+		List<SolicitudDiariaDTO> solicitudes=new ArrayList<SolicitudDiariaDTO>();
+		List<SolicitudDiaria> soliN=SolicitudDiariaDAO.getInstance().getsolicitudesDiarias();
+		for(SolicitudDiaria s: soliN)
+		{
+			solicitudes.add(s.toDTO());
+		}
+		return solicitudes;
+	}
 	
 	
 	//ELABORADOS

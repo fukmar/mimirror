@@ -28,6 +28,7 @@ import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
 import dto.SemiElaboradoDTO;
+import dto.SolicitudDiariaDTO;
 import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
@@ -471,6 +472,12 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		Controlador.getInstance().UnirSolicitudesIndividuales(resultado);
 		
 	}
+	
+	@Override
+	public List<SolicitudDiariaDTO> mostrarSolicitudesDiarias() throws RemoteException, SolicitudException {
+		return Controlador.getInstance().listarSolicitudesDiarias();
+	}
+
 
 	//-------------------------------SEMIS----------------------------------------------------------
 	
@@ -503,6 +510,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		// TODO Auto-generated method stub
 		Controlador.getInstance().actualizarElaborado(elab);
 	}
+
 
 	
 
