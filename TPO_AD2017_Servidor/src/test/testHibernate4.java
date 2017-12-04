@@ -368,6 +368,7 @@ public class testHibernate4 {
 		{
 			System.out.println(i.getCantidad()+" "+i.getMateriaprima().getUnidadUso().getDescripcion()+" "+i.getMateriaprima().getDescripcion());
 		}
+		
 		ItemComandaDAO.getInstance().reducirstockxItemComanda(itemCom2.toNegocio());
 		System.out.println("Ahora quedan:");
 		for (Ingrediente i: recetaplato)
