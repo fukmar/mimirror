@@ -636,9 +636,8 @@ public class Controlador {
 		//Integer codigoProveedor, Date fecha,List<ItemRemitoEntity> itemsRemito,EstadoRemito estado
 		//List<ItemRemito> items=remito.getItemsRemito();
 		Deposito deposito = DepositoDAO.getInstancia().getDepositoByCod(remito.getDeposito().getCodDeposito());
-		new Remito(remito.getCodigoProveedor(),remito.getFecha(),deposito,EstadoRemito.EnProceso).save();
-		Remito remito1=RemitoDAO.getInstance().getRemitoByCod(remito.getCodRemito());
-		RemitoDAO.getInstance().updateEstadoRemito(remito1,"Procesado");
+		new Remito(remito.getCodigoProveedor(),remito.getFecha(),deposito,EstadoRemito.Procesado).save();
+
 	}
 	
 	public RemitoDTO getRemitoByCod(Integer parseInt) 
