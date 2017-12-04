@@ -132,9 +132,9 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	
 	//--------------------------ITEM COMANDA--------------------------------------------------------------------------------
 	@Override
-	public void grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException, itemComandaException 
+	public boolean grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException, itemComandaException 
 	{
-		Controlador.getInstance().guardarItemComanda(itemComanda);
+		return Controlador.getInstance().guardarItemComanda(itemComanda);
 		
 	}
 	

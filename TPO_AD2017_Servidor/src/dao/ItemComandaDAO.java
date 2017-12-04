@@ -127,7 +127,24 @@ private static ItemComandaDAO instancia;
 		session.getTransaction().commit();
 		session.close();
 	}
+	public boolean HaySuficiente (List<Ingrediente> ingredientesnecesarios, int cantidad)
+	{
 	
+		int sepuede=0;
+		for(Ingrediente i:ingredientesnecesarios) 
+		{
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+			Session session=sf.openSession();
+			session.beginTransaction();
+			MateriaPrimaEntity mp= new MateriaPrimaEntity();
+			mp=(MateriaPrimaEntity) session.createQuery("from MateriaPrimaEntity mp where mp.codMaterial=?").setInteger(0,i.getMateriaprima().getCodigo()).uniqueResult();
+	 		if (mp.getCantidad()<(i.getCantidad()*cantidad))
+	 			sepuede++;
+	 		session.close();
+		}
+		if (sepuede==0) return true;
+		else return false;
+	}
 	public void updateitemComandatoFinalizada(ItemComanda i)
 	{
 		SessionFactory sf = HibernateUtil.getSessionFactory();

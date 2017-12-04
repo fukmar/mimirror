@@ -167,10 +167,10 @@ public class BusinessDelegate
 	
 	//---------------------------------------ITEM COMANDA------------------------------------------------------------
 	
-	public void grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException, itemComandaException 
+	public boolean grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException, itemComandaException 
 	{
 		try {
-			remoteObject.grabarItemComanda(itemComanda);
+			return remoteObject.grabarItemComanda(itemComanda);
 		} catch (itemComandaException e) {
 			throw new itemComandaException("NO se pudo GRABAR el ITEMCOMANDA!");
 		}

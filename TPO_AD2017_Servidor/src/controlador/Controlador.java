@@ -66,6 +66,7 @@ import negocio.Carta;
 import negocio.Comanda;
 import negocio.Deposito;
 import negocio.Factura;
+import negocio.Ingrediente;
 import negocio.ItemComanda;
 import negocio.ItemFactura;
 import negocio.ItemPlanProduccion;
@@ -207,14 +208,22 @@ public class Controlador {
 	
 	//-------------------------------------------------------------------------------------------------------------------------------------
 	//ITEM COMANDA
-	public void guardarItemComanda(ItemComandaDTO itemComanda) 
+	public boolean guardarItemComanda(ItemComandaDTO itemComanda) 
 	{
 		//(Integer cantidad, Plato plato,Comanda comanda
 		Integer codPlato=itemComanda.getPlato().getCodigo();
 		Plato plato=PlatoDAO.getInstance().getPlatoPorCod(codPlato);
+		List <Ingrediente> ingredientesplato=PlatoDAO.getInstance().getIngredientes(plato);
+		boolean haycantidades=ItemComandaDAO.getInstance().HaySuficiente(ingredientesplato, itemComanda.getCantidad());
+		if (haycantidades=true)
+		{
 		Integer codComanda=itemComanda.getComanda().getCodComanda();
 		Comanda comanda=ComandaDAO.getInstance().obtenerComandaByCod(codComanda);
 		new ItemComanda(itemComanda.getCantidad(),itemComanda.getEstado(), plato,comanda).save();
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	//OBTENER ITEMS DE COMANDAS POR AREA

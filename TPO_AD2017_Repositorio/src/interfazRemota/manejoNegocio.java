@@ -78,7 +78,7 @@ public interface manejoNegocio extends Remote
 	
 	 
 	//ITEMCOMANDA
-	public void grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException,itemComandaException;
+	public boolean grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException,itemComandaException;
 	public void itemComandaLista(int coditemcomanda) throws RemoteException, itemComandaException;
 	
 	//FACTURA
