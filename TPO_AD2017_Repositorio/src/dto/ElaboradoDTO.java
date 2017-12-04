@@ -12,6 +12,7 @@ public class ElaboradoDTO extends ProductoDTO implements Serializable{
 	
 	private UnidadDTO unidad;
 	private List<SemiElaboradoDTO> componentes;
+	private PlanDeProduccionDTO plan;
 	
 	public ElaboradoDTO(){}
 	
@@ -36,5 +37,16 @@ public class ElaboradoDTO extends ProductoDTO implements Serializable{
 	public void setComponentes(List<SemiElaboradoDTO> componentes) {
 		this.componentes = componentes;
 	}
+
+
+	public PlanDeProduccionDTO getPlan() {
+		return plan;
+	}
+
+
+	public void setPlan(PlanDeProduccionDTO plan) {
+		this.plan = plan;
+	}
+	
 	
 }

@@ -573,7 +573,14 @@ public class BusinessDelegate
 		return remoteObject.getSemiElaboradoByCod(parseInt);
 	}
 
+
 	
+	//-------------------------------------ELABORADOS------------------------------------------
+
+	public void grabarElaborado(ElaboradoDTO elab)throws RemoteException, SemiElaboradoException {
+		// TODO Auto-generated method stub
+		remoteObject.grabarElaborado(elab);
+	}
 
 
 	

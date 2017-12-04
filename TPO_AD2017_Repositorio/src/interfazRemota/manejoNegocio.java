@@ -12,6 +12,7 @@ import dto.CartaDTO;
 import dto.ComandaDTO;
 import dto.CombinadorDTO;
 import dto.DepositoDTO;
+import dto.ElaboradoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
 import dto.ItemFacturaDTO;
@@ -177,6 +178,9 @@ public interface manejoNegocio extends Remote
 	public List<SemiElaboradoDTO> mostrarSemiElaborados() throws RemoteException, SemiElaboradoException;
 	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException;
 	
+	
+	//ELABORADOS
+	public void grabarElaborado(ElaboradoDTO elab) throws RemoteException, SemiElaboradoException;
 	
 
 

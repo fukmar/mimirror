@@ -12,6 +12,7 @@ import dto.CartaDTO;
 import dto.ComandaDTO;
 import dto.CombinadorDTO;
 import dto.DepositoDTO;
+import dto.ElaboradoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
 import dto.ItemFacturaDTO;
@@ -482,6 +483,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().getSemiElaboradoByCod(parseInt);
 	}
 
+	
+	//-------------------------------ELABORADOS-----------------------------------------------------------
+	@Override
+	public void grabarElaborado(ElaboradoDTO elab) throws RemoteException, SemiElaboradoException  {
+		// TODO Auto-generated method stub
+		Controlador.getInstance().grabarElaborado(elab);
+	}
 
 	
 

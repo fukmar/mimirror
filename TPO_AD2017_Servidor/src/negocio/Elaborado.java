@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dao.ElaboradoDAO;
 import dto.ElaboradoDTO;
 import dto.SemiElaboradoDTO;
 import entities.ElaboradoEntity;
@@ -80,6 +81,10 @@ public class Elaborado extends Producto
 		e.setTipo(tipo);
 		e.setUnidad(unidad.toEntity());
 		return e;
+	}
+	
+	public void save() {
+		ElaboradoDAO.getInstance().save(this);
 	}
 
 }

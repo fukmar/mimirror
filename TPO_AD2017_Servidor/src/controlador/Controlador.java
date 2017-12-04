@@ -34,6 +34,7 @@ import dto.CartaDTO;
 import dto.ComandaDTO;
 import dto.CombinadorDTO;
 import dto.DepositoDTO;
+import dto.ElaboradoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
 import dto.ItemFacturaDTO;
@@ -80,7 +81,7 @@ import negocio.Mesa;
 import negocio.Mozo;
 import negocio.PlanDeProduccion;
 import negocio.Plato;
-import negocio.Remito;
+import negocio.*;
 import negocio.Reserva;
 import negocio.Salon;
 import negocio.Sector;
@@ -773,7 +774,20 @@ public class Controlador {
 
 	
 	
-	
+	//ELABORADOS
+	public void grabarElaborado(ElaboradoDTO elab) {
+		// TODO Auto-generated method stub
+		PlanDeProduccion plan=PlanDeProduccionDAO.getInstance().getPlanByCod(elab.getPlan().getCodigoPDP());
+		Unidad uni = UnidadDAO.getInstance().getUnidadByCod(elab.getUnidad().getCodigo());
+		List<SemiElaborado> semis=new ArrayList<SemiElaborado>();
+		for(SemiElaboradoDTO semi: elab.getComponentes()) {
+			Unidad uni2=UnidadDAO.getInstance().getUnidadByCod(semi.getUnidad().getCodigo());
+			semis.add(new SemiElaborado(semi.getTipo(), semi.getCalidad(), semi.getDescripcion(),semi.getCantidad(), semi.getCaducidad(), uni2));
+		}
+		Elaborado elaborado=new Elaborado(elab.getTipo(), elab.getCalidad(), elab.getDescripcion(),plan, elab.getCantidad(), elab.getCaducidad(),uni, semis);
+		elaborado.save();
+	}
+
 
 	
 	
