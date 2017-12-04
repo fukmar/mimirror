@@ -129,7 +129,7 @@ this.carta = carta;
 		Plato p=new Plato();
 		p.setCodigo(codPlato);
 		p.setNombre(nombre);
-		p.setPrecio(precio);
+		p.setPrecio(precio); 
 		p.setArea(area);
 		p.setCarta(carta.toNegocio());
 		List<Elaborado> elab=new ArrayList<Elaborado>();
