@@ -13,6 +13,7 @@ import bd.BusinessDelegate;
 import dto.MateriaPrimaDTO;
 import exceptions.MateriaPrimaException;
 
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
@@ -90,7 +91,7 @@ public class ModificarMaterial extends JFrame {
 					textFieldCantidad.setEditable(true);
 					textFieldDescripcion.setText(materia.getDescripcion());
 					textFieldDescripcion.setEditable(true);
-					//BusinessDelegate.getInstance().actualizarMateriaPrima(materia);
+					textFieldCodigoMaterial.setEditable(false);
 					
 				} catch (NumberFormatException | RemoteException | MateriaPrimaException e) {
 					// TODO Auto-generated catch block
@@ -131,6 +132,17 @@ public class ModificarMaterial extends JFrame {
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MateriaPrimaDTO materia;
+				try {
+					materia = BusinessDelegate.getInstance().getMateriaPrimaByCod(Integer.parseInt(textFieldCodigoMaterial.getText()));
+					materia.setCantidad(Float.parseFloat(textFieldCantidad.getText()));
+					materia.setDescripcion(textFieldDescripcion.getText());
+					materia.setCodigo(Integer.parseInt(textFieldCodigoMaterial.getText()));
+					BusinessDelegate.getInstance().actualizarMateriaPrima(materia);
+				} catch (NumberFormatException | RemoteException | MateriaPrimaException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				//AQUI VA EL CODIGO PARA MODIFICAR LOS DATOS INGRESADOS
 			}

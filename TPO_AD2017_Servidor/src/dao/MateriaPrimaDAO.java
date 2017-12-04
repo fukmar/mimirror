@@ -98,7 +98,7 @@ public class MateriaPrimaDAO
 		Session session=sf.openSession();
 		session.beginTransaction();
 		Query query=session.createQuery("from MateriaPrimaEntity mp where mp.codMaterial= ? ");
- 		query.setFloat(0,mp.getCodigo());
+ 		query.setInteger(0,mp.getCodigo());
 		MateriaPrimaEntity materia=(MateriaPrimaEntity) query.uniqueResult();
 		materia.setDescripcion(mp.getDescripcion());
 		materia.setCantidad(mp.getCantidad());

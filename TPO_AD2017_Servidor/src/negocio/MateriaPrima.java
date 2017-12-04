@@ -133,4 +133,8 @@ public class MateriaPrima
 		MateriaPrimaDAO.getInstance().save(this);
 	}
 	
+	public void update() {
+		MateriaPrimaDAO.getInstance().update(this);
+	}
+	
 }

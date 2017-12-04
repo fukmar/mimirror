@@ -55,7 +55,7 @@ public class testFranco {
 	        SemiElaboradoEntity y=new SemiElaboradoEntity(null, null, "caca", null,fechahasta , null);
 	        semis.add(x);
 	        semis.add(y);*/
-	        
+	       /* 
 	        SimpleDateFormat sformat=new SimpleDateFormat("YYYY-MM-dd");
 			String fromDate=null;
 			String toDate=null;
@@ -80,7 +80,11 @@ public class testFranco {
 				System.out.println(semiel.getDescripcion());
 			}
 			s.getTransaction().commit();
-			s.close();
+			s.close();*/
+			
+			MateriaPrima mate=new MateriaPrima("prueba", null, 15f, null);
+			mate.setCodigo(1);
+			mate.update();
 	        //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	      //  String formattedDate = formatter.format(date);
 		//PlanDeProduccionEntity plan=new PlanDeProduccionEntity(fechaplan, null, null);

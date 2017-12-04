@@ -681,6 +681,14 @@ public class Controlador {
 		return materias;
 		
 	}
+	
+	public void actualizarMateriaPrima(MateriaPrimaDTO materia) {
+		// TODO Auto-generated method stub
+		MateriaPrima mate =new  MateriaPrima(materia.getDescripcion(), null, materia.getCantidad(), null);
+		mate.setCodigo(materia.getCodigo());
+		mate.update();
+	}
+
 	//----------------------------------------------------------------------------------------------------------------------------------
 	//SOLICITUD INDIVIDUAL
 	public List<SolicitudIndividualDTO> listarSolicitudesIndividuales()
@@ -753,6 +761,7 @@ public class Controlador {
 		
 	}
 
+	
 	
 
 	

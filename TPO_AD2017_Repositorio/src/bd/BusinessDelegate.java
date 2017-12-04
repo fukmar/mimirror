@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.rmi.server.RemoteObject;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Date;
@@ -449,6 +450,12 @@ public class BusinessDelegate
 		}
 	}
 
+	public void actualizarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException, MateriaPrimaException {
+		// TODO Auto-generated method stub
+		remoteObject.actualizarMaterial(materia);
+		
+	}
+
 	//-----------------------------------ITEMS COMANDA-----------------------------------------------------------------------------
 
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException,itemComandaException
@@ -560,6 +567,7 @@ public class BusinessDelegate
 		// TODO Auto-generated method stub
 		return remoteObject.getSemiElaboradoByCod(parseInt);
 	}
+
 
 	
 
