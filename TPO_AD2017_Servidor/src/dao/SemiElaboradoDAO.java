@@ -41,10 +41,14 @@ private static SemiElaboradoDAO instancia;
 	public Long getSemiElaboradoFacturados (SemiElaborado see,Date fecha)
 	{
 		SimpleDateFormat sformat=new SimpleDateFormat("yyyy/MM/dd");
+
 		String fromDate=null;
-		SessionFactory sf = HibernateUtil.getSessionFactory();
 		fromDate=sformat.format(fecha);
-		System.out.println("LA FECHA ES:"+fecha+" "+fromDate);
+		String tosDate=null;
+		tosDate=sformat.format(fecha)+1;
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+
+		System.out.println("LA FECHA ES:"+fromDate);
 		Session s=sf.openSession();
 		s.beginTransaction();
 	
@@ -54,7 +58,7 @@ private static SemiElaboradoDAO instancia;
 				+ "join ic.plato p "
 				+ "join p.productoPlato e "
 				+ "join e.componentes semi "
-				+ "WHERE f.fecha=? and semi.codigoProd=?").setString(0, fromDate).setInteger(1, see.getCodigoProd()).uniqueResult();
+				+ "WHERE  f.fecha between ? and ?  and semi.codigoProd=?").setString(0, fromDate).setString(1,tosDate).setInteger(2, see.getCodigoProd()).uniqueResult();
 		s.getTransaction().commit();
 		return semicantidad;
 	}
