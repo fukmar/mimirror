@@ -1166,21 +1166,21 @@ if(opcion.equals("agregarItemsComanda_2step")){
 				System.out.println(e.getMessage());
 			}
 			
-			
+			boolean ok=false;
 			ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,EstadoItemComanda.Pendiente, comanda);
 			itemComanda.setComanda(comanda);
 			try {
-			 boolean ok = BusinessDelegate.getInstance().grabarItemComanda(itemComanda);
+			 ok = BusinessDelegate.getInstance().grabarItemComanda(itemComanda);
+		
+			} catch (itemComandaException e) {
+				System.out.println(e.getMessage());
+			}
 			
 			if (!ok) {
 				RequestDispatcher rd = request.getRequestDispatcher("/noPodemos.jsp");
 				rd.forward(request, response);
 				
-			}
-			
-			} catch (itemComandaException e) {
-				System.out.println(e.getMessage());
-			}
+			}else {
 			
 			if (accion.equals("Aceptar")) {
 			
@@ -1203,7 +1203,7 @@ if(opcion.equals("agregarItemsComanda_2step")){
 				rd.forward(request, response);}
 				
 			
-	}
+	}}
 		
 		}
 	}

@@ -104,7 +104,7 @@ public class PlatoDAO
 
 				System.out.println("NIVEL 3");
 			    List<Ingrediente> ingredientesdereceta=new ArrayList <Ingrediente>();
-				ingredientesdereceta=IngredienteDAO.getInstance().getIngredientesdeSemi(s);
+				ingredientesdereceta=SemiElaboradoDAO.getInstance().getIngredientesPorSemis2(s.getCodigoProd()); //FALLA
 				
 				for (Ingrediente idereceta:ingredientesdereceta)
 				{
