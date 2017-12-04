@@ -32,6 +32,12 @@ public class SolicitudDiaria {
 	}
 
 
+	public SolicitudDiaria(Deposito deposito, List<SolicitudIndividual> solicitudes) {
+		super();
+		this.deposito = deposito;
+		this.solicitudes = solicitudes;
+	}
+
 	public Integer getCodsolicitudDiaria() {
 		return codsolicitudDiaria;
 	}
