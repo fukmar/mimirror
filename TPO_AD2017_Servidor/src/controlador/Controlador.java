@@ -803,7 +803,19 @@ public class Controlador {
 
 	public void actualizarElaborado(ElaboradoDTO elab) {
 		// TODO Auto-generated method stub
-		
+		PlanDeProduccion  plan=new PlanDeProduccion();
+		plan=plan.getPlanPorCod(elab.getPlan().getCodigoPDP());
+		Unidad uni = new Unidad();
+		uni=uni.obtenerUniPorCod(elab.getUnidad().getCodigo());
+		List<SemiElaborado> semis=new ArrayList<SemiElaborado>();
+		Unidad uni2= new Unidad();
+		for(SemiElaboradoDTO semi: elab.getComponentes()) {
+			 uni2=uni2.obtenerUniPorCod(semi.getUnidad().getCodigo());
+			semis.add(new SemiElaborado(semi.getTipo(), semi.getCalidad(), semi.getDescripcion(),semi.getCantidad(), semi.getCaducidad(), uni2));
+		}
+		Elaborado elaborado=new Elaborado(elab.getTipo(), elab.getCalidad(), elab.getDescripcion(), plan,elab.getCantidad() , elab.getCaducidad(), uni, semis);
+
+		elaborado.update();
 	}
 
 
