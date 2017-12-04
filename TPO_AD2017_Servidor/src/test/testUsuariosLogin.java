@@ -13,7 +13,7 @@ public class testUsuariosLogin {
 	public static void main(String[] args) 
 	{
 		
-	Usuarios usu = new Usuarios("admin","admin","N","G",AreaRest.Administracion);
+	Usuarios usu = new Usuarios("cocina","cocina","N","G",AreaRest.Cocina);
 	SessionFactory sf = HibernateUtil.getSessionFactory();
 	Session session = sf.openSession();
 	session.beginTransaction();

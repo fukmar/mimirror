@@ -75,7 +75,6 @@ private static ItemComandaDAO instancia;
 	}
 	public void reducirstockxItemComanda(ItemComanda i){
 		List <Ingrediente> ingredientes=PlatoDAO.getInstance().getIngredientes(i.getPlato());
-		System.out.println("clavale un syso: "+i.getPlato().getProductoPlato().get(0).getComponentes().get(0).getDescripcion());
 		
 		for (Ingrediente ing:ingredientes)
 		{

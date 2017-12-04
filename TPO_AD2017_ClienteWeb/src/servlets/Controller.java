@@ -996,7 +996,14 @@ if(opcion.equals("agregarItemsComanda_2step")){
 			ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,EstadoItemComanda.Pendiente, comanda);
 			itemComanda.setComanda(comanda);
 			try {
-			BusinessDelegate.getInstance().grabarItemComanda(itemComanda);
+			boolean ok = BusinessDelegate.getInstance().grabarItemComanda(itemComanda);
+			
+			if (!ok) {
+				RequestDispatcher rd = request.getRequestDispatcher("/sugiero.jsp");
+				rd.forward(request, response);
+				
+			}
+			
 			} catch (itemComandaException e) {
 				System.out.println(e.getMessage());
 			}
