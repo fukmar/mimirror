@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -137,7 +138,11 @@ public class ModificarElaborado extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					ElaboradoDTO elab= BusinessDelegate.getInstance().getElaboradoByCod(Integer.parseInt(textFieldIngresar.getText()));
+					elab.setTipo(textTipo.getText());
+					elab.setCantidad(Integer.parseInt(textCantidad.getText()));
+					elab.setDescripcion(textDescripcion.getText());
 					BusinessDelegate.getInstance().actualizarElaborado(elab);
+					JOptionPane.showMessageDialog(null, "Elaborado modificado exitosamente", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
 				} catch (NumberFormatException | RemoteException | ElaboradoException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
