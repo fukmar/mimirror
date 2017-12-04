@@ -201,7 +201,7 @@ public void LiberarMesaCombinada (Mesa mesacombinada)
 		List<MesaEntity> resu=session.createQuery("from MesaEntity m where m.estado=1 and m.combinador<>2").list();
 		for(MesaEntity m:resu)
 		{
-			listaM.add(m.toNegocio());
+			listaM.add(m.toNegocio()); 
 		}
 		session.close();
 		return listaM;
