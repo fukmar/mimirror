@@ -86,5 +86,10 @@ public class Elaborado extends Producto
 	public void save() {
 		ElaboradoDAO.getInstance().save(this);
 	}
+	
+	public Elaborado getElaboradoByCod(Integer parseInt) {
+		Elaborado ela=ElaboradoDAO.getInstance().getElaboradoByCod(parseInt);
+		return ela;
+	}
 
 }

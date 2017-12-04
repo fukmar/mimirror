@@ -38,6 +38,7 @@ import exceptions.CajaException;
 import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
+import exceptions.ElaboradoException;
 import exceptions.FacturaException;
 import exceptions.MateriaPrimaException;
 import exceptions.MesaException;
@@ -489,6 +490,12 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	public void grabarElaborado(ElaboradoDTO elab) throws RemoteException, SemiElaboradoException  {
 		// TODO Auto-generated method stub
 		Controlador.getInstance().grabarElaborado(elab);
+	}
+
+	@Override
+	public ElaboradoDTO getElaboradoByCod(int parseInt) throws RemoteException, ElaboradoException {
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().getElaboradoByCod(parseInt);
 	}
 
 	

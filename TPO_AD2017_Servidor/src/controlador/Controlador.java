@@ -14,6 +14,7 @@ import dao.CajaDAO;
 import dao.CartaDAO;
 import dao.ComandaDAO;
 import dao.DepositoDAO;
+import dao.ElaboradoDAO;
 import dao.FacturaDAO;
 import dao.ItemComandaDAO;
 import dao.MateriaPrimaDAO;
@@ -789,6 +790,15 @@ public class Controlador {
 		}
 		Elaborado elaborado=new Elaborado(elab.getTipo(), elab.getCalidad(), elab.getDescripcion(),plan, elab.getCantidad(), elab.getCaducidad(),uni, semis);
 		elaborado.save();
+	}
+
+	public ElaboradoDTO getElaboradoByCod(int parseInt) {
+		// TODO Auto-generated method stub
+		Elaborado ela=new Elaborado();
+		ela=ela.getElaboradoByCod(parseInt);
+		ElaboradoDTO ela2= ela.toDTO();
+		ela2.setCodElab(ela.getCodigoProd());
+		return ela2;
 	}
 
 

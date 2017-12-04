@@ -10,7 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import bd.BusinessDelegate;
+import controlador.Controlador;
 import dao.*;
+import dto.ElaboradoDTO;
 import dto.PlatoDTO;
 import entities.*;
 import enumns.AreaRest;
@@ -18,17 +20,7 @@ import enumns.Estado;
 import enumns.MedioDePago;
 import enumns.Temporada;
 import hibernate.HibernateUtil;
-import negocio.Comanda;
-import negocio.Deposito;
-import negocio.Factura;
-import negocio.Local;
-import negocio.MateriaPrima;
-import negocio.Mesa;
-import negocio.Mozo;
-import negocio.Plato;
-import negocio.Salon;
-import negocio.Sector;
-import negocio.Unidad;
+import negocio.*;
 
 public class testFranco {
 
@@ -81,10 +73,12 @@ public class testFranco {
 			}
 			s.getTransaction().commit();
 			s.close();*/
-			
-			MateriaPrima mate=new MateriaPrima("prueba", null, 15f, null);
+			ElaboradoDTO elab= new ElaboradoDTO();
+			elab=Controlador.getInstance().getElaboradoByCod(7);
+			System.out.println(elab.getDescripcion());
+			/*MateriaPrima mate=new MateriaPrima("prueba", null, 15f, null);
 			mate.setCodigo(1);
-			mate.update();
+			mate.update();*/
 	        //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	      //  String formattedDate = formatter.format(date);
 		//PlanDeProduccionEntity plan=new PlanDeProduccionEntity(fechaplan, null, null);
