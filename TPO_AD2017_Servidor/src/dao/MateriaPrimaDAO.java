@@ -108,5 +108,16 @@ public class MateriaPrimaDAO
 		
 	}
 	
+	public void delete(MateriaPrima mp) {
+		Session session=sf.openSession();
+		session.beginTransaction();
+		Query query=session.createQuery("from MateriaPrimaEntity mp where mp.codMaterial= ? ");
+ 		query.setInteger(0,mp.getCodigo());
+		MateriaPrimaEntity materia=(MateriaPrimaEntity) query.uniqueResult();
+		session.delete(materia);
+		session.getTransaction().commit();
+		session.close();
+	}
+	
 }
 

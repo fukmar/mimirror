@@ -761,6 +761,11 @@ public class Controlador {
 		
 	}
 
+	public void eliminarMateria(MateriaPrimaDTO materia) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 

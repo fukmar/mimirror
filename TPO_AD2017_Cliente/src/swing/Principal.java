@@ -95,10 +95,11 @@ public class Principal extends JFrame {
 		JMenuItem mntmModificarDeposito = new JMenuItem("Modificar Material");
 		mntmModificarDeposito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				BajaMaterial mm=new BajaMaterial();
+				
+				ModificarMaterial bj=new ModificarMaterial();
 				setVisible(false);
-				mm.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				mm.setVisible(true);
+				bj.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				bj.setVisible(true);
 			}
 		});
 		mntmModificarDeposito.setFont(new Font("Segoe UI", Font.PLAIN, 18));
@@ -107,10 +108,10 @@ public class Principal extends JFrame {
 		JMenuItem mntmEliminarFactura = new JMenuItem("Eliminar Material");
 		mntmEliminarFactura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ModificarMaterial bj=new ModificarMaterial();
+				BajaMaterial mm=new BajaMaterial();
 				setVisible(false);
-				bj.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				bj.setVisible(true);
+				mm.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				mm.setVisible(true);
 			}
 		});
 		mntmEliminarFactura.setFont(new Font("Segoe UI", Font.PLAIN, 18));

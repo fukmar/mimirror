@@ -349,6 +349,13 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		Controlador.getInstance().actualizarMateriaPrima(materia);
 		
 	}
+	
+
+	@Override
+	public void eliminarMateria(MateriaPrimaDTO materia) throws RemoteException, MateriaPrimaException {
+		// TODO Auto-generated method stub
+		Controlador.getInstance().eliminarMateria(materia);
+	}
 
 	//--------------------------------CARTA-------------------------------------------------
 	@Override
@@ -474,6 +481,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException {
 		return Controlador.getInstance().getSemiElaboradoByCod(parseInt);
 	}
+
 
 	
 

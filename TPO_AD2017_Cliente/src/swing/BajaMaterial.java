@@ -20,24 +20,27 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import bd.BusinessDelegate;
 import dto.MateriaPrimaDTO;
+import exceptions.MateriaPrimaException;
 
 import javax.swing.border.CompoundBorder;
 
 public class BajaMaterial extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField textFieldIngresar;
 	private JButton btnEliminar;
 	private JButton btnVolver;
 	private JTextField textCodigo;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textFieldCantidad;
+	private JTextField textFieldDes;
 
 	/**
 	 * Launch the application.
@@ -75,19 +78,51 @@ public class BajaMaterial extends JFrame {
 		lblNewLabel.setBounds(33, 54, 234, 22);
 		contentPane.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textField.setBounds(315, 56, 272, 30);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textFieldIngresar = new JTextField();
+		textFieldIngresar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textFieldIngresar.setBounds(315, 56, 272, 30);
+		contentPane.add(textFieldIngresar);
+		textFieldIngresar.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MateriaPrimaDTO materia;
+				try {
+					materia = BusinessDelegate.getInstance().getMateriaPrimaByCod(Integer.parseInt(textFieldIngresar.getText()));
+					textFieldIngresar.setEditable(false);
+					textFieldCantidad.setText(materia.getCantidad().toString());
+					textFieldDes.setText(materia.getDescripcion());
+					textCodigo.setText(textFieldIngresar.getText());
+					
+				} catch (NumberFormatException | RemoteException | MateriaPrimaException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
 		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnBuscar.setBounds(381, 100, 135, 37);
 		contentPane.add(btnBuscar);
 		
 		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MateriaPrimaDTO materia;
+				try {
+					materia = BusinessDelegate.getInstance().getMateriaPrimaByCod(Integer.parseInt(textFieldIngresar.getText()));
+					BusinessDelegate.getInstance().eliminarMateria(materia);
+				} catch (NumberFormatException | RemoteException | MateriaPrimaException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+			}
+		});
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnEliminar.setBounds(97, 448, 151, 46);
 		contentPane.add(btnEliminar);
@@ -95,6 +130,11 @@ public class BajaMaterial extends JFrame {
 		btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Principal principal = new Principal();
+				principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				dispose();
+				principal.setVisible(true);
+				
 			}
 		});
 		btnVolver.addMouseListener(new MouseAdapter() {
@@ -143,19 +183,19 @@ public class BajaMaterial extends JFrame {
 		contentPane.add(textCodigo);
 		textCodigo.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textField_1.setEditable(false);
-		textField_1.setBounds(509, 194, 151, 37);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldCantidad = new JTextField();
+		textFieldCantidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textFieldCantidad.setEditable(false);
+		textFieldCantidad.setBounds(509, 194, 151, 37);
+		contentPane.add(textFieldCantidad);
+		textFieldCantidad.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textField_2.setEditable(false);
-		textField_2.setBounds(147, 322, 526, 46);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldDes = new JTextField();
+		textFieldDes.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textFieldDes.setEditable(false);
+		textFieldDes.setBounds(147, 322, 526, 46);
+		contentPane.add(textFieldDes);
+		textFieldDes.setColumns(10);
 		
 	}
 }

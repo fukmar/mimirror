@@ -137,6 +137,7 @@ public interface manejoNegocio extends Remote
 	public List<MateriaPrimaDTO> listarStock() throws RemoteException,MateriaPrimaException;
 	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException,MateriaPrimaException;
 	public void actualizarMaterial(MateriaPrimaDTO materia) throws RemoteException, MateriaPrimaException;
+	public void eliminarMateria(MateriaPrimaDTO materia) throws RemoteException, MateriaPrimaException;
 	
 	//ITEMS COMANDA
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException,itemComandaException;
@@ -175,6 +176,7 @@ public interface manejoNegocio extends Remote
 	//SEMIS
 	public List<SemiElaboradoDTO> mostrarSemiElaborados() throws RemoteException, SemiElaboradoException;
 	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException;
+	
 	
 
 

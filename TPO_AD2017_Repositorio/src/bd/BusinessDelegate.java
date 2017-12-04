@@ -455,6 +455,11 @@ public class BusinessDelegate
 		remoteObject.actualizarMaterial(materia);
 		
 	}
+	
+	public void eliminarMateria(MateriaPrimaDTO materia)  throws RemoteException, MateriaPrimaException{
+		// TODO Auto-generated method stub
+		remoteObject.eliminarMateria(materia);
+	}
 
 	//-----------------------------------ITEMS COMANDA-----------------------------------------------------------------------------
 
@@ -567,6 +572,8 @@ public class BusinessDelegate
 		// TODO Auto-generated method stub
 		return remoteObject.getSemiElaboradoByCod(parseInt);
 	}
+
+	
 
 
 	
