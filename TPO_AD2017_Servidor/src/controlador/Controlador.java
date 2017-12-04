@@ -666,7 +666,7 @@ public class Controlador {
 		SolicitudDiaria solicituddiaria=new SolicitudDiaria();
 		new SolicitudDiaria(deposito,solicitudestodiaria);
 		
-	}
+	} 
 	
 	public void guardarSolicitudIndividual(SolicitudIndividualDTO solicitud)
 	{
