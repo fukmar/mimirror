@@ -598,6 +598,14 @@ public class Controlador {
 		return items;
 	}
 	
+	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) {
+		
+		SemiElaboradoDTO semi=new SemiElaboradoDTO();
+		SemiElaborado semiN=SemiElaboradoDAO.getInstance().getSemisPorCod(parseInt);
+		semi=semiN.toDTO();
+		return semi;
+	}
+	
 	//----------------------------------------------------------------------------------------------------------------------------------
 	//REMITO
 	
@@ -712,6 +720,8 @@ public class Controlador {
 	
 		
 	}
+
+	
 
 	
 	

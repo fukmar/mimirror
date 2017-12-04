@@ -448,6 +448,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().mostrarSemiElaborados();
 	}
 
+	@Override
+	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException {
+		return Controlador.getInstance().getSemiElaboradoByCod(parseInt);
+	}
+
 	
 
 	

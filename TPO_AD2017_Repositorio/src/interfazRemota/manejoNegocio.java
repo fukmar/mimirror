@@ -170,6 +170,7 @@ public interface manejoNegocio extends Remote
 	
 	//SEMIS
 	public List<SemiElaboradoDTO> mostrarSemiElaborados() throws RemoteException, SemiElaboradoException;
+	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException;
 
 	
 }

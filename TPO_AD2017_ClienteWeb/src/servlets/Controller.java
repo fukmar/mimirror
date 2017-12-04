@@ -60,6 +60,7 @@ import exceptions.PlatoException;
 import exceptions.RemitoException;
 import exceptions.ReservaException;
 import exceptions.SectorException;
+import exceptions.SemiElaboradoException;
 import exceptions.SolicitudException;
 import exceptions.UsuarioException;
 import exceptions.itemComandaException;
@@ -887,12 +888,17 @@ if(opcion.equals("verMozos")){
 			List<PlanDeProduccionDTO> pdps = new ArrayList<PlanDeProduccionDTO>();
 			
 			
-				BusinessDelegate.getInstance().grabarPdP(pdp);
+				try {
+					BusinessDelegate.getInstance().grabarPdP(pdp);
+				} catch (PlanDeProduccionException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			
 			
 			try {
 				pdps = BusinessDelegate.getInstance().mostrarPDPs();
-			} catch (RemitoException e) {
+			} catch (PlanDeProduccionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -900,7 +906,12 @@ if(opcion.equals("verMozos")){
 			
 			List<SemiElaboradoDTO> semis = null;
 			
-			semis = BusinessDelegate.getInstance().mostrarSemiElaborados();
+			try {
+				semis = BusinessDelegate.getInstance().mostrarSemiElaborados();
+			} catch (SemiElaboradoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			request.setAttribute("semis", semis);
 			RequestDispatcher rd = request.getRequestDispatcher("/agregarItemAPdP.jsp");
@@ -917,16 +928,31 @@ if(opcion.equals("verMozos")){
 			if (accion2.equals("Aceptar")) {
 				SemiElaboradoDTO semi = null;
 			
-				semi = BusinessDelegate.getInstance().getSemiElaboradoByCod(Integer.parseInt(codSemi));
+				try {
+					semi = BusinessDelegate.getInstance().getSemiElaboradoByCod(Integer.parseInt(codSemi));
+				} catch (NumberFormatException | SemiElaboradoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			
 				PlanDeProduccionDTO pdp = null;
 			
-				pdp = BusinessDelegate.getInstance().obtenerPDPByCodPDP(Integer.parseInt(codPdP));
+				try {
+					pdp = BusinessDelegate.getInstance().obtenerPDPByCodPDP(Integer.parseInt(codPdP));
+				} catch (NumberFormatException | PlanDeProduccionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				ItemPlanProduccionDTO itemPdP = new ItemPlanProduccionDTO(semi,Integer.parseInt(cantidad),0);
-				
+				itemPdP.setPlandeProduccion(pdp);
 			
-					BusinessDelegate.getInstance().grabarItemPdP(itemPdP);
+					try {
+						BusinessDelegate.getInstance().grabarItemPdP(itemPdP);
+					} catch (itemPlanDeProduccionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
@@ -936,28 +962,59 @@ if(opcion.equals("verMozos")){
 					
 					SemiElaboradoDTO semi = null;
 			
-					semi = BusinessDelegate.getInstance().getSemiElaboradoByCod(Integer.parseInt(codSemi));
+					try {
+						semi = BusinessDelegate.getInstance().getSemiElaboradoByCod(Integer.parseInt(codSemi));
+					} catch (NumberFormatException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (SemiElaboradoException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
 					
 					PlanDeProduccionDTO pdp = null;
 					
-					pdp = BusinessDelegate.getInstance().obtenerPDPByCodPDP(Integer.parseInt(codPdP));
+					try {
+						pdp = BusinessDelegate.getInstance().obtenerPDPByCodPDP(Integer.parseInt(codPdP));
+					} catch (NumberFormatException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (PlanDeProduccionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				
 			 
 			 
 					ItemPlanProduccionDTO itemPdP = new ItemPlanProduccionDTO(semi,Integer.parseInt(cantidad),0);
-					
-					BusinessDelegate.getInstance().grabarItemPdP(itemPdP);
+					itemPdP.setPlandeProduccion(pdp);
+					try {
+						BusinessDelegate.getInstance().grabarItemPdP(itemPdP);
+					} catch (itemPlanDeProduccionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
 			List<PlanDeProduccionDTO> pdps = null;
 			
-				pdps = BusinessDelegate.getInstance().mostrarPDPs();
+				try {
+					pdps = BusinessDelegate.getInstance().mostrarPDPs();
+				} catch (PlanDeProduccionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			
 			
 			request.setAttribute("pdp", pdps.get(pdps.size()-1));
 			List<SemiElaboradoDTO> semis = null;
 		
-				semis = BusinessDelegate.getInstance().mostrarSemiElaborados();
+				try {
+					semis = BusinessDelegate.getInstance().mostrarSemiElaborados();
+				} catch (SemiElaboradoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			
 			request.setAttribute("semis", semis);
 			RequestDispatcher rd = request.getRequestDispatcher("/agregarItemAPdP.jsp");

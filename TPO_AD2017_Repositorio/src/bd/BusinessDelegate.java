@@ -537,6 +537,11 @@ public class BusinessDelegate
 		return remoteObject.mostrarSemiElaborados();
 	}
 
+	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException{
+		// TODO Auto-generated method stub
+		return remoteObject.getSemiElaboradoByCod(parseInt);
+	}
+
 	
 
 	
