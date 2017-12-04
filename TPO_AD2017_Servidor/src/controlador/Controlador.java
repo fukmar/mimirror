@@ -215,7 +215,7 @@ public class Controlador {
 		Plato plato=PlatoDAO.getInstance().getPlatoPorCod(codPlato);
 		List <Ingrediente> ingredientesplato=PlatoDAO.getInstance().getIngredientes(plato);
 		boolean haycantidades=ItemComandaDAO.getInstance().HaySuficiente(ingredientesplato, itemComanda.getCantidad());
-		if (haycantidades=true)
+		if (haycantidades==true)
 		{
 		Integer codComanda=itemComanda.getComanda().getCodComanda();
 		Comanda comanda=ComandaDAO.getInstance().obtenerComandaByCod(codComanda);
