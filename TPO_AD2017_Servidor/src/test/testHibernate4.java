@@ -351,7 +351,7 @@ public class testHibernate4 {
 		List<Ingrediente>composicion=PlatoDAO.getInstance().getIngredientes(plato.toNegocio());
 		System.out.println(composicion.get(0).getMateriaprima().getDescripcion());
 		for(Ingrediente i:composicion) 
-		{
+		{ 
 			System.out.println("Materia Prima: "+ i.getMateriaprima().getDescripcion() + " Cantidad: "+ i.getCantidad()+" "+i.getMateriaprima().getUnidadUso().getDescripcion());
 		}
 		//DAO VERIFICA SI SE PUEDE HACER EL PLATO O NO FUNCIONA
