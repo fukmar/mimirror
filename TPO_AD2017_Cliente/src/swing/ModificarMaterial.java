@@ -139,6 +139,13 @@ public class ModificarMaterial extends JFrame {
 					materia.setDescripcion(textFieldDescripcion.getText());
 					materia.setCodigo(Integer.parseInt(textFieldCodigoMaterial.getText()));
 					BusinessDelegate.getInstance().actualizarMateriaPrima(materia);
+					textFieldCantidad.setText("");
+					textFieldDescripcion.setText("");
+					textFieldCodigoMaterial.setText("");
+					textFieldCodigoMaterial.setEditable(true);
+					textFieldCantidad.setEditable(false);
+					textFieldDescripcion.setEditable(false);
+					
 				} catch (NumberFormatException | RemoteException | MateriaPrimaException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
