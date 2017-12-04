@@ -463,8 +463,8 @@ if(opcion.equals("verDetalleFactura")){
 if(opcion.equals("verComisiones")){
 	
 	 Date hoy = new Date();
-	    Date fechadesde = new Date();
-	    Date fechahasta = new Date();
+	    Date fechadesde = new Date("01/01/1900");
+	    Date fechahasta = new Date("01/01/3000");
 	    
 	ArrayList<String[]> comisiones = null;
 	try {
