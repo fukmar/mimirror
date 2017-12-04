@@ -100,30 +100,16 @@ public class PlatoDAO
 			{
 			    List<Ingrediente> ingredientesdereceta=new ArrayList <Ingrediente>();
 				ingredientesdereceta=IngredienteDAO.getInstance().getIngredientesdeSemi(s);
+				
 				for (Ingrediente idereceta:ingredientesdereceta)
 				{
 					int codigoabuscar=idereceta.getMateriaprima().getCodigo();
-					if (ingredientesFinal.isEmpty())	
+					
 						ingredientesFinal.add(idereceta);
-					else
-					{
-						for (Ingrediente ifinal:ingredientesFinal)
-						{
-							if(ifinal.getMateriaprima().getCodigo()==codigoabuscar)
-							{
-								int subcantidad=ifinal.getCantidad()+idereceta.getCantidad();
-								ifinal.setCantidad(subcantidad);
-							}
-							else
-							{
-								ingredientesFinal.add(idereceta);
-							}
-					}
-					}
+						System.out.println("meto ingrediente");
+					
 				}
-				 
 			}
-			
 		}
 		return ingredientesFinal;
 	}

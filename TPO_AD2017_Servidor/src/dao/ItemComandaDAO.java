@@ -78,13 +78,16 @@ private static ItemComandaDAO instancia;
 		
 		
 		for (Ingrediente ing:ingredientes)
-		{
+		{	
+			System.out.println("entra en el for");
 			SessionFactory sf = HibernateUtil.getSessionFactory();
 			Session session = sf.openSession();
 			session.beginTransaction();
 			MateriaPrima mp=ing.getMateriaprima();
 			if (mp.getEstadescontado().equals(0))
 			{
+				System.out.println("entra en el for Y en el if");
+				
 				float cantidadenstock=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(ing.getMateriaprima());
 				float cantidadfinal=cantidadenstock-(ing.getCantidad()*i.getCantidad());
 				Query query=session.createQuery("update from MateriaPrimaEntity m set m.cantidad = ? where m.codMaterial= ? ");
