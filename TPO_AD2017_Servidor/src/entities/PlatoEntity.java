@@ -130,6 +130,7 @@ this.carta = carta;
 		p.setCodigo(codPlato);
 		p.setNombre(nombre);
 		p.setPrecio(precio);
+		p.setArea(area);
 		p.setCarta(carta.toNegocio());
 		List<Elaborado> elab=new ArrayList<Elaborado>();
 		for(ElaboradoEntity e: this.getProductoPlato() )
