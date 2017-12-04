@@ -152,7 +152,7 @@ public class Controller extends HttpServlet {
 			        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 					rd.forward(request, response);
 									}
-				
+			 	
 			
 			if(opcion.equals("verPlatos")){
 				
@@ -701,11 +701,14 @@ if(opcion.equals("verMozos")){
 				   resultado[i] = Integer.parseInt(solicitudesIndividuales[i]);
 			   }
 					
-			//BusinessDelegate.getInstance().unirSolicitudesIndividuales(resultado);
+			try {
+				BusinessDelegate.getInstance().unirSolicitudesIndividuales(resultado);
+			} catch (SolicitudException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}}
 					
-								
-						}
-		
+									
 		if(opcion.equals("cargarRemito")){
 			String codigoProveedor = request.getParameter("codigoProveedor");
 			String fecha = request.getParameter("fecha");
