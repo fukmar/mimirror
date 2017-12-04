@@ -110,6 +110,8 @@ public interface manejoNegocio extends Remote
 	public void ocuparMesaPorCod(Integer codMesa)throws RemoteException,MesaException;
 	public Integer combinarMesasPorCod(Integer codmesa1, Integer codmesa2) throws RemoteException, MesaException;
 	public void grabarMesa(MesaDTO mesa)throws RemoteException, MesaException;
+	public List<MesaDTO> mostrarMesasOcupadas() throws RemoteException, MesaException;
+	public List<MesaDTO> mostrarMesasFacturables() throws RemoteException, MesaException;
 	
 	//SECTORES
 	public List<SectorDTO> mostrarSectores() throws RemoteException,SectorException;
@@ -171,6 +173,7 @@ public interface manejoNegocio extends Remote
 	//SEMIS
 	public List<SemiElaboradoDTO> mostrarSemiElaborados() throws RemoteException, SemiElaboradoException;
 	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException;
+
 
 	
 }

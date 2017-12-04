@@ -391,6 +391,26 @@ public class Controlador {
 		}
 		return mesas;
 	}
+	public List<MesaDTO> listarMesasOcupadas()
+	{
+		List<MesaDTO> mesas=new ArrayList<MesaDTO>();
+		List<Mesa> mesasN=MesaDAO.getInstance().getMesasOcupadas();
+		for(Mesa m:mesasN)
+		{
+			mesas.add(m.toDTO());
+		}
+		return mesas;
+	}
+	public List<MesaDTO> listarMesasFacturables()
+	{
+		List<MesaDTO> mesas=new ArrayList<MesaDTO>();
+		List<Mesa> mesasN=MesaDAO.getInstance().getMesasFacturables();
+		for(Mesa m:mesasN)
+		{
+			mesas.add(m.toDTO());
+		}
+		return mesas;
+	}
 	
 	public void ocuparMesaPorCod(Integer codMesa)
 	{

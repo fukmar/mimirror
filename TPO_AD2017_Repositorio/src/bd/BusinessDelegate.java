@@ -296,6 +296,22 @@ public class BusinessDelegate
 			throw new MesaException("No se pueden MOSTRAR las MESAS!");
 		}
 	}
+	public List<MesaDTO> mostrarFacturables() throws RemoteException,MesaException
+	{
+		try {
+			return remoteObject.mostrarMesasFacturables();
+		} catch (MesaException e) {
+			throw new MesaException("No se pueden MOSTRAR las MESAS FACTURABLES!");
+		}
+	}
+	public List<MesaDTO> mostrarMesasOcupadas() throws RemoteException,MesaException
+	{
+		try {
+			return remoteObject.mostrarMesasOcupadas();
+		} catch (MesaException e) {
+			throw new MesaException("No se pueden MOSTRAR las MESAS OCUPADAS!");
+		}
+	}
 	
 	public MesaDTO BuscarMesaPorCod(Integer codMesa) throws RemoteException, MesaException 
 	{

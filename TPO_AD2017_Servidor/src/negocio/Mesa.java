@@ -102,6 +102,33 @@ public class Mesa {
 	public void setSector(Sector sector) {
 		this.sector = sector;
 	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codMesa == null) ? 0 : codMesa.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Mesa other = (Mesa) obj;
+		if (codMesa == null) {
+			if (other.codMesa != null)
+				return false;
+		} else if (!codMesa.equals(other.codMesa))
+			return false;
+		return true;
+	}
 
 	public MesaEntity toEntity()
 {
@@ -132,12 +159,10 @@ public class Mesa {
 		m.setSector(sector.toDTO()); //nahueloide
 		return m;
 	}
-
 	public void save()
 	{
 		MesaDAO.getInstance().save(this);
 	}
-
 
 }
 

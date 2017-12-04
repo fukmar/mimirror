@@ -243,6 +243,16 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().listarMesasLibres();
 	}
+	@Override
+	public List<MesaDTO> mostrarMesasOcupadas() throws RemoteException, MesaException {
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarMesasOcupadas();
+	}
+	@Override
+	public List<MesaDTO> mostrarMesasFacturables() throws RemoteException, MesaException {
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarMesasFacturables();
+	}
 	
 	public void ocuparMesaPorCod(Integer codMesa) throws RemoteException, MesaException {
 		// TODO Auto-generated method stub
