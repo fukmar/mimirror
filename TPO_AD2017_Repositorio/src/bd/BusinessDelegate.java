@@ -534,7 +534,7 @@ public class BusinessDelegate
 	{
 		return remoteObject.mostrarSolicitudesIndividuales();
 	}
-	
+
 	
 	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud) throws RemoteException, SolicitudException 
 	{
@@ -546,7 +546,10 @@ public class BusinessDelegate
 		
 	}
 
-	
+	public List<SolicitudIndividualDTO> mostrarSolicitudesNoDiarias()	throws RemoteException, SolicitudException 
+	{
+		return remoteObject.mostrarSolicitudesNoDiarias();
+	}
 	//-----------------------------------SEMIS-------------------------------------------------------------------------
 	
 	public List<SemiElaboradoDTO> mostrarSemiElaborados()  throws RemoteException, SemiElaboradoException{

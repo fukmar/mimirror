@@ -167,6 +167,7 @@ public interface manejoNegocio extends Remote
 	
 	//SOLICITUD INDIVIDUAL
 	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales()throws RemoteException,SolicitudException;
+	public List<SolicitudIndividualDTO> mostrarSolicitudesNoDiarias()	throws RemoteException, SolicitudException;
 	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud)throws RemoteException,SolicitudException;
 	public void unirSolicitudesIndividuales(List<CombinadorDTO> mandar) throws RemoteException,SolicitudException;
 	

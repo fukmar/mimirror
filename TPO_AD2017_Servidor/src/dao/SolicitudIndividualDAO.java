@@ -67,7 +67,7 @@ public class SolicitudIndividualDAO
 		session.close();
 		return solicitud.toNegocio();
 	}
-	public List<SolicitudIndividual> getsolicitudesIndividuales()
+	public List<SolicitudIndividual> getsolicitudesIndividualesnoDiarias()
 	{
 		Session session=sf.openSession();
 		List<SolicitudIndividual> listado=new ArrayList<SolicitudIndividual>();

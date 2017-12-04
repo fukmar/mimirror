@@ -694,6 +694,17 @@ public class Controlador {
 		return solicitudes;
 	}
 	
+	public List<SolicitudIndividualDTO> listarSolicitudesNoDiarias()
+	{
+		List<SolicitudIndividualDTO> solicitudes=new ArrayList<SolicitudIndividualDTO>();
+		List<SolicitudIndividual> soliN=SolicitudIndividualDAO.getInstance().getsolicitudesIndividualesnoDiarias();
+		for(SolicitudIndividual s: soliN)
+		{
+			solicitudes.add(s.toDTO());
+		}
+		return solicitudes;
+	}
+	
 	public void UnirSolicitudesIndividuales (List<CombinadorDTO> resultado)
 	{
 		Deposito deposito=new Deposito();
@@ -714,7 +725,8 @@ public class Controlador {
 		soli.setSolicitudes(solicitudestodiaria);
 		SolicitudDiariaDAO.getInstance().save(soli);
 		
-	} 
+	}
+	
 	
 	public void guardarSolicitudIndividual(SolicitudIndividualDTO solicitud)
 	{

@@ -437,6 +437,11 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		// TODO Auto-generated method stub
 		return Controlador.getInstance().listarSolicitudesIndividuales();
 	}
+	public List<SolicitudIndividualDTO> mostrarSolicitudesNoDiarias()	throws RemoteException, SolicitudException 
+	{
+		// TODO Auto-generated method stub
+		return Controlador.getInstance().listarSolicitudesNoDiarias();
+	}
 
 	@Override
 	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud) throws RemoteException, SolicitudException 
@@ -462,6 +467,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException {
 		return Controlador.getInstance().getSemiElaboradoByCod(parseInt);
 	}
+
 
 	
 
