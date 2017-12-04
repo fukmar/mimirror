@@ -92,17 +92,24 @@ public class PlatoDAO
 	{
 		List <Ingrediente> ingredientesFinal=new ArrayList <Ingrediente>();
 		List <Elaborado> elaborados=p.getProductoPlato();
+		System.out.println("NIVEL 1");
 		for(Elaborado elab:elaborados)
 		{
+
+			System.out.println("NIVEL 2");
 			List <SemiElaborado> semielab=new ArrayList <SemiElaborado>();
 			semielab=elab.getComponentes();
 			for(SemiElaborado s:semielab)
 			{
+
+				System.out.println("NIVEL 3");
 			    List<Ingrediente> ingredientesdereceta=new ArrayList <Ingrediente>();
 				ingredientesdereceta=IngredienteDAO.getInstance().getIngredientesdeSemi(s);
 				
 				for (Ingrediente idereceta:ingredientesdereceta)
 				{
+
+					System.out.println("NIVEL 4");
 					int codigoabuscar=idereceta.getMateriaprima().getCodigo();
 					
 						ingredientesFinal.add(idereceta);
