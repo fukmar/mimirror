@@ -106,6 +106,7 @@ public class PoblarBase {
 		MateriaPrimaEntity materia23 = new MateriaPrimaEntity("Te con Miel",ue3, 100f,deposito);
 		MateriaPrimaEntity materia24 = new MateriaPrimaEntity("Cordero",ue, 100000f,deposito);
 		MateriaPrimaEntity materia25 = new MateriaPrimaEntity("Costillas de Cerdo",ue, 100000f,deposito);
+		MateriaPrimaEntity materia26 = new MateriaPrimaEntity("Papa",ue, 1000f,deposito);
 		session.save(materia);
 		session.save(materia2);
 		session.save(materia3);
@@ -131,6 +132,7 @@ public class PoblarBase {
 		session.save(materia23);
 		session.save(materia24);
 		session.save(materia25);
+		session.save(materia26);
 		// LOCAL - SECTOR
 		LocalEntity local1=new LocalEntity("Sucre 123", "Belgrano", deposito);
 		SalonEntity salon=new SalonEntity("Schnitzelei",local1);
@@ -152,6 +154,7 @@ public class PoblarBase {
 		session.save(sector);
 
 		//INGREDIENTES Y SEMIs
+		//SOLIDOS
 		SemiElaboradoEntity semielaborado1=new SemiElaboradoEntity("Carnes","Especial","Albondigas de cerdo",1,fecha,ue3);
 		IngredienteEntity ing1=new IngredienteEntity(materia3,2,semielaborado1);
 		IngredienteEntity ing2=new IngredienteEntity(materia4,20,semielaborado1);
@@ -176,24 +179,31 @@ public class PoblarBase {
 		session.save(semielaborado2);
 		
 		SemiElaboradoEntity semielaborado3=new SemiElaboradoEntity("Carnes","Especial","Cordero Braseado",1,fecha,ue3);
-		IngredienteEntity ing14=new IngredienteEntity(materia3,2,semielaborado2);
-		IngredienteEntity ing15=new IngredienteEntity(materia24,200,semielaborado2);
-		IngredienteEntity ing16=new IngredienteEntity(materia8,50,semielaborado2);
+		IngredienteEntity ing14=new IngredienteEntity(materia3,2,semielaborado3);
+		IngredienteEntity ing15=new IngredienteEntity(materia24,200,semielaborado3);
+		IngredienteEntity ing16=new IngredienteEntity(materia8,50,semielaborado3);
 		session.save(ing14);
 		session.save(ing15);
 		session.save(ing16);
 		session.save(semielaborado3);
 		
 		SemiElaboradoEntity semielaborado4=new SemiElaboradoEntity("Carnes","Especial","Bife de Chorizo",1,fecha,ue3);
-		IngredienteEntity ing17=new IngredienteEntity(materia12,500,semielaborado2);
+		IngredienteEntity ing17=new IngredienteEntity(materia12,500,semielaborado4);
 		session.save(ing17);
 		session.save(semielaborado4);
 		
 		SemiElaboradoEntity semielaborado5=new SemiElaboradoEntity("Carnes","Especial","Ribs de Cerdo",1,fecha,ue3);
-		IngredienteEntity ing18=new IngredienteEntity(materia24,500,semielaborado2);
+		IngredienteEntity ing18=new IngredienteEntity(materia24,500,semielaborado5);
 		session.save(ing18);
 		session.save(semielaborado5);
 		
+		SemiElaboradoEntity semielaborado6=new SemiElaboradoEntity("Acompañamientos","Especial","Papas Fritas",1,fecha,ue3);
+		IngredienteEntity ing19=new IngredienteEntity(materia26,500,semielaborado6);
+		session.save(ing19);
+		session.save(semielaborado6);
+		
+		
+		//-----------------BEBIDAS-----------------
 		SemiElaboradoEntity cocacola=new SemiElaboradoEntity("Bebidas","Especial","Coca Cola 360cm3",1,fecha,ue3);
 		IngredienteEntity ing9=new IngredienteEntity(materia13,1,cocacola);
 		session.save(ing9);
@@ -218,6 +228,65 @@ public class PoblarBase {
 		IngredienteEntity ing13=new IngredienteEntity(materia17,1,pepsi);
 		session.save(ing13);
 		session.save(spritezero);
+		
+	//ELABORADOS
+		//ELABORADO 1
+		List<SemiElaboradoEntity> semis= new ArrayList<SemiElaboradoEntity>();
+		semis.add(semielaborado1);
+		semis.add(semielaborado6);
+		PlanDeProduccionEntity pdp1= new PlanDeProduccionEntity(fecha, Estado.EnProceso);
+		ItemPlanProduccionEntity itempdp1=new ItemPlanProduccionEntity(semielaborado1, 1, 0, pdp1); 
+		ItemPlanProduccionEntity itempdp2=new ItemPlanProduccionEntity(semielaborado6, 1, 0, pdp1); 
+		List<ItemPlanProduccionEntity> itemspdp1= new ArrayList<ItemPlanProduccionEntity>();
+		itemspdp1.add(itempdp1);
+		itemspdp1.add(itempdp2);
+		pdp1.setItemspdp(itemspdp1);
+		ElaboradoEntity comida1= new ElaboradoEntity("Combo", "Especial", "Albondigas de Cerdo con Papas Fritas", pdp1, 15, fecha, ue, semis);
+		session.save(comida1);
+		
+		
+		//ELABORADO 2
+		List<SemiElaboradoEntity> semis2= new ArrayList<SemiElaboradoEntity>();
+		semis2.add(semielaborado2);
+		semis2.add(semielaborado6);
+		PlanDeProduccionEntity pdp2= new PlanDeProduccionEntity(fecha, Estado.EnProceso);
+		ItemPlanProduccionEntity itempdp3=new ItemPlanProduccionEntity(semielaborado2, 1, 0, pdp2); 
+		ItemPlanProduccionEntity itempdp4=new ItemPlanProduccionEntity(semielaborado6, 1, 0, pdp2); 
+		List<ItemPlanProduccionEntity> itemspdp2= new ArrayList<ItemPlanProduccionEntity>();
+		itemspdp2.add(itempdp3);
+		itemspdp2.add(itempdp4);
+		pdp2.setItemspdp(itemspdp2);
+		ElaboradoEntity comida2= new ElaboradoEntity("Combo", "Especial", "Albondigas de carne con Papas Fritas", pdp2, 10, fecha, ue2, semis2);
+		session.save(comida2);
+		
+		
+		//ELABORADO 3
+		List<SemiElaboradoEntity> semis3= new ArrayList<SemiElaboradoEntity>();
+		semis3.add(semielaborado3);
+		semis3.add(semielaborado6);
+		PlanDeProduccionEntity pdp3= new PlanDeProduccionEntity(fecha, Estado.EnProceso);
+		ItemPlanProduccionEntity itempdp5=new ItemPlanProduccionEntity(semielaborado3, 1, 0, pdp3); 
+		ItemPlanProduccionEntity itempdp6=new ItemPlanProduccionEntity(semielaborado6, 1, 0, pdp3); 
+		List<ItemPlanProduccionEntity> itemspdp3= new ArrayList<ItemPlanProduccionEntity>();
+		itemspdp3.add(itempdp5);
+		itemspdp3.add(itempdp6);
+		pdp3.setItemspdp(itemspdp3);
+		ElaboradoEntity comida3= new ElaboradoEntity("Combo", "Especial", "Cordero Braseado con Papas Fritas", pdp3, 6, fecha, ue2, semis3);
+		session.save(comida3);
+		
+		//ELABORADO 4
+		List<SemiElaboradoEntity> semis4= new ArrayList<SemiElaboradoEntity>();
+		semis4.add(semielaborado4);
+		semis4.add(semielaborado6);
+		PlanDeProduccionEntity pdp4= new PlanDeProduccionEntity(fecha, Estado.EnProceso);
+		ItemPlanProduccionEntity itempdp7=new ItemPlanProduccionEntity(semielaborado4, 1, 0, pdp4); 
+		ItemPlanProduccionEntity itempdp8=new ItemPlanProduccionEntity(semielaborado6, 1, 0, pdp4); 
+		List<ItemPlanProduccionEntity> itemspdp4= new ArrayList<ItemPlanProduccionEntity>();
+		itemspdp4.add(itempdp7);
+		itemspdp4.add(itempdp8);
+		pdp4.setItemspdp(itemspdp4);
+		ElaboradoEntity comida4= new ElaboradoEntity("Combo", "Especial", "Bife de Chorizo con Papas Fritas", pdp4, 7, fecha, ue2, semis4);
+		session.save(comida4);
 		
 		session.getTransaction().commit();
 		session.close();
