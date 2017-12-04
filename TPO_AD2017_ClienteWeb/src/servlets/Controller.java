@@ -694,11 +694,10 @@ if(opcion.equals("verMozos")){
 		if(opcion.equals("combinarSolicitudesIndividuales")){
 			 
 			String[] solicitudesIndividuales = request.getParameterValues("solicitudesElegidas[]");
-
-			
-			
+			ArrayList<String[]> mandar = null;
+			mandar.add(solicitudesIndividuales);
 			try {
-				BusinessDelegate.getInstance().unirSolicitudesIndividuales(solicitudesIndividuales);
+				BusinessDelegate.getInstance().unirSolicitudesIndividuales(mandar);
 			} catch (SolicitudException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();

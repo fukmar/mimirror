@@ -2,6 +2,7 @@ package remoto;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -420,7 +421,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	}
 
 	@Override
-	public void unirSolicitudesIndividuales(String[] resultado) throws RemoteException, SolicitudException {
+	public void unirSolicitudesIndividuales(ArrayList<String[]> resultado) throws RemoteException, SolicitudException {
 		Controlador.getInstance().UnirSolicitudesIndividuales(resultado);
 		
 	}

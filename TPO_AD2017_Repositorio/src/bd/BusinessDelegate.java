@@ -5,6 +5,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -513,8 +514,8 @@ public class BusinessDelegate
 		remoteObject.grabarSolicitudIndividual(solicitud);
 	}
 
-	public void unirSolicitudesIndividuales(String[] solicitudesIndividuales) throws RemoteException, SolicitudException {
-		remoteObject.unirSolicitudesIndividuales(solicitudesIndividuales);
+	public void unirSolicitudesIndividuales(ArrayList<String[]> mandar) throws RemoteException, SolicitudException {
+		remoteObject.unirSolicitudesIndividuales(mandar);
 		
 	}
 

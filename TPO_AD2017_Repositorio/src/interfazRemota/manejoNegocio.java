@@ -2,6 +2,7 @@ package interfazRemota;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -159,7 +160,7 @@ public interface manejoNegocio extends Remote
 	//SOLICITUD INDIVIDUAL
 	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales()throws RemoteException,SolicitudException;
 	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud)throws RemoteException,SolicitudException;
-	public void unirSolicitudesIndividuales(String[] solicitudesIndividuales) throws RemoteException,SolicitudException;
+	public void unirSolicitudesIndividuales(ArrayList<String[]> mandar) throws RemoteException,SolicitudException;
 	
 }
 
