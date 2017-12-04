@@ -263,6 +263,8 @@ public class PoblarBase {
 		itemspdp1.add(itempdp1);
 		pdp1.setItemspdp(itemspdp1);
 		ElaboradoEntity comida1= new ElaboradoEntity("Especial", "De Exportacion", "Albondigas de Cerdo", pdp1, 15, fecha, ue, semis);
+		session.save(itempdp1);
+		session.save(pdp1);
 		session.save(comida1);
 		
 		
@@ -275,6 +277,8 @@ public class PoblarBase {
 		itemspdp2.add(itempdp3);
 		pdp2.setItemspdp(itemspdp2);
 		ElaboradoEntity comida2= new ElaboradoEntity("Especial", "De Exportacion", "Albondigas de carne", pdp2, 10, fecha, ue2, semis2);
+		session.save(itempdp3);
+		session.save(pdp2);
 		session.save(comida2);
 		
 		
@@ -287,6 +291,8 @@ public class PoblarBase {
 		itemspdp3.add(itempdp5);
 		pdp3.setItemspdp(itemspdp3);
 		ElaboradoEntity comida3= new ElaboradoEntity("Especial", "De Exportacion", "Cordero Braseado", pdp3, 6, fecha, ue2, semis3);
+		session.save(itempdp5);
+		session.save(pdp3);
 		session.save(comida3);
 		
 		//ELABORADO 4
@@ -298,6 +304,8 @@ public class PoblarBase {
 		itemspdp4.add(itempdp7);
 		pdp4.setItemspdp(itemspdp4);
 		ElaboradoEntity comida4= new ElaboradoEntity("Especial", "De Exportacion", "Bife de Chorizo", pdp4, 7, fecha, ue2, semis4);
+		session.save(itempdp7);
+		session.save(pdp4);
 		session.save(comida4);
 		
 		
@@ -310,6 +318,8 @@ public class PoblarBase {
 		itemspdp5.add(itempdp9);
 		pdp5.setItemspdp(itemspdp5);
 		ElaboradoEntity comida5= new ElaboradoEntity("Comun", "Crujientes", "Papas Fritas", pdp5, 7, fecha, ue2, semis5);
+		session.save(itempdp9);
+		session.save(pdp5);
 		session.save(comida5);
 		
 		//ELABORADO 6 
@@ -321,6 +331,8 @@ public class PoblarBase {
 		itemspdp6.add(itempdp10);
 		pdp6.setItemspdp(itemspdp6);
 		ElaboradoEntity comida6= new ElaboradoEntity("Bebida", "Fria", "Sprite Zero 360cm3", pdp6, 7, fecha, ue3, semis6);
+		session.save(itempdp10);
+		session.save(pdp6);
 		session.save(comida6);
 		
 		//ELABORADO 6 
@@ -332,6 +344,8 @@ public class PoblarBase {
 		itemspdp7.add(itempdp11);
 		pdp7.setItemspdp(itemspdp7);
 		ElaboradoEntity comida7= new ElaboradoEntity("Bebida", "Fria", "Coca Cola 360cm3", pdp7, 7, fecha, ue3, semis7);
+		session.save(itempdp11);
+		session.save(pdp7);
 		session.save(comida7);
 		
 		
