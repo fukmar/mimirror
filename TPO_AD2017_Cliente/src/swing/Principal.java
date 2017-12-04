@@ -248,6 +248,42 @@ public class Principal extends JFrame {
 		mnMesas.setFont(new Font("Segoe UI", Font.PLAIN, 23));
 		menuBar.add(mnMesas);
 		
+		JMenuItem mntmNuevaMesa = new JMenuItem("Nueva Mesa");
+		mntmNuevaMesa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AltaMesa el=new AltaMesa();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+		});
+		mntmNuevaMesa.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnMesas.add(mntmNuevaMesa);
+		
+		JMenuItem mntmModificarMesa = new JMenuItem("Modificar Mesa");
+		mntmModificarMesa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificarMesa el=new ModificarMesa();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+		});
+		mntmModificarMesa.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnMesas.add(mntmModificarMesa);
+		
+		JMenuItem mntmEliminarMesa = new JMenuItem("Eliminar Mesa");
+		mntmEliminarMesa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BajaMesa el=new BajaMesa();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+		});
+		mntmEliminarMesa.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnMesas.add(mntmEliminarMesa);
+		
 		JMenu mnSectores = new JMenu("Sectores");
 		mnSectores.setFont(new Font("Segoe UI", Font.PLAIN, 23));
 		menuBar.add(mnSectores);
