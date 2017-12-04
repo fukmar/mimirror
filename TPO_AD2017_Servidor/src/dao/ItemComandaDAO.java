@@ -82,7 +82,6 @@ private static ItemComandaDAO instancia;
 			Session session = sf.openSession();
 			session.beginTransaction();
 			MateriaPrima mp=ing.getMateriaprima();
-			System.out.println("clavale un syso: "+mp.getEstadescontado());
 			if (mp.getEstadescontado().equals(0))
 			{
 				float cantidadenstock=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(ing.getMateriaprima());
