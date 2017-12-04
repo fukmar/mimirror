@@ -14,14 +14,14 @@
     
       <input type="text" placeholder="nombre" name="nombre"/>
       <select name=categoriaplato>
-  <option value="contado">Bebida</option>
-  <option value="debito">Carnes</option>
-  <option value="credito">Pollo</option>
-  <option value="debito">Pescado</option>
-  <option value="credito">Postres</option>
-  <option value="contado">Vegetariano</option>
-  <option value="debito">EspecialdelDia</option>
-  <option value="credito">Vinos</option>
+  <option value="Bebida">Bebida</option>
+  <option value="Carnes">Carnes</option>
+  <option value="Pollo">Pollo</option>
+  <option value="Pescado">Pescado</option>
+  <option value="Postres">Postres</option>
+  <option value="Vegetariano">Vegetariano</option>
+  <option value="EspecialdelDia">EspecialdelDia</option>
+  <option value="Vinos">Vinos</option>
 
 </select>
 <br>

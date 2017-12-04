@@ -190,7 +190,6 @@ public class Controller extends HttpServlet {
 				    case "Vegetariano": categoria = CategoriaPlato.Vegetariano;break;  
 				    case "EspecialdelDia": categoria = CategoriaPlato.EspecialdelDia;break;  
 				    case "Vinos": categoria = CategoriaPlato.Vinos;break;  
-				    
 				
 				    default:categoria = CategoriaPlato.Carnes;
 				    }  
@@ -403,7 +402,7 @@ if(opcion.equals("facturarMesa")){
 	
 	List<MesaDTO> mesas = new ArrayList<MesaDTO>();
 	try {
-		mesas = BusinessDelegate.getInstance().mostrarMesas(); //OJO FALTA CAMBIAR A MESAS FACTURABLES
+		mesas = BusinessDelegate.getInstance().mostrarFacturables();
 		request.setAttribute("mesas", mesas);
 		RequestDispatcher rd = request.getRequestDispatcher("/facturarMesa.jsp");
 		rd.forward(request, response);
@@ -1082,7 +1081,7 @@ if(opcion.equals("verMozos")){
 			
 			
 			try {
-				mesas = BusinessDelegate.getInstance().mostrarMesas();
+				mesas = BusinessDelegate.getInstance().mostrarMesasOcupadas();
 				request.setAttribute("mesas", mesas);
 			} catch (MesaException e) {
 				System.out.println(e.getMessage());
