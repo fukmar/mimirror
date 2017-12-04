@@ -99,23 +99,31 @@ public class PlatoDAO
 			for(SemiElaborado s:semielab)
 			{
 			    List<Ingrediente> ingredientesdereceta=new ArrayList <Ingrediente>();
-				ingredientesdereceta=SemiElaboradoDAO.getInstance().getIngredientesPorSemis(s.getCodigoProd());
+				ingredientesdereceta=IngredienteDAO.getInstance().getIngredientesdeSemi(s);
 				for (Ingrediente idereceta:ingredientesdereceta)
 				{
 					int codigoabuscar=idereceta.getMateriaprima().getCodigo();
-					if (ingredientesFinal.contains(idereceta))
-					{
-						int ocurrencia=0;
-						ocurrencia=ingredientesFinal.indexOf(idereceta);
-						int cantidad= ingredientesFinal.get(ocurrencia).getCantidad();
-						ingredientesFinal.get(ocurrencia).setCantidad(cantidad+idereceta.getCantidad());
-					}
+					if (ingredientesFinal.isEmpty())	
+						ingredientesFinal.add(idereceta);
 					else
 					{
-						ingredientesFinal.add(idereceta);
+						for (Ingrediente ifinal:ingredientesFinal)
+						{
+							if(ifinal.getMateriaprima().getCodigo()==codigoabuscar)
+							{
+								int subcantidad=ifinal.getCantidad()+idereceta.getCantidad();
+								ifinal.setCantidad(subcantidad);
+							}
+							else
+							{
+								ingredientesFinal.add(idereceta);
+							}
+					}
 					}
 				}
+				 
 			}
+			
 		}
 		return ingredientesFinal;
 	}

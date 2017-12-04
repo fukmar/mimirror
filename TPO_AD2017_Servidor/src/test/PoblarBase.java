@@ -180,7 +180,7 @@ public class PoblarBase {
 		ing18.setPlatosemielaborado(semielaborado5);
 
 		
-		SemiElaboradoEntity semielaborado6=new SemiElaboradoEntity("Acompañamientos","Especial","Papas Fritas",1,fecha,ue3);
+		SemiElaboradoEntity semielaborado6=new SemiElaboradoEntity("Acompaï¿½amientos","Especial","Papas Fritas",1,fecha,ue3);
 		IngredienteEntity ing19=new IngredienteEntity(materia26,500,semielaborado6);
 		ing19.setPlatosemielaborado(semielaborado6);
 	
@@ -480,7 +480,7 @@ public class PoblarBase {
 		
 		session.getTransaction().commit();
 		session.close();
-		List<Ingrediente> ingredientesselec=SemiElaboradoDAO.getInstance().getIngredientesPorSemis(8);
+	/*	List<Ingrediente> ingredientesselec=SemiElaboradoDAO.getInstance().getIngredientesPorSemis(8);
 		for (Ingrediente i:ingredientesselec)
 		{
 			System.out.println(i.getMateriaprima().getDescripcion());
@@ -496,5 +496,5 @@ public class PoblarBase {
 		List <Ingrediente> ingp3=PlatoDAO.getInstance().getIngredientes(plato3.toNegocio());
 		List <Ingrediente> ingp4=PlatoDAO.getInstance().getIngredientes(plato4.toNegocio());
 		List <Ingrediente> ingp5=PlatoDAO.getInstance().getIngredientes(plato5.toNegocio());
-	}}
+	*/}}
 		

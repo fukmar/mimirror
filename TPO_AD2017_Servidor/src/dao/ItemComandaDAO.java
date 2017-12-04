@@ -76,6 +76,7 @@ private static ItemComandaDAO instancia;
 	public void reducirstockxItemComanda(ItemComanda i){
 		List <Ingrediente> ingredientes=PlatoDAO.getInstance().getIngredientes(i.getPlato());
 		
+		
 		for (Ingrediente ing:ingredientes)
 		{
 			SessionFactory sf = HibernateUtil.getSessionFactory();

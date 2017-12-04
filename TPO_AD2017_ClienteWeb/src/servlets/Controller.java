@@ -1166,11 +1166,11 @@ if(opcion.equals("agregarItemsComanda_2step")){
 				System.out.println(e.getMessage());
 			}
 			
-			boolean ok = true;
+			
 			ItemComandaDTO itemComanda = new ItemComandaDTO(cantidad,plato,EstadoItemComanda.Pendiente, comanda);
 			itemComanda.setComanda(comanda);
 			try {
-			 ok = BusinessDelegate.getInstance().grabarItemComanda(itemComanda);
+			 boolean ok = BusinessDelegate.getInstance().grabarItemComanda(itemComanda);
 			
 			if (!ok) {
 				RequestDispatcher rd = request.getRequestDispatcher("/noPodemos.jsp");
@@ -1183,9 +1183,9 @@ if(opcion.equals("agregarItemsComanda_2step")){
 			}
 			
 			if (accion.equals("Aceptar")) {
-			if (ok)
-				{RequestDispatcher rd = request.getRequestDispatcher("/verComandas.jsp");
-			rd.forward(request, response);}}
+			
+				RequestDispatcher rd = request.getRequestDispatcher("/verComandas.jsp");
+			rd.forward(request, response);}
 			if (accion.equals("Otro")) {
 				
 				List<PlatoDTO> platos = new ArrayList<PlatoDTO>();
