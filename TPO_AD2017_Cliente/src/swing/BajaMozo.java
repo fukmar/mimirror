@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BajaMozo extends JFrame {
 
@@ -109,6 +111,14 @@ public class BajaMozo extends JFrame {
 		contentPane.add(btnBorrar);
 		
 		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal principal = new Principal();
+				principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				dispose();
+				principal.setVisible(true);
+			}
+		});
 		btnVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {

@@ -290,14 +290,38 @@ public class Principal extends JFrame {
 		menuBar.add(mnSectores);
 		
 		JMenuItem mntmAltaSector = new JMenuItem("Alta Sector");
+		mntmAltaSector.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AltaSector el=new AltaSector();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+		});
 		mntmAltaSector.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnSectores.add(mntmAltaSector);
 		
 		JMenuItem mntmModificarSector = new JMenuItem("Modificar Sector");
+		mntmModificarSector.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificarSector el=new ModificarSector();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+		});
 		mntmModificarSector.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnSectores.add(mntmModificarSector);
 		
 		JMenuItem mntmEliminarSector = new JMenuItem("Eliminar Sector");
+		mntmEliminarSector.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BajaSector el=new BajaSector();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+		});
 		mntmEliminarSector.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnSectores.add(mntmEliminarSector);
 		
@@ -306,14 +330,38 @@ public class Principal extends JFrame {
 		menuBar.add(mnMozos);
 		
 		JMenuItem mntmAltaMozo = new JMenuItem("Alta Mozo");
+		mntmAltaMozo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AltaMozo el=new AltaMozo();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+		});
 		mntmAltaMozo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnMozos.add(mntmAltaMozo);
 		
 		JMenuItem mntmModificarMozo = new JMenuItem("Modificar Mozo");
+		mntmModificarMozo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificarMozo el=new ModificarMozo();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+		});
 		mntmModificarMozo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnMozos.add(mntmModificarMozo);
 		
 		JMenuItem mntmEliminarMozo = new JMenuItem("Eliminar Mozo");
+		mntmEliminarMozo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BajaMozo el=new BajaMozo();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+		});
 		mntmEliminarMozo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnMozos.add(mntmEliminarMozo);
 		
@@ -322,14 +370,27 @@ public class Principal extends JFrame {
 		menuBar.add(mnCarta);
 		
 		JMenuItem mntmNuevaCarta = new JMenuItem("Nueva Carta");
+		mntmNuevaCarta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AltaCarta el=new AltaCarta();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+		});
 		mntmNuevaCarta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnCarta.add(mntmNuevaCarta);
 		
-		JMenuItem mntmModificarCarta = new JMenuItem("Modificar Carta");
-		mntmModificarCarta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mnCarta.add(mntmModificarCarta);
-		
 		JMenuItem mntmEliminarCarta = new JMenuItem("Eliminar Carta");
+		mntmEliminarCarta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BajaCarta el=new BajaCarta();
+				dispose();
+				el.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				el.setVisible(true);
+			}
+			
+		});
 		mntmEliminarCarta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnCarta.add(mntmEliminarCarta);
 		

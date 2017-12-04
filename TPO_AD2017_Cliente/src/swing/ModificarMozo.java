@@ -118,6 +118,14 @@ public class ModificarMozo extends JFrame {
 		contentPane.add(btnModificarMozo);
 		
 		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal principal = new Principal();
+				principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				dispose();
+				principal.setVisible(true);
+			}
+		});
 		btnVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {

@@ -15,6 +15,8 @@ import java.awt.Toolkit;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ModificarSector extends JFrame {
 
@@ -99,6 +101,14 @@ public class ModificarSector extends JFrame {
 		contentPane.add(btnModificar);
 		
 		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal principal = new Principal();
+				principal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				dispose();
+				principal.setVisible(true);
+			}
+		});
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnVolver.setBounds(431, 400, 172, 50);
 		contentPane.add(btnVolver);
