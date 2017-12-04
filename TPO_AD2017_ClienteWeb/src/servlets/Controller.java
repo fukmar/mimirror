@@ -484,11 +484,14 @@ if(opcion.equals("verComisiones")){
 if(opcion.equals("cerrarCaja")){
 	 double valortotal = 0;
 	  Date hoy = new Date();
+	  Date fechadesde = new Date("10/10/2016");
+	   Date fechahasta = new Date("10/10/2020");
+	  
 	  double valorcomi = 0;
 	   
 	
 		try {
-			valortotal = BusinessDelegate.getInstance().mostrarTotalFacturadoCaja(hoy, hoy);
+			valortotal = BusinessDelegate.getInstance().mostrarTotalFacturadoCaja(fechadesde, fechahasta);
 		} catch (CajaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -614,7 +617,7 @@ if(opcion.equals("verSolicitudesIndividuales")){
 					e.printStackTrace();
 				}
 				request.setAttribute("sols", sols);
-				RequestDispatcher rd = request.getRequestDispatcher("/verSolicitudesIndividuales.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/verSolicitudIndividual.jsp");
 				rd.forward(request, response);
 		}
 
@@ -630,7 +633,7 @@ if(opcion.equals("verSolicitudesDiarias")){
 			e.printStackTrace();
 		}
 		request.setAttribute("sols", sols);
-		RequestDispatcher rd = request.getRequestDispatcher("/verSolicitudesDiarias.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/verSolicitudDiaria.jsp");
 		rd.forward(request, response);
 }
 

@@ -95,7 +95,8 @@
 				
 			 submmenus.put("Solicitud Diaria", "/TPO_AD2017_ClienteWeb/Controller?opcion=solicitudDiaria");
 			 submmenus.put("Solicitud Individual", "/TPO_AD2017_ClienteWeb/Controller?opcion=solicitudIndividual");
-			 
+			 submmenus.put("Ver Solicitud Diaria", "/TPO_AD2017_ClienteWeb/Controller?opcion=verSolicitudesDiarias");
+			 submmenus.put("Ver Solicitud Individual", "/TPO_AD2017_ClienteWeb/Controller?opcion=verSolicitudesIndividuales");
 			 menus.put("Insumos", submmenus); 
 			 
 			 submmenus = new HashMap<String,String>();		
@@ -246,7 +247,7 @@
 			 
 			 submmenus = new HashMap<String,String>();
 				
-			 submmenus.put("Comisiones", "/TPO_AD2017_ClienteWeb/Controller?opcion=comisiones");
+			 submmenus.put("Comisiones", "/TPO_AD2017_ClienteWeb/Controller?opcion=verComisiones");
 			 submmenus.put("Cerrar", "/TPO_AD2017_ClienteWeb/Controller?opcion=cerrarCaja");				
 			 menus.put("Caja", submmenus);
 			 

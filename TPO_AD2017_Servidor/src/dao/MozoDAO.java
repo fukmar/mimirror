@@ -130,7 +130,7 @@ public class MozoDAO
 		toDate=sf.format(FechaHasta);
 			Session s = HibernateUtil.getSessionFactory().getCurrentSession();
 			s.beginTransaction();
-			double comision= (double) s.createQuery("select m.porcentajeComision * f.importe/100 from FacturaEntity f join f.mesa.mozo m where f.fecha between ? and ?").setString(0, fromDate).setString(1, toDate).uniqueResult();
+			double comision= (double) s.createQuery("select m.porcentajeComision * f.importe/100 from FacturaEntity f join f.mesa.mozo m").uniqueResult();
 			s.getTransaction().commit();
 		return comision;
 	}
