@@ -1,5 +1,6 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.persistence.OneToOne;
 import enumns.AreaRest;
 import enumns.EstadoSolicitud;
 
-public class SolicitudIndividualDTO  {
+public class SolicitudIndividualDTO  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private Integer codsolicitudIndividual;
