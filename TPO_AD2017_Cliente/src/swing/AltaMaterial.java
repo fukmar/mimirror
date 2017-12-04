@@ -87,11 +87,20 @@ public class AltaMaterial extends JFrame {
 				Float cantidad=Float.parseFloat(textFieldCantidad.getText());
 				try {
 					UnidadDTO uni= BusinessDelegate.getInstance().UnidadByDescp((comboBoxUnidades.getSelectedItem().toString()));
-					MateriaPrimaDTO materia= new MateriaPrimaDTO(descrip, uni, cantidad);
-					BusinessDelegate.getInstance().grabarMateriaPrima(materia);
-					JOptionPane.showMessageDialog(null, "Material creado exitosamente", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
-					textFieldCantidad.setText("");
-					textFieldDescripcion.setText("");
+					List<DepositoDTO> depos= BusinessDelegate.getInstance().mostrarDepositos();
+					for(DepositoDTO depo:depos) {
+						//if(mozo.getDni()==Integer.parseInt(textFieldIngresar.getText())) {
+						if(depo.getCodDeposito()==Integer.parseInt(comboBoxDepositos.getSelectedItem().toString())) {
+							DepositoDTO deposito=new DepositoDTO(depo.getCodDeposito());
+							MateriaPrimaDTO materia= new MateriaPrimaDTO(descrip, uni, cantidad);
+							materia.setDeposito(deposito);
+							BusinessDelegate.getInstance().grabarMateriaPrima(materia);
+							JOptionPane.showMessageDialog(null, "Material creado exitosamente", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
+							textFieldCantidad.setText("");
+							textFieldDescripcion.setText("");
+						}
+					}
+					
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -99,6 +108,9 @@ public class AltaMaterial extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (UnidadException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (DepositoException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

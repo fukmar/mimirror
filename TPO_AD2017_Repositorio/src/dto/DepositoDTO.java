@@ -19,6 +19,8 @@ public class DepositoDTO implements Serializable
 		super();
 		this.codDeposito = codDeposito;
 	}
+	
+	
 
 
 	

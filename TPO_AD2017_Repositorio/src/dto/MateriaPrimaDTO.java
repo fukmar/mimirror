@@ -18,10 +18,10 @@ public class MateriaPrimaDTO implements Serializable
 	public MateriaPrimaDTO(String descripcion, UnidadDTO unidadUso, Float cantidad) {
 	super();
 
-	this.descripcion = descripcion;
-	this.unidadUso = unidadUso;
-	this.setCantidad(cantidad);
-}
+		this.descripcion = descripcion;
+		this.unidadUso = unidadUso;
+		this.setCantidad(cantidad);
+	}
 
 	public Integer getEstadescontado() {
 		return estadescontado;
