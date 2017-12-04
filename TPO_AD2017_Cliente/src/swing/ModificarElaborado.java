@@ -74,9 +74,9 @@ public class ModificarElaborado extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				ElaboradoDTO elab;
+				
 				try {
-					elab = BusinessDelegate.getInstance().getElaboradoByCod(Integer.parseInt(textFieldIngresar.getText()));
+					ElaboradoDTO elab = BusinessDelegate.getInstance().getElaboradoByCod(7);
 					textCantidad.setText(elab.getCantidad().toString());
 					textCodigo.setText(elab.getCodElab().toString());
 					textDescripcion.setText(elab.getDescripcion());
