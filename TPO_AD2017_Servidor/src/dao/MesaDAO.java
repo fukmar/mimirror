@@ -198,7 +198,7 @@ public void LiberarMesaCombinada (Mesa mesacombinada)
 	{
 		Session session=sf.openSession();
 		List<Mesa> listaM=new ArrayList<Mesa>();
-		List<MesaEntity> resu=session.createQuery("from MesaEntity m where m.estado=1").list();
+		List<MesaEntity> resu=session.createQuery("from MesaEntity m where m.estado=1 and m.combinador<>2").list();
 		for(MesaEntity m:resu)
 		{
 			listaM.add(m.toNegocio());
