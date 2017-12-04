@@ -160,7 +160,7 @@ public interface manejoNegocio extends Remote
 	//SOLICITUD INDIVIDUAL
 	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales()throws RemoteException,SolicitudException;
 	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud)throws RemoteException,SolicitudException;
-	public void unirSolicitudesIndividuales(ArrayList<String[]> mandar) throws RemoteException,SolicitudException;
+	public void unirSolicitudesIndividuales(List<String> mandar) throws RemoteException,SolicitudException;
 	
 }
 

@@ -421,7 +421,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	}
 
 	@Override
-	public void unirSolicitudesIndividuales(ArrayList<String[]> resultado) throws RemoteException, SolicitudException {
+	public void unirSolicitudesIndividuales(List<String> resultado) throws RemoteException, SolicitudException {
 		Controlador.getInstance().UnirSolicitudesIndividuales(resultado);
 		
 	}

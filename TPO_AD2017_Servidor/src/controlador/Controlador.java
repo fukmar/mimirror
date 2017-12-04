@@ -654,15 +654,15 @@ public class Controlador {
 		return solicitudes;
 	}
 	
-	public void UnirSolicitudesIndividuales (ArrayList<String[]> resultado)
+	public void UnirSolicitudesIndividuales (List<String> resultado)
 	{
 		Deposito deposito=new Deposito();
 		List <SolicitudIndividual> solicitudestodiaria=new ArrayList <SolicitudIndividual>();
-		String[] resultado2 = resultado.get(0);
-		for (int i=0; i<resultado2.length;i++)
+		
+		for (String resultado2 : resultado)
 		{
-			System.out.println("sys control"+resultado2[i]);
-			SolicitudIndividual solicitud=SolicitudIndividualDAO.getInstance().getSolicitudIndividualPorId(Integer.parseInt(resultado2[i]));
+			System.out.println("sys control"+resultado2);
+			SolicitudIndividual solicitud=SolicitudIndividualDAO.getInstance().getSolicitudIndividualPorId(Integer.parseInt(resultado2));
 			System.out.println("sys control"+solicitud.getResponsable());
 			
 			solicitudestodiaria.add(solicitud);
