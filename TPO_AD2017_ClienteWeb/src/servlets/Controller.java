@@ -652,7 +652,7 @@ if(opcion.equals("verMozos")){
 			}
 		
 			request.setAttribute("solicitudesIndividuales", solicitudesIndividuales);
-			RequestDispatcher rd = request.getRequestDispatcher("/solicitudDiaria.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/crearSolicitudDiaria.jsp");
 			rd.forward(request, response);
 			
 		}

@@ -61,7 +61,7 @@ public class SolicitudIndividualDAO
 	public SolicitudIndividual getSolicitudIndividualPorId(Integer solicitud_id) {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		SolicitudIndividualEntity solicitud=(SolicitudIndividualEntity) session.createQuery("from SolicitudIndividualEntity where codigo=?").setInteger(0, solicitud_id).uniqueResult();
+		SolicitudIndividualEntity solicitud=(SolicitudIndividualEntity) session.createQuery("from SolicitudIndividualEntity where codsolicitudIndividual=?").setInteger(0, solicitud_id).uniqueResult();
 		session.close();
 		return solicitud.toNegocio();
 	}
