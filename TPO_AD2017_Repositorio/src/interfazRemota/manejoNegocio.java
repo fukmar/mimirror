@@ -183,6 +183,7 @@ public interface manejoNegocio extends Remote
 	//ELABORADOS
 	public void grabarElaborado(ElaboradoDTO elab) throws RemoteException, SemiElaboradoException;
 	public ElaboradoDTO getElaboradoByCod(int parseInt)throws RemoteException, ElaboradoException;
+	public void actualizarElaborado(ElaboradoDTO elab)throws RemoteException, ElaboradoException;
 	
 
 

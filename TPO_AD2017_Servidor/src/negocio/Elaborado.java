@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import dao.ElaboradoDAO;
+import dao.MateriaPrimaDAO;
 import dto.ElaboradoDTO;
 import dto.SemiElaboradoDTO;
 import entities.ElaboradoEntity;
@@ -90,6 +91,10 @@ public class Elaborado extends Producto
 	public Elaborado getElaboradoByCod(Integer parseInt) {
 		Elaborado ela=ElaboradoDAO.getInstance().getElaboradoByCod(parseInt);
 		return ela;
+	}
+	
+	public void update() {
+		ElaboradoDAO.getInstance().update(this);
 	}
 
 }

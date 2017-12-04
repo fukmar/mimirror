@@ -75,7 +75,7 @@ public class testFranco {
 			s.close();*/
 			ElaboradoDTO elab= new ElaboradoDTO();
 			elab=Controlador.getInstance().getElaboradoByCod(7);
-			System.out.println(elab.getDescripcion());
+			System.out.println(elab.getCantidad());
 			/*MateriaPrima mate=new MateriaPrima("prueba", null, 15f, null);
 			mate.setCodigo(1);
 			mate.update();*/

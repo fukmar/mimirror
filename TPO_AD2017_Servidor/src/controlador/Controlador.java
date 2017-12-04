@@ -801,6 +801,11 @@ public class Controlador {
 		return ela2;
 	}
 
+	public void actualizarElaborado(ElaboradoDTO elab) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	
 	

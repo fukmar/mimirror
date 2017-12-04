@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 
 import entities.ElaboradoEntity;
 import entities.IngredienteEntity;
+import entities.MateriaPrimaEntity;
 import entities.PlatoEntity;
 import entities.SemiElaboradoEntity;
 import entities.UnidadEntity;
@@ -50,6 +51,20 @@ private static SessionFactory sf=null;
 		session.close();
 		return ela;
 		
+	}
+	
+	public void update(Elaborado elab) {
+		Session session=sf.openSession();
+		session.beginTransaction();
+		Query query=session.createQuery("from SemiElaboradoEntity s where s.codigoProd=?");
+ 		query.setInteger(0,elab.getCodigoProd());
+		ElaboradoEntity elaborado=(ElaboradoEntity) query.uniqueResult();
+		elaborado.setDescripcion(elab.getDescripcion());
+		elaborado.setCantidad(elab.getCantidad());
+		elaborado.setTipo(elab.getTipo());
+		session.update(elaborado);
+		session.getTransaction().commit();
+		session.close();
 	}
 	/*public List<Ingrediente> getIngredientesdeElaborado (Elaborado elab)
 	{

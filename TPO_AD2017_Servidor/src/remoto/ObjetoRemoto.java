@@ -498,6 +498,12 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		return Controlador.getInstance().getElaboradoByCod(parseInt);
 	}
 
+	@Override
+	public void actualizarElaborado(ElaboradoDTO elab) throws RemoteException, ElaboradoException {
+		// TODO Auto-generated method stub
+		Controlador.getInstance().actualizarElaborado(elab);
+	}
+
 	
 
 

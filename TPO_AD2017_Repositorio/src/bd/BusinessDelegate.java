@@ -588,6 +588,11 @@ public class BusinessDelegate
 		return remoteObject.getElaboradoByCod(parseInt);
 	}
 
+	public void actualizarElaborado(ElaboradoDTO elab) throws RemoteException, ElaboradoException{
+		// TODO Auto-generated method stub
+		 remoteObject.actualizarElaborado(elab);
+	}
+
 
 
 	

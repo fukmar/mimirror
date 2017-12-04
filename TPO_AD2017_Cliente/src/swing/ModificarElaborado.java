@@ -76,13 +76,12 @@ public class ModificarElaborado extends JFrame {
 			
 				
 				try {
-					ElaboradoDTO elab = BusinessDelegate.getInstance().getElaboradoByCod(7);
-					textCantidad.setText(elab.getCantidad().toString());
+					ElaboradoDTO elab = BusinessDelegate.getInstance().getElaboradoByCod(Integer.parseInt(textFieldIngresar.getText()));
 					textCodigo.setText(elab.getCodElab().toString());
 					textDescripcion.setText(elab.getDescripcion());
 					textTipo.setText(elab.getTipo());
 					textCantidad.setEditable(true);
-					textCodigo.setEditable(true);
+					//textCodigo.setEditable(true);
 					textDescripcion.setEditable(true);
 					textTipo.setEditable(true);
 					
@@ -136,6 +135,13 @@ public class ModificarElaborado extends JFrame {
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					ElaboradoDTO elab= BusinessDelegate.getInstance().getElaboradoByCod(Integer.parseInt(textFieldIngresar.getText()));
+					BusinessDelegate.getInstance().actualizarElaborado(elab);
+				} catch (NumberFormatException | RemoteException | ElaboradoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -161,6 +167,7 @@ public class ModificarElaborado extends JFrame {
 		contentPane.add(lblCantidad);
 		
 		textCantidad = new JTextField();
+		textCantidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textCantidad.setEditable(false);
 		textCantidad.setBounds(415, 502, 200, 37);
 		contentPane.add(textCantidad);
