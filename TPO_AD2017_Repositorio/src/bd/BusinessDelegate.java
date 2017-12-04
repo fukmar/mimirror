@@ -513,9 +513,10 @@ public class BusinessDelegate
 		remoteObject.grabarSolicitudIndividual(solicitud);
 	}
 
-	public void unirSolicitudesIndividuales(Integer[] resultado) throws RemoteException, SolicitudException {
-		remoteObject.unirSolicitudesIndividuales(resultado);
+	public void unirSolicitudesIndividuales(String[] solicitudesIndividuales) throws RemoteException, SolicitudException {
+		remoteObject.unirSolicitudesIndividuales(solicitudesIndividuales);
 		
 	}
+
 	
 }

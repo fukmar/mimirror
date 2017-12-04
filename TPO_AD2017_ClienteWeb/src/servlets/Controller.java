@@ -696,13 +696,9 @@ if(opcion.equals("verMozos")){
 			String[] solicitudesIndividuales = request.getParameterValues("solicitudesElegidas[]");
 
 			
-			Integer[] resultado = new Integer[solicitudesIndividuales.length];
-			   for (int i = 0; i < solicitudesIndividuales.length; i++) {
-				   resultado[i] = Integer.parseInt(solicitudesIndividuales[i]);
-			   
-					System.out.println("esto es en la web"+resultado[i]);}
+			
 			try {
-				BusinessDelegate.getInstance().unirSolicitudesIndividuales(resultado);
+				BusinessDelegate.getInstance().unirSolicitudesIndividuales(solicitudesIndividuales);
 			} catch (SolicitudException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -886,6 +882,7 @@ if(opcion.equals("verMozos")){
 				RequestDispatcher rd = request.getRequestDispatcher("/verMisItems.jsp");
 				rd.forward(request, response);
 			
+				
 				
 		}else if ((session.getAttribute("usuario") != null) & session.getAttribute("usuario").equals("bar")) {
 			
