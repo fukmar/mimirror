@@ -75,6 +75,7 @@ private static ItemComandaDAO instancia;
 	}
 	public void reducirstockxItemComanda(ItemComanda i){
 		List <Ingrediente> ingredientes=PlatoDAO.getInstance().getIngredientes(i.getPlato());
+		System.out.println("clavale un syso: "+i.getPlato().getProductoPlato().get(0).getComponentes().get(0).getDescripcion());
 		
 		for (Ingrediente ing:ingredientes)
 		{
@@ -83,7 +84,7 @@ private static ItemComandaDAO instancia;
 			session.beginTransaction();
 			MateriaPrima mp=ing.getMateriaprima();
 			System.out.println("clavale un syso: "+mp.getEstadescontado());
-			if (mp.getEstadescontado()==0)
+			if (mp.getEstadescontado().equals(0))
 			{
 				float cantidadenstock=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(ing.getMateriaprima());
 				float cantidadfinal=cantidadenstock-(ing.getCantidad()*i.getCantidad());
