@@ -94,5 +94,19 @@ public class MateriaPrimaDAO
 		session.close();
 	}
 	
+	public void update(MateriaPrima mp) {
+		Session session=sf.openSession();
+		session.beginTransaction();
+		Query query=session.createQuery("from MateriaPrimaEntity mp where mp.codMaterial= ? ");
+ 		query.setFloat(0,mp.getCodigo());
+		MateriaPrimaEntity materia=(MateriaPrimaEntity) query.uniqueResult();
+		materia.setDescripcion(mp.getDescripcion());
+		materia.setCantidad(mp.getCantidad());
+		session.update(materia);
+		session.getTransaction().commit();
+		session.close();
+		
+	}
+	
 }
 

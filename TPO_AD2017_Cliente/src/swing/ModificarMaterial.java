@@ -89,7 +89,8 @@ public class ModificarMaterial extends JFrame {
 					textFieldCantidad.setText(materia.getCantidad().toString());
 					textFieldCantidad.setEditable(true);
 					textFieldDescripcion.setText(materia.getDescripcion());
-					textFieldDescripcion.setEditable(true);;
+					textFieldDescripcion.setEditable(true);
+					//BusinessDelegate.getInstance().actualizarMateriaPrima(materia);
 					
 				} catch (NumberFormatException | RemoteException | MateriaPrimaException e) {
 					// TODO Auto-generated catch block

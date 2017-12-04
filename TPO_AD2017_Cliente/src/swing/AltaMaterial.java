@@ -89,7 +89,6 @@ public class AltaMaterial extends JFrame {
 					UnidadDTO uni= BusinessDelegate.getInstance().UnidadByDescp((comboBoxUnidades.getSelectedItem().toString()));
 					List<DepositoDTO> depos= BusinessDelegate.getInstance().mostrarDepositos();
 					for(DepositoDTO depo:depos) {
-						//if(mozo.getDni()==Integer.parseInt(textFieldIngresar.getText())) {
 						if(depo.getCodDeposito()==Integer.parseInt(comboBoxDepositos.getSelectedItem().toString())) {
 							DepositoDTO deposito=new DepositoDTO(depo.getCodDeposito());
 							MateriaPrimaDTO materia= new MateriaPrimaDTO(descrip, uni, cantidad);
