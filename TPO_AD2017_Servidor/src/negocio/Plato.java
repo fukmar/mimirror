@@ -115,13 +115,13 @@ public class Plato
 		p.setPrecio(precio);
 		p.setArea(area);
 		p.setCarta(carta.toEntity());
-		p.setCategoria(categoria);
+		p.setCategoria(categoria);/*
 		List<ElaboradoEntity> productos=new ArrayList<ElaboradoEntity>();
 		for(Elaborado e:this.productoPlato ) 
 		{
 			productos.add(e.toEntity());
 		}
-		p.setProductoPlato(productos);
+		p.setProductoPlato(productos);*/
 		return p;
 	}
 	
@@ -132,13 +132,13 @@ public class Plato
 		p.setNombre(nombre);
 		p.setArea(area);
 		p.setPrecio(precio);
-		p.setCategoria(categoria);
+		p.setCategoria(categoria);/*
 		List<ElaboradoDTO> productos=new ArrayList<ElaboradoDTO>();
 		for(Elaborado e:this.productoPlato ) 
 		{
 			productos.add(e.toDTO());
 		}
-		p.setProductoPlato(productos);
+		p.setProductoPlato(productos);*/
 		p.setCarta(carta.toDTO());
 		return p;
 	}

@@ -158,6 +158,7 @@ public class RemitoDAO {
 		{
 			Remito remito=new Remito();
 			Session session=sf.openSession();
+			System.out.println("busco remito numero "+codRemito);
 			RemitoEntity resu=(RemitoEntity) session.createQuery("from RemitoEntity r where r.codRemito=?").setInteger(0, codRemito).uniqueResult();
 			remito=resu.toNegocio();
 			session.close();
