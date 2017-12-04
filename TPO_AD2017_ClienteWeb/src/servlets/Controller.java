@@ -694,7 +694,7 @@ if(opcion.equals("verMozos")){
 		if(opcion.equals("combinarSolicitudesIndividuales")){
 			 
 			String[] solicitudesIndividuales = request.getParameterValues("solicitudesElegidas[]");
-			ArrayList<String[]> mandar = null;
+			ArrayList<String[]> mandar = new ArrayList<String[]>();
 			mandar.add(solicitudesIndividuales);
 			try {
 				BusinessDelegate.getInstance().unirSolicitudesIndividuales(mandar);
