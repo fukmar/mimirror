@@ -999,7 +999,7 @@ if(opcion.equals("agregarItemsComanda_2step")){
 			boolean ok = BusinessDelegate.getInstance().grabarItemComanda(itemComanda);
 			
 			if (!ok) {
-				RequestDispatcher rd = request.getRequestDispatcher("/sugiero.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/TPO_AD2017_ClienteWeb/Controller?opcion=sugerirPlatos");
 				rd.forward(request, response);
 				
 			}
