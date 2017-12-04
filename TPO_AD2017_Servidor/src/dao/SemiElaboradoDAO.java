@@ -1,6 +1,7 @@
 package dao;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -43,12 +44,19 @@ private static SemiElaboradoDAO instancia;
 		SimpleDateFormat sformat=new SimpleDateFormat("yyyy/MM/dd");
 
 		String fromDate=null;
-		fromDate=sformat.format(fecha);
-		String tosDate=null;
-		tosDate=sformat.format(fecha)+1;
-		SessionFactory sf = HibernateUtil.getSessionFactory();
 
+		String tosDate=null;
+		Calendar calendar = Calendar.getInstance();
+	    calendar.setTime(fecha); 
+	    calendar.add(Calendar.DAY_OF_YEAR, 2);
+		Calendar calendar2 = Calendar.getInstance();
+	    calendar2.setTime(fecha); 
+	    calendar2.add(Calendar.DAY_OF_YEAR, -1);
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		tosDate=sformat.format(calendar.getTime());
+		fromDate=sformat.format(calendar2.getTime());
 		System.out.println("LA FECHA ES:"+fromDate);
+		System.out.println("LA FECHA ES:"+tosDate);
 		Session s=sf.openSession();
 		s.beginTransaction();
 	
