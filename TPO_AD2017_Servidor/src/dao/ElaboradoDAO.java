@@ -54,9 +54,10 @@ private static SessionFactory sf=null;
 	}
 	
 	public void update(Elaborado elab) {
-		Session session=sf.openSession();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
 		session.beginTransaction();
-		Query query=session.createQuery("from SemiElaboradoEntity s where s.codigoProd=?");
+		Query query=session.createQuery("from ElaboradoEntity s where s.codigoProd=?");
  		query.setInteger(0,elab.getCodigoProd());
 		ElaboradoEntity elaborado=(ElaboradoEntity) query.uniqueResult();
 		elaborado.setDescripcion(elab.getDescripcion());
