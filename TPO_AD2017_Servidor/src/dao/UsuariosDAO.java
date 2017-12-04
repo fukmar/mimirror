@@ -115,7 +115,7 @@ public class UsuariosDAO
 		else 
 		{
 	 		String passwordcorrecto=UsuariosDAO.getInstance().getUserPorLogin(login).getPassword();
-	 		if (password==passwordcorrecto)
+	 		if (password.equals(passwordcorrecto))
 	 			return true;
 	 		else
 	 			return false;
