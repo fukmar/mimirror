@@ -116,13 +116,13 @@ public class Principal extends JFrame {
 		mntmEliminarFactura.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnNewMenu.add(mntmEliminarFactura);
 		
-		JMenu mnComandas = new JMenu("Platos");
-		mnComandas.setFont(new Font("Segoe UI", Font.PLAIN, 23));
-		menuBar.add(mnComandas);
+		JMenu mnProductos = new JMenu("Productos");
+		mnProductos.setFont(new Font("Segoe UI", Font.PLAIN, 23));
+		menuBar.add(mnProductos);
 		
 		JMenu mnElaborados = new JMenu("Elaborados");
 		mnElaborados.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mnComandas.add(mnElaborados);
+		mnProductos.add(mnElaborados);
 		
 		JMenuItem mntmNuevoPlatoElaborado = new JMenuItem("Nuevo Plato Elaborado");
 		mntmNuevoPlatoElaborado.addActionListener(new ActionListener() {
@@ -162,7 +162,7 @@ public class Principal extends JFrame {
 		
 		JMenu mnSemielaborados = new JMenu("SemiElaborados");
 		mnSemielaborados.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mnComandas.add(mnSemielaborados);
+		mnProductos.add(mnSemielaborados);
 		
 		JMenuItem mntmNuevoPlatoSemielaborado = new JMenuItem("Nuevo Plato SemiElaborado");
 		mntmNuevoPlatoSemielaborado.addActionListener(new ActionListener() {
@@ -288,13 +288,49 @@ public class Principal extends JFrame {
 		mnSectores.setFont(new Font("Segoe UI", Font.PLAIN, 23));
 		menuBar.add(mnSectores);
 		
+		JMenuItem mntmAltaSector = new JMenuItem("Alta Sector");
+		mntmAltaSector.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnSectores.add(mntmAltaSector);
+		
+		JMenuItem mntmModificarSector = new JMenuItem("Modificar Sector");
+		mntmModificarSector.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnSectores.add(mntmModificarSector);
+		
+		JMenuItem mntmEliminarSector = new JMenuItem("Eliminar Sector");
+		mntmEliminarSector.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnSectores.add(mntmEliminarSector);
+		
 		JMenu mnMozos = new JMenu("Mozos");
 		mnMozos.setFont(new Font("Segoe UI", Font.PLAIN, 23));
 		menuBar.add(mnMozos);
 		
-		JMenu mnCarta = new JMenu("Carta");
+		JMenuItem mntmAltaMozo = new JMenuItem("Alta Mozo");
+		mntmAltaMozo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnMozos.add(mntmAltaMozo);
+		
+		JMenuItem mntmModificarMozo = new JMenuItem("Modificar Mozo");
+		mntmModificarMozo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnMozos.add(mntmModificarMozo);
+		
+		JMenuItem mntmEliminarMozo = new JMenuItem("Eliminar Mozo");
+		mntmEliminarMozo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnMozos.add(mntmEliminarMozo);
+		
+		JMenu mnCarta = new JMenu("Cartas");
 		mnCarta.setFont(new Font("Segoe UI", Font.PLAIN, 23));
 		menuBar.add(mnCarta);
+		
+		JMenuItem mntmNuevaCarta = new JMenuItem("Nueva Carta");
+		mntmNuevaCarta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnCarta.add(mntmNuevaCarta);
+		
+		JMenuItem mntmModificarCarta = new JMenuItem("Modificar Carta");
+		mntmModificarCarta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnCarta.add(mntmModificarCarta);
+		
+		JMenuItem mntmEliminarCarta = new JMenuItem("Eliminar Carta");
+		mntmEliminarCarta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnCarta.add(mntmEliminarCarta);
 		
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
