@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,14 +18,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import bd.BusinessDelegate;
+import dto.*;
+import exceptions.ElaboradoException;
 public class ModificarElaborado extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField textFieldIngresar;
 	private JTextField textCodigo;
 	private JTextField textTipo;
 	private JTextField textDescripcion;
-	private JTextField textField_1;
+	private JTextField textCantidad;
 	/**
 	 * Launch the application.
 	 */
@@ -60,13 +64,35 @@ public class ModificarElaborado extends JFrame {
 		lblIngresarCodigoDe.setBounds(47, 94, 249, 29);
 		contentPane.add(lblIngresarCodigoDe);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textField.setBounds(341, 94, 439, 29);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textFieldIngresar = new JTextField();
+		textFieldIngresar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textFieldIngresar.setBounds(341, 94, 439, 29);
+		contentPane.add(textFieldIngresar);
+		textFieldIngresar.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Buscar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				ElaboradoDTO elab;
+				try {
+					elab = BusinessDelegate.getInstance().getElaboradoByCod(Integer.parseInt(textFieldIngresar.getText()));
+					textCantidad.setText(elab.getCantidad().toString());
+					textCodigo.setText(elab.getCodElab().toString());
+					textDescripcion.setText(elab.getDescripcion());
+					textTipo.setText(elab.getTipo());
+					textCantidad.setEditable(true);
+					textCodigo.setEditable(true);
+					textDescripcion.setEditable(true);
+					textTipo.setEditable(true);
+					
+				} catch (NumberFormatException | RemoteException | ElaboradoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnNewButton.setBounds(491, 155, 124, 50);
 		contentPane.add(btnNewButton);
@@ -134,11 +160,11 @@ public class ModificarElaborado extends JFrame {
 		lblCantidad.setBounds(263, 504, 105, 29);
 		contentPane.add(lblCantidad);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(415, 502, 200, 37);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textCantidad = new JTextField();
+		textCantidad.setEditable(false);
+		textCantidad.setBounds(415, 502, 200, 37);
+		contentPane.add(textCantidad);
+		textCantidad.setColumns(10);
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();

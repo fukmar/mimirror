@@ -18,6 +18,7 @@ import exceptions.CajaException;
 import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
+import exceptions.ElaboradoException;
 import exceptions.FacturaException;
 import exceptions.MateriaPrimaException;
 import exceptions.MesaException;
@@ -581,6 +582,12 @@ public class BusinessDelegate
 		// TODO Auto-generated method stub
 		remoteObject.grabarElaborado(elab);
 	}
+	
+	public ElaboradoDTO getElaboradoByCod(int parseInt) throws RemoteException, ElaboradoException{
+		// TODO Auto-generated method stub
+		return remoteObject.getElaboradoByCod(parseInt);
+	}
+
 
 
 	

@@ -41,6 +41,16 @@ private static SessionFactory sf=null;
 	session.close();
 	}
 	
+	public Elaborado getElaboradoByCod(Integer parseInt) {
+		Elaborado ela=new Elaborado();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ElaboradoEntity resu =(ElaboradoEntity) session.createQuery("from ElaboradoEntity s where s.codigoProd=?").setInteger(0, parseInt).uniqueResult();
+		ela=resu.toNegocio();
+		session.close();
+		return ela;
+		
+	}
 	/*public List<Ingrediente> getIngredientesdeElaborado (Elaborado elab)
 	{
 		List <SemiElaborado> semisde1=elab.getComponentes();

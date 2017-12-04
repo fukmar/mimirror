@@ -38,6 +38,7 @@ import exceptions.CajaException;
 import exceptions.CartaException;
 import exceptions.ComandaException;
 import exceptions.DepositoException;
+import exceptions.ElaboradoException;
 import exceptions.FacturaException;
 import exceptions.MateriaPrimaException;
 import exceptions.MesaException;
@@ -181,6 +182,7 @@ public interface manejoNegocio extends Remote
 	
 	//ELABORADOS
 	public void grabarElaborado(ElaboradoDTO elab) throws RemoteException, SemiElaboradoException;
+	public ElaboradoDTO getElaboradoByCod(int parseInt)throws RemoteException, ElaboradoException;
 	
 
 
