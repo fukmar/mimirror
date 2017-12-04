@@ -61,6 +61,11 @@ public class Ingrediente
 	}
 
 
+	public Ingrediente(MateriaPrima materiaprima, Integer cantidad) {
+		super();
+		this.materiaprima = materiaprima;
+		this.cantidad = cantidad;
+	}
 	//Getters y Setters
 	
 	public Integer getCodigocomponente() {
