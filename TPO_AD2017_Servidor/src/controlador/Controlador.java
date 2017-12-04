@@ -808,7 +808,7 @@ public class Controlador {
 		elaborado.setCantidad(elab.getCantidad());
 		elaborado.setDescripcion(elab.getDescripcion());
 		elaborado.setTipo(elab.getTipo());
-	
+	//Ahora update
 		elaborado.update();
 	}
 
