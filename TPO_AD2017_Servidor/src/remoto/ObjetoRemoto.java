@@ -10,6 +10,7 @@ import controlador.Controlador;
 import dao.MozoDAO;
 import dto.CartaDTO;
 import dto.ComandaDTO;
+import dto.CombinadorDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
@@ -421,7 +422,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 	}
 
 	@Override
-	public void unirSolicitudesIndividuales(List<String> resultado) throws RemoteException, SolicitudException {
+	public void unirSolicitudesIndividuales(List<CombinadorDTO> resultado) throws RemoteException, SolicitudException {
 		Controlador.getInstance().UnirSolicitudesIndividuales(resultado);
 		
 	}

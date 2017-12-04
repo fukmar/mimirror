@@ -25,11 +25,13 @@ import dao.RemitoDAO;
 import dao.ReservaDAO;
 import dao.SalonDAO;
 import dao.SectorDAO;
+import dao.SolicitudDiariaDAO;
 import dao.SolicitudIndividualDAO;
 import dao.UnidadDAO;
 import dao.UsuariosDAO;
 import dto.CartaDTO;
 import dto.ComandaDTO;
+import dto.CombinadorDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
@@ -654,21 +656,25 @@ public class Controlador {
 		return solicitudes;
 	}
 	
-	public void UnirSolicitudesIndividuales (List<String> resultado)
+	public void UnirSolicitudesIndividuales (List<CombinadorDTO> resultado)
 	{
 		Deposito deposito=new Deposito();
+		deposito.setCodDeposito(1);
 		List <SolicitudIndividual> solicitudestodiaria=new ArrayList <SolicitudIndividual>();
 		
-		for (String resultado2 : resultado)
+		for (CombinadorDTO resultado2 : resultado)
 		{
 			System.out.println("sys control"+resultado2);
-			SolicitudIndividual solicitud=SolicitudIndividualDAO.getInstance().getSolicitudIndividualPorId(Integer.parseInt(resultado2));
+			SolicitudIndividual solicitud=SolicitudIndividualDAO.getInstance().getSolicitudIndividualPorId(Integer.parseInt(resultado2.getId()));
 			System.out.println("sys control"+solicitud.getResponsable());
 			
 			solicitudestodiaria.add(solicitud);
 		}
 		
-		new SolicitudDiaria(deposito,solicitudestodiaria).save();
+		SolicitudDiaria soli = new SolicitudDiaria();
+		soli.setDeposito(deposito);
+		soli.setSolicitudes(solicitudestodiaria);
+		SolicitudDiariaDAO.getInstance().save(soli);
 		
 	} 
 	

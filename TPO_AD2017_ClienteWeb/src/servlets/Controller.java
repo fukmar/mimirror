@@ -24,6 +24,7 @@ import javax.servlet.http.Part;
 import bd.BusinessDelegate;
 import dto.CartaDTO;
 import dto.ComandaDTO;
+import dto.CombinadorDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
@@ -694,15 +695,20 @@ if(opcion.equals("verMozos")){
 		if(opcion.equals("combinarSolicitudesIndividuales")){
 			 
 			String[] solicitudesIndividuales = request.getParameterValues("solicitudesElegidas[]");
-			List<String> mandar = new ArrayList<String>();
-			for(int i=0;i < solicitudesIndividuales.length;i++)
-			mandar.add(solicitudesIndividuales[i]);
-			try {
-				BusinessDelegate.getInstance().unirSolicitudesIndividuales(mandar);
-			} catch (SolicitudException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}}
+			List<CombinadorDTO> mandar = new ArrayList<CombinadorDTO>();
+			for(int i=0;i < solicitudesIndividuales.length;i++) {
+				CombinadorDTO comb = new CombinadorDTO(solicitudesIndividuales[i]);
+				mandar.add(comb);
+			
+			}
+			
+				try {
+					BusinessDelegate.getInstance().unirSolicitudesIndividuales(mandar);
+				} catch (SolicitudException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 					
 									
 		if(opcion.equals("cargarRemito")){

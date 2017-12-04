@@ -81,9 +81,7 @@ public class SolicitudDiaria {
 	return s;
 	}
 	
-	public SolicitudDiariaDTO toDTO() {
-		return null;
-	}
+	
 	
 	public void save()
 	{

@@ -10,6 +10,7 @@ import com.sun.xml.internal.ws.api.pipe.ThrowableContainerPropertySet;
 
 import dto.CartaDTO;
 import dto.ComandaDTO;
+import dto.CombinadorDTO;
 import dto.DepositoDTO;
 import dto.FacturaDTO;
 import dto.ItemComandaDTO;
@@ -160,7 +161,7 @@ public interface manejoNegocio extends Remote
 	//SOLICITUD INDIVIDUAL
 	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales()throws RemoteException,SolicitudException;
 	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud)throws RemoteException,SolicitudException;
-	public void unirSolicitudesIndividuales(List<String> mandar) throws RemoteException,SolicitudException;
+	public void unirSolicitudesIndividuales(List<CombinadorDTO> mandar) throws RemoteException,SolicitudException;
 	
 }
 

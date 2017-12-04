@@ -514,7 +514,7 @@ public class BusinessDelegate
 		remoteObject.grabarSolicitudIndividual(solicitud);
 	}
 
-	public void unirSolicitudesIndividuales(List<String> mandar) throws RemoteException, SolicitudException {
+	public void unirSolicitudesIndividuales(List<CombinadorDTO> mandar) throws RemoteException, SolicitudException {
 		remoteObject.unirSolicitudesIndividuales(mandar);
 		
 	}
