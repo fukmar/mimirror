@@ -26,6 +26,7 @@ import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import dto.SemiElaboradoDTO;
 import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
@@ -52,6 +53,7 @@ import exceptions.UsuarioException;
 import exceptions.itemComandaException;
 import exceptions.itemPlanDeProduccionException;
 import exceptions.itemRemitoException;
+import exceptions.SemiElaboradoException;
 
 
 
@@ -146,9 +148,12 @@ public interface manejoNegocio extends Remote
 	//PLAN DE PRODUCCION
 	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException,PlanDeProduccionException;
 	public PlanDeProduccionDTO obtenerPDPByCodPDP(int codPdp)throws RemoteException,PlanDeProduccionException;
+	public void grabarPdP(PlanDeProduccionDTO pdp) throws RemoteException,PlanDeProduccionException;
 	
 	//ITEM PLAN DE PRODUCCION
 	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException;
+	public void grabarItemPdP(ItemPlanProduccionDTO itemPdP) throws RemoteException,itemPlanDeProduccionException;
+
 	
 	//REMITO
 	public void grabarRemito(RemitoDTO remito) throws RemoteException,RemitoException;
@@ -162,6 +167,10 @@ public interface manejoNegocio extends Remote
 	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales()throws RemoteException,SolicitudException;
 	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud)throws RemoteException,SolicitudException;
 	public void unirSolicitudesIndividuales(List<CombinadorDTO> mandar) throws RemoteException,SolicitudException;
+	
+	//SEMIS
+	public List<SemiElaboradoDTO> mostrarSemiElaborados() throws RemoteException, SemiElaboradoException;
+
 	
 }
 

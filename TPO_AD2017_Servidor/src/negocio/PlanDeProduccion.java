@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
+import dao.PlanDeProduccionDAO;
 import dto.ItemPlanProduccionDTO;
 import dto.PlanDeProduccionDTO;
 import entities.*;
@@ -103,6 +104,11 @@ public class PlanDeProduccion
 		plandto.setItemspdp(planesdto);
 		plandto.setAvance(avance);
 		return plandto;
+	}
+
+	public void save() {
+		PlanDeProduccionDAO.getInstance().save(this);
+		
 	}
 	
 	

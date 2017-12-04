@@ -39,6 +39,7 @@ import dto.PlatoDTO;
 import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SectorDTO;
+import dto.SemiElaboradoDTO;
 import dto.SolicitudIndividualDTO;
 import enumns.AreaRest;
 import enumns.CategoriaPlato;
@@ -861,6 +862,111 @@ if(opcion.equals("verMozos")){
 			RequestDispatcher rd = request.getRequestDispatcher("/agregarItemARemito.jsp");
 			rd.forward(request, response);
 		}}
+		
+		
+		
+		
+		if(opcion.equals("cargarPdP")){
+			String estado = request.getParameter("estado");
+			String fecha = request.getParameter("fecha");
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			//surround below line with try catch block as below code throws checked exception
+			Date startDate = null;
+			try {
+				startDate = sdf.parse(fecha);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			DepositoDTO deposito = new DepositoDTO(1);
+			List<ItemPlanProduccionDTO> semi = new ArrayList<ItemPlanProduccionDTO>();
+			PlanDeProduccionDTO pdp = new PlanDeProduccionDTO(Estado.EnProceso,semi,startDate);
+			
+			List<PlanDeProduccionDTO> pdps = new ArrayList<PlanDeProduccionDTO>();
+			
+			
+				BusinessDelegate.getInstance().grabarPdP(pdp);
+			
+			
+			try {
+				pdps = BusinessDelegate.getInstance().mostrarPDPs();
+			} catch (RemitoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("pdp", pdps.get(pdps.size()-1));
+			
+			List<SemiElaboradoDTO> semis = null;
+			
+			semis = BusinessDelegate.getInstance().mostrarSemiElaborados();
+			
+			request.setAttribute("semis", semis);
+			RequestDispatcher rd = request.getRequestDispatcher("/agregarItemAPdP.jsp");
+			rd.forward(request, response);
+		}
+		
+		
+		if(opcion.equals("agregarItemAPdP")){
+			String cantidad = request.getParameter("cantidad");
+			String codSemi = request.getParameter("codSemi");
+			String codPdP = request.getParameter("codPdP");
+			String accion2 = request.getParameter("boton");
+			
+			if (accion2.equals("Aceptar")) {
+				SemiElaboradoDTO semi = null;
+			
+				semi = BusinessDelegate.getInstance().getSemiElaboradoByCod(Integer.parseInt(codSemi));
+			
+				PlanDeProduccionDTO pdp = null;
+			
+				pdp = BusinessDelegate.getInstance().obtenerPDPByCodPDP(Integer.parseInt(codPdP));
+				
+				ItemPlanProduccionDTO itemPdP = new ItemPlanProduccionDTO(semi,Integer.parseInt(cantidad),0);
+				
+			
+					BusinessDelegate.getInstance().grabarItemPdP(itemPdP);
+				
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
+				rd.forward(request, response);
+				}
+				if (accion2.equals("Otro")) {
+					
+					SemiElaboradoDTO semi = null;
+			
+					semi = BusinessDelegate.getInstance().getSemiElaboradoByCod(Integer.parseInt(codSemi));
+					
+					
+					PlanDeProduccionDTO pdp = null;
+					
+					pdp = BusinessDelegate.getInstance().obtenerPDPByCodPDP(Integer.parseInt(codPdP));
+				
+			 
+			 
+					ItemPlanProduccionDTO itemPdP = new ItemPlanProduccionDTO(semi,Integer.parseInt(cantidad),0);
+					
+					BusinessDelegate.getInstance().grabarItemPdP(itemPdP);
+					
+			List<PlanDeProduccionDTO> pdps = null;
+			
+				pdps = BusinessDelegate.getInstance().mostrarPDPs();
+			
+			
+			request.setAttribute("pdp", pdps.get(pdps.size()-1));
+			List<SemiElaboradoDTO> semis = null;
+		
+				semis = BusinessDelegate.getInstance().mostrarSemiElaborados();
+			
+			request.setAttribute("semis", semis);
+			RequestDispatcher rd = request.getRequestDispatcher("/agregarItemAPdP.jsp");
+			rd.forward(request, response);
+		}}
+		
+		
+		
+		
 		
 		
 		if(opcion.equals("verComandas")){

@@ -13,7 +13,7 @@ public class ItemPlanProduccionDTO implements Serializable {
 	private SemiElaboradoDTO semielaborado;
 	private Integer cantidad;
 	private double porcientoavance=0;
-	//private PlanDeProduccionDTO plandeProduccion;
+	private PlanDeProduccionDTO plandeProduccion;
 	
 
 	public ItemPlanProduccionDTO() {
@@ -71,7 +71,7 @@ public class ItemPlanProduccionDTO implements Serializable {
 		this.porcientoavance = porcientoavance;
 	}
 
-/*
+
 	public PlanDeProduccionDTO getPlandeProduccion() {
 		return plandeProduccion;
 	}
@@ -80,5 +80,5 @@ public class ItemPlanProduccionDTO implements Serializable {
 	public void setPlandeProduccion(PlanDeProduccionDTO plandeProduccion) {
 		this.plandeProduccion = plandeProduccion;
 	}
-*/	
+
 }

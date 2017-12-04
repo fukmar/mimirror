@@ -27,6 +27,7 @@ import exceptions.RemitoException;
 import exceptions.ReservaException;
 import exceptions.SalonException;
 import exceptions.SectorException;
+import exceptions.SemiElaboradoException;
 import exceptions.SolicitudException;
 import exceptions.UnidadException;
 import exceptions.UsuarioException;
@@ -471,10 +472,20 @@ public class BusinessDelegate
 		return remoteObject.obtenerPDPByCodPDP(codPdp);
 	}
 	
+	public void grabarPdP(PlanDeProduccionDTO pdp) throws RemoteException, PlanDeProduccionException {
+		remoteObject.grabarPdP(pdp);
+		
+	}
+	
 	//-----------------------------------ITEM PLAN DE PRODUCCION-----------------------------------------------------------------------------
 	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException
 	{
 		return remoteObject.obtenerItemPDPByCodPDP(nroPlanDeProduccion);
+	}
+	
+	public void grabarItemPdP(ItemPlanProduccionDTO itemPdP) throws RemoteException,itemPlanDeProduccionException{
+	remoteObject.grabarItemPdP(itemPdP);
+		
 	}
 	
 	//-----------------------------------REMITO-------------------------------------------------------------------------
@@ -518,6 +529,17 @@ public class BusinessDelegate
 		remoteObject.unirSolicitudesIndividuales(mandar);
 		
 	}
+
+	
+	//-----------------------------------SEMIS-------------------------------------------------------------------------
+	
+	public List<SemiElaboradoDTO> mostrarSemiElaborados()  throws RemoteException, SemiElaboradoException{
+		return remoteObject.mostrarSemiElaborados();
+	}
+
+	
+
+	
 
 	
 }

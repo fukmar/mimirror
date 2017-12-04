@@ -26,6 +26,7 @@ import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import dto.SemiElaboradoDTO;
 import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
@@ -44,6 +45,7 @@ import exceptions.PlanDeProduccionException;
 import exceptions.PlatoException;
 import exceptions.RemitoException;
 import exceptions.ReservaException;
+import exceptions.SemiElaboradoException;
 import exceptions.SalonException;
 import exceptions.SectorException;
 import exceptions.SolicitudException;
@@ -373,7 +375,19 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		// TODO Auto-generated method stub listarItemPlanPorCodPlan
 		return Controlador.getInstance().listarItemPlanPorCodPlan(nroPlanDeProduccion);
 	}
+	
+	@Override
+	public void grabarPdP(PlanDeProduccionDTO pdp) throws RemoteException, PlanDeProduccionException {
+		Controlador.getInstance().grabarPdP(pdp);
+		
+	}
 
+	@Override
+	public void grabarItemPdP(ItemPlanProduccionDTO itemPdP) throws RemoteException, itemPlanDeProduccionException {
+		Controlador.getInstance().grabarItemPdP(itemPdP);
+		
+	}
+	
 	//--------------------------------REMITO------------------------------------------------
 	//REMITO
 	@Override
@@ -426,6 +440,17 @@ public class ObjetoRemoto extends UnicastRemoteObject implements manejoNegocio
 		Controlador.getInstance().UnirSolicitudesIndividuales(resultado);
 		
 	}
+
+	//-------------------------------SEMIS----------------------------------------------------------
+	
+	@Override
+	public List<SemiElaboradoDTO> mostrarSemiElaborados() throws RemoteException, SemiElaboradoException{
+		return Controlador.getInstance().mostrarSemiElaborados();
+	}
+
+	
+
+	
 
 	
 

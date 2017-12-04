@@ -2,6 +2,8 @@ package negocio;
 
 import javax.persistence.*;
 
+import dao.ItemPlanDeProduccionDAO;
+import dao.ItemRemitoDAO;
 import dto.ItemPlanProduccionDTO;
 import entities.ItemPlanProduccionEntity;
 import entities.PlanDeProduccionEntity;
@@ -78,5 +80,9 @@ public class ItemPlanProduccion {
 		itemplan.setSemielaborado(semielaborado.toEntitySemi());
 		itemplan.setPorcientoavance(porcientoavance);
 		return itemplan;
+	}
+	public void save() {
+		ItemPlanDeProduccionDAO.getInstance().save(this);
+		
 	}
 }

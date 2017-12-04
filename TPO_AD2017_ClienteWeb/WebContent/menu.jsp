@@ -81,6 +81,7 @@
 			 submmenus = new HashMap<String,String>();
 				
 			 submmenus.put("Ver PdPs", "/TPO_AD2017_ClienteWeb/Controller?opcion=verPdPs");
+			 submmenus.put("Crear PdP", "/TPO_AD2017_ClienteWeb/Controller?opcion=crearPdP");
 				 
 			 menus.put("PdP", submmenus);   
 			

@@ -25,6 +25,7 @@ import dao.RemitoDAO;
 import dao.ReservaDAO;
 import dao.SalonDAO;
 import dao.SectorDAO;
+import dao.SemiElaboradoDAO;
 import dao.SolicitudDiariaDAO;
 import dao.SolicitudIndividualDAO;
 import dao.UnidadDAO;
@@ -47,6 +48,7 @@ import dto.RemitoDTO;
 import dto.ReservaDTO;
 import dto.SalonDTO;
 import dto.SectorDTO;
+import dto.SemiElaboradoDTO;
 import dto.SolicitudIndividualDTO;
 import dto.UnidadDTO;
 import dto.UsuariosDTO;
@@ -82,6 +84,7 @@ import negocio.Remito;
 import negocio.Reserva;
 import negocio.Salon;
 import negocio.Sector;
+import negocio.SemiElaborado;
 import negocio.SolicitudDiaria;
 import negocio.SolicitudIndividual;
 import negocio.Unidad;
@@ -575,6 +578,13 @@ public class Controlador {
 		
 	}
 	
+	
+	public void grabarPdP(PlanDeProduccionDTO pdp) {
+		List<ItemPlanProduccion> itemspdp = new ArrayList<ItemPlanProduccion>();
+		new PlanDeProduccion(Estado.EnProceso,itemspdp,pdp.getFechaplan()).save();
+		
+	}
+	
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
     //ITEM PLAN DE PRODUCCION
 	public List<ItemPlanProduccionDTO> listarItemPlanPorCodPlan(int nroPlanDeProduccion)
@@ -683,6 +693,27 @@ public class Controlador {
 		MateriaPrima mp=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(solicitud.getMateriaprima().getCodigo());
 		new SolicitudIndividual(solicitud.getArea(),solicitud.getResponsable(),solicitud.getMotivo(), mp,solicitud.getCantidad(),solicitud.getEstado()).save();
 	}
+
+	public List<SemiElaboradoDTO> mostrarSemiElaborados() {
+		List<SemiElaboradoDTO> semis=new ArrayList<SemiElaboradoDTO>();
+		List<SemiElaborado> semiN=SemiElaboradoDAO.getInstance().getSemis();
+		for(SemiElaborado s: semiN)
+		{	
+			
+			semis.add(s.toDTO());
+		}
+		return semis;
+	}
+
+	public void grabarItemPdP(ItemPlanProduccionDTO itemPdP) {
+		SemiElaborado semi=SemiElaboradoDAO.getInstance().getSemisPorCod((itemPdP.getSemielaborado().getNumero()));
+		PlanDeProduccion pdp=PlanDeProduccionDAO.getInstance().getPlanByCod(itemPdP.getPlandeProduccion().getCodigoPDP());
+		new ItemPlanProduccion(semi,itemPdP.getCantidad(),0,pdp).save();
+	
+		
+	}
+
+	
 	
 	//----------------------------------------------------------------------------------------------------------------------------------
 	//SOLICITUD DIARIA
