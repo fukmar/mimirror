@@ -75,7 +75,6 @@ public class SolicitudIndividualDAO
 		List<SolicitudIndividualEntity> resu=session.createQuery("select sol.solicitudes from SolicitudDiariaEntity sol where sol is null").list();
 		for(SolicitudIndividualEntity si:resu) 
 		{
-			System.out.println("LLEGUE:"+si.getCodsolicitudIndividual());
 			listado.add(si.toNegocio());
 		}
 		session.close();

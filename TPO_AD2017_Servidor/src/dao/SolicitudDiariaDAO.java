@@ -53,7 +53,6 @@ public class SolicitudDiariaDAO
 		List<SolicitudDiariaEntity> resu=session.createQuery("from SolicitudDiariaEntity sol where sol.solicitudes is not empty").list();
 		for(SolicitudDiariaEntity si:resu) 
 		{
-			System.out.println(si.getCodsolicitudDiaria());
 			listado.add(si.toNegocio());
 		}
 		session.close();
