@@ -111,5 +111,10 @@ public class PlanDeProduccion
 		
 	}
 	
+	public PlanDeProduccion getPlanPorCod(Integer codigo) {
+		PlanDeProduccion plan=PlanDeProduccionDAO.getInstance().getPlanByCod(codigo);
+		return plan;
+	}
+	
 	
 }

@@ -29,7 +29,7 @@ public class Servidor {
 	public Servidor()
 	{
 		try {
-			LocateRegistry.createRegistry(1099);
+			LocateRegistry.createRegistry(1093);
 			manejoNegocio objetoRemoto=new ObjetoRemoto();
 			Naming.rebind("//localhost/ObjetoRemoto",objetoRemoto);
 			System.out.println("Fijado en //localhost/ObjetoRemoto");
