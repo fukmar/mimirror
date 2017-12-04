@@ -15,7 +15,7 @@ public class ItemPlanDeProduccionDAO {
 	private static ItemPlanDeProduccionDAO instancia;
 	
 	private ItemPlanDeProduccionDAO(){}
-	
+	  
 	public static ItemPlanDeProduccionDAO getInstance(){
 		if(instancia == null)
 			instancia = new ItemPlanDeProduccionDAO();
