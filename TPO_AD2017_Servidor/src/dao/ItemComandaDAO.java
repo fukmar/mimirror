@@ -92,7 +92,7 @@ private static ItemComandaDAO instancia;
 				session.getTransaction().commit();
 				session.close();
 			}
-			}
+			} 
 		}
 	public List<ItemComanda> getItemsPendientesxArea(AreaRest area)
 	{
