@@ -143,6 +143,26 @@ public class PoblarBase {
 		SectorEntity sector = new SectorEntity("Azul", salon);
 		List<SectorEntity> sectores = new ArrayList<SectorEntity>();
 		List <MesaEntity> mesas=new ArrayList<MesaEntity>();
+		
+		//MOZOS
+		MozoEntity mozo1=new MozoEntity(18005145, "Nahuel", "GrisOliva",Float.parseFloat("5"));
+		MozoEntity mozo2=new MozoEntity(27005175, "Flavio", "Perez",Float.parseFloat("7"));
+		MozoEntity mozo3=new MozoEntity(25645785, "Juan", "Porcelo",Float.parseFloat("9"));
+		session.save(mozo1);
+		session.save(mozo2);
+		session.save(mozo3);
+		
+		
+		//MESAS
+		MesaEntity mesa1=new  MesaEntity(0, 4, 0, mozo1, sector);
+		MesaEntity mesa2=new  MesaEntity(0, 4, 0, mozo2, sector);
+		MesaEntity mesa3=new  MesaEntity(0, 6, 0, mozo2, sector);
+		MesaEntity mesa4=new  MesaEntity(0, 6, 0, mozo3, sector);
+		MesaEntity mesa5=new  MesaEntity(0, 8, 0, mozo3, sector);
+		
+		
+		
+		
 		sectores.add(sector);
 		salon.setSectores(sectores);
 		session.save(local1);
@@ -152,6 +172,11 @@ public class PoblarBase {
 		
 		session.save(caja);
 		session.save(sector);
+		session.save(mesa1);
+		session.save(mesa2);
+		session.save(mesa3);
+		session.save(mesa4);
+		session.save(mesa5);
 
 		//INGREDIENTES Y SEMIs
 		//SOLIDOS
