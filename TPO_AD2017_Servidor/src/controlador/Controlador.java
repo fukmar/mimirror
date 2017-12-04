@@ -80,6 +80,7 @@ import negocio.Remito;
 import negocio.Reserva;
 import negocio.Salon;
 import negocio.Sector;
+import negocio.SolicitudDiaria;
 import negocio.SolicitudIndividual;
 import negocio.Unidad;
 import negocio.Usuarios;
@@ -653,6 +654,19 @@ public class Controlador {
 		return solicitudes;
 	}
 	
+	public void UnirSolicitudesIndividuales (Integer[] solicitudes)
+	{
+		Deposito deposito=new Deposito();
+		List <SolicitudIndividual> solicitudestodiaria=new ArrayList <SolicitudIndividual>();
+		for (int i=1; i<solicitudes.length;i++)
+		{
+			SolicitudIndividual solicitud=SolicitudIndividualDAO.getInstance().getSolicitudIndividualPorId(solicitudes[i]);
+			solicitudestodiaria.add(solicitud);
+		}
+		SolicitudDiaria solicituddiaria=new SolicitudDiaria();
+		new SolicitudDiaria(deposito,solicitudestodiaria);
+		
+	}
 	
 	public void guardarSolicitudIndividual(SolicitudIndividualDTO solicitud)
 	{
