@@ -99,34 +99,36 @@ public class PlatoDAO
 			for(SemiElaborado s:semielab)
 			{
 			    List<Ingrediente> ingredientesdereceta=new ArrayList <Ingrediente>();
-				ingredientesdereceta=IngredienteDAO.getInstance().getIngredientesdeSemi(s);
+				ingredientesdereceta=SemiElaboradoDAO.getInstance().getIngredientesPorSemis(s.getCodigoProd());
 				for (Ingrediente idereceta:ingredientesdereceta)
 				{
 					int codigoabuscar=idereceta.getMateriaprima().getCodigo();
-					if (ingredientesFinal.isEmpty())	
-						ingredientesFinal.add(idereceta);
+					if (ingredientesFinal.contains(idereceta))
+					{
+						int ocurrencia=0;
+						ocurrencia=ingredientesFinal.indexOf(idereceta);
+						int cantidad= ingredientesFinal.get(ocurrencia).getCantidad();
+						ingredientesFinal.get(ocurrencia).setCantidad(cantidad+idereceta.getCantidad());
+					}
 					else
 					{
-						for (Ingrediente ifinal:ingredientesFinal)
-						{
-							if(ifinal.getMateriaprima().getCodigo().equals(codigoabuscar))
-							{
-								int subcantidad=ifinal.getCantidad()+idereceta.getCantidad();
-								ifinal.setCantidad(subcantidad);
-							}
-							else
-							{
-								ingredientesFinal.add(idereceta);
-							}
-					}
+						ingredientesFinal.add(idereceta);
 					}
 				}
-				 
 			}
-			
 		}
 		return ingredientesFinal;
 	}
+	
+	
+	public List<Ingrediente> getIngredientes2 (Plato p)
+	{
+		List<Ingrediente> ingredientesFinal= new ArrayList<Ingrediente>();
+		Session session=sf.openSession();
+		ingredientesFinal=session.createQuery("p.productoplato.componentes from PlatoEntity p  where p.codPlato=?").list();
+		return ingredientesFinal;
+	}
+	
 	public boolean HaySuficiente (List<Ingrediente> ingredientesnecesarios)
 	{
 		int sepuede=0;

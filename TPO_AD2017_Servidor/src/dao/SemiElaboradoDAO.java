@@ -8,11 +8,13 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import entities.IngredienteEntity;
 import entities.ItemComandaEntity;
 import entities.PlatoEntity;
 import entities.SemiElaboradoEntity;
 import entities.UnidadEntity;
 import hibernate.HibernateUtil;
+import negocio.Ingrediente;
 import negocio.Plato;
 import negocio.SemiElaborado;
 
@@ -95,7 +97,19 @@ private static SemiElaboradoDAO instancia;
 		session.close();
 		return semi;
 	}
-	
+	public List<Ingrediente> getIngredientesPorSemis(Integer codsemi)
+	{
+		List<Ingrediente> ingredientes=new ArrayList <Ingrediente>();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		List<IngredienteEntity> resu = session.createQuery("from IngredienteEntity i where i.platosemielaborado.codigoProd=?").setInteger(0, codsemi).list();
+		for (IngredienteEntity i: resu)
+		{
+			ingredientes.add(i.toNegocio());
+		}
+		session.close();
+		return ingredientes;
+	}
 	
 }
 
