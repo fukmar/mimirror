@@ -252,8 +252,9 @@ public class Controlador {
 	public void itemComandaLista(int coditemcomanda)
 	{
 		ItemComanda itemnegocio=ItemComandaDAO.getInstance().obtenerItemComandaByCod(coditemcomanda);
-		ItemComandaDAO.getInstance().updateitemComandatoFinalizada(itemnegocio);
 		ItemComandaDAO.getInstance().reducirstockxItemComanda(itemnegocio);
+		ItemComandaDAO.getInstance().updateitemComandatoFinalizada(itemnegocio);
+	
 	}
 	
 	//-------------------------------------------------------------------------------------------------------------------------------------

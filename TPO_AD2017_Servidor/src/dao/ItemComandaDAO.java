@@ -52,6 +52,7 @@ private static ItemComandaDAO instancia;
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
+		
 		List<ItemComandaEntity> itemcomandas = session.createQuery("from ItemComandaEntity c where c.comanda.codComanda=?").setInteger(0, codComanda).list();
 		List <ItemComanda> itemcomandasnegocio=new ArrayList<ItemComanda>();
 		for (ItemComandaEntity i:itemcomandas)
@@ -73,8 +74,6 @@ private static ItemComandaDAO instancia;
 		return itemcomanda.toNegocio();
 	}
 	public void reducirstockxItemComanda(ItemComanda i){
-		
-		
 		List <Ingrediente> ingredientes=PlatoDAO.getInstance().getIngredientes(i.getPlato());
 		for (Ingrediente ing:ingredientes)
 		{
@@ -86,12 +85,13 @@ private static ItemComandaDAO instancia;
 			{
 				float cantidadenstock=MateriaPrimaDAO.getInstance().getCantidadMateriaPrima(ing.getMateriaprima());
 				float cantidadfinal=cantidadenstock-(ing.getCantidad()*i.getCantidad());
-				MateriaPrimaEntity mpentity =(MateriaPrimaEntity) session.get(MateriaPrimaEntity.class,mp.getCodigo()); 
-				mpentity.setCantidad(cantidadfinal);
-				session.merge(mpentity);
+				Query query=session.createQuery("update from MateriaPrimaEntity m set m.cantidad = ? where m.codMaterial= ? ");
+				query.setFloat(0, cantidadfinal);
+		 		query.setInteger(1, mp.getCodigo());
+				query.executeUpdate();
+				session.getTransaction().commit();
+				session.close();
 			}
-			session.getTransaction().commit();
-			session.close();
 			}
 		}
 	public List<ItemComanda> getItemsPendientesxArea(AreaRest area)
