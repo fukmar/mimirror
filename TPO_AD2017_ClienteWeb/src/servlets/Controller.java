@@ -689,6 +689,8 @@ if(opcion.equals("verMozos")){
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
+			rd.forward(request, response);
 			
 			}
 			
@@ -708,6 +710,9 @@ if(opcion.equals("verMozos")){
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
+				rd.forward(request, response);
 			}
 					
 									
