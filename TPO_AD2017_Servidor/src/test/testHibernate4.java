@@ -42,6 +42,7 @@ import negocio.Salon;
 import negocio.Sector;
 import negocio.SemiElaborado;
 import negocio.SolicitudDiaria;
+import negocio.SolicitudIndividual;
 import negocio.Usuarios;
 
 public class testHibernate4 {
@@ -439,13 +440,39 @@ public class testHibernate4 {
 		session2.beginTransaction();
 		SolicitudDiariaEntity soli=new SolicitudDiariaEntity (deposito);
 		SolicitudIndividualEntity solicitudtest = new SolicitudIndividualEntity(AreaRest.Caja, "Jorge", "faltante", mpe, 20,EstadoSolicitud.Iniciada);
+		List <SolicitudIndividualEntity> solicitudeslocas=new ArrayList <SolicitudIndividualEntity>();
+		solicitudeslocas.add(solicitudtest);
+		soli.setSolicitudes(solicitudeslocas);
+		ComandaEntity comanditanueva=new ComandaEntity (mozo,mesita2,Estado.EnProceso);
+		session2.save(comanditanueva);
+		ComandaEntity comanditanueva2=new ComandaEntity (mozo,mesita,Estado.EnProceso);
+		session2.save(comanditanueva2);
 		session2.save(solicitudtest);
 		session2.save(soli);
 		session2.getTransaction().commit();
 		session2.close();
-
 		RemitoDAO.getInstance().ingresarMateriaPrimaporItemRemito();
+		List<Mesa> mesasfacturables=MesaDAO.getInstance().getMesasFacturables();
 		
+		for (Mesa m10:mesasfacturables)
+		{
+			System.out.println(m10.getCodMesa()+" Capacidad: "+m10.getCapacidad());
+		}
 		
+		List<SolicitudDiaria> Diarias=SolicitudDiariaDAO.getInstance().getsolicitudesDiarias();
+		List<SolicitudIndividual> Indi=SolicitudIndividualDAO.getInstance().getsolicitudesIndividualesnoDiarias();
+		//AVANCE PLAN PRODUCCION
+		System.out.println("CODIGO PLAN DE PROD:"+pdp.getCodigoPDP());
+		PlanDeProduccionDAO.getInstance().CalcularporcentajeAvance(pdp.toNegocio());
+		double avance=PlanDeProduccionDAO.getInstance().getPlanByCod(pdp.getCodigoPDP()).getAvance();
+		double avancetotal=avance*100;
+		System.out.println("El AVANCE DEL PLAN DE PRODUCCION ES DE : "+ avancetotal + " %");
 		
+		List<Ingrediente> ingredientesselec=SemiElaboradoDAO.getInstance().getIngredientesPorSemis(3);
+		for (Ingrediente i:ingredientesselec)
+		{
+			System.out.println(i.getMateriaprima().getDescripcion());
+	
+		}
+
 	}}
