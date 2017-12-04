@@ -82,7 +82,7 @@ private static SemiElaboradoDAO instancia;
 		SemiElaborado semi=new SemiElaborado();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		SemiElaboradoEntity resu =(SemiElaboradoEntity) session.createQuery("from PlatoEntity p where p.codPlato=?").setInteger(0, codsemi).uniqueResult();
+		SemiElaboradoEntity resu =(SemiElaboradoEntity) session.createQuery("from SemiElaboradoEntity s where s.codigoProd=?").setInteger(0, codsemi).uniqueResult();
 		semi=resu.toNegocio();
 		session.close();
 		return semi;
