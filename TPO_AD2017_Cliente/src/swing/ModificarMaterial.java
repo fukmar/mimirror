@@ -86,7 +86,7 @@ public class ModificarMaterial extends JFrame {
 				//AQUI VA EL CODIGO PARA BUSCAR EL MATERIAL A PARTIR DEL CODIGO INGRESADO
 				try {
 					MateriaPrimaDTO materia = BusinessDelegate.getInstance().getMateriaPrimaByCod(Integer.parseInt(textFieldCodigoMaterial.getText()));
-					textFieldCodigoMaterial.setEnabled(false);
+					textFieldCodigoMaterial.setEditable(false);
 					textFieldCantidad.setText(materia.getCantidad().toString());
 					textFieldCantidad.setEditable(true);
 					textFieldDescripcion.setText(materia.getDescripcion());

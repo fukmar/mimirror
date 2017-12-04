@@ -137,4 +137,7 @@ public class MateriaPrima
 		MateriaPrimaDAO.getInstance().update(this);
 	}
 	
+	public void delete() {
+		MateriaPrimaDAO.getInstance().delete(this);
+	}
 }
