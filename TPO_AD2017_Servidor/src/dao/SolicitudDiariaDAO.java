@@ -45,7 +45,20 @@ public class SolicitudDiariaDAO
 	session.getTransaction().commit();
 	session.close();
 	}
-	
+	public List<SolicitudDiaria> getsolicitudesDiarias()
+	{
+		Session session=sf.openSession();
+		List<SolicitudDiaria> listado=new ArrayList<SolicitudDiaria>();
+ 		@SuppressWarnings("unchecked")
+		List<SolicitudDiariaEntity> resu=session.createQuery("from SolicitudDiariaEntity sol where sol.solicitudes is not empty").list();
+		for(SolicitudDiariaEntity si:resu) 
+		{
+			System.out.println(si.getCodsolicitudDiaria());
+			listado.add(si.toNegocio());
+		}
+		session.close();
+		return listado;
+	}
 
 
 	 

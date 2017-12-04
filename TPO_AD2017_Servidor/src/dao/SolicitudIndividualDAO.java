@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 
 import entities.SolicitudIndividualEntity;
 import entities.PlatoEntity;
+import entities.SolicitudDiariaEntity;
 import entities.UnidadEntity;
 import enumns.CategoriaPlato;
 import enumns.EstadoItemComanda;
@@ -66,7 +67,21 @@ public class SolicitudIndividualDAO
 		session.close();
 		return solicitud.toNegocio();
 	}
-
+	public List<SolicitudIndividual> getsolicitudesIndividuales()
+	{
+		Session session=sf.openSession();
+		List<SolicitudIndividual> listado=new ArrayList<SolicitudIndividual>();
+ 		@SuppressWarnings("unchecked")
+		List<SolicitudIndividualEntity> resu=session.createQuery("select sol.solicitudes from SolicitudDiariaEntity sol where sol is null").list();
+		for(SolicitudIndividualEntity si:resu) 
+		{
+			System.out.println("LLEGUE:"+si.getCodsolicitudIndividual());
+			listado.add(si.toNegocio());
+		}
+		session.close();
+		return listado;
+	}
+	
 
 	 
 
