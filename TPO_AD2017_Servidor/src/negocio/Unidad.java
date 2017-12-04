@@ -1,5 +1,6 @@
 package negocio;
 
+import dao.UnidadDAO;
 import dto.UnidadDTO;
 import entities.UnidadEntity;
 
@@ -40,6 +41,11 @@ public class Unidad
 	
 	public UnidadEntity toEntity() {
 		UnidadEntity uni=new UnidadEntity(this.descripcion);
+		return uni;
+	}
+	
+	public Unidad obtenerUniPorCod(Integer codigo) {
+		Unidad uni=UnidadDAO.getInstance().getUnidadByCod(codigo);
 		return uni;
 	}
 
