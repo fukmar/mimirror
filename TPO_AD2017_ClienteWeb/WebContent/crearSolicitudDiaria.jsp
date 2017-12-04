@@ -29,9 +29,12 @@ List<SolicitudIndividualDTO> solicitudesIndividuales = (List<SolicitudIndividual
   <thead>
     <tr>
       <th scope="col">Código</th>
-      <th scope="col">Capacidad de la Mesa</th>
-      <th scope="col">Sector de la Mesa</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Materia Prima</th>
+      <th scope="col">Motivo</th>
+      <th scope="col">Responsable</th>
       <th scope="col">Elegir</th>
+      
       </tr>
   </thead>
   <tbody>

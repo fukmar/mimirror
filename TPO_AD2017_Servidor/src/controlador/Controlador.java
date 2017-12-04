@@ -658,13 +658,14 @@ public class Controlador {
 	{
 		Deposito deposito=new Deposito();
 		List <SolicitudIndividual> solicitudestodiaria=new ArrayList <SolicitudIndividual>();
-		for (int i=1; i<solicitudes.length;i++)
+		for (int i=0; i<solicitudes.length;i++)
 		{
+			System.out.println("sys control"+solicitudes[i]);
 			SolicitudIndividual solicitud=SolicitudIndividualDAO.getInstance().getSolicitudIndividualPorId(solicitudes[i]);
 			solicitudestodiaria.add(solicitud);
 		}
 		SolicitudDiaria solicituddiaria=new SolicitudDiaria();
-		new SolicitudDiaria(deposito,solicitudestodiaria);
+		new SolicitudDiaria(deposito,solicitudestodiaria).save();
 		
 	} 
 	

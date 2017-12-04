@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import dao.SolicitudDiariaDAO;
+import dao.SolicitudIndividualDAO;
 import dto.SolicitudDiariaDTO;
 import entities.DepositoEntity;
 import entities.SolicitudDiariaEntity;
@@ -81,6 +83,12 @@ public class SolicitudDiaria {
 	
 	public SolicitudDiariaDTO toDTO() {
 		return null;
+	}
+	
+	public void save()
+	{
+		SolicitudDiariaDAO.getInstance().save(this);
+		
 	}
 
 }

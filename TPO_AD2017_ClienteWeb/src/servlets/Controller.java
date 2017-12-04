@@ -695,12 +695,12 @@ if(opcion.equals("verMozos")){
 			 
 			String[] solicitudesIndividuales = request.getParameterValues("solicitudesElegidas[]");
 
-
+			
 			Integer[] resultado = new Integer[solicitudesIndividuales.length];
 			   for (int i = 0; i < solicitudesIndividuales.length; i++) {
 				   resultado[i] = Integer.parseInt(solicitudesIndividuales[i]);
-			   }
-					
+			   
+					System.out.println("esto es en la web"+resultado[i]);}
 			try {
 				BusinessDelegate.getInstance().unirSolicitudesIndividuales(resultado);
 			} catch (SolicitudException e2) {
