@@ -15,6 +15,7 @@ import entities.SemiElaboradoEntity;
 import entities.UnidadEntity;
 import hibernate.HibernateUtil;
 import negocio.Ingrediente;
+import negocio.MateriaPrima;
 import negocio.Plato;
 import negocio.SemiElaborado;
 
@@ -106,6 +107,22 @@ private static SemiElaboradoDAO instancia;
 		for (IngredienteEntity i: resu)
 		{
 			ingredientes.add(i.toNegocio());
+		}
+		session.close();
+		return ingredientes;
+	}
+	public List<Ingrediente> getIngredientesPorSemis2(Integer codsemi)
+	{
+		List<Ingrediente> ingredientes=new ArrayList <Ingrediente>();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		List<IngredienteEntity> resu = session.createQuery("from IngredienteEntity i where i.platosemielaborado.codigoProd=?").setInteger(0, codsemi).list();
+		for (IngredienteEntity i: resu)
+		{
+			MateriaPrima material=MateriaPrimaDAO.getInstance().getMateriaPrimaByCod(i.getMateriaprima().getCodMaterial());
+			Ingrediente ingnegocio= new Ingrediente(material, i.getCantidad());
+			ingnegocio.setPlatosemielaborado(SemiElaboradoDAO.getInstance().getSemisPorCod(codsemi));
+			ingredientes.add(ingnegocio);
 		}
 		session.close();
 		return ingredientes;
