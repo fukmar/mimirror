@@ -74,7 +74,7 @@ public class BusinessDelegate
 	
 	
 	//---------------------------------------USUARIOS------------------------------------------------------------
-	public boolean verificarPassword(String login, String password) throws RemoteException, UsuarioException
+	public boolean verificarPassword(String login, String password) throws  UsuarioException
 	{
 		try {
 			return remoteObject.verificarPassword(login, password);
@@ -83,7 +83,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public void guardarUsuarios(UsuariosDTO usuario) throws RemoteException, UsuarioException 
+	public void guardarUsuarios(UsuariosDTO usuario) throws  UsuarioException 
 	{
 		try {
 			remoteObject.guardarUsuarios(usuario);
@@ -93,7 +93,7 @@ public class BusinessDelegate
 	}
 	
 	
-	public UsuariosDTO buscarUserPorLogin(String login) throws RemoteException, UsuarioException
+	public UsuariosDTO buscarUserPorLogin(String login) throws  UsuarioException
 	{
 		try {
 			return remoteObject.buscarUserPorLogin(login);
@@ -102,7 +102,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public void borrarUsuario(UsuariosDTO usuario) throws RemoteException, UsuarioException
+	public void borrarUsuario(UsuariosDTO usuario) throws  UsuarioException
 	{
 		try {
 			remoteObject.borrarUsuario(usuario);
@@ -111,37 +111,37 @@ public class BusinessDelegate
 		}
 	}
 	//---------------------------------------PLATOS------------------------------------------------------------
-	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException
+	public List<PlatoDTO> listarPlatos() throws  PlatoException
 	{
 		try {
 			return remoteObject.listarPlatos();
-		} catch (RemoteException e) {
+		} catch (PlatoException e) {
 			// TODO Auto-generated catch block
 			throw new PlatoException("Error! no hay platos");
 		}
 	}
 	
-	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, CategoriaPlato categoriaplato) throws RemoteException, PlatoException 
+	public List<PlatoDTO> BuscarPlatosparecidos(String nombre, CategoriaPlato categoriaplato) throws  PlatoException 
 	{
 		try {
 			return remoteObject.buscarPlatosParecidos(nombre, categoriaplato);
-		} catch (RemoteException e) {
+		} catch (PlatoException e) {
 			throw new PlatoException("No se encontraron PLATOS similares!");
 		}
 	}
 	
 	
-	public PlatoDTO BuscarPlatoPorCod(Integer codPlato) throws RemoteException, PlatoException 
+	public PlatoDTO BuscarPlatoPorCod(Integer codPlato) throws  PlatoException 
 	{
 		try {
 			return remoteObject.BuscarPlatoPorCod(codPlato);
-		} catch (RemoteException e) {
+		} catch (PlatoException e) {
 			throw new PlatoException("No se encontro el PLATO por CODIGO!");
 		}
 	}
 
 	//---------------------------------------COMANDAS------------------------------------------------------------
-	public void grabarComanda(ComandaDTO comanda) throws RemoteException, ComandaException 
+	public void grabarComanda(ComandaDTO comanda) throws  ComandaException 
 	{
 		try {
 			remoteObject.grabarComanda(comanda);
@@ -150,7 +150,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public List<ComandaDTO> mostrarComandas() throws RemoteException, ComandaException 
+	public List<ComandaDTO> mostrarComandas() throws  ComandaException 
 	{
 		try {
 			return remoteObject.mostrarComandas();
@@ -159,7 +159,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public ComandaDTO BuscarComandasPorCod(Integer codComanda) throws RemoteException, ComandaException
+	public ComandaDTO BuscarComandasPorCod(Integer codComanda) throws  ComandaException
 	{
 		try {
 			return remoteObject.BuscarComandasPorCod(codComanda);
@@ -171,7 +171,7 @@ public class BusinessDelegate
 	
 	//---------------------------------------ITEM COMANDA------------------------------------------------------------
 	
-	public boolean grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException, itemComandaException 
+	public boolean grabarItemComanda(ItemComandaDTO itemComanda) throws  itemComandaException 
 	{
 		try {
 			return remoteObject.grabarItemComanda(itemComanda);
@@ -181,7 +181,7 @@ public class BusinessDelegate
 	}
 	
 	
-	public void itemComandaLista(int coditemcomanda) throws RemoteException, itemComandaException 
+	public void itemComandaLista(int coditemcomanda) throws  itemComandaException 
 	{
 		try {
 			remoteObject.itemComandaLista(coditemcomanda);
@@ -191,7 +191,7 @@ public class BusinessDelegate
 	}
 	
 	//---------------------------------------FACTURAS------------------------------------------------------------
-	public void grabarFactura(FacturaDTO factura) throws RemoteException, FacturaException 
+	public void grabarFactura(FacturaDTO factura) throws  FacturaException 
 	{
 		try {
 			remoteObject.grabarFactura(factura);
@@ -200,7 +200,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public List<FacturaDTO> mostrarFacturas() throws RemoteException, FacturaException 
+	public List<FacturaDTO> mostrarFacturas() throws  FacturaException 
 	{
 		try {
 			return remoteObject.mostrarFacturas();
@@ -210,7 +210,7 @@ public class BusinessDelegate
 	}
 	
 	
-	public FacturaDTO mostrarFacturaByCod(int nroFact) throws RemoteException, FacturaException 
+	public FacturaDTO mostrarFacturaByCod(int nroFact) throws  FacturaException 
 	{
 		try {
 			return remoteObject.mostrarFacturaByCod(nroFact);
@@ -219,7 +219,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public void facturarMesa(int codMesa, MedioDePago formadepago) throws RemoteException, FacturaException
+	public void facturarMesa(int codMesa, MedioDePago formadepago) throws  FacturaException
 	{
 		try {
 			remoteObject.facturarMesa(codMesa, formadepago);
@@ -230,7 +230,7 @@ public class BusinessDelegate
 	
 	// ---------------------------------------ITEM FACTURA------------------------------------------------------
 	
-	public List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws RemoteException, FacturaException
+	public List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws  FacturaException
 	{
 		try {
 			return remoteObject.obtenerItemsFacturaByCodFactura(codFactura);
@@ -241,7 +241,7 @@ public class BusinessDelegate
 	
 	//---------------------------------------RESERVAS------------------------------------------------------------
 	
-	public void grabarReserva(ReservaDTO reserva) throws RemoteException, ReservaException 
+	public void grabarReserva(ReservaDTO reserva) throws  ReservaException 
 	{
 		try {
 			remoteObject.grabarReserva(reserva);
@@ -250,7 +250,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public List<ReservaDTO> mostrarReservas()throws RemoteException,ReservaException
+	public List<ReservaDTO> mostrarReservas()throws ReservaException
 	{
 		try {
 			return remoteObject.mostrarReservas();
@@ -260,7 +260,7 @@ public class BusinessDelegate
 	}
 	
 	//-----------------------------------MOZOS----------------------------------------------------------------------
-	public List<MozoDTO> mostrarMozos() throws RemoteException,MozoException
+	public List<MozoDTO> mostrarMozos() throws MozoException
 	{
 		try {
 			return remoteObject.mostrarMozos();
@@ -270,7 +270,7 @@ public class BusinessDelegate
 	}
 	
 	
-	public double mostrarComisionesAPagar(Date FechaDesde, Date FechaHasta) throws RemoteException, MozoException
+	public double mostrarComisionesAPagar(Date FechaDesde, Date FechaHasta) throws  MozoException
 	{
 		try {
 			return remoteObject.mostrarComisionesAPagar(FechaDesde, FechaHasta);
@@ -280,7 +280,7 @@ public class BusinessDelegate
 	}
 	
 	
-	public List<String[]> mostrarResultadoComisionesMozo(Date FechaDesde,Date FechaHasta) throws RemoteException, MozoException
+	public List<String[]> mostrarResultadoComisionesMozo(Date FechaDesde,Date FechaHasta) throws  MozoException
 	{
 		try {
 			return remoteObject.mostrarResultadoComisionesMozo(FechaDesde,FechaHasta);
@@ -290,7 +290,7 @@ public class BusinessDelegate
 	}
 	
 	//-----------------------------------MESAS-------------------------------------------------------------------------
-	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException
+	public List<MesaDTO> mostrarMesas() throws MesaException
 	{
 		try {
 			return remoteObject.mostrarMesas();
@@ -298,7 +298,7 @@ public class BusinessDelegate
 			throw new MesaException("No se pueden MOSTRAR las MESAS!");
 		}
 	}
-	public List<MesaDTO> mostrarFacturables() throws RemoteException,MesaException
+	public List<MesaDTO> mostrarFacturables() throws MesaException
 	{
 		try {
 			return remoteObject.mostrarMesasFacturables();
@@ -306,7 +306,7 @@ public class BusinessDelegate
 			throw new MesaException("No se pueden MOSTRAR las MESAS FACTURABLES!");
 		}
 	}
-	public List<MesaDTO> mostrarMesasOcupadas() throws RemoteException,MesaException
+	public List<MesaDTO> mostrarMesasOcupadas() throws MesaException
 	{
 		try {
 			return remoteObject.mostrarMesasOcupadas();
@@ -315,7 +315,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public MesaDTO BuscarMesaPorCod(Integer codMesa) throws RemoteException, MesaException 
+	public MesaDTO BuscarMesaPorCod(Integer codMesa) throws  MesaException 
 	{
 		try {
 			return remoteObject.BuscarMesaPorCod(codMesa);
@@ -324,7 +324,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public List<MesaDTO> mostrarMesasLibres() throws RemoteException, MesaException
+	public List<MesaDTO> mostrarMesasLibres() throws  MesaException
 	{
 		try {
 			return remoteObject.mostrarMesasLibres();
@@ -334,7 +334,7 @@ public class BusinessDelegate
 	}
 	
 	
-	public void ocuparMesaPorCod(Integer codMesa) throws RemoteException, MesaException
+	public void ocuparMesaPorCod(Integer codMesa) throws  MesaException
 	{		
 		try {
 				remoteObject.ocuparMesaPorCod(codMesa);
@@ -343,7 +343,7 @@ public class BusinessDelegate
 	}
 	}
 		
-	public Integer combinarMesasPorCod(Integer codmesa1, Integer codmesa2) throws RemoteException, MesaException
+	public Integer combinarMesasPorCod(Integer codmesa1, Integer codmesa2) throws  MesaException
 		{		
 			try {
 				return remoteObject.combinarMesasPorCod(codmesa1, codmesa2);
@@ -352,7 +352,7 @@ public class BusinessDelegate
 			}
 		}
 		
-	public void grabarMesa(MesaDTO mesa) throws RemoteException, MesaException 
+	public void grabarMesa(MesaDTO mesa) throws  MesaException 
 	{
 		try {
 			remoteObject.grabarMesa(mesa);
@@ -363,7 +363,7 @@ public class BusinessDelegate
 	
 	
 	//-----------------------------------SECTORES-------------------------------------------------------------------------
-	public List<SectorDTO> mostrarSectores() throws RemoteException, SectorException
+	public List<SectorDTO> mostrarSectores() throws  SectorException
 	{
 		try {
 			return remoteObject.mostrarSectores();
@@ -373,7 +373,7 @@ public class BusinessDelegate
 	}
 	
 	//-----------------------------------SALONES-------------------------------------------------------------------------
-	public List<SalonDTO> mostrarSalones() throws RemoteException, SalonException 
+	public List<SalonDTO> mostrarSalones() throws  SalonException 
 	{
 		try {
 			return remoteObject.mostrarSalones();
@@ -383,7 +383,7 @@ public class BusinessDelegate
 	}
 	
 	//-----------------------------------DEPOSITOS-------------------------------------------------------------------------
-	public List<DepositoDTO> mostrarDepositos() throws RemoteException, DepositoException
+	public List<DepositoDTO> mostrarDepositos() throws  DepositoException
 	{
 		try {
 			return remoteObject.mostrarDepositos();
@@ -394,7 +394,7 @@ public class BusinessDelegate
 	
 	
 	//-----------------------------------FACTURADO CAJA-------------------------------------------------------------------------
-	public double mostrarTotalFacturadoCaja(Date FechaDesde, Date FechaHasta) throws RemoteException, CajaException 
+	public double mostrarTotalFacturadoCaja(Date FechaDesde, Date FechaHasta) throws  CajaException 
 	{
 		try {
 			return remoteObject.mostrarTotalFacturadoCaja(FechaDesde, FechaHasta);
@@ -405,7 +405,7 @@ public class BusinessDelegate
 	
 	
 	//-----------------------------------UNIDADES---------------------------------------------------------------------------
-	public List<UnidadDTO> mostrarUnidades() throws RemoteException, UnidadException {
+	public List<UnidadDTO> mostrarUnidades() throws  UnidadException {
 		try {
 			return remoteObject.mostrarUnidades();
 		} catch (UnidadException e) {
@@ -414,7 +414,7 @@ public class BusinessDelegate
 		
 	}
 	
-	public UnidadDTO UnidadByDescp(String descp) throws RemoteException,UnidadException {
+	public UnidadDTO UnidadByDescp(String descp) throws UnidadException {
 		try {
 			return remoteObject.UnidadByDescp(descp);
 		} catch (UnidadException e) {
@@ -424,7 +424,7 @@ public class BusinessDelegate
 	
 	
 	//-----------------------------------MATERIA PRIMA(MATERIALES)------------------------------------------------------------------
-	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException, MateriaPrimaException
+	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws  MateriaPrimaException
 	{
 		try {
 			remoteObject.grabarMateriaPrima(materia);
@@ -433,7 +433,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public List<MateriaPrimaDTO> listarStock() throws RemoteException, MateriaPrimaException
+	public List<MateriaPrimaDTO> listarStock() throws  MateriaPrimaException
 	{
 		try {
 			return remoteObject.listarStock();
@@ -442,7 +442,7 @@ public class BusinessDelegate
 		}
 	}
 	
-	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException, MateriaPrimaException
+	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws  MateriaPrimaException
 	{
 		try {
 			return remoteObject.getMateriaPrimaByCod(codMaterial);
@@ -451,152 +451,256 @@ public class BusinessDelegate
 		}
 	}
 
-	public void actualizarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException, MateriaPrimaException {
+	public void actualizarMateriaPrima(MateriaPrimaDTO materia) throws  MateriaPrimaException {
 		// TODO Auto-generated method stub
-		remoteObject.actualizarMaterial(materia);
+		try {
+			remoteObject.actualizarMaterial(materia);
+		} catch (MateriaPrimaException e) {
+			throw new MateriaPrimaException("No se pueden ACTUALIZAR Las MATERIAS PRIMAS!");
+		}
 		
 	}
 	
-	public void eliminarMateria(MateriaPrimaDTO materia)  throws RemoteException, MateriaPrimaException{
+	public void eliminarMateria(MateriaPrimaDTO materia)  throws  MateriaPrimaException{
 		// TODO Auto-generated method stub
-		remoteObject.eliminarMateria(materia);
+		try {
+			remoteObject.eliminarMateria(materia);
+		} catch (MateriaPrimaException e) {
+			throw new MateriaPrimaException("No se pueden ELIMINAR Las MATERIAS PRIMAS!");
+		}
 	}
 
 	//-----------------------------------ITEMS COMANDA-----------------------------------------------------------------------------
 
-	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException,itemComandaException
+	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws itemComandaException
 	{
-		return remoteObject.getItemsPendientesxArea(area);
+		try {
+			return remoteObject.getItemsPendientesxArea(area);
+		} catch (itemComandaException e) {
+			throw new itemComandaException("No se pueden MOSTRAR los ITEMS COMANDA por AREA!");
+		}
 	}
 
-	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException,itemComandaException
+	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws itemComandaException
 	{
-		return remoteObject.obtenerItemsComandaByCodComanda(parseInt);
+		try {
+			return remoteObject.obtenerItemsComandaByCodComanda(parseInt);
+		} catch (itemComandaException e) {
+			throw new itemComandaException("No se pueden MOSTRAR los ITEMS COMANDA por CODIGO DE COMANDA!");
+		}
 	}
 	
 	//-----------------------------------CARTA-----------------------------------------------------------------------------
-	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException, CartaException
+	public CartaDTO buscarCartaPorCod(int nrocarta) throws  CartaException
 	{
-		return remoteObject.buscarCartaPorCod(nrocarta);
+		try {
+			return remoteObject.buscarCartaPorCod(nrocarta);
+		} catch (CartaException e) {
+			throw new CartaException("No se encuentra la CARTA!");
+		}
 	}
 	
-	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta) throws RemoteException, CartaException 
+	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta) throws  CartaException 
 	{
-		return remoteObject.obtenerPlatosByCodCarta(nrocarta);
+		try {
+			return remoteObject.obtenerPlatosByCodCarta(nrocarta);
+		} catch (CartaException e) {
+			throw new CartaException("No se encuentran los platos por codigo de  CARTA!");
+		}
 	}
 	
-	public List<CartaDTO> mostrarCartas() throws RemoteException, CartaException 
+	public List<CartaDTO> mostrarCartas() throws  CartaException 
 	{
-		return remoteObject.mostrarCartas();
+		try {
+			return remoteObject.mostrarCartas();
+		} catch (CartaException e) {
+			throw new CartaException("No se pueden MOSTRAR las cartas");
+		}
 	}
 	
 	//-----------------------------------PLAN DE PRODUCCION-----------------------------------------------------------------------------
-	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException, PlanDeProduccionException 
+	public List<PlanDeProduccionDTO> mostrarPDPs() throws  PlanDeProduccionException 
 	{
-		return remoteObject.mostrarPDPs();
+		try {
+			return remoteObject.mostrarPDPs();
+		} catch (PlanDeProduccionException e) {
+			throw new PlanDeProduccionException("No se pueden mostrar los planes de produccion !");
+		}
 	}
 	
-	public PlanDeProduccionDTO obtenerPDPByCodPDP(int codPdp) throws RemoteException, PlanDeProduccionException
+	public PlanDeProduccionDTO obtenerPDPByCodPDP(int codPdp) throws  PlanDeProduccionException
 	{
-		return remoteObject.obtenerPDPByCodPDP(codPdp);
+		try {
+			return remoteObject.obtenerPDPByCodPDP(codPdp);
+		} catch (PlanDeProduccionException e) {
+			throw new PlanDeProduccionException("No se pueden  obtener el plan de producccion!");
+		}
 	}
 	
-	public void grabarPdP(PlanDeProduccionDTO pdp) throws RemoteException, PlanDeProduccionException {
-		remoteObject.grabarPdP(pdp);
+	public void grabarPdP(PlanDeProduccionDTO pdp) throws  PlanDeProduccionException {
+		try {
+			remoteObject.grabarPdP(pdp);
+		} catch (PlanDeProduccionException e) {
+			throw new PlanDeProduccionException("No se puede GRABAR el plan de produccion !");
+		}
 		
 	}
 	
 	//-----------------------------------ITEM PLAN DE PRODUCCION-----------------------------------------------------------------------------
-	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException
+	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws itemPlanDeProduccionException
 	{
-		return remoteObject.obtenerItemPDPByCodPDP(nroPlanDeProduccion);
+		try {
+			return remoteObject.obtenerItemPDPByCodPDP(nroPlanDeProduccion);
+		} catch (itemPlanDeProduccionException e) {
+			throw new itemPlanDeProduccionException("No se pueden obtener los items de planes de produccion !");
+		}
 	}
 	
-	public void grabarItemPdP(ItemPlanProduccionDTO itemPdP) throws RemoteException,itemPlanDeProduccionException{
-	remoteObject.grabarItemPdP(itemPdP);
+	public void grabarItemPdP(ItemPlanProduccionDTO itemPdP) throws itemPlanDeProduccionException{
+	try {
+		remoteObject.grabarItemPdP(itemPdP);
+	} catch (itemPlanDeProduccionException e) {
+		throw new itemPlanDeProduccionException("No se pueden GRABAR los items de planes de produccion !");
+	}
 		
 	}
 	
 	//-----------------------------------REMITO-------------------------------------------------------------------------
 	//REMITO
-	public void grabarRemito(RemitoDTO remito) throws RemoteException, RemitoException 
+	public void grabarRemito(RemitoDTO remito) throws  RemitoException 
 	{
-		remoteObject.grabarRemito(remito);
+		try {
+			remoteObject.grabarRemito(remito);
+		} catch (RemitoException e) {
+			throw new RemitoException("No se pueden GRABAR los REMITOS !");
+		}
 	}
 	
-	public List<RemitoDTO> mostrarRemitos() throws RemoteException, RemitoException 
+	public List<RemitoDTO> mostrarRemitos() throws  RemitoException 
 	{
-		return remoteObject.mostrarRemitos();
+		try {
+			return remoteObject.mostrarRemitos();
+		} catch (RemitoException e) {
+			throw new RemitoException("No se pueden MOSTRAR los REMITOS !");
+		}
 	}
 	
-	public RemitoDTO getRemitoByCod(Integer parseInt) throws RemoteException, RemitoException {
-		return remoteObject.getRemitoByCod(parseInt);
+	public RemitoDTO getRemitoByCod(Integer parseInt) throws  RemitoException {
+		try {
+			return remoteObject.getRemitoByCod(parseInt);
+		} catch (RemitoException e) {
+			throw new RemitoException("No se encuentra el remito !");
+		}
 		
 	}
 	
-	//-----------------------------------ITEM RMEITO-------------------------------------------------------------------------
+	//-----------------------------------ITEM REMITO-------------------------------------------------------------------------
 	//ITEM REMITO
-	public void grabarItemRemito(ItemRemitoDTO itemRemito) throws RemoteException, itemRemitoException 
+	public void grabarItemRemito(ItemRemitoDTO itemRemito) throws  itemRemitoException 
 	{
-		remoteObject.grabarItemRemito(itemRemito);
+		try {
+			remoteObject.grabarItemRemito(itemRemito);
+		} catch (itemRemitoException e) {
+			throw new itemRemitoException ("No se pueden GRABAR los ITEM REMITO !");
+		}
 	}
 
 	//-----------------------------------SOLICITUD INDIVIDUAL-------------------------------------------------------------------------
 	
-	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales() throws RemoteException, SolicitudException  
+	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales() throws  SolicitudException  
 	{
-		return remoteObject.mostrarSolicitudesIndividuales();
+		try {
+			return remoteObject.mostrarSolicitudesIndividuales();
+		} catch (SolicitudException e) {
+			throw new SolicitudException ("No se pueden MOSTRAR las solicitudes individuales!");
+		}
 	}
 
 	
-	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud) throws RemoteException, SolicitudException 
+	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud) throws  SolicitudException 
 	{
-		remoteObject.grabarSolicitudIndividual(solicitud);
+		try {
+			remoteObject.grabarSolicitudIndividual(solicitud);
+		} catch (Exception e) {
+			throw new SolicitudException ("No se pueden GRABAR las solicitudes individuales!");
+		}
 	}
 
-	public void unirSolicitudesIndividuales(List<CombinadorDTO> mandar) throws RemoteException, SolicitudException {
-		remoteObject.unirSolicitudesIndividuales(mandar);
+	public void unirSolicitudesIndividuales(List<CombinadorDTO> mandar) throws  SolicitudException {
+		try {
+			remoteObject.unirSolicitudesIndividuales(mandar);
+		} catch (Exception e) {
+			throw new SolicitudException ("No se pueden UNIR las solicitudes individuales!");
+		}
 		
 	}
 
-	public List<SolicitudIndividualDTO> mostrarSolicitudesNoDiarias()	throws RemoteException, SolicitudException 
+	public List<SolicitudIndividualDTO> mostrarSolicitudesNoDiarias()	throws  SolicitudException 
 	{
-		return remoteObject.mostrarSolicitudesNoDiarias();
+		try {
+			return remoteObject.mostrarSolicitudesNoDiarias();
+		} catch (SolicitudException e) {
+			throw new SolicitudException ("No se pueden MOSTRAR las solicitudes NO individuales!");
+		}
 	}
 	
-	public List<SolicitudDiariaDTO> mostrarSolicitudesDiarias() throws RemoteException, SolicitudException{
-		return remoteObject.mostrarSolicitudesDiarias();
+	public List<SolicitudDiariaDTO> mostrarSolicitudesDiarias() throws  SolicitudException{
+		try {
+			return remoteObject.mostrarSolicitudesDiarias();
+		} catch (SolicitudException e) {
+			throw new SolicitudException ("No se pueden MOSTRAR las solicitudes DIARIAS!");
+		}
 	}
 
 	
 	//-----------------------------------SEMIS-------------------------------------------------------------------------
 	
-	public List<SemiElaboradoDTO> mostrarSemiElaborados()  throws RemoteException, SemiElaboradoException{
-		return remoteObject.mostrarSemiElaborados();
+	public List<SemiElaboradoDTO> mostrarSemiElaborados()  throws  SemiElaboradoException{
+		try {
+			return remoteObject.mostrarSemiElaborados();
+		} catch (SemiElaboradoException e) {
+			throw new SemiElaboradoException("No se pueden MOSTRAR los SEMIELABORADOS!");
+		}
 	}
 
-	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException{
+	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws  SemiElaboradoException{
 		// TODO Auto-generated method stub
-		return remoteObject.getSemiElaboradoByCod(parseInt);
+		try {
+			return remoteObject.getSemiElaboradoByCod(parseInt);
+		} catch (SemiElaboradoException e) {
+			throw new SemiElaboradoException("No se ENCUENTRAN el SEMIELABORADO!");
+		}
 	}
 
 
 	
 	//-------------------------------------ELABORADOS------------------------------------------
 
-	public void grabarElaborado(ElaboradoDTO elab)throws RemoteException, SemiElaboradoException {
+	public void grabarElaborado(ElaboradoDTO elab)throws  ElaboradoException {
 		// TODO Auto-generated method stub
-		remoteObject.grabarElaborado(elab);
+		try {
+			remoteObject.grabarElaborado(elab);
+		} catch (ElaboradoException e) {
+			throw new ElaboradoException("No se pueden GRABAR los ELABORADOS!");
+		}
 	}
 	
-	public ElaboradoDTO getElaboradoByCod(int parseInt) throws RemoteException, ElaboradoException{
+	public ElaboradoDTO getElaboradoByCod(int parseInt) throws  ElaboradoException{
 		// TODO Auto-generated method stub
-		return remoteObject.getElaboradoByCod(parseInt);
+		try {
+			return remoteObject.getElaboradoByCod(parseInt);
+		} catch (ElaboradoException e) {
+			throw new ElaboradoException("No se pueden obtener el elaborado!");
+		}
 	}
 
-	public void actualizarElaborado(ElaboradoDTO elab) throws RemoteException, ElaboradoException{
+	public void actualizarElaborado(ElaboradoDTO elab) throws  ElaboradoException{
 		// TODO Auto-generated method stub
-		 remoteObject.actualizarElaborado(elab);
+		 try {
+			remoteObject.actualizarElaborado(elab);
+		} catch (ElaboradoException e) {
+			throw new ElaboradoException("No se puede ACTUALIZAR el ELABORADO!");
+		}
 	}
 
 	
