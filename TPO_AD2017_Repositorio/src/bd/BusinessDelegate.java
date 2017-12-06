@@ -45,7 +45,7 @@ public class BusinessDelegate
 	private static BusinessDelegate instance;
 	private manejoNegocio remoteObject;
 	
-	public BusinessDelegate() throws RemoteException {
+	private BusinessDelegate() throws RemoteException {
 		super();
 		try {
 			remoteObject=(manejoNegocio) Naming.lookup("//localhost/ObjetoRemoto");
@@ -78,7 +78,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.verificarPassword(login, password);
-		} catch (UsuarioException e) {
+		} catch (RemoteException e) {
 			throw new UsuarioException("USUARIO o PASSWORD incorrecta!");
 		}
 	}
@@ -87,7 +87,7 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.guardarUsuarios(usuario);
-		} catch (UsuarioException e) {
+		} catch (RemoteException e) {
 			throw new UsuarioException("No se puede grabar el usuario!");
 		}
 	}
@@ -97,7 +97,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.buscarUserPorLogin(login);
-		} catch (UsuarioException e) {
+		} catch (RemoteException e) {
 			throw new UsuarioException("No se ENCUENTRA el usuario");
 		}
 	}
@@ -106,7 +106,7 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.borrarUsuario(usuario);
-		} catch (UsuarioException e) {
+		} catch (RemoteException e) {
 			throw new UsuarioException("No se pudo BORRAR el usuario");
 		}
 	}
@@ -145,7 +145,7 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.grabarComanda(comanda);
-		} catch (Exception e) {
+		} catch (RemoteException e) {
 			throw new ComandaException("No se pudo grabar la comanda!");
 		}
 	}
@@ -154,7 +154,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarComandas();
-		} catch (Exception e) {
+		} catch (RemoteException e) {
 			throw new ComandaException("No se pudo LISTAR las comandas!");
 		}
 	}
@@ -163,7 +163,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.BuscarComandasPorCod(codComanda);
-		} catch (Exception e) {
+		} catch (RemoteException e) {
 			throw new ComandaException("No se pudo encontrar la COMANDA por codigo!");
 		}
 	}
@@ -175,7 +175,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.grabarItemComanda(itemComanda);
-		} catch (itemComandaException e) {
+		} catch (RemoteException e) {
 			throw new itemComandaException("NO se pudo GRABAR el ITEMCOMANDA!");
 		}
 	}
@@ -185,7 +185,7 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.itemComandaLista(coditemcomanda);
-		} catch (itemComandaException e) {
+		} catch (RemoteException e) {
 			throw new itemComandaException("El ITEM DE LA COMANDA NO PUDO REALIZARSE!");
 		}
 	}
@@ -195,7 +195,7 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.grabarFactura(factura);
-		} catch (FacturaException e) {
+		} catch (RemoteException e) {
 			throw new FacturaException("No se pudo grabar la FACTURA!");
 		}
 	}
@@ -204,7 +204,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarFacturas();
-		} catch (FacturaException e) {
+		} catch (RemoteException e) {
 			throw new FacturaException("No se pueden MOSTRAR las FACTURAS!");
 		}
 	}
@@ -214,7 +214,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarFacturaByCod(nroFact);
-		} catch (FacturaException e) {
+		} catch (RemoteException e) {
 			throw new FacturaException("No se ENCONTRO la FACTURA!");
 		}
 	}
@@ -223,7 +223,7 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.facturarMesa(codMesa, formadepago);
-		} catch (FacturaException e) {
+		} catch (RemoteException e) {
 			throw new FacturaException("No se pudo generar la FACTURA!");
 		}
 	}
@@ -234,7 +234,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.obtenerItemsFacturaByCodFactura(codFactura);
-		} catch (FacturaException e) {
+		} catch (RemoteException e) {
 			throw new FacturaException("No se encontraron los items de la FACTURA!");
 		}
 	}
@@ -245,7 +245,7 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.grabarReserva(reserva);
-		} catch (ReservaException e) {
+		} catch (RemoteException e) {
 			throw new ReservaException("No se pudo GRABAR la RESERVA");
 		}
 	}
@@ -254,7 +254,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarReservas();
-		} catch (ReservaException e) {
+		} catch (RemoteException e) {
 			throw new ReservaException("No se pudieron LISTAR las RESERVAS");
 		}
 	}
@@ -264,7 +264,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarMozos();
-		} catch (MozoException e) {
+		} catch (RemoteException e) {
 			throw new MozoException("No se pueden MOSTRAR los MOZOS!");
 		}
 	}
@@ -274,7 +274,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarComisionesAPagar(FechaDesde, FechaHasta);
-		} catch (MozoException e) {
+		} catch (RemoteException e) {
 			throw new MozoException("No se pueden CALCULAR las comisiones de los MOZOS!");
 		}
 	}
@@ -284,7 +284,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarResultadoComisionesMozo(FechaDesde,FechaHasta);
-		} catch (MozoException e) {
+		} catch (RemoteException e) {
 			throw new MozoException("No se pueden MOSTRAR el resultado de las COMISIONES de los MOZOS!");
 		}
 	}
@@ -294,7 +294,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarMesas();
-		} catch (MesaException e) {
+		} catch (RemoteException e) {
 			throw new MesaException("No se pueden MOSTRAR las MESAS!");
 		}
 	}
@@ -302,7 +302,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarMesasFacturables();
-		} catch (MesaException e) {
+		} catch (RemoteException e) {
 			throw new MesaException("No se pueden MOSTRAR las MESAS FACTURABLES!");
 		}
 	}
@@ -310,7 +310,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarMesasOcupadas();
-		} catch (MesaException e) {
+		} catch (RemoteException e) {
 			throw new MesaException("No se pueden MOSTRAR las MESAS OCUPADAS!");
 		}
 	}
@@ -319,7 +319,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.BuscarMesaPorCod(codMesa);
-		} catch (MesaException e) {
+		} catch (RemoteException e) {
 			throw new MesaException("No se pueden ENCONTRO la MESA buscada!");
 		}
 	}
@@ -328,7 +328,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarMesasLibres();
-		} catch (MesaException e) {
+		} catch (RemoteException e) {
 			throw new MesaException("No se pueden MOSTRAR las MESAS LIBRES!");
 		}
 	}
@@ -338,7 +338,7 @@ public class BusinessDelegate
 	{		
 		try {
 				remoteObject.ocuparMesaPorCod(codMesa);
-		} catch (MesaException e) {
+		} catch (RemoteException e) {
 		throw new MesaException("No se pudo Cambiar el Estado");
 	}
 	}
@@ -347,7 +347,7 @@ public class BusinessDelegate
 		{		
 			try {
 				return remoteObject.combinarMesasPorCod(codmesa1, codmesa2);
-			} catch (MesaException e) {
+			} catch (RemoteException e) {
 				throw new MesaException("No se pueden COMBINAR esas MESAS!");
 			}
 		}
@@ -356,7 +356,7 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.grabarMesa(mesa);
-		} catch (MesaException e) {
+		} catch (RemoteException e) {
 			throw new MesaException("No se puede GRABAR la MESA!");
 		}
 	}
@@ -367,7 +367,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarSectores();
-		} catch (SectorException e) {
+		} catch (RemoteException e) {
 			throw new SectorException("No se pueden MOSTRAR los SECTORES!");
 		}
 	}
@@ -377,7 +377,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarSalones();
-		} catch (SalonException e) {
+		} catch (RemoteException e) {
 			throw new SalonException("No se pueden MOSTRAR los SALONES!");
 		}
 	}
@@ -387,7 +387,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarDepositos();
-		} catch (DepositoException e) {
+		} catch (RemoteException e) {
 			throw new DepositoException("No se pueden MOSTRAR los DEPOSITOS!");
 		}
 	}
@@ -398,7 +398,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.mostrarTotalFacturadoCaja(FechaDesde, FechaHasta);
-		} catch (CajaException e) {
+		} catch (RemoteException e) {
 			throw new CajaException("No se pueden MOSTRAR lo FACTURADO EN CAJA");
 		}
 	}
@@ -408,7 +408,7 @@ public class BusinessDelegate
 	public List<UnidadDTO> mostrarUnidades() throws RemoteException, UnidadException {
 		try {
 			return remoteObject.mostrarUnidades();
-		} catch (UnidadException e) {
+		} catch (RemoteException e) {
 			throw new UnidadException("No se pueden MOSTRAR las UNIDADES!");
 		}
 		
@@ -417,7 +417,7 @@ public class BusinessDelegate
 	public UnidadDTO UnidadByDescp(String descp) throws RemoteException,UnidadException {
 		try {
 			return remoteObject.UnidadByDescp(descp);
-		} catch (UnidadException e) {
+		} catch (RemoteException e) {
 			throw new UnidadException("No se pueden MOSTRAR las UNIDADES por descripcion!");
 		}
 	}
@@ -428,7 +428,7 @@ public class BusinessDelegate
 	{
 		try {
 			remoteObject.grabarMateriaPrima(materia);
-		} catch (MateriaPrimaException e) {
+		} catch (RemoteException e) {
 			throw new MateriaPrimaException("No se puede GRABAR la MATERIA PRIMA!");
 		}
 	}
@@ -437,7 +437,7 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.listarStock();
-		} catch (MateriaPrimaException e) {
+		} catch (RemoteException e) {
 			throw new MateriaPrimaException("No se pueden LISTAR  las MATERIAS PRIMA!");
 		}
 	}
@@ -446,74 +446,129 @@ public class BusinessDelegate
 	{
 		try {
 			return remoteObject.getMateriaPrimaByCod(codMaterial);
-		} catch (MateriaPrimaException e) {
+		} catch (RemoteException e) {
 			throw new MateriaPrimaException("No se pueden MOSTRAR Las MATERIAS PRIMAS!");
 		}
 	}
 
 	public void actualizarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException, MateriaPrimaException {
-		// TODO Auto-generated method stub
+		try {// TODO Auto-generated method stub
 		remoteObject.actualizarMaterial(materia);
-		
+		} catch (RemoteException e) {
+		throw new MateriaPrimaException("No se pueden MOSTRAR Las MATERIAS PRIMAS!");
+		}
 	}
 	
 	public void eliminarMateria(MateriaPrimaDTO materia)  throws RemoteException, MateriaPrimaException{
-		// TODO Auto-generated method stub
+		try {// TODO Auto-generated method stub// TODO Auto-generated method stub
 		remoteObject.eliminarMateria(materia);
+	} catch (RemoteException e) {
+		throw new MateriaPrimaException("No se pueden MOSTRAR Las MATERIAS PRIMAS!");
+	}
 	}
 
 	//-----------------------------------ITEMS COMANDA-----------------------------------------------------------------------------
 
 	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException,itemComandaException
 	{
-		return remoteObject.getItemsPendientesxArea(area);
+		
+		try {
+			return remoteObject.getItemsPendientesxArea(area);
+		} catch (RemoteException e) {
+			throw new itemComandaException("NO HAY ITEMS PENDIENTES");
+		}
 	}
 
 	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException,itemComandaException
 	{
-		return remoteObject.obtenerItemsComandaByCodComanda(parseInt);
+		try {
+			return remoteObject.obtenerItemsComandaByCodComanda(parseInt);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new itemComandaException("NO ESTA EL ITEM BUSCADO");
+		}
 	}
 	
 	//-----------------------------------CARTA-----------------------------------------------------------------------------
 	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException, CartaException
 	{
-		return remoteObject.buscarCartaPorCod(nrocarta);
+		try {
+			return remoteObject.buscarCartaPorCod(nrocarta);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new CartaException("NO EXISTE CARTA CON ESE CODIGO");
+		}
 	}
 	
 	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta) throws RemoteException, CartaException 
 	{
-		return remoteObject.obtenerPlatosByCodCarta(nrocarta);
+		try {
+			return remoteObject.obtenerPlatosByCodCarta(nrocarta);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new CartaException("NO EXISTEN PLATOS PARA CARTA CON ESE CODIGO");
+		}
 	}
 	
 	public List<CartaDTO> mostrarCartas() throws RemoteException, CartaException 
 	{
-		return remoteObject.mostrarCartas();
+		try {
+			return remoteObject.mostrarCartas();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new CartaException("NO HAY CARTAS");
+		}
 	}
 	
 	//-----------------------------------PLAN DE PRODUCCION-----------------------------------------------------------------------------
 	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException, PlanDeProduccionException 
 	{
-		return remoteObject.mostrarPDPs();
+		try {
+			return remoteObject.mostrarPDPs();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new PlanDeProduccionException ("NO HAY PLANES");
+		}
 	}
 	
 	public PlanDeProduccionDTO obtenerPDPByCodPDP(int codPdp) throws RemoteException, PlanDeProduccionException
 	{
-		return remoteObject.obtenerPDPByCodPDP(codPdp);
+		try {
+			return remoteObject.obtenerPDPByCodPDP(codPdp);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new PlanDeProduccionException ("NO HAY PLAN CON CODIGO INGRESADO");
+		}
 	}
 	
 	public void grabarPdP(PlanDeProduccionDTO pdp) throws RemoteException, PlanDeProduccionException {
-		remoteObject.grabarPdP(pdp);
+		try {
+			remoteObject.grabarPdP(pdp);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new PlanDeProduccionException ("NO SE PUDO GRABAR EL PLAN");
+		}
 		
 	}
 	
 	//-----------------------------------ITEM PLAN DE PRODUCCION-----------------------------------------------------------------------------
 	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException
 	{
-		return remoteObject.obtenerItemPDPByCodPDP(nroPlanDeProduccion);
+		try {
+			return remoteObject.obtenerItemPDPByCodPDP(nroPlanDeProduccion);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new itemPlanDeProduccionException ("NO SE PUDO OBTENER ITEM PLAN DE PRODUCCION");
+		}
 	}
 	
 	public void grabarItemPdP(ItemPlanProduccionDTO itemPdP) throws RemoteException,itemPlanDeProduccionException{
-	remoteObject.grabarItemPdP(itemPdP);
+	try {
+		remoteObject.grabarItemPdP(itemPdP);
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		throw new itemPlanDeProduccionException ("NO SE PUDO GRABAR EL ITEM");
+	}
 		
 	}
 	
@@ -521,16 +576,31 @@ public class BusinessDelegate
 	//REMITO
 	public void grabarRemito(RemitoDTO remito) throws RemoteException, RemitoException 
 	{
-		remoteObject.grabarRemito(remito);
+		try {
+			remoteObject.grabarRemito(remito);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new RemitoException  ("NO SE PUDO GRABAR EL REMITO");
+		}
 	}
 	
 	public List<RemitoDTO> mostrarRemitos() throws RemoteException, RemitoException 
 	{
-		return remoteObject.mostrarRemitos();
+		try {
+			return remoteObject.mostrarRemitos();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new RemitoException  ("NO PUDE OBTENER LISTADO DE REMITOS");
+		}
 	}
 	
 	public RemitoDTO getRemitoByCod(Integer parseInt) throws RemoteException, RemitoException {
-		return remoteObject.getRemitoByCod(parseInt);
+		try {
+			return remoteObject.getRemitoByCod(parseInt);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new RemitoException  ("NO PUDE OBTENER REMITO POR CODIGO");
+		}
 		
 	}
 	
@@ -538,46 +608,86 @@ public class BusinessDelegate
 	//ITEM REMITO
 	public void grabarItemRemito(ItemRemitoDTO itemRemito) throws RemoteException, itemRemitoException 
 	{
-		remoteObject.grabarItemRemito(itemRemito);
+		try {
+			remoteObject.grabarItemRemito(itemRemito);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new itemRemitoException  ("NO PUDE GRABAR ITEM REMITO");
+		}
 	}
 
 	//-----------------------------------SOLICITUD INDIVIDUAL-------------------------------------------------------------------------
 	
 	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales() throws RemoteException, SolicitudException  
 	{
-		return remoteObject.mostrarSolicitudesIndividuales();
+		try {
+			return remoteObject.mostrarSolicitudesIndividuales();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new SolicitudException  ("NO SE PUEDE MOSTRAR SOLICITUDES");
+		}
 	}
 
 	
 	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud) throws RemoteException, SolicitudException 
 	{
-		remoteObject.grabarSolicitudIndividual(solicitud);
+		try {
+			remoteObject.grabarSolicitudIndividual(solicitud);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new SolicitudException  ("NO SE PUEDE GRABAR SOLICITUD");
+		}
 	}
 
 	public void unirSolicitudesIndividuales(List<CombinadorDTO> mandar) throws RemoteException, SolicitudException {
-		remoteObject.unirSolicitudesIndividuales(mandar);
+		try {
+			remoteObject.unirSolicitudesIndividuales(mandar);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new SolicitudException  ("NO SE PUEDEN COMBINAR SOLICITUDES");
+		}
 		
 	}
 
 	public List<SolicitudIndividualDTO> mostrarSolicitudesNoDiarias()	throws RemoteException, SolicitudException 
 	{
-		return remoteObject.mostrarSolicitudesNoDiarias();
+		try {
+			return remoteObject.mostrarSolicitudesNoDiarias();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new SolicitudException  ("NO PUEDO MOSTRAR SOLICITUDES NO DIARIAS");
+		}
 	}
 	
 	public List<SolicitudDiariaDTO> mostrarSolicitudesDiarias() throws RemoteException, SolicitudException{
-		return remoteObject.mostrarSolicitudesDiarias();
+		try {
+			return remoteObject.mostrarSolicitudesDiarias();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new SolicitudException  ("NO PUEDO MOSTRAR SOLICITUDES DIARIAS");
+		}
 	}
 
 	
 	//-----------------------------------SEMIS-------------------------------------------------------------------------
 	
 	public List<SemiElaboradoDTO> mostrarSemiElaborados()  throws RemoteException, SemiElaboradoException{
-		return remoteObject.mostrarSemiElaborados();
+		try {
+			return remoteObject.mostrarSemiElaborados();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new SemiElaboradoException  ("NO PUEDO OBTENER SEMI ELABORADOS");
+		}
 	}
 
 	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException{
 		// TODO Auto-generated method stub
-		return remoteObject.getSemiElaboradoByCod(parseInt);
+		try {
+			return remoteObject.getSemiElaboradoByCod(parseInt);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new SemiElaboradoException  ("NO PUEDO OBTENER EL SEMIELABORADO SOLICITADO");
+		}
 	}
 
 
@@ -586,17 +696,32 @@ public class BusinessDelegate
 
 	public void grabarElaborado(ElaboradoDTO elab)throws RemoteException, SemiElaboradoException {
 		// TODO Auto-generated method stub
-		remoteObject.grabarElaborado(elab);
+		try {
+			remoteObject.grabarElaborado(elab);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new SemiElaboradoException  ("NO PUEDO OBTENER SEMI ELABORADOS");
+		}
 	}
 	
 	public ElaboradoDTO getElaboradoByCod(int parseInt) throws RemoteException, ElaboradoException{
 		// TODO Auto-generated method stub
-		return remoteObject.getElaboradoByCod(parseInt);
+		try {
+			return remoteObject.getElaboradoByCod(parseInt);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new ElaboradoException  ("NO PUEDO OBTENER ELABORADOS");
+		}
 	}
 
 	public void actualizarElaborado(ElaboradoDTO elab) throws RemoteException, ElaboradoException{
 		// TODO Auto-generated method stub
-		 remoteObject.actualizarElaborado(elab);
+		 try {
+			remoteObject.actualizarElaborado(elab);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			throw new ElaboradoException  ("NO PUEDO ACTUALIZAR ELABORADO");
+		}
 	}
 
 	

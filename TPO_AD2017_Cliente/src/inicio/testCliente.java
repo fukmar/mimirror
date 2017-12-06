@@ -60,7 +60,7 @@ public class testCliente
 		//Item Remito
 		List<ItemRemitoDTO> itemsremito = new ArrayList<ItemRemitoDTO>();
 		//Float cantidad, RemitoDTO remito, EstadoRemito estadoremito,MateriaPrimaDTO materiaprima, List<SolicitudIndividualDTO> solicitudes
-		ItemRemitoDTO itemremito = new ItemRemitoDTO(1, null, null, materia, null);
+		ItemRemitoDTO itemremito = new ItemRemitoDTO(null, null, materia);
 		itemsremito.add(itemremito);
 		
 		//REMITO

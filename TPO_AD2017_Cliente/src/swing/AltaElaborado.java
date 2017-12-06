@@ -14,6 +14,7 @@ import bd.BusinessDelegate;
 import dto.PlanDeProduccionDTO;
 import dto.SemiElaboradoDTO;
 import dto.UnidadDTO;
+import exceptions.ElaboradoException;
 import exceptions.PlanDeProduccionException;
 import exceptions.SemiElaboradoException;
 import exceptions.UnidadException;
@@ -186,13 +187,13 @@ public class AltaElaborado extends JFrame {
 				} catch (RemoteException | UnidadException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (SemiElaboradoException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (PlanDeProduccionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SemiElaboradoException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
