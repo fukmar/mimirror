@@ -59,135 +59,130 @@ import exceptions.itemRemitoException;
 import exceptions.SemiElaboradoException;
 
 
-
-
-
-
-
 public interface manejoNegocio extends Remote 
 {
 
 	//USUARIO
-	public boolean verificarPassword(String login, String password) throws UsuarioException;
-	public void guardarUsuarios(UsuariosDTO usuario)throws UsuarioException;
-	public UsuariosDTO buscarUserPorLogin(String login) throws UsuarioException;
-	public void borrarUsuario (UsuariosDTO usuario) throws UsuarioException;
+	public boolean verificarPassword(String login, String password) throws RemoteException,UsuarioException;
+	public void guardarUsuarios(UsuariosDTO usuario)throws RemoteException,UsuarioException;
+	public UsuariosDTO buscarUserPorLogin(String login) throws RemoteException,UsuarioException;
+	public void borrarUsuario (UsuariosDTO usuario) throws RemoteException,UsuarioException;
 	
 	//PLATO
-	public List<PlatoDTO> listarPlatos() throws  PlatoException;
-	public List<PlatoDTO> buscarPlatosParecidos(String nombre, CategoriaPlato categoriaplato) throws  PlatoException;
-	public PlatoDTO BuscarPlatoPorCod(Integer codPlato) throws  PlatoException;
+	public List<PlatoDTO> listarPlatos() throws RemoteException, PlatoException;
+	public List<PlatoDTO> buscarPlatosParecidos(String nombre, CategoriaPlato categoriaplato) throws RemoteException, PlatoException;
+	public PlatoDTO BuscarPlatoPorCod(Integer codPlato) throws RemoteException, PlatoException;
 	
 	//COMANDA
-	public void grabarComanda(ComandaDTO comanda) throws ComandaException;
-	public List<ComandaDTO> mostrarComandas()throws ComandaException;
-	public ComandaDTO BuscarComandasPorCod(Integer codComanda)throws ComandaException;
+	public void grabarComanda(ComandaDTO comanda) throws RemoteException,ComandaException;
+	public List<ComandaDTO> mostrarComandas()throws RemoteException,ComandaException;
+	public ComandaDTO BuscarComandasPorCod(Integer codComanda)throws RemoteException,ComandaException;
 	
 	 
 	//ITEMCOMANDA
-	public boolean grabarItemComanda(ItemComandaDTO itemComanda) throws itemComandaException;
-	public void itemComandaLista(int coditemcomanda) throws  itemComandaException;
+	public boolean grabarItemComanda(ItemComandaDTO itemComanda) throws RemoteException,itemComandaException;
+	public void itemComandaLista(int coditemcomanda) throws RemoteException, itemComandaException;
 	
 	//FACTURA
-	public  void grabarFactura(FacturaDTO factura) throws FacturaException;
-	public List<FacturaDTO> mostrarFacturas()throws FacturaException;
-	public FacturaDTO mostrarFacturaByCod(int nroFact)throws FacturaException;
-	public void facturarMesa(int codMesa, MedioDePago formadepago) throws  FacturaException;
+	public  void grabarFactura(FacturaDTO factura) throws RemoteException,FacturaException;
+	public List<FacturaDTO> mostrarFacturas()throws RemoteException,FacturaException;
+	public FacturaDTO mostrarFacturaByCod(int nroFact)throws RemoteException,FacturaException;
+	public void facturarMesa(int codMesa, MedioDePago formadepago) throws RemoteException, FacturaException;
 	
 	//ITEMFACTURA
-	List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws  FacturaException;
+	List<ItemFacturaDTO> obtenerItemsFacturaByCodFactura(Integer codFactura) throws RemoteException, FacturaException;
 	
 	//RESERVA
-	public void grabarReserva(ReservaDTO reserva) throws ReservaException;
-	public List<ReservaDTO> mostrarReservas()throws ReservaException;
+	public void grabarReserva(ReservaDTO reserva) throws RemoteException,ReservaException;
+	public List<ReservaDTO> mostrarReservas()throws RemoteException,ReservaException;
 	
 	//MOZOS
-	public List<MozoDTO> mostrarMozos() throws MozoException; 
-	public double mostrarComisionesAPagar(Date FechaDesde, Date FechaHasta) throws  MozoException;
-	public List<String[]> mostrarResultadoComisionesMozo (Date FechaDesde,Date FechaHasta)throws  MozoException;
+	public List<MozoDTO> mostrarMozos() throws RemoteException,MozoException; 
+	public double mostrarComisionesAPagar(Date FechaDesde, Date FechaHasta) throws RemoteException, MozoException;
+	public List<String[]> mostrarResultadoComisionesMozo (Date FechaDesde,Date FechaHasta)throws RemoteException, MozoException;
 	
 	//MESAS 
-	public List<MesaDTO> mostrarMesas() throws MesaException;
-	public MesaDTO BuscarMesaPorCod(Integer codMesa)throws MesaException;
-	public List<MesaDTO> mostrarMesasLibres()throws MesaException;
-	public void ocuparMesaPorCod(Integer codMesa)throws MesaException;
-	public Integer combinarMesasPorCod(Integer codmesa1, Integer codmesa2) throws  MesaException;
-	public void grabarMesa(MesaDTO mesa)throws  MesaException;
-	public List<MesaDTO> mostrarMesasOcupadas() throws  MesaException;
-	public List<MesaDTO> mostrarMesasFacturables() throws  MesaException;
+	public List<MesaDTO> mostrarMesas() throws RemoteException,MesaException;
+	public MesaDTO BuscarMesaPorCod(Integer codMesa)throws RemoteException,MesaException;
+	public List<MesaDTO> mostrarMesasLibres()throws RemoteException,MesaException;
+	public void ocuparMesaPorCod(Integer codMesa)throws RemoteException,MesaException;
+	public Integer combinarMesasPorCod(Integer codmesa1, Integer codmesa2) throws RemoteException, MesaException;
+	public void grabarMesa(MesaDTO mesa)throws RemoteException, MesaException;
+	public List<MesaDTO> mostrarMesasOcupadas() throws RemoteException, MesaException;
+	public List<MesaDTO> mostrarMesasFacturables() throws RemoteException, MesaException;
 	
 	//SECTORES
-	public List<SectorDTO> mostrarSectores() throws SectorException;
+	public List<SectorDTO> mostrarSectores() throws RemoteException,SectorException;
 	
 	//SALONES
-	public List<SalonDTO> mostrarSalones() throws SalonException;
+	public List<SalonDTO> mostrarSalones() throws RemoteException,SalonException;
 	
 	//DEPOSITOS
-	public List<DepositoDTO> mostrarDepositos() throws DepositoException;
+	public List<DepositoDTO> mostrarDepositos() throws RemoteException,DepositoException;
 	public DepositoDTO DepositoByCod(Integer codDeposito) throws RemoteException;
 	
 	
 	//FACTURACION CAJA
-	public double mostrarTotalFacturadoCaja (Date FechaDesde,Date FechaHasta)throws CajaException;
+	public double mostrarTotalFacturadoCaja (Date FechaDesde,Date FechaHasta)throws RemoteException,CajaException;
 	
 
 	//UNIDAD
-	public List<UnidadDTO> mostrarUnidades() throws  UnidadException;
-	public UnidadDTO UnidadByDescp(String descp) throws UnidadException;
+	public List<UnidadDTO> mostrarUnidades() throws RemoteException, UnidadException;
+	public UnidadDTO UnidadByDescp(String descp) throws RemoteException,UnidadException;
 
 	//MATERIA PRIMA
-	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws MateriaPrimaException;
-	public List<MateriaPrimaDTO> listarStock() throws MateriaPrimaException;
-	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws MateriaPrimaException;
-	public void actualizarMaterial(MateriaPrimaDTO materia) throws  MateriaPrimaException;
-	public void eliminarMateria(MateriaPrimaDTO materia) throws  MateriaPrimaException;
+	public void grabarMateriaPrima(MateriaPrimaDTO materia) throws RemoteException,MateriaPrimaException;
+	public List<MateriaPrimaDTO> listarStock() throws RemoteException,MateriaPrimaException;
+	public MateriaPrimaDTO getMateriaPrimaByCod(Integer codMaterial) throws RemoteException,MateriaPrimaException;
+	public void actualizarMaterial(MateriaPrimaDTO materia) throws RemoteException, MateriaPrimaException;
+	public void eliminarMateria(MateriaPrimaDTO materia) throws RemoteException, MateriaPrimaException;
 	
 	//ITEMS COMANDA
-	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws itemComandaException;
+	public List<ItemComandaDTO> getItemsPendientesxArea(AreaRest area) throws RemoteException,itemComandaException;
 
-	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws itemComandaException;
+	public List<ItemComandaDTO> obtenerItemsComandaByCodComanda(int parseInt) throws RemoteException,itemComandaException;
 
 	//CARTA
-	public CartaDTO buscarCartaPorCod(int nrocarta) throws CartaException;
-	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta)throws CartaException;
-	public List<CartaDTO> mostrarCartas()throws CartaException;
+	public CartaDTO buscarCartaPorCod(int nrocarta) throws RemoteException,CartaException;
+	public List<PlatoDTO> obtenerPlatosByCodCarta(int nrocarta)throws RemoteException,CartaException;
+	public List<CartaDTO> mostrarCartas()throws RemoteException,CartaException;
 	
 	//PLAN DE PRODUCCION
-	public List<PlanDeProduccionDTO> mostrarPDPs() throws PlanDeProduccionException;
-	public PlanDeProduccionDTO obtenerPDPByCodPDP(int codPdp)throws PlanDeProduccionException;
-	public void grabarPdP(PlanDeProduccionDTO pdp) throws PlanDeProduccionException;
+	public List<PlanDeProduccionDTO> mostrarPDPs() throws RemoteException,PlanDeProduccionException;
+	public PlanDeProduccionDTO obtenerPDPByCodPDP(int codPdp)throws RemoteException,PlanDeProduccionException;
+	public void grabarPdP(PlanDeProduccionDTO pdp) throws RemoteException,PlanDeProduccionException;
 	
 	//ITEM PLAN DE PRODUCCION
-	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws itemPlanDeProduccionException;
-	public void grabarItemPdP(ItemPlanProduccionDTO itemPdP) throws itemPlanDeProduccionException;
+	public List<ItemPlanProduccionDTO> obtenerItemPDPByCodPDP(int nroPlanDeProduccion)throws RemoteException,itemPlanDeProduccionException;
+	public void grabarItemPdP(ItemPlanProduccionDTO itemPdP) throws RemoteException,itemPlanDeProduccionException;
 
 	
 	//REMITO
-	public void grabarRemito(RemitoDTO remito) throws RemitoException;
-	public List<RemitoDTO> mostrarRemitos()throws RemitoException;
-	public RemitoDTO getRemitoByCod(Integer parseInt) throws RemitoException;
+	public void grabarRemito(RemitoDTO remito) throws RemoteException,RemitoException;
+	public List<RemitoDTO> mostrarRemitos()throws RemoteException,RemitoException;
+	public RemitoDTO getRemitoByCod(Integer parseInt) throws RemoteException,RemitoException;
 	
 	//ITEM REMITO
-	public void grabarItemRemito(ItemRemitoDTO itemRemito) throws itemRemitoException;
+	public void grabarItemRemito(ItemRemitoDTO itemRemito) throws RemoteException,itemRemitoException;
 	
 	//SOLICITUD INDIVIDUAL
-	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales()throws SolicitudException;
-	public List<SolicitudIndividualDTO> mostrarSolicitudesNoDiarias()	throws  SolicitudException;
-	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud)throws SolicitudException;
-	public void unirSolicitudesIndividuales(List<CombinadorDTO> mandar) throws SolicitudException;
+	public List<SolicitudIndividualDTO> mostrarSolicitudesIndividuales()throws RemoteException,SolicitudException;
+	public List<SolicitudIndividualDTO> mostrarSolicitudesNoDiarias()	throws RemoteException, SolicitudException;
+	public void grabarSolicitudIndividual(SolicitudIndividualDTO solicitud)throws RemoteException,SolicitudException;
+	public void unirSolicitudesIndividuales(List<CombinadorDTO> mandar) throws RemoteException,SolicitudException;
 	
 	//SOLI DIARIA
-	public List<SolicitudDiariaDTO> mostrarSolicitudesDiarias() throws  SolicitudException;
+	public List<SolicitudDiariaDTO> mostrarSolicitudesDiarias() throws RemoteException, SolicitudException;
 	
 	//SEMIS
-	public List<SemiElaboradoDTO> mostrarSemiElaborados() throws  SemiElaboradoException;
-	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws  SemiElaboradoException;
+	public List<SemiElaboradoDTO> mostrarSemiElaborados() throws RemoteException, SemiElaboradoException;
+	public SemiElaboradoDTO getSemiElaboradoByCod(int parseInt) throws RemoteException, SemiElaboradoException;
 	
 	
 	//ELABORADOS
-	public void grabarElaborado(ElaboradoDTO elab) throws  ElaboradoException;
-	public ElaboradoDTO getElaboradoByCod(int parseInt)throws  ElaboradoException;
-	public void actualizarElaborado(ElaboradoDTO elab)throws  ElaboradoException;
+	public void grabarElaborado(ElaboradoDTO elab) throws RemoteException, SemiElaboradoException;
+	public ElaboradoDTO getElaboradoByCod(int parseInt)throws RemoteException, ElaboradoException;
+	public void actualizarElaborado(ElaboradoDTO elab)throws RemoteException, ElaboradoException;
 	
 
 
