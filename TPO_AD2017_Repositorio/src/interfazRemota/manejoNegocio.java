@@ -59,11 +59,6 @@ import exceptions.itemRemitoException;
 import exceptions.SemiElaboradoException;
 
 
-
-
-
-
-
 public interface manejoNegocio extends Remote 
 {
 
